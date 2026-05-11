@@ -1,7 +1,6 @@
 name = "dpe-prospector-api"
 main = "worker.js"
 compatibility_date = "2025-01-01"
-pages_build_output_dir = "."
 
 [[kv_namespaces]]
 binding = "DPE_KV"
