@@ -15,6 +15,18 @@
  */
 
 // ══════════════════════════════════════════════════════
+//  TABLE IDENTIFIANTS → AGENCES (confidentiel côté serveur)
+// ══════════════════════════════════════════════════════
+
+const IDENTIFIANTS = {
+  "dauphine":  "dauphine-lacassagne",
+  "motte":     "motte-picquet",
+  "pernety":   "pernety",
+  "houlgate":  "houlgate",
+  "villers":   "villers",
+};
+
+// ══════════════════════════════════════════════════════
 //  CONFIGURATION STATIQUE DES AGENCES
 //  (mots de passe stockés dans Cloudflare KV, pas ici)
 // ══════════════════════════════════════════════════════
@@ -200,10 +212,14 @@ export default {
     // ── POST /login ───────────────────────────────────
     if (path === "/login" && method === "POST") {
       let body; try { body = await request.json(); } catch { return err("JSON invalide"); }
-      const { agence, password } = body;
-      if (!agence || !password) return err("agence et password requis");
+      const { agence: identifiant, password } = body;
+      if (!identifiant || !password) return err("identifiant et password requis");
+
+      // Résoudre identifiant court ("dauphine") → id interne ("dauphine-lacassagne")
+      // Erreur générique pour ne pas révéler quels identifiants existent
+      const agence = IDENTIFIANTS[identifiant.toLowerCase().trim()] || identifiant;
       const cfg = AGENCES_CONFIG[agence];
-      if (!cfg) return err("Agence inconnue", 404);
+      if (!cfg) return err("Identifiant ou mot de passe incorrect", 401);
 
       // Mot de passe stocké en KV (hash SHA-256), fallback sur secret Wrangler
       const storedHash = await env.DPE_KV.get(`pwd:${agence}`);
