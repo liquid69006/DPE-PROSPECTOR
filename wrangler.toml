@@ -1,22 +1,8 @@
 name = "dpe-prospector-api"
 main = "worker.js"
 compatibility_date = "2025-01-01"
+pages_build_output_dir = "."
 
 [[kv_namespaces]]
 binding = "DPE_KV"
-id      = "87089aeabed3429a92aa9845c0e1c838"   # ← wrangler kv namespace create DPE_KV
-pages_build_output_dir = "."
-
-# Secrets à configurer UNE SEULE FOIS via CLI :
-#
-#   wrangler secret put JWT_SECRET
-#   wrangler secret put BREVO_API_KEY          ← clé API Brevo (v3)
-#   wrangler secret put PWD_DAUPHINE_LACASSAGNE
-#   wrangler secret put PWD_MOTTE_PICQUET
-#   wrangler secret put PWD_PERNETY
-#   wrangler secret put PWD_HOULGATE
-#   wrangler secret put PWD_VILLERS
-#
-# Après le 1er login réussi, les mots de passe sont migrés
-# en hash SHA-256 dans KV → les secrets Wrangler ne sont
-# plus nécessaires (mais laissez-les en place).
+id      = "87089aeabed3429a92aa9845c0e1c838"
