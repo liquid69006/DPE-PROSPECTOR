@@ -5,6 +5,7 @@ compatibility_date = "2025-01-01"
 [[kv_namespaces]]
 binding = "DPE_KV"
 id      = "87089aeabed3429a92aa9845c0e1c838"   # ← wrangler kv namespace create DPE_KV
+pages_build_output_dir = "."
 
 # Secrets à configurer UNE SEULE FOIS via CLI :
 #
