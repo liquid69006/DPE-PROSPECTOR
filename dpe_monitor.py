@@ -60,17 +60,23 @@ def affecter_zone(dpe: dict, zones_config: list) -> str:
     geopoint = dpe.get("_geopoint", "")
     code_postal = dpe.get("code_postal_ban", "")
 
+    # Déterminer si l'agence utilise des polygones ou des codes postaux
+    agence_utilise_polygones = any("polygone" in zone for zone in zones_config)
+
     for zone in zones_config:
-        # Mode polygone GPS
-        if "polygone" in zone and geopoint:
+        # Mode polygone GPS — si la zone a un polygone, on l'utilise exclusivement
+        if "polygone" in zone:
+            if not geopoint:
+                # Pas de coordonnées GPS → on ne peut pas vérifier → on ignore ce DPE
+                continue
             try:
                 lat, lng = map(float, geopoint.split(","))
                 if point_dans_polygone(lat, lng, zone["polygone"]):
                     return zone["nom"]
             except Exception:
-                pass
-        # Mode codes postaux
-        if "codes_postaux" in zone:
+                continue
+        # Mode codes postaux — uniquement pour les agences sans polygones (ex: Bagot)
+        elif not agence_utilise_polygones and "codes_postaux" in zone:
             if code_postal in zone["codes_postaux"]:
                 return zone["nom"]
 
