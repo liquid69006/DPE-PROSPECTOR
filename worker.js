@@ -66,7 +66,7 @@ const AGENCES_CONFIG = {
     email: "marine-bagot@century21.fr",
     dataJsonPath: "data/houlgate.json",
     conseillers_defaut: ["À attribuer"],
-    zones: ["Houlgate"],
+    zones: ["14510", "14160", "14430"],
   },
   "villers": {
     nom: "Century 21 Bagot — Villers-sur-Mer",
@@ -75,7 +75,7 @@ const AGENCES_CONFIG = {
     email: "marine-bagot@century21.fr",
     dataJsonPath: "data/villers.json",
     conseillers_defaut: ["À attribuer"],
-    zones: ["Villers-sur-Mer"],
+    zones: ["14910", "14640"],
   },
 };
 
