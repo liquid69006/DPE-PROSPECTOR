@@ -282,7 +282,7 @@
       "surface_habitable_immeuble": 5387,
       "numero_dpe_remplace": null,
       "zone": "Montchat",
-      "etage_str": "—",
+      "etage_str": "1e",
       "digicode_str": "—"
     },
     {
@@ -297,7 +297,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
-      "etage_str": "—",
+      "etage_str": "5e",
       "digicode_str": "—"
     },
     {
@@ -387,7 +387,7 @@
       "surface_habitable_immeuble": 3162,
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
-      "etage_str": "—",
+      "etage_str": "1e",
       "digicode_str": "—"
     },
     {
@@ -477,7 +477,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "Montchat",
-      "etage_str": "—",
+      "etage_str": "2e",
       "digicode_str": "—"
     },
     {
@@ -492,7 +492,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "Montchat",
-      "etage_str": "—",
+      "etage_str": "3e",
       "digicode_str": "—"
     },
     {
@@ -537,7 +537,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "Montchat",
-      "etage_str": "—",
+      "etage_str": "2e",
       "digicode_str": "—"
     },
     {
@@ -627,7 +627,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "Montchat",
-      "etage_str": "—",
+      "etage_str": "2e",
       "digicode_str": "—"
     },
     {
@@ -657,7 +657,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "Montchat",
-      "etage_str": "—",
+      "etage_str": "3e",
       "digicode_str": "—"
     },
     {
@@ -672,7 +672,7 @@
       "surface_habitable_immeuble": 1023,
       "numero_dpe_remplace": "2669E1176487J",
       "zone": "Montchat",
-      "etage_str": "—",
+      "etage_str": "2e",
       "digicode_str": "—"
     },
     {
@@ -1587,7 +1587,7 @@
       "surface_habitable_immeuble": 1000,
       "numero_dpe_remplace": null,
       "zone": "Montchat",
-      "etage_str": "—",
+      "etage_str": "1e",
       "digicode_str": "—"
     },
     {
@@ -1602,7 +1602,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
-      "etage_str": "—",
+      "etage_str": "4e",
       "digicode_str": "—"
     },
     {
@@ -1677,7 +1677,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": "2669E1117796A",
       "zone": "Dauphiné-Lacassagne",
-      "etage_str": "—",
+      "etage_str": "4e",
       "digicode_str": "—"
     },
     {
@@ -1782,7 +1782,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
-      "etage_str": "—",
+      "etage_str": "2e",
       "digicode_str": "—"
     },
     {
@@ -1827,7 +1827,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
-      "etage_str": "—",
+      "etage_str": "2e",
       "digicode_str": "—"
     },
     {
@@ -1842,7 +1842,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
-      "etage_str": "—",
+      "etage_str": "3e",
       "digicode_str": "—"
     },
     {
@@ -1857,7 +1857,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
-      "etage_str": "—",
+      "etage_str": "3e",
       "digicode_str": "—"
     },
     {
@@ -1902,7 +1902,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
-      "etage_str": "—",
+      "etage_str": "4e",
       "digicode_str": "—"
     },
     {
@@ -1932,7 +1932,7 @@
       "surface_habitable_immeuble": 3832,
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
-      "etage_str": "—",
+      "etage_str": "3e",
       "digicode_str": "—"
     },
     {
@@ -2007,7 +2007,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
-      "etage_str": "—",
+      "etage_str": "6e",
       "digicode_str": "—"
     },
     {
@@ -2037,7 +2037,7 @@
       "surface_habitable_immeuble": 1767,
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
-      "etage_str": "—",
+      "etage_str": "4e",
       "digicode_str": "—"
     },
     {
@@ -2067,7 +2067,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
-      "etage_str": "—",
+      "etage_str": "2e",
       "digicode_str": "—"
     },
     {
@@ -2097,7 +2097,7 @@
       "surface_habitable_immeuble": 26054,
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
-      "etage_str": "—",
+      "etage_str": "2e",
       "digicode_str": "—"
     },
     {
@@ -2127,7 +2127,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "Montchat",
-      "etage_str": "—",
+      "etage_str": "4e",
       "digicode_str": "—"
     },
     {
@@ -2172,7 +2172,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
-      "etage_str": "—",
+      "etage_str": "3e",
       "digicode_str": "—"
     },
     {
@@ -2202,7 +2202,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
-      "etage_str": "—",
+      "etage_str": "4e",
       "digicode_str": "—"
     },
     {
@@ -2247,7 +2247,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
-      "etage_str": "—",
+      "etage_str": "7e",
       "digicode_str": "—"
     },
     {
@@ -2277,7 +2277,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "Montchat",
-      "etage_str": "—",
+      "etage_str": "2e",
       "digicode_str": "—"
     },
     {
@@ -2292,7 +2292,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "Montchat",
-      "etage_str": "—",
+      "etage_str": "3e",
       "digicode_str": "—"
     },
     {
@@ -2307,7 +2307,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "Montchat",
-      "etage_str": "—",
+      "etage_str": "4e",
       "digicode_str": "—"
     },
     {
@@ -2337,7 +2337,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
-      "etage_str": "—",
+      "etage_str": "3e",
       "digicode_str": "—"
     },
     {
@@ -2352,7 +2352,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
-      "etage_str": "—",
+      "etage_str": "5e",
       "digicode_str": "—"
     },
     {
@@ -2382,7 +2382,7 @@
       "surface_habitable_immeuble": 3503,
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
-      "etage_str": "—",
+      "etage_str": "7e",
       "digicode_str": "—"
     },
     {
@@ -2412,7 +2412,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
-      "etage_str": "—",
+      "etage_str": "3e",
       "digicode_str": "—"
     },
     {
@@ -2457,7 +2457,7 @@
       "surface_habitable_immeuble": 878,
       "numero_dpe_remplace": null,
       "zone": "Montchat",
-      "etage_str": "—",
+      "etage_str": "2e",
       "digicode_str": "—"
     },
     {
@@ -2487,7 +2487,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "Montchat",
-      "etage_str": "—",
+      "etage_str": "2e",
       "digicode_str": "—"
     },
     {
@@ -2577,7 +2577,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "Montchat",
-      "etage_str": "—",
+      "etage_str": "3e",
       "digicode_str": "—"
     },
     {
@@ -2592,7 +2592,7 @@
       "surface_habitable_immeuble": 2180,
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
-      "etage_str": "—",
+      "etage_str": "2e",
       "digicode_str": "—"
     },
     {
@@ -2667,7 +2667,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": "2669E0411283L",
       "zone": "Montchat",
-      "etage_str": "—",
+      "etage_str": "3e",
       "digicode_str": "—"
     },
     {
@@ -2682,7 +2682,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "Montchat",
-      "etage_str": "—",
+      "etage_str": "3e",
       "digicode_str": "—"
     },
     {
@@ -2697,7 +2697,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "Montchat",
-      "etage_str": "—",
+      "etage_str": "2e",
       "digicode_str": "—"
     },
     {
@@ -2712,7 +2712,7 @@
       "surface_habitable_immeuble": 1000,
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
-      "etage_str": "—",
+      "etage_str": "3e",
       "digicode_str": "—"
     },
     {
@@ -2787,7 +2787,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
-      "etage_str": "—",
+      "etage_str": "3e",
       "digicode_str": "—"
     },
     {
@@ -2817,7 +2817,7 @@
       "surface_habitable_immeuble": 22304,
       "numero_dpe_remplace": null,
       "zone": "Montchat",
-      "etage_str": "—",
+      "etage_str": "1e",
       "digicode_str": "—"
     },
     {
@@ -2892,7 +2892,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
-      "etage_str": "—",
+      "etage_str": "2e",
       "digicode_str": "—"
     },
     {
@@ -2952,7 +2952,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
-      "etage_str": "—",
+      "etage_str": "6e",
       "digicode_str": "—"
     },
     {
@@ -2982,7 +2982,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
-      "etage_str": "—",
+      "etage_str": "2e",
       "digicode_str": "—"
     },
     {
@@ -2997,7 +2997,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
-      "etage_str": "—",
+      "etage_str": "2e",
       "digicode_str": "—"
     },
     {
@@ -3057,7 +3057,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
-      "etage_str": "—",
+      "etage_str": "1e",
       "digicode_str": "—"
     },
     {
@@ -3072,7 +3072,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": "2669E1034674A",
       "zone": "Dauphiné-Lacassagne",
-      "etage_str": "—",
+      "etage_str": "5e",
       "digicode_str": "—"
     },
     {
@@ -3162,7 +3162,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "Montchat",
-      "etage_str": "—",
+      "etage_str": "3e",
       "digicode_str": "—"
     },
     {
@@ -3297,7 +3297,7 @@
       "surface_habitable_immeuble": 600,
       "numero_dpe_remplace": null,
       "zone": "Montchat",
-      "etage_str": "—",
+      "etage_str": "2e",
       "digicode_str": "—"
     },
     {
@@ -3312,7 +3312,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "Montchat",
-      "etage_str": "—",
+      "etage_str": "2e",
       "digicode_str": "—"
     },
     {

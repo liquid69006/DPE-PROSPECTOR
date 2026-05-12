@@ -12,7 +12,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": "2675E1219913V",
       "zone": "Pernéty",
-      "etage_str": "—",
+      "etage_str": "5e",
       "digicode_str": "—"
     },
     {
@@ -27,7 +27,7 @@
       "surface_habitable_immeuble": 7307,
       "numero_dpe_remplace": "2675E1206582C",
       "zone": "Pernéty",
-      "etage_str": "—",
+      "etage_str": "2e",
       "digicode_str": "—"
     },
     {
@@ -72,7 +72,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "Pernéty",
-      "etage_str": "—",
+      "etage_str": "4e",
       "digicode_str": "—"
     },
     {
@@ -102,7 +102,7 @@
       "surface_habitable_immeuble": 9004,
       "numero_dpe_remplace": null,
       "zone": "Pernéty",
-      "etage_str": "—",
+      "etage_str": "7e",
       "digicode_str": "—"
     },
     {
@@ -162,7 +162,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": "2475E2713003H",
       "zone": "Pernéty",
-      "etage_str": "—",
+      "etage_str": "1e",
       "digicode_str": "—"
     },
     {
@@ -177,7 +177,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "Pernéty",
-      "etage_str": "—",
+      "etage_str": "2e",
       "digicode_str": "—"
     },
     {
@@ -192,7 +192,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "Pernéty",
-      "etage_str": "—",
+      "etage_str": "4e",
       "digicode_str": "—"
     },
     {
@@ -207,7 +207,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "Pernéty",
-      "etage_str": "—",
+      "etage_str": "1e",
       "digicode_str": "—"
     },
     {
@@ -222,7 +222,7 @@
       "surface_habitable_immeuble": 7882,
       "numero_dpe_remplace": null,
       "zone": "Pernéty",
-      "etage_str": "—",
+      "etage_str": "4e",
       "digicode_str": "—"
     },
     {
@@ -237,7 +237,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": "2675E1197004S",
       "zone": "Pernéty",
-      "etage_str": "—",
+      "etage_str": "1e",
       "digicode_str": "—"
     },
     {
@@ -282,7 +282,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "Pernéty",
-      "etage_str": "—",
+      "etage_str": "3e",
       "digicode_str": "—"
     },
     {
@@ -297,7 +297,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "Pernéty",
-      "etage_str": "—",
+      "etage_str": "4e",
       "digicode_str": "—"
     },
     {
@@ -312,7 +312,7 @@
       "surface_habitable_immeuble": 871,
       "numero_dpe_remplace": null,
       "zone": "Pernéty",
-      "etage_str": "—",
+      "etage_str": "3e",
       "digicode_str": "—"
     },
     {
@@ -327,7 +327,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "Pernéty",
-      "etage_str": "—",
+      "etage_str": "1e",
       "digicode_str": "—"
     },
     {
@@ -342,7 +342,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "Pernéty",
-      "etage_str": "—",
+      "etage_str": "4e",
       "digicode_str": "—"
     },
     {
@@ -432,7 +432,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "Pernéty",
-      "etage_str": "—",
+      "etage_str": "2e",
       "digicode_str": "—"
     },
     {
@@ -447,7 +447,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "Pernéty",
-      "etage_str": "—",
+      "etage_str": "3e",
       "digicode_str": "—"
     },
     {
@@ -462,7 +462,7 @@
       "surface_habitable_immeuble": 5088,
       "numero_dpe_remplace": null,
       "zone": "Pernéty",
-      "etage_str": "—",
+      "etage_str": "1e",
       "digicode_str": "—"
     },
     {
@@ -477,7 +477,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "Pernéty",
-      "etage_str": "—",
+      "etage_str": "2e",
       "digicode_str": "—"
     },
     {
@@ -507,7 +507,7 @@
       "surface_habitable_immeuble": 3187,
       "numero_dpe_remplace": null,
       "zone": "Pernéty",
-      "etage_str": "—",
+      "etage_str": "1e",
       "digicode_str": "—"
     },
     {
@@ -522,7 +522,7 @@
       "surface_habitable_immeuble": 311,
       "numero_dpe_remplace": null,
       "zone": "Pernéty",
-      "etage_str": "—",
+      "etage_str": "2e",
       "digicode_str": "—"
     },
     {
@@ -537,7 +537,7 @@
       "surface_habitable_immeuble": 2963,
       "numero_dpe_remplace": null,
       "zone": "Pernéty",
-      "etage_str": "—",
+      "etage_str": "5e",
       "digicode_str": "—"
     },
     {
@@ -552,7 +552,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "Pernéty",
-      "etage_str": "—",
+      "etage_str": "1e",
       "digicode_str": "—"
     },
     {
@@ -597,7 +597,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "Pernéty",
-      "etage_str": "—",
+      "etage_str": "1e",
       "digicode_str": "—"
     },
     {
@@ -612,7 +612,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "Pernéty",
-      "etage_str": "—",
+      "etage_str": "1e",
       "digicode_str": "—"
     },
     {
@@ -627,7 +627,7 @@
       "surface_habitable_immeuble": 16088,
       "numero_dpe_remplace": null,
       "zone": "Pernéty",
-      "etage_str": "—",
+      "etage_str": "12e",
       "digicode_str": "—"
     },
     {
@@ -642,7 +642,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "Pernéty",
-      "etage_str": "—",
+      "etage_str": "3e",
       "digicode_str": "—"
     },
     {
@@ -657,7 +657,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "Pernéty",
-      "etage_str": "—",
+      "etage_str": "3e",
       "digicode_str": "—"
     },
     {
@@ -687,7 +687,7 @@
       "surface_habitable_immeuble": 1295,
       "numero_dpe_remplace": null,
       "zone": "Pernéty",
-      "etage_str": "—",
+      "etage_str": "2e",
       "digicode_str": "—"
     },
     {
@@ -897,7 +897,7 @@
       "surface_habitable_immeuble": 3127,
       "numero_dpe_remplace": null,
       "zone": "Pernéty",
-      "etage_str": "—",
+      "etage_str": "3e",
       "digicode_str": "—"
     },
     {
@@ -957,7 +957,7 @@
       "surface_habitable_immeuble": 5088,
       "numero_dpe_remplace": null,
       "zone": "Pernéty",
-      "etage_str": "—",
+      "etage_str": "5e",
       "digicode_str": "—"
     },
     {
@@ -1047,7 +1047,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "Pernéty",
-      "etage_str": "—",
+      "etage_str": "3e",
       "digicode_str": "—"
     },
     {
@@ -1392,7 +1392,7 @@
       "surface_habitable_immeuble": 382,
       "numero_dpe_remplace": null,
       "zone": "Pernéty",
-      "etage_str": "—",
+      "etage_str": "1e",
       "digicode_str": "—"
     },
     {
@@ -1527,7 +1527,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": "2500E0135452W",
       "zone": "Pernéty",
-      "etage_str": "—",
+      "etage_str": "5e",
       "digicode_str": "—"
     },
     {
@@ -1647,7 +1647,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": "2675E0494300Q",
       "zone": "Pernéty",
-      "etage_str": "—",
+      "etage_str": "4e",
       "digicode_str": "—"
     },
     {
@@ -3492,7 +3492,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "Pernéty",
-      "etage_str": "—",
+      "etage_str": "1e",
       "digicode_str": "—"
     },
     {
@@ -3732,7 +3732,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "Pernéty",
-      "etage_str": "—",
+      "etage_str": "2e",
       "digicode_str": "—"
     },
     {
@@ -3822,7 +3822,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "Pernéty",
-      "etage_str": "—",
+      "etage_str": "2e",
       "digicode_str": "—"
     },
     {
@@ -4137,7 +4137,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "Pernéty",
-      "etage_str": "—",
+      "etage_str": "1e",
       "digicode_str": "—"
     },
     {
@@ -4167,7 +4167,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "Pernéty",
-      "etage_str": "—",
+      "etage_str": "5e",
       "digicode_str": "—"
     },
     {
@@ -4197,7 +4197,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "Pernéty",
-      "etage_str": "—",
+      "etage_str": "4e",
       "digicode_str": "—"
     },
     {
@@ -4212,7 +4212,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": "2475E4318877R",
       "zone": "Pernéty",
-      "etage_str": "—",
+      "etage_str": "3e",
       "digicode_str": "—"
     },
     {
@@ -4302,7 +4302,7 @@
       "surface_habitable_immeuble": 10276,
       "numero_dpe_remplace": null,
       "zone": "Pernéty",
-      "etage_str": "—",
+      "etage_str": "3e",
       "digicode_str": "—"
     },
     {
@@ -4347,7 +4347,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "Pernéty",
-      "etage_str": "—",
+      "etage_str": "1e",
       "digicode_str": "—"
     },
     {
@@ -4542,7 +4542,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "Pernéty",
-      "etage_str": "—",
+      "etage_str": "5e",
       "digicode_str": "—"
     },
     {
@@ -5232,7 +5232,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": "2675E1043162S",
       "zone": "Pernéty",
-      "etage_str": "—",
+      "etage_str": "4e",
       "digicode_str": "—"
     },
     {
@@ -5292,7 +5292,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "Pernéty",
-      "etage_str": "—",
+      "etage_str": "1e",
       "digicode_str": "—"
     },
     {
@@ -5322,7 +5322,7 @@
       "surface_habitable_immeuble": 18789,
       "numero_dpe_remplace": null,
       "zone": "Pernéty",
-      "etage_str": "—",
+      "etage_str": "4e",
       "digicode_str": "—"
     },
     {
@@ -5367,7 +5367,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "Pernéty",
-      "etage_str": "—",
+      "etage_str": "5e",
       "digicode_str": "—"
     },
     {
@@ -5397,7 +5397,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": "2675E0897113L",
       "zone": "Pernéty",
-      "etage_str": "—",
+      "etage_str": "4e",
       "digicode_str": "—"
     },
     {
@@ -5442,7 +5442,7 @@
       "surface_habitable_immeuble": 16906,
       "numero_dpe_remplace": null,
       "zone": "Pernéty",
-      "etage_str": "—",
+      "etage_str": "13e",
       "digicode_str": "—"
     },
     {
@@ -5457,7 +5457,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": "2675E1048352I",
       "zone": "Pernéty",
-      "etage_str": "—",
+      "etage_str": "3e",
       "digicode_str": "—"
     },
     {
@@ -5502,7 +5502,7 @@
       "surface_habitable_immeuble": 2000,
       "numero_dpe_remplace": null,
       "zone": "Pernéty",
-      "etage_str": "—",
+      "etage_str": "4e",
       "digicode_str": "—"
     },
     {
@@ -5517,7 +5517,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "Pernéty",
-      "etage_str": "—",
+      "etage_str": "4e",
       "digicode_str": "—"
     },
     {
@@ -5712,7 +5712,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "Pernéty",
-      "etage_str": "—",
+      "etage_str": "4e",
       "digicode_str": "—"
     },
     {
