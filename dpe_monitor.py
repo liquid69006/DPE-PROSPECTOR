@@ -130,14 +130,15 @@ def extraire_etage(dpe: dict) -> str:
             return None
         t = texte.upper()
         # RDC explicite
-        if any(x in t for x in ["RDC", "REZ DE CHAUSSEE", "REZ-DE-CHAUSSEE", "REZ DE CHAUSSÉE"]):
+        if any(x in t for x in ["RDC", "REZ DE CHAUSSEE", "REZ-DE-CHAUSSEE", "REZ DE CHAUSSÉE", "REZ-DE-CHAUSSÉE"]) or "REZ" in t and "CHAUSS" in t:
             return "RDC"
         # Format "Etage : 2ème" ou "2ème étage" ou "2e étage" ou "2ème ;"
         patterns = [
-            r"[Ee]tage\s*:\s*(\d+)[eè]?",          # Etage : 2ème
-            r"(\d+)\s*[eè][rm]?[eè]?\s*[Ee]tage",  # 2ème étage
-            r"[Ee][Tt][Aa][Gg][Ee]\s*:\s*(\d+)",    # ETAGE : 2
-            r"(\d+)\s*[Ee][Mm]?[Ee]?\s*[Ee][Tt][Aa][Gg][Ee]",  # 2eme etage
+            r"[Eé][Tt][Aa][Gg][Ee]\s*:\s*(\d+)",   # Etage : 2 / ETAGE : 2
+            r"[Eé]tage\s+(\d+)",                    # Etage 2 / étage 2
+            r"[Eé][Tt][Aa][Gg][Ee]\s*(\d+)",        # ETAGE2 / ETAGE 2
+            r"(\d+)[^\d]{0,8}[eé]tage",             # 3ème étage / 2eme etage
+            r";?\s*[Eé]t(?:age)?\s*(\d+)\b",        # ; Etage 2 / ; Et 2
         ]
         for p in patterns:
             m = re.search(p, texte, re.IGNORECASE)
