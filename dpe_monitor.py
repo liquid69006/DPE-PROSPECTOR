@@ -75,10 +75,10 @@ def affecter_zone(dpe: dict, zones_config: list) -> str:
                     return zone["nom"]
             except Exception:
                 continue
-        # Mode codes postaux — uniquement pour les agences sans polygones (ex: Bagot)
+        # Mode codes postaux — pour les agences sans polygones (ex: Bagot)
         elif not agence_utilise_polygones and "codes_postaux" in zone:
             if code_postal in zone["codes_postaux"]:
-                return zone["nom"]
+                return zone["nom"]  # Le nom de la zone = le code postal
 
     return "Autre"
 
@@ -115,20 +115,73 @@ def recuperer_dpe_bruts(codes_postaux: list, date_depuis: str) -> list:
 # ══════════════════════════════════════════════════════════════
 
 def extraire_etage(dpe: dict) -> str:
-    complement = dpe.get("complement_adresse_logement") or ""
-    etage_num  = dpe.get("numero_etage_appartement")
-    etage_str  = "—"
-    if complement:
-        compl_up = complement.upper()
-        if any(x in compl_up for x in ["RDC", "REZ DE CHAUSSEE", "REZ-DE-CHAUSSEE"]):
-            etage_str = "RDC"
-        else:
-            m = re.search(r"(\d+)\s*[Ee][Mm]?[Ee]?\s*[Ee][Tt][Aa][Gg][Ee]", complement, re.IGNORECASE)
+    """
+    Priorité de recherche de l'étage :
+    1. compl_ref_logement   ex: "Etage : 2ème ;"
+    2. label_brut_avec_complement  ex: "1 Rue X 69003 Lyon Etage : 2ème ;"
+    3. complement_adresse_logement (champ historique)
+    4. numero_etage_appartement (entier, 0=RDC) — utilisé SEULEMENT si > 0
+       car 0 peut signifier "non renseigné" autant que RDC
+    """
+
+    def parser_texte_etage(texte: str) -> str:
+        """Extrait l'étage depuis un texte libre."""
+        if not texte:
+            return None
+        t = texte.upper()
+        # RDC explicite
+        if any(x in t for x in ["RDC", "REZ DE CHAUSSEE", "REZ-DE-CHAUSSEE", "REZ DE CHAUSSÉE"]):
+            return "RDC"
+        # Format "Etage : 2ème" ou "2ème étage" ou "2e étage" ou "2ème ;"
+        patterns = [
+            r"[Ee]tage\s*:\s*(\d+)[eè]?",          # Etage : 2ème
+            r"(\d+)\s*[eè][rm]?[eè]?\s*[Ee]tage",  # 2ème étage
+            r"[Ee][Tt][Aa][Gg][Ee]\s*:\s*(\d+)",    # ETAGE : 2
+            r"(\d+)\s*[Ee][Mm]?[Ee]?\s*[Ee][Tt][Aa][Gg][Ee]",  # 2eme etage
+        ]
+        for p in patterns:
+            m = re.search(p, texte, re.IGNORECASE)
             if m:
-                etage_str = f"{m.group(1)}e"
-    if etage_str == "—" and etage_num is not None:
-        etage_str = "RDC" if etage_num == 0 else f"{etage_num}e"
-    return etage_str
+                n = int(m.group(1))
+                return "RDC" if n == 0 else f"{n}e"
+        return None
+
+    # 1. compl_ref_logement (champ le plus fiable)
+    ref_log = dpe.get("compl_ref_logement") or ""
+    result = parser_texte_etage(ref_log)
+    if result:
+        return result
+
+    # 2. label_brut_avec_complement
+    label = dpe.get("label_brut_avec_complement") or ""
+    result = parser_texte_etage(label)
+    if result:
+        return result
+
+    # 3. complement_adresse_logement (champ historique)
+    complement = dpe.get("complement_adresse_logement") or ""
+    result = parser_texte_etage(complement)
+    if result:
+        return result
+
+    # 4. compl_etage_appartement (peut être un entier ou texte)
+    compl_etage = dpe.get("compl_etage_appartement")
+    if compl_etage is not None:
+        try:
+            n = int(compl_etage)
+            if n > 0:
+                return f"{n}e"
+        except (ValueError, TypeError):
+            result = parser_texte_etage(str(compl_etage))
+            if result:
+                return result
+
+    # 5. numero_etage_appartement — seulement si > 0 (0 = non fiable)
+    etage_num = dpe.get("numero_etage_appartement")
+    if etage_num is not None and etage_num != 0:
+        return f"{etage_num}e"
+
+    return "—"
 
 
 def extraire_digicode(dpe: dict) -> str:
