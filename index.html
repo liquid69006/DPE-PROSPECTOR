@@ -880,14 +880,10 @@ function renderRow(dpe) {
     <td>${isRen?'<span class="badge-type renouv">🔄 Renouvellement</span>':'<span class="badge-type premier">🆕 Premier</span>'}</td>
     <td><select class="statut-select" onchange="updateAssignment('${id}','statut',this.value)">${statOpts}</select></td>
     <td><select class="conseiller-select" onchange="updateAssignment('${id}','conseiller',this.value)">${consOpts}</select></td>
-    <td>${(()=>{
-      if(dpe.geopoint){
-        const parts=dpe.geopoint.split(',');
-        const lat=parseFloat(parts[0]),lon=parseFloat(parts[1]);
-        return `<a class="btn-voir" href="https://immobilier.pappers.fr/?lat=${lat}&lon=${lon}&z=18" target="_blank" rel="noopener" style="background:#6366f1;">🏢</a>`;
-      }
-      return `<a class="btn-voir" href="https://www.pappers.fr/immobilier/recherche?q=${encodeURIComponent(dpe.adresse_ban||'')}" target="_blank" rel="noopener" style="background:#6366f1;">🏢</a>`;
-    })()}</td>
+    <td>${dpe.geopoint
+      ? `<button class="btn-voir" onclick="ouvrirPappers('${dpe.geopoint}','${encodeURIComponent(dpe.adresse_ban||'')}')" style="background:#6366f1;cursor:pointer;border:none;">🏢</button>`
+      : `<a class="btn-voir" href="https://www.pappers.fr/immobilier/recherche?q=${encodeURIComponent(dpe.adresse_ban||'')}" target="_blank" rel="noopener" style="background:#6366f1;">🏢</a>`
+    }</td>
     <td><a class="btn-voir" href="https://observatoire-dpe-audit.ademe.fr/afficher-dpe/${id}" target="_blank" rel="noopener">Voir →</a></td>
   </tr>`;
 }
@@ -966,7 +962,36 @@ function sortTable(col) {
 }
 
 // ════════════════════════════════════════
-//  SYNC STATUS & TOAST
+//  BOUTON PAPPERS — API IGN CADASTRE
+// ════════════════════════════════════════
+async function ouvrirPappers(geopoint, adresseEnc) {
+  const adresse = decodeURIComponent(adresseEnc);
+  const parts   = geopoint.split(',');
+  const lat     = parseFloat(parts[0]);
+  const lon     = parseFloat(parts[1]);
+
+  // Fallback URL si IGN échoue
+  const fallback = `https://immobilier.pappers.fr/?lat=${lat}&lon=${lon}&z=18`;
+
+  try {
+    const r = await fetch(
+      `https://geocodage.ign.fr/look4/parcel/reverse?lon=${lon}&lat=${lat}`,
+      { signal: AbortSignal.timeout(5000) }
+    );
+    if (!r.ok) throw new Error('IGN HTTP ' + r.status);
+    const data = await r.json();
+    const parcelle = data?.features?.[0]?.id || data?.features?.[0]?.properties?.id;
+    if (parcelle) {
+      window.open(`https://immobilier.pappers.fr/?parcelle=${parcelle}`, '_blank');
+    } else {
+      window.open(fallback, '_blank');
+    }
+  } catch(e) {
+    window.open(fallback, '_blank');
+  }
+}
+
+
 // ════════════════════════════════════════
 function setSyncStatus(ok) {
   document.getElementById('sync-dot').className   = 'sync-dot'+(ok?'':' err');
