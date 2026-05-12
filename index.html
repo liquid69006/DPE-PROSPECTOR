@@ -896,7 +896,7 @@ function updateAssignment(id, key, value) {
 //  FILTRES & TRI
 // ════════════════════════════════════════
 function applyFiltres() {
-  const search    = document.getElementById('search').value.toLowerCase();
+  const search    = document.getElementById('search').value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
   const zone      = document.getElementById('filter-zone').value;
   const dpe       = document.getElementById('filter-dpe').value;
   const statut    = document.getElementById('filter-statut').value;
@@ -906,7 +906,7 @@ function applyFiltres() {
   let visible = 0;
   document.querySelectorAll('#tbody tr').forEach(row => {
     const ok =
-      (!search    || row.dataset.adresse.includes(search)) &&
+      (!search    || row.dataset.adresse.normalize("NFD").replace(/[\u0300-\u036f]/g,"").includes(search)) &&
       (!zone      || row.dataset.zone===zone) &&
       (!dpe       || row.dataset.dpe===dpe) &&
       (!statut    || row.dataset.statut===statut) &&
