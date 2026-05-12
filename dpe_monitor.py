@@ -227,6 +227,7 @@ def mise_a_jour_data_json(agence_id: str, nouveaux_dpe: list, zones_config: list
                     "zone":                       nom_zone,
                     "etage_str":                  extraire_etage(dpe),
                     "digicode_str":               extraire_digicode(dpe),
+                    "geopoint":                   dpe.get("_geopoint"),
                 })
                 ajoutes += 1
 
