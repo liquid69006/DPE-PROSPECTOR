@@ -880,7 +880,13 @@ function renderRow(dpe) {
     <td>${isRen?'<span class="badge-type renouv">🔄 Renouvellement</span>':'<span class="badge-type premier">🆕 Premier</span>'}</td>
     <td><select class="statut-select" onchange="updateAssignment('${id}','statut',this.value)">${statOpts}</select></td>
     <td><select class="conseiller-select" onchange="updateAssignment('${id}','conseiller',this.value)">${consOpts}</select></td>
-    <td><a class="btn-voir" href="https://www.pappers.fr/immobilier/recherche?q=${encodeURIComponent(dpe.adresse_ban||'')}" target="_blank" rel="noopener" style="background:#6366f1;">🏢</a></td>
+    <td>${(()=>{
+      if(dpe.geopoint){
+        const [lat,lon]=dpe.geopoint.split(',').map(Number);
+        return `<a class="btn-voir" href="https://immobilier.pappers.fr/?lat=${lat}&lon=${lon}&z=18" target="_blank" rel="noopener" style="background:#6366f1;">🏢</a>`;
+      }
+      return `<a class="btn-voir" href="https://www.pappers.fr/immobilier/recherche?q=${encodeURIComponent(dpe.adresse_ban||'')}" target="_blank" rel="noopener" style="background:#6366f1;">🏢</a>`;
+    })()}</td>
     <td><a class="btn-voir" href="https://observatoire-dpe-audit.ademe.fr/afficher-dpe/${id}" target="_blank" rel="noopener">Voir →</a></td>
   </tr>`;
 }
