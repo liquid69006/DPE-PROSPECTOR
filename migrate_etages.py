@@ -111,6 +111,12 @@ def migrer_fichier(data_file: Path):
             inchanges += 1
             continue
 
+        # Sauter les DPE qui ont déjà un étage renseigné (pas "—" et pas "RDC" douteux)
+        # On ne retraite que ceux avec "—" (information manquante) ou "RDC" (potentiellement faux)
+        if ancien not in ["—", "RDC"]:
+            inchanges += 1
+            continue
+
         # Récupérer les détails depuis l'API
         details = fetch_dpe_details(numero)
         if not details:
