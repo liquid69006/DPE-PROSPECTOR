@@ -858,7 +858,7 @@ function renderRow(dpe) {
   return `<tr class="${isG?'row-g':''}"
     data-zone="${zone}" data-dpe="${etiq}" data-renouv="${isRen}"
     data-statut="${statut}" data-conseiller="${conseil}"
-    data-adresse="${(dpe.adresse_ban||'').toLowerCase()}" data-logement="${typBat}">
+    data-adresse="${(dpe.adresse_ban||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'')}" data-logement="${typBat}">
     <td class="td-date">${fmtDate(dpe.date_reception_dpe)}</td>
     <td class="td-num">${id}</td>
     <td class="td-adresse">
