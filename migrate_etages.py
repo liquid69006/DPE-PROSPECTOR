@@ -24,13 +24,14 @@ def parser_texte_etage(texte: str):
     if not texte:
         return None
     t = texte.upper()
-    if any(x in t for x in ["RDC", "REZ DE CHAUSSEE", "REZ-DE-CHAUSSEE", "REZ DE CHAUSSÉE"]):
+    if any(x in t for x in ["RDC", "REZ DE CHAUSSEE", "REZ-DE-CHAUSSEE", "REZ DE CHAUSSÉE", "REZ-DE-CHAUSSÉE"]) or "REZ" in t and "CHAUSS" in t:
         return "RDC"
     patterns = [
-        r"[Ee]tage\s*:\s*(\d+)[eè]?",
-        r"(\d+)\s*[eè][rm]?[eè]?\s*[Ee]tage",
-        r"[Ee][Tt][Aa][Gg][Ee]\s*:\s*(\d+)",
-        r"(\d+)\s*[Ee][Mm]?[Ee]?\s*[Ee][Tt][Aa][Gg][Ee]",
+        r"[Eé][Tt][Aa][Gg][Ee]\s*:\s*(\d+)",   # Etage : 2 / ETAGE : 2
+        r"[Eé]tage\s+(\d+)",                    # Etage 2 / étage 2
+        r"[Eé][Tt][Aa][Gg][Ee]\s*(\d+)",        # ETAGE2 / ETAGE 2
+        r"(\d+)[^\d]{0,8}[eé]tage",             # 3ème étage / 2eme etage
+        r";?\s*[Eé]t(?:age)?\s*(\d+)\b",        # ; Etage 2 / ; Et 2
     ]
     for p in patterns:
         m = re.search(p, texte, re.IGNORECASE)
