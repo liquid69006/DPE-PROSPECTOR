@@ -882,7 +882,8 @@ function renderRow(dpe) {
     <td><select class="conseiller-select" onchange="updateAssignment('${id}','conseiller',this.value)">${consOpts}</select></td>
     <td>${(()=>{
       if(dpe.geopoint){
-        const [lat,lon]=dpe.geopoint.split(',').map(Number);
+        const parts=dpe.geopoint.split(',');
+        const lat=parseFloat(parts[0]),lon=parseFloat(parts[1]);
         return `<a class="btn-voir" href="https://immobilier.pappers.fr/?lat=${lat}&lon=${lon}&z=18" target="_blank" rel="noopener" style="background:#6366f1;">🏢</a>`;
       }
       return `<a class="btn-voir" href="https://www.pappers.fr/immobilier/recherche?q=${encodeURIComponent(dpe.adresse_ban||'')}" target="_blank" rel="noopener" style="background:#6366f1;">🏢</a>`;
