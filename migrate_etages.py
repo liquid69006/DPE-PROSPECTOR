@@ -75,16 +75,28 @@ def extraire_etage(dpe: dict) -> str:
 # ══════════════════════════════════════════════════════════════
 
 def fetch_dpe_details(numero_dpe: str) -> dict:
-    """Récupère les détails d'un DPE depuis l'API ADEME."""
+    """Récupère les détails d'un DPE depuis l'API ADEME avec retry sur 429."""
     url = f"{API_BASE}?numero_dpe_eq={numero_dpe}&size=1"
-    try:
-        r = requests.get(url, headers=HEADERS, timeout=20)
-        r.raise_for_status()
-        results = r.json().get("results", [])
-        return results[0] if results else {}
-    except Exception as e:
-        print(f"      ⚠️  Erreur API ({numero_dpe}): {e}")
-        return {}
+    for tentative in range(4):  # 4 tentatives max
+        try:
+            r = requests.get(url, headers=HEADERS, timeout=30)
+            if r.status_code == 429:
+                # Rate limiting — attendre de plus en plus longtemps
+                attente = 30 * (tentative + 1)
+                print(f"      ⏳ Rate limit, attente {attente}s...")
+                time.sleep(attente)
+                continue
+            r.raise_for_status()
+            results = r.json().get("results", [])
+            return results[0] if results else {}
+        except Exception as e:
+            if tentative < 3:
+                time.sleep(10)
+                continue
+            print(f"      ⚠️  Erreur API ({numero_dpe}): {e}")
+            return {}
+    print(f"      ⚠️  Abandon après 4 tentatives ({numero_dpe})")
+    return {}
 
 # ══════════════════════════════════════════════════════════════
 #  MIGRATION
@@ -134,8 +146,8 @@ def migrer_fichier(data_file: Path):
         else:
             inchanges += 1
 
-        # Pause pour ne pas surcharger l'API
-        time.sleep(0.15)
+        # Pause pour respecter le rate limit de l'API ADEME
+        time.sleep(1.0)
 
         # Affichage progression tous les 20
         if (i + 1) % 20 == 0:
