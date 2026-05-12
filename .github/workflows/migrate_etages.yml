@@ -1,0 +1,37 @@
+name: 🔧 Migration étages
+
+on:
+  workflow_dispatch:   # Déclenchement manuel uniquement
+
+permissions:
+  contents: write
+
+jobs:
+  migration:
+    name: Recalcul des étages
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: 🐍 Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: 📦 Dépendances
+        run: pip install requests
+
+      - name: 🔧 Migration étages
+        run: python migrate_etages.py
+
+      - name: 📊 Commit data/*.json mis à jour
+        run: |
+          git config user.name "DPE Prospector Bot"
+          git config user.email "actions@github.com"
+          git add data/
+          git diff --staged --quiet || git commit -m "🔧 Migration étages [$(date '+%d/%m/%Y')]"
+          git push
