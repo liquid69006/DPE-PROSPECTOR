@@ -27,14 +27,6 @@ jobs:
       - name: 📦 Dépendances
         run: pip install requests
 
-      - name: 💾 Restauration cache DPE
-        uses: actions/cache@v4
-        with:
-          path: dpe_cache.json
-          key: dpe-cache-${{ github.run_number }}
-          restore-keys: |
-            dpe-cache-
-
       - name: 🔍 Surveillance DPE toutes agences
         env:
           EMAIL_EXPEDITEUR:   ${{ secrets.EMAIL_EXPEDITEUR }}
@@ -42,10 +34,10 @@ jobs:
           ZONES_JSON:         ${{ secrets.ZONES_JSON }}
         run: python dpe_monitor.py
 
-      - name: 📊 Commit data/*.json
+      - name: 📊 Commit data/ + cache
         run: |
           git config user.name "DPE Prospector Bot"
           git config user.email "actions@github.com"
-          git add data/
+          git add data/ dpe_cache.json
           git diff --staged --quiet || git commit -m "📊 Mise à jour DPE [$(date '+%d/%m/%Y')]"
           git push
