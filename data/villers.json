@@ -13,7 +13,8 @@
       "numero_dpe_remplace": null,
       "zone": "14910",
       "etage_str": "1e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "49.33947302344441,0.03465901461807427"
     },
     {
       "numero_dpe": "2614E1210225W",
@@ -28,7 +29,8 @@
       "numero_dpe_remplace": null,
       "zone": "14910",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "49.34267602385183,0.037347993312582595"
     },
     {
       "numero_dpe": "2614E1216733E",
@@ -43,7 +45,8 @@
       "numero_dpe_remplace": null,
       "zone": "14910",
       "etage_str": "RDC",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "49.33898102212236,0.030688017865216504"
     },
     {
       "numero_dpe": "2614E1210838L",
@@ -58,7 +61,8 @@
       "numero_dpe_remplace": null,
       "zone": "14640",
       "etage_str": "4e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "49.324340957971735,0.009442994994370615"
     },
     {
       "numero_dpe": "2614E1216338Z",
@@ -73,7 +77,8 @@
       "numero_dpe_remplace": null,
       "zone": "14640",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "49.319749988648894,0.003257949822975478"
     },
     {
       "numero_dpe": "2614E1207788D",
@@ -88,7 +93,8 @@
       "numero_dpe_remplace": null,
       "zone": "14640",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "49.31988403966858,0.003534054168452258"
     },
     {
       "numero_dpe": "2614E1207851O",
@@ -103,7 +109,8 @@
       "numero_dpe_remplace": null,
       "zone": "14640",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "49.317592970215465,-0.015051029590390218"
     },
     {
       "numero_dpe": "2614E1199361A",
@@ -118,7 +125,8 @@
       "numero_dpe_remplace": null,
       "zone": "14640",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "49.319392010531715,0.007456004804429107"
     },
     {
       "numero_dpe": "2614E1177645U",
@@ -133,7 +141,8 @@
       "numero_dpe_remplace": "2514E2466127T",
       "zone": "14910",
       "etage_str": "RDC",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "49.33683396410723,0.023723951750088845"
     },
     {
       "numero_dpe": "2614E1187181O",
@@ -148,7 +157,8 @@
       "numero_dpe_remplace": null,
       "zone": "14910",
       "etage_str": "1e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "49.3394419658957,0.033093946140482056"
     },
     {
       "numero_dpe": "2614E1151609K",
@@ -163,7 +173,8 @@
       "numero_dpe_remplace": null,
       "zone": "14910",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "49.334840040465444,0.03198093872620108"
     },
     {
       "numero_dpe": "2614E1148553W",
@@ -178,7 +189,8 @@
       "numero_dpe_remplace": null,
       "zone": "14640",
       "etage_str": "5e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "49.32788200997481,0.009572014680344623"
     },
     {
       "numero_dpe": "2614E1149162H",
@@ -193,7 +205,8 @@
       "numero_dpe_remplace": null,
       "zone": "14640",
       "etage_str": "2e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "49.324340957971735,0.009442994994370615"
     },
     {
       "numero_dpe": "2614E1145510V",
@@ -208,7 +221,8 @@
       "numero_dpe_remplace": null,
       "zone": "14910",
       "etage_str": "1e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "49.34319200213434,0.03911302208024475"
     },
     {
       "numero_dpe": "2614E1146111Y",
@@ -223,7 +237,8 @@
       "numero_dpe_remplace": null,
       "zone": "14910",
       "etage_str": "RDC",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "49.34319200213434,0.03911302208024475"
     },
     {
       "numero_dpe": "2614E1145518D",
@@ -238,7 +253,8 @@
       "numero_dpe_remplace": null,
       "zone": "14910",
       "etage_str": "1e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "49.34319200213434,0.03911302208024475"
     },
     {
       "numero_dpe": "2614E1145480R",
@@ -253,7 +269,8 @@
       "numero_dpe_remplace": null,
       "zone": "14910",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "49.33805303204701,0.026090966634532874"
     },
     {
       "numero_dpe": "2614E1145600H",
@@ -268,7 +285,8 @@
       "numero_dpe_remplace": null,
       "zone": "14910",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "49.33639296693825,0.023046955561687416"
     },
     {
       "numero_dpe": "2614E1145558R",
@@ -283,7 +301,8 @@
       "numero_dpe_remplace": null,
       "zone": "14910",
       "etage_str": "2e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "49.3365780422981,0.030737024455999816"
     },
     {
       "numero_dpe": "2614E1145109K",
@@ -298,7 +317,8 @@
       "numero_dpe_remplace": null,
       "zone": "14640",
       "etage_str": "1e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "49.32788200997481,0.009572014680344623"
     },
     {
       "numero_dpe": "2614E1143756J",
@@ -313,7 +333,8 @@
       "numero_dpe_remplace": null,
       "zone": "14640",
       "etage_str": "2e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "49.32788200997481,0.009572014680344623"
     },
     {
       "numero_dpe": "2614E1131056X",
@@ -328,7 +349,8 @@
       "numero_dpe_remplace": null,
       "zone": "14910",
       "etage_str": "3e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "49.3394419658957,0.033093946140482056"
     },
     {
       "numero_dpe": "2614E1142328L",
@@ -343,7 +365,8 @@
       "numero_dpe_remplace": null,
       "zone": "14640",
       "etage_str": "1e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "49.32297203608406,-0.00602803687661212"
     },
     {
       "numero_dpe": "2614E1119681K",
@@ -358,7 +381,8 @@
       "numero_dpe_remplace": null,
       "zone": "14640",
       "etage_str": "1e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "49.32273701973412,-0.0015680223440058946"
     },
     {
       "numero_dpe": "2614E1109789Y",
@@ -373,7 +397,8 @@
       "numero_dpe_remplace": null,
       "zone": "14910",
       "etage_str": "2e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "49.34301798981861,0.038270973867294916"
     },
     {
       "numero_dpe": "2614E1110862F",
@@ -388,7 +413,8 @@
       "numero_dpe_remplace": null,
       "zone": "14640",
       "etage_str": "2e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "49.32667800618394,0.010761966548656823"
     },
     {
       "numero_dpe": "2614E1111384H",
@@ -403,7 +429,8 @@
       "numero_dpe_remplace": null,
       "zone": "14640",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "49.31908202590702,0.0013000480060269292"
     },
     {
       "numero_dpe": "2614E1078459Y",
@@ -418,7 +445,8 @@
       "numero_dpe_remplace": null,
       "zone": "14640",
       "etage_str": "1e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "49.324340957971735,0.009442994994370615"
     },
     {
       "numero_dpe": "2614E1077035E",
@@ -433,7 +461,8 @@
       "numero_dpe_remplace": "2614E1069132F",
       "zone": "14910",
       "etage_str": "1e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "49.3394419658957,0.033093946140482056"
     },
     {
       "numero_dpe": "2614E1065339I",
@@ -448,7 +477,8 @@
       "numero_dpe_remplace": null,
       "zone": "14640",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "49.32769800426757,0.004732009596166761"
     },
     {
       "numero_dpe": "2614E1064326J",
@@ -463,7 +493,8 @@
       "numero_dpe_remplace": null,
       "zone": "14640",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "49.32488904426687,0.005224986416288259"
     },
     {
       "numero_dpe": "2614E1049558J",
@@ -478,7 +509,8 @@
       "numero_dpe_remplace": null,
       "zone": "14910",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "49.33227998388757,0.035988957387858914"
     },
     {
       "numero_dpe": "2614E1031282L",
@@ -493,7 +525,8 @@
       "numero_dpe_remplace": null,
       "zone": "14910",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "49.310229007535334,0.028802026874504952"
     },
     {
       "numero_dpe": "2614E1035141W",
@@ -508,7 +541,8 @@
       "numero_dpe_remplace": null,
       "zone": "14910",
       "etage_str": "1e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "49.35005397184107,0.04987394162145397"
     },
     {
       "numero_dpe": "2614E1022128J",
@@ -523,7 +557,8 @@
       "numero_dpe_remplace": null,
       "zone": "14640",
       "etage_str": "3e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "49.31711202343416,-0.005715935279651809"
     },
     {
       "numero_dpe": "2614E1010978N",
@@ -538,7 +573,8 @@
       "numero_dpe_remplace": null,
       "zone": "14910",
       "etage_str": "1e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "49.35005397184107,0.04987394162145397"
     },
     {
       "numero_dpe": "2614E1009189S",
@@ -553,7 +589,8 @@
       "numero_dpe_remplace": null,
       "zone": "14640",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "49.2939229728362,0.010963993789012359"
     }
   ],
   "derniere_maj": "2026-05-12T06:16:12.940904"

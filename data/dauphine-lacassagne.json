@@ -13,7 +13,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "2e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.754844045362724,4.8698389665000015"
     },
     {
       "numero_dpe": "2669E1217808Q",
@@ -28,7 +29,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "RDC",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75884704298515,4.870001051559253"
     },
     {
       "numero_dpe": "2669E1216851V",
@@ -43,7 +45,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "3e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75206997937352,4.865757973849052"
     },
     {
       "numero_dpe": "2669E1210174A",
@@ -58,7 +61,8 @@
       "numero_dpe_remplace": "2669E0617798I",
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.76017497397821,4.869839962607441"
     },
     {
       "numero_dpe": "2669E1216392E",
@@ -73,7 +77,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "1e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.76173400256204,4.8660909661018765"
     },
     {
       "numero_dpe": "2669E1216012O",
@@ -88,7 +93,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "1e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75290201214788,4.885212059813722"
     },
     {
       "numero_dpe": "2669E1220436S",
@@ -103,7 +109,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "4e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75355697425066,4.876845040760274"
     },
     {
       "numero_dpe": "2669E1220025X",
@@ -118,7 +125,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "8e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.750041981622545,4.880749997118907"
     },
     {
       "numero_dpe": "2669E1213482G",
@@ -133,7 +141,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "3e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75268896161021,4.894448023321772"
     },
     {
       "numero_dpe": "2669E1214338E",
@@ -148,7 +157,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "1e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75342898863977,4.892469977331923"
     },
     {
       "numero_dpe": "2669E1210175B",
@@ -163,7 +173,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "4e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75279897375491,4.895512935492676"
     },
     {
       "numero_dpe": "2669E1215245B",
@@ -178,7 +189,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "5e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.74450199471865,4.878991966924823"
     },
     {
       "numero_dpe": "2669E1218892I",
@@ -193,7 +205,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.753217032986726,4.874136955580714"
     },
     {
       "numero_dpe": "2669E1208587Z",
@@ -208,7 +221,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "3e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.74725999459796,4.881421998774991"
     },
     {
       "numero_dpe": "2669E1207755Z",
@@ -223,7 +237,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "2e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75346897960851,4.8915949658206275"
     },
     {
       "numero_dpe": "2669E1206435F",
@@ -238,7 +253,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.763225980690365,4.869127033826202"
     },
     {
       "numero_dpe": "2669E1206919V",
@@ -253,7 +269,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75669599566885,4.872974975769826"
     },
     {
       "numero_dpe": "2669E1207093N",
@@ -268,7 +285,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.74989902832451,4.886881060226988"
     },
     {
       "numero_dpe": "2669E1204315R",
@@ -283,7 +301,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "1e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.745828039562035,4.877392987133669"
     },
     {
       "numero_dpe": "2669E1202500W",
@@ -298,7 +317,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "5e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.76325001789642,4.863924009310179"
     },
     {
       "numero_dpe": "2669E1202195D",
@@ -313,7 +333,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "1e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75406497231974,4.864099964989495"
     },
     {
       "numero_dpe": "2669E1201891L",
@@ -328,7 +349,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "3e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75064201234336,4.87084294394554"
     },
     {
       "numero_dpe": "2669E1199526M",
@@ -343,7 +365,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.7548159935369,4.866224991203652"
     },
     {
       "numero_dpe": "2669E1200052S",
@@ -358,7 +381,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "4e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75924698900892,4.862804042937672"
     },
     {
       "numero_dpe": "2669E1195104K",
@@ -373,7 +397,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "6e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.7610619952152,4.868123936272728"
     },
     {
       "numero_dpe": "2669E1195870W",
@@ -388,7 +413,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "1e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.74757702695903,4.869182967761723"
     },
     {
       "numero_dpe": "2669E1190296M",
@@ -403,7 +429,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "2e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75684896388075,4.868363049052324"
     },
     {
       "numero_dpe": "2669E1196455J",
@@ -418,7 +445,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "RDC",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.756215013610664,4.868282038922887"
     },
     {
       "numero_dpe": "2669E1192631H",
@@ -433,7 +461,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.74894996211054,4.861738049897744"
     },
     {
       "numero_dpe": "2669E1197768W",
@@ -448,7 +477,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "2e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75433001595788,4.866721983462205"
     },
     {
       "numero_dpe": "2669E1197181H",
@@ -463,7 +493,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "RDC",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75137896133242,4.878761026117984"
     },
     {
       "numero_dpe": "2669E1191665D",
@@ -478,7 +509,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "2e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.747312958009566,4.878271972231311"
     },
     {
       "numero_dpe": "2669E1203005H",
@@ -493,7 +525,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "3e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.74725999459796,4.881421998774991"
     },
     {
       "numero_dpe": "2669E1201259D",
@@ -508,7 +541,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75038597100757,4.885497048094196"
     },
     {
       "numero_dpe": "2669E1190507P",
@@ -523,7 +557,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.74614703275115,4.879828946757256"
     },
     {
       "numero_dpe": "2669E1193713X",
@@ -538,7 +573,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "2e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75227999927883,4.873551007686348"
     },
     {
       "numero_dpe": "2669E1191497R",
@@ -553,7 +589,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.753761980944155,4.886110058396866"
     },
     {
       "numero_dpe": "2669E1180451V",
@@ -568,7 +605,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "RDC",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.76324095629715,4.869881039540135"
     },
     {
       "numero_dpe": "2669E1188915J",
@@ -583,7 +621,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.74955299837264,4.892131015843892"
     },
     {
       "numero_dpe": "2669E1188877X",
@@ -598,7 +637,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.74955299837264,4.892131015843892"
     },
     {
       "numero_dpe": "2669E1184324U",
@@ -613,7 +653,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "RDC",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.753543025872055,4.893408938893287"
     },
     {
       "numero_dpe": "2669E1186586U",
@@ -628,7 +669,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "2e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.74697203379879,4.886694039059848"
     },
     {
       "numero_dpe": "2669E1178282K",
@@ -643,7 +685,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "RDC",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.74558198462532,4.879672972208027"
     },
     {
       "numero_dpe": "2669E1179450I",
@@ -658,7 +701,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "3e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75074098385982,4.887466022854509"
     },
     {
       "numero_dpe": "2669E1176564I",
@@ -673,7 +717,8 @@
       "numero_dpe_remplace": "2669E1176487J",
       "zone": "Montchat",
       "etage_str": "2e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75390797948398,4.887898052105751"
     },
     {
       "numero_dpe": "2669E1175871R",
@@ -688,7 +733,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.748404044164424,4.885859031086739"
     },
     {
       "numero_dpe": "2669E1176825J",
@@ -703,7 +749,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "2e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.74572200505712,4.879600027471723"
     },
     {
       "numero_dpe": "2669E1161220E",
@@ -718,7 +765,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "3e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.755216040701185,4.8670450320294325"
     },
     {
       "numero_dpe": "2669E1162949R",
@@ -733,7 +781,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "1e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.74886697319375,4.861979964922029"
     },
     {
       "numero_dpe": "2669E1165569L",
@@ -748,7 +797,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "4e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.761924991195,4.866725938321387"
     },
     {
       "numero_dpe": "2669E1167519L",
@@ -763,7 +813,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "2e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.759839977411644,4.87176302633847"
     },
     {
       "numero_dpe": "2669E1167253F",
@@ -778,7 +829,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.763640042744925,4.866228048336111"
     },
     {
       "numero_dpe": "2669E1162266K",
@@ -793,7 +845,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "2e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75693001180016,4.868375054029391"
     },
     {
       "numero_dpe": "2669E1166884A",
@@ -808,7 +861,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "RDC",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75983697783459,4.8716289631970335"
     },
     {
       "numero_dpe": "2669E1166859B",
@@ -823,7 +877,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.74894996211054,4.861738049897744"
     },
     {
       "numero_dpe": "2669E1166353P",
@@ -838,7 +893,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "4e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.763009962677074,4.86551002645161"
     },
     {
       "numero_dpe": "2669E1174276I",
@@ -853,7 +909,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "1e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.76173400256204,4.8660909661018765"
     },
     {
       "numero_dpe": "2669E1170181V",
@@ -868,7 +925,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "1e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75274502097669,4.8946230058408595"
     },
     {
       "numero_dpe": "2669E1170623V",
@@ -883,7 +941,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "4e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75274502097669,4.8946230058408595"
     },
     {
       "numero_dpe": "2669E1170108A",
@@ -898,7 +957,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "2e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75067198128367,4.875118052827634"
     },
     {
       "numero_dpe": "2669E1172738E",
@@ -913,7 +973,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "1e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75224096687002,4.892595022009807"
     },
     {
       "numero_dpe": "2669E1172791F",
@@ -928,7 +989,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75326903477743,4.892967989543695"
     },
     {
       "numero_dpe": "2669E1161840A",
@@ -943,7 +1005,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "RDC",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.74979797165027,4.889564988197145"
     },
     {
       "numero_dpe": "2669E1159634E",
@@ -958,7 +1021,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.756767036672606,4.8644089612653385"
     },
     {
       "numero_dpe": "2669E1159648S",
@@ -973,7 +1037,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.756767036672606,4.8644089612653385"
     },
     {
       "numero_dpe": "2669E1148251J",
@@ -988,7 +1053,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "5e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75474103902375,4.868988938521036"
     },
     {
       "numero_dpe": "2669E1159924I",
@@ -1003,7 +1069,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "5e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75406497231974,4.864099964989495"
     },
     {
       "numero_dpe": "2669E1159652W",
@@ -1018,7 +1085,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.756767036672606,4.8644089612653385"
     },
     {
       "numero_dpe": "2669E1159685D",
@@ -1033,7 +1101,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.756767036672606,4.8644089612653385"
     },
     {
       "numero_dpe": "2669E1159659D",
@@ -1048,7 +1117,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.756767036672606,4.8644089612653385"
     },
     {
       "numero_dpe": "2669E1159676U",
@@ -1063,7 +1133,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.756767036672606,4.8644089612653385"
     },
     {
       "numero_dpe": "2669E1159649T",
@@ -1078,7 +1149,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.756767036672606,4.8644089612653385"
     },
     {
       "numero_dpe": "2669E1159646Q",
@@ -1093,7 +1165,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.756767036672606,4.8644089612653385"
     },
     {
       "numero_dpe": "2669E1150910Q",
@@ -1108,7 +1181,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "3e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75541995692525,4.874588036853182"
     },
     {
       "numero_dpe": "2669E1159627X",
@@ -1123,7 +1197,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.756767036672606,4.8644089612653385"
     },
     {
       "numero_dpe": "2669E1159624U",
@@ -1138,7 +1213,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.756767036672606,4.8644089612653385"
     },
     {
       "numero_dpe": "2669E1159663H",
@@ -1153,7 +1229,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.756767036672606,4.8644089612653385"
     },
     {
       "numero_dpe": "2669E1159612I",
@@ -1168,7 +1245,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "RDC",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.756767036672606,4.8644089612653385"
     },
     {
       "numero_dpe": "2669E1159656A",
@@ -1183,7 +1261,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.756767036672606,4.8644089612653385"
     },
     {
       "numero_dpe": "2669E1159653X",
@@ -1198,7 +1277,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.756767036672606,4.8644089612653385"
     },
     {
       "numero_dpe": "2669E1151583N",
@@ -1213,7 +1293,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "5e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75541995692525,4.874588036853182"
     },
     {
       "numero_dpe": "2669E1159672Q",
@@ -1228,7 +1309,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.756767036672606,4.8644089612653385"
     },
     {
       "numero_dpe": "2669E1151521D",
@@ -1243,7 +1325,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.755885961299526,4.871906016776604"
     },
     {
       "numero_dpe": "2669E1152019H",
@@ -1258,7 +1341,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "7e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75923199913826,4.869458935797477"
     },
     {
       "numero_dpe": "2669E1159643N",
@@ -1273,7 +1357,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.756767036672606,4.8644089612653385"
     },
     {
       "numero_dpe": "2669E1159682A",
@@ -1288,7 +1373,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.756767036672606,4.8644089612653385"
     },
     {
       "numero_dpe": "2669E1159687F",
@@ -1303,7 +1389,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.756767036672606,4.8644089612653385"
     },
     {
       "numero_dpe": "2669E1159629Z",
@@ -1318,7 +1405,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.756767036672606,4.8644089612653385"
     },
     {
       "numero_dpe": "2669E1159640K",
@@ -1333,7 +1421,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.756767036672606,4.8644089612653385"
     },
     {
       "numero_dpe": "2669E1159673R",
@@ -1348,7 +1437,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.756767036672606,4.8644089612653385"
     },
     {
       "numero_dpe": "2669E1159661F",
@@ -1363,7 +1453,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.756767036672606,4.8644089612653385"
     },
     {
       "numero_dpe": "2669E1159668M",
@@ -1378,7 +1469,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.756767036672606,4.8644089612653385"
     },
     {
       "numero_dpe": "2669E1159675T",
@@ -1393,7 +1485,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.756767036672606,4.8644089612653385"
     },
     {
       "numero_dpe": "2669E1159645P",
@@ -1408,7 +1501,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.756767036672606,4.8644089612653385"
     },
     {
       "numero_dpe": "2669E1159690I",
@@ -1423,7 +1517,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.756767036672606,4.8644089612653385"
     },
     {
       "numero_dpe": "2669E1159670O",
@@ -1438,7 +1533,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.756767036672606,4.8644089612653385"
     },
     {
       "numero_dpe": "2669E1159631B",
@@ -1453,7 +1549,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.756767036672606,4.8644089612653385"
     },
     {
       "numero_dpe": "2669E1159626W",
@@ -1468,7 +1565,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.756767036672606,4.8644089612653385"
     },
     {
       "numero_dpe": "2669E1154879H",
@@ -1483,7 +1581,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.76078197811494,4.872375959071634"
     },
     {
       "numero_dpe": "2669E1159679X",
@@ -1498,7 +1597,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.756767036672606,4.8644089612653385"
     },
     {
       "numero_dpe": "2669E1159667L",
@@ -1513,7 +1613,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.756767036672606,4.8644089612653385"
     },
     {
       "numero_dpe": "2669E1159651V",
@@ -1528,7 +1629,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.756767036672606,4.8644089612653385"
     },
     {
       "numero_dpe": "2669E1159662G",
@@ -1543,7 +1645,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.756767036672606,4.8644089612653385"
     },
     {
       "numero_dpe": "2669E1147634Q",
@@ -1558,7 +1661,8 @@
       "numero_dpe_remplace": "2669E1147470I",
       "zone": "Montchat",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.754821993375195,4.87885105252435"
     },
     {
       "numero_dpe": "2669E1160573H",
@@ -1573,7 +1677,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "3e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.752915960856825,4.8731420390889335"
     },
     {
       "numero_dpe": "2669E1147414E",
@@ -1588,7 +1693,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "1e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75114898557921,4.896204025567943"
     },
     {
       "numero_dpe": "2669E1146234U",
@@ -1603,7 +1709,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "4e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.755010042177865,4.869720026318158"
     },
     {
       "numero_dpe": "2669E1145449P",
@@ -1618,7 +1725,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.753348992700474,4.893237978259904"
     },
     {
       "numero_dpe": "2669E1144931R",
@@ -1633,7 +1741,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75240001555501,4.89447401746416"
     },
     {
       "numero_dpe": "2669E1142914C",
@@ -1648,7 +1757,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "RDC",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.749066013865956,4.8648539880310375"
     },
     {
       "numero_dpe": "2669E1133378I",
@@ -1663,7 +1773,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "RDC",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75599699274051,4.8736219476771465"
     },
     {
       "numero_dpe": "2669E1137562G",
@@ -1678,7 +1789,8 @@
       "numero_dpe_remplace": "2669E1117796A",
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "4e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.757674979041774,4.867458044031396"
     },
     {
       "numero_dpe": "2669E1139950C",
@@ -1693,7 +1805,8 @@
       "numero_dpe_remplace": "2669E1139831N",
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.763010034641425,4.8662189964153715"
     },
     {
       "numero_dpe": "2669E1141030Q",
@@ -1708,7 +1821,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "3e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75599699274051,4.8736219476771465"
     },
     {
       "numero_dpe": "2569E4052143M",
@@ -1723,7 +1837,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.762899965766216,4.8687269686882555"
     },
     {
       "numero_dpe": "2669E1132806I",
@@ -1738,7 +1853,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "RDC",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.76324095629715,4.869881039540135"
     },
     {
       "numero_dpe": "2669E1137029T",
@@ -1753,7 +1869,8 @@
       "numero_dpe_remplace": "2669E1136330W",
       "zone": "Montchat",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75091895528297,4.889027021092935"
     },
     {
       "numero_dpe": "2669E1131970E",
@@ -1768,7 +1885,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.74845796154586,4.885661963179178"
     },
     {
       "numero_dpe": "2669E1122234S",
@@ -1783,7 +1901,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "2e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.76170796949643,4.866678970509707"
     },
     {
       "numero_dpe": "2669E1126622M",
@@ -1798,7 +1917,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "2e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75891696132767,4.868651986561032"
     },
     {
       "numero_dpe": "2669E1123301T",
@@ -1813,7 +1933,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "2e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75684896388075,4.868363049052324"
     },
     {
       "numero_dpe": "2669E1130474Q",
@@ -1828,7 +1949,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "2e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.756016011255895,4.873350055406935"
     },
     {
       "numero_dpe": "2669E1122832S",
@@ -1843,7 +1965,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "3e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.751050037194425,4.868752055000659"
     },
     {
       "numero_dpe": "2669E1128359H",
@@ -1858,7 +1981,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "3e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.758081998284865,4.866490990557571"
     },
     {
       "numero_dpe": "2669E1127944I",
@@ -1873,7 +1997,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "RDC",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.74736200046845,4.881630035250315"
     },
     {
       "numero_dpe": "2669E1109716G",
@@ -1888,7 +2013,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75070095822772,4.868721981678371"
     },
     {
       "numero_dpe": "2669E1114275P",
@@ -1903,7 +2029,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "4e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.749066013865956,4.8648539880310375"
     },
     {
       "numero_dpe": "2669E1108239L",
@@ -1918,7 +2045,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "1e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75922500007942,4.866798031234325"
     },
     {
       "numero_dpe": "2669E1107734A",
@@ -1933,7 +2061,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "3e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.76365203176268,4.868170061843164"
     },
     {
       "numero_dpe": "2669E1111054S",
@@ -1948,7 +2077,8 @@
       "numero_dpe_remplace": "2669E1111024O",
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "RDC",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.757645039617614,4.8701890421049585"
     },
     {
       "numero_dpe": "2669E1116525D",
@@ -1963,7 +2093,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "1e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75255697100635,4.869936963622533"
     },
     {
       "numero_dpe": "2669E1104885L",
@@ -1978,7 +2109,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "RDC",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.7484469866098,4.864426026091432"
     },
     {
       "numero_dpe": "2669E1106553P",
@@ -1993,7 +2125,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "RDC",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75683499257113,4.866377971576557"
     },
     {
       "numero_dpe": "2669E1111374A",
@@ -2008,7 +2141,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "6e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75375999944961,4.864671013997748"
     },
     {
       "numero_dpe": "2669E1114990C",
@@ -2023,7 +2157,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "6e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75850703364711,4.8641450594599345"
     },
     {
       "numero_dpe": "2669E1113521P",
@@ -2038,7 +2173,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "4e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.7482060011286,4.86430300548235"
     },
     {
       "numero_dpe": "2669E1105832W",
@@ -2053,7 +2189,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "2e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75821796428156,4.865039938450361"
     },
     {
       "numero_dpe": "2669E1109131T",
@@ -2068,7 +2205,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "2e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.76061803164359,4.870003974402224"
     },
     {
       "numero_dpe": "2669E1105741J",
@@ -2083,7 +2221,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "RDC",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.758010021514735,4.873505026137307"
     },
     {
       "numero_dpe": "2669E1111264U",
@@ -2098,7 +2237,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "2e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.7548159935369,4.866224991203652"
     },
     {
       "numero_dpe": "2669E1107006A",
@@ -2113,7 +2253,8 @@
       "numero_dpe_remplace": "2669E1106990K",
       "zone": "Montchat",
       "etage_str": "3e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.74702701449205,4.880415054720344"
     },
     {
       "numero_dpe": "2669E1105374G",
@@ -2128,7 +2269,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "4e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75411203848259,4.884906949443706"
     },
     {
       "numero_dpe": "2669E1110298Q",
@@ -2143,7 +2285,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "3e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.74737001361691,4.874176970594487"
     },
     {
       "numero_dpe": "2669E1110198U",
@@ -2158,7 +2301,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75275803275579,4.8924639865480675"
     },
     {
       "numero_dpe": "2669E1103217H",
@@ -2173,7 +2317,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "3e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75440798101876,4.864737011767312"
     },
     {
       "numero_dpe": "2669E1092313X",
@@ -2188,7 +2333,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "6e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75476403466804,4.8691829838391945"
     },
     {
       "numero_dpe": "2669E1097459V",
@@ -2203,7 +2349,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "4e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75749096181023,4.86271898550549"
     },
     {
       "numero_dpe": "2669E1095928Y",
@@ -2218,7 +2365,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "2e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75618698972196,4.871678032294644"
     },
     {
       "numero_dpe": "2669E1095083L",
@@ -2233,7 +2381,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.749653001340484,4.868310986266001"
     },
     {
       "numero_dpe": "2669E1103242G",
@@ -2248,7 +2397,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "7e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.7630980301045,4.863070025307887"
     },
     {
       "numero_dpe": "2669E1094260U",
@@ -2263,7 +2413,8 @@
       "numero_dpe_remplace": "2569E4007919O",
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "RDC",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.755978032563085,4.87387402557386"
     },
     {
       "numero_dpe": "2669E1092934U",
@@ -2278,7 +2429,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "2e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75150100881336,4.872440974752384"
     },
     {
       "numero_dpe": "2669E1102291R",
@@ -2293,7 +2445,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "3e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.749715037189475,4.884854006845289"
     },
     {
       "numero_dpe": "2669E1104315N",
@@ -2308,7 +2461,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "4e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.747931009253,4.88066298462374"
     },
     {
       "numero_dpe": "2669E1094085B",
@@ -2323,7 +2477,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "3e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.74781400092333,4.88413804064543"
     },
     {
       "numero_dpe": "2669E1085271B",
@@ -2338,7 +2493,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "3e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75527996580167,4.871948026592549"
     },
     {
       "numero_dpe": "2669E1088210C",
@@ -2353,7 +2509,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "5e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.74769902546132,4.86744095998487"
     },
     {
       "numero_dpe": "2669E1083028U",
@@ -2368,7 +2525,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "3e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.747506991923366,4.865928032444864"
     },
     {
       "numero_dpe": "2669E1087183P",
@@ -2383,7 +2541,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "7e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75936298688861,4.8702129529353195"
     },
     {
       "numero_dpe": "2669E1087754O",
@@ -2398,7 +2557,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.755446002539,4.874803936808787"
     },
     {
       "numero_dpe": "2669E1081085B",
@@ -2413,7 +2573,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "3e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.754523980719945,4.865691045866334"
     },
     {
       "numero_dpe": "2669E1087821D",
@@ -2428,7 +2589,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "3e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.746970959662484,4.886559042180594"
     },
     {
       "numero_dpe": "2669E1089982G",
@@ -2443,7 +2605,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75288502715075,4.889709006872838"
     },
     {
       "numero_dpe": "2669E1089692C",
@@ -2458,7 +2621,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "2e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.74670200073083,4.895266022272914"
     },
     {
       "numero_dpe": "2669E1083492Q",
@@ -2473,7 +2637,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.74941204093275,4.876330012888492"
     },
     {
       "numero_dpe": "2669E1085218A",
@@ -2488,7 +2653,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "2e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75456000637207,4.880993952173912"
     },
     {
       "numero_dpe": "2669E1078788S",
@@ -2503,7 +2669,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "1e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.7481130069473,4.86778894315137"
     },
     {
       "numero_dpe": "2669E1078865R",
@@ -2518,7 +2685,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.756215013610664,4.868282038922887"
     },
     {
       "numero_dpe": "2569E4052078Z",
@@ -2533,7 +2701,8 @@
       "numero_dpe_remplace": "2569E3780236N",
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.74942500228145,4.868546062624716"
     },
     {
       "numero_dpe": "2669E1079111D",
@@ -2548,7 +2717,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.751899970113136,4.89155194415138"
     },
     {
       "numero_dpe": "2669E1079244G",
@@ -2563,7 +2733,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.74401300368491,4.8921980321675225"
     },
     {
       "numero_dpe": "2669E1079665L",
@@ -2578,7 +2749,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "3e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75227999927883,4.873551007686348"
     },
     {
       "numero_dpe": "2669E1076041B",
@@ -2593,7 +2765,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "2e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.74966400570168,4.871552989465359"
     },
     {
       "numero_dpe": "2669E1070420W",
@@ -2608,7 +2781,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.749650018214815,4.873360985413328"
     },
     {
       "numero_dpe": "2669E1070396Y",
@@ -2623,7 +2797,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.749650018214815,4.873360985413328"
     },
     {
       "numero_dpe": "2669E1074952E",
@@ -2638,7 +2813,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.7610619952152,4.868123936272728"
     },
     {
       "numero_dpe": "2669E1073038O",
@@ -2653,7 +2829,8 @@
       "numero_dpe_remplace": "2569E3620543M",
       "zone": "Montchat",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.748720990085964,4.8843950148701145"
     },
     {
       "numero_dpe": "2669E1066869H",
@@ -2668,7 +2845,8 @@
       "numero_dpe_remplace": "2669E0411283L",
       "zone": "Montchat",
       "etage_str": "3e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.754050031957846,4.880354978977654"
     },
     {
       "numero_dpe": "2669E1068648S",
@@ -2683,7 +2861,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "3e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75368699466372,4.880151935995361"
     },
     {
       "numero_dpe": "2669E1066835Z",
@@ -2698,7 +2877,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "2e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.74736200046845,4.881630035250315"
     },
     {
       "numero_dpe": "2669E1052879F",
@@ -2713,7 +2893,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "3e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.74941701323436,4.8659060546298045"
     },
     {
       "numero_dpe": "2669E1062858A",
@@ -2728,7 +2909,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "3e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75766702559849,4.862759020288661"
     },
     {
       "numero_dpe": "2669E1063629R",
@@ -2743,7 +2925,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75626901986642,4.8681429633911195"
     },
     {
       "numero_dpe": "2669E1062050Y",
@@ -2758,7 +2941,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "2e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75922500007942,4.866798031234325"
     },
     {
       "numero_dpe": "2669E1055168G",
@@ -2773,7 +2957,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "RDC",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.756628991635836,4.872817004473671"
     },
     {
       "numero_dpe": "2669E1053208W",
@@ -2788,7 +2973,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "3e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75470595681212,4.874278033917082"
     },
     {
       "numero_dpe": "2669E1059773J",
@@ -2803,7 +2989,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75762997152959,4.8748780294675536"
     },
     {
       "numero_dpe": "2669E1061627R",
@@ -2818,7 +3005,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "1e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75014903888987,4.885650051840997"
     },
     {
       "numero_dpe": "2669E1062173R",
@@ -2833,7 +3021,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "4e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75274502097669,4.8946230058408595"
     },
     {
       "numero_dpe": "2669E1059468Q",
@@ -2848,7 +3037,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "3e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.74702701449205,4.880415054720344"
     },
     {
       "numero_dpe": "2669E1053985T",
@@ -2863,7 +3053,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "3e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.74946896765584,4.874157953122684"
     },
     {
       "numero_dpe": "2669E1039820Y",
@@ -2878,7 +3069,8 @@
       "numero_dpe_remplace": "2469E3398032I",
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "2e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75489897098848,4.875042984779385"
     },
     {
       "numero_dpe": "2669E1039374U",
@@ -2893,7 +3085,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "2e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.757861000586594,4.874959987863803"
     },
     {
       "numero_dpe": "2669E1039810O",
@@ -2908,7 +3101,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.749650018214815,4.873360985413328"
     },
     {
       "numero_dpe": "2669E1040886Y",
@@ -2923,7 +3117,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75462603729036,4.868047021822694"
     },
     {
       "numero_dpe": "2669E1046004U",
@@ -2938,7 +3133,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "1e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.7547259872243,4.874947944894607"
     },
     {
       "numero_dpe": "2669E1028132K",
@@ -2953,7 +3149,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "6e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.759390989849244,4.871695958545757"
     },
     {
       "numero_dpe": "2669E1032384Y",
@@ -2968,7 +3165,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "1e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.756114986103285,4.873248024173581"
     },
     {
       "numero_dpe": "2669E1034099X",
@@ -2983,7 +3181,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "2e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.7560160141717,4.867222995911871"
     },
     {
       "numero_dpe": "2669E1028764S",
@@ -2998,7 +3197,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "2e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75854896175161,4.871648008016163"
     },
     {
       "numero_dpe": "2669E1028505T",
@@ -3013,7 +3213,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "1e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.7548159935369,4.866224991203652"
     },
     {
       "numero_dpe": "2669E1031117F",
@@ -3028,7 +3229,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "RDC",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.74984197563115,4.870984024734419"
     },
     {
       "numero_dpe": "2669E1032144S",
@@ -3043,7 +3245,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "4e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75644601097266,4.864202026747359"
     },
     {
       "numero_dpe": "2669E1027643P",
@@ -3058,7 +3261,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "1e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75759901533306,4.868476939508034"
     },
     {
       "numero_dpe": "2669E1034696W",
@@ -3073,7 +3277,8 @@
       "numero_dpe_remplace": "2669E1034674A",
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "5e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75566296292878,4.86786795600675"
     },
     {
       "numero_dpe": "2669E1030113P",
@@ -3088,7 +3293,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "2e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75130100323041,4.868778039235193"
     },
     {
       "numero_dpe": "2669E1028527P",
@@ -3103,7 +3309,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "5e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75922500007942,4.866798031234325"
     },
     {
       "numero_dpe": "2669E1032226W",
@@ -3118,7 +3325,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "1e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.74834997007392,4.883208993864823"
     },
     {
       "numero_dpe": "2669E1033806Q",
@@ -3133,7 +3341,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75290200008581,4.885369036581858"
     },
     {
       "numero_dpe": "2669E1038530I",
@@ -3148,7 +3357,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "RDC",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75337902593887,4.891926046033505"
     },
     {
       "numero_dpe": "2669E1030968M",
@@ -3163,7 +3373,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "3e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.749715037189475,4.884854006845289"
     },
     {
       "numero_dpe": "2669E1038100U",
@@ -3178,7 +3389,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75335700828485,4.892127048652237"
     },
     {
       "numero_dpe": "2669E1017542C",
@@ -3193,7 +3405,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "RDC",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.75588102894785,4.8679660430717195"
     },
     {
       "numero_dpe": "2669E1024137T",
@@ -3208,7 +3421,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "RDC",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.76112198482568,4.863779005381964"
     },
     {
       "numero_dpe": "2669E1022823F",
@@ -3223,7 +3437,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "RDC",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.74846697842895,4.88315495520206"
     },
     {
       "numero_dpe": "2669E1021721V",
@@ -3238,7 +3453,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "RDC",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.746335967094645,4.884881970770592"
     },
     {
       "numero_dpe": "2669E1010602E",
@@ -3253,7 +3469,8 @@
       "numero_dpe_remplace": null,
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "5e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.74807697320255,4.865334991950442"
     },
     {
       "numero_dpe": "2669E1010685J",
@@ -3268,7 +3485,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "4e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.749570001619766,4.886024002765087"
     },
     {
       "numero_dpe": "2669E1010323L",
@@ -3283,7 +3501,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "3e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.74130700599557,4.885830971928573"
     },
     {
       "numero_dpe": "2669E1010231X",
@@ -3298,7 +3517,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "2e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.74847200959296,4.883597972391661"
     },
     {
       "numero_dpe": "2669E1011673J",
@@ -3313,7 +3533,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "2e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.753199990357835,4.880053019215882"
     },
     {
       "numero_dpe": "2669E1008420G",
@@ -3328,7 +3549,8 @@
       "numero_dpe_remplace": "2669E0994695J",
       "zone": "Dauphiné-Lacassagne",
       "etage_str": "RDC",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.7548159935369,4.866224991203652"
     },
     {
       "numero_dpe": "2669E1009737X",
@@ -3343,7 +3565,8 @@
       "numero_dpe_remplace": null,
       "zone": "Montchat",
       "etage_str": "1e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "45.74975699975597,4.886739957798308"
     }
   ],
   "derniere_maj": "2026-05-12T06:15:40.226834"

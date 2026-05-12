@@ -13,7 +13,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "8e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.85285298047783,2.2917989733824284"
     },
     {
       "numero_dpe": "2675E1213489T",
@@ -28,7 +29,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "3e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.84686795514041,2.3103119747764653"
     },
     {
       "numero_dpe": "2675E1212027N",
@@ -43,7 +45,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "3e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.84798600396581,2.2937940380707125"
     },
     {
       "numero_dpe": "2675E1216239N",
@@ -58,7 +61,8 @@
       "numero_dpe_remplace": "2675E1216145X",
       "zone": "La Motte Picquet",
       "etage_str": "3e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.84740898513933,2.296115993518599"
     },
     {
       "numero_dpe": "2675E1213204U",
@@ -73,7 +77,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "2e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.846771982713136,2.3026150516593087"
     },
     {
       "numero_dpe": "2675E1211931V",
@@ -88,7 +93,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "RDC",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.84760795794918,2.3050600006140587"
     },
     {
       "numero_dpe": "2675E1205257D",
@@ -103,7 +109,8 @@
       "numero_dpe_remplace": "2275E2079800G",
       "zone": "La Motte Picquet",
       "etage_str": "2e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.84965401911007,2.293955950455697"
     },
     {
       "numero_dpe": "2675E1190545H",
@@ -118,7 +125,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "1e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.84478301602682,2.296972036480349"
     },
     {
       "numero_dpe": "2675E1196767P",
@@ -133,7 +141,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "1e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.8484649929119,2.2950119571539127"
     },
     {
       "numero_dpe": "2675E1199188S",
@@ -148,7 +157,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.85413402145875,2.2925579922375845"
     },
     {
       "numero_dpe": "2675E1197897B",
@@ -163,7 +173,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "5e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.84768703623193,2.303116001010877"
     },
     {
       "numero_dpe": "2675E1190711R",
@@ -178,7 +189,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "6e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.844168969691026,2.2949159588344616"
     },
     {
       "numero_dpe": "2675E1180572S",
@@ -193,7 +205,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "5e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.85332603656418,2.2902950391926167"
     },
     {
       "numero_dpe": "2675E1182370W",
@@ -208,7 +221,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "6e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.844168969691026,2.2949159588344616"
     },
     {
       "numero_dpe": "2675E1182897D",
@@ -223,7 +237,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "3e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.85196699545618,2.2970870307264035"
     },
     {
       "numero_dpe": "2675E1175457Z",
@@ -238,7 +253,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "8e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.85407397620076,2.2960860609492415"
     },
     {
       "numero_dpe": "2675E1182880M",
@@ -253,7 +269,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "3e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.85196699545618,2.2970870307264035"
     },
     {
       "numero_dpe": "2675E1177685R",
@@ -268,7 +285,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "1e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.84752198540474,2.299662942783328"
     },
     {
       "numero_dpe": "2675E1175763T",
@@ -283,7 +301,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "2e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.84649095685912,2.3046899405253543"
     },
     {
       "numero_dpe": "2675E1164377V",
@@ -298,7 +317,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.84702996251384,2.2987449706360708"
     },
     {
       "numero_dpe": "2675E1164357B",
@@ -313,7 +333,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.84702996251384,2.2987449706360708"
     },
     {
       "numero_dpe": "2675E1165603Z",
@@ -328,7 +349,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.84767596640537,2.3007409538215704"
     },
     {
       "numero_dpe": "2675E1164347R",
@@ -343,7 +365,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "RDC",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.84702996251384,2.2987449706360708"
     },
     {
       "numero_dpe": "2675E1172010K",
@@ -358,7 +381,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.846523999642805,2.2974299835625738"
     },
     {
       "numero_dpe": "2675E1163190E",
@@ -373,7 +397,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "2e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.84639095670203,2.297456032738945"
     },
     {
       "numero_dpe": "2675E1168825X",
@@ -388,7 +413,8 @@
       "numero_dpe_remplace": "2675E1037353H",
       "zone": "La Motte Picquet",
       "etage_str": "2e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.84645295719113,2.2976150385653447"
     },
     {
       "numero_dpe": "2675E1164361F",
@@ -403,7 +429,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.84702996251384,2.2987449706360708"
     },
     {
       "numero_dpe": "2675E1174770O",
@@ -418,7 +445,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "5e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.849921995342875,2.2918349911003877"
     },
     {
       "numero_dpe": "2675E1173696G",
@@ -433,7 +461,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.84720901656463,2.295879950490703"
     },
     {
       "numero_dpe": "2675E1160783P",
@@ -448,7 +477,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "10e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.844168969691026,2.2949159588344616"
     },
     {
       "numero_dpe": "2675E1171856M",
@@ -463,7 +493,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "12e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.84582396489633,2.303479943287924"
     },
     {
       "numero_dpe": "2675E1164372Q",
@@ -478,7 +509,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.84702996251384,2.2987449706360708"
     },
     {
       "numero_dpe": "2675E1151651J",
@@ -493,7 +525,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "6e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.85115302415612,2.297921003643399"
     },
     {
       "numero_dpe": "2675E1152444W",
@@ -508,7 +541,8 @@
       "numero_dpe_remplace": "2675E1091536G",
       "zone": "La Motte Picquet",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.85328499279287,2.296396001872694"
     },
     {
       "numero_dpe": "2675E1160006S",
@@ -523,7 +557,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "4e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.849334004138115,2.2977879771527996"
     },
     {
       "numero_dpe": "2675E1150860Y",
@@ -538,7 +573,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.85099996085578,2.3003789544157875"
     },
     {
       "numero_dpe": "2675E1151698E",
@@ -553,7 +589,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "2e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.84851801122578,2.300412957014672"
     },
     {
       "numero_dpe": "2475E4629730O",
@@ -568,7 +605,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "2e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.8492660127338,2.2946079677011304"
     },
     {
       "numero_dpe": "2675E1160205J",
@@ -583,7 +621,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "2e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.85170799421432,2.2979779872601216"
     },
     {
       "numero_dpe": "2675E1149484A",
@@ -598,7 +637,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "3e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.84948297156842,2.294156003529094"
     },
     {
       "numero_dpe": "2675E1146841J",
@@ -613,7 +653,8 @@
       "numero_dpe_remplace": "2675E0439874I",
       "zone": "La Motte Picquet",
       "etage_str": "1e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.84596302768206,2.304008977085059"
     },
     {
       "numero_dpe": "2675E1145298A",
@@ -628,7 +669,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "2e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.84656298438871,2.2973299825822595"
     },
     {
       "numero_dpe": "2675E1143484G",
@@ -643,7 +685,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "5e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.84776098224395,2.297552030508045"
     },
     {
       "numero_dpe": "2675E1143435J",
@@ -658,7 +701,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "1e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.85198302995269,2.2916319949863633"
     },
     {
       "numero_dpe": "2675E1141980K",
@@ -673,7 +717,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "3e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.85399202223464,2.29307699372477"
     },
     {
       "numero_dpe": "2675E1140674E",
@@ -688,7 +733,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.85270203295439,2.2979279346361183"
     },
     {
       "numero_dpe": "2675E1137401H",
@@ -703,7 +749,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "2e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.84565900763545,2.296377003729161"
     },
     {
       "numero_dpe": "2675E1132011Z",
@@ -718,7 +765,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.84638101480499,2.3081269727332585"
     },
     {
       "numero_dpe": "2675E1133656G",
@@ -733,7 +781,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "5e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.846878015273866,2.303401945537408"
     },
     {
       "numero_dpe": "2675E1134815V",
@@ -748,7 +797,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "3e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.85204897869508,2.2932179672960524"
     },
     {
       "numero_dpe": "2675E1141499X",
@@ -763,7 +813,8 @@
       "numero_dpe_remplace": "2675E1126479F",
       "zone": "La Motte Picquet",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.84873001398013,2.3023729913542526"
     },
     {
       "numero_dpe": "2675E1141503B",
@@ -778,7 +829,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "7e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.84957401338917,2.3013160505557733"
     },
     {
       "numero_dpe": "2675E1130063B",
@@ -793,7 +845,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "1e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.85198302995269,2.2916319949863633"
     },
     {
       "numero_dpe": "2675E1127284E",
@@ -808,7 +861,8 @@
       "numero_dpe_remplace": "2675E1114049D",
       "zone": "La Motte Picquet",
       "etage_str": "6e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.85510204058704,2.294483984325595"
     },
     {
       "numero_dpe": "2675E1124584I",
@@ -823,7 +877,8 @@
       "numero_dpe_remplace": "2675E1081125V",
       "zone": "La Motte Picquet",
       "etage_str": "7e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.85562203770796,2.2936740505359277"
     },
     {
       "numero_dpe": "2675E1119862S",
@@ -838,7 +893,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.845940035029194,2.2960059723699198"
     },
     {
       "numero_dpe": "2675E1118879X",
@@ -853,7 +909,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "6e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.84601001789542,2.2954580542190612"
     },
     {
       "numero_dpe": "2675E1129108I",
@@ -868,7 +925,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "3e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.85399202223464,2.29307699372477"
     },
     {
       "numero_dpe": "2675E1126986S",
@@ -883,7 +941,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "3e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.85399202223464,2.29307699372477"
     },
     {
       "numero_dpe": "2675E1128662E",
@@ -898,7 +957,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "4e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.84625502589552,2.305226981507129"
     },
     {
       "numero_dpe": "2675E1120103Z",
@@ -913,7 +973,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.84752198540474,2.299662942783328"
     },
     {
       "numero_dpe": "2675E1125208I",
@@ -928,7 +989,8 @@
       "numero_dpe_remplace": "2675E1125109N",
       "zone": "La Motte Picquet",
       "etage_str": "3e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.853901981567034,2.2963549616316734"
     },
     {
       "numero_dpe": "2675E1114706K",
@@ -943,7 +1005,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "7e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.851608023328794,2.292062016906489"
     },
     {
       "numero_dpe": "2675E1113551Z",
@@ -958,7 +1021,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "4e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.85436002401033,2.2917359682633913"
     },
     {
       "numero_dpe": "2675E1116656K",
@@ -973,7 +1037,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "5e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.8475079604403,2.3054027246140394"
     },
     {
       "numero_dpe": "2675E1104119F",
@@ -988,7 +1053,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "6e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.85023995730003,2.2988812161466936"
     },
     {
       "numero_dpe": "2675E1099502Q",
@@ -1003,7 +1069,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "4e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.846878015273866,2.303401945537408"
     },
     {
       "numero_dpe": "2675E1098167H",
@@ -1018,7 +1085,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.84954501421551,2.29346806190488"
     },
     {
       "numero_dpe": "2675E1093142A",
@@ -1033,7 +1101,8 @@
       "numero_dpe_remplace": "2675E1080283L",
       "zone": "La Motte Picquet",
       "etage_str": "4e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.85209900977029,2.293587976324782"
     },
     {
       "numero_dpe": "2675E1098734C",
@@ -1048,7 +1117,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "RDC",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.8524469566617,2.2967609724037357"
     },
     {
       "numero_dpe": "2675E1090918M",
@@ -1063,7 +1133,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "2e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.84465399105128,2.293954058836986"
     },
     {
       "numero_dpe": "2675E1090433V",
@@ -1078,7 +1149,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "9e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.84998396646109,2.3025070621664008"
     },
     {
       "numero_dpe": "2675E1087531F",
@@ -1093,7 +1165,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.84644796913638,2.3099249472050705"
     },
     {
       "numero_dpe": "2675E1084418M",
@@ -1108,7 +1181,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "2e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.84606096575398,2.309424932996826"
     },
     {
       "numero_dpe": "2675E1090746W",
@@ -1123,7 +1197,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "1e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.850228588444914,2.2992433555350535"
     },
     {
       "numero_dpe": "2675E1089837X",
@@ -1138,7 +1213,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.84626197232669,2.299001947878038"
     },
     {
       "numero_dpe": "2675E1077905Z",
@@ -1153,7 +1229,8 @@
       "numero_dpe_remplace": "2675E1077901V",
       "zone": "La Motte Picquet",
       "etage_str": "3e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.85012303922306,2.2938649676063805"
     },
     {
       "numero_dpe": "2675E1077736M",
@@ -1168,7 +1245,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "2e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.85428212444722,2.2957407575273967"
     },
     {
       "numero_dpe": "2675E1077829B",
@@ -1183,7 +1261,8 @@
       "numero_dpe_remplace": "2675E1077825X",
       "zone": "La Motte Picquet",
       "etage_str": "5e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.845940035029194,2.2960059723699198"
     },
     {
       "numero_dpe": "2675E1053970K",
@@ -1198,7 +1277,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "2e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.84625502589552,2.305226981507129"
     },
     {
       "numero_dpe": "2675E1054698K",
@@ -1213,7 +1293,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "1e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.85399202223464,2.29307699372477"
     },
     {
       "numero_dpe": "2675E1062442G",
@@ -1228,7 +1309,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "6e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.84935398007816,2.2932989454429684"
     },
     {
       "numero_dpe": "2675E1061768I",
@@ -1243,7 +1325,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "2e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.850518982022294,2.301672012345955"
     },
     {
       "numero_dpe": "2675E1058410E",
@@ -1258,7 +1341,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "2e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.84939501174342,2.2975940532593992"
     },
     {
       "numero_dpe": "2675E1057528G",
@@ -1273,7 +1357,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "3e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.846157032419626,2.3042429448049297"
     },
     {
       "numero_dpe": "2675E1058561Z",
@@ -1288,7 +1373,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "1e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.844375955927006,2.2964660001355384"
     },
     {
       "numero_dpe": "2675E1063838Y",
@@ -1303,7 +1389,8 @@
       "numero_dpe_remplace": "2675E0952950A",
       "zone": "La Motte Picquet",
       "etage_str": "5e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.84754196751376,2.3036100124762067"
     },
     {
       "numero_dpe": "2675E1059707B",
@@ -1318,7 +1405,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "3e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.85407397620076,2.2960860609492415"
     },
     {
       "numero_dpe": "2675E1056391N",
@@ -1333,7 +1421,8 @@
       "numero_dpe_remplace": "2675E0476804S",
       "zone": "La Motte Picquet",
       "etage_str": "5e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.84859999486153,2.2943419840212322"
     },
     {
       "numero_dpe": "2675E1052934O",
@@ -1348,7 +1437,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.85204897869508,2.2932179672960524"
     },
     {
       "numero_dpe": "2675E1053895N",
@@ -1363,7 +1453,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "2e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.8450325687561,2.294279982693039"
     },
     {
       "numero_dpe": "2675E1044635J",
@@ -1378,7 +1469,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "4e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.84760204127426,2.305496962029614"
     },
     {
       "numero_dpe": "2675E1047983D",
@@ -1393,7 +1485,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "2e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.84625502589552,2.305226981507129"
     },
     {
       "numero_dpe": "2675E1050787Z",
@@ -1408,7 +1501,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "5e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.84907801657775,2.2986109799782826"
     },
     {
       "numero_dpe": "2675E1042689N",
@@ -1423,7 +1517,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "10e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.85408597909286,2.2919469864996436"
     },
     {
       "numero_dpe": "2675E1050055V",
@@ -1438,7 +1533,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.84835597268502,2.295299058980923"
     },
     {
       "numero_dpe": "2675E1040512U",
@@ -1453,7 +1549,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "7e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.8475200387139,2.2982409898130784"
     },
     {
       "numero_dpe": "2675E1050728S",
@@ -1468,7 +1565,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "9e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.84587297839552,2.3036650184765604"
     },
     {
       "numero_dpe": "2675E1044914C",
@@ -1483,7 +1581,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "RDC",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.84699302181773,2.29884099214195"
     },
     {
       "numero_dpe": "2675E1048668M",
@@ -1498,7 +1597,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "6e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.84758597872423,2.298703966092961"
     },
     {
       "numero_dpe": "2675E1048119J",
@@ -1513,7 +1613,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "4e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.846705972011854,2.2964710647636672"
     },
     {
       "numero_dpe": "2675E1047679L",
@@ -1528,7 +1629,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "1e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.84958500218442,2.2938279688093433"
     },
     {
       "numero_dpe": "2675E1032807L",
@@ -1543,7 +1645,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "2e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.85270203295439,2.2979279346361183"
     },
     {
       "numero_dpe": "2675E1031028A",
@@ -1558,7 +1661,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "3e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.853691026279506,2.29668203557506"
     },
     {
       "numero_dpe": "2675E1033445Z",
@@ -1573,7 +1677,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "1e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.85196699545618,2.2970870307264035"
     },
     {
       "numero_dpe": "2675E1027734I",
@@ -1588,7 +1693,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "5e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.848984030231996,2.301054002084242"
     },
     {
       "numero_dpe": "2675E1026582A",
@@ -1603,7 +1709,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "5e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.848218017194625,2.2981460117716015"
     },
     {
       "numero_dpe": "2675E1016325N",
@@ -1618,7 +1725,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.85581800517793,2.2933689621586852"
     },
     {
       "numero_dpe": "2675E1019279D",
@@ -1633,7 +1741,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "4e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.84759296420475,2.3001580129333985"
     },
     {
       "numero_dpe": "2675E1017714Y",
@@ -1648,7 +1757,8 @@
       "numero_dpe_remplace": "2575E3852922J",
       "zone": "La Motte Picquet",
       "etage_str": "5e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.84965401911007,2.293955950455697"
     },
     {
       "numero_dpe": "2675E1013428C",
@@ -1663,7 +1773,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "7e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.85285298047783,2.2917989733824284"
     },
     {
       "numero_dpe": "2675E1016595X",
@@ -1678,7 +1789,8 @@
       "numero_dpe_remplace": "2375E4550035I",
       "zone": "La Motte Picquet",
       "etage_str": "4e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.84965401911007,2.293955950455697"
     },
     {
       "numero_dpe": "2675E1018432O",
@@ -1693,7 +1805,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "5e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.84699302181773,2.29884099214195"
     },
     {
       "numero_dpe": "2675E1024188Y",
@@ -1708,7 +1821,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.84626399657343,2.299455008000966"
     },
     {
       "numero_dpe": "2675E1023364G",
@@ -1723,7 +1837,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "1e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.85348100469983,2.295088963701263"
     },
     {
       "numero_dpe": "2675E1012679H",
@@ -1738,7 +1853,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "8e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.847425987546224,2.2952459526788487"
     },
     {
       "numero_dpe": "2675E1011666I",
@@ -1753,7 +1869,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "1e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.846523999642805,2.2974299835625738"
     },
     {
       "numero_dpe": "2675E1012380U",
@@ -1768,7 +1885,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "5e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.84935398007816,2.2932989454429684"
     },
     {
       "numero_dpe": "2675E1008906E",
@@ -1783,7 +1901,8 @@
       "numero_dpe_remplace": "2475E2134910Y",
       "zone": "La Motte Picquet",
       "etage_str": "4e",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.852202996597974,2.2970120263251235"
     },
     {
       "numero_dpe": "2675E1009317Z",
@@ -1798,7 +1917,8 @@
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
       "etage_str": "—",
-      "digicode_str": "—"
+      "digicode_str": "—",
+      "geopoint": "48.8492660127338,2.2946079677011304"
     }
   ],
   "derniere_maj": "2026-05-12T06:15:52.871125"
