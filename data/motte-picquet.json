@@ -702,7 +702,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
-      "etage_str": "—",
+      "etage_str": "2e",
       "digicode_str": "—"
     },
     {
@@ -732,7 +732,7 @@
       "surface_habitable_immeuble": 5994,
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
-      "etage_str": "—",
+      "etage_str": "5e",
       "digicode_str": "—"
     },
     {
@@ -747,7 +747,7 @@
       "surface_habitable_immeuble": 5253,
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
-      "etage_str": "—",
+      "etage_str": "3e",
       "digicode_str": "—"
     },
     {
@@ -777,7 +777,7 @@
       "surface_habitable_immeuble": 3502,
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
-      "etage_str": "—",
+      "etage_str": "7e",
       "digicode_str": "—"
     },
     {
@@ -792,7 +792,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
-      "etage_str": "—",
+      "etage_str": "1e",
       "digicode_str": "—"
     },
     {
@@ -852,7 +852,7 @@
       "surface_habitable_immeuble": 2800,
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
-      "etage_str": "—",
+      "etage_str": "6e",
       "digicode_str": "—"
     },
     {
@@ -867,7 +867,7 @@
       "surface_habitable_immeuble": 12552,
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
-      "etage_str": "—",
+      "etage_str": "3e",
       "digicode_str": "—"
     },
     {
@@ -882,7 +882,7 @@
       "surface_habitable_immeuble": 12552,
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
-      "etage_str": "—",
+      "etage_str": "3e",
       "digicode_str": "—"
     },
     {
@@ -897,7 +897,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
-      "etage_str": "—",
+      "etage_str": "4e",
       "digicode_str": "—"
     },
     {
@@ -927,7 +927,7 @@
       "surface_habitable_immeuble": 2714,
       "numero_dpe_remplace": "2675E1125109N",
       "zone": "La Motte Picquet",
-      "etage_str": "—",
+      "etage_str": "3e",
       "digicode_str": "—"
     },
     {
@@ -942,7 +942,7 @@
       "surface_habitable_immeuble": 1164,
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
-      "etage_str": "—",
+      "etage_str": "7e",
       "digicode_str": "—"
     },
     {
@@ -957,7 +957,7 @@
       "surface_habitable_immeuble": 10078,
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
-      "etage_str": "—",
+      "etage_str": "4e",
       "digicode_str": "—"
     },
     {
@@ -1002,7 +1002,7 @@
       "surface_habitable_immeuble": 6061,
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
-      "etage_str": "—",
+      "etage_str": "4e",
       "digicode_str": "—"
     },
     {
@@ -1077,7 +1077,7 @@
       "surface_habitable_immeuble": 13060,
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
-      "etage_str": "—",
+      "etage_str": "9e",
       "digicode_str": "—"
     },
     {
@@ -1392,7 +1392,7 @@
       "surface_habitable_immeuble": null,
       "numero_dpe_remplace": null,
       "zone": "La Motte Picquet",
-      "etage_str": "—",
+      "etage_str": "2e",
       "digicode_str": "—"
     },
     {
