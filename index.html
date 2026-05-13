@@ -1156,8 +1156,8 @@ function switchMode(mode) {
   currentMode = mode;
   const isDpe = mode === 'dpe';
 
-  document.getElementById('section-dpe').style.display = isDpe ? '' : 'none';
-  document.getElementById('section-sci').style.display = isDpe ? 'none' : '';
+  document.getElementById('section-dpe').style.display = isDpe ? 'block' : 'none';
+  document.getElementById('section-sci').style.display = isDpe ? 'none' : 'block';
   document.getElementById('stats-dpe').style.display   = isDpe ? 'flex' : 'none';
   document.getElementById('stats-sci').style.display   = isDpe ? 'none' : 'flex';
 
