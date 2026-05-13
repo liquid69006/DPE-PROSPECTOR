@@ -1,0 +1,58 @@
+name: 🏢 SCI Prospector — Mise à jour mensuelle
+
+on:
+  schedule:
+    - cron: '0 3 1 * *'   # Le 1er de chaque mois à 3h UTC
+  workflow_dispatch:        # Déclenchement manuel possible
+
+permissions:
+  contents: write
+
+jobs:
+  sci_update:
+    name: Mise à jour SCI Dauphiné-Lacassagne
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: 🐍 Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: 📦 Dépendances
+        run: pip install requests pandas pyarrow shapely
+
+      - name: 📥 Téléchargement fichier MAJIC 2025 (locaux)
+        run: |
+          echo "Téléchargement fichier MAJIC personnes morales - locaux..."
+          python -c "
+          import requests, sys
+          url = 'https://www.data.gouv.fr/api/1/datasets/r/984539d4-51d4-40e5-afc0-66fac85039b7'
+          r = requests.get(url, stream=True, timeout=120)
+          r.raise_for_status()
+          total = 0
+          with open('majic_locaux2.parquet', 'wb') as f:
+              for chunk in r.iter_content(1024*1024):
+                  f.write(chunk)
+                  total += len(chunk)
+          print(f'Téléchargement OK — {total//1024//1024} Mo')
+          "
+
+      - name: 🏢 Génération SCI Dauphiné-Lacassagne
+        run: python majic_sci_2025.py --fichier majic_locaux2.parquet
+
+      - name: 🗑️ Nettoyage fichier parquet (ne pas committer ~200Mo)
+        run: rm -f majic_locaux2.parquet
+
+      - name: 📊 Commit data/dauphine-lacassagne-sci.json
+        run: |
+          git config user.name "DPE Prospector Bot"
+          git config user.email "actions@github.com"
+          git add data/dauphine-lacassagne-sci.json
+          git diff --staged --quiet || git commit -m "🏢 SCI Prospector — MAJ $(date '+%d/%m/%Y')"
+          git push
