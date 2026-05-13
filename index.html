@@ -303,6 +303,7 @@ td{padding:11px 14px;vertical-align:middle;}
 }
 
 </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
 </head>
 <body>
 
@@ -371,7 +372,7 @@ td{padding:11px 14px;vertical-align:middle;}
 
   <header>
     <div class="header-inner">
-      <div class="header-logo" id="header-logo"><span id="logo-prefix">DPE</span> <span id="logo-suffix">Prospector</span></div>
+      <div class="header-logo">DPE <span>Prospector</span></div>
       <div class="header-agence" id="header-agence-name">—</div>
 
       <!-- Switch DPE / SCI — visible uniquement pour Dauphiné -->
@@ -495,6 +496,7 @@ td{padding:11px 14px;vertical-align:middle;}
         <option value="Liquidateur" data-exclude="true">Exclure liquidateurs</option>
       </select>
       <button class="btn-reset" onclick="resetFiltresSci()">✕ Réinitialiser</button>
+      <button class="btn-primary" id="btn-courrier" onclick="ouvrirModalCourrier()" style="margin-left:8px;">📨 Envoyer un courrier</button>
       <span class="count-badge" id="sci-count-badge"></span>
     </div>
   </div>
@@ -520,6 +522,56 @@ td{padding:11px 14px;vertical-align:middle;}
     </div>
   </div>
   </div><!-- /section-sci -->
+</div>
+
+<!-- ════════════════════════════════════════
+     MODAL — ENVOYER UN COURRIER
+════════════════════════════════════════ -->
+<div class="modal-overlay" id="modal-courrier">
+  <div class="modal" style="max-width:560px;">
+    <h2>📨 Envoyer un courrier</h2>
+
+    <div style="margin:16px 0;">
+      <p style="font-size:13px;color:var(--text2);margin-bottom:12px;">Sélectionnez les SCI destinataires :</p>
+
+      <label style="display:flex;align-items:center;gap:8px;margin-bottom:10px;cursor:pointer;">
+        <input type="checkbox" id="courrier-exclure-inactives" checked>
+        <span>Exclure les SCI inactives</span>
+      </label>
+      <label style="display:flex;align-items:center;gap:8px;margin-bottom:10px;cursor:pointer;">
+        <input type="checkbox" id="courrier-exclure-liquidateur" checked>
+        <span>Exclure les SCI avec liquidateur</span>
+      </label>
+      <label style="display:flex;align-items:center;gap:8px;margin-bottom:10px;cursor:pointer;">
+        <input type="checkbox" id="courrier-exclure-sans-gerant" checked>
+        <span>Exclure les SCI sans gérant connu</span>
+      </label>
+      <label style="display:flex;align-items:center;gap:8px;margin-bottom:10px;cursor:pointer;">
+        <input type="checkbox" id="courrier-seulement-visibles">
+        <span>Uniquement les SCI actuellement affichées (filtrées)</span>
+      </label>
+    </div>
+
+    <div id="courrier-sci-count" style="font-size:13px;font-weight:600;color:var(--accent);margin-bottom:16px;"></div>
+
+    <div style="margin-bottom:16px;">
+      <p style="font-size:13px;color:var(--text2);margin-bottom:8px;">Chargez votre modèle de courrier Word (.docx) :</p>
+      <input type="file" id="courrier-file-input" accept=".docx"
+        style="font-size:13px;padding:6px;border:1px dashed var(--border);border-radius:6px;width:100%;box-sizing:border-box;cursor:pointer;">
+      <p style="font-size:11px;color:var(--text2);margin-top:6px;">
+        Variables disponibles : <code>{{SCI_NOM}}</code> <code>{{DIRIGEANT}}</code> <code>{{ADRESSE}}</code> <code>{{CODE_POSTAL}}</code> <code>{{VILLE}}</code> <code>{{DATE}}</code> <code>{{CIVILITE}}</code>
+      </p>
+    </div>
+
+    <div id="courrier-status" style="font-size:13px;color:var(--text2);margin-bottom:12px;min-height:20px;"></div>
+
+    <div style="display:flex;gap:10px;justify-content:flex-end;">
+      <button class="btn-reset" onclick="fermerModalCourrier()">Annuler</button>
+      <button class="btn-primary" id="btn-generer-courrier" onclick="genererCourrier()" disabled>
+        🖨️ Générer le PDF
+      </button>
+    </div>
+  </div>
 </div>
 
 <!-- ════════════════════════════════════════
@@ -742,7 +794,6 @@ async function initDashboard(token, agence, config) {
   if (AGENCES_SCI.includes(agence)) {
     document.getElementById('mode-switch').style.display = 'flex';
   }
-  switchMode('dpe'); // forcer état initial
 
   await Promise.all([
     loadDpeData(config.dataJsonPath),
@@ -1104,18 +1155,15 @@ function switchMode(mode) {
   currentMode = mode;
   const isDpe = mode === 'dpe';
 
-  document.getElementById('section-dpe').style.display = isDpe ? 'block' : 'none';
-  document.getElementById('section-sci').style.display = isDpe ? 'none' : 'block';
+  document.getElementById('section-dpe').style.display = isDpe ? '' : 'none';
+  document.getElementById('section-sci').style.display = isDpe ? 'none' : '';
   document.getElementById('stats-dpe').style.display   = isDpe ? 'flex' : 'none';
   document.getElementById('stats-sci').style.display   = isDpe ? 'none' : 'flex';
 
   document.getElementById('btn-mode-dpe').className = 'mode-btn' + (isDpe ? ' active-dpe' : '');
   document.getElementById('btn-mode-sci').className = 'mode-btn' + (!isDpe ? ' active-sci' : '');
 
-  document.getElementById('logo-prefix').textContent = isDpe ? 'DPE' : 'SCI';
-  document.getElementById('logo-suffix').textContent = 'Prospector';
-  document.getElementById('logo-prefix').style.color = isDpe ? 'var(--accent2)' : '#ea580c';
-  document.getElementById('logo-suffix').style.color = isDpe ? '' : '#ea580c';
+  // Changer couleur header
   if (!isDpe) {
     document.documentElement.style.setProperty('--accent',  '#ea580c');
     document.documentElement.style.setProperty('--accent2', '#f97316');
@@ -1134,16 +1182,10 @@ let sciSortCurrent = {col:'zone', dir:'asc'};
 
 async function loadSciData() {
   try {
-    const fileName = agenceConfig.dataJsonPath.replace('.json', '-sci.json').replace('data/', '');
-    const url = `${API_URL}/data/${agenceId}/${fileName}`;
-    console.log('[SCI] Fetching via proxy:', url);
-    const resp = await fetch(url, {
-      headers: {'Authorization': `Bearer ${authToken}`},
-    });
-    console.log('[SCI] HTTP status:', resp.status);
-    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+    const path = agenceConfig.dataJsonPath.replace('.json', '-sci.json');
+    const resp = await fetch(`${GITHUB_RAW}/${path}?t=${Date.now()}`);
+    if (!resp.ok) throw new Error();
     const data = await resp.json();
-    console.log('[SCI] Loaded:', data.sci?.length, 'entrées');
     allSci = data.sci || [];
 
     // Stats
@@ -1154,7 +1196,6 @@ async function loadSciData() {
 
     renderTableSci();
   } catch(e) {
-    console.error('[SCI] Erreur chargement:', e);
     showToast('⚠️ Impossible de charger les données SCI', true);
   }
 }
@@ -1236,6 +1277,7 @@ function renderRowSci(sci) {
     data-statut="${statut}"
     data-conseiller="${conseil}"
     data-qualite1="${qual1}"
+    data-sci-nom="${(sci.sci_nom||'').replace(/"/g,'&quot;')}"
     data-search="${adresseNorm} ${sciNomNorm}">
     <td><span class="badge-zone">${zone||'—'}</span></td>
     <td class="td-sci-nom">
@@ -1361,18 +1403,177 @@ function showToast(msg, warn=false) {
 // ════════════════════════════════════════
 //  FERMETURE MODALS AU CLIC DEHORS
 // ════════════════════════════════════════
-['modal-conseillers','modal-password'].forEach(id => {
+['modal-conseillers','modal-password','modal-courrier'].forEach(id => {
   document.getElementById(id).addEventListener('click', e => {
     if (e.target.id===id) {
       if(id==='modal-conseillers') closeModalConseillers();
       if(id==='modal-password')   closeModalPassword();
+      if(id==='modal-courrier')   fermerModalCourrier();
     }
   });
 });
 
+
 // ════════════════════════════════════════
-//  FILTRES LIVE
+//  COURRIER — VARIABLES GLOBALES
 // ════════════════════════════════════════
+let courrierDocxBase64 = null;
+let courrierDocxHtml   = null;
+
+// ════════════════════════════════════════
+//  COURRIER — UTILITAIRES
+// ════════════════════════════════════════
+function parseSiegeSocial(siege) {
+  if (!siege) return { adresse: '', cp: '', ville: '' };
+  // Format : "ADRESSE CP VILLE" — CP = 5 chiffres
+  const m = siege.match(/^(.*?)\s+(\d{5})\s+(.+)$/);
+  if (m) return { adresse: m[1].trim(), cp: m[2], ville: m[3].trim() };
+  return { adresse: siege, cp: '', ville: '' };
+}
+
+function getPremierGerant(gerants) {
+  if (!gerants || gerants.length === 0) return null;
+  // Priorité : Gérant > Gérant et associé > premier
+  const gerant = gerants.find(g => g.qualite && g.qualite.startsWith('Gérant'));
+  return gerant ? gerant.nom : gerants[0].nom;
+}
+
+function aLiquidateur(gerants) {
+  if (!gerants) return false;
+  return gerants.some(g => g.qualite && g.qualite.toLowerCase().includes('liquidateur'));
+}
+
+function filtrerSciPourCourrier() {
+  const exclInactives    = document.getElementById('courrier-exclure-inactives').checked;
+  const exclLiquidateur  = document.getElementById('courrier-exclure-liquidateur').checked;
+  const exclSansGerant   = document.getElementById('courrier-exclure-sans-gerant').checked;
+  const seulementVisibles= document.getElementById('courrier-seulement-visibles').checked;
+
+  let liste = seulementVisibles
+    ? [...document.querySelectorAll('#sci-tbody tr')]
+        .filter(tr => tr.style.display !== 'none')
+        .map(tr => allSci.find(s => s.sci_nom === tr.dataset.sciNom))
+        .filter(Boolean)
+    : [...allSci];
+
+  if (exclInactives)   liste = liste.filter(s => s.sci_active === 'oui');
+  if (exclLiquidateur) liste = liste.filter(s => !aLiquidateur(s.gerants));
+  if (exclSansGerant)  liste = liste.filter(s => getPremierGerant(s.gerants));
+
+  return liste;
+}
+
+function majCompteCourrier() {
+  const liste = filtrerSciPourCourrier();
+  document.getElementById('courrier-sci-count').textContent =
+    `→ ${liste.length} courrier${liste.length > 1 ? 's' : ''} seront générés`;
+}
+
+// ════════════════════════════════════════
+//  COURRIER — OUVERTURE / FERMETURE MODAL
+// ════════════════════════════════════════
+function ouvrirModalCourrier() {
+  courrierDocxBase64 = null;
+  courrierDocxHtml   = null;
+  document.getElementById('courrier-file-input').value = '';
+  document.getElementById('courrier-status').textContent = '';
+  document.getElementById('btn-generer-courrier').disabled = true;
+  majCompteCourrier();
+
+  // Listeners checkboxes
+  ['courrier-exclure-inactives','courrier-exclure-liquidateur',
+   'courrier-exclure-sans-gerant','courrier-seulement-visibles'].forEach(id => {
+    document.getElementById(id).onchange = majCompteCourrier;
+  });
+
+  // Listener fichier
+  document.getElementById('courrier-file-input').onchange = async function(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+    const status = document.getElementById('courrier-status');
+    status.textContent = '⏳ Chargement du modèle...';
+    try {
+      const arrayBuffer = await file.arrayBuffer();
+      const result = await mammoth.convertToHtml({ arrayBuffer });
+      courrierDocxHtml = result.value;
+      status.textContent = `✅ Modèle chargé — variables détectées : ${[...courrierDocxHtml.matchAll(/\{\{[A-Z_]+\}\}/g)].map(m=>m[0]).filter((v,i,a)=>a.indexOf(v)===i).join(', ')||'aucune'}`;
+      document.getElementById('btn-generer-courrier').disabled = false;
+    } catch(err) {
+      status.textContent = '❌ Erreur lecture du fichier Word.';
+      console.error(err);
+    }
+  };
+
+  document.getElementById('modal-courrier').classList.add('open');
+}
+
+function fermerModalCourrier() {
+  document.getElementById('modal-courrier').classList.remove('open');
+}
+
+// ════════════════════════════════════════
+//  COURRIER — GÉNÉRATION PDF
+// ════════════════════════════════════════
+function genererCourrier() {
+  const liste = filtrerSciPourCourrier();
+  if (!liste.length) { showToast('Aucune SCI sélectionnée', true); return; }
+  if (!courrierDocxHtml) { showToast('Chargez d\'abord un modèle Word', true); return; }
+
+  const today = new Date().toLocaleDateString('fr-FR', {day:'numeric', month:'long', year:'numeric'});
+
+  const pages = liste.map(sci => {
+    const siege   = parseSiegeSocial(sci.siege_social);
+    const gerant  = getPremierGerant(sci.gerants) || '—';
+    let html = courrierDocxHtml;
+    html = html.replace(/\{\{SCI_NOM\}\}/g,    escHtml(sci.sci_nom || ''));
+    html = html.replace(/\{\{CIVILITE\}\}/g,   'Monsieur ou Madame');
+    html = html.replace(/\{\{NOM_PRENOM\}\}/g, escHtml(sci.sci_nom || ''));
+    html = html.replace(/\{\{ADRESSE\}\}/g,    escHtml(siege.adresse));
+    html = html.replace(/\{\{CODE_POSTAL\}\}/g,escHtml(siege.cp));
+    html = html.replace(/\{\{VILLE\}\}/g,      escHtml(siege.ville));
+    html = html.replace(/\{\{DIRIGEANT\}\}/g,  escHtml(gerant));
+    html = html.replace(/\{\{DATE\}\}/g,       today);
+    return `<div class="courrier-page">${html}</div>`;
+  });
+
+  const win = window.open('', '_blank');
+  win.document.write(`<!DOCTYPE html><html><head>
+    <meta charset="utf-8">
+    <title>Courriers SCI — ${agenceConfig?.nom || ''}</title>
+    <style>
+      @page { size: A4; margin: 0; }
+      * { box-sizing: border-box; }
+      body { margin: 0; font-family: Arial, sans-serif; font-size: 11pt; }
+      .courrier-page {
+        width: 210mm; min-height: 297mm;
+        padding: 20mm 20mm 20mm 25mm;
+        page-break-after: always;
+        break-after: page;
+      }
+      .courrier-page:last-child { page-break-after: avoid; break-after: avoid; }
+      table { width: 100%; border-collapse: collapse; }
+      td, th { padding: 4px 8px; }
+      p { margin: 0 0 8px 0; line-height: 1.5; }
+      img { max-width: 100%; }
+      @media print {
+        body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      }
+    </style>
+  </head><body>
+    ${pages.join('\n')}
+    <script>window.onload=()=>{window.print();}<\/script>
+  </body></html>`);
+  win.document.close();
+
+  fermerModalCourrier();
+  showToast(`✅ ${liste.length} courrier${liste.length>1?'s':''} générés`);
+}
+
+function escHtml(str) {
+  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+
 ['search','filter-zone','filter-dpe','filter-statut','filter-conseiller','filter-type','filter-logement']
   .forEach(id=>{
     const el=document.getElementById(id); if(!el) return;
