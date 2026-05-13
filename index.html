@@ -1553,19 +1553,102 @@ function genererCourrier() {
     <title>Courriers SCI — ${escHtml(agenceConfig?.nom || '')}</title>
     <style>
       @page { size: A4; margin: 0; }
-      * { box-sizing: border-box; }
-      body { margin: 0; font-family: Arial, sans-serif; font-size: 11pt; }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body { font-family: Arial, sans-serif; font-size: 10.5pt; color: #222; }
+
+      /* ── PAGE COURRIER ── */
       .courrier-page {
-        width: 210mm; min-height: 297mm;
-        padding: 20mm 20mm 20mm 25mm;
+        width: 210mm;
+        min-height: 297mm;
+        padding: 14mm 18mm 14mm 22mm;
         page-break-after: always;
         break-after: page;
+        overflow: hidden;
       }
       .courrier-page:last-child { page-break-after: avoid; break-after: avoid; }
-      table { width: 100%; border-collapse: collapse; }
-      td, th { padding: 4px 8px; }
-      p { margin: 0 0 8px 0; line-height: 1.5; }
-      img { max-width: 100%; height: auto; }
+
+      /* ── HEADER : logo + coordonnées ── */
+      .courrier-page > table:first-child {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 14mm;
+      }
+      .courrier-page > table:first-child td:first-child {
+        width: 55mm;
+        vertical-align: top;
+        padding: 0;
+      }
+      .courrier-page > table:first-child td:first-child img {
+        width: 52mm;
+        height: auto;
+      }
+      .courrier-page > table:first-child td:last-child {
+        vertical-align: top;
+        padding: 0 0 0 6mm;
+        font-size: 9pt;
+        color: #333;
+        line-height: 1.5;
+      }
+      .courrier-page > table:first-child td:last-child p { margin: 0; }
+      .courrier-page > table:first-child td:last-child p:first-child strong { font-size: 11pt; }
+
+      /* ── ADRESSE DESTINATAIRE ── */
+      .courrier-page p { margin-bottom: 4pt; line-height: 1.5; }
+
+      /* ── ENCADRÉ ORANGE "COMBIEN VAUT..." ── */
+      .courrier-page > table:nth-of-type(2) {
+        width: 100%;
+        border-collapse: collapse;
+        background: #f97316;
+        color: #fff;
+        margin: 8mm 0 5mm 0;
+        border-radius: 2px;
+      }
+      .courrier-page > table:nth-of-type(2) td {
+        padding: 5mm 6mm;
+      }
+      .courrier-page > table:nth-of-type(2) strong {
+        font-size: 12pt;
+        display: block;
+        margin-bottom: 4pt;
+      }
+
+      /* ── ÉTAPES 1 2 3 4 ── */
+      .courrier-page > table:nth-of-type(3),
+      .courrier-page > table:nth-of-type(4),
+      .courrier-page > table:nth-of-type(5),
+      .courrier-page > table:nth-of-type(6) {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 3mm;
+        border: 1px solid #ddd;
+      }
+      .courrier-page > table:nth-of-type(3) td:first-child,
+      .courrier-page > table:nth-of-type(4) td:first-child,
+      .courrier-page > table:nth-of-type(5) td:first-child,
+      .courrier-page > table:nth-of-type(6) td:first-child {
+        width: 12mm;
+        background: #f97316;
+        color: #fff;
+        font-weight: bold;
+        font-size: 14pt;
+        text-align: center;
+        vertical-align: middle;
+        padding: 3mm;
+      }
+      .courrier-page > table:nth-of-type(3) td:last-child,
+      .courrier-page > table:nth-of-type(4) td:last-child,
+      .courrier-page > table:nth-of-type(5) td:last-child,
+      .courrier-page > table:nth-of-type(6) td:last-child {
+        padding: 3mm 4mm;
+        font-size: 9.5pt;
+        vertical-align: middle;
+      }
+
+      /* ── PIED ── */
+      .courrier-page strong { font-weight: bold; }
+      .courrier-page em { font-style: italic; }
+
       @media print {
         body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
       }
