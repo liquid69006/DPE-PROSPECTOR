@@ -574,7 +574,7 @@ td{padding:11px 14px;vertical-align:middle;}
 // ── Config ────────────────────────────────────────────────────
 // ⚠️  Remplacer par l'URL de votre Cloudflare Worker après déploiement
 const API_URL = 'https://dpe-prospector-api.yann-bufferne.workers.dev';
-const GITHUB_RAW = 'https://raw.githubusercontent.com/liquid69006/DPE-PROSPECTOR/main';
+const GITHUB_RAW = 'https://raw.githubusercontent.com/liquid69006/dpe-prospector/main';
 
 const COULEURS_DPE = {A:'#009F6B',B:'#51B748',C:'#CADD43',D:'#F5E800',E:'#F0A800',F:'#E4581B',G:'#D7221F'};
 const TEXTE_DPE   = {C:'#111',D:'#111'};
@@ -1131,9 +1131,13 @@ let sciSortCurrent = {col:'zone', dir:'asc'};
 async function loadSciData() {
   try {
     const path = agenceConfig.dataJsonPath.replace('.json', '-sci.json');
-    const resp = await fetch(`${GITHUB_RAW}/${path}?t=${Date.now()}`);
-    if (!resp.ok) throw new Error();
+    const url = `${GITHUB_RAW}/${path}?t=${Date.now()}`;
+    console.log('[SCI] Fetching:', url);
+    const resp = await fetch(url);
+    console.log('[SCI] HTTP status:', resp.status);
+    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
     const data = await resp.json();
+    console.log('[SCI] Loaded:', data.sci?.length, 'entrées');
     allSci = data.sci || [];
 
     // Stats
@@ -1144,6 +1148,7 @@ async function loadSciData() {
 
     renderTableSci();
   } catch(e) {
+    console.error('[SCI] Erreur chargement:', e);
     showToast('⚠️ Impossible de charger les données SCI', true);
   }
 }
