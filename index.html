@@ -12,7 +12,7 @@
   --green:#1a7f4b; --red:#D7221F;
   --dpe-a:#009F6B;--dpe-b:#51B748;--dpe-c:#CADD43;
   --dpe-d:#F5E800;--dpe-e:#F0A800;--dpe-f:#E4581B;--dpe-g:#D7221F;
-  --orange:#ea580c; --orange2:#f97316;
+  --orange:#BEAF87; --orange2:#A19276;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
@@ -1153,6 +1153,15 @@ function switchMode(mode) {
   document.getElementById('btn-mode-dpe').className = 'mode-btn' + (isDpe ? ' active-dpe' : '');
   document.getElementById('btn-mode-sci').className = 'mode-btn' + (!isDpe ? ' active-sci' : '');
 
+  // Logo
+  const logoPrefix = document.getElementById('logo-prefix');
+  const logoSuffix = document.getElementById('logo-suffix');
+  if (logoPrefix) {
+    logoPrefix.textContent = isDpe ? 'DPE' : 'SCI';
+    logoPrefix.style.color = isDpe ? 'var(--accent2)' : '#BEAF87';
+    logoSuffix.style.color = isDpe ? '' : '#BEAF87';
+  }
+
   // Changer couleur header
   if (!isDpe) {
     document.documentElement.style.setProperty('--accent',  '#BEAF87');
@@ -1425,7 +1434,7 @@ function templateEstimationC21(sci_nom, adresse, cp, ville, date, dirigeant) {
   return `<div style="position:relative;width:210mm;min-height:297mm;padding:10mm 18mm 20mm 20mm;font-family:Arial,sans-serif;font-size:10.5pt;color:#222;box-sizing:border-box;">`
   + `<table style="width:100%;border-collapse:collapse;border:1px solid #aaa;margin-bottom:0;"><tr>`
   + `<td style="width:28mm;padding:3mm;vertical-align:middle;border-right:1px solid #aaa;"><img src="${LOGO_C21}" style="width:26mm;height:auto;display:block;"></td>`
-  + `<td style="padding:3mm 4mm;vertical-align:top;"><div style="font-size:13pt;font-weight:bold;">CENTURY <span style="color:#FDB913;">21</span></div>`
+  + `<td style="padding:3mm 4mm;vertical-align:top;"><div style="font-size:13pt;font-weight:bold;">CENTURY <span style="color:#BEAF87;">21</span></div>`
   + `<div style="font-weight:bold;font-size:10.5pt;">Dauphiné-Lacassagne</div>`
   + `<div style="font-size:8.5pt;color:#555;margin-top:2mm;line-height:1.6;">224 rue Paul Bert — 69003 LYON<br>04 26 78 51 39<br>www.century21-dauphine-lacassagne-lyon.com</div>`
   + `</td></tr></table>`
