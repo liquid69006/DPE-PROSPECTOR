@@ -757,7 +757,10 @@ async function initDashboard(token, agence, config) {
 // ════════════════════════════════════════
 async function loadDpeData(path) {
   try {
-    const resp = await fetch(`${GITHUB_RAW}/${path}?t=${Date.now()}`);
+    const fileName = path.replace('data/', '');
+    const resp = await fetch(`${API_URL}/data/${agenceId}/${fileName}`, {
+      headers: {'Authorization': `Bearer ${authToken}`},
+    });
     if (!resp.ok) throw new Error();
     const data = await resp.json();
     allDpe = data.dpe || [];
@@ -1130,10 +1133,12 @@ let sciSortCurrent = {col:'zone', dir:'asc'};
 
 async function loadSciData() {
   try {
-    const path = agenceConfig.dataJsonPath.replace('.json', '-sci.json');
-    const url = `${GITHUB_RAW}/${path}?t=${Date.now()}`;
-    console.log('[SCI] Fetching:', url);
-    const resp = await fetch(url);
+    const fileName = agenceConfig.dataJsonPath.replace('.json', '-sci.json').replace('data/', '');
+    const url = `${API_URL}/data/${agenceId}/${fileName}`;
+    console.log('[SCI] Fetching via proxy:', url);
+    const resp = await fetch(url, {
+      headers: {'Authorization': `Bearer ${authToken}`},
+    });
     console.log('[SCI] HTTP status:', resp.status);
     if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
     const data = await resp.json();
