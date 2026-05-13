@@ -12,6 +12,7 @@
   --green:#1a7f4b; --red:#D7221F;
   --dpe-a:#009F6B;--dpe-b:#51B748;--dpe-c:#CADD43;
   --dpe-d:#F5E800;--dpe-e:#F0A800;--dpe-f:#E4581B;--dpe-g:#D7221F;
+  --orange:#ea580c; --orange2:#f97316;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
@@ -251,10 +252,56 @@ td{padding:11px 14px;vertical-align:middle;}
 .toast.show{opacity:1;transform:translateY(0);}
 .toast.warn{background:#d97706;}
 
+/* ── MODE SWITCH ── */
+.mode-switch{
+  display:flex;align-items:center;gap:2px;
+  background:rgba(0,0,0,.3);border:1px solid var(--border);
+  border-radius:20px;padding:3px;
+}
+.mode-btn{
+  background:transparent;border:none;color:var(--text2);
+  border-radius:16px;padding:5px 14px;font-size:12px;font-weight:600;
+  font-family:inherit;cursor:pointer;transition:all .2s;white-space:nowrap;
+}
+.mode-btn.active-dpe{background:var(--accent);color:#fff;}
+.mode-btn.active-sci{background:var(--orange);color:#fff;}
+.mode-btn:not(.active-dpe):not(.active-sci):hover{color:var(--text);background:rgba(255,255,255,.08);}
+
+/* ── SCI PROSPECTOR ── */
+#section-sci{display:none;}
+#section-sci .toolbar{border-top:2px solid var(--orange);}
+#section-sci thead{background:rgba(234,88,12,.08);}
+#section-sci thead th{border-bottom-color:var(--orange);}
+
+/* badge sci statut */
+.badge-sci-actif{display:inline-block;border-radius:12px;padding:2px 8px;font-size:11px;font-weight:600;
+  background:rgba(26,127,75,.15);border:1px solid rgba(26,127,75,.3);color:#4ade80;white-space:nowrap;}
+.badge-sci-inactif{display:inline-block;border-radius:12px;padding:2px 8px;font-size:11px;font-weight:600;
+  background:rgba(215,34,31,.1);border:1px solid rgba(215,34,31,.25);color:#f87171;white-space:nowrap;}
+
+/* dirigeant tooltip */
+.dir-cell{position:relative;cursor:default;}
+.dir-nom{font-size:12px;color:var(--text);}
+.dir-tooltip{
+  display:none;position:absolute;bottom:calc(100% + 4px);left:0;z-index:200;
+  background:#1e2a3a;border:1px solid var(--border);border-radius:8px;
+  padding:6px 10px;font-size:11px;color:var(--text2);white-space:nowrap;
+  box-shadow:0 4px 16px rgba(0,0,0,.4);
+}
+.dir-cell:hover .dir-tooltip{display:block;}
+
+/* sci nom lien */
+.td-sci-nom strong{display:block;font-weight:600;font-size:13px;}
+.td-sci-nom small{color:var(--text2);font-size:11px;}
+
+/* header SCI stats */
+.stat-pill.sci{border-color:rgba(234,88,12,.3);background:rgba(234,88,12,.08);}
+
 @media(max-width:900px){
   .header-stats{display:none;}
   .table-wrap{padding:0 12px 48px;}
 }
+
 </style>
 </head>
 <body>
@@ -326,11 +373,27 @@ td{padding:11px 14px;vertical-align:middle;}
     <div class="header-inner">
       <div class="header-logo">DPE <span>Prospector</span></div>
       <div class="header-agence" id="header-agence-name">—</div>
+
+      <!-- Switch DPE / SCI — visible uniquement pour Dauphiné -->
+      <div class="mode-switch" id="mode-switch" style="display:none;">
+        <button class="mode-btn active-dpe" id="btn-mode-dpe" onclick="switchMode('dpe')">📊 DPE</button>
+        <button class="mode-btn" id="btn-mode-sci" onclick="switchMode('sci')">🏢 SCI</button>
+      </div>
+
       <div class="header-stats">
-        <div class="stat-pill">Total <strong id="stat-total">—</strong></div>
-        <div class="stat-pill">🔴 Passoires <strong id="stat-g">—</strong></div>
-        <div class="stat-pill">🔄 Renouvellements <strong id="stat-renouv">—</strong></div>
-        <div class="stat-pill">MAJ <strong id="stat-date">—</strong></div>
+        <!-- Stats DPE -->
+        <div id="stats-dpe" style="display:flex;gap:14px;align-items:center;">
+          <div class="stat-pill">Total <strong id="stat-total">—</strong></div>
+          <div class="stat-pill">🔴 Passoires <strong id="stat-g">—</strong></div>
+          <div class="stat-pill">🔄 Renouvellements <strong id="stat-renouv">—</strong></div>
+          <div class="stat-pill">MAJ <strong id="stat-date">—</strong></div>
+        </div>
+        <!-- Stats SCI -->
+        <div id="stats-sci" style="display:none;gap:14px;align-items:center;">
+          <div class="stat-pill sci">🏢 SCI <strong id="stat-sci-total">—</strong></div>
+          <div class="stat-pill sci">✅ Actives <strong id="stat-sci-actives">—</strong></div>
+          <div class="stat-pill sci">MAJ <strong id="stat-sci-date">—</strong></div>
+        </div>
         <div class="sync-indicator">
           <div class="sync-dot" id="sync-dot"></div>
           <span id="sync-label">Synchronisé</span>
@@ -342,6 +405,8 @@ td{padding:11px 14px;vertical-align:middle;}
     </div>
   </header>
 
+  <!-- ════ SECTION DPE ════ -->
+  <div id="section-dpe">
   <div class="toolbar">
     <div class="toolbar-inner">
       <input type="text" id="search" placeholder="🔍 Rechercher une adresse...">
@@ -400,6 +465,61 @@ td{padding:11px 14px;vertical-align:middle;}
       <p>Modifie les filtres pour voir plus de résultats.</p>
     </div>
   </div>
+  </div><!-- /section-dpe -->
+
+  <!-- ════ SECTION SCI ════ -->
+  <div id="section-sci">
+  <div class="toolbar">
+    <div class="toolbar-inner">
+      <input type="text" id="sci-search" placeholder="🔍 Rechercher une SCI ou adresse...">
+      <select id="sci-filter-zone">
+        <option value="">Toutes les zones</option>
+        <option value="Dauphiné-Lacassagne">Dauphiné-Lacassagne</option>
+        <option value="Montchat">Montchat</option>
+      </select>
+      <select id="sci-filter-actif">
+        <option value="">Toutes (actives + inactives)</option>
+        <option value="oui">✅ Actives uniquement</option>
+        <option value="non">❌ Inactives uniquement</option>
+      </select>
+      <select id="sci-filter-statut">
+        <option value="">Tous statuts</option>
+        <option>À prospecter</option><option>Contacté</option>
+        <option>RDV pris</option><option>Mandat signé</option>
+        <option>Client agence</option><option>Sans suite</option>
+      </select>
+      <select id="sci-filter-conseiller"><option value="">Tous conseillers</option></select>
+      <select id="sci-filter-qualite">
+        <option value="">Tous dirigeants</option>
+        <option value="Gérant">Gérant uniquement</option>
+        <option value="Liquidateur" data-exclude="true">Exclure liquidateurs</option>
+      </select>
+      <button class="btn-reset" onclick="resetFiltresSci()">✕ Réinitialiser</button>
+      <span class="count-badge" id="sci-count-badge"></span>
+    </div>
+  </div>
+
+  <div class="table-wrap">
+    <table id="table-sci">
+      <thead><tr>
+        <th class="sortable" onclick="sortTableSci('zone')">Zone <span class="si"></span></th>
+        <th class="sortable" onclick="sortTableSci('adresse')">Adresse du bien <span class="si"></span></th>
+        <th class="sortable" onclick="sortTableSci('sci')">Nom SCI <span class="si"></span></th>
+        <th>Siège social</th>
+        <th>Dirigeant 1</th>
+        <th>Dirigeant 2</th>
+        <th>Statut SCI</th>
+        <th class="sortable" onclick="sortTableSci('statut')">Prospection <span class="si"></span></th>
+        <th class="sortable" onclick="sortTableSci('conseiller')">Conseiller <span class="si"></span></th>
+      </tr></thead>
+      <tbody id="sci-tbody"></tbody>
+    </table>
+    <div class="empty" id="sci-empty" style="display:none;">
+      <h3>Aucune SCI trouvée</h3>
+      <p>Modifie les filtres pour voir plus de résultats.</p>
+    </div>
+  </div>
+  </div><!-- /section-sci -->
 </div>
 
 <!-- ════════════════════════════════════════
@@ -618,10 +738,16 @@ async function initDashboard(token, agence, config) {
   document.getElementById('screen-login').style.display     = 'none';
   document.getElementById('screen-dashboard').style.display = 'block';
 
+  // Afficher le switch SCI uniquement pour les agences concernées
+  if (AGENCES_SCI.includes(agence)) {
+    document.getElementById('mode-switch').style.display = 'flex';
+  }
+
   await Promise.all([
     loadDpeData(config.dataJsonPath),
     loadAssignments(),
     loadConseillers(),
+    ...(AGENCES_SCI.includes(agence) ? [loadSciData(), loadSciAssignments()] : []),
   ]);
   renderTable();
 }
@@ -702,13 +828,16 @@ async function loadConseillers() {
 }
 
 function refreshConseillerFilter() {
-  const sel = document.getElementById('filter-conseiller');
-  const cur = sel.value;
-  sel.innerHTML = '<option value="">Tous conseillers</option>';
-  conseillers.forEach(c => {
-    const o = document.createElement('option'); o.value = c; o.textContent = c||'—';
-    if (c === cur) o.selected = true;
-    sel.appendChild(o);
+  ['filter-conseiller', 'sci-filter-conseiller'].forEach(selId => {
+    const sel = document.getElementById(selId);
+    if (!sel) return;
+    const cur = sel.value;
+    sel.innerHTML = '<option value="">Tous conseillers</option>';
+    conseillers.forEach(c => {
+      const o = document.createElement('option'); o.value = c; o.textContent = c||'—';
+      if (c === cur) o.selected = true;
+      sel.appendChild(o);
+    });
   });
 }
 
@@ -964,6 +1093,246 @@ function sortTable(col) {
   rows.forEach(r=>tbody.appendChild(r));
 }
 
+// ════════════════════════════════════════
+//  MODE SWITCH DPE / SCI
+// ════════════════════════════════════════
+let currentMode = 'dpe';
+const AGENCES_SCI = ['dauphine-lacassagne']; // Seules agences avec SCI Prospector
+
+function switchMode(mode) {
+  currentMode = mode;
+  const isDpe = mode === 'dpe';
+
+  document.getElementById('section-dpe').style.display = isDpe ? '' : 'none';
+  document.getElementById('section-sci').style.display = isDpe ? 'none' : '';
+  document.getElementById('stats-dpe').style.display   = isDpe ? 'flex' : 'none';
+  document.getElementById('stats-sci').style.display   = isDpe ? 'none' : 'flex';
+
+  document.getElementById('btn-mode-dpe').className = 'mode-btn' + (isDpe ? ' active-dpe' : '');
+  document.getElementById('btn-mode-sci').className = 'mode-btn' + (!isDpe ? ' active-sci' : '');
+
+  // Changer couleur header
+  if (!isDpe) {
+    document.documentElement.style.setProperty('--accent',  '#ea580c');
+    document.documentElement.style.setProperty('--accent2', '#f97316');
+  } else {
+    document.documentElement.style.setProperty('--accent',  agenceConfig?.couleur || '#1d4ed8');
+    document.documentElement.style.setProperty('--accent2', agenceConfig?.couleur || '#3b82f6');
+  }
+}
+
+// ════════════════════════════════════════
+//  DONNÉES SCI
+// ════════════════════════════════════════
+let allSci         = [];
+let sciAssignments = {};
+let sciSortCurrent = {col:'zone', dir:'asc'};
+
+async function loadSciData() {
+  try {
+    const path = agenceConfig.dataJsonPath.replace('.json', '-sci.json');
+    const resp = await fetch(`${GITHUB_RAW}/${path}?t=${Date.now()}`);
+    if (!resp.ok) throw new Error();
+    const data = await resp.json();
+    allSci = data.sci || [];
+
+    // Stats
+    document.getElementById('stat-sci-total').textContent   = allSci.length;
+    document.getElementById('stat-sci-actives').textContent = allSci.filter(s=>s.sci_active==='oui').length;
+    const maj = data.derniere_maj ? new Date(data.derniere_maj).toLocaleDateString('fr-FR') : '—';
+    document.getElementById('stat-sci-date').textContent    = maj;
+
+    renderTableSci();
+  } catch(e) {
+    showToast('⚠️ Impossible de charger les données SCI', true);
+  }
+}
+
+async function loadSciAssignments() {
+  try {
+    const resp = await fetch(`${API_URL}/sci-assignments/${agenceId}`, {
+      headers:{'Authorization':`Bearer ${authToken}`},
+    });
+    if (!resp.ok) throw new Error();
+    const data = await resp.json();
+    sciAssignments = data.assignments || {};
+  } catch {
+    try { sciAssignments = JSON.parse(localStorage.getItem(`sci_assign_${agenceId}`)||'{}'); } catch {}
+  }
+}
+
+let sciSaveTimer = null;
+function scheduleAutoSaveSci() {
+  clearTimeout(sciSaveTimer);
+  sciSaveTimer = setTimeout(saveSciAssignments, 1200);
+}
+
+async function saveSciAssignments() {
+  localStorage.setItem(`sci_assign_${agenceId}`, JSON.stringify(sciAssignments));
+  if (!authToken) return;
+  try {
+    const resp = await fetch(`${API_URL}/sci-assignments/${agenceId}`, {
+      method:'POST',
+      headers:{'Authorization':`Bearer ${authToken}`,'Content-Type':'application/json'},
+      body: JSON.stringify({assignments: sciAssignments}),
+    });
+    if (resp.ok) { setSyncStatus(true); showToast('✅ SCI sauvegardées'); }
+    else throw new Error();
+  } catch {
+    setSyncStatus(false); showToast('⚠️ Sauvegarde locale uniquement', true);
+  }
+}
+
+// ════════════════════════════════════════
+//  RENDU TABLEAU SCI
+// ════════════════════════════════════════
+function renderDirigeant(gerants, index) {
+  if (!gerants || gerants.length <= index) return '<span class="no-data">—</span>';
+  const g = gerants[index];
+  const nom    = g.nom     || '—';
+  const qualite= g.qualite || '';
+  return `<div class="dir-cell">
+    <span class="dir-nom">${nom}</span>
+    ${qualite ? `<div class="dir-tooltip">${qualite}</div>` : ''}
+  </div>`;
+}
+
+function renderTableSci() {
+  document.getElementById('sci-tbody').innerHTML = allSci.map(renderRowSci).join('');
+  applyFiltresSci();
+}
+
+function renderRowSci(sci) {
+  const id      = sci.sci_siren || sci.parcelle;
+  const a       = sciAssignments[id] || {};
+  const statut  = a.statut     || 'À prospecter';
+  const conseil = a.conseiller || 'À attribuer';
+  const actif   = sci.sci_active === 'oui';
+  const zone    = sci.zone || '';
+
+  // Dirigeant 1 : qualité pour data-attr (filtrage)
+  const qual1 = (sci.gerants && sci.gerants[0]) ? (sci.gerants[0].qualite || '') : '';
+
+  const statOpts = STATUTS.map(s=>`<option value="${s}"${statut===s?' selected':''}>${s}</option>`).join('');
+  const consOpts = conseillers.map(c=>`<option value="${c}"${conseil===c?' selected':''}>${c||'—'}</option>`).join('');
+
+  const adresseNorm = (sci.adresse_bien||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+  const sciNomNorm  = (sci.sci_nom||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+
+  return `<tr
+    data-zone="${zone}"
+    data-actif="${sci.sci_active||'oui'}"
+    data-statut="${statut}"
+    data-conseiller="${conseil}"
+    data-qualite1="${qual1}"
+    data-search="${adresseNorm} ${sciNomNorm}">
+    <td><span class="badge-zone">${zone||'—'}</span></td>
+    <td class="td-sci-nom">
+      <strong>${sci.adresse_bien||'—'}</strong>
+    </td>
+    <td class="td-sci-nom">
+      <strong>${sci.sci_nom||'—'}</strong>
+      <small>${sci.sci_siren||''}</small>
+    </td>
+    <td style="font-size:11px;color:var(--text2);max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="${sci.siege_social||''}">
+      ${sci.siege_social||'<span class="no-data">—</span>'}
+    </td>
+    <td>${renderDirigeant(sci.gerants, 0)}</td>
+    <td>${renderDirigeant(sci.gerants, 1)}</td>
+    <td>${actif
+      ? '<span class="badge-sci-actif">✅ Active</span>'
+      : '<span class="badge-sci-inactif">❌ Inactive</span>'}</td>
+    <td><select class="statut-select" onchange="updateSciAssignment('${id}','statut',this.value)">${statOpts}</select></td>
+    <td><select class="conseiller-select" onchange="updateSciAssignment('${id}','conseiller',this.value)">${consOpts}</select></td>
+  </tr>`;
+}
+
+function updateSciAssignment(id, key, value) {
+  if (!sciAssignments[id]) sciAssignments[id] = {};
+  sciAssignments[id][key] = value;
+  const rows = document.querySelectorAll('#sci-tbody tr');
+  rows.forEach(tr => {
+    const sel = tr.querySelector(`select[onchange*="${id}"]`);
+    if (sel) tr.dataset[key === 'statut' ? 'statut' : 'conseiller'] = value;
+  });
+  scheduleAutoSaveSci();
+  applyFiltresSci();
+}
+
+// ════════════════════════════════════════
+//  FILTRES SCI
+// ════════════════════════════════════════
+function applyFiltresSci() {
+  const search    = document.getElementById('sci-search').value.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+  const zone      = document.getElementById('sci-filter-zone').value;
+  const actif     = document.getElementById('sci-filter-actif').value;
+  const statut    = document.getElementById('sci-filter-statut').value;
+  const conseiller= document.getElementById('sci-filter-conseiller').value;
+  const qualite   = document.getElementById('sci-filter-qualite').value;
+
+  let visible = 0;
+  document.querySelectorAll('#sci-tbody tr').forEach(row => {
+    let ok = true;
+    if (search     && !row.dataset.search.includes(search)) ok = false;
+    if (zone       && row.dataset.zone !== zone) ok = false;
+    if (actif      && row.dataset.actif !== actif) ok = false;
+    if (statut     && row.dataset.statut !== statut) ok = false;
+    if (conseiller && row.dataset.conseiller !== conseiller) ok = false;
+    if (qualite === 'Gérant'      && row.dataset.qualite1 !== 'Gérant') ok = false;
+    if (qualite === 'Liquidateur' && row.dataset.qualite1 === 'Liquidateur') ok = false;
+
+    row.style.display = ok ? '' : 'none';
+    if (ok) visible++;
+  });
+
+  document.getElementById('sci-count-badge').textContent = `${visible} SCI affichées`;
+  document.getElementById('sci-empty').style.display    = visible === 0 ? 'block' : 'none';
+  document.getElementById('table-sci').style.display    = visible === 0 ? 'none' : '';
+}
+
+function resetFiltresSci() {
+  ['sci-search','sci-filter-zone','sci-filter-actif','sci-filter-statut','sci-filter-conseiller','sci-filter-qualite']
+    .forEach(id => { const el = document.getElementById(id); if(el) el.value = ''; });
+  applyFiltresSci();
+}
+
+function sortTableSci(col) {
+  sciSortCurrent = sciSortCurrent.col === col
+    ? {col, dir: sciSortCurrent.dir === 'asc' ? 'desc' : 'asc'}
+    : {col, dir: 'asc'};
+
+  document.querySelectorAll('#table-sci th.sortable').forEach(th => th.classList.remove('asc','desc'));
+  document.querySelector(`#table-sci th[onclick="sortTableSci('${col}')"]`)?.classList.add(sciSortCurrent.dir);
+
+  const tbody = document.getElementById('sci-tbody');
+  const rows  = Array.from(tbody.querySelectorAll('tr'));
+  const val = row => {
+    switch(col) {
+      case 'zone':      return row.dataset.zone || '';
+      case 'adresse':   return row.querySelector('.td-sci-nom strong')?.textContent.trim().toLowerCase() || '';
+      case 'sci':       return row.querySelectorAll('.td-sci-nom strong')[1]?.textContent.trim().toLowerCase() || '';
+      case 'statut':    return row.dataset.statut || '';
+      case 'conseiller':return row.dataset.conseiller || '';
+      default:          return '';
+    }
+  };
+  rows.sort((a,b) => {
+    const dir = sciSortCurrent.dir === 'asc' ? 1 : -1;
+    return val(a).localeCompare(val(b), 'fr') * dir;
+  });
+  rows.forEach(r => tbody.appendChild(r));
+}
+
+// Filtres live SCI
+['sci-search','sci-filter-zone','sci-filter-actif','sci-filter-statut','sci-filter-conseiller','sci-filter-qualite']
+  .forEach(id => {
+    const el = document.getElementById(id); if (!el) return;
+    el.addEventListener('input', applyFiltresSci);
+    el.addEventListener('change', applyFiltresSci);
+  });
+
+// ════════════════════════════════════════
+//  SYNC STATUS & TOAST
 // ════════════════════════════════════════
 function setSyncStatus(ok) {
   document.getElementById('sync-dot').className   = 'sync-dot'+(ok?'':' err');
