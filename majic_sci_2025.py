@@ -100,58 +100,67 @@ def construire_adresse(row):
 
 def geocoder_ban_batch(adresses):
     """
-    Géocode une liste d'adresses en une seule requête POST CSV vers l'API BAN batch.
+    Géocode une liste d'adresses via l'API BAN batch.
+    Découpe en lots de 500 pour éviter les erreurs 502.
     Retourne trois listes parallèles : lons, lats, zones.
     """
     import io
-    # Construire le CSV en mémoire
-    buf = io.StringIO()
-    buf.write("adresse\n")
-    for a in adresses:
-        buf.write(a.replace('"', '') + "\n")
-    csv_bytes = buf.getvalue().encode("utf-8")
-
-    # Requête multipart
-    boundary = "----BAN_BATCH_BOUNDARY"
-    body = (
-        f"--{boundary}\r\n"
-        f'Content-Disposition: form-data; name="data"; filename="adresses.csv"\r\n'
-        f"Content-Type: text/csv\r\n\r\n"
-    ).encode() + csv_bytes + f"\r\n--{boundary}--\r\n".encode()
-
-    req = urllib.request.Request(
-        f"{BAN_URL}/csv/",
-        data=body,
-        headers={
-            "Content-Type": f"multipart/form-data; boundary={boundary}",
-            "User-Agent": "DPE-Prospector/1.0",
-        },
-        method="POST"
-    )
-    with urllib.request.urlopen(req, timeout=120) as r:
-        result_csv = r.read().decode("utf-8")
-
-    # Parser la réponse CSV
     import csv as csvmod
-    reader = csvmod.DictReader(io.StringIO(result_csv))
-    lons, lats, zones_col = [], [], []
-    for row in reader:
-        try:
-            lon = float(row.get("longitude") or row.get("result_longitude") or 0)
-            lat = float(row.get("latitude") or row.get("result_latitude") or 0)
-            score = float(row.get("result_score") or 0)
-        except (ValueError, TypeError):
-            lon = lat = 0.0
-            score = 0.0
-        if score > 0.4 and lon != 0:
-            zone = dans_zone(lon, lat)
-        else:
-            lon = lat = None
-            zone = None
-        lons.append(lon)
-        lats.append(lat)
-        zones_col.append(zone)
-    return lons, lats, zones_col
+
+    TAILLE_LOT = 500
+    lons_all, lats_all, zones_all = [], [], []
+
+    for debut in range(0, len(adresses), TAILLE_LOT):
+        lot = adresses[debut:debut + TAILLE_LOT]
+        print(f"     Lot {debut//TAILLE_LOT + 1}/{-(-len(adresses)//TAILLE_LOT)} ({len(lot)} adresses)...")
+
+        # Construire le CSV du lot
+        buf = io.StringIO()
+        buf.write("adresse\n")
+        for a in lot:
+            buf.write(a.replace('"', '') + "\n")
+        csv_bytes = buf.getvalue().encode("utf-8")
+
+        # Requête multipart
+        boundary = "----BAN_BATCH_BOUNDARY"
+        body = (
+            f"--{boundary}\r\n"
+            f'Content-Disposition: form-data; name="data"; filename="adresses.csv"\r\n'
+            f"Content-Type: text/csv\r\n\r\n"
+        ).encode() + csv_bytes + f"\r\n--{boundary}--\r\n".encode()
+
+        req = urllib.request.Request(
+            f"{BAN_URL}/csv/",
+            data=body,
+            headers={
+                "Content-Type": f"multipart/form-data; boundary={boundary}",
+                "User-Agent": "DPE-Prospector/1.0",
+            },
+            method="POST"
+        )
+        with urllib.request.urlopen(req, timeout=120) as r:
+            result_csv = r.read().decode("utf-8")
+
+        # Parser la réponse CSV
+        reader = csvmod.DictReader(io.StringIO(result_csv))
+        for row in reader:
+            try:
+                lon   = float(row.get("longitude") or row.get("result_longitude") or 0)
+                lat   = float(row.get("latitude")  or row.get("result_latitude")  or 0)
+                score = float(row.get("result_score") or 0)
+            except (ValueError, TypeError):
+                lon = lat = 0.0
+                score = 0.0
+            if score > 0.4 and lon != 0:
+                zone = dans_zone(lon, lat)
+            else:
+                lon = lat = None
+                zone = None
+            lons_all.append(lon)
+            lats_all.append(lat)
+            zones_all.append(zone)
+
+    return lons_all, lats_all, zones_all
 
 def dans_zone(lon, lat):
     if lon is None:
