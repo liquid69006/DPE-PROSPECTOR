@@ -9,6 +9,8 @@
  *   POST /reset-password               → { token, newPassword }
  *   GET  /assignments/:agence          → { assignments }
  *   POST /assignments/:agence          → { assignments }
+ *   GET  /sci-assignments/:agence      → { assignments }
+ *   POST /sci-assignments/:agence      → { assignments }
  *   GET  /conseillers/:agence          → { conseillers }
  *   POST /conseillers/:agence          → { conseillers }
  *   POST /change-password/:agence      → { oldPassword, newPassword }
@@ -361,6 +363,26 @@ export default {
         let body; try { body = await request.json(); } catch { return err("JSON invalide"); }
         if (typeof body.assignments !== "object") return err("assignments doit être un objet");
         await env.DPE_KV.put(`assignments:${agenceId}`, JSON.stringify(body.assignments));
+        return json({ ok: true, count: Object.keys(body.assignments).length });
+      }
+      return err("Méthode non supportée", 405);
+    }
+
+    // ── /sci-assignments/:agence ──────────────────────
+    const sciAssignMatch = path.match(/^\/sci-assignments\/([a-z0-9-]+)$/);
+    if (sciAssignMatch) {
+      const agenceId = sciAssignMatch[1];
+      const [, authErr] = await requireAuth(agenceId);
+      if (authErr) return authErr;
+
+      if (method === "GET") {
+        const raw = await env.DPE_KV.get(`sci-assignments:${agenceId}`);
+        return json({ assignments: raw ? JSON.parse(raw) : {} });
+      }
+      if (method === "POST") {
+        let body; try { body = await request.json(); } catch { return err("JSON invalide"); }
+        if (typeof body.assignments !== "object") return err("assignments doit être un objet");
+        await env.DPE_KV.put(`sci-assignments:${agenceId}`, JSON.stringify(body.assignments));
         return json({ ok: true, count: Object.keys(body.assignments).length });
       }
       return err("Méthode non supportée", 405);
