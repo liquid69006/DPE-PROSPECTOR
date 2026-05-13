@@ -412,6 +412,34 @@ export default {
       return err("Méthode non supportée", 405);
     }
 
+    // ── /data/:agence/:file ── proxy GitHub Raw (évite CSP sandbox) ──
+    const dataMatch = path.match(/^\/data\/([a-z0-9-]+)\/([a-z0-9._-]+\.json)$/);
+    if (dataMatch && method === "GET") {
+      const agenceId = dataMatch[1];
+      const fileName = dataMatch[2];
+      const cfg = AGENCES_CONFIG[agenceId];
+      if (!cfg) return err("Agence inconnue", 404);
+
+      // Construire le chemin GitHub depuis dataJsonPath de l'agence
+      const basePath = cfg.dataJsonPath.replace(/[^/]+\.json$/, "");
+      const githubUrl = `https://raw.githubusercontent.com/liquid69006/DPE-PROSPECTOR/main/${basePath}${fileName}`;
+
+      try {
+        const resp = await fetch(githubUrl);
+        if (!resp.ok) return err("Fichier introuvable", 404);
+        const text = await resp.text();
+        return new Response(text, {
+          headers: {
+            ...CORS,
+            "Content-Type": "application/json; charset=utf-8",
+            "Cache-Control": "no-cache",
+          },
+        });
+      } catch {
+        return err("Erreur proxy GitHub", 502);
+      }
+    }
+
     return err("Route inconnue", 404);
   },
 };
