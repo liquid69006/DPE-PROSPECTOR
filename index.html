@@ -371,7 +371,7 @@ td{padding:11px 14px;vertical-align:middle;}
 
   <header>
     <div class="header-inner">
-      <div class="header-logo">DPE <span>Prospector</span></div>
+      <div class="header-logo" id="header-logo"><span id="logo-prefix">DPE</span> <span id="logo-suffix">Prospector</span></div>
       <div class="header-agence" id="header-agence-name">—</div>
 
       <!-- Switch DPE / SCI — visible uniquement pour Dauphiné -->
@@ -1112,7 +1112,10 @@ function switchMode(mode) {
   document.getElementById('btn-mode-dpe').className = 'mode-btn' + (isDpe ? ' active-dpe' : '');
   document.getElementById('btn-mode-sci').className = 'mode-btn' + (!isDpe ? ' active-sci' : '');
 
-  // Changer couleur header
+  document.getElementById('logo-prefix').textContent = isDpe ? 'DPE' : 'SCI';
+  document.getElementById('logo-suffix').textContent = 'Prospector';
+  document.getElementById('logo-prefix').style.color = isDpe ? 'var(--accent2)' : '#ea580c';
+  document.getElementById('logo-suffix').style.color = isDpe ? '' : '#ea580c';
   if (!isDpe) {
     document.documentElement.style.setProperty('--accent',  '#ea580c');
     document.documentElement.style.setProperty('--accent2', '#f97316');
