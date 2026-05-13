@@ -496,7 +496,7 @@ td{padding:11px 14px;vertical-align:middle;}
         <option value="Liquidateur" data-exclude="true">Exclure liquidateurs</option>
       </select>
       <button class="btn-reset" onclick="resetFiltresSci()">✕ Réinitialiser</button>
-      <button class="btn-reset" id="btn-courrier" onclick="ouvrirModalCourrier()" style="border-color:var(--orange);color:var(--orange);">📨 Courrier</button>
+      <button class="btn-reset" id="btn-courrier" onclick="ouvrirModalCourrier()" style="border-color:#BEAF87;color:#BEAF87;">📨 Courrier</button>
       <span class="count-badge" id="sci-count-badge"></span>
     </div>
   </div>
@@ -1155,8 +1155,8 @@ function switchMode(mode) {
 
   // Changer couleur header
   if (!isDpe) {
-    document.documentElement.style.setProperty('--accent',  '#ea580c');
-    document.documentElement.style.setProperty('--accent2', '#f97316');
+    document.documentElement.style.setProperty('--accent',  '#BEAF87');
+    document.documentElement.style.setProperty('--accent2', '#A19276');
   } else {
     document.documentElement.style.setProperty('--accent',  agenceConfig?.couleur || '#1d4ed8');
     document.documentElement.style.setProperty('--accent2', agenceConfig?.couleur || '#3b82f6');
@@ -1418,14 +1418,14 @@ function templateEstimationC21(sci_nom, adresse, cp, ville, date, dirigeant) {
   ];
   const etapesHtml = etapes.map((txt, i) =>
     `<table style="width:100%;border-collapse:collapse;margin-bottom:2mm;border:1px solid #ccc;">`+
-    `<tr><td style="width:10mm;background:#8b6914;color:#fff;font-weight:bold;font-size:13pt;text-align:center;vertical-align:middle;padding:3mm;">${i+1}</td>`+
+    `<tr><td style="width:10mm;background:#D4C9A8;color:#fff;font-weight:bold;font-size:13pt;text-align:center;vertical-align:middle;padding:3mm;">${i+1}</td>`+
     `<td style="padding:3mm 4mm;font-size:9pt;vertical-align:middle;line-height:1.4;">${txt}</td></tr></table>`
   ).join('');
 
   return `<div style="position:relative;width:210mm;min-height:297mm;padding:10mm 18mm 20mm 20mm;font-family:Arial,sans-serif;font-size:10.5pt;color:#222;box-sizing:border-box;">`
   + `<table style="width:100%;border-collapse:collapse;border:1px solid #aaa;margin-bottom:0;"><tr>`
   + `<td style="width:28mm;padding:3mm;vertical-align:middle;border-right:1px solid #aaa;"><img src="${LOGO_C21}" style="width:26mm;height:auto;display:block;"></td>`
-  + `<td style="padding:3mm 4mm;vertical-align:top;"><div style="font-size:13pt;font-weight:bold;">CENTURY <span style="color:#c8a96e;">21</span></div>`
+  + `<td style="padding:3mm 4mm;vertical-align:top;"><div style="font-size:13pt;font-weight:bold;">CENTURY <span style="color:#FDB913;">21</span></div>`
   + `<div style="font-weight:bold;font-size:10.5pt;">Dauphiné-Lacassagne</div>`
   + `<div style="font-size:8.5pt;color:#555;margin-top:2mm;line-height:1.6;">224 rue Paul Bert — 69003 LYON<br>04 26 78 51 39<br>www.century21-dauphine-lacassagne-lyon.com</div>`
   + `</td></tr></table>`
@@ -1436,8 +1436,8 @@ function templateEstimationC21(sci_nom, adresse, cp, ville, date, dirigeant) {
   + `<p style="margin:0 0 5mm 0;">À l'attention de Monsieur ou Madame <strong>${dirigeant},</strong></p>`
   + `<p style="margin:0 0 4mm 0;text-align:justify;line-height:1.5;">Le marché immobilier connaît depuis plusieurs mois de profondes évolutions : les variations des taux de crédit ont sensiblement affecté les prix dans de nombreux secteurs — y compris à Lyon et dans votre quartier.</p>`
   + `<p style="margin:0 0 6mm 0;text-align:justify;line-height:1.5;">Dans ce contexte, connaître la valeur réelle de votre bien est une information précieuse, que vous envisagiez une cession à court terme ou souhaitiez simplement disposer d'une évaluation actualisée de votre patrimoine.</p>`
-  + `<table style="width:100%;border-collapse:collapse;margin:0 0 5mm 0;"><tr><td style="background:#b5863a;padding:3mm 6mm 1mm 6mm;text-align:center;"><div style="color:#fff;font-weight:bold;font-size:12pt;">COMBIEN VAUT VOTRE BIEN ?</div></td></tr>`
-  + `<tr><td style="background:#c9973f;padding:1mm 6mm 3mm 6mm;text-align:center;"><div style="color:#fff;font-size:9.5pt;">Estimer, c'est notre métier. Demandez-nous une estimation professionnelle — offerte et sans engagement.</div></td></tr></table>`
+  + `<table style="width:100%;border-collapse:collapse;margin:0 0 5mm 0;"><tr><td style="background:#BEAF87;padding:3mm 6mm 1mm 6mm;text-align:center;"><div style="color:#fff;font-weight:bold;font-size:12pt;">COMBIEN VAUT VOTRE BIEN ?</div></td></tr>`
+  + `<tr><td style="background:#D4C9A8;padding:1mm 6mm 3mm 6mm;text-align:center;"><div style="color:#fff;font-size:9.5pt;">Estimer, c'est notre métier. Demandez-nous une estimation professionnelle — offerte et sans engagement.</div></td></tr></table>`
   + `<p style="font-weight:bold;margin:4mm 0 2mm 0;">Notre démarche en 4 étapes</p>`
   + etapesHtml
   + `<p style="margin:5mm 0 10mm 0;line-height:1.5;">Dans l'attente de pouvoir vous rendre ce service, je vous adresse mes cordiales salutations.</p>`
@@ -1512,8 +1512,9 @@ function genererCourrier() {
   const pages = liste.map(sci => {
     const siege  = parseSiegeSocial(sci.siege_social);
     const gerant = getPremierGerant(sci.gerants) || '—';
+    const nomSci = /^SCI\b/i.test(sci.sci_nom || '') ? sci.sci_nom : 'SCI ' + sci.sci_nom;
     return templateEstimationC21(
-      escHtml(sci.sci_nom || ''),
+      escHtml(nomSci || ''),
       escHtml(siege.adresse),
       escHtml(siege.cp),
       escHtml(siege.ville),
