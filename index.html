@@ -496,7 +496,7 @@ td{padding:11px 14px;vertical-align:middle;}
         <option value="Liquidateur" data-exclude="true">Exclure liquidateurs</option>
       </select>
       <button class="btn-reset" onclick="resetFiltresSci()">✕ Réinitialiser</button>
-      <button class="btn-primary" id="btn-courrier" onclick="ouvrirModalCourrier()" style="margin-left:8px;">📨 Envoyer un courrier</button>
+      <button class="btn-reset" id="btn-courrier" onclick="ouvrirModalCourrier()" style="border-color:var(--orange);color:var(--orange);">📨 Courrier</button>
       <span class="count-badge" id="sci-count-badge"></span>
     </div>
   </div>
@@ -534,19 +534,19 @@ td{padding:11px 14px;vertical-align:middle;}
     <div style="margin:16px 0;">
       <p style="font-size:13px;color:var(--text2);margin-bottom:12px;">Sélectionnez les SCI destinataires :</p>
 
-      <label style="display:flex;align-items:center;gap:8px;margin-bottom:10px;cursor:pointer;">
+      <label style="display:grid;grid-template-columns:20px 1fr;align-items:center;gap:8px;margin-bottom:10px;cursor:pointer;">
         <input type="checkbox" id="courrier-exclure-inactives" checked>
         <span>Exclure les SCI inactives</span>
       </label>
-      <label style="display:flex;align-items:center;gap:8px;margin-bottom:10px;cursor:pointer;">
+      <label style="display:grid;grid-template-columns:20px 1fr;align-items:center;gap:8px;margin-bottom:10px;cursor:pointer;">
         <input type="checkbox" id="courrier-exclure-liquidateur" checked>
         <span>Exclure les SCI avec liquidateur</span>
       </label>
-      <label style="display:flex;align-items:center;gap:8px;margin-bottom:10px;cursor:pointer;">
+      <label style="display:grid;grid-template-columns:20px 1fr;align-items:center;gap:8px;margin-bottom:10px;cursor:pointer;">
         <input type="checkbox" id="courrier-exclure-sans-gerant" checked>
         <span>Exclure les SCI sans gérant connu</span>
       </label>
-      <label style="display:flex;align-items:center;gap:8px;margin-bottom:10px;cursor:pointer;">
+      <label style="display:grid;grid-template-columns:20px 1fr;align-items:center;gap:8px;margin-bottom:10px;cursor:pointer;">
         <input type="checkbox" id="courrier-seulement-visibles">
         <span>Uniquement les SCI actuellement affichées (filtrées)</span>
       </label>
@@ -1520,11 +1520,17 @@ function genererCourrier() {
   if (!liste.length) { showToast('Aucune SCI sélectionnée', true); return; }
   if (!courrierDocxHtml) { showToast('Chargez d\'abord un modèle Word', true); return; }
 
+  const MAX = 200;
+  if (liste.length > MAX) {
+    const ok = confirm(`⚠️ Vous allez générer ${liste.length} courriers.\n\nCela peut prendre du temps et ralentir votre navigateur.\n\nContinuer quand même ?`);
+    if (!ok) return;
+  }
+
   const today = new Date().toLocaleDateString('fr-FR', {day:'numeric', month:'long', year:'numeric'});
 
   const pages = liste.map(sci => {
-    const siege   = parseSiegeSocial(sci.siege_social);
-    const gerant  = getPremierGerant(sci.gerants) || '—';
+    const siege  = parseSiegeSocial(sci.siege_social);
+    const gerant = getPremierGerant(sci.gerants) || '—';
     let html = courrierDocxHtml;
     html = html.replace(/\{\{SCI_NOM\}\}/g,    escHtml(sci.sci_nom || ''));
     html = html.replace(/\{\{CIVILITE\}\}/g,   'Monsieur ou Madame');
@@ -1538,9 +1544,13 @@ function genererCourrier() {
   });
 
   const win = window.open('', '_blank');
+  if (!win) {
+    showToast('⚠️ Popup bloquée — autorisez les popups pour ce site', true);
+    return;
+  }
   win.document.write(`<!DOCTYPE html><html><head>
     <meta charset="utf-8">
-    <title>Courriers SCI — ${agenceConfig?.nom || ''}</title>
+    <title>Courriers SCI — ${escHtml(agenceConfig?.nom || '')}</title>
     <style>
       @page { size: A4; margin: 0; }
       * { box-sizing: border-box; }
@@ -1555,14 +1565,14 @@ function genererCourrier() {
       table { width: 100%; border-collapse: collapse; }
       td, th { padding: 4px 8px; }
       p { margin: 0 0 8px 0; line-height: 1.5; }
-      img { max-width: 100%; }
+      img { max-width: 100%; height: auto; }
       @media print {
         body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
       }
     </style>
   </head><body>
     ${pages.join('\n')}
-    <script>window.onload=()=>{window.print();}<\/script>
+    <script>window.onload = () => { setTimeout(() => window.print(), 800); }<\/script>
   </body></html>`);
   win.document.close();
 
