@@ -742,6 +742,7 @@ async function initDashboard(token, agence, config) {
   if (AGENCES_SCI.includes(agence)) {
     document.getElementById('mode-switch').style.display = 'flex';
   }
+  switchMode('dpe'); // forcer état initial
 
   await Promise.all([
     loadDpeData(config.dataJsonPath),
