@@ -485,9 +485,9 @@ td{padding:11px 14px;vertical-align:middle;}
       </select>
       <select id="sci-filter-statut">
         <option value="">Tous statuts</option>
-        <option>À prospecter</option><option>Contacté</option>
-        <option>RDV pris</option><option>Mandat signé</option>
-        <option>Client agence</option><option>Sans suite</option>
+        <option>À prospecter</option>
+        <option>Déjà client</option>
+        <option>Ne plus contacter</option>
       </select>
       <select id="sci-filter-conseiller"><option value="">Tous conseillers</option></select>
       <select id="sci-filter-qualite">
@@ -545,6 +545,14 @@ td{padding:11px 14px;vertical-align:middle;}
       <label style="display:grid;grid-template-columns:20px 1fr;align-items:center;gap:8px;margin-bottom:10px;cursor:pointer;">
         <input type="checkbox" id="courrier-exclure-sans-gerant" checked>
         <span>Exclure les SCI sans gérant connu</span>
+      </label>
+      <label style="display:grid;grid-template-columns:20px 1fr;align-items:center;gap:8px;margin-bottom:10px;cursor:pointer;">
+        <input type="checkbox" id="courrier-exclure-client" checked>
+        <span>Exclure les SCI "Déjà client"</span>
+      </label>
+      <label style="display:grid;grid-template-columns:20px 1fr;align-items:center;gap:8px;margin-bottom:10px;cursor:pointer;">
+        <input type="checkbox" id="courrier-exclure-npc" checked>
+        <span>Exclure les SCI "Ne plus contacter"</span>
       </label>
       <label style="display:grid;grid-template-columns:20px 1fr;align-items:center;gap:8px;margin-bottom:10px;cursor:pointer;">
         <input type="checkbox" id="courrier-seulement-visibles">
@@ -620,6 +628,7 @@ const GITHUB_RAW = 'https://raw.githubusercontent.com/liquid69006/dpe-prospector
 const COULEURS_DPE = {A:'#009F6B',B:'#51B748',C:'#CADD43',D:'#F5E800',E:'#F0A800',F:'#E4581B',G:'#D7221F'};
 const TEXTE_DPE   = {C:'#111',D:'#111'};
 const STATUTS     = ['À prospecter','Contacté','RDV pris','Mandat signé','Client agence','Sans suite'];
+const STATUTS_SCI = ['À prospecter','Déjà client','Ne plus contacter'];
 
 // ── État ──────────────────────────────────────────────────────
 let authToken    = null;
@@ -789,7 +798,9 @@ async function initDashboard(token, agence, config) {
     loadDpeData(config.dataJsonPath),
     loadAssignments(),
     loadConseillers(),
-    ...(AGENCES_SCI.includes(agence) ? [loadSciData(), loadSciAssignments()] : []),
+    ...(AGENCES_SCI.includes(agence) ? [
+      loadSciAssignments().then(() => loadSciData())
+    ] : []),
   ]);
   renderTable();
 }
@@ -1264,7 +1275,7 @@ function renderRowSci(sci) {
   // Dirigeant 1 : qualité pour data-attr (filtrage)
   const qual1 = (sci.gerants && sci.gerants[0]) ? (sci.gerants[0].qualite || '') : '';
 
-  const statOpts = STATUTS.map(s=>`<option value="${s}"${statut===s?' selected':''}>${s}</option>`).join('');
+  const statOpts = STATUTS_SCI.map(s=>`<option value="${s}"${statut===s?' selected':''}>${s}</option>`).join('');
   const consOpts = conseillers.map(c=>`<option value="${c}"${conseil===c?' selected':''}>${c||'—'}</option>`).join('');
 
   const adresseNorm = (sci.adresse_bien||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
@@ -1283,7 +1294,7 @@ function renderRowSci(sci) {
       <strong>${sci.adresse_bien||'—'}</strong>
     </td>
     <td class="td-sci-nom">
-      <strong>${sci.sci_nom||'—'}</strong>
+      <a href="${'https://www.pappers.fr/entreprise/' + (sci.sci_nom||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'') + (sci.sci_siren ? '-' + sci.sci_siren : '')}" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:2px;cursor:pointer;">${sci.sci_nom||'—'}</a>
       <small>${sci.sci_siren||''}</small>
     </td>
     <td style="font-size:11px;color:var(--text2);max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="${sci.siege_social||''}">
@@ -1442,7 +1453,7 @@ function templateEstimationC21(sci_nom, adresse, cp, ville, date, dirigeant) {
   + `<div style="text-align:right;margin-bottom:7mm;line-height:1.7;"><strong>${sci_nom}</strong><br>${adresse}<br>${cp} ${ville}</div>`
   + `<div style="text-align:right;font-style:italic;margin-bottom:7mm;">Lyon, le ${date}</div>`
   + `<hr style="border:none;border-top:1px solid #bbb;margin:0 0 5mm 0;">`
-  + `<p style="margin:0 0 5mm 0;">À l'attention de Monsieur ou Madame <strong>${dirigeant},</strong></p>`
+  + `<p style="margin:0 0 5mm 0;">À l'attention de Monsieur ou Madame <strong>${dirigeant === 'le dirigeant' ? 'le Dirigeant' : dirigeant},</strong></p>`
   + `<p style="margin:0 0 4mm 0;text-align:justify;line-height:1.5;">Le marché immobilier connaît depuis plusieurs mois de profondes évolutions : les variations des taux de crédit ont sensiblement affecté les prix dans de nombreux secteurs — y compris à Lyon et dans votre quartier.</p>`
   + `<p style="margin:0 0 6mm 0;text-align:justify;line-height:1.5;">Dans ce contexte, connaître la valeur réelle de votre bien est une information précieuse, que vous envisagiez une cession à court terme ou souhaitiez simplement disposer d'une évaluation actualisée de votre patrimoine.</p>`
   + `<table style="width:100%;border-collapse:collapse;margin:0 0 5mm 0;"><tr><td style="background:#BEAF87;padding:3mm 6mm 1mm 6mm;text-align:center;"><div style="color:#fff;font-weight:bold;font-size:12pt;">COMBIEN VAUT VOTRE BIEN ?</div></td></tr>`
@@ -1477,6 +1488,8 @@ function filtrerSciPourCourrier() {
   const exclInactives     = document.getElementById('courrier-exclure-inactives').checked;
   const exclLiquidateur   = document.getElementById('courrier-exclure-liquidateur').checked;
   const exclSansGerant    = document.getElementById('courrier-exclure-sans-gerant').checked;
+  const exclClient        = document.getElementById('courrier-exclure-client').checked;
+  const exclNpc           = document.getElementById('courrier-exclure-npc').checked;
   const seulementVisibles = document.getElementById('courrier-seulement-visibles').checked;
   let liste = seulementVisibles
     ? [...document.querySelectorAll('#sci-tbody tr')]
@@ -1487,6 +1500,15 @@ function filtrerSciPourCourrier() {
   if (exclInactives)   liste = liste.filter(s => s.sci_active === 'oui');
   if (exclLiquidateur) liste = liste.filter(s => !aLiquidateur(s.gerants));
   if (exclSansGerant)  liste = liste.filter(s => getPremierGerant(s.gerants));
+  if (exclClient || exclNpc) {
+    liste = liste.filter(s => {
+      const id = s.sci_siren || s.parcelle;
+      const statut = (sciAssignments[id] || {}).statut || 'À prospecter';
+      if (exclClient && statut === 'Déjà client') return false;
+      if (exclNpc && statut === 'Ne plus contacter') return false;
+      return true;
+    });
+  }
   return liste;
 }
 
@@ -1499,7 +1521,7 @@ function majCompteCourrier() {
 function ouvrirModalCourrier() {
   majCompteCourrier();
   ['courrier-exclure-inactives','courrier-exclure-liquidateur',
-   'courrier-exclure-sans-gerant','courrier-seulement-visibles'].forEach(id => {
+   'courrier-exclure-sans-gerant','courrier-exclure-client','courrier-exclure-npc','courrier-seulement-visibles'].forEach(id => {
     document.getElementById(id).onchange = majCompteCourrier;
   });
   document.getElementById('modal-courrier').classList.add('open');
@@ -1520,7 +1542,7 @@ function genererCourrier() {
   const today = new Date().toLocaleDateString('fr-FR', {day:'numeric', month:'long', year:'numeric'});
   const pages = liste.map(sci => {
     const siege  = parseSiegeSocial(sci.siege_social);
-    const gerant = getPremierGerant(sci.gerants) || '—';
+    const gerant = getPremierGerant(sci.gerants) || 'le dirigeant';
     const nomSci = /^SCI\b/i.test(sci.sci_nom || '') ? sci.sci_nom : 'SCI ' + sci.sci_nom;
     return templateEstimationC21(
       escHtml(nomSci || ''),
