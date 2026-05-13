@@ -757,10 +757,7 @@ async function initDashboard(token, agence, config) {
 // ════════════════════════════════════════
 async function loadDpeData(path) {
   try {
-    const fileName = path.replace('data/', '');
-    const resp = await fetch(`${API_URL}/data/${agenceId}/${fileName}`, {
-      headers: {'Authorization': `Bearer ${authToken}`},
-    });
+    const resp = await fetch(`${GITHUB_RAW}/${path}?t=${Date.now()}`);
     if (!resp.ok) throw new Error();
     const data = await resp.json();
     allDpe = data.dpe || [];
