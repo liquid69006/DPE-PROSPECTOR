@@ -554,20 +554,9 @@ td{padding:11px 14px;vertical-align:middle;}
 
     <div id="courrier-sci-count" style="font-size:13px;font-weight:600;color:var(--accent);margin-bottom:16px;"></div>
 
-    <div style="margin-bottom:16px;">
-      <p style="font-size:13px;color:var(--text2);margin-bottom:8px;">Chargez votre modèle de courrier Word (.docx) :</p>
-      <input type="file" id="courrier-file-input" accept=".docx"
-        style="font-size:13px;padding:6px;border:1px dashed var(--border);border-radius:6px;width:100%;box-sizing:border-box;cursor:pointer;">
-      <p style="font-size:11px;color:var(--text2);margin-top:6px;">
-        Variables disponibles : <code>{{SCI_NOM}}</code> <code>{{DIRIGEANT}}</code> <code>{{ADRESSE}}</code> <code>{{CODE_POSTAL}}</code> <code>{{VILLE}}</code> <code>{{DATE}}</code> <code>{{CIVILITE}}</code>
-      </p>
-    </div>
-
-    <div id="courrier-status" style="font-size:13px;color:var(--text2);margin-bottom:12px;min-height:20px;"></div>
-
     <div style="display:flex;gap:10px;justify-content:flex-end;">
       <button class="btn-reset" onclick="fermerModalCourrier()">Annuler</button>
-      <button class="btn-primary" id="btn-generer-courrier" onclick="genererCourrier()" disabled>
+      <button class="btn-primary" id="btn-generer-courrier" onclick="genererCourrier()">
         🖨️ Générer le PDF
       </button>
     </div>
@@ -1416,17 +1405,49 @@ function showToast(msg, warn=false) {
 
 
 // ════════════════════════════════════════
-//  COURRIER — VARIABLES GLOBALES
+//  COURRIER — TEMPLATE & LOGIQUE
 // ════════════════════════════════════════
-let courrierDocxBase64 = null;
-let courrierDocxHtml   = null;
+const LOGO_C21 = 'data:image/png;base64,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';
 
-// ════════════════════════════════════════
-//  COURRIER — UTILITAIRES
-// ════════════════════════════════════════
+function templateEstimationC21(sci_nom, adresse, cp, ville, date, dirigeant) {
+  const etapes = [
+    "Contactez votre agence CENTURY 21 Dauphiné-Lacassagne au 04 26 78 51 39 pour convenir d'un rendez-vous à votre convenance.",
+    "Un conseiller spécialiste de votre secteur se déplace chez vous pour recueillir l'ensemble des caractéristiques de votre immeuble et les spécificités de votre bien.",
+    "Nous réalisons une Analyse Comparative de Marché® prenant en compte les ventes récentes, les biens en vente et les tendances de prix dans votre secteur.",
+    "Vous recevez les résultats de cette analyse sous 48 heures. Je m'y engage personnellement."
+  ];
+  const etapesHtml = etapes.map((txt, i) =>
+    `<table style="width:100%;border-collapse:collapse;margin-bottom:2mm;border:1px solid #ccc;">`+
+    `<tr><td style="width:10mm;background:#8b6914;color:#fff;font-weight:bold;font-size:13pt;text-align:center;vertical-align:middle;padding:3mm;">${i+1}</td>`+
+    `<td style="padding:3mm 4mm;font-size:9pt;vertical-align:middle;line-height:1.4;">${txt}</td></tr></table>`
+  ).join('');
+
+  return `<div style="position:relative;width:210mm;min-height:297mm;padding:10mm 18mm 20mm 20mm;font-family:Arial,sans-serif;font-size:10.5pt;color:#222;box-sizing:border-box;">`
+  + `<table style="width:100%;border-collapse:collapse;border:1px solid #aaa;margin-bottom:0;"><tr>`
+  + `<td style="width:28mm;padding:3mm;vertical-align:middle;border-right:1px solid #aaa;"><img src="${LOGO_C21}" style="width:26mm;height:auto;display:block;"></td>`
+  + `<td style="padding:3mm 4mm;vertical-align:top;"><div style="font-size:13pt;font-weight:bold;">CENTURY <span style="color:#c8a96e;">21</span></div>`
+  + `<div style="font-weight:bold;font-size:10.5pt;">Dauphiné-Lacassagne</div>`
+  + `<div style="font-size:8.5pt;color:#555;margin-top:2mm;line-height:1.6;">224 rue Paul Bert — 69003 LYON<br>04 26 78 51 39<br>www.century21-dauphine-lacassagne-lyon.com</div>`
+  + `</td></tr></table>`
+  + `<hr style="border:none;border-top:1px solid #bbb;margin:5mm 0 7mm 0;">`
+  + `<div style="text-align:right;margin-bottom:7mm;line-height:1.7;"><strong>${sci_nom}</strong><br>${adresse}<br>${cp} ${ville}</div>`
+  + `<div style="text-align:right;font-style:italic;margin-bottom:7mm;">Lyon, le ${date}</div>`
+  + `<hr style="border:none;border-top:1px solid #bbb;margin:0 0 5mm 0;">`
+  + `<p style="margin:0 0 5mm 0;">À l'attention de Monsieur ou Madame <strong>${dirigeant},</strong></p>`
+  + `<p style="margin:0 0 4mm 0;text-align:justify;line-height:1.5;">Le marché immobilier connaît depuis plusieurs mois de profondes évolutions : les variations des taux de crédit ont sensiblement affecté les prix dans de nombreux secteurs — y compris à Lyon et dans votre quartier.</p>`
+  + `<p style="margin:0 0 6mm 0;text-align:justify;line-height:1.5;">Dans ce contexte, connaître la valeur réelle de votre bien est une information précieuse, que vous envisagiez une cession à court terme ou souhaitiez simplement disposer d'une évaluation actualisée de votre patrimoine.</p>`
+  + `<table style="width:100%;border-collapse:collapse;margin:0 0 5mm 0;"><tr><td style="background:#b5863a;padding:3mm 6mm 1mm 6mm;text-align:center;"><div style="color:#fff;font-weight:bold;font-size:12pt;">COMBIEN VAUT VOTRE BIEN ?</div></td></tr>`
+  + `<tr><td style="background:#c9973f;padding:1mm 6mm 3mm 6mm;text-align:center;"><div style="color:#fff;font-size:9.5pt;">Estimer, c'est notre métier. Demandez-nous une estimation professionnelle — offerte et sans engagement.</div></td></tr></table>`
+  + `<p style="font-weight:bold;margin:4mm 0 2mm 0;">Notre démarche en 4 étapes</p>`
+  + etapesHtml
+  + `<p style="margin:5mm 0 10mm 0;line-height:1.5;">Dans l'attente de pouvoir vous rendre ce service, je vous adresse mes cordiales salutations.</p>`
+  + `<div style="text-align:right;"><strong>Yann BUFFERNE</strong><br>Directeur</div>`
+  + `<div style="position:absolute;bottom:6mm;left:20mm;right:18mm;border-top:1px solid #ccc;padding-top:2mm;text-align:center;font-size:7.5pt;color:#999;">CENTURY 21 Dauphiné-Lacassagne &nbsp;|&nbsp; 224 rue Paul Bert, 69003 Lyon &nbsp;|&nbsp; 04 26 78 51 39</div>`
+  + `</div>`;
+}
+
 function parseSiegeSocial(siege) {
   if (!siege) return { adresse: '', cp: '', ville: '' };
-  // Format : "ADRESSE CP VILLE" — CP = 5 chiffres
   const m = siege.match(/^(.*?)\s+(\d{5})\s+(.+)$/);
   if (m) return { adresse: m[1].trim(), cp: m[2], ville: m[3].trim() };
   return { adresse: siege, cp: '', ville: '' };
@@ -1434,7 +1455,6 @@ function parseSiegeSocial(siege) {
 
 function getPremierGerant(gerants) {
   if (!gerants || gerants.length === 0) return null;
-  // Priorité : Gérant > Gérant et associé > premier
   const gerant = gerants.find(g => g.qualite && g.qualite.startsWith('Gérant'));
   return gerant ? gerant.nom : gerants[0].nom;
 }
@@ -1445,22 +1465,19 @@ function aLiquidateur(gerants) {
 }
 
 function filtrerSciPourCourrier() {
-  const exclInactives    = document.getElementById('courrier-exclure-inactives').checked;
-  const exclLiquidateur  = document.getElementById('courrier-exclure-liquidateur').checked;
-  const exclSansGerant   = document.getElementById('courrier-exclure-sans-gerant').checked;
-  const seulementVisibles= document.getElementById('courrier-seulement-visibles').checked;
-
+  const exclInactives     = document.getElementById('courrier-exclure-inactives').checked;
+  const exclLiquidateur   = document.getElementById('courrier-exclure-liquidateur').checked;
+  const exclSansGerant    = document.getElementById('courrier-exclure-sans-gerant').checked;
+  const seulementVisibles = document.getElementById('courrier-seulement-visibles').checked;
   let liste = seulementVisibles
     ? [...document.querySelectorAll('#sci-tbody tr')]
         .filter(tr => tr.style.display !== 'none')
         .map(tr => allSci.find(s => s.sci_nom === tr.dataset.sciNom))
         .filter(Boolean)
     : [...allSci];
-
   if (exclInactives)   liste = liste.filter(s => s.sci_active === 'oui');
   if (exclLiquidateur) liste = liste.filter(s => !aLiquidateur(s.gerants));
   if (exclSansGerant)  liste = liste.filter(s => getPremierGerant(s.gerants));
-
   return liste;
 }
 
@@ -1470,41 +1487,12 @@ function majCompteCourrier() {
     `→ ${liste.length} courrier${liste.length > 1 ? 's' : ''} seront générés`;
 }
 
-// ════════════════════════════════════════
-//  COURRIER — OUVERTURE / FERMETURE MODAL
-// ════════════════════════════════════════
 function ouvrirModalCourrier() {
-  courrierDocxBase64 = null;
-  courrierDocxHtml   = null;
-  document.getElementById('courrier-file-input').value = '';
-  document.getElementById('courrier-status').textContent = '';
-  document.getElementById('btn-generer-courrier').disabled = true;
   majCompteCourrier();
-
-  // Listeners checkboxes
   ['courrier-exclure-inactives','courrier-exclure-liquidateur',
    'courrier-exclure-sans-gerant','courrier-seulement-visibles'].forEach(id => {
     document.getElementById(id).onchange = majCompteCourrier;
   });
-
-  // Listener fichier
-  document.getElementById('courrier-file-input').onchange = async function(e) {
-    const file = e.target.files[0];
-    if (!file) return;
-    const status = document.getElementById('courrier-status');
-    status.textContent = '⏳ Chargement du modèle...';
-    try {
-      const arrayBuffer = await file.arrayBuffer();
-      const result = await mammoth.convertToHtml({ arrayBuffer });
-      courrierDocxHtml = result.value;
-      status.textContent = `✅ Modèle chargé — variables détectées : ${[...courrierDocxHtml.matchAll(/\{\{[A-Z_]+\}\}/g)].map(m=>m[0]).filter((v,i,a)=>a.indexOf(v)===i).join(', ')||'aucune'}`;
-      document.getElementById('btn-generer-courrier').disabled = false;
-    } catch(err) {
-      status.textContent = '❌ Erreur lecture du fichier Word.';
-      console.error(err);
-    }
-  };
-
   document.getElementById('modal-courrier').classList.add('open');
 }
 
@@ -1512,154 +1500,40 @@ function fermerModalCourrier() {
   document.getElementById('modal-courrier').classList.remove('open');
 }
 
-// ════════════════════════════════════════
-//  COURRIER — GÉNÉRATION PDF
-// ════════════════════════════════════════
 function genererCourrier() {
   const liste = filtrerSciPourCourrier();
   if (!liste.length) { showToast('Aucune SCI sélectionnée', true); return; }
-  if (!courrierDocxHtml) { showToast('Chargez d\'abord un modèle Word', true); return; }
-
   const MAX = 200;
   if (liste.length > MAX) {
-    const ok = confirm(`⚠️ Vous allez générer ${liste.length} courriers.\n\nCela peut prendre du temps et ralentir votre navigateur.\n\nContinuer quand même ?`);
+    const ok = confirm(`⚠️ Vous allez générer ${liste.length} courriers.\n\nCela peut ralentir votre navigateur. Continuer quand même ?`);
     if (!ok) return;
   }
-
   const today = new Date().toLocaleDateString('fr-FR', {day:'numeric', month:'long', year:'numeric'});
-
   const pages = liste.map(sci => {
     const siege  = parseSiegeSocial(sci.siege_social);
     const gerant = getPremierGerant(sci.gerants) || '—';
-    let html = courrierDocxHtml;
-    html = html.replace(/\{\{SCI_NOM\}\}/g,    escHtml(sci.sci_nom || ''));
-    html = html.replace(/\{\{CIVILITE\}\}/g,   'Monsieur ou Madame');
-    html = html.replace(/\{\{NOM_PRENOM\}\}/g, escHtml(sci.sci_nom || ''));
-    html = html.replace(/\{\{ADRESSE\}\}/g,    escHtml(siege.adresse));
-    html = html.replace(/\{\{CODE_POSTAL\}\}/g,escHtml(siege.cp));
-    html = html.replace(/\{\{VILLE\}\}/g,      escHtml(siege.ville));
-    html = html.replace(/\{\{DIRIGEANT\}\}/g,  escHtml(gerant));
-    html = html.replace(/\{\{DATE\}\}/g,       today);
-    return `<div class="courrier-page">${html}</div>`;
+    return templateEstimationC21(
+      escHtml(sci.sci_nom || ''),
+      escHtml(siege.adresse),
+      escHtml(siege.cp),
+      escHtml(siege.ville),
+      today,
+      escHtml(gerant)
+    );
   });
-
   const win = window.open('', '_blank');
-  if (!win) {
-    showToast('⚠️ Popup bloquée — autorisez les popups pour ce site', true);
-    return;
-  }
-  win.document.write(`<!DOCTYPE html><html><head>
-    <meta charset="utf-8">
-    <title>Courriers SCI — ${escHtml(agenceConfig?.nom || '')}</title>
-    <style>
-      @page { size: A4; margin: 0; }
-      * { box-sizing: border-box; margin: 0; padding: 0; }
-      body { font-family: Arial, sans-serif; font-size: 10.5pt; color: #222; }
-
-      /* ── PAGE COURRIER ── */
-      .courrier-page {
-        width: 210mm;
-        min-height: 297mm;
-        padding: 14mm 18mm 14mm 22mm;
-        page-break-after: always;
-        break-after: page;
-        overflow: hidden;
-      }
-      .courrier-page:last-child { page-break-after: avoid; break-after: avoid; }
-
-      /* ── HEADER : logo + coordonnées ── */
-      .courrier-page > table:first-child {
-        width: 100%;
-        border-collapse: collapse;
-        margin-bottom: 10mm;
-      }
-      .courrier-page > table:first-child td:first-child {
-        width: 35mm;
-        vertical-align: top;
-        padding: 0;
-      }
-      .courrier-page > table:first-child td:first-child img {
-        width: 32mm;
-        height: auto;
-        display: block;
-      }
-      .courrier-page > table:first-child td:last-child {
-        vertical-align: top;
-        padding: 0 0 0 8mm;
-        font-size: 9pt;
-        color: #333;
-        line-height: 1.6;
-      }
-      .courrier-page > table:first-child td:last-child p { margin: 0; }
-      .courrier-page > table:first-child td:last-child strong { font-size: 10.5pt; }
-
-      /* ── ADRESSE DESTINATAIRE ── */
-      .courrier-page p { margin-bottom: 4pt; line-height: 1.5; }
-
-      /* ── ENCADRÉ ORANGE "COMBIEN VAUT..." ── */
-      .courrier-page > table:nth-of-type(2) {
-        width: 100%;
-        border-collapse: collapse;
-        background: #f97316;
-        color: #fff;
-        margin: 8mm 0 5mm 0;
-        border-radius: 2px;
-      }
-      .courrier-page > table:nth-of-type(2) td {
-        padding: 5mm 6mm;
-      }
-      .courrier-page > table:nth-of-type(2) strong {
-        font-size: 12pt;
-        display: block;
-        margin-bottom: 4pt;
-      }
-
-      /* ── ÉTAPES 1 2 3 4 ── */
-      .courrier-page > table:nth-of-type(3),
-      .courrier-page > table:nth-of-type(4),
-      .courrier-page > table:nth-of-type(5),
-      .courrier-page > table:nth-of-type(6) {
-        width: 100%;
-        border-collapse: collapse;
-        margin-bottom: 3mm;
-        border: 1px solid #ddd;
-      }
-      .courrier-page > table:nth-of-type(3) td:first-child,
-      .courrier-page > table:nth-of-type(4) td:first-child,
-      .courrier-page > table:nth-of-type(5) td:first-child,
-      .courrier-page > table:nth-of-type(6) td:first-child {
-        width: 12mm;
-        background: #f97316;
-        color: #fff;
-        font-weight: bold;
-        font-size: 14pt;
-        text-align: center;
-        vertical-align: middle;
-        padding: 3mm;
-      }
-      .courrier-page > table:nth-of-type(3) td:last-child,
-      .courrier-page > table:nth-of-type(4) td:last-child,
-      .courrier-page > table:nth-of-type(5) td:last-child,
-      .courrier-page > table:nth-of-type(6) td:last-child {
-        padding: 3mm 4mm;
-        font-size: 9.5pt;
-        vertical-align: middle;
-      }
-
-      /* ── PIED ── */
-      .courrier-page strong { font-weight: bold; }
-      .courrier-page em { font-style: italic; }
-
-      @media print {
-        body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-      }
-    </style>
-  </head><body>
-    ${pages.join('\n')}
-    <script>window.onload = () => { setTimeout(() => window.print(), 800); }<\/script>
-  </body></html>`);
+  if (!win) { showToast('⚠️ Popup bloquée — autorisez les popups pour ce site', true); return; }
+  win.document.write(`<!DOCTYPE html><html><head><meta charset="utf-8">`
+    + `<title>Courriers SCI</title>`
+    + `<style>@page{size:A4;margin:0;}*{box-sizing:border-box;margin:0;padding:0;}body{background:#fff;}`
+    + `.pw{width:210mm;min-height:297mm;page-break-after:always;break-after:page;overflow:hidden;}`
+    + `.pw:last-child{page-break-after:avoid;break-after:avoid;}`
+    + `@media print{body{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}}`
+    + `</style></head><body>`
+    + pages.map(p => `<div class="pw">${p}</div>`).join('')
+    + `<script>window.onload=()=>{setTimeout(()=>window.print(),1000);}<\/script>`
+    + `</body></html>`);
   win.document.close();
-
   fermerModalCourrier();
   showToast(`✅ ${liste.length} courrier${liste.length>1?'s':''} générés`);
 }
@@ -1667,6 +1541,7 @@ function genererCourrier() {
 function escHtml(str) {
   return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 }
+
 
 
 ['search','filter-zone','filter-dpe','filter-statut','filter-conseiller','filter-type','filter-logement']
