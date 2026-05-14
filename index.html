@@ -1420,6 +1420,7 @@ function renderRowSci(sci) {
 
   const adresseNorm = (sci.adresse_bien||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
   const sciNomNorm  = (sci.sci_nom||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+  const dirigeants  = (sci.gerants||[]).map(g=>(g.nom||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'')).join(' ');
 
   return `<tr
     data-zone="${zone}"
@@ -1428,7 +1429,7 @@ function renderRowSci(sci) {
     data-conseiller="${conseil}"
     data-qualite1="${qual1}"
     data-sci-nom="${(sci.sci_nom||'').replace(/"/g,'&quot;')}"
-    data-search="${adresseNorm} ${sciNomNorm}">
+    data-search="${adresseNorm} ${sciNomNorm} ${dirigeants}">
     <td><span class="badge-zone">${zone||'—'}</span></td>
     <td class="td-sci-nom">
       <strong>${sci.adresse_bien||'—'}</strong>
