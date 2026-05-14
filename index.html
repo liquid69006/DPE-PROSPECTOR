@@ -1530,7 +1530,10 @@ function majCompteCourrier() {
 }
 
 function ouvrirModalCourrier() {
+  // Réinitialiser systématiquement le buffer à chaque ouverture
   courrierTemplateBuffer = null;
+  window._courrierBlob   = null;
+  window._courrierCount  = 0;
   document.getElementById('courrier-file-input').value = '';
   document.getElementById('courrier-status').textContent = '';
   document.getElementById('btn-generer-courrier').disabled = true;
@@ -1677,8 +1680,10 @@ async function genererCourrier() {
     // Joindre les bodies avec sauts de page + réappliquer le sectPr
     // Réduire l'espacement du paragraphe final à 0 pour éviter la page blanche
     // (sans le supprimer, pour garder la marge si le contenu déborde)
+    // Supprimer le paragraphe vide de fin (pPr uniquement, sans w:t) avant chaque saut de page
+    const emptyParaBeforeBreak = /<w:p(?:[^>]*)><w:pPr>(?:(?!<w:t)[\s\S])*?<\/w:pPr><\/w:p>(?=<w:p><w:r><w:br w:type="page")/g;
     const fusedBody = bodies.join(pageBreak)
-      .replace(/<w:spacing w:after="560"\/>/g, '<w:spacing w:after="0"/>')
+      .replace(emptyParaBeforeBreak, '')
       + sectPr;
     baseXml = baseXml.replace(/<w:body>[\s\S]*<\/w:body>/, '<w:body>' + fusedBody + '</w:body>');
     baseDoc.getZip().file('word/document.xml', baseXml);
