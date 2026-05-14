@@ -1,6 +1,6 @@
 {
   "millesime": 2025,
-  "derniere_maj": "2026-05-14T17:37:26.920030",
+  "derniere_maj": "2026-05-14T21:08:24.060996",
   "sci": [
     {
       "zone": "14640",
@@ -802,6 +802,27 @@
     },
     {
       "zone": "14910",
+      "parcelle": "A0004",
+      "adresse_bien": "5020 IMP MADELINE 14910 Benerville-Sur-Mer",
+      "sci_nom": "L'HIPPOCAMPE",
+      "sci_siren": "429567530",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "10 PL DU MARCHE 95450 AVERNES",
+      "gerants": [
+        {
+          "nom": "JACQUES EUGENE RENE LERDU",
+          "qualite": "Gérant"
+        },
+        {
+          "nom": "MICHEL LERDU",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "14910",
       "parcelle": "A0062",
       "adresse_bien": "16 CHE DE TOUQUES 14910 Benerville-Sur-Mer",
       "sci_nom": "SCI DOME",
@@ -855,8 +876,33 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "125 RUE LECOURBE 75015 PARIS",
+      "gerants": [
+        {
+          "nom": "ANNATH BENHAMOU",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "LAURENT BENHAMOU",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "NATHAN BENHAMOU",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "NOA BENHAMOU",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "TOBIE BENHAMOU",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "EVE BENHAMOU (HORGEN)",
+          "qualite": "Gérant"
+        }
+      ]
     },
     {
       "zone": "14910",
@@ -909,8 +955,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "HENNEQUEVILLE LE BAS COUYERE 14360 TROUVILLE-SUR-MER",
+      "gerants": [
+        {
+          "nom": "SOPHIE SYLVIE PRIMEROSE POULAIN (GALLET)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "CHRISTOPHE ALBERT CLAUDE POULAIN",
+          "qualite": "Associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "14910",
@@ -946,8 +1001,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "42 AVENUE DU LITTORAL 14910 BENERVILLE-SUR-MER",
+      "gerants": [
+        {
+          "nom": "CATHERINE JACQUELINE DENISE OZENNE (JOUIN)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "FLORIAN FRANCOIS PATRICK OZENNE",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "14910",
@@ -958,8 +1022,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "14 RUE VICTOR CAILLIAU 14910 BENERVILLE-SUR-MER",
+      "gerants": [
+        {
+          "nom": "JACQUES HENRY LOUIS CATHRINE",
+          "qualite": "Gérant"
+        },
+        {
+          "nom": "CHRISTIAN GASTON MICHEL IMBERT",
+          "qualite": "Gérant"
+        }
+      ]
     },
     {
       "zone": "14910",
@@ -1241,8 +1314,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "27 AVENUE DU LITTORAL 14910 BENERVILLE-SUR-MER",
+      "gerants": [
+        {
+          "nom": "SOPHIE PATRICIA SANDRINE CALLOUET (CALLOUET)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "CHRISTOPHE PASCAL TURGOT (TURGOT)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "14910",
@@ -1253,8 +1335,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "15 AV DU MARECHAL LECLERC 14910 BENERVILLE-SUR-MER",
+      "gerants": [
+        {
+          "nom": "DANIELLE TOMIANKA",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "DAVID SIMON ALEXANDRE WIEDER",
+          "qualite": "Autre"
+        }
+      ]
     },
     {
       "zone": "14910",
@@ -1265,8 +1356,25 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "3 RUE DE L'ECUELLE 89700 COLLAN",
+      "gerants": [
+        {
+          "nom": "DANIEL DAMPT",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "SEBASTIEN DAMPT",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "VINCENT DAMPT",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "DOMINIQUE FRANCOISE DEFAIX",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "14910",
@@ -1277,8 +1385,25 @@
       "code_droit": "N",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "11 B AVENUE RENE DAVID 94100 SAINT-MAUR-DES-FOSSES",
+      "gerants": [
+        {
+          "nom": "PATRICIA AZIZA (AMAR)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "ERIC AZIZA",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "MICKAEL AZIZA",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "YOANN AZIZA",
+          "qualite": "Autre"
+        }
+      ]
     },
     {
       "zone": "14910",
@@ -1289,8 +1414,29 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "BAT D 3 RUE HIPPOLYTE PINSON 94340 JOINVILLE-LE-PONT",
+      "gerants": [
+        {
+          "nom": "JEREMY DAVID JOURNO",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "LAETITIA FRANCESCA PLASSAT (JOURNO)",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "MICHAEL SION JOURNO",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "SERGE JOURNO",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "MARTINE JOURNO (VENTURINI)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "14910",
@@ -1351,8 +1497,25 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "9 ALLEE DES CHARMES 93160 NOISY-LE-GRAND",
+      "gerants": [
+        {
+          "nom": "JULIEN KAU",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "PHILIPPE KAU",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "VINCENT KAU",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "JULIA KAU (LIM)",
+          "qualite": "Autre"
+        }
+      ]
     },
     {
       "zone": "14910",
@@ -1861,8 +2024,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "227 RUE D'ORLEANS 76230 BOIS-GUILLAUME",
+      "gerants": [
+        {
+          "nom": "PATRICK GEORGES ALAIN BROCHARD",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "DELPHINE DENISE MARIE BROCHARD (EVRARD)",
+          "qualite": "Associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "14910",
@@ -2348,8 +2520,13 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "ANGLE ROUTE DE TOUQUES CHEMIN DES ENCLOS 14910 BENERVILLE-SUR-MER",
+      "gerants": [
+        {
+          "nom": "FRANCK JACQUES RENE CHATELAIN",
+          "qualite": "Gérant"
+        }
+      ]
     },
     {
       "zone": "14910",
@@ -2360,8 +2537,13 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "ANGLE ROUTE DE TOUQUES CHEMIN DES ENCLOS 14910 BENERVILLE-SUR-MER",
+      "gerants": [
+        {
+          "nom": "FRANCK JACQUES RENE CHATELAIN",
+          "qualite": "Gérant"
+        }
+      ]
     },
     {
       "zone": "14910",
@@ -3230,6 +3412,18 @@
     },
     {
       "zone": "14910",
+      "parcelle": "A1244",
+      "adresse_bien": "18 AV DU GEN LECLERC 14910 Benerville-Sur-Mer",
+      "sci_nom": "SCCV BENERVILLE RUE GALLIMARD",
+      "sci_siren": "934103961",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "2313 BOULEVARD DE LA DEFENSE 92000 NANTERRE",
+      "gerants": []
+    },
+    {
+      "zone": "14910",
       "parcelle": "AA0052",
       "adresse_bien": "6395  LA COUR AU ROY 14910 Benerville-Sur-Mer",
       "sci_nom": "LE CHATEAU",
@@ -3392,8 +3586,25 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "23 AVENUE DE MADRID 92200 NEUILLY-SUR-SEINE",
+      "gerants": [
+        {
+          "nom": "CHLOE BIZOT",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "LAETITIA BIZOT",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "VERONIQUE CUVELIER",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "INES LE COURTOIS DU MANOIR",
+          "qualite": "Associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "14910",
@@ -3404,8 +3615,21 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "144 RUE DE LA ROQUETTE 75011 PARIS",
+      "gerants": [
+        {
+          "nom": "EVELYNE APELOIG",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "SACHA ZYSMAN SILBERMANN",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "SARAH GOLDA PAIA SILBERMANN",
+          "qualite": "Autre"
+        }
+      ]
     },
     {
       "zone": "14910",
@@ -3416,8 +3640,21 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "16 VILLA DE LOURCINE 75014 PARIS",
+      "gerants": [
+        {
+          "nom": "GENEVIEVE PIEUCHOT (HIRTZ)",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "DOMINIQUE PIEUCHOT",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "ERIC PIEUCHOT",
+          "qualite": "Gérant"
+        }
+      ]
     },
     {
       "zone": "14910",
@@ -3428,8 +3665,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "85 RUE BOBILLOT 75013 PARIS",
+      "gerants": [
+        {
+          "nom": "CHRISTOPHE JEAN-PIERRE PARIS (PARIS)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "CÉLINE PARIS (PARIS)",
+          "qualite": "Associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "14910",
@@ -3440,8 +3686,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "30 RUE DES RENAUDES 75017 PARIS",
+      "gerants": [
+        {
+          "nom": "PATRICK-CHARLES BOUCHE",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "JEROME DE BUSSAC",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "14910",
@@ -3489,8 +3744,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "9 RUE DU RACINAY 78120 RAMBOUILLET",
+      "gerants": [
+        {
+          "nom": "ERIC MATTER",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "CORINNE MATTER (PACCOU)",
+          "qualite": "Autre"
+        }
+      ]
     },
     {
       "zone": "14910",
@@ -3601,8 +3865,21 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "LD LA BUNELIERE 50160 TORIGNY-LES-VILLES",
+      "gerants": [
+        {
+          "nom": "BRIGITTE HUGUETTE GROSCHTERN (DELESCHAUD)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "BRUNO GROSCHTERN",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "SANDRA RIDEAU (GROSCHTERN)",
+          "qualite": "Associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "14910",
@@ -3613,8 +3890,25 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "14 PLACE DES PIANOS 93200 SAINT-DENIS",
+      "gerants": [
+        {
+          "nom": "TOM CHIKLI",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "VANESSA CHIKLI",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "YVES CHIKLI",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "CHIKLI ISABELLE",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "14910",
@@ -3800,8 +4094,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "9 RUE DU RACINAY 78120 RAMBOUILLET",
+      "gerants": [
+        {
+          "nom": "ERIC MATTER",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "CORINNE MATTER (PACCOU)",
+          "qualite": "Autre"
+        }
+      ]
     },
     {
       "zone": "14910",
@@ -3992,8 +4295,21 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "24 RUE DES FAUVETTES 92260 FONTENAY-AUX-ROSES",
+      "gerants": [
+        {
+          "nom": "MARIE-FRANCE JOSEPHE JEANNE LOUISE BERTON",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "ADELINE FELLA BOUDERGHOUMA",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "CHRISTIANE THERESE PERCHAUD",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "14910",
@@ -4004,8 +4320,29 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "8 RUE DE MUSSET 75016 PARIS",
+      "gerants": [
+        {
+          "nom": "DÉBORAH SCHNEIDER (OBADIA)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "AVA SCHNEIDER",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "EDEN SCHNEIDER",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "NOÉ SCHNEIDER",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "PIERRE SCHNEIDER",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "14910",
@@ -4144,8 +4481,13 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "92 AVENUE MOZART 75016 PARIS",
+      "gerants": [
+        {
+          "nom": "GUILLAUME MARIE LUCIEN OLIVIER CHINARDET",
+          "qualite": "Autre"
+        }
+      ]
     },
     {
       "zone": "14910",
@@ -4156,8 +4498,25 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "GERANT MR TAILLARD JC 19 RUE GODON 92700 COLOMBES",
+      "gerants": [
+        {
+          "nom": "AUGUSTINE TAILLARD (DAROT)",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "ISABELLE POIRIER (TAILLARD)",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "JEAN CLAUDE TAILLARD",
+          "qualite": "Gérant"
+        },
+        {
+          "nom": "THIERRY TAILLARD",
+          "qualite": "Autre"
+        }
+      ]
     },
     {
       "zone": "14910",
@@ -5298,8 +5657,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "4 RUE DE LA FOLIE 28200 VILLAMPUY",
+      "gerants": [
+        {
+          "nom": "STEPHANIE VILLETTE (BEAUX)",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "NICOLAS VILLETTE",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "14910",
@@ -5759,8 +6127,46 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "76 AVENUE MICHEL D'ORNANO 14910 BLONVILLE-SUR-MER",
+      "gerants": [
+        {
+          "nom": "SOPHIE MARIE DENISE MOQUET (BAUD)",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "LOUIS PHILIPPE MICHEL BERNARD MOQUET",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "MARIE SOPHIE MOQUET",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "PHILIPPE MICHEL MOQUET",
+          "qualite": "Associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "14910",
+      "parcelle": "AE0019",
+      "adresse_bien": "64 AV MICHEL D'ORNANO 14910 Blonville-Sur-Mer",
+      "sci_nom": "OLAF",
+      "sci_siren": "353188220",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "102 AVENUE DES CHAMPS ELYSEES 75008 PARIS",
+      "gerants": [
+        {
+          "nom": "MICHELE SIMONE PENOT (LE CHEVALLIER)",
+          "qualite": "Gérant"
+        },
+        {
+          "nom": "ETIENNE MARIE PENOT",
+          "qualite": "Autre"
+        }
+      ]
     },
     {
       "zone": "14910",
