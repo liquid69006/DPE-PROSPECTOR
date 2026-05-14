@@ -833,7 +833,7 @@ async function initDashboard(token, agence, config) {
   switchMode('dpe'); // forcer état initial
 
   await Promise.all([
-    loadDpeData(config.dataJsonPath),
+    loadDpeData(config.dataJsonPath, config.dpe_agences),
     loadAssignments(),
     loadConseillers(),
     ...(AGENCES_SCI.includes(agence) ? [
@@ -846,12 +846,33 @@ async function initDashboard(token, agence, config) {
 // ════════════════════════════════════════
 //  DONNÉES DPE
 // ════════════════════════════════════════
-async function loadDpeData(path) {
+async function loadDpeData(path, dpeAgences) {
   try {
-    const resp = await fetch(`${GITHUB_RAW}/${path}?t=${Date.now()}`);
-    if (!resp.ok) throw new Error();
-    const data = await resp.json();
-    allDpe = data.dpe || [];
+    let allDpeLoaded = [];
+
+    if (dpeAgences && dpeAgences.length > 0) {
+      // Compte composite (ex: lopez) — charger et fusionner plusieurs JSON
+      const configs = {
+        'motte-picquet': 'data/motte-picquet.json',
+        'pernety':       'data/pernety.json',
+      };
+      for (const ag of dpeAgences) {
+        const agPath = configs[ag];
+        if (!agPath) continue;
+        const resp = await fetch(`${GITHUB_RAW}/${agPath}?t=${Date.now()}`);
+        if (!resp.ok) continue;
+        const data = await resp.json();
+        allDpeLoaded = allDpeLoaded.concat(data.dpe || []);
+      }
+    } else {
+      // Compte simple — charger un seul JSON
+      const resp = await fetch(`${GITHUB_RAW}/${path}?t=${Date.now()}`);
+      if (!resp.ok) throw new Error();
+      const data = await resp.json();
+      allDpeLoaded = data.dpe || [];
+    }
+
+    allDpe = allDpeLoaded;
     document.getElementById('stat-total').textContent  = allDpe.length;
     document.getElementById('stat-g').textContent      = allDpe.filter(d=>(d.etiquette_dpe||'').toUpperCase()==='G').length;
     document.getElementById('stat-renouv').textContent = allDpe.filter(d=>d.numero_dpe_remplace).length;
@@ -1188,7 +1209,7 @@ function sortTable(col) {
 //  MODE SWITCH DPE / SCI
 // ════════════════════════════════════════
 let currentMode = 'dpe';
-const AGENCES_SCI = ['dauphine-lacassagne']; // Seules agences avec SCI Prospector
+const AGENCES_SCI = ['dauphine-lacassagne', 'lopez']; // Seules agences avec SCI Prospector
 
 function switchMode(mode) {
   currentMode = mode;
@@ -1230,12 +1251,32 @@ let sciSortCurrent = {col:'zone', dir:'asc'};
 
 async function loadSciData() {
   try {
-    const path = agenceConfig.dataJsonPath.replace('.json', '-sci.json');
-    const resp = await fetch(`${GITHUB_RAW}/${path}?t=${Date.now()}`);
-    if (!resp.ok) throw new Error();
-    const data = await resp.json();
+    let rawSci = [];
+
+    if (agenceConfig.sci_agences && agenceConfig.sci_agences.length > 0) {
+      // Compte composite (lopez) — charger et fusionner les JSON SCI des deux agences
+      const sciPaths = {
+        'motte-picquet': 'data/motte-picquet-sci.json',
+        'pernety':       'data/pernety-sci.json',
+      };
+      for (const ag of agenceConfig.sci_agences) {
+        const sciPath = sciPaths[ag];
+        if (!sciPath) continue;
+        const resp = await fetch(`${GITHUB_RAW}/${sciPath}?t=${Date.now()}`);
+        if (!resp.ok) continue;
+        const data = await resp.json();
+        rawSci = rawSci.concat(data.sci || []);
+      }
+    } else {
+      // Compte simple — chemin standard agence-sci.json
+      const path = agenceConfig.dataJsonPath.replace('.json', '-sci.json');
+      const resp = await fetch(`${GITHUB_RAW}/${path}?t=${Date.now()}`);
+      if (!resp.ok) throw new Error();
+      const data = await resp.json();
+      rawSci = data.sci || [];
+    }
+
     // Dédupliquer par SIREN (évite les doublons dans le JSON source)
-    const rawSci = data.sci || [];
     const seen = new Set();
     allSci = rawSci.filter(s => {
       const key = s.sci_siren || s.sci_nom;
