@@ -1,6 +1,6 @@
 {
   "millesime": 2025,
-  "derniere_maj": "2026-05-14T17:32:01.198096",
+  "derniere_maj": "2026-05-14T21:21:52.831822",
   "sci": [
     {
       "zone": "Pernéty",
@@ -427,8 +427,21 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "110 RUE D'ABOUKIR 75002 PARIS",
+      "gerants": [
+        {
+          "nom": "ALEXANDRA ZINA FELICIE BERDUGO (ROSNER)",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "JORDAN FRANCOIS XAVIER ROSNER",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "MILOU ISIDORE ROSNER",
+          "qualite": "Gérant"
+        }
+      ]
     },
     {
       "zone": "Pernéty",
@@ -3871,6 +3884,43 @@
       "zone": "Pernéty",
       "parcelle": "CJ0018",
       "adresse_bien": "16 RUE DU MOULIN VERT 75014",
+      "sci_nom": "LE PETIT CASSIS",
+      "sci_siren": "480595339",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "40 AVENUE DES CALANQUES 13260 CASSIS",
+      "gerants": [
+        {
+          "nom": "BENJAMIN DOUCELANCE",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "LAURE DOUCELANCE",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "MATHILDE DOUCELANCE",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "MELANIE DOUCELANCE",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "PAULINE DOUCELANCE",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "PIERRE HENRI LOUIS DOUCELANCE",
+          "qualite": "Gérant"
+        }
+      ]
+    },
+    {
+      "zone": "Pernéty",
+      "parcelle": "CJ0018",
+      "adresse_bien": "16 RUE DU MOULIN VERT 75014",
       "sci_nom": "VILLE GOZET DENIS PAPIN",
       "sci_siren": "349091256",
       "code_droit": "P",
@@ -4927,6 +4977,23 @@
     },
     {
       "zone": "Pernéty",
+      "parcelle": "CN0079",
+      "adresse_bien": "147 RUE DU CHATEAU 75014",
+      "sci_nom": "SCCV DU CHATEAU",
+      "sci_siren": "920951209",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "38 B RUE CHARLES DE GAULLE 94140 ALFORTVILLE",
+      "gerants": [
+        {
+          "nom": "FARID HAMI",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "Pernéty",
       "parcelle": "CN0081",
       "adresse_bien": "143 RUE DU CHATEAU 75014",
       "sci_nom": "MONCEAU TREILHARD",
@@ -5415,6 +5482,39 @@
         {
           "nom": "ANNE MELANIE HENRIETTE NICEY",
           "qualite": "Gérant"
+        }
+      ]
+    },
+    {
+      "zone": "Pernéty",
+      "parcelle": "CN0147",
+      "adresse_bien": "163 RUE DU CHATEAU 75014",
+      "sci_nom": "CHATEAU 163",
+      "sci_siren": "440676179",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "42 RUE DE L'YVETTE 75016 PARIS",
+      "gerants": [
+        {
+          "nom": "CORINNE RAJZBAUM (DANA)",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "DOMINIQUE RAJZBAUM (GILLE)",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "EDDIE RAJZBAUM",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "GERALD RAJZBAUM",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "PHILIPPE RAJZBAUM",
+          "qualite": "Gérant et associé indéfiniment responsable"
         }
       ]
     },
@@ -7572,6 +7672,27 @@
         },
         {
           "nom": "ISABELLE MICHELE GUYLAINE MARTIN (VAVASSEUR)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "Pernéty",
+      "parcelle": "CO0141",
+      "adresse_bien": "29 RUE DIDOT 75014",
+      "sci_nom": "SCI DU 29 R DIDOT",
+      "sci_siren": "344095542",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "29 RUE DIDOT 75014 PARIS",
+      "gerants": [
+        {
+          "nom": "YVES PIERRE PAUL LION",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "CLAIRE MARIE HÉLÈNE PIGUET",
           "qualite": "Gérant et associé indéfiniment responsable"
         }
       ]
@@ -17558,8 +17679,21 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "120 CHEMIN DE LA TOUR MAGNE 30000 NIMES",
+      "gerants": [
+        {
+          "nom": "ELEONORE CECILIA MARIE CASSOU",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "THOMAS LOUIS LAURENT CASSOU",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "BLANDINE LAURENCE MARIE LOUZON",
+          "qualite": "Gérant"
+        }
+      ]
     },
     {
       "zone": "Pernéty",
@@ -17774,8 +17908,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "COLLINES D'ASPRETTO BAT D2 ROUTE DU LAZARET 20090 AJACCIO",
+      "gerants": [
+        {
+          "nom": "CELINE EDITH PIERRETTE MATTEI",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "JEAN PAUL MARIE MATTEI",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "Pernéty",
@@ -19635,6 +19778,47 @@
       "zone": "Pernéty",
       "parcelle": "CU0020",
       "adresse_bien": "21 RUE BARDINET 75014",
+      "sci_nom": "EXPLOITATION IMMOBILIERE",
+      "sci_siren": "338476526",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "117 RUE HOUDAN 92330 SCEAUX",
+      "gerants": [
+        {
+          "nom": "ADELE CECCHY",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "LOUISE CECCHY",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "FANNY CECCHY (PERRAUDIN)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "JEAN-PIERRE DANIEL PERRAUDIN",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "LUC PERRAUDIN",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "MARTIN PERRAUDIN",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "NINA PERRAUDIN",
+          "qualite": "Associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "Pernéty",
+      "parcelle": "CU0020",
+      "adresse_bien": "21 RUE BARDINET 75014",
       "sci_nom": "BARDINET 215",
       "sci_siren": "790839104",
       "code_droit": "P",
@@ -19744,6 +19928,39 @@
         },
         {
           "nom": "CAMILLE ANGELE CHANTAL BONICHON LEVY",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "Pernéty",
+      "parcelle": "CU0025",
+      "adresse_bien": "62 RUE DIDOT 75014",
+      "sci_nom": "SCI AGECO",
+      "sci_siren": "341306173",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "34 RUE ALEXIS DE VILLENEUVE 97400 SAINT-DENIS",
+      "gerants": [
+        {
+          "nom": "CAROLINE AH YON",
+          "qualite": "Gérant"
+        },
+        {
+          "nom": "ERIC AH YON",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "JEAN MICK AH YON",
+          "qualite": "Gérant"
+        },
+        {
+          "nom": "KARINE SIN FAI LAM (AH YON)",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "MARIE COLETTE AH YON (CHUNG HONG HING)",
           "qualite": "Autre"
         }
       ]
@@ -22076,6 +22293,23 @@
       "zone": "Pernéty",
       "parcelle": "CV0056",
       "adresse_bien": "141 RUE RAYMOND LOSSERAND 75014",
+      "sci_nom": "SOCIETE CIVILE IMMOBILIERE HUGON",
+      "sci_siren": "380666479",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "141 RUE RAYMOND LOSSERAND 75014 PARIS",
+      "gerants": [
+        {
+          "nom": "PATRICK HUGON",
+          "qualite": "Gérant"
+        }
+      ]
+    },
+    {
+      "zone": "Pernéty",
+      "parcelle": "CV0056",
+      "adresse_bien": "141 RUE RAYMOND LOSSERAND 75014",
       "sci_nom": "SCI INSTITUT PARISIEN D'ORL PEDIATRIQUE",
       "sci_siren": "953741857",
       "code_droit": "P",
@@ -23383,8 +23617,13 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "78 ALLEE DES TOPAZES 97400 SAINT-DENIS",
+      "gerants": [
+        {
+          "nom": "MARYSE SAM MINE (AH PINE)",
+          "qualite": "Gérant"
+        }
+      ]
     },
     {
       "zone": "Pernéty",
@@ -23558,8 +23797,25 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "105 RUE DIDOT 75014 PARIS",
+      "gerants": [
+        {
+          "nom": "EMMANUEL BON",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "JEREMIE BON",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "JEROME OLLIVIER GILLES BON",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "ELIANE MARIE SIMONE BON (SCHMITT)",
+          "qualite": "Autre"
+        }
+      ]
     },
     {
       "zone": "Pernéty",
@@ -23757,8 +24013,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "108 RUE DIDOT 75014 PARIS",
+      "gerants": [
+        {
+          "nom": "BRUNO ANDRE MICHEL BOUQUET",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "MICHEL ANDRE ROGER BOUQUET",
+          "qualite": "Gérant"
+        }
+      ]
     },
     {
       "zone": "Pernéty",
@@ -23907,8 +24172,21 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "63 BOULEVARD BRUNE 75014 PARIS",
+      "gerants": [
+        {
+          "nom": "FRANSEZA LE MAUFF",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "ROBERT LE MAUFF",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "MARTINE LE MAUFF (VERSANG)",
+          "qualite": "Autre"
+        }
+      ]
     },
     {
       "zone": "Pernéty",
@@ -26185,6 +26463,18 @@
           "qualite": "Gérant et associé indéfiniment responsable"
         }
       ]
+    },
+    {
+      "zone": "Pernéty",
+      "parcelle": "DL0062",
+      "adresse_bien": "196 RUE RAYMOND LOSSERAND 75014",
+      "sci_nom": "DIVERCITY PARIS 14EME",
+      "sci_siren": "829950799",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "3 RUE DE SARRELOUIS 67000 STRASBOURG",
+      "gerants": []
     },
     {
       "zone": "Pernéty",
@@ -28751,8 +29041,13 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "8 AV DE LA PAIX CLARISSA JEAN-PHILIPP 92120 MONTROUGE",
+      "gerants": [
+        {
+          "nom": "MARYSE LE GOFF",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "Pernéty",
@@ -28763,8 +29058,21 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "23 RUE D'EDIMBOURG 75008 PARIS",
+      "gerants": [
+        {
+          "nom": "CHARLES CHAMI",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "JOSEPH CHAMI",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "THOMAS CHAMI",
+          "qualite": "Associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "Pernéty",
@@ -28775,8 +29083,13 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "16 RUE NIEPCE 75014 PARIS",
+      "gerants": [
+        {
+          "nom": "EDDY RAJZBAUM",
+          "qualite": "Gérant"
+        }
+      ]
     },
     {
       "zone": "Pernéty",
@@ -28913,8 +29226,45 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "48 RUE PERNETY 75014 PARIS",
+      "gerants": [
+        {
+          "nom": "MARION MARINE MAEVA BLAIN",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "ARMELLE HUGNOT (CERIOLI)",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "ARNAUD CERIOLI",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "FRANCOISE COLOMEZ",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "MARIE CERIOLI (DANIEL-PAPIN)",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "LUCILE PASSY (PENOT-ANTONIOU)",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "SIMON PENOT-ANTONIOU",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "JULIE ROMERO",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "LISE SAUVAN",
+          "qualite": "Autre"
+        }
+      ]
     },
     {
       "zone": "Pernéty",
@@ -28946,8 +29296,25 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "CHEZ MADAME GROSS 25 BOULEVARD JULES SANDEAU 75016 PARIS",
+      "gerants": [
+        {
+          "nom": "DEBORAH ESTELLE ELALOUF (LEWINER)",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "JUDITH MURIEL GROSS (LEWINER)",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "LEO ZAUBERMAN",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "YOLANDE ZAUBERMAN",
+          "qualite": "Autre"
+        }
+      ]
     },
     {
       "zone": "Pernéty",
@@ -29050,8 +29417,21 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "20 AVENUE DES GOBELINS 75005 PARIS",
+      "gerants": [
+        {
+          "nom": "ANNE REBELO (ALVES )",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "DAMIEN REBELO",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "ELODIE REBELO",
+          "qualite": "Autre"
+        }
+      ]
     },
     {
       "zone": "Pernéty",
@@ -29154,6 +29534,23 @@
     },
     {
       "zone": "Pernéty",
+      "parcelle": "DO0073",
+      "adresse_bien": "82 RUE RAYMOND LOSSERAND 75014",
+      "sci_nom": "SCI JAURES",
+      "sci_siren": "379752967",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "47 RUE DU COMMERCE 75015 PARIS",
+      "gerants": [
+        {
+          "nom": "PASCAL LAINE",
+          "qualite": "Gérant"
+        }
+      ]
+    },
+    {
+      "zone": "Pernéty",
       "parcelle": "DO0074",
       "adresse_bien": "17 RUE FRANCIS DE PRESSENSE 75014",
       "sci_nom": "KEBEL-IMMO",
@@ -29169,6 +29566,23 @@
         },
         {
           "nom": "PATRICK BELLAÏCHE",
+          "qualite": "Gérant"
+        }
+      ]
+    },
+    {
+      "zone": "Pernéty",
+      "parcelle": "DO0074",
+      "adresse_bien": "17 RUE FRANCIS DE PRESSENSE 75014",
+      "sci_nom": "SCI JAURES",
+      "sci_siren": "379752967",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "47 RUE DU COMMERCE 75015 PARIS",
+      "gerants": [
+        {
+          "nom": "PASCAL LAINE",
           "qualite": "Gérant"
         }
       ]
@@ -29375,8 +29789,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "99 RUE DE L'OUEST 75014 PARIS",
+      "gerants": [
+        {
+          "nom": "GABRIEL FELIX ALDO MICHEL COIN",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "PIERRE LEVY",
+          "qualite": "Gérant"
+        }
+      ]
     },
     {
       "zone": "Pernéty",
@@ -29387,8 +29810,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "99 RUE DE L'OUEST 75014 PARIS",
+      "gerants": [
+        {
+          "nom": "STEPHANE LEVY",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "JEANNE SERPAGGI",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "Pernéty",
@@ -29399,8 +29831,21 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "4 RUE PETINIAUD-BEAUPEYRAT 87000 LIMOGES",
+      "gerants": [
+        {
+          "nom": "MARTINE ISABELLE SCHERRER (ROUX)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "JEAN-LUC MARCEL SCHERRER",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "LAURE-ANNE AGATHE SCHERRER",
+          "qualite": "Autre"
+        }
+      ]
     },
     {
       "zone": "Pernéty",
@@ -29516,8 +29961,21 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "11 RUE DESPREZ 75014 PARIS",
+      "gerants": [
+        {
+          "nom": "LINDA DANIELLE MAILLI  (CRIE)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "GUY MAILLI",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "VITO MAILLI",
+          "qualite": "Autre"
+        }
+      ]
     },
     {
       "zone": "Pernéty",
@@ -29779,8 +30237,21 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "CHABAN CHEZ MAAF ASSURANCES CHABAN 79180 CHAURAY",
+      "gerants": [
+        {
+          "nom": "LOIC LECALLO",
+          "qualite": "Gérant"
+        },
+        {
+          "nom": "REMI LOT",
+          "qualite": "Gérant"
+        },
+        {
+          "nom": "CATHERINE PARISET",
+          "qualite": "Commissaire aux comptes suppléant"
+        }
+      ]
     },
     {
       "zone": "Pernéty",
@@ -29791,8 +30262,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "89 RUE TAITBOUT 75009 PARIS",
+      "gerants": [
+        {
+          "nom": "FREDERIC BOUCHERAT",
+          "qualite": "Gérant"
+        },
+        {
+          "nom": "PIETRO ROMANI",
+          "qualite": "Gérant"
+        }
+      ]
     },
     {
       "zone": "Pernéty",
@@ -29803,8 +30283,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "93-95 93 RUE LA BOETIE 75008 PARIS",
+      "gerants": [
+        {
+          "nom": "LAURENT MOUVET",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "SYLVIE SHÄR-MOUVET",
+          "qualite": "Autre"
+        }
+      ]
     },
     {
       "zone": "Pernéty",
@@ -29815,8 +30304,33 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "79 RUE DAGUERRE 75014 PARIS",
+      "gerants": [
+        {
+          "nom": "CLEMENCE GEROSA",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "INGRID GEROSA",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "JULIENNE ANDREE GEROSA",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "KARINE BARTHELEMY (GEROSA)",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "SANDRINE LE GUILLOUX (GEROSA)",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "VINCENT GEROSA",
+          "qualite": "Autre"
+        }
+      ]
     },
     {
       "zone": "Pernéty",
@@ -29827,8 +30341,21 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "68 BOULEVARD AUGUSTE BLANQUI 75013 PARIS",
+      "gerants": [
+        {
+          "nom": "CYRIL COURTONNE",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "GABRIELLE COURTONNE",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "CHRISTIAN COURTONNE-GOUJON",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "Pernéty",
@@ -29839,8 +30366,13 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "32 RUE RAYMOND LOSSERAND 75014 PARIS",
+      "gerants": [
+        {
+          "nom": "JEAN MACHERAS",
+          "qualite": "Gérant"
+        }
+      ]
     },
     {
       "zone": "Pernéty",
@@ -29851,8 +30383,29 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "195 RUE DU FAUBOURG SAINT-HONORE 75008 PARIS",
+      "gerants": [
+        {
+          "nom": "MANDANA ARDEBILI HOGHOUGHI",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "MEDHI HOGHOUGHI",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "ROXANE HOGHOUGHI ARDEBILI",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "SAÏNA HOGHOUGHI ARDEBILI",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "SYLVIE HOGHOUGHI ARDEBILI (LE HENAFF)",
+          "qualite": "Autre"
+        }
+      ]
     },
     {
       "zone": "Pernéty",
@@ -30201,8 +30754,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "22 AVENUE DE LOWENDAL 75015 PARIS",
+      "gerants": [
+        {
+          "nom": "JEAN PHILIPPE FREMONT",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "MYLENE FREMONT (RUMEAU)",
+          "qualite": "Autre"
+        }
+      ]
     },
     {
       "zone": "Pernéty",
@@ -30326,8 +30888,13 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "CHEZ STEPHANE CHARTIER 55 BOULEVARD MURAT 75016 PARIS",
+      "gerants": [
+        {
+          "nom": "STEPHANE JEAN PIERRE MARIE CHARTIER",
+          "qualite": "Gérant"
+        }
+      ]
     },
     {
       "zone": "Pernéty",
@@ -30338,8 +30905,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "107 RUE LA BOETIE 75008 PARIS",
+      "gerants": [
+        {
+          "nom": "JEAN PAPAHN",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "CHRISTINE PAPAHN (PHAL)",
+          "qualite": "Associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "Pernéty",
@@ -30349,9 +30925,22 @@
       "sci_siren": "439795212",
       "code_droit": "P",
       "millesime": 2025,
-      "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "sci_active": "non",
+      "siege_social": "10 RUE JULES GUESDE 75014 PARIS",
+      "gerants": [
+        {
+          "nom": "FABRICE PAPAHN",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "JEAN PAPAHN",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "JULIA MARIAGE (PAPAHN)",
+          "qualite": "Associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "Pernéty",
@@ -30362,8 +30951,13 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "4 RUE CORVETTO 75008 PARIS",
+      "gerants": [
+        {
+          "nom": "I-TING ALIAS JOY CHAUNG",
+          "qualite": "Gérant et associé indéfiniment responsable, Gérant"
+        }
+      ]
     },
     {
       "zone": "Pernéty",
@@ -30374,8 +30968,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "14 RUE D'AVIAU 33000 BORDEAUX",
+      "gerants": [
+        {
+          "nom": "JOHANNA BERU",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "JEAN-CHRISTOPHE CAMBRELENG",
+          "qualite": "Gérant"
+        }
+      ]
     },
     {
       "zone": "Pernéty",
@@ -30386,8 +30989,21 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "466 RUE DE POISSY 78670 VILLENNES-SUR-SEINE",
+      "gerants": [
+        {
+          "nom": "VINCENTA AMPARO ROUANNE (MARCO)",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "EVA FRANCINE AMPARO VIRGINIE ROUANNE",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "JEAN-MARIE FRANCIS ROUANNE",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "Pernéty",
@@ -30510,6 +31126,27 @@
         },
         {
           "nom": "LENUTA BULIGA",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "Pernéty",
+      "parcelle": "DQ0069",
+      "adresse_bien": "116 RUE DU CHATEAU 75014",
+      "sci_nom": "SCI DU 116 RUE DU CHATEAU",
+      "sci_siren": "405111675",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "10 RUE LOUIS LEJEUNE 92120 MONTROUGE",
+      "gerants": [
+        {
+          "nom": "MARGARET ISABELLE COLOMBANI",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "SOLON CHARLES PIERRE CONSTANT ROCABOY",
           "qualite": "Autre"
         }
       ]
@@ -31175,8 +31812,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "11 RUE LEONCE VIELJEUX 17450 FOURAS",
+      "gerants": [
+        {
+          "nom": "PATRICE JEAN-LOUP BIGOT",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "NELLY SOPHIE FRANCOISE BIGOT (MARTIN)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "Pernéty",
@@ -31187,8 +31833,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "46 RUE GASTON TURPIN 44000 NANTES",
+      "gerants": [
+        {
+          "nom": "BENJAMIN MOISE CAMPHORT",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "GILLES FRANCIS CAMPHORT",
+          "qualite": "Gérant"
+        }
+      ]
     },
     {
       "zone": "Pernéty",
@@ -31199,8 +31854,25 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "72 QUAI DE L'ARTOIS 94170 LE PERREUX-SUR-MARNE",
+      "gerants": [
+        {
+          "nom": "AMANDINE BELLOC",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "BENJAMIN BELLOC",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "CAMILLE BELLOC",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "JEANNE BELLOC (MONTGOBERT)",
+          "qualite": "Autre"
+        }
+      ]
     },
     {
       "zone": "Pernéty",
@@ -31245,8 +31917,25 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "8 RUE MAISON DIEU 75014 PARIS",
+      "gerants": [
+        {
+          "nom": "FEDOR GNUCHEV",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "NIKOLAY GNUCHEV",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "PETR GNUCHEV",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "ANASTASIA NIKOLAEVA",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "Pernéty",
@@ -31257,8 +31946,29 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "200 AVENUE DU MAINE 75014 PARIS",
+      "gerants": [
+        {
+          "nom": "ERIC JAMES KONQUI",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "LAURENT SIMON KONQUI",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "LILIANE KONQUI",
+          "qualite": "Gérant"
+        },
+        {
+          "nom": "MARLÈNE ELISABETH HASSINE (KONQUI)",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "MAURICE KONQUI",
+          "qualite": "Gérant"
+        }
+      ]
     },
     {
       "zone": "Pernéty",
@@ -31269,8 +31979,21 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "30 AVENUE VOLTAIRE 77270 VILLEPARISIS",
+      "gerants": [
+        {
+          "nom": "JEAN HUGUES",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "OLIVIER HUGUES",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "SALAH LAMZEL",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "Pernéty",
@@ -31314,8 +32037,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "20 AVENUE FOUCAUD 87000 LIMOGES",
+      "gerants": [
+        {
+          "nom": "MARIE-HELENE CLAUDE MAZABRAUD (GROSPERRIN)",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "ROBERT ALEXANDRE LEON MAZABRAUD",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "Pernéty",
@@ -31326,8 +32058,21 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "23 RUE YANN D’ARGENT 29680 ROSCOFF",
+      "gerants": [
+        {
+          "nom": "ERWANN SIDDHANTA VROELANT",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "JEAN PIERRE VROELANT",
+          "qualite": "Gérant"
+        },
+        {
+          "nom": "LAURE GWENDOLINE SEISMA VROELANT",
+          "qualite": "Associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "Pernéty",
@@ -31338,8 +32083,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "16 RUE DU STADE 35370 SAINT-GERMAIN-DU-PINEL",
+      "gerants": [
+        {
+          "nom": "AURELIEN GUINARD",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "PATRICK GUINARD",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "Pernéty",
@@ -31601,8 +32355,25 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "14 R DE BOTIDOUX 22460 SAINT-THELO",
+      "gerants": [
+        {
+          "nom": "ALAN LOUIS VENETSIANOS CHRETIEN (CHRETIEN)",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "ELYN ANTIGONE THELONIE CHRETIEN (CHRETIEN)",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "YVES MARC MARIUS CHRETIEN (CHRETIEN)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "VIRGINIE CHRETIEN (SEMETIN)",
+          "qualite": "Associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "Pernéty",
@@ -31613,8 +32384,29 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "30 RUE DU MARATHON 14000 CAEN",
+      "gerants": [
+        {
+          "nom": "JULIETTE PAULINE MARIE GAILLAC (BERCOVICI)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "JEAN-BAPTISTE PIERRE PAUL GAILLAC",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "OLIVIER ALFRED CHARLES GAILLAC",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "ROMAIN JEAN GÉRARD GAILLAC",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "VICTORIA ROSE MARIE GAILLAC",
+          "qualite": "Associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "Pernéty",
@@ -31625,8 +32417,25 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "30 RUE JULES GUESDE 75014 PARIS",
+      "gerants": [
+        {
+          "nom": "JEAN CAMACHO",
+          "qualite": "Gérant"
+        },
+        {
+          "nom": "MARIO CAMCHO-GONZALEZ (CAMACHO)",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "ADRIANA CAMACHO (CASTILLO CASTRO)",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "AGNETA KRISTINA NORDH",
+          "qualite": "Autre"
+        }
+      ]
     },
     {
       "zone": "Pernéty",
@@ -31637,8 +32446,25 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "23 RUE NOTRE-DAME DE BON SECOURS 60200 COMPIEGNE",
+      "gerants": [
+        {
+          "nom": "DANIELLE ROSE VARAINE (KATZ)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "JEAN-PIERRE MICHEL VARAINE",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "KARINE NATACHA CHEREL (VARAINE)",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "SOPHIE LAURENCE VARAINE",
+          "qualite": "Autre"
+        }
+      ]
     },
     {
       "zone": "Pernéty",
@@ -31670,8 +32496,25 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "24 B AVENUE SAINTE-VICTOIRE 13100 AIX-EN-PROVENCE",
+      "gerants": [
+        {
+          "nom": "ELISABETH LE GAL (HAMMER)",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "ADRIEN LE GAL",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "DANIEL LE GAL",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "OLIVIER LE GAL",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "Pernéty",
@@ -31682,8 +32525,13 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "30 RUE DEPARCIEUX 75014 PARIS",
+      "gerants": [
+        {
+          "nom": "JEANNE CELESTE MARIE DUMONT",
+          "qualite": "Autre"
+        }
+      ]
     },
     {
       "zone": "Pernéty",
@@ -31694,8 +32542,17 @@
       "code_droit": "N",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "38 B RUE DU PANORAMA 95370 MONTIGNY-LES-CORMEILLES",
+      "gerants": [
+        {
+          "nom": "FLORENCE RICHARD (MARQUES)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "XAVIER RICHARD",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "Pernéty",
@@ -31752,8 +32609,21 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "46 A RUE RAYMOND LOSSERAND 75014 PARIS",
+      "gerants": [
+        {
+          "nom": "AGATHE MELANIE ZOE MARTY",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "ANOUK BARBARA LOU MARTY",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "DIDIER MARTY",
+          "qualite": "Gérant"
+        }
+      ]
     },
     {
       "zone": "Pernéty",
@@ -31764,8 +32634,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "C/O BIZASENE THOMAS WONCHE 97122 BAIE MAHAULT",
+      "gerants": [
+        {
+          "nom": "THOMAS VICTOR BIZASENE",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "GUYENNE JOSEPHE GENE",
+          "qualite": "Autre"
+        }
+      ]
     },
     {
       "zone": "Pernéty",
@@ -31776,8 +32655,25 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "29 RUE DE SAINTONGE 75003 PARIS",
+      "gerants": [
+        {
+          "nom": "ARNAUD BAIS",
+          "qualite": "Gérant"
+        },
+        {
+          "nom": "BEATRICE BAIS",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "JEAN-BAPTISTE BAIS",
+          "qualite": "Gérant"
+        },
+        {
+          "nom": "CHRISTIANE BAIS (BOSSAVIE)",
+          "qualite": "Autre"
+        }
+      ]
     },
     {
       "zone": "Pernéty",
@@ -31788,8 +32684,21 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "5 B CHEMIN DE LA CHAUDERAIE 69340 FRANCHEVILLE",
+      "gerants": [
+        {
+          "nom": "BERNARD BIEVELEZ",
+          "qualite": "Gérant"
+        },
+        {
+          "nom": "LAURE BIEVELEZ",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "BERNADETTE BIEVELEZ (CUZIAT)",
+          "qualite": "Gérant"
+        }
+      ]
     },
     {
       "zone": "Pernéty",
@@ -31800,8 +32709,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "CESAR 47290 BOUDY DE BEAUREGARD",
+      "gerants": [
+        {
+          "nom": "NILS DEGREMONT",
+          "qualite": "Gérant"
+        },
+        {
+          "nom": "SAMUEL PAOUTA DEGREMONT",
+          "qualite": "Gérant"
+        }
+      ]
     },
     {
       "zone": "Pernéty",
@@ -31990,8 +32908,13 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "2 PLACE DE CATALOGNE 75014 PARIS",
+      "gerants": [
+        {
+          "nom": "CYRILL PELLETIER",
+          "qualite": "Gérant"
+        }
+      ]
     },
     {
       "zone": "Pernéty",
@@ -32031,8 +32954,13 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "2 RUE DES HAUTS CLOSEAUX 92310 SEVRES",
+      "gerants": [
+        {
+          "nom": "NICOLAS SAMSON",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "Pernéty",
@@ -32043,8 +32971,13 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "102 RUE DE LA TOUR 75016 PARIS",
+      "gerants": [
+        {
+          "nom": "BENOIT REY",
+          "qualite": "Gérant"
+        }
+      ]
     },
     {
       "zone": "Pernéty",
@@ -32055,8 +32988,13 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "159 AVENUE DE SUFFREN 75015 PARIS",
+      "gerants": [
+        {
+          "nom": "HENRI VIALA",
+          "qualite": "Gérant"
+        }
+      ]
     },
     {
       "zone": "Pernéty",
@@ -32067,8 +33005,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "16 RUE SAINT-SAUVEUR 75002 PARIS",
+      "gerants": [
+        {
+          "nom": "NICOLAS MASSE",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "JOY SINANIAN",
+          "qualite": "Autre"
+        }
+      ]
     },
     {
       "zone": "Pernéty",
@@ -32424,6 +33371,27 @@
         },
         {
           "nom": "CLAUDE PHILIPS",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "Pernéty",
+      "parcelle": "DS0005",
+      "adresse_bien": "33 RUE DU COMMANDT RENE MOUCHOTTE 75014",
+      "sci_nom": "SCI IMMO COMMERCE",
+      "sci_siren": "337789945",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "112 RUE DE VAUGIRARD 75006 PARIS",
+      "gerants": [
+        {
+          "nom": "LUCIEN ASSOUS",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "MARIE LISE ASSOUS (LEGRAND)",
           "qualite": "Autre"
         }
       ]
@@ -32930,8 +33898,13 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "17 RUE DE L'ANNONCIATION 75016 PARIS",
+      "gerants": [
+        {
+          "nom": "BRIGITTE MARIE JENOUDET (BIOJOUT)",
+          "qualite": "Gérant"
+        }
+      ]
     },
     {
       "zone": "Pernéty",
@@ -32942,8 +33915,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "20 RUE DU COMMANDANT RENE MOUCHOTTE 75014 PARIS",
+      "gerants": [
+        {
+          "nom": "HELENE PICAUD",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "SYLVAIN PIGNOT",
+          "qualite": "Gérant"
+        }
+      ]
     },
     {
       "zone": "Pernéty",
@@ -32954,8 +33936,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "7 RUE FRANCISCO FERRER 94200 IVRY-SUR-SEINE",
+      "gerants": [
+        {
+          "nom": "LEO JEAN MHAMED LAHLOU",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "NORDINE LAHLOU",
+          "qualite": "Autre"
+        }
+      ]
     },
     {
       "zone": "Pernéty",
@@ -32966,8 +33957,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "10 CAR JOUAUST 35000 RENNES",
+      "gerants": [
+        {
+          "nom": "PERRINE CHANTAL GUEGUEN",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "PIERRE GILLES FRANCIS GUEGUEN",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "Pernéty",
@@ -32978,8 +33978,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "20 RUE DU COMMANDANT RENE MOUCHOTTE 75014 PARIS",
+      "gerants": [
+        {
+          "nom": "ISABELLE ROBERT (ARLECCHINI)",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "ANDRE EUGENE ROBERT",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "Pernéty",
@@ -32990,8 +33999,17 @@
       "code_droit": "N",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "D111 20 RUE DU COMMANDANT RENE MOUCHOTTE 75014 PARIS",
+      "gerants": [
+        {
+          "nom": "BRIGITTE MARIE JULIENNE DOUMENC (CARRERE)",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "JEAN FRANCOIS DOUMENC",
+          "qualite": "Gérant"
+        }
+      ]
     },
     {
       "zone": "Pernéty",
@@ -33002,8 +34020,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "11 MAIL FRANCOIS MITTERRAND 35000 RENNES",
+      "gerants": [
+        {
+          "nom": "PIERRE MALARY",
+          "qualite": "Gérant"
+        },
+        {
+          "nom": "ABDELAZIZ OUAZINE",
+          "qualite": "Gérant"
+        }
+      ]
     },
     {
       "zone": "Pernéty",
@@ -33014,8 +34041,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "3 CITE RONDELET 92120 MONTROUGE",
+      "gerants": [
+        {
+          "nom": "DENISE STEFANCZYK (MATHIAS)",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "ODILE STEFANCZYK",
+          "qualite": "Autre"
+        }
+      ]
     },
     {
       "zone": "Pernéty",
