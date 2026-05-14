@@ -1608,6 +1608,12 @@ async function genererCourrier() {
   const today = new Date().toLocaleDateString('fr-FR', {day:'numeric', month:'long', year:'numeric'});
   const pageBreak = '<w:p><w:r><w:br w:type="page"/></w:r></w:p>';
 
+    // Extraire le sectPr du template (marges/format) — réappliqué une seule fois à la fin
+    const tplZip2 = new PizZip(courrierTemplateBuffer);
+    const tplXml2 = tplZip2.files['word/document.xml'].asText();
+    const sectPrM = tplXml2.match(/<w:sectPr[\s\S]*?<\/w:sectPr>/);
+    const sectPr  = sectPrM ? sectPrM[0] : '';
+
   try {
     // Générer chaque body individuellement
     const bodies = liste.map(sci => {
@@ -1633,10 +1639,9 @@ async function genererCourrier() {
       const xml = doc.getZip().files['word/document.xml'].asText();
       const bodyMatch = xml.match(/<w:body>([\s\S]*)<\/w:body>/);
       if (!bodyMatch) return '';
-      // Supprimer le saut de page final du body pour éviter la page blanche
+      // Supprimer le sectPr de chaque body — Word crée une page blanche par sectPr
       let body = bodyMatch[1];
-      // Supprimer le paragraphe vide final (juste avant <w:sectPr>) qui cause une page blanche
-      body = body.replace(/<w:p[^>]*><w:pPr>[\s\S]*?<\/w:pPr><\/w:p>(\s*<w:sectPr)/, '$1');
+      body = body.replace(/<w:sectPr[\s\S]*?<\/w:sectPr>\s*$/, '');
       return body;
     });
 
@@ -1654,7 +1659,8 @@ async function genererCourrier() {
 
     let baseXml = baseDoc.getZip().files['word/document.xml'].asText();
     // Joindre avec saut de page ENTRE les courriers (pas après le dernier)
-    const fusedBody = bodies.join(pageBreak);
+    // Réappliquer le sectPr du template à la fin du document fusionné
+    const fusedBody = bodies.join(pageBreak) + sectPr;
     baseXml = baseXml.replace(/<w:body>[\s\S]*<\/w:body>/, '<w:body>' + fusedBody + '</w:body>');
     baseDoc.getZip().file('word/document.xml', baseXml);
 
