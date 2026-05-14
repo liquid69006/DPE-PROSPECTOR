@@ -1459,7 +1459,7 @@ function showToast(msg, warn=false) {
 // ════════════════════════════════════════
 //  FERMETURE MODALS AU CLIC DEHORS
 // ════════════════════════════════════════
-['modal-conseillers','modal-password','modal-courrier','modal-choix-courrier'].forEach(id => {
+['modal-conseillers','modal-password','modal-courrier','modal-choix-courrier','modal-msb'].forEach(id => {
   document.getElementById(id).addEventListener('click', e => {
     if (e.target.id===id) {
       if(id==='modal-conseillers') closeModalConseillers();
@@ -1615,7 +1615,62 @@ function telechargerCourriers() {
 
 function envoyerMySendingBox() {
   fermerChoixCourrier();
-  showToast('📮 MySendingBox — intégration à venir', false);
+  // Pré-remplir la clé sauvegardée
+  const savedKey = localStorage.getItem('msb_api_key') || '';
+  document.getElementById('msb-api-key').value = savedKey;
+  // Afficher le nombre et le coût estimé
+  const n = window._courrierCount || 0;
+  document.getElementById('msb-count').textContent = `${n} courrier${n > 1 ? 's' : ''} à envoyer`;
+  document.getElementById('msb-total').textContent = `Estimation : ~${(n * 0.737).toFixed(2)} € TTC`;
+  document.getElementById('msb-status').textContent = '';
+  document.getElementById('modal-msb').classList.add('open');
+}
+
+function fermerMSB() {
+  document.getElementById('modal-msb').classList.remove('open');
+}
+
+function toggleMSBKey() {
+  const inp = document.getElementById('msb-api-key');
+  inp.type = inp.type === 'password' ? 'text' : 'password';
+}
+
+async function confirmerEnvoiMSB() {
+  const apiKey = document.getElementById('msb-api-key').value.trim();
+  if (!apiKey) {
+    document.getElementById('msb-status').textContent = '❌ Veuillez saisir votre clé API.';
+    return;
+  }
+  // Sauvegarder si demandé
+  if (document.getElementById('msb-save-key').checked) {
+    localStorage.setItem('msb_api_key', apiKey);
+  } else {
+    localStorage.removeItem('msb_api_key');
+  }
+  const status = document.getElementById('msb-status');
+  const btn    = document.getElementById('msb-btn-envoyer');
+  btn.disabled = true;
+  status.textContent = '⏳ Connexion à MySendingBox...';
+
+  // Vérifier la clé API via MySendingBox
+  try {
+    const resp = await fetch('https://api.mysendingbox.fr/account', {
+      headers: { 'Authorization': 'Basic ' + btoa(apiKey + ':') }
+    });
+    if (!resp.ok) {
+      status.textContent = '❌ Clé API invalide ou erreur de connexion.';
+      btn.disabled = false;
+      return;
+    }
+    const account = await resp.json();
+    status.textContent = `✅ Connecté : ${account.name || account.email} — Solde : ${account.wallet !== undefined ? account.wallet + ' €' : 'N/A'}`;
+    btn.disabled = false;
+    // TODO : implémenter l'envoi réel quand la clé est validée
+    showToast('✅ Clé API validée — envoi à implémenter');
+  } catch(e) {
+    status.textContent = '❌ Erreur réseau : ' + e.message;
+    btn.disabled = false;
+  }
 }
 
 
@@ -1768,3 +1823,40 @@ window.addEventListener('DOMContentLoaded', async () => {
 </script>
 </body>
 </html>
+<!-- ════ MODALE MYSENDINGBOX ════ -->
+<div class="modal-overlay" id="modal-msb">
+  <div class="modal" style="max-width:460px;">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+      <h3 style="margin:0;font-size:16px;">📮 MySendingBox</h3>
+      <button class="btn-reset" onclick="fermerMSB()" style="font-size:18px;line-height:1;padding:4px 8px;">✕</button>
+    </div>
+
+    <div style="margin-bottom:16px;">
+      <label style="font-size:13px;color:var(--text2);display:block;margin-bottom:6px;">Clé API MySendingBox</label>
+      <div style="display:flex;gap:8px;align-items:center;">
+        <input type="password" id="msb-api-key" placeholder="Votre clé API..."
+          style="flex:1;padding:8px 10px;border:1px solid var(--border);border-radius:6px;font-size:13px;background:var(--bg2);color:var(--text);">
+        <button class="btn-reset" id="msb-toggle-key" onclick="toggleMSBKey()" style="font-size:16px;padding:6px 10px;" title="Afficher/masquer">👁</button>
+      </div>
+      <label style="display:flex;align-items:center;gap:8px;margin-top:8px;font-size:12px;color:var(--text2);cursor:pointer;">
+        <input type="checkbox" id="msb-save-key" checked>
+        Mémoriser la clé dans ce navigateur
+      </label>
+    </div>
+
+    <div style="background:var(--bg2);border-radius:8px;padding:12px;margin-bottom:16px;font-size:12px;color:var(--text2);line-height:1.6;">
+      <div style="margin-bottom:4px;">📦 <strong id="msb-count"></strong></div>
+      <div>💰 Tarif écopli : ~0,74€ / courrier</div>
+      <div id="msb-total" style="margin-top:4px;font-weight:600;color:var(--accent);"></div>
+    </div>
+
+    <div id="msb-status" style="font-size:13px;min-height:18px;margin-bottom:12px;"></div>
+
+    <div style="display:flex;gap:10px;">
+      <button class="btn-reset" onclick="fermerMSB()">Annuler</button>
+      <button class="btn-primary" id="msb-btn-envoyer" onclick="confirmerEnvoiMSB()" style="flex:1;">
+        📮 Envoyer les courriers
+      </button>
+    </div>
+  </div>
+</div>
