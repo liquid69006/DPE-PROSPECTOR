@@ -1477,9 +1477,19 @@ let courrierTemplateBuffer = null; // ArrayBuffer du .docx uploadé
 
 function parseSiegeSocial(siege) {
   if (!siege) return { adresse: '', cp: '', ville: '' };
-  const m = siege.match(/^(.*?)\s+(\d{5})\s+(.+)$/);
-  if (m) return { adresse: m[1].trim(), cp: m[2], ville: m[3].trim() };
-  return { adresse: siege, cp: '', ville: '' };
+  // Trouver tous les codes postaux français (01000-99999) dans la chaîne
+  const allCPs = [...siege.matchAll(/\b(0[1-9]|[1-8]\d|9[0-5])\d{3}\b/g)];
+  if (!allCPs.length) return { adresse: siege.slice(0, 60), cp: '', ville: '' };
+  // Prendre le dernier CP trouvé (cas d'adresses multiples collées)
+  const lastCP = allCPs[allCPs.length - 1];
+  const cp = lastCP[0];
+  const idxCP = lastCP.index;
+  // Adresse = tout ce qui précède ce CP (nettoyer les numéros parasites au début)
+  let adresse = siege.slice(0, idxCP).trim();
+  // Ville = ce qui suit le CP jusqu'à la prochaine série de chiffres ou fin
+  const afterCP = siege.slice(idxCP + cp.length).trim();
+  const ville = afterCP.replace(/\s+\d.*$/, '').trim();
+  return { adresse: adresse.slice(0, 60), cp, ville: ville.slice(0, 30) };
 }
 
 function getPremierGerant(gerants) {
@@ -1656,7 +1666,8 @@ async function genererCourrier() {
         VILLE:        siege.ville,
         DATE:         today,
       });
-      const xml = doc.getZip().files['word/document.xml'].asText();
+      let xml = doc.getZip().files['word/document.xml'].asText();
+      xml = xml.replace(/Monsieur ou Madame/g, 'M. ou Mme.');
       const bodyMatch = xml.match(/<w:body>([\s\S]*)<\/w:body>/);
       if (!bodyMatch) return '';
       // Supprimer le sectPr de chaque body — Word crée une page blanche par sectPr
