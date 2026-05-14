@@ -1642,6 +1642,7 @@ async function genererCourrier() {
       // Supprimer le sectPr de chaque body — Word crée une page blanche par sectPr
       let body = bodyMatch[1];
       body = body.replace(/<w:sectPr[\s\S]*?<\/w:sectPr>\s*$/, '');
+      body = body.replace(/<w:p[^>]*><w:pPr><w:spacing[^>]*\/><\/w:pPr><\/w:p>\s*$/, '');
       return body;
     });
 
