@@ -587,6 +587,27 @@ td{padding:11px 14px;vertical-align:middle;}
 <!-- ════════════════════════════════════════
      MODAL — GESTION CONSEILLERS
 ════════════════════════════════════════ -->
+
+<!-- ════ MODALE CHOIX POST-GÉNÉRATION ════ -->
+<div class="modal-overlay" id="modal-choix-courrier">
+  <div class="modal" style="max-width:480px;">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+      <h3 style="margin:0;font-size:16px;">✅ Courriers générés</h3>
+      <button class="btn-reset" onclick="fermerChoixCourrier()" style="font-size:18px;line-height:1;padding:4px 8px;">✕</button>
+    </div>
+    <p id="choix-courrier-count" style="font-size:14px;color:var(--text2);margin-bottom:24px;"></p>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <button class="btn-primary" onclick="telechargerCourriers()" style="padding:14px;font-size:14px;">
+        🖨️ Télécharger &amp; Imprimer
+      </button>
+      <button class="btn-primary" onclick="envoyerMySendingBox()" style="padding:14px;font-size:14px;background:linear-gradient(135deg,#4f46e5,#7c3aed);">
+        📮 Envoyer avec MySendingBox
+      </button>
+    </div>
+    <button class="btn-reset" onclick="fermerChoixCourrier()" style="margin-top:16px;width:100%;text-align:center;">Annuler</button>
+  </div>
+</div>
+
 <div class="modal-overlay" id="modal-conseillers">
   <div class="modal">
     <h2>👥 Gérer les conseillers</h2>
@@ -1426,7 +1447,7 @@ function showToast(msg, warn=false) {
 // ════════════════════════════════════════
 //  FERMETURE MODALS AU CLIC DEHORS
 // ════════════════════════════════════════
-['modal-conseillers','modal-password','modal-courrier'].forEach(id => {
+['modal-conseillers','modal-password','modal-courrier','modal-choix-courrier'].forEach(id => {
   document.getElementById(id).addEventListener('click', e => {
     if (e.target.id===id) {
       if(id==='modal-conseillers') closeModalConseillers();
@@ -1539,6 +1560,35 @@ function fermerModalCourrier() {
   document.getElementById('modal-courrier').classList.remove('open');
 }
 
+function ouvrirChoixCourrier() {
+  const n = window._courrierCount || 0;
+  document.getElementById('choix-courrier-count').textContent =
+    `${n} courrier${n > 1 ? 's' : ''} prêt${n > 1 ? 's' : ''} — que souhaitez-vous faire ?`;
+  document.getElementById('modal-choix-courrier').classList.add('open');
+}
+
+function fermerChoixCourrier() {
+  document.getElementById('modal-choix-courrier').classList.remove('open');
+}
+
+function telechargerCourriers() {
+  if (!window._courrierBlob) return;
+  const url  = URL.createObjectURL(window._courrierBlob);
+  const link = document.createElement('a');
+  link.href  = url;
+  link.download = `Courriers_SCI_${window._courrierDate || 'export'}.docx`;
+  link.click();
+  URL.revokeObjectURL(url);
+  fermerChoixCourrier();
+  showToast('✅ Courriers téléchargés');
+}
+
+function envoyerMySendingBox() {
+  fermerChoixCourrier();
+  showToast('📮 MySendingBox — intégration à venir', false);
+}
+
+
 async function genererCourrier() {
   const liste = filtrerSciPourCourrier();
   if (!liste.length) { showToast('Aucune SCI sélectionnée', true); return; }
@@ -1582,7 +1632,12 @@ async function genererCourrier() {
       });
       const xml = doc.getZip().files['word/document.xml'].asText();
       const bodyMatch = xml.match(/<w:body>([\s\S]*)<\/w:body>/);
-      return bodyMatch ? bodyMatch[1] : '';
+      if (!bodyMatch) return '';
+      // Supprimer le saut de page final du body pour éviter la page blanche
+      let body = bodyMatch[1];
+      // Supprimer le paragraphe vide final (juste avant <w:sectPr>) qui cause une page blanche
+      body = body.replace(/<w:p[^>]*><w:pPr>[\s\S]*?<\/w:pPr><\/w:p>(\s*<w:sectPr)/, '$1');
+      return body;
     });
 
     // Fusionner dans un seul docx
@@ -1598,6 +1653,7 @@ async function genererCourrier() {
                      CODE_POSTAL: siege0.cp, VILLE: siege0.ville, DATE: today });
 
     let baseXml = baseDoc.getZip().files['word/document.xml'].asText();
+    // Joindre avec saut de page ENTRE les courriers (pas après le dernier)
     const fusedBody = bodies.join(pageBreak);
     baseXml = baseXml.replace(/<w:body>[\s\S]*<\/w:body>/, '<w:body>' + fusedBody + '</w:body>');
     baseDoc.getZip().file('word/document.xml', baseXml);
@@ -1605,18 +1661,15 @@ async function genererCourrier() {
     const blob = baseDoc.getZip().generate({ type: 'blob',
       mimeType: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' });
 
-    // Téléchargement
-    const url  = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href  = url;
-    link.download = `Courriers_SCI_${new Date().toISOString().slice(0,10)}.docx`;
-    link.click();
-    URL.revokeObjectURL(url);
+    // Stocker le blob et ouvrir la popup de choix
+    window._courrierBlob  = blob;
+    window._courrierCount = liste.length;
+    window._courrierDate  = new Date().toISOString().slice(0,10);
 
     status.textContent = `✅ ${liste.length} courrier${liste.length>1?'s':''} générés !`;
     btn.disabled = false;
-    showToast(`✅ ${liste.length} courriers téléchargés`);
     fermerModalCourrier();
+    ouvrirChoixCourrier();
 
   } catch(err) {
     status.textContent = '❌ Erreur : ' + err.message;
