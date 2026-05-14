@@ -1747,8 +1747,13 @@ async function lancerEnvoiMSB(sess, apiKeyOverride) {
       if (resp.ok) {
         const data = await resp.json().catch(() => ({}));
         ok++;
-        // Log toute la réponse MSB pour debug
-        if (ok === 1) console.log('MSB réponse complète:', JSON.stringify(data));
+        // Afficher le lien de prévisualisation du 1er courrier
+        if (ok === 1) {
+          const previewUrl = data.file_for_corus?.url || data.file?.url;
+          if (previewUrl) {
+            status.innerHTML = `⏳ ${ok}/${liste.length} — <a href="${previewUrl}" target="_blank" style="color:var(--accent);text-decoration:underline;">👁 Prévisualiser le 1er courrier</a>`;
+          }
+        }
       } else {
         const errData = await resp.json().catch(() => ({}));
         console.error('MSB error:', errData);
