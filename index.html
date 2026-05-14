@@ -1609,7 +1609,7 @@ async function envoyerMySendingBox() {
   fermerChoixCourrier();
   const n = window._courrierCount || 0;
   document.getElementById('msb-count').textContent = `${n} courrier${n > 1 ? 's' : ''} à envoyer`;
-  document.getElementById('msb-total').textContent = `Estimation : ~${(n * 0.737).toFixed(2)} € TTC`;
+  document.getElementById('msb-total').textContent = `Estimation : ~${(n * 1.40).toFixed(2)} € HT`;
   document.getElementById('msb-status').textContent = '⏳ Chargement...';
   document.getElementById('msb-api-key').value = '';
   document.getElementById('msb-btn-envoyer').disabled = true;
@@ -1659,7 +1659,7 @@ async function confirmerEnvoiMSB() {
   if (isAlreadyConfigured && inputVal.startsWith('••••••')) {
     status.textContent = '⏳ Envoi en cours...';
     btn.disabled = true;
-    showToast('📮 Envoi MySendingBox — à implémenter');
+    await lancerEnvoiMSB(sess, null); // null = utiliser la clé stockée en KV
     btn.disabled = false;
     return;
   }
@@ -1689,16 +1689,83 @@ async function confirmerEnvoiMSB() {
       return;
     }
     input.dataset.configured = 'true';
-    status.textContent = '✅ Clé API sauvegardée pour cette agence.';
-    showToast('✅ Clé MySendingBox enregistrée');
+    status.textContent = '✅ Clé API sauvegardée. Lancement de l\'envoi...';
     btn.disabled = false;
-    // TODO : déclencher l'envoi réel ici
+    await lancerEnvoiMSB(sess, inputVal);
   } catch(e) {
     status.textContent = '❌ Erreur : ' + e.message;
     btn.disabled = false;
   }
 }
 
+
+
+async function lancerEnvoiMSB(sess, apiKeyOverride) {
+  const status = document.getElementById('msb-status');
+  const btn    = document.getElementById('msb-btn-envoyer');
+  btn.disabled = true;
+
+  // Récupérer la liste des SCI à envoyer (même filtre que pour le docx)
+  const liste = filtrerSciPourCourrier();
+  if (!liste.length) {
+    status.textContent = '❌ Aucune SCI sélectionnée.';
+    btn.disabled = false;
+    return;
+  }
+
+  const today = new Date().toLocaleDateString('fr-FR', {day:'numeric', month:'long', year:'numeric'});
+  let ok = 0, errors = 0;
+
+  status.textContent = `⏳ Envoi de ${liste.length} courriers...`;
+
+  for (let i = 0; i < liste.length; i++) {
+    const sci = liste[i];
+    const siege = parseSiegeSocial(sci.siege_social);
+    if (!siege.cp || !siege.ville) { errors++; continue; }
+
+    const htmlContent = generateCourrierHTML(sci, today);
+
+    // Passer par le Worker pour ne pas exposer la clé API
+    try {
+      const resp = await fetch(`${API_URL}/msb-send/${sess.agence}`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${sess.token}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          html: htmlContent,
+          to: {
+            name: sci.sci_nom,
+            address_line1: siege.adresse,
+            zip_code: siege.cp,
+            city: siege.ville,
+            country: 'France',
+          },
+        }),
+      });
+      if (resp.ok) {
+        ok++;
+      } else {
+        const err = await resp.json().catch(() => ({}));
+        console.error('MSB error:', err);
+        errors++;
+      }
+    } catch(e) {
+      errors++;
+    }
+
+    // Mise à jour du statut toutes les 10 lettres
+    if ((i + 1) % 10 === 0 || i === liste.length - 1) {
+      status.textContent = `⏳ ${i+1}/${liste.length} — ✅ ${ok} envoyés, ❌ ${errors} erreurs`;
+    }
+  }
+
+  status.textContent = `✅ Terminé — ${ok} courriers envoyés, ${errors} erreurs`;
+  btn.disabled = false;
+  if (ok > 0) showToast(`✅ ${ok} courriers envoyés via MySendingBox`);
+  fermerMSB();
+}
 
 async function genererCourrier() {
   const liste = filtrerSciPourCourrier();
@@ -1799,6 +1866,132 @@ async function genererCourrier() {
   }
 }
 
+
+// ════════════════════════════════════════
+//  GÉNÉRATION HTML COURRIER (pour MySendingBox)
+// ════════════════════════════════════════
+function generateCourrierHTML(sci, today) {
+  const siege  = parseSiegeSocial(sci.siege_social);
+  const gerant = getPremierGerant(sci.gerants) || 'le Dirigeant';
+  const nomSci = /^SCI\b/i.test(sci.sci_nom || '') ? sci.sci_nom : 'SCI ' + sci.sci_nom;
+  const gerantClean = gerant.replace(/\s*\([^)]*\)/g, '').trim();
+
+  const LOGO_URL = 'https://dpe-prospector-api.yann-bufferne.workers.dev/lib/logo_c21.png';
+
+  return `<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: Arial, sans-serif; font-size: 11pt; color: #333; background: #fff; padding: 20mm 15mm; }
+
+  /* EN-TÊTE */
+  .header { display: flex; align-items: flex-start; border: 1.5px solid #BEAF87; padding: 10px 14px; margin-bottom: 18px; gap: 14px; }
+  .header img { width: 64px; height: auto; flex-shrink: 0; }
+  .header-info { flex: 1; }
+  .header-name { font-size: 14pt; font-weight: bold; }
+  .header-name span { color: #BEAF87; }
+  .header-agence { font-size: 12pt; font-weight: bold; margin-bottom: 4px; }
+  .header-details { font-size: 9pt; color: #555; line-height: 1.5; }
+  .header-details a { color: #BEAF87; text-decoration: none; }
+
+  /* SÉPARATEURS */
+  .sep { border: none; border-top: 1.5px solid #BEAF87; margin: 16px 0; }
+
+  /* DESTINATAIRE */
+  .destinataire { text-align: right; margin: 24px 0 8px; font-size: 10.5pt; font-weight: bold; line-height: 1.6; }
+
+  /* DATE */
+  .date { text-align: right; font-style: italic; font-size: 10pt; color: #555; margin-bottom: 24px; }
+
+  /* CORPS */
+  .attention { font-size: 10.5pt; margin-bottom: 14px; }
+  .attention strong { font-weight: bold; }
+  p { font-size: 10.5pt; line-height: 1.5; margin-bottom: 12px; text-align: justify; }
+
+  /* ENCART */
+  .encart { background: #BEAF87; color: #fff; text-align: center; padding: 14px 20px; margin: 18px 0; border-radius: 2px; }
+  .encart-titre { font-size: 12pt; font-weight: bold; letter-spacing: 0.5px; margin-bottom: 6px; }
+  .encart-sous { font-size: 10pt; }
+
+  /* ÉTAPES */
+  .etapes-titre { font-size: 10.5pt; font-weight: bold; margin-bottom: 10px; }
+  .etape { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 8px; }
+  .etape-num { background: #BEAF87; color: #fff; font-weight: bold; font-size: 10pt;
+               width: 22px; height: 22px; display: flex; align-items: center; justify-content: center;
+               flex-shrink: 0; border-radius: 2px; }
+  .etape-txt { border: 1px solid #ddd; padding: 6px 10px; flex: 1; font-size: 10pt; line-height: 1.4; }
+
+  /* SIGNATURE */
+  .signature { text-align: right; margin-top: 24px; font-size: 10.5pt; }
+  .signature strong { display: block; font-size: 11pt; }
+
+  /* PIED DE PAGE */
+  .footer { border-top: 1px solid #BEAF87; margin-top: 30px; padding-top: 6px;
+            text-align: center; font-size: 8pt; color: #777; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <img src="${LOGO_URL}" alt="Century 21">
+  <div class="header-info">
+    <div class="header-name"><span>CENTURY</span> 21</div>
+    <div class="header-agence">Dauphiné-Lacassagne</div>
+    <div class="header-details">
+      224 rue Paul Bert — 69003 LYON<br>
+      04 26 78 51 39<br>
+      <a href="https://www.century21-dauphine-lacassagne-lyon.com">www.century21-dauphine-lacassagne-lyon.com</a>
+    </div>
+  </div>
+</div>
+
+<hr class="sep">
+
+<div class="destinataire">
+  ${nomSci}<br>
+  ${siege.adresse}<br>
+  ${siege.cp} ${siege.ville}
+</div>
+
+<div class="date">Lyon, le ${today}</div>
+
+<hr class="sep">
+
+<div class="attention">À l'attention de M. ou Mme. <strong>${gerantClean},</strong></div>
+
+<p>Le marché immobilier connaît depuis plusieurs mois de profondes évolutions : les variations des taux de crédit ont sensiblement affecté les prix dans de nombreux secteurs — y compris à Lyon et dans votre quartier.</p>
+
+<p>Dans ce contexte, connaître la valeur réelle de votre bien est une information précieuse, que vous envisagiez une cession à court terme ou souhaitiez simplement disposer d'une évaluation actualisée de votre patrimoine.</p>
+
+<div class="encart">
+  <div class="encart-titre">COMBIEN VAUT VOTRE BIEN ?</div>
+  <div class="encart-sous">Estimer, c'est notre métier. Demandez-nous une estimation professionnelle — offerte et sans engagement.</div>
+</div>
+
+<div class="etapes-titre">Notre démarche en 4 étapes</div>
+
+<div class="etape"><div class="etape-num">1</div><div class="etape-txt">Contactez votre agence CENTURY 21 Dauphiné-Lacassagne au 04 26 78 51 39 pour convenir d'un rendez-vous à votre convenance.</div></div>
+<div class="etape"><div class="etape-num">2</div><div class="etape-txt">Un conseiller spécialiste de votre secteur se déplace chez vous pour recueillir l'ensemble des caractéristiques de votre immeuble et les spécificités de votre bien.</div></div>
+<div class="etape"><div class="etape-num">3</div><div class="etape-txt">Nous réalisons une Analyse Comparative de Marché® prenant en compte les ventes récentes, les biens en vente et les tendances de prix dans votre secteur.</div></div>
+<div class="etape"><div class="etape-num">4</div><div class="etape-txt">Vous recevez les résultats de cette analyse sous 48 heures. Je m'y engage personnellement.</div></div>
+
+<p style="margin-top:16px;">Dans l'attente de pouvoir vous rendre ce service, je vous adresse mes cordiales salutations.</p>
+
+<div class="signature">
+  <strong>Yann BUFFERNE</strong>
+  Directeur
+</div>
+
+<div class="footer">
+  CENTURY 21 Dauphiné-Lacassagne &nbsp;|&nbsp; 224 rue Paul Bert, 69003 Lyon &nbsp;|&nbsp; 04 26 78 51 39
+</div>
+
+</body>
+</html>`;
+}
+
 function escHtml(str) {
   return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 }
@@ -1886,7 +2079,7 @@ window.addEventListener('DOMContentLoaded', async () => {
 
     <div style="background:var(--bg2);border-radius:8px;padding:12px;margin-bottom:16px;font-size:12px;color:var(--text2);line-height:1.6;">
       <div style="margin-bottom:4px;">📦 <strong id="msb-count"></strong></div>
-      <div>💰 Tarif écopli : ~0,74€ / courrier</div>
+      <div>💰 Tarif couleur : ~1,40€ HT / courrier</div>
       <div id="msb-total" style="margin-top:4px;font-weight:600;color:var(--accent);"></div>
     </div>
 
