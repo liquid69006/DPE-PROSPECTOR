@@ -1675,15 +1675,12 @@ async function genererCourrier() {
                      CODE_POSTAL: siege0.cp, VILLE: siege0.ville, DATE: today });
 
     let baseXml = baseDoc.getZip().files['word/document.xml'].asText();
-    // Joindre avec saut de page ENTRE les courriers (pas après le dernier)
-    // Réappliquer le sectPr du template à la fin du document fusionné
-    // Joindre les bodies avec sauts de page + réappliquer le sectPr
-    // Réduire l'espacement du paragraphe final à 0 pour éviter la page blanche
-    // (sans le supprimer, pour garder la marge si le contenu déborde)
-    // Supprimer le paragraphe vide de fin (pPr uniquement, sans w:t) avant chaque saut de page
-    const emptyParaBeforeBreak = /<w:p(?:[^>]*)><w:pPr>(?:(?!<w:t)[\s\S])*?<\/w:pPr><\/w:p>(?=<w:p><w:r><w:br w:type="page")/g;
-    const fusedBody = bodies.join(pageBreak)
-      .replace(emptyParaBeforeBreak, '')
+    // Fusionner les bodies en supprimant le paragraphe spacing vide avant chaque saut de page
+    const SEP = '|||PAGEBREAK|||';
+    const fusedBody = bodies.join(SEP)
+      .replace(/<w:p[^>]*><w:pPr><w:spacing[^>]*\/><\/w:pPr><\/w:p>\s*[|][|][|]PAGEBREAK[|][|][|]/g,
+               SEP)
+      .split(SEP).join(pageBreak)
       + sectPr;
     baseXml = baseXml.replace(/<w:body>[\s\S]*<\/w:body>/, '<w:body>' + fusedBody + '</w:body>');
     baseDoc.getZip().file('word/document.xml', baseXml);
