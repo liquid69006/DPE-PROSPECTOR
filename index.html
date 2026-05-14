@@ -306,6 +306,12 @@ td{padding:11px 14px;vertical-align:middle;}
 </style>
   <script src="https://dpe-prospector-api.yann-bufferne.workers.dev/lib/pizzip.min.js"></script>
   <script src="https://dpe-prospector-api.yann-bufferne.workers.dev/lib/docxtemplater.min.js"></script>
+  <!-- PWA -->
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#BEAF87">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="DPE Prospector">
 </head>
 <body>
 
@@ -2163,6 +2169,13 @@ window.addEventListener('DOMContentLoaded', async () => {
   document.getElementById('screen-login').style.display = 'flex';
   showLogin();
 });
+</script>
+
+<!-- PWA Service Worker -->
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js');
+  }
 </script>
 </body>
 </html>
