@@ -1,7 +1,4443 @@
 {
   "millesime": 2025,
-  "derniere_maj": "2026-05-14T17:14:56.389244",
+  "derniere_maj": "2026-05-14T20:54:49.164962",
   "sci": [
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BO0001",
+      "adresse_bien": "22 AV DE SAXE 75007",
+      "sci_nom": "SCI SAXE-REYNOIRD",
+      "sci_siren": "844653311",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "C/O M.MME FREDERIC HAYOT HABITATION REYNOIRD 97231 LE ROBERT",
+      "gerants": [
+        {
+          "nom": "SOPHIE HAYOT (COLOMBO)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "ANGELIQUE ANNE-CASSANDRE HAYOT",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "FREDERIC SAINT-MICHEL CLAUDE HAYOT",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "QUENTIN LOUIS SAINT-MICHEL HAYOT",
+          "qualite": "Associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BO0001",
+      "adresse_bien": "22 AV DE SAXE 75007",
+      "sci_nom": "DU PONT DE PASSY",
+      "sci_siren": "393470612",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "16 RUE DU COLISEE 75008 PARIS",
+      "gerants": [
+        {
+          "nom": "GILLES BENCHIMOL",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BO0002",
+      "adresse_bien": "24 AV DE SAXE 75007",
+      "sci_nom": "XY88",
+      "sci_siren": "840541015",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "24 AVENUE DE SAXE 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "DAMING XU",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "XIANGYU XU",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "FANG YUAN",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BO0003",
+      "adresse_bien": "26 AV DE SAXE 75007",
+      "sci_nom": "GODA",
+      "sci_siren": "391574522",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "64 RUE NATIONALE 75013 PARIS",
+      "gerants": [
+        {
+          "nom": "DAVID ASCHER",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "OLIVIER ASCHER",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "FRANCOISE ASCHER (BLOCH)",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BO0003",
+      "adresse_bien": "26 AV DE SAXE 75007",
+      "sci_nom": "BIMMOLOC",
+      "sci_siren": "879565901",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "10-12 10 RUE ANDRAS BECK 92360 MEUDON",
+      "gerants": [
+        {
+          "nom": "BOGDAN DEGERATU",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "JEROME JEAN-LOUIS MARCEL REYNIER",
+          "qualite": "Gérant"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BO0003",
+      "adresse_bien": "28 AV DE SAXE 75007",
+      "sci_nom": "SAXE FONTENOY",
+      "sci_siren": "344384631",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "26 AVENUE DE SAXE 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "VERONIQUE MULLER (BAUDET)",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "AUDE VERONIQUE CARLIER (MULLER)",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "GUY MULLER",
+          "qualite": "Gérant"
+        },
+        {
+          "nom": "PHILIPPE JEAN MARIE DOMINIQUE MULLER",
+          "qualite": "Gérant"
+        },
+        {
+          "nom": "THIBAULT VINCENT MULLER",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BO0006",
+      "adresse_bien": "57 AV DE SEGUR 75007",
+      "sci_nom": "ELOMAXEL",
+      "sci_siren": "528675994",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "57 AVENUE DE SEGUR 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "CAROLINE BROUSSE",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "DIDIER FRANCOIS MIQUEU",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "ELSA MIQUEU",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "LOUIS MIQUEU",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BO0008",
+      "adresse_bien": "61 AV DE SEGUR 75007",
+      "sci_nom": "CMAC",
+      "sci_siren": "529947095",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "61 AVENUE DE SEGUR 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "CHRISTELE DE FROMONT DE BOUAILLE",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "TANNEGUY DE FROMONT DE BOUAILLE",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "MARTINE DE FROMONT DE BOUAILLE (LEPRINCE)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BO0008",
+      "adresse_bien": "61 AV DE SEGUR 75007",
+      "sci_nom": "DU PLATEAU",
+      "sci_siren": "444146922",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "61 A 63 61 AVENUE DE SEGUR 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "REGINE PIONTKOWSKI",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BO0008",
+      "adresse_bien": "61 AV DE SEGUR 75007",
+      "sci_nom": "CIPARVEL",
+      "sci_siren": "492811930",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "MOUSTOIRLAN 56300 MALGUENAC",
+      "gerants": [
+        {
+          "nom": "ANNE-CATHERINE MADELEINE MARIE CIVEL",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "MARIE CHRISTINE MADELEINE ANNE-YVONNE CIVEL",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "PIERRE-MARIE CIVEL",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "JEANNE THERESE LOUISE-MARIE CIVEL (PIRIOU)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BO0008",
+      "adresse_bien": "61 AV DE SEGUR 75007",
+      "sci_nom": "GODA",
+      "sci_siren": "391574522",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "64 RUE NATIONALE 75013 PARIS",
+      "gerants": [
+        {
+          "nom": "DAVID ASCHER",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "OLIVIER ASCHER",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "FRANCOISE ASCHER (BLOCH)",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BO0008",
+      "adresse_bien": "61 AV DE SEGUR 75007",
+      "sci_nom": "SCI 2NEF",
+      "sci_siren": "483981676",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "4 RUE LEON VAUDOYER 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "ANTOINE DENAIFFE",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "JEAN-FRANCOIS DENAIFFE",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "JULIEN DENAIFFE",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BO0012",
+      "adresse_bien": "5 RUE JOSE MARIA DE HEREDIA 75007",
+      "sci_nom": "VIRGOMI",
+      "sci_siren": "444684328",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "5 RUE JOSE-MARIA DE HEREDIA 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "MICHELE RICHON",
+          "qualite": "Gérant"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BO0013",
+      "adresse_bien": "3 RUE JOSE MARIA DE HEREDIA 75007",
+      "sci_nom": "SCI DU CHAPITRE",
+      "sci_siren": "399005107",
+      "code_droit": "N",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "LE CHAPITRE 2 RUE ELIE DE MIEULLE 49640 MORANNES SUR SARTHE-DAUMERAY",
+      "gerants": [
+        {
+          "nom": "ANTOINE DE MIEULLE D'ESTORNEZ D'ANGOSSE",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "LOUIS DE MIEULLE D'ESTORNEZ D'ANGOSSE",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "STEPHANIE JORDAN (DE MIEULLE D'ESTORNEZ D'ANGOSSE)",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BO0013",
+      "adresse_bien": "3 RUE JOSE MARIA DE HEREDIA 75007",
+      "sci_nom": "EMILY",
+      "sci_siren": "890731953",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "3 RUE JOSE-MARIA DE HEREDIA 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "TZU-YUN HUANG",
+          "qualite": "Gérant"
+        },
+        {
+          "nom": "YI-HSUAN LEE",
+          "qualite": "Gérant"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BO0014",
+      "adresse_bien": "1 RUE JOSE MARIA DE HEREDIA 75007",
+      "sci_nom": "SCI PETM SEGUR",
+      "sci_siren": "912761913",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "105 RUE RIVAY 92300 LEVALLOIS-PERRET",
+      "gerants": [
+        {
+          "nom": "IWONA JOWIK",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "LUCIEN PECZYNSKI",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BO0015",
+      "adresse_bien": "69 AV DE SEGUR 75007",
+      "sci_nom": "BRETEUIL - JDS",
+      "sci_siren": "852889211",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "5 RUE ROSA BONHEUR 75015 PARIS",
+      "gerants": [
+        {
+          "nom": "DAVIDIAN LING CHIANG OUYANG",
+          "qualite": "Gérant"
+        },
+        {
+          "nom": "JUSTIN DEREK OUYANG",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "SOPHIA C OUYANG",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BO0016",
+      "adresse_bien": "71 AV DE SEGUR 75007",
+      "sci_nom": "MALAUNE",
+      "sci_siren": "422024604",
+      "code_droit": "G",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "71 AVENUE FOCH 75016 PARIS",
+      "gerants": [
+        {
+          "nom": "MARIE-LAURENCE NEGRO",
+          "qualite": "Gérant"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BO0017",
+      "adresse_bien": "131 AV DE SUFFREN 75007",
+      "sci_nom": "SCI SYRINGA",
+      "sci_siren": "803620665",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "50 BOULEVARD HAUSSMANN 75009 PARIS",
+      "gerants": [
+        {
+          "nom": "PATRICK GANANSIA",
+          "qualite": "Gérant"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BO0018",
+      "adresse_bien": "133 AV DE SUFFREN 75007",
+      "sci_nom": "MAJY",
+      "sci_siren": "499946911",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "133 AVENUE DE SUFFREN 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "MARIE-NOELLE FOUCARD (DRIGUET)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "CAMILLE FOUCARD",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "JEAN-YVES FOUCARD",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "VIRGINIE FOUCARD",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BO0018",
+      "adresse_bien": "133 AV DE SUFFREN 75007",
+      "sci_nom": "DRIFOU 133",
+      "sci_siren": "484530480",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "133 AVENUE DE SUFFREN 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "MARIE-NOELLE FOUCARD (DRIGUET)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "MICHEL LOUIS DRIGUET",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "CAMILLE ANNE FOUCARD",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "JEAN-YVES FOUCARD",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "VIRGINIE FOUCARD",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BO0021",
+      "adresse_bien": "8 RUE JOSE MARIA DE HEREDIA 75007",
+      "sci_nom": "SCI MVBH",
+      "sci_siren": "904787678",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "8 RUE JOSE-MARIA DE HEREDIA 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "NICOLAS MARIE JEROME BERTIN-HUGAULT",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "AURELIE SANDRINE MANCEL",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "CLAIRE MARINE VINCENT",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BO0023",
+      "adresse_bien": "137 AV DE SUFFREN 75007",
+      "sci_nom": "SCI ALAPART",
+      "sci_siren": "841301856",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "5 RUE DE BOIS LE DUC 54500 VANDŒUVRE-LES-NANCY",
+      "gerants": [
+        {
+          "nom": "ALAIN FERNAND EMILE ALAZARD",
+          "qualite": "Gérant"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BO0027",
+      "adresse_bien": "141 AV DE SUFFREN 75007",
+      "sci_nom": "DIMO FETS PC",
+      "sci_siren": "533523122",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "4 RUE DES HAUTIERS 95640 MARINES",
+      "gerants": [
+        {
+          "nom": "DIMITRI JEAN CLAUDE VICTORIEN MAYER",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "JEAN CLAUDE DANIEL JACQUES MAYER",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BO0028",
+      "adresse_bien": "14 RUE JOSE MARIA DE HEREDIA 75007",
+      "sci_nom": "SCI MICOCOULIER",
+      "sci_siren": "531220242",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "1512 ROUTE DE SAINT-DIDIER 84200 CARPENTRAS",
+      "gerants": [
+        {
+          "nom": "DOMINIQUE FREMONT",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "FRANCOISE FREMONT (VERGOBBI)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BO0029",
+      "adresse_bien": "16 RUE JOSE MARIA DE HEREDIA 75007",
+      "sci_nom": "TOVALEA IMMOBILIER",
+      "sci_siren": "827877325",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "16 RUE JOSE-MARIA DE HEREDIA 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "VALERIE BISH",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "BAPTISTE MARIE ANDRE MARCEL LAMSON",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "LEA MARIE SUZANNE JACQUELINE LAMSON",
+          "qualite": "Associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BO0029",
+      "adresse_bien": "16 RUE JOSE MARIA DE HEREDIA 75007",
+      "sci_nom": "JMH 16",
+      "sci_siren": "391269032",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "16 RUE JOSE-MARIA DE HEREDIA 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "DOMINIQUE CLAIRE BLOCH",
+          "qualite": "Gérant"
+        },
+        {
+          "nom": "JEAN-JACQUES DANIEL FRANCOIS BONAMOUR DU TARTRE",
+          "qualite": "Gérant"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BO0030",
+      "adresse_bien": "143 AV DE SUFFREN 75007",
+      "sci_nom": "MAPP SUFFREN",
+      "sci_siren": "929483857",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "LA COUTARDIERE, BRISSARTHE 49330 LES HAUTS-D'ANJOU",
+      "gerants": [
+        {
+          "nom": "ALIX ROSALIE MARIE NOUZAREDE (MONTRIEUX)",
+          "qualite": "Associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BO0031",
+      "adresse_bien": "18 RUE JOSE MARIA DE HEREDIA 75007",
+      "sci_nom": "OLAGERA",
+      "sci_siren": "481113124",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "51 RUE DESNOUETTES 75015 PARIS",
+      "gerants": [
+        {
+          "nom": "LAURE HELENE ABOUNA",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "JENNIFER SUZANNE KIM ABOUNA EMBOLO",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "OLIVIA MELANIE ABOUNA EMBOLO",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "RAPHAEL FRANCK ABOUNA EMBOLO",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "SUZANNE BOMPARD",
+          "qualite": "Gérant"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BO0032",
+      "adresse_bien": "16 RUE PERIGNON 75007",
+      "sci_nom": "DU 16 PERIGNON",
+      "sci_siren": "478048465",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "16 RUE PERIGNON 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "EMILIE THIBAULT",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "NATHALIE THIBAULT",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "NANCY TRINQUIER",
+          "qualite": "Gérant"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BO0032",
+      "adresse_bien": "16 RUE PERIGNON 75007",
+      "sci_nom": "DUVAL BOISLAIGUE",
+      "sci_siren": "489684738",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "16 RUE PERIGNON 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "VERONIQUE MARIE JACQUET (COUËTTE)",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "ALINE DUVAL",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "PHILIPPE DUVAL",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "GUERRIC JACQUET",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BO0032",
+      "adresse_bien": "13 RUE JOSE MARIA DE HEREDIA 75007",
+      "sci_nom": "SCI FONCIERE DE LA PLAINE MONCEAU",
+      "sci_siren": "478845159",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "5 RUE BREY 75017 PARIS",
+      "gerants": [
+        {
+          "nom": "NORBERT AMSELLEM",
+          "qualite": "Gérant"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BO0032",
+      "adresse_bien": "16 RUE PERIGNON 75007",
+      "sci_nom": "EMINAT",
+      "sci_siren": "825130651",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "38 CHEMIN DE SAINT MARC 06130 GRASSE",
+      "gerants": [
+        {
+          "nom": "VIRGINIE FEHLMANN (PERRIN)",
+          "qualite": "Gérant"
+        },
+        {
+          "nom": "EMILIE LOUISA THIBAULT",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "NATHALIE ERICA THIBAULT",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BO0033",
+      "adresse_bien": "11 RUE JOSE MARIA DE HEREDIA 75007",
+      "sci_nom": "HEREDIA 11",
+      "sci_siren": "822152542",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "11 RUE JOSE-MARIA DE HEREDIA 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "CLEMENCE MARIE GUENOLA BOURDON",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "EDOUARD GILLES ALEXIS CHARLES BOURDON",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "GUILLEMETTE FRANCOISE NOELLE CHARLOTTE OSBURG (BOURDON)",
+          "qualite": "Gérant"
+        },
+        {
+          "nom": "GUENOLA ANNE FREDERIQUE BOURDON (PAUPHILET)",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BO0033",
+      "adresse_bien": "11 RUE JOSE MARIA DE HEREDIA 75007",
+      "sci_nom": "NOURSON",
+      "sci_siren": "447818386",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "11 RUE JOSE-MARIA DE HEREDIA 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "LAURENCE FAUQUE",
+          "qualite": "Gérant"
+        },
+        {
+          "nom": "JEAN-CLAUDE VANESSON",
+          "qualite": "Gérant"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BO0034",
+      "adresse_bien": "9 RUE JOSE MARIA DE HEREDIA 75007",
+      "sci_nom": "ZS IMMOBILIER",
+      "sci_siren": "441582491",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "9 RUE JOSE-MARIA DE HEREDIA 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "XUE PING SHI",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "KEMIM ZHOU",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BO0034",
+      "adresse_bien": "9 RUE JOSE MARIA DE HEREDIA 75007",
+      "sci_nom": "HEVADAU",
+      "sci_siren": "813056934",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "9 RUE JOSE-MARIA DE HEREDIA 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "AURORE ISABELLE FRANCOISE GAUTHERIN",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "HERVE LECONTE",
+          "qualite": "Gérant"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BO0035",
+      "adresse_bien": "9 RUE ALBERT DE LAPPARENT 75007",
+      "sci_nom": "NAJARIAN REALTY",
+      "sci_siren": "498234699",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "9 RUE ALBERT DE LAPPARENT 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "CAROLANN NAJARIAN (ABRAHAMIAN)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "K GEORGE NAJARIAN",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BO0036",
+      "adresse_bien": "7 RUE ALBERT DE LAPPARENT 75007",
+      "sci_nom": "FIGALA",
+      "sci_siren": "489581991",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "7 RUE ALBERT DE LAPPARENT 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "CLAIRE PAOLANTONACCI (CHARBIT)",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "PASCAL PAOLANTONACCI",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BO0037",
+      "adresse_bien": "5 RUE ALBERT DE LAPPARENT 75007",
+      "sci_nom": "MACLE",
+      "sci_siren": "982400491",
+      "code_droit": "N",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "29 ROUTE DE LA VIENNE 87200 SAINT-BRICE-SUR-VIENNE",
+      "gerants": [
+        {
+          "nom": "ALIETTE FAUCHILLE",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "ELISE FAUCHILLE",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "JEAN LOÏC CHARLES FAUCHILLE",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "MARC FAUCHILLE",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "CATHERINE MARIE FAUCHILLE (MOUVEROUX)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BO0037",
+      "adresse_bien": "5 RUE ALBERT DE LAPPARENT 75007",
+      "sci_nom": "SCI ARCHABA",
+      "sci_siren": "951020643",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "27 AVENUE DE SUFFREN 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "NICOLAS EDOUARD JEAN BAUP",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "EMILIE ANNE-MARIE BAUP (BOBIN)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BO0038",
+      "adresse_bien": "3 RUE ALBERT DE LAPPARENT 75007",
+      "sci_nom": "DRUMMOND",
+      "sci_siren": "499834430",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "non",
+      "siege_social": "68 RUE FONDARY 75015 PARIS",
+      "gerants": [
+        {
+          "nom": "NICOLE KARAM",
+          "qualite": "Liquidateur"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BO0038",
+      "adresse_bien": "3 RUE ALBERT DE LAPPARENT 75007",
+      "sci_nom": "SCI JDREAMS",
+      "sci_siren": "793207572",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "3 RUE ALBERT DE LAPPARENT 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "ANNE MARTINE SMITH (ROSSIGNOL)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "JOHN IRELAND SMITH",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BO0039",
+      "adresse_bien": "2 RUE LEON VAUDOYER 75007",
+      "sci_nom": "SCI SAXE VAUDOYER",
+      "sci_siren": "451347132",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "2 RUE LEON VAUDOYER 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "VERONIQUE DEVILLIERES",
+          "qualite": "Gérant"
+        },
+        {
+          "nom": "APOLLINE SUZANNE NINA LE GUENIC",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "MANON DANIELLE YVETTE LE GUENIC",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "THIERRY LE GUENIC",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "ULYSSE JACQUES ARMAND LE GUENIC",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BO0040",
+      "adresse_bien": "4 RUE LEON VAUDOYER 75007",
+      "sci_nom": "PENONOME",
+      "sci_siren": "520518382",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "15 RUE ETIENNE GEOFFROY-SAINT-HILAIRE 56000 VANNES",
+      "gerants": [
+        {
+          "nom": "ARMEL THEOPHILE ZHONG FA FARDEL",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "GABRIELLE ANALIDA GALEI FARDEL",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "JEAN ARMEL THEOPHILE JACQUES FARDEL",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "GLADYS FARDEL (LAM)",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BO0041",
+      "adresse_bien": "6 RUE LEON VAUDOYER 75007",
+      "sci_nom": "VAUDOYER SIX",
+      "sci_siren": "490850781",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "13 RUE DU BAC 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "FRANCOIS HAYM",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "MICHELE IVASILEVITCH (HAYM)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BO0041",
+      "adresse_bien": "6 RUE LEON VAUDOYER 75007",
+      "sci_nom": "CABINET VAUDOYER",
+      "sci_siren": "885296400",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "116 RUE DE RENNES 75006 PARIS",
+      "gerants": [
+        {
+          "nom": "MATHIAS JOSEPH BOUGHANIM",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "YVETTE YAEL ZERAH",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BO0043",
+      "adresse_bien": "14 RUE PERIGNON 75007",
+      "sci_nom": "DU 14 RUE PERIGNON",
+      "sci_siren": "404212748",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "14 RUE PERIGNON 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "MARC ANDRE JACQUES ASSELIN",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "MARIE-GABRIÈLE VÉRONIQUE VIOLETTE ASSELIN (AUBRIET)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "DENISE MARIE RAYMONDE VIOLETTE AUBRIET (DUPONT)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BO0045",
+      "adresse_bien": "9 RUE LEON VAUDOYER 75007",
+      "sci_nom": "SCI VAUDOYER",
+      "sci_siren": "948549597",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "9 RUE LEON VAUDOYER 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "DANIEL BENJAMIN",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "JONATHAN JOSEPH RAYMOND ISRAEL",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BO0045",
+      "adresse_bien": "9 RUE LEON VAUDOYER 75007",
+      "sci_nom": "SCI ORFIPAR",
+      "sci_siren": "819029745",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "32 AVENUE PAUL DOUMER 75016 PARIS",
+      "gerants": [
+        {
+          "nom": "FRANCK GOZLAN",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "LAURENCE GOZLAN (UZAN)",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BO0046",
+      "adresse_bien": "7 RUE LEON VAUDOYER 75007",
+      "sci_nom": "SCI PANSAM",
+      "sci_siren": "750133266",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "7 RUE LEON VAUDOYER 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "AMBROISE DEMONCEAUX",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "BEATRICE ROUBAUD (HURBIN)",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "FREDERIC HURBIN",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "MARION CHRÉTIEN (HURBIN)",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "SABINE DEMONCEAUX (HURBIN)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "ANTOINETTE HURBIN (VERDIER)",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BO0046",
+      "adresse_bien": "7 RUE LEON VAUDOYER 75007",
+      "sci_nom": "DU 7 RUE LEON VAUDOYER",
+      "sci_siren": "392472619",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "7 RUE LEON VAUDOYER 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "MICHEL SEPTIER",
+          "qualite": "Gérant"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BO0050",
+      "adresse_bien": "42 AV DE SAXE 75007",
+      "sci_nom": "ALBIUS",
+      "sci_siren": "892490392",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "35 RUE DE DOMMARTIN 62140 TORTEFONTAINE",
+      "gerants": [
+        {
+          "nom": "LAURENT BOURGOIS",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BO0050",
+      "adresse_bien": "42 AV DE SAXE 75007",
+      "sci_nom": "VIAGENERATIONS",
+      "sci_siren": "832755318",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "44 AVENUE DE VILLIERS 75017 PARIS",
+      "gerants": [
+        {
+          "nom": "CHARLOTTE EVANGUELIDIS",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "CHRISTOPHE MOTTE",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BO0050",
+      "adresse_bien": "42 AV DE SAXE 75007",
+      "sci_nom": "ALEXANDRE IMMOBILIER",
+      "sci_siren": "440869261",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "42 AVENUE DE SAXE 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "MARIE-CLAUDE LEBUISSON (LAFONTAINE)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "DAN LEBUISSON",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BO0050",
+      "adresse_bien": "10 RUE PERIGNON 75007",
+      "sci_nom": "KRISTEF PARIS VII ET XV",
+      "sci_siren": "539430306",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "CS 48756 58 RUE DE MONCEAU 75008 PARIS",
+      "gerants": [
+        {
+          "nom": "JOSE MAIA FERREIRA",
+          "qualite": "Gérant"
+        },
+        {
+          "nom": "MARIA RITA MANCOS GODINHO",
+          "qualite": "Associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BO0051",
+      "adresse_bien": "42 AV DE SAXE 75007",
+      "sci_nom": "THALASSA BEACH",
+      "sci_siren": "413077751",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "5 VILLA JOCELYN 75016 PARIS",
+      "gerants": [
+        {
+          "nom": "MONIQUE LASER (ANGIBAUD)",
+          "qualite": "Gérant"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BO0051",
+      "adresse_bien": "42 AV DE SAXE 75007",
+      "sci_nom": "BERGEVIN",
+      "sci_siren": "407548585",
+      "code_droit": "N",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "CHATEAU DE ST GERVAIS 41350 SAINT-GERVAIS-LA-FORET",
+      "gerants": [
+        {
+          "nom": "AMELIE DUPLEIX (DE WARREN)",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "BENEDICTE RACT MADOUX (DE WARREN)",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "GWENOLA HOVASSE (DE WARREN)",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "THIERRY MARIE GUILLAUME DE WARREN",
+          "qualite": "Gérant"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BO0051",
+      "adresse_bien": "42 AV DE SAXE 75007",
+      "sci_nom": "LA TOPAZE",
+      "sci_siren": "524095106",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "LES HAUTS DE PEYNIBLOU 46 AVENUE MELANIE TOMBAREL 06560 VALBONNE",
+      "gerants": [
+        {
+          "nom": "MARIA HELENA HUBERDINA CELINA VOS",
+          "qualite": "Gérant"
+        },
+        {
+          "nom": "AURORE CELINE WEISSERT",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "GUILLAUME PAUL WEISSERT",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "LUCAS BERNARD CORNELIUS WEISSERT",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BO0051",
+      "adresse_bien": "42 AV DE SAXE 75007",
+      "sci_nom": "SCI MELTEM",
+      "sci_siren": "533359923",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "12 RUE CESAR FRANCK 75015 PARIS",
+      "gerants": [
+        {
+          "nom": "DOMITILLE REGINE GENEVIEVE DUC (HONS-OLIVIER)",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BO0052",
+      "adresse_bien": "4 RUE PERIGNON 75007",
+      "sci_nom": "SCI KANE",
+      "sci_siren": "908270689",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "17 PLACE DES VOSGES 75004 PARIS",
+      "gerants": [
+        {
+          "nom": "AMINATA KANE",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "FREDERIC POUILLOT",
+          "qualite": "Associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BO0055",
+      "adresse_bien": "48 AV DE SAXE 75007",
+      "sci_nom": "LUCK MELANIE",
+      "sci_siren": "794177154",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "48 AVENUE DE SAXE 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "XUE MEI ZANG",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "XUE SONG ZHANG",
+          "qualite": "Associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BO0055",
+      "adresse_bien": "48 AV DE SAXE 75007",
+      "sci_nom": "SCI P U T",
+      "sci_siren": "432796159",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "48 AVENUE DE SAXE 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "PHILIPPE PETIT",
+          "qualite": "Gérant"
+        },
+        {
+          "nom": "CHANTAL REGINE MARTHE RENEE AMELIE PETIT (URTIN)",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BO0055",
+      "adresse_bien": "48 AV DE SAXE 75007",
+      "sci_nom": "DE SAXE",
+      "sci_siren": "789572104",
+      "code_droit": "N",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "16 BOULEVARD DE L'OUEST 93340 LE RAINCY",
+      "gerants": [
+        {
+          "nom": "FRANCINE PRUNIER (METIVIER)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "CAMILLE PRUNIER",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "ELODIE PRUNIER",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "MANDE PRUNIER",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "SIMON PRUNIER",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BO0055",
+      "adresse_bien": "48 AV DE SAXE 75007",
+      "sci_nom": "SCI KGB",
+      "sci_siren": "803167709",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "48 AVENUE DE SAXE 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "BRUNO KIHM",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "ADELA LINE MARY LOLES VILATO",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BU0001",
+      "adresse_bien": "33 AV CHARLES FLOQUET 75007",
+      "sci_nom": "BILLOUD",
+      "sci_siren": "448912451",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "33 AVENUE CHARLES FLOQUET 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "CLÉMENCE FRANCINE JACQUELINE BECTARTE",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "EDOUARD PIERRE BECTARTE",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "MICHEL GUY MICHEL BECTARTE",
+          "qualite": "Associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BU0001",
+      "adresse_bien": "33 AV CHARLES FLOQUET 75007",
+      "sci_nom": "SOLAGE SOCIETE LANGUEDOC DE GESTION",
+      "sci_siren": "337890842",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "NARBONNE PLAGE DOMAINE PETITE ROUQUETTE 11100 NARBONNE",
+      "gerants": [
+        {
+          "nom": "JACQUES BOSCARY",
+          "qualite": "Gérant"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BU0001",
+      "adresse_bien": "33 AV CHARLES FLOQUET 75007",
+      "sci_nom": "GIRASOL",
+      "sci_siren": "537769093",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "33 AVENUE CHARLES FLOQUET 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "CHRISTOPHER DE LAPUENTE",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "JOANNE DE LAPUENTE (HINDLEY)",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BU0003",
+      "adresse_bien": "37 AV CHARLES FLOQUET 75007",
+      "sci_nom": "SCI 1969",
+      "sci_siren": "484424437",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "37 AVENUE CHARLES FLOQUET 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "OLGA SMIRNOV (KOUZINA)",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "ALEXANDRE ANDREEVITCH SMIRNOV",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "ALEXEI SMIRNOV",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "ANDREI SMIRNOV",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "DARIA ANDREEVNA SMIRNOV",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BU0004",
+      "adresse_bien": "39 AV CHARLES FLOQUET 75007",
+      "sci_nom": "PERIVOLI",
+      "sci_siren": "892272220",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "39 AVENUE CHARLES FLOQUET 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "ALEXIS SPYRIDON HUBERT MISSOFFE",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "EMILIEN MICHEL HADRIEN MISSOFFE",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "SEBASTIEN MISSOFFE",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "TATIANA HELENI CLEA MISSOFFE",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "CHRISTINA MISSOFFE (VERVITSIOTI)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BU0004",
+      "adresse_bien": "39 AV CHARLES FLOQUET 75007",
+      "sci_nom": "SCI 39 AVENUE CHARLES FLOQUET",
+      "sci_siren": "802779090",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "39 AVENUE CHARLES FLOQUET 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "SOPHIE DELSUPEXHE (BOISSEAU)",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "ALAIN DELSUPEXHE",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "ARCHIBALD DELSUPEXHE",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "HELENE DELSUPEXHE",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "LAURENE DELSUPEXHE",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "MARJOLAINE DELSUPEXHE",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BU0006",
+      "adresse_bien": "43 AV CHARLES FLOQUET 75007",
+      "sci_nom": "SCI DU RANDON",
+      "sci_siren": "419824552",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "43 AVENUE CHARLES FLOQUET 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "OLIVIER ANDRE DANIEL BRINGER",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "MICHELE RENEE LOUISE BRINGER (JACQUOT)",
+          "qualite": "Gérant"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BU0006",
+      "adresse_bien": "43 AV CHARLES FLOQUET 75007",
+      "sci_nom": "ANTON ST MARI",
+      "sci_siren": "433035284",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "43 AVENUE CHARLES FLOQUET 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "MARIA LUISA CARMONA CHAN",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "ANTONIO STEPHAN CHAN",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BU0007",
+      "adresse_bien": "1 AV EMILE ACOLLAS 75007",
+      "sci_nom": "SCI KAUFFMAN EA",
+      "sci_siren": "452332208",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "1 AVENUE EMILE ACOLLAS 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "MARK KAUFMAN",
+          "qualite": "Gérant"
+        },
+        {
+          "nom": "OLGA KURITSYNA",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BU0011",
+      "adresse_bien": "9 AV EMILE ACOLLAS 75007",
+      "sci_nom": "9 AVENUE EMILE ACOLLAS",
+      "sci_siren": "429609407",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "9 AVENUE EMILE ACOLLAS 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "LIONEL DROUIN",
+          "qualite": "Gérant"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BU0012",
+      "adresse_bien": "12 AV EMILE ACOLLAS 75007",
+      "sci_nom": "ACOLLAS",
+      "sci_siren": "928620202",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "20 RUE DE SEINE 75006 PARIS",
+      "gerants": [
+        {
+          "nom": "VÉRONIQUE THOUX (RECOPE DE TILLY BLARU)",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "ZOÉ THOUX",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BU0013",
+      "adresse_bien": "12 PL JOFFRE 75007",
+      "sci_nom": "AC",
+      "sci_siren": "910290477",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "18 RUE BOUCRY 75018 PARIS",
+      "gerants": [
+        {
+          "nom": "CHEDLI ABICHOU",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "FETHI ABICHOU",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BU0013",
+      "adresse_bien": "12 PL JOFFRE 75007",
+      "sci_nom": "SCI JOFFRE 007",
+      "sci_siren": "750882193",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "11 RUE HUMBLOT 75015 PARIS",
+      "gerants": [
+        {
+          "nom": "FREDERIC PHILIPPE CARNEVALI",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "MYLENE GILBERTE LOUISE CARNEVALI (MACHEZ)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BU0013",
+      "adresse_bien": "12 PL JOFFRE 75007",
+      "sci_nom": "JOFFRE UCCLE",
+      "sci_siren": "449316694",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "12 PLACE JOFFRE 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "CATHERINE BLIECK",
+          "qualite": "Gérant"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BU0013",
+      "adresse_bien": "12 PL JOFFRE 75007",
+      "sci_nom": "ERTEVA",
+      "sci_siren": "798921078",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "12 PLACE JOFFRE 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "AMBROISE MARIE DEPOUILLY",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "ANNE-BLANCHE MARIE KAN (DEPOUILLY)",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "BERNARD MICHEL HENRI DEPOUILLY",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "GONZAGUE MARIE DEPOUILLY",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "OMBELINE MARIE CARIO (DEPUILLY)",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "BRIGITTE MARIE DEPOUILLY (MENISSIER)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BU0016",
+      "adresse_bien": "71 AV DE SUFFREN 75007",
+      "sci_nom": "BERGSON",
+      "sci_siren": "432024420",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "88 RUE PAUL RIMET 95560 MONTSOULT",
+      "gerants": [
+        {
+          "nom": "BON NA TAN",
+          "qualite": "Gérant"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BU0016",
+      "adresse_bien": "71 AV DE SUFFREN 75007",
+      "sci_nom": "PENVERN",
+      "sci_siren": "499165322",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "23 RTE DU MENHIR PENVERN 22560 PLEUMEUR-BODOU",
+      "gerants": [
+        {
+          "nom": "MARION LOYER (LEPREUX)",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "YANNIG LOYER",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BU0016",
+      "adresse_bien": "71 AV DE SUFFREN 75007",
+      "sci_nom": "MIRBEL",
+      "sci_siren": "400205365",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "12 RUE SAINT-MARC 45000 ORLEANS",
+      "gerants": [
+        {
+          "nom": "CAROLE SIMEONS (MARTIN)",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "ISABELLE JACQUELINE THERESE MERGEY (MARTIN)",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "MICHEL FERNAND RENE MARIE MARTIN",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "SOPHIE ANNE CAROLE GRIVAUD (MARTIN)",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "ANNE LUCE MARIE-JOSEPHE FRANCOISE MARTIN (MATHIEU)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BU0016",
+      "adresse_bien": "71 AV DE SUFFREN 75007",
+      "sci_nom": "CALIONDA",
+      "sci_siren": "914794599",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "71 AVENUE DE SUFFREN 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "AMELINE HEATHER REGRAIN",
+          "qualite": "Gérant"
+        },
+        {
+          "nom": "DENIS CLAUDE REGRAIN",
+          "qualite": "Gérant"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BU0016",
+      "adresse_bien": "71 AV DE SUFFREN 75007",
+      "sci_nom": "AM IMMOBILIER",
+      "sci_siren": "488074899",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "71 AVENUE DE SUFFREN 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "CHRISTOPHE ACHER",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "ARNAUD MERCIER",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BU0016",
+      "adresse_bien": "71 AV DE SUFFREN 75007",
+      "sci_nom": "SCI SUFFREN",
+      "sci_siren": "839777950",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "120 RUE GENERAL DIOU 57070 SAINT-JULIEN-LES-METZ",
+      "gerants": [
+        {
+          "nom": "THIERRY PIERRE ALBERT LEFEUVRE",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "MARIE-LAURE LEFEUVRE (PELARDY)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BU0016",
+      "adresse_bien": "71 AV DE SUFFREN 75007",
+      "sci_nom": "SCI VENDOME BOUTIQUES",
+      "sci_siren": "488208661",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "TOUR MAJUNGA - LA DEFENSE 9 - 6 PLACE DE LA PYRAMIDE 92800 PUTEAUX",
+      "gerants": []
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BU0016",
+      "adresse_bien": "69 AV DE SUFFREN 75007",
+      "sci_nom": "SCI SIX NEUF",
+      "sci_siren": "483328936",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "8 AVENUE ADRIEN HEBRARD 75016 PARIS",
+      "gerants": [
+        {
+          "nom": "JEAN MARC THOMAS",
+          "qualite": "Gérant"
+        },
+        {
+          "nom": "THIERRY THOMAS",
+          "qualite": "Gérant"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BU0016",
+      "adresse_bien": "69 AV DE SUFFREN 75007",
+      "sci_nom": "SCI MOODJ",
+      "sci_siren": "524105632",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "7 RUE DU JEU DE PAUME 94130 NOGENT-SUR-MARNE",
+      "gerants": [
+        {
+          "nom": "VANESSA BAKKALIAN",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "DANIEL DEMEULENAERE",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BU0016",
+      "adresse_bien": "65 AV DE SUFFREN 75007",
+      "sci_nom": "ALPEJAN",
+      "sci_siren": "490440310",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "70 AVENUE DE SUFFREN 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "JARMILA MINARCIK",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "PETER VOLF",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BU0016",
+      "adresse_bien": "65 AV DE SUFFREN 75007",
+      "sci_nom": "ALVI",
+      "sci_siren": "379046527",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "22 AVENUE DE BRETEUIL 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "ALICE DORIGO",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "VIVIANE DORIGO (GRANBERG)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BU0016",
+      "adresse_bien": "65 AV DE SUFFREN 75007",
+      "sci_nom": "MONASSO",
+      "sci_siren": "489793513",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "65 AVENUE DE SUFFREN 75007 PARIS",
+      "gerants": []
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BU0016",
+      "adresse_bien": "65 AV DE SUFFREN 75007",
+      "sci_nom": "SCI ILHABELA",
+      "sci_siren": "819693029",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "65 AVENUE DE SUFFREN 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "MARIA DE LOURDES DO NASCIMENTO MAGALHAES",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "JOSE TOLOVI JUNIOR",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BU0016",
+      "adresse_bien": "67 AV DE SUFFREN 75007",
+      "sci_nom": "JLABIAN IMMOBILIER",
+      "sci_siren": "948967047",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "67 AVENUE DE SUFFREN 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "HASMIK JLABIAN (HAKOBYAN)",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "BACHIR YOUNAN JLABIAN",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "JULIA JLABIAN",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "MARC JLABIAN",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "MIKAEL JLABIAN",
+          "qualite": "Associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BU0016",
+      "adresse_bien": "67 AV DE SUFFREN 75007",
+      "sci_nom": "OLIMO",
+      "sci_siren": "834673378",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "56 RUE VANEAU 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "OLFA BOUGHANMI",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "PIERRE-MARIE FAURE",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BU0016",
+      "adresse_bien": "67 AV DE SUFFREN 75007",
+      "sci_nom": "SCI OPLA5",
+      "sci_siren": "534934583",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "109 RUE SAINT-DOMINIQUE 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "PASCALE PINGEL (GABRIELLI)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "OLIVIER PINGEL",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BU0016",
+      "adresse_bien": "67 AV DE SUFFREN 75007",
+      "sci_nom": "RUNNERS",
+      "sci_siren": "981595184",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "67 AVENUE DE SUFFREN 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "THIERRY PAUL SELLEM",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BU0021",
+      "adresse_bien": "6 AV EMILE ACOLLAS 75007",
+      "sci_nom": "SCI COLISEE RESIDENTIEL",
+      "sci_siren": "431981257",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "TOUR MAJUNGA - LA DEFENSE 9 6 PLACE DE LA PYRAMIDE 92800 PUTEAUX",
+      "gerants": []
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BU0021",
+      "adresse_bien": "6 AV EMILE ACOLLAS 75007",
+      "sci_nom": "SCI AREVALO-BOTERO",
+      "sci_siren": "509498259",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "4 AVENUE EMILE ACOLLAS 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "CIRO AREVALO YEPES",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "MARIA AREVALO YEPES (BOTERO CAICEDO)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BU0021",
+      "adresse_bien": "10 AV EMILE ACOLLAS 75007",
+      "sci_nom": "SCI SARMANE IMMO",
+      "sci_siren": "514213669",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "10 AVENUE EMILE ACOLLAS 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "AUDE GUEZ (CHETRIT)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BU0021",
+      "adresse_bien": "4 AV EMILE ACOLLAS 75007",
+      "sci_nom": "SCI ASA",
+      "sci_siren": "797530128",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "64 RUE LA BOETIE 75008 PARIS",
+      "gerants": [
+        {
+          "nom": "VALERIE POLI",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BU0024",
+      "adresse_bien": "5 RUE JEAN CARRIES 75007",
+      "sci_nom": "DU 63 AVE SUFFREN",
+      "sci_siren": "429531577",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "175 BOULEVARD PEREIRE 75017 PARIS",
+      "gerants": []
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BU0025",
+      "adresse_bien": "2 AV EMILE ACOLLAS 75007",
+      "sci_nom": "SCI C2L",
+      "sci_siren": "910900554",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "LE PLAIX GOLIARD 23360 MEASNES",
+      "gerants": [
+        {
+          "nom": "CHANTAL DE PALMAS (BOURDILLON)",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "MARIE AMELIE DE PALMAS",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "RICHARD DE PALMAS",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "SIMON DE PALMAS",
+          "qualite": "Associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BU0025",
+      "adresse_bien": "2 AV EMILE ACOLLAS 75007",
+      "sci_nom": "SCI LANDMARK PROPERTIES EUROPE",
+      "sci_siren": "800172041",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "2 AVENUE EMILE ACOLLAS 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "CHANTAL MARIE ANNE DE PALMAS (BOURDILLON)",
+          "qualite": "Gérant"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BU0025",
+      "adresse_bien": "2 AV EMILE ACOLLAS 75007",
+      "sci_nom": "SCI ROME 2006",
+      "sci_siren": "489810846",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "1 AVENUE EMILE ACOLLAS 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "PASCALE GERARDIN (BARBIER LALOBE DE FELCOURT)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "ELISE GERARDIN",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "MARIE GERARDIN",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "ORIANE GERARDIN",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "RAPHAEL GERARDIN",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "YANN GERARDIN",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BU0026",
+      "adresse_bien": "50 AV CHARLES FLOQUET 75007",
+      "sci_nom": "CBB 488",
+      "sci_siren": "951296698",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "11 RUE PERIGNON 75015 PARIS",
+      "gerants": [
+        {
+          "nom": "CHARLES BAILLE-BARRELLE",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BU0027",
+      "adresse_bien": "6 RUE JEAN CARRIES 75007",
+      "sci_nom": "DUMAR",
+      "sci_siren": "884012303",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "6 RUE JEAN CARRIES 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "OLIVIER STEPHAN DUFOUR",
+          "qualite": "Gérant"
+        },
+        {
+          "nom": "ALEXANDRA MARIE-JOSEPHE MARTRY",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BU0028",
+      "adresse_bien": "61 AV DE SUFFREN 75007",
+      "sci_nom": "PARIS THEL",
+      "sci_siren": "532583432",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "322 RUE PRINCIPALE 62127 AMBRINES",
+      "gerants": [
+        {
+          "nom": "CATHERINE THELLIER (THAUVIN)",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "ANNE-CHARLOTTE FOECHTERLE (THELLIER)",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "DENIS THELLIER",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "GUILLAUME THELLIER",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "JULIEN THELLIER",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BU0028",
+      "adresse_bien": "61 AV DE SUFFREN 75007",
+      "sci_nom": "SCI 61 AVE DE SUFFREN",
+      "sci_siren": "505280685",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "61 AVENUE DE SUFFREN 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "CHANTAL MESTMAN (GOULESQUE)",
+          "qualite": "Gérant"
+        },
+        {
+          "nom": "TARA CLARA HELENE MESTMAN",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BU0028",
+      "adresse_bien": "61 AV DE SUFFREN 75007",
+      "sci_nom": "BARON",
+      "sci_siren": "525047262",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "32 BOULEVARD DU LAC 95880 ENGHIEN-LES-BAINS",
+      "gerants": [
+        {
+          "nom": "PATRICK NATAN BARON",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "RAPHAEL ALBERT BARON",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "MONIQUE RACHEL BARON (COHEN)",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BU0028",
+      "adresse_bien": "61 AV DE SUFFREN 75007",
+      "sci_nom": "HERIUS",
+      "sci_siren": "908190861",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "60 RUE FRANCOIS IER 75008 PARIS",
+      "gerants": [
+        {
+          "nom": "ROXANE MADELEINE THUONG MARTHE DUMONTEIL",
+          "qualite": "Gérant"
+        },
+        {
+          "nom": "CHARLES ALEXANDRE PERETZ",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BU0028",
+      "adresse_bien": "61 AV DE SUFFREN 75007",
+      "sci_nom": "SCI LA COUR",
+      "sci_siren": "490388709",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "48 RUE BOISSIERE 75016 PARIS",
+      "gerants": [
+        {
+          "nom": "SILVIA NATALIA CANONGE (CACITTI)",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "CHARLES-ALEXIS CANONGE",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "ELSA CANONGE",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BU0028",
+      "adresse_bien": "61 AV DE SUFFREN 75007",
+      "sci_nom": "SCI MASANILE",
+      "sci_siren": "810159707",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "61 AVENUE DE SUFFREN 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "MATTHIEU LE DAIN",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "SABINE LE DAIN",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "MARTINE MONNIER",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BU0029",
+      "adresse_bien": "48 AV CHARLES FLOQUET 75007",
+      "sci_nom": "BG PARIS",
+      "sci_siren": "811219781",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "48 AVENUE CHARLES FLOQUET 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "CARLO BRANDON-GORDON (BRANDON)",
+          "qualite": "Gérant"
+        },
+        {
+          "nom": "ANDREW BRANDON-GORDON (GORDON)",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BU0030",
+      "adresse_bien": "46 AV CHARLES FLOQUET 75007",
+      "sci_nom": "SCI FLO",
+      "sci_siren": "524699907",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "5 ENTREE SERGENOISE CTRE COMMERCIAL ST JACQUES 57000 METZ",
+      "gerants": [
+        {
+          "nom": "BRIGITTE WAJSBROT (BLAJMANN)",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "ALAIN WAJSBROT",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BU0031",
+      "adresse_bien": "59 AV DE SUFFREN 75007",
+      "sci_nom": "SCI SUFFREN AUBERT",
+      "sci_siren": "349268284",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "21 ROUTE DE PALLUD 73200 ALBERTVILLE",
+      "gerants": [
+        {
+          "nom": "MARIE-LUCE CLOPPET  (CHAUVEAU )",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "ANNE-MARIE HELENE MARCELLE SADOUX (CLOPPET)",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "FRANCOISE YVONNE EMILIE FAVRE (CLOPPET)",
+          "qualite": "Gérant"
+        },
+        {
+          "nom": "LAURENT RAYMOND PIERRE CLOPPET",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "SABINE MARTINE ANTOINETTE CLOPPET",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "LAURE MICHELE MARIE-SUZANNE RAYMONDE FAVRE",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "LIONEL BERNARD RAYMOND FAVRE",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "SEGOLENE MARIE NOELLE DAVID (SADOUX)",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "SOPHIE HYUN-HEE MARIE BELLEC (SADOUX)",
+          "qualite": "Associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BU0032",
+      "adresse_bien": "44 AV CHARLES FLOQUET 75007",
+      "sci_nom": "SCI BRETEUIL",
+      "sci_siren": "333736742",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "88 RUE AUGUSTE DELAUNE 94800 VILLEJUIF",
+      "gerants": [
+        {
+          "nom": "SHARON CAMILLE AZRIA",
+          "qualite": "Gérant"
+        },
+        {
+          "nom": "BENJAMIN MIMRAN",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "SOPHIE MIMRAN",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BU0032",
+      "adresse_bien": "44 AV CHARLES FLOQUET 75007",
+      "sci_nom": "DOMANI",
+      "sci_siren": "411672108",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "44 AVENUE CHARLES FLOQUET 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "CHEYENNE MICKAL AZRIA",
+          "qualite": "Gérant"
+        },
+        {
+          "nom": "BENJAMIN MIMRAN",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "SOPHIE MIMRAN",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BU0032",
+      "adresse_bien": "44 AV CHARLES FLOQUET 75007",
+      "sci_nom": "SCI DU PASSAGE",
+      "sci_siren": "390627974",
+      "code_droit": "N",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "44 AVENUE CHARLES FLOQUET 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "BENOIT MARIE NICOLAS GILBERT DE VAUTIBAULT",
+          "qualite": "Gérant"
+        },
+        {
+          "nom": "FRANCOISE ROCHE (PHELIPPES DE LA MARNIERRE)",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "BEATRICE MARIE MONIQUE GILBERT DE VAUTIBAULT (ROCHE)",
+          "qualite": "Gérant"
+        },
+        {
+          "nom": "ISABELLE CAMPREDON (ROCHE)",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "JEAN LOUIS PIERRE BERNARD ROCHE",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "PHILIPPE JEAN HENRI ROCHE",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "SABINE MARIE-LAURE MOREAU (ROCHE)",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BU0032",
+      "adresse_bien": "44 AV CHARLES FLOQUET 75007",
+      "sci_nom": "LA BELLE VIE II LIMITED",
+      "sci_siren": "822531737",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "19 AVENUE D'ITALIE 75013 PARIS",
+      "gerants": [
+        {
+          "nom": "FADI AL KHATIB",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "DANIA FADI EL KHATIB (KOLEILAT)",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BU0035",
+      "adresse_bien": "42 AV CHARLES FLOQUET 75007",
+      "sci_nom": "BES NATION",
+      "sci_siren": "379640022",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "7 PLACE DE LA NATION 75011 PARIS",
+      "gerants": [
+        {
+          "nom": "EMMANUEL LUC GERAUD LAPORTE",
+          "qualite": "Gérant"
+        },
+        {
+          "nom": "VERONIQUE LAPORTE (MAGUES)",
+          "qualite": "Gérant"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BU0035",
+      "adresse_bien": "42 AV CHARLES FLOQUET 75007",
+      "sci_nom": "SCI FLOQUET",
+      "sci_siren": "931615629",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "42 AVENUE CHARLES FLOQUET 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "BARBARA BIALOSTOCKI",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "FABIEN VLASSOFF",
+          "qualite": "Associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BU0035",
+      "adresse_bien": "42 AV CHARLES FLOQUET 75007",
+      "sci_nom": "BELVEDERE",
+      "sci_siren": "797908746",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "non",
+      "siege_social": "33 AV DU MAINE 75015 PARIS 15",
+      "gerants": [
+        {
+          "nom": "ORKHAN AHMADOV",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BU0035",
+      "adresse_bien": "42 AV CHARLES FLOQUET 75007",
+      "sci_nom": "SCI LA PIROGUE",
+      "sci_siren": "830264057",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "42 AVENUE CHARLES FLOQUET 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "MARIE-CHRISTINE MICHEL (BOULLÉ)",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "FLORENCE RAZÉ (MICHEL)",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "GILLES MICHEL",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "JEAN BAPTISTE MICHEL",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "MARC-ANTOINE MICHEL",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BU0035",
+      "adresse_bien": "42 AV CHARLES FLOQUET 75007",
+      "sci_nom": "LILLE",
+      "sci_siren": "899220990",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "12 RUE PASTEUR 95150 TAVERNY",
+      "gerants": [
+        {
+          "nom": "NATHALIE HERRERA  (CARUANA )",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "DENIS HERRERA",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BU0036",
+      "adresse_bien": "40 AV CHARLES FLOQUET 75007",
+      "sci_nom": "SCI INDARMBRI",
+      "sci_siren": "938093994",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "40 AVENUE CHARLES FLOQUET 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "ASLAM AMLANI",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "LAUREN MARGUERITE GEZURIAN",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "BU0036",
+      "adresse_bien": "40 AV CHARLES FLOQUET 75007",
+      "sci_nom": "SCI FLOQUET PARIS",
+      "sci_siren": "951018746",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "40 AVENUE CHARLES FLOQUET 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "ELEANOR GRACE TSAI",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "JOHN TSAI",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "MICHELLE STOLPMAN (TSAI)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "WESLEY EDWIN TSAI",
+          "qualite": "Associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CF0006",
+      "adresse_bien": "30 AV CHARLES FLOQUET 75007",
+      "sci_nom": "SCI DAMA",
+      "sci_siren": "789509627",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "CHAMPFLEURY 30 AVENUE CHARLES FLOQUET 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "EVGENY YANIN",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "DARIA YANINA",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "YULIA YANINA",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CF0007",
+      "adresse_bien": "28 AV CHARLES FLOQUET 75007",
+      "sci_nom": "SCI MILLE ETOILES",
+      "sci_siren": "533241493",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "63 ROUTE DU DOLMEN 37360 SAINT-ANTOINE-DU-ROCHER",
+      "gerants": [
+        {
+          "nom": "SIEW LIN KELLY LEE",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "SOON HUAT LEE",
+          "qualite": "Associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CF0007",
+      "adresse_bien": "28 AV CHARLES FLOQUET 75007",
+      "sci_nom": "OSTERODE",
+      "sci_siren": "915137970",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "28 AVENUE CHARLES FLOQUET 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "HERMANAS BALKUS",
+          "qualite": "Gérant"
+        },
+        {
+          "nom": "DIANA BALKUVIENE",
+          "qualite": "Gérant"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CF0010",
+      "adresse_bien": "19 AV CHARLES FLOQUET 75007",
+      "sci_nom": "SCI HUGO",
+      "sci_siren": "443924477",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "19 AVENUE CHARLES FLOQUET 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "EMILIE ALEXANDRA BERENHOLC (ZORBIBE)",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CF0010",
+      "adresse_bien": "19 AV CHARLES FLOQUET 75007",
+      "sci_nom": "SCI NAPOLEON",
+      "sci_siren": "819024076",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "19 AVENUE CHARLES FLOQUET 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "ANTHONY WERNER DAVID GARRICK HESS",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "JADE VICTORIA RADIX",
+          "qualite": "Associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CF0016",
+      "adresse_bien": "29 AV CHARLES FLOQUET 75007",
+      "sci_nom": "ELYSEES RECLUS",
+      "sci_siren": "751939588",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "29 AVENUE CHARLES FLOQUET 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "NIKITA OVCHARENKO",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "PAVLO OVCHARENKO",
+          "qualite": null
+        },
+        {
+          "nom": "GANNA SHEVTSOVA",
+          "qualite": "Associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CF0018",
+      "adresse_bien": "38 AV CHARLES FLOQUET 75007",
+      "sci_nom": "CHARLES FLOQUET",
+      "sci_siren": "451407316",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "RABESTAN 28120 SAINT-AVIT-LES-GUESPIERES",
+      "gerants": [
+        {
+          "nom": "MAITE GRAVIER (DEJEANT)",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "ALBANE MIGNOT (GRAVIER)",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "GUILHEM GRAVIER",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "PHILIPPE GRAVIER",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CF0019",
+      "adresse_bien": "36 AV CHARLES FLOQUET 75007",
+      "sci_nom": "SCI PJF",
+      "sci_siren": "949688345",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "17 RUE NICOLO 75016 PARIS",
+      "gerants": [
+        {
+          "nom": "JEAN-FRANCOIS HONART",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "PAULINE HONART (SOULHIARD)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CF0020",
+      "adresse_bien": "53 AV DE SUFFREN 75007",
+      "sci_nom": "SCI HARYBEL",
+      "sci_siren": "389202268",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "1068 RTE ROUTE D'OLHETTE LDT XORIEKIN 64310 ASCAIN",
+      "gerants": [
+        {
+          "nom": "GERMAIN AUGUSTE BELAN",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "ISABELLE SABINE ANNE BELAN",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "JEROME ANDRE CHARLES BELAN",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CF0020",
+      "adresse_bien": "6 AV DU GAL DETRIE 75007",
+      "sci_nom": "CHARLAUMAR PATRIMOINE",
+      "sci_siren": "447627969",
+      "code_droit": "N",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "17 RUE DE L'UNIVERSITE 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "ANTOINE JEAN GALLIMARD",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "CHARLOTTE GALLIMARD",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "LAURE GALLIMARD",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "MARGOT GALLIMARD",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CF0020",
+      "adresse_bien": "6 AV DU GAL DETRIE 75007",
+      "sci_nom": "GENERAL DETRIE",
+      "sci_siren": "801617168",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "6 CHEMIN DES MONTQUARTIERS 92130 ISSY-LES-MOULINEAUX",
+      "gerants": [
+        {
+          "nom": "DOMINIQUE DE LA PORTE DE VAUX (D'ADHEMAR DE CRANSAC)",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "JEAN DE LA PORTE DES VAUX",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CF0022",
+      "adresse_bien": "34 AV CHARLES FLOQUET 75007",
+      "sci_nom": "VALMIC",
+      "sci_siren": "377767173",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "77 RUE DE PANNETTE 27000 EVREUX",
+      "gerants": [
+        {
+          "nom": "HUGUETTE YVETTE GEORGETTE VALLEE (GUILLON)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CF0022",
+      "adresse_bien": "34 AV CHARLES FLOQUET 75007",
+      "sci_nom": "SAVOIE IMMOBILIER",
+      "sci_siren": "403782824",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "3 IMPASSE DE L'ETANG 74100 VETRAZ-MONTHOUX",
+      "gerants": [
+        {
+          "nom": "ISSAD REBRAB",
+          "qualite": "Gérant"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CF0022",
+      "adresse_bien": "34 AV CHARLES FLOQUET 75007",
+      "sci_nom": "SOCIETE CIVILE IMMOBILIERE DU 34 AV CHARLES FLOQUET",
+      "sci_siren": "U21078209",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "",
+      "gerants": []
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CF0023",
+      "adresse_bien": "32 AV CHARLES FLOQUET 75007",
+      "sci_nom": "CHAMPFLEURY",
+      "sci_siren": "428460158",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "",
+      "gerants": []
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CF0023",
+      "adresse_bien": "32 AV CHARLES FLOQUET 75007",
+      "sci_nom": "VIAGENERATIONS",
+      "sci_siren": "832755318",
+      "code_droit": "N",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "44 AVENUE DE VILLIERS 75017 PARIS",
+      "gerants": [
+        {
+          "nom": "CHARLOTTE EVANGUELIDIS",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "CHRISTOPHE MOTTE",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CF0023",
+      "adresse_bien": "32 AV CHARLES FLOQUET 75007",
+      "sci_nom": "SCI ARGENTRIX",
+      "sci_siren": "853534360",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "117 RUE DE CHARENTON 75012 PARIS",
+      "gerants": [
+        {
+          "nom": "GERARDO SCHLOSSBERG",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "GUSTAVO MIRKO SCHLOSSBERG",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "LUCAS SCHLOSSBERG",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "THEO MIRKO SCHLOSSBERG",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "TOMAS MIRKO SCHLOSSBERG",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CF0024",
+      "adresse_bien": "49 AV DE SUFFREN 75007",
+      "sci_nom": "TYMOB",
+      "sci_siren": "853349462",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "14 RUE DES ROMAINS 22600 LOUDEAC",
+      "gerants": [
+        {
+          "nom": "CHRISTOPHE JEAN MARIE MADORE",
+          "qualite": "Gérant"
+        },
+        {
+          "nom": "MARTA MADORE (MIRABETE TERES)",
+          "qualite": "Associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CF0024",
+      "adresse_bien": "49 AV DE SUFFREN 75007",
+      "sci_nom": "SCI ADELAIDE PROPERTIES",
+      "sci_siren": "491961983",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "2 CHEMIN DU MOULIN DE LAVAUD 33500 POMEROL",
+      "gerants": [
+        {
+          "nom": "LEGH HEWITSON DAVIS",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "HELEN DAVIS (FOURNIE)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CF0024",
+      "adresse_bien": "49 AV DE SUFFREN 75007",
+      "sci_nom": "DU 49 AV DE SUFFREN",
+      "sci_siren": "487513574",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "49 AVENUE DE SUFFREN 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "BRUNO KARIM BOUMRAH",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "MEHDI BOUMRAH",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "RACHID BOUMRAH",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "NICOLE BOUMRAH (NEVEUX)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CF0025",
+      "adresse_bien": "5 RUE CHAMPFLEURY 75007",
+      "sci_nom": "GISELE",
+      "sci_siren": "325001501",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "13 B AVENUE DE LA MOTTE-PICQUET 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "JULIE-JOELLE BESNAINOU",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "CHLOE GISELE BESNAINOU-CHANG YU (CHANG YU)",
+          "qualite": "Gérant"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CF0025",
+      "adresse_bien": "5 RUE CHAMPFLEURY 75007",
+      "sci_nom": "ALFEBRUMA",
+      "sci_siren": "531040830",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "5 RUE CHAMPFLEURY 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "MARIA JERMANN (FARIAS CAMPERO)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "ALEXANDER JERMANN",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "BRUNO JERMANN",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "FEDERICA JERMANN",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CF0025",
+      "adresse_bien": "5 RUE CHAMPFLEURY 75007",
+      "sci_nom": "FIORE",
+      "sci_siren": "803554617",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "5 RUE CHAMPFLEURY 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "ANNE FREDERIQUE SCHOLL",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "GIOVANNI VIANI",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CF0027",
+      "adresse_bien": "2 RUE CHAMPFLEURY 75007",
+      "sci_nom": "SCI DU CHANTFLEURY",
+      "sci_siren": "491034369",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "2 RUE CHAMPFLEURY 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "DAN ISAAC GEORGES COHEN-ADDAD",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "ELIE RAOUL ARMAND COHEN-ADDAD",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "SAMIRA SIMON",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "VERONIQUE SIMON",
+          "qualite": "Gérant"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CG0002",
+      "adresse_bien": "5 AV CHARLES FLOQUET 75007",
+      "sci_nom": "SCI HALT",
+      "sci_siren": "512447178",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "3 AVENUE CHARLES FLOQUET 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "- SE SHEIKH HAMAD ABDULLA KH AL THANI",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "- SHEIKH KHALIFA HAMAD AK AL THANI",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CG0005",
+      "adresse_bien": "11 AV CHARLES FLOQUET 75007",
+      "sci_nom": "SCI  DU 11 BIS AVENUE CHARLES FLOQUET",
+      "sci_siren": "428460117",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "8 RUE MONTESQUIEU 75001 PARIS",
+      "gerants": [
+        {
+          "nom": "VIRGINIE BRUN",
+          "qualite": "Gérant"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CG0007",
+      "adresse_bien": "4 AV DU DOCTEUR BROUARDEL 75007",
+      "sci_nom": "CFP SOLANGE",
+      "sci_siren": "509690061",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "4 AVENUE DU DOCTEUR BROUARDEL 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "GARY CRUM",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "SYLVIE CRUM (PLANGMAN)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CG0009",
+      "adresse_bien": "33 AV DE SUFFREN 75007",
+      "sci_nom": "SCI AK SUFFREN",
+      "sci_siren": "914522982",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "2 AVENUE D'IENA 75016 PARIS",
+      "gerants": [
+        {
+          "nom": "ALEXANDRE KOUTSOMANIS",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CG0009",
+      "adresse_bien": "33 AV DE SUFFREN 75007",
+      "sci_nom": "SCI DU BAILLI",
+      "sci_siren": "905016952",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "4561 CHEMIN DE SERRES 84810 AUBIGNAN",
+      "gerants": [
+        {
+          "nom": "LAURENT ANDRE MARIE HALBGEWACHS",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "LAURENCE LILIANE HALBGEWACHS (HEIN)",
+          "qualite": "Associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CG0010",
+      "adresse_bien": "31 AV DE SUFFREN 75007",
+      "sci_nom": "SCI ADAMS ESTATE",
+      "sci_siren": "790896518",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "3 BOULEVARD RICHARD WALLACE 92200 NEUILLY-SUR-SEINE",
+      "gerants": [
+        {
+          "nom": "KEVIN SMADJA",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CG0010",
+      "adresse_bien": "31 AV DE SUFFREN 75007",
+      "sci_nom": "SCI LION PRINCE",
+      "sci_siren": "848365052",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "14 RUE PALOUZIE 93400 SAINT-OUEN-SUR-SEINE",
+      "gerants": [
+        {
+          "nom": "THOMAS OLIVIER PIERRE EFFANTIN",
+          "qualite": "Gérant"
+        },
+        {
+          "nom": "NICOLAS DANIEL CHRISTIAN MICALLEF",
+          "qualite": "Gérant"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CG0011",
+      "adresse_bien": "18 AV CHARLES FLOQUET 75007",
+      "sci_nom": "LES GRANDS MONTETS",
+      "sci_siren": "483237012",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "14 RUE PAUL DOUMER 06310 BEAULIEU-SUR-MER",
+      "gerants": [
+        {
+          "nom": "MARINA MELIA",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "ALEXEY MELIYA",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "ILYA MELIYA",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "MARIA MELIYA (NEMYRIA)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CG0011",
+      "adresse_bien": "18 AV CHARLES FLOQUET 75007",
+      "sci_nom": "RIVE BLEUE",
+      "sci_siren": "514726777",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "18 AVENUE CHARLES FLOQUET 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "ANGELA ROCCO (DE ALMEIDA)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "JOAO DE ALMEIDA ROCCO",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "PAULO ROCCO",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CG0011",
+      "adresse_bien": "18 AV CHARLES FLOQUET 75007",
+      "sci_nom": "SCI DU CHAMP DE MARS",
+      "sci_siren": "522852987",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "55 AVENUE MARCEAU 75016 PARIS",
+      "gerants": [
+        {
+          "nom": "WENJING MAO",
+          "qualite": "Gérant"
+        },
+        {
+          "nom": "JIANWEI YAO",
+          "qualite": "Gérant"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CG0013",
+      "adresse_bien": "29 AV DE SUFFREN 75007",
+      "sci_nom": "MOS",
+      "sci_siren": "425041647",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "10 RUE BASFROI 75011 PARIS",
+      "gerants": [
+        {
+          "nom": "GINO DANA",
+          "qualite": "Gérant"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CG0014",
+      "adresse_bien": "27 AV DE SUFFREN 75007",
+      "sci_nom": "OLINE",
+      "sci_siren": "480931708",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "27 AVENUE DE SUFFREN 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "CELINE SURZUR (GENY)",
+          "qualite": "Gérant"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CG0014",
+      "adresse_bien": "27 AV DE SUFFREN 75007",
+      "sci_nom": "M N I",
+      "sci_siren": "453209215",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "LES BALCONS DE FONCERANES 1 RUE MARCEL CARNE 34500 BEZIERS",
+      "gerants": [
+        {
+          "nom": "ELODIE GEGOUT",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "MICKAEL GEGOUT",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "RAPHAEL HAZIZA",
+          "qualite": "Gérant"
+        },
+        {
+          "nom": "YVONNE GEGOUT (HAZIZA)",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CG0016",
+      "adresse_bien": "3 RUE DU GAL LAMBERT 75007",
+      "sci_nom": "EHM",
+      "sci_siren": "479093189",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "3 RUE DU GENERAL LAMBERT 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "HENRI EGRET",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CG0017",
+      "adresse_bien": "5 RUE DU GAL LAMBERT 75007",
+      "sci_nom": "HIKE",
+      "sci_siren": "828636647",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "5 RUE DU GENERAL LAMBERT 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "HUGUES DELEPEAU",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "KARINE GATE",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CG0019",
+      "adresse_bien": "10 AV CHARLES FLOQUET 75007",
+      "sci_nom": "SCI H5 IMMO",
+      "sci_siren": "911848687",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "60 BOULEVARD DU MONTPARNASSE 75015 PARIS",
+      "gerants": [
+        {
+          "nom": "FLORENT HU",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "RUIGUANG HU",
+          "qualite": "Gérant"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CG0019",
+      "adresse_bien": "10 AV CHARLES FLOQUET 75007",
+      "sci_nom": "KAIROS IMMOBILIER",
+      "sci_siren": "824580609",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "10 AVENUE CHARLES FLOQUET 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "KAIS MOKHTAR",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "SADRI MOKHTAR",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CG0021",
+      "adresse_bien": "21 AV DE SUFFREN 75007",
+      "sci_nom": "SUFFREN 21",
+      "sci_siren": "384976130",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "21 AVENUE DE SUFFREN 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "XAVIER SAVIGNAT",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "STEPHANE VALENT",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CG0021",
+      "adresse_bien": "21 AV DE SUFFREN 75007",
+      "sci_nom": "SCI AUBER IMMO",
+      "sci_siren": "491466934",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "83-85 83 AVENUE VICTOR HUGO 93300 AUBERVILLIERS",
+      "gerants": [
+        {
+          "nom": "YU GIN DAI (CHEN)",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "FREDERIC DAI",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "RICHARD DAI",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "STÉPHANIE DAI",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "WEI XIN DAI",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CG0021",
+      "adresse_bien": "21 AV DE SUFFREN 75007",
+      "sci_nom": "EPSILON 21",
+      "sci_siren": "433352788",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "3 ALLEE MARIOTTE 89000 AUXERRE",
+      "gerants": [
+        {
+          "nom": "JEAN-PAUL FLEURY JOUR",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "MICHELE AGNES JOUR (MAGNIN)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CS0004",
+      "adresse_bien": "2 AV OCTAVE GREARD 75007",
+      "sci_nom": "SCI COBEN",
+      "sci_siren": "950748939",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "142 AVENUE DES BAUMETTES 06270 VILLENEUVE-LOUBET",
+      "gerants": []
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CS0005",
+      "adresse_bien": "4 AV OCTAVE GREARD 75007",
+      "sci_nom": "SILAUR",
+      "sci_siren": "414978056",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "4 AVENUE OCTAVE GREARD 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "LAURENCE YVONNE MARGUERITTE DARMON",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CS0005",
+      "adresse_bien": "4 AV OCTAVE GREARD 75007",
+      "sci_nom": "SCI FOROUZAN SUFFREN",
+      "sci_siren": "750218943",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "4 AVENUE OCTAVE GREARD 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "ALI FOROUZAN",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "ELHAM PROULX (FOROUZAN)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CS0005",
+      "adresse_bien": "4 AV OCTAVE GREARD 75007",
+      "sci_nom": "DU 15 AV DE SUFFREN",
+      "sci_siren": "421752726",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "11 B AVENUE DE SUFFREN 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "MIREILLE ANNIE AIMEE PERES (LING)",
+          "qualite": "Gérant"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CS0006",
+      "adresse_bien": "11 AV DE SUFFREN 75007",
+      "sci_nom": "SUFFREN ONZE",
+      "sci_siren": "534774658",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "11 B AVENUE DE SUFFREN 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "ALAIN MICHEL PIERRE MARIAN",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "MARIE CLAUDE MARIAN (RICHARD)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CS0006",
+      "adresse_bien": "11 AV DE SUFFREN 75007",
+      "sci_nom": "SCI LFP",
+      "sci_siren": "821876406",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "11 B AVENUE DE SUFFREN 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "SERVANE CATHERINE MARIE-HELENE PALAYSI (DRYE)",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "PIERRE-JEAN PATRICK MARIE PALAYSI",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CS0007",
+      "adresse_bien": "11 AV DE SUFFREN 75007",
+      "sci_nom": "CORALPA",
+      "sci_siren": "838005221",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "RESIDENCE VOLTAIRE RUE PIERRE BOUDOU 92600 ASNIERES-SUR-SEINE",
+      "gerants": [
+        {
+          "nom": "SABINE BRIGITTE JENNESSON",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "LENA AMELIE AMBRE ANNA LE GOFF",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CS0007",
+      "adresse_bien": "11 AV DE SUFFREN 75007",
+      "sci_nom": "SCI ALAMA SUFFREN",
+      "sci_siren": "914956768",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "11 AVENUE DE SUFFREN 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "LOUAI ALAME",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "RAGHEB ALAME",
+          "qualite": "Gérant"
+        },
+        {
+          "nom": "KHALED ALAMEH",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CS0008",
+      "adresse_bien": "9 AV DE SUFFREN 75007",
+      "sci_nom": "SARAVEILLE",
+      "sci_siren": "797909991",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "9 AVENUE DE SUFFREN 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "AUDREY NICOLE BERARD",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "JACQUES ALBERT WEIL",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CS0008",
+      "adresse_bien": "9 AV DE SUFFREN 75007",
+      "sci_nom": "MAPI",
+      "sci_siren": "811145812",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "9 AVENUE DE SUFFREN 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "LAURENCE PINEAU (MAHON DE MONAGHAN)",
+          "qualite": "Gérant"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CS0008",
+      "adresse_bien": "9 AV DE SUFFREN 75007",
+      "sci_nom": "SCI CYNTHIA MONTAIGNE",
+      "sci_siren": "538372624",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "17 RUE DU VIEUX MARCHE AUX GRAINS 67000 STRASBOURG",
+      "gerants": [
+        {
+          "nom": "CYNTHIA SIMHA OUSSADON",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CS0008",
+      "adresse_bien": "9 AV DE SUFFREN 75007",
+      "sci_nom": "SCI BEAU RIVAGE",
+      "sci_siren": "339754327",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "74 AVENUE DE WAGRAM 75017 PARIS",
+      "gerants": [
+        {
+          "nom": "ANNICK CLEMENT (BOIDIN)",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "ALEXANDRE CLEMENT",
+          "qualite": "Gérant"
+        },
+        {
+          "nom": "ALEXANDRE PHILIPPE CLEMENT",
+          "qualite": "Gérant"
+        },
+        {
+          "nom": "CAROLINE ANNICK ROBIEZ (CLEMENT)",
+          "qualite": "Gérant"
+        },
+        {
+          "nom": "MATHIEU PHILIPPE CLEMENT",
+          "qualite": "Gérant"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CS0008",
+      "adresse_bien": "9 AV DE SUFFREN 75007",
+      "sci_nom": "PARISDOR",
+      "sci_siren": "828852707",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "9 AVENUE DE SUFFREN 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "FABIEN LEGER",
+          "qualite": "Gérant"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CS0009",
+      "adresse_bien": "7 AV DE SUFFREN 75007",
+      "sci_nom": "NGAU",
+      "sci_siren": "478396245",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "40 AU 44 40 AVENUE MAURICE THOREZ 94200 IVRY-SUR-SEINE",
+      "gerants": [
+        {
+          "nom": "LENG NGAU (HEAN)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "HY TING NGAU",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "SY ZOL NGAU",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "TY MENG NGAU",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CS0009",
+      "adresse_bien": "7 AV DE SUFFREN 75007",
+      "sci_nom": "CALA IMMO",
+      "sci_siren": "813066172",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "9 AV SCALA DI SANTA REGINA 20224 CALACUCCIA",
+      "gerants": [
+        {
+          "nom": "FRANCOIS-XAVIER LAMPERTI",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "GERARD LAMPERTI",
+          "qualite": "Associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CS0009",
+      "adresse_bien": "7 AV DE SUFFREN 75007",
+      "sci_nom": "AD 2011",
+      "sci_siren": "792949505",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "7 AVENUE DE SUFFREN 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "ALIX LION (CHEVRANT-BRETON)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "AYMERIC LION",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "DENIS LION",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "GEORGES-HENRI LION",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "LAURENE LION",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CS0009",
+      "adresse_bien": "7 AV DE SUFFREN 75007",
+      "sci_nom": "LA SELVES",
+      "sci_siren": "414577270",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "7 AVENUE DE SUFFREN 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "MAURICE CAYRON",
+          "qualite": "Gérant"
+        },
+        {
+          "nom": "RAYMONDE CAYRON (MARCILLAC)",
+          "qualite": "Gérant"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CS0009",
+      "adresse_bien": "7 AV DE SUFFREN 75007",
+      "sci_nom": "SCI DU 7 AVE DE SUFFREN",
+      "sci_siren": "389469099",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "28 RUE DES MISSIONNAIRES 78000 VERSAILLES",
+      "gerants": [
+        {
+          "nom": "ANNE BEAUVAIS",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "BEAUVAIS RICHARD",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "HELENE BEAUVAIS (GUINOT)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CS0011",
+      "adresse_bien": "1 RUE DE BUENOS AIRES 75007",
+      "sci_nom": "THE FORCE",
+      "sci_siren": "499601748",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "1 B RUE DE BUENOS AIRES 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "CAROLINE GIRAUD (CHENG)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "LUC FRANCK WILLIAM JAMES GIRAUD",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "SASKIA JANE LUCILLE JACQUELINE GIRAUD",
+          "qualite": "Associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CS0012",
+      "adresse_bien": "1 RUE DE BUENOS AIRES 75007",
+      "sci_nom": "AASMUTH",
+      "sci_siren": "897972394",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "10 RUE DE PENTHIEVRE 75008 PARIS",
+      "gerants": [
+        {
+          "nom": "SANAA AASLI",
+          "qualite": "Gérant"
+        },
+        {
+          "nom": "SOPHIE BISMUTH",
+          "qualite": "Gérant"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CS0012",
+      "adresse_bien": "1 RUE DE BUENOS AIRES 75007",
+      "sci_nom": "AMAPA",
+      "sci_siren": "422673848",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "1 RUE DE BUENOS AIRES 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "DOROTHEE BEATRICE BRUNEL (SCHWARTZ)",
+          "qualite": "Gérant"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CS0012",
+      "adresse_bien": "1 RUE DE BUENOS AIRES 75007",
+      "sci_nom": "CTM",
+      "sci_siren": "405272139",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "1 RUE DE BUENOS AIRES 75007 PARIS",
+      "gerants": [
+        {
+          "nom": "CHRISTINE THERESE MICEVIC",
+          "qualite": "Gérant"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CS0012",
+      "adresse_bien": "1 RUE DE BUENOS AIRES 75007",
+      "sci_nom": "CYNTHIA BUENOS AIRES",
+      "sci_siren": "822813325",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "17 RUE DU VIEUX MARCHE AUX GRAINS 67000 STRASBOURG",
+      "gerants": [
+        {
+          "nom": "CYNTHIA SIMBA OUSSADON-CHEKROUN (OUSSADON)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "KELLY GRACE OUSSADON",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "PAMELA OUSSADON",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CS0013",
+      "adresse_bien": "3 RUE DE BUENOS AIRES 75007",
+      "sci_nom": "SCI IRENE",
+      "sci_siren": "495091712",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "17 RUE EUGENE MANUEL 75016 PARIS",
+      "gerants": [
+        {
+          "nom": "IRINA KOTSIOUBA (KOTSYUBA)",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "OLGA KOTSIOUBA (KOTSYUBA)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
+    },
     {
       "zone": "La Motte-Picquet",
       "parcelle": "CW0002",
@@ -3710,6 +8146,31 @@
       "zone": "La Motte-Picquet",
       "parcelle": "CX0035",
       "adresse_bien": "27 RUE PERIGNON 75015",
+      "sci_nom": "FONCIERE PECLET",
+      "sci_siren": "337885990",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "93 RUE BLOMET 75015 PARIS",
+      "gerants": [
+        {
+          "nom": "ALEXANDRE FEREY",
+          "qualite": "Gérant"
+        },
+        {
+          "nom": "ARNAUD FEREY",
+          "qualite": "Gérant"
+        },
+        {
+          "nom": "MICHELE FEREY (FRÉRET)",
+          "qualite": "Gérant"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CX0035",
+      "adresse_bien": "27 RUE PERIGNON 75015",
       "sci_nom": "SCI SAINT DO 80",
       "sci_siren": "447730862",
       "code_droit": "P",
@@ -5026,6 +9487,27 @@
         {
           "nom": "FREDERIQUE MARIE-CLAUDE DUPEUX (LAFARGUE)",
           "qualite": "Gérant"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "CY0038",
+      "adresse_bien": "12 RUE CARRIER BELLEUSE 75015",
+      "sci_nom": "SCI DURANTIER",
+      "sci_siren": "401942297",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "63 AVENUE DE LA MOTTE-PICQUET 75015 PARIS",
+      "gerants": [
+        {
+          "nom": "ISABELLE AUGEREAU",
+          "qualite": "Gérant"
+        },
+        {
+          "nom": "ERIC VENOT",
+          "qualite": "Autre"
         }
       ]
     },
@@ -20104,6 +24586,27 @@
     },
     {
       "zone": "La Motte-Picquet",
+      "parcelle": "DG0080",
+      "adresse_bien": "114 BD DE GRENELLE 75015",
+      "sci_nom": "SCI DURANTIER",
+      "sci_siren": "401942297",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "63 AVENUE DE LA MOTTE-PICQUET 75015 PARIS",
+      "gerants": [
+        {
+          "nom": "ISABELLE AUGEREAU",
+          "qualite": "Gérant"
+        },
+        {
+          "nom": "ERIC VENOT",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
       "parcelle": "DG0085",
       "adresse_bien": "17 RUE TIPHAINE 75015",
       "sci_nom": "LES ROCHERS",
@@ -20179,6 +24682,27 @@
         {
           "nom": "YVETTE MARIE MATHILDE LUCIENNE REUX (ROBERT)",
           "qualite": "Gérant"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "DG0093",
+      "adresse_bien": "9 RUE TIPHAINE 75015",
+      "sci_nom": "SAINT-SPIRE 13",
+      "sci_siren": "398960252",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "6 RUE DE LA BOUCHERIE 91100 CORBEIL-ESSONNES",
+      "gerants": [
+        {
+          "nom": "MICHAEL TOFFOLO",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "YVES TOFFOLO",
+          "qualite": "Gérant et associé indéfiniment responsable"
         }
       ]
     },
@@ -22878,6 +27402,35 @@
         {
           "nom": "MICHEL JACK FRANÇOIS LALLEMAND",
           "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "DH0027",
+      "adresse_bien": "11 RUE DUPLEIX 75015",
+      "sci_nom": "SCI CADIX",
+      "sci_siren": "339304685",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "19 RUE DE CADIX 75015 PARIS",
+      "gerants": [
+        {
+          "nom": "CHANTAL LOUISE ZEIZA HAYATE",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "MARC PAUL CHARLES HAYATE",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "PATRICK NESSIM HAYATE",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "SYLVAIN MAURICE BICHI HAYATE",
+          "qualite": "Autre"
         }
       ]
     },
@@ -25947,6 +30500,31 @@
       "zone": "La Motte-Picquet",
       "parcelle": "DI0003",
       "adresse_bien": "86 RUE DE LA FEDERATION 75015",
+      "sci_nom": "MONIQUE SUFFREN",
+      "sci_siren": "448373308",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "45 RUE EMILE MENIER 75016 PARIS",
+      "gerants": [
+        {
+          "nom": "ARTHUR GAUTRAIS LE MENER",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "EMMANUELLE LE MENER",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "MARIE MONIQUE LE MENER",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "DI0003",
+      "adresse_bien": "86 RUE DE LA FEDERATION 75015",
       "sci_nom": "NODO",
       "sci_siren": "449169978",
       "code_droit": "P",
@@ -26269,6 +30847,23 @@
       "gerants": [
         {
           "nom": "JOSEPH HAZAN",
+          "qualite": "Gérant"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "DI0003",
+      "adresse_bien": "11 RUE DE PRESLES 75015",
+      "sci_nom": "LA ROCHE AUX LIERRES",
+      "sci_siren": "337616783",
+      "code_droit": "N",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "3 RUE DE L'ARRIVEE 75015 PARIS",
+      "gerants": [
+        {
+          "nom": "CHRISTIANE BARBOTTIN (MIKEL)",
           "qualite": "Gérant"
         }
       ]
@@ -28237,6 +32832,27 @@
         },
         {
           "nom": "[NON-DIFFUSIBLE] [NON-DIFFUSIBLE]",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "DJ0017",
+      "adresse_bien": "3 RUE AUGUSTE BARTHOLDI 75015",
+      "sci_nom": "SCI DURANTIER",
+      "sci_siren": "401942297",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "63 AVENUE DE LA MOTTE-PICQUET 75015 PARIS",
+      "gerants": [
+        {
+          "nom": "ISABELLE AUGEREAU",
+          "qualite": "Gérant"
+        },
+        {
+          "nom": "ERIC VENOT",
           "qualite": "Autre"
         }
       ]
@@ -33942,6 +38558,27 @@
     },
     {
       "zone": "La Motte-Picquet",
+      "parcelle": "DM0037",
+      "adresse_bien": "67 RUE DE LA FEDERATION 75015",
+      "sci_nom": "SCI DURANTIER",
+      "sci_siren": "401942297",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "63 AVENUE DE LA MOTTE-PICQUET 75015 PARIS",
+      "gerants": [
+        {
+          "nom": "ISABELLE AUGEREAU",
+          "qualite": "Gérant"
+        },
+        {
+          "nom": "ERIC VENOT",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
       "parcelle": "DM0038",
       "adresse_bien": "2 RUE DU CAPT SCOTT 75015",
       "sci_nom": "SCI DU 10 RUE DESAIX",
@@ -34852,6 +39489,27 @@
         {
           "nom": "MARINETTE JEANNE LAFOLIE (MOREAU)",
           "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "DO0007",
+      "adresse_bien": "12 RUE SAINT SAENS 75015",
+      "sci_nom": "SCI DURANTIER",
+      "sci_siren": "401942297",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "63 AVENUE DE LA MOTTE-PICQUET 75015 PARIS",
+      "gerants": [
+        {
+          "nom": "ISABELLE AUGEREAU",
+          "qualite": "Gérant"
+        },
+        {
+          "nom": "ERIC VENOT",
+          "qualite": "Autre"
         }
       ]
     },
@@ -38737,6 +43395,23 @@
     },
     {
       "zone": "La Motte-Picquet",
+      "parcelle": "EG0009",
+      "adresse_bien": "136 RUE DU THEATRE 75015",
+      "sci_nom": "SCCV THEATRE",
+      "sci_siren": "891353989",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "9 RUE ANATOLE DE LA FORGE 75017 PARIS",
+      "gerants": [
+        {
+          "nom": "KARIM ALIOUA",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "La Motte-Picquet",
       "parcelle": "EG0010",
       "adresse_bien": "138 RUE DU THEATRE 75015",
       "sci_nom": "BATHYCLES",
@@ -40783,8 +45458,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "79 RUE DU COMMERCE 75015 PARIS",
+      "gerants": [
+        {
+          "nom": "PHILIPPE RENE LOUIS DUPARC",
+          "qualite": "Gérant"
+        },
+        {
+          "nom": "PICAULT ODETTE VEUVE DUPARC",
+          "qualite": "Gérant"
+        }
+      ]
     },
     {
       "zone": "La Motte-Picquet",
@@ -41038,6 +45722,18 @@
           "qualite": "Associé indéfiniment responsable"
         }
       ]
+    },
+    {
+      "zone": "La Motte-Picquet",
+      "parcelle": "EG0068",
+      "adresse_bien": "76 RUE DE LA CROIX NIVERT 75015",
+      "sci_nom": "SCCV KLEMATIS",
+      "sci_siren": "829559913",
+      "code_droit": "S",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "35 RUE DE COULMIERS 75014 PARIS",
+      "gerants": []
     },
     {
       "zone": "La Motte-Picquet",
