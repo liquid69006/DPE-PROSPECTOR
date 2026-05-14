@@ -1745,10 +1745,15 @@ async function lancerEnvoiMSB(sess, apiKeyOverride) {
         }),
       });
       if (resp.ok) {
+        const data = await resp.json().catch(() => ({}));
         ok++;
+        // Afficher le premier lien de prévisualisation disponible
+        if (ok === 1 && data.preview_url) {
+          status.textContent = `⏳ ${ok}/${liste.length} — 👁 <a href="${data.preview_url}" target="_blank">Prévisualiser le 1er courrier</a>`;
+        }
       } else {
-        const err = await resp.json().catch(() => ({}));
-        console.error('MSB error:', err);
+        const errData = await resp.json().catch(() => ({}));
+        console.error('MSB error:', errData);
         errors++;
       }
     } catch(e) {
