@@ -1892,10 +1892,10 @@ function generateCourrierHTML(sci, today) {
 <meta charset="UTF-8">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: Arial, sans-serif; font-size: 11pt; color: #333; background: #fff; padding: 20mm 15mm; }
+  body { font-family: Arial, sans-serif; font-size: 10pt; color: #333; background: #fff; padding: 8mm 15mm 15mm; }
 
   /* EN-TÊTE */
-  .header { display: flex; align-items: flex-start; border: 1.5px solid #BEAF87; padding: 10px 14px; margin-bottom: 18px; gap: 14px; }
+  .header { display: flex; align-items: flex-start; border: 1.5px solid #BEAF87; padding: 8px 12px; margin-bottom: 10px; gap: 12px; }
   .header img { width: 64px; height: auto; flex-shrink: 0; }
   .header-info { flex: 1; }
   .header-name { font-size: 14pt; font-weight: bold; }
@@ -1905,35 +1905,35 @@ function generateCourrierHTML(sci, today) {
   .header-details a { color: #BEAF87; text-decoration: none; }
 
   /* SÉPARATEURS */
-  .sep { border: none; border-top: 1.5px solid #BEAF87; margin: 16px 0; }
+  .sep { border: none; border-top: 1.5px solid #BEAF87; margin: 8px 0; }
 
   /* DESTINATAIRE */
   .destinataire-wrap { display: flex; justify-content: flex-end; margin: 20px 0 0; }
   .destinataire { text-align: right; font-size: 10.5pt; font-weight: bold; line-height: 1.8; }
 
   /* DATE */
-  .date { text-align: right; font-style: italic; font-size: 10pt; color: #555; margin: 12px 0 20px; }
+  .date { text-align: right; font-style: italic; font-size: 9.5pt; color: #555; margin: 6px 0 12px; }
 
   /* CORPS */
-  .attention { font-size: 10.5pt; margin-bottom: 14px; }
+  .attention { font-size: 9.5pt; margin-bottom: 8px; }
   .attention strong { font-weight: bold; }
-  p { font-size: 10.5pt; line-height: 1.5; margin-bottom: 12px; text-align: justify; }
+  p { font-size: 9.5pt; line-height: 1.45; margin-bottom: 8px; text-align: justify; }
 
   /* ENCART */
-  .encart { background: #BEAF87; color: #fff; text-align: center; padding: 14px 20px; margin: 18px 0; border-radius: 2px; }
+  .encart { background: #BEAF87; color: #fff; text-align: center; padding: 10px 16px; margin: 10px 0; border-radius: 2px; }
   .encart-titre { font-size: 12pt; font-weight: bold; letter-spacing: 0.5px; margin-bottom: 6px; }
   .encart-sous { font-size: 10pt; }
 
   /* ÉTAPES */
   .etapes-titre { font-size: 10.5pt; font-weight: bold; margin-bottom: 10px; }
-  .etape { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 8px; }
+  .etape { display: flex; gap: 8px; align-items: flex-start; margin-bottom: 5px; }
   .etape-num { background: #BEAF87; color: #fff; font-weight: bold; font-size: 10pt;
                width: 22px; height: 22px; display: flex; align-items: center; justify-content: center;
                flex-shrink: 0; border-radius: 2px; }
-  .etape-txt { border: 1px solid #ddd; padding: 6px 10px; flex: 1; font-size: 10pt; line-height: 1.4; }
+  .etape-txt { border: 1px solid #ddd; padding: 5px 8px; flex: 1; font-size: 9pt; line-height: 1.35; }
 
   /* SIGNATURE */
-  .signature { text-align: right; margin-top: 24px; font-size: 10.5pt; }
+  .signature { text-align: right; margin-top: 12px; font-size: 10pt; }
   .signature strong { display: block; font-size: 11pt; }
 
   /* PIED DE PAGE */
@@ -1959,7 +1959,7 @@ function generateCourrierHTML(sci, today) {
 <hr class="sep">
 
 <!-- Zone fenêtre adresse : laissée vide, MySendingBox gère le placement -->
-<div style="height:80mm;"></div>
+<div style="height:42mm;"></div>
 
 <div class="date">Lyon, le ${today}</div>
 
