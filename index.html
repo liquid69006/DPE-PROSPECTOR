@@ -1234,7 +1234,15 @@ async function loadSciData() {
     const resp = await fetch(`${GITHUB_RAW}/${path}?t=${Date.now()}`);
     if (!resp.ok) throw new Error();
     const data = await resp.json();
-    allSci = data.sci || [];
+    // Dédupliquer par SIREN (évite les doublons dans le JSON source)
+    const rawSci = data.sci || [];
+    const seen = new Set();
+    allSci = rawSci.filter(s => {
+      const key = s.sci_siren || s.sci_nom;
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
 
     // Stats
     document.getElementById('stat-sci-total').textContent   = allSci.length;
@@ -1648,7 +1656,6 @@ async function genererCourrier() {
       // Supprimer le sectPr de chaque body — Word crée une page blanche par sectPr
       let body = bodyMatch[1];
       body = body.replace(/<w:sectPr[\s\S]*?<\/w:sectPr>\s*$/, '');
-      body = body.replace(/<w:p[^>]*><w:pPr><w:spacing[^>]*\/><\/w:pPr><\/w:p>\s*$/, '');
       return body;
     });
 
@@ -1667,9 +1674,11 @@ async function genererCourrier() {
     let baseXml = baseDoc.getZip().files['word/document.xml'].asText();
     // Joindre avec saut de page ENTRE les courriers (pas après le dernier)
     // Réappliquer le sectPr du template à la fin du document fusionné
-    // Supprimer le paragraphe vide spacing (w:after) juste avant chaque saut de page
+    // Joindre les bodies avec sauts de page + réappliquer le sectPr
+    // Réduire l'espacement du paragraphe final à 0 pour éviter la page blanche
+    // (sans le supprimer, pour garder la marge si le contenu déborde)
     const fusedBody = bodies.join(pageBreak)
-      .replace(/<w:p[^>]*><w:pPr><w:spacing[^>]*\/><\/w:pPr><\/w:p>(?=<w:p><w:r><w:br w:type="page"\/><\/w:r><\/w:p>)/g, '')
+      .replace(/<w:spacing w:after="560"\/>/g, '<w:spacing w:after="0"/>')
       + sectPr;
     baseXml = baseXml.replace(/<w:body>[\s\S]*<\/w:body>/, '<w:body>' + fusedBody + '</w:body>');
     baseDoc.getZip().file('word/document.xml', baseXml);
