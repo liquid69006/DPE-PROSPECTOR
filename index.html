@@ -618,6 +618,10 @@ td{padding:11px 14px;vertical-align:middle;}
     <div class="add-conseiller-row">
       <input type="text" id="new-conseiller-input" placeholder="Prénom du conseiller"
         onkeydown="if(event.key==='Enter') addConseiller()">
+      <select id="new-conseiller-agence" style="display:none;background:var(--surface2);border:1px solid var(--border);color:var(--text);border-radius:8px;padding:6px 10px;font-size:13px;font-family:inherit;">
+        <option value="motte-picquet">Motte Picquet</option>
+        <option value="pernety">Pernéty</option>
+      </select>
       <button class="btn-add" onclick="addConseiller()">+ Ajouter</button>
     </div>
     <div class="modal-error" id="conseiller-error"></div>
@@ -931,6 +935,8 @@ async function loadConseillers() {
     if (!resp.ok) throw new Error();
     const data = await resp.json();
     conseillers = data.conseillers || ['À attribuer'];
+    // Stocker le détail pour lopez (avec info agence par conseiller)
+    if (data.conseillers_detail) agenceConfig.conseillers_detail = data.conseillers_detail;
   } catch {
     conseillers = agenceConfig?.conseillers || ['À attribuer'];
   }
@@ -952,13 +958,29 @@ function refreshConseillerFilter() {
 }
 
 // ── Modal conseillers ─────────────────────────────────────────
+let conseillersDraftDetail = []; // [{ nom, agence }] — utilisé uniquement pour lopez
+
 function openModalConseillers() {
-  conseillersDraft = [...conseillers];
+  const isLopez = agenceId === 'lopez';
+  // Afficher/masquer le select agence
+  document.getElementById('new-conseiller-agence').style.display = isLopez ? 'block' : 'none';
+
+  if (isLopez) {
+    // Reconstruire le draft détaillé depuis conseillers_detail si dispo
+    conseillersDraftDetail = (agenceConfig.conseillers_detail || []).map(c => ({ ...c }));
+    if (!conseillersDraftDetail.length) {
+      conseillersDraftDetail = conseillers.map(c => ({ nom: c, agence: c === 'À attribuer' ? null : 'motte-picquet' }));
+    }
+  } else {
+    conseillersDraft = [...conseillers];
+  }
+
   renderConseillerList();
   document.getElementById('modal-conseillers').classList.add('open');
   document.getElementById('new-conseiller-input').value = '';
   document.getElementById('conseiller-error').textContent = '';
 }
+
 function closeModalConseillers() {
   document.getElementById('modal-conseillers').classList.remove('open');
 }
@@ -966,11 +988,17 @@ function closeModalConseillers() {
 function renderConseillerList() {
   const ul = document.getElementById('conseiller-list');
   ul.innerHTML = '';
-  conseillersDraft.forEach((c, i) => {
-    const fixed = c === 'À attribuer';
+  const isLopez = agenceId === 'lopez';
+  const list = isLopez ? conseillersDraftDetail : conseillersDraft.map(n => ({ nom: n, agence: null }));
+
+  list.forEach((c, i) => {
+    const fixed = c.nom === 'À attribuer';
     const li = document.createElement('li');
-    li.className = 'conseiller-item' + (fixed?' fixed':'');
-    li.innerHTML = `<span>${c || '—'}</span>
+    li.className = 'conseiller-item' + (fixed ? ' fixed' : '');
+    const badge = isLopez && !fixed
+      ? `<span style="font-size:11px;color:var(--text2);margin-left:6px;background:var(--surface2);padding:2px 6px;border-radius:4px;">${c.agence === 'motte-picquet' ? 'Motte' : 'Pernéty'}</span>`
+      : '';
+    li.innerHTML = `<span>${c.nom || '—'}${badge}</span>
       ${fixed ? '' : `<button class="btn-del" onclick="removeConseiller(${i})" title="Supprimer">🗑</button>`}`;
     ul.appendChild(li);
   });
@@ -982,35 +1010,54 @@ function addConseiller() {
   const errEl = document.getElementById('conseiller-error');
   errEl.textContent = '';
   if (!name) { errEl.textContent = 'Entrez un prénom.'; return; }
-  if (conseillersDraft.map(c=>c.toLowerCase()).includes(name.toLowerCase())) {
-    errEl.textContent = 'Ce conseiller existe déjà.'; return;
+
+  const isLopez = agenceId === 'lopez';
+
+  if (isLopez) {
+    const agence = document.getElementById('new-conseiller-agence').value;
+    if (conseillersDraftDetail.find(c => c.nom.toLowerCase() === name.toLowerCase())) {
+      errEl.textContent = 'Ce conseiller existe déjà.'; return;
+    }
+    conseillersDraftDetail.push({ nom: name, agence });
+  } else {
+    if (conseillersDraft.map(c => c.toLowerCase()).includes(name.toLowerCase())) {
+      errEl.textContent = 'Ce conseiller existe déjà.'; return;
+    }
+    conseillersDraft.push(name);
   }
-  conseillersDraft.push(name);
   input.value = '';
   renderConseillerList();
 }
 
 function removeConseiller(i) {
-  conseillersDraft.splice(i, 1);
+  const isLopez = agenceId === 'lopez';
+  if (isLopez) conseillersDraftDetail.splice(i, 1);
+  else conseillersDraft.splice(i, 1);
   renderConseillerList();
 }
 
 async function saveConseillers() {
   const btn = document.querySelector('#modal-conseillers .btn-confirm');
   btn.disabled = true; btn.textContent = 'Enregistrement…';
+  const isLopez = agenceId === 'lopez';
   try {
+    const body = isLopez
+      ? { conseillers: conseillersDraftDetail.map(c => c.nom), conseillers_detail: conseillersDraftDetail }
+      : { conseillers: conseillersDraft };
+
     const resp = await fetch(`${API_URL}/conseillers/${agenceId}`, {
-      method:'POST',
-      headers:{'Authorization':`Bearer ${authToken}`,'Content-Type':'application/json'},
-      body: JSON.stringify({conseillers: conseillersDraft}),
+      method: 'POST',
+      headers: { 'Authorization': `Bearer ${authToken}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
     });
     if (!resp.ok) throw new Error();
     const data = await resp.json();
     conseillers = data.conseillers;
+    if (isLopez) agenceConfig.conseillers_detail = conseillersDraftDetail;
     refreshConseillerFilter();
     closeModalConseillers();
     showToast('✅ Conseillers mis à jour');
-    renderTable(); // Rafraîchir les selects dans le tableau
+    renderTable();
   } catch {
     document.getElementById('conseiller-error').textContent = '⚠️ Erreur de sauvegarde.';
   } finally {
