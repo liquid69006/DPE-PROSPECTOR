@@ -1436,6 +1436,7 @@ function sortTableSci(col) {
 ['sci-search','sci-filter-zone','sci-filter-actif','sci-filter-statut','sci-filter-conseiller','sci-filter-qualite']
   .forEach(id => {
     const el = document.getElementById(id); if (!el) return;
+    if (!el) return;
     el.addEventListener('input', applyFiltresSci);
     el.addEventListener('change', applyFiltresSci);
   });
@@ -1460,7 +1461,9 @@ function showToast(msg, warn=false) {
 //  FERMETURE MODALS AU CLIC DEHORS
 // ════════════════════════════════════════
 ['modal-conseillers','modal-password','modal-courrier','modal-choix-courrier','modal-msb'].forEach(id => {
-  document.getElementById(id).addEventListener('click', e => {
+  const mel = document.getElementById(id);
+  if (!mel) return;
+  mel.addEventListener('click', e => {
     if (e.target.id===id) {
       if(id==='modal-conseillers') closeModalConseillers();
       if(id==='modal-password')   closeModalPassword();
@@ -1555,10 +1558,12 @@ function ouvrirModalCourrier() {
   ['courrier-exclure-inactives','courrier-exclure-liquidateur',
    'courrier-exclure-sans-gerant','courrier-exclure-client','courrier-exclure-npc',
    'courrier-exclure-sans-siege','courrier-seulement-visibles'].forEach(id => {
-    document.getElementById(id).onchange = majCompteCourrier;
+    const el = document.getElementById(id);
+    if (el) el.onchange = majCompteCourrier;
   });
 
-  document.getElementById('courrier-file-input').onchange = async function(e) {
+  const fileInput = document.getElementById('courrier-file-input');
+  if (fileInput) fileInput.onchange = async function(e) {
     const file = e.target.files[0];
     if (!file) return;
     const status = document.getElementById('courrier-status');
@@ -1613,17 +1618,37 @@ function telechargerCourriers() {
   showToast('✅ Courriers téléchargés');
 }
 
-function envoyerMySendingBox() {
+async function envoyerMySendingBox() {
   fermerChoixCourrier();
-  // Pré-remplir la clé sauvegardée
-  const savedKey = localStorage.getItem('msb_api_key') || '';
-  document.getElementById('msb-api-key').value = savedKey;
-  // Afficher le nombre et le coût estimé
   const n = window._courrierCount || 0;
   document.getElementById('msb-count').textContent = `${n} courrier${n > 1 ? 's' : ''} à envoyer`;
   document.getElementById('msb-total').textContent = `Estimation : ~${(n * 0.737).toFixed(2)} € TTC`;
-  document.getElementById('msb-status').textContent = '';
+  document.getElementById('msb-status').textContent = '⏳ Chargement...';
+  document.getElementById('msb-api-key').value = '';
+  document.getElementById('msb-btn-envoyer').disabled = true;
   document.getElementById('modal-msb').classList.add('open');
+
+  // Charger la clé depuis le Worker (on sait juste si elle est configurée)
+  try {
+    const sess = getSession();
+    const resp = await fetch(`${API_URL}/msb-key/${sess.agence}`, {
+      headers: { 'Authorization': `Bearer ${sess.token}` }
+    });
+    if (resp.ok) {
+      const data = await resp.json();
+      if (data.configured) {
+        document.getElementById('msb-api-key').value = '••••••' + data.preview.replace('...','');
+        document.getElementById('msb-api-key').dataset.configured = 'true';
+        document.getElementById('msb-status').textContent = `✅ Clé API déjà configurée (${data.preview})`;
+      } else {
+        document.getElementById('msb-api-key').dataset.configured = 'false';
+        document.getElementById('msb-status').textContent = 'Saisissez votre clé API MySendingBox.';
+      }
+    }
+  } catch(e) {
+    document.getElementById('msb-status').textContent = 'Impossible de vérifier la clé.';
+  }
+  document.getElementById('msb-btn-envoyer').disabled = false;
 }
 
 function fermerMSB() {
@@ -1636,39 +1661,53 @@ function toggleMSBKey() {
 }
 
 async function confirmerEnvoiMSB() {
-  const apiKey = document.getElementById('msb-api-key').value.trim();
-  if (!apiKey) {
-    document.getElementById('msb-status').textContent = '❌ Veuillez saisir votre clé API.';
+  const input    = document.getElementById('msb-api-key');
+  const isAlreadyConfigured = input.dataset.configured === 'true';
+  const inputVal = input.value.trim();
+  const status   = document.getElementById('msb-status');
+  const btn      = document.getElementById('msb-btn-envoyer');
+  const sess     = getSession();
+
+  // Si déjà configurée et pas modifiée, on utilise la clé en KV directement
+  if (isAlreadyConfigured && inputVal.startsWith('••••••')) {
+    status.textContent = '⏳ Envoi en cours...';
+    btn.disabled = true;
+    showToast('📮 Envoi MySendingBox — à implémenter');
+    btn.disabled = false;
     return;
   }
-  // Sauvegarder si demandé
-  if (document.getElementById('msb-save-key').checked) {
-    localStorage.setItem('msb_api_key', apiKey);
-  } else {
-    localStorage.removeItem('msb_api_key');
-  }
-  const status = document.getElementById('msb-status');
-  const btn    = document.getElementById('msb-btn-envoyer');
-  btn.disabled = true;
-  status.textContent = '⏳ Connexion à MySendingBox...';
 
-  // Vérifier la clé API via MySendingBox
+  // Nouvelle clé saisie : valider et sauvegarder
+  if (!inputVal || inputVal.length < 10) {
+    status.textContent = '❌ Veuillez saisir une clé API valide.';
+    return;
+  }
+
+  btn.disabled = true;
+  status.textContent = '⏳ Vérification de la clé...';
+
   try {
-    const resp = await fetch('https://api.mysendingbox.fr/account', {
-      headers: { 'Authorization': 'Basic ' + btoa(apiKey + ':') }
+    // Sauvegarder dans le KV du Worker (lié à l'agence)
+    const saveResp = await fetch(`${API_URL}/msb-key/${sess.agence}`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${sess.token}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ api_key: inputVal })
     });
-    if (!resp.ok) {
-      status.textContent = '❌ Clé API invalide ou erreur de connexion.';
+    if (!saveResp.ok) {
+      status.textContent = '❌ Impossible de sauvegarder la clé.';
       btn.disabled = false;
       return;
     }
-    const account = await resp.json();
-    status.textContent = `✅ Connecté : ${account.name || account.email} — Solde : ${account.wallet !== undefined ? account.wallet + ' €' : 'N/A'}`;
+    input.dataset.configured = 'true';
+    status.textContent = '✅ Clé API sauvegardée pour cette agence.';
+    showToast('✅ Clé MySendingBox enregistrée');
     btn.disabled = false;
-    // TODO : implémenter l'envoi réel quand la clé est validée
-    showToast('✅ Clé API validée — envoi à implémenter');
+    // TODO : déclencher l'envoi réel ici
   } catch(e) {
-    status.textContent = '❌ Erreur réseau : ' + e.message;
+    status.textContent = '❌ Erreur : ' + e.message;
     btn.disabled = false;
   }
 }
@@ -1783,6 +1822,7 @@ function escHtml(str) {
 ['search','filter-zone','filter-dpe','filter-statut','filter-conseiller','filter-type','filter-logement']
   .forEach(id=>{
     const el=document.getElementById(id); if(!el) return;
+    if (!el) return;
     el.addEventListener('input', applyFiltres);
     el.addEventListener('change', applyFiltres);
   });
@@ -1838,10 +1878,9 @@ window.addEventListener('DOMContentLoaded', async () => {
           style="flex:1;padding:8px 10px;border:1px solid var(--border);border-radius:6px;font-size:13px;background:var(--bg2);color:var(--text);">
         <button class="btn-reset" id="msb-toggle-key" onclick="toggleMSBKey()" style="font-size:16px;padding:6px 10px;" title="Afficher/masquer">👁</button>
       </div>
-      <label style="display:flex;align-items:center;gap:8px;margin-top:8px;font-size:12px;color:var(--text2);cursor:pointer;">
-        <input type="checkbox" id="msb-save-key" checked>
-        Mémoriser la clé dans ce navigateur
-      </label>
+      <p style="font-size:11px;color:var(--text2);margin-top:6px;">
+        La clé est sauvegardée côté serveur pour cette agence.
+      </p>
     </div>
 
     <div style="background:var(--bg2);border-radius:8px;padding:12px;margin-bottom:16px;font-size:12px;color:var(--text2);line-height:1.6;">
