@@ -1485,7 +1485,10 @@ function parseSiegeSocial(siege) {
 function getPremierGerant(gerants) {
   if (!gerants || gerants.length === 0) return null;
   const gerant = gerants.find(g => g.qualite && g.qualite.startsWith('Gérant'));
-  return gerant ? gerant.nom : gerants[0].nom;
+  const nom = gerant ? gerant.nom : gerants[0].nom;
+  if (!nom) return null;
+  // Supprimer le nom de jeune fille entre parenthèses ex: "DUPONT (DE MARTIN)"
+  return nom.replace(/\s*\([^)]*\)/g, '').trim();
 }
 
 function aLiquidateur(gerants) {
