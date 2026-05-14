@@ -412,6 +412,27 @@ export default {
       return err("Méthode non supportée", 405);
     }
 
+    // ── /lib/:file ── proxy GitHub Raw pour libs JS (évite CSP sandbox) ──
+    const libMatch = path.match(/^\/lib\/([a-z0-9._-]+\.(?:js))$/);
+    if (libMatch && method === "GET") {
+      const fileName = libMatch[1];
+      const githubUrl = `https://raw.githubusercontent.com/liquid69006/DPE-PROSPECTOR/main/lib/${fileName}`;
+      try {
+        const resp = await fetch(githubUrl);
+        if (!resp.ok) return err("Lib introuvable", 404);
+        const text = await resp.text();
+        return new Response(text, {
+          headers: {
+            ...CORS,
+            "Content-Type": "application/javascript; charset=utf-8",
+            "Cache-Control": "public, max-age=86400",
+          },
+        });
+      } catch {
+        return err("Erreur proxy lib", 502);
+      }
+    }
+
     // ── /data/:agence/:file ── proxy GitHub Raw (évite CSP sandbox) ──
     const dataMatch = path.match(/^\/data\/([a-z0-9-]+)\/([a-z0-9._-]+\.json)$/);
     if (dataMatch && method === "GET") {
