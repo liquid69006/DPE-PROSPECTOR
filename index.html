@@ -477,8 +477,6 @@ td{padding:11px 14px;vertical-align:middle;}
       <input type="text" id="sci-search" placeholder="🔍 Rechercher une SCI ou adresse...">
       <select id="sci-filter-zone">
         <option value="">Toutes les zones</option>
-        <option value="Dauphiné-Lacassagne">Dauphiné-Lacassagne</option>
-        <option value="Montchat">Montchat</option>
       </select>
       <select id="sci-filter-actif">
         <option value="">Toutes (actives + inactives)</option>
@@ -1288,8 +1286,16 @@ async function loadSciData() {
     // Stats
     document.getElementById('stat-sci-total').textContent   = allSci.length;
     document.getElementById('stat-sci-actives').textContent = allSci.filter(s=>s.sci_active==='oui').length;
-    const maj = data.derniere_maj ? new Date(data.derniere_maj).toLocaleDateString('fr-FR') : '—';
-    document.getElementById('stat-sci-date').textContent    = maj;
+    document.getElementById('stat-sci-date').textContent    = new Date().toLocaleDateString('fr-FR');
+
+    // Peupler le filtre zone dynamiquement depuis les données réelles
+    const selZoneSci = document.getElementById('sci-filter-zone');
+    const zonesDisponibles = [...new Set(allSci.map(s => s.zone).filter(Boolean))].sort();
+    selZoneSci.innerHTML = '<option value="">Toutes les zones</option>';
+    zonesDisponibles.forEach(z => {
+      const o = document.createElement('option'); o.value = z; o.textContent = z;
+      selZoneSci.appendChild(o);
+    });
 
     renderTableSci();
   } catch(e) {
