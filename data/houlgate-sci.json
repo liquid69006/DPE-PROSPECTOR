@@ -1,6 +1,6 @@
 {
   "millesime": 2025,
-  "derniere_maj": "2026-05-14T17:31:57.232322",
+  "derniere_maj": "2026-05-14T21:02:44.793243",
   "sci": [
     {
       "zone": "14430",
@@ -668,8 +668,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "ZONE ARTISANALE 14430 ANNEBAULT",
+      "gerants": [
+        {
+          "nom": "PIERRE FLORENT GOUGEON",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "REMI BERNARD ALAIN GOUGEON",
+          "qualite": "Autre"
+        }
+      ]
     },
     {
       "zone": "14430",
@@ -680,8 +689,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "28 AV BEAULIEU 14130 PONT L'EVEQUE",
+      "gerants": [
+        {
+          "nom": "ELISABETH SUZANNE GERMAINE LOUISE BOURDAIS",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "CEDRIC DAVID JEROME LEPROVOST",
+          "qualite": "Associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "14430",
@@ -755,8 +773,13 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "17 RUE DES PATRIOTES 14000 CAEN",
+      "gerants": [
+        {
+          "nom": "MARC PHILIPPE ROLLET",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "14430",
@@ -767,8 +790,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "21 CHEMIN DU BOCAGE 14430 DANESTAL",
+      "gerants": [
+        {
+          "nom": "DIDIER PATRICE DANIEL JOIGNEAUX",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "CORINNE ANDREE JEANNINE PATTE-JOIGNEAUX (PATTE)",
+          "qualite": "Associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "14430",
@@ -971,8 +1003,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "15 PLACE MICHEL VERMUGHEN 14430 BEUVRON-EN-AUGE",
+      "gerants": [
+        {
+          "nom": "CHRISTIANE MARCHON",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "PASCALE ETHEL NAHMIAS",
+          "qualite": "Gérant"
+        }
+      ]
     },
     {
       "zone": "14430",
@@ -983,8 +1024,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "35 T AVENUE OUTREBON 93250 VILLEMOMBLE",
+      "gerants": [
+        {
+          "nom": "DANIELLE LEVY (CORONEL)",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "LEVY YOUSSEF RICHARD",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "14430",
@@ -1198,8 +1248,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "35 T AVENUE OUTREBON 93250 VILLEMOMBLE",
+      "gerants": [
+        {
+          "nom": "DANIELLE LEVY (CORONEL)",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "LEVY YOUSSEF RICHARD",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "14430",
@@ -3194,6 +3253,27 @@
     },
     {
       "zone": "14160",
+      "parcelle": "AC0170",
+      "adresse_bien": "25 ALL DES COTEAUX 14160 Dives-Sur-Mer",
+      "sci_nom": "D'ATTRIBUTION LA DAUPHINE",
+      "sci_siren": "394854251",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "7 RUE DE L'HOTEL- DE - VILLE 14160 DIVES-SUR-MER",
+      "gerants": [
+        {
+          "nom": "FRANCOIS EMILE ANDRE GUILPIN",
+          "qualite": "Gérant"
+        },
+        {
+          "nom": "BERNARD FELIX EUGENE TEXIER",
+          "qualite": "Gérant"
+        }
+      ]
+    },
+    {
+      "zone": "14160",
       "parcelle": "AC0311",
       "adresse_bien": "9113 AV FRANCOIS MITTERRAND 14160 Dives-Sur-Mer",
       "sci_nom": "TORNADO",
@@ -4803,6 +4883,23 @@
         {
           "nom": "CAROLLE TRIBOULET",
           "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "14160",
+      "parcelle": "AL0189",
+      "adresse_bien": "100 RUE DU GAL DE GAULLE 14160 Dives-Sur-Mer",
+      "sci_nom": "MANOX 1",
+      "sci_siren": "794245027",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "ARBOR JOVIS 3 BOULEVARD DU ZENITH 44800 SAINT-HERBLAIN",
+      "gerants": [
+        {
+          "nom": "MARTINE COUCKE (RAGAIN)",
+          "qualite": "Gérant"
         }
       ]
     },
@@ -6787,6 +6884,18 @@
     },
     {
       "zone": "14160",
+      "parcelle": "AN0226",
+      "adresse_bien": "9001 VC RES DE TOURISME PORT GUILL 14160 Dives-Sur-Mer",
+      "sci_nom": "LE PORT GUILLAUME",
+      "sci_siren": "419480215",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "non",
+      "siege_social": "25 ALL VAUBAN 59110 LA MADELEINE",
+      "gerants": []
+    },
+    {
+      "zone": "14160",
       "parcelle": "AN0230",
       "adresse_bien": "9001 RES DE LA PLAGE 4 14160 Dives-Sur-Mer",
       "sci_nom": "DU PONT LIORON",
@@ -7701,8 +7810,25 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "6 LA HAUMIERE 375 ROUTE NEUVE 14510 GONNEVILLE-SUR-MER",
+      "gerants": [
+        {
+          "nom": "AURÉLIE MARIE STÉPHANIE COLIN",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "HORTENSE MARIE ADÉLAÏDE COLIN",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "LOUIS-ALEXANDRE MARIE HADRIEN COLIN",
+          "qualite": "Gérant, Associé indéfiniment responsable"
+        },
+        {
+          "nom": "OLIVIER MARIE GABRIEL COLIN",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "14160",
@@ -7713,8 +7839,25 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "6 LA HAUMIERE 375 ROUTE NEUVE 14510 GONNEVILLE-SUR-MER",
+      "gerants": [
+        {
+          "nom": "AURÉLIE MARIE STÉPHANIE COLIN",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "HORTENSE MARIE ADÉLAÏDE COLIN",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "LOUIS-ALEXANDRE MARIE HADRIEN COLIN",
+          "qualite": "Gérant, Associé indéfiniment responsable"
+        },
+        {
+          "nom": "OLIVIER MARIE GABRIEL COLIN",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "14160",
@@ -7725,8 +7868,25 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "6 LA HAUMIERE 375 ROUTE NEUVE 14510 GONNEVILLE-SUR-MER",
+      "gerants": [
+        {
+          "nom": "AURÉLIE MARIE STÉPHANIE COLIN",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "HORTENSE MARIE ADÉLAÏDE COLIN",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "LOUIS-ALEXANDRE MARIE HADRIEN COLIN",
+          "qualite": "Gérant, Associé indéfiniment responsable"
+        },
+        {
+          "nom": "OLIVIER MARIE GABRIEL COLIN",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "14160",
@@ -7737,8 +7897,25 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "6 LA HAUMIERE 375 ROUTE NEUVE 14510 GONNEVILLE-SUR-MER",
+      "gerants": [
+        {
+          "nom": "AURÉLIE MARIE STÉPHANIE COLIN",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "HORTENSE MARIE ADÉLAÏDE COLIN",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "LOUIS-ALEXANDRE MARIE HADRIEN COLIN",
+          "qualite": "Gérant, Associé indéfiniment responsable"
+        },
+        {
+          "nom": "OLIVIER MARIE GABRIEL COLIN",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "14160",
@@ -7749,8 +7926,13 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "2 RUE DES PEUPLIERS 14160 DIVES-SUR-MER",
+      "gerants": [
+        {
+          "nom": "SUZEL ANNA ZAJAC",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "14160",
@@ -7824,8 +8006,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "25 RUE GASTON MANNEVILLE 14160 DIVES-SUR-MER",
+      "gerants": [
+        {
+          "nom": "ANNE MARIE JOSEPHINE GOUGET PRAT",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "ANNE-SOPHIE MICHELE CARMEN GOUGET-PRAT (PRAT)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "14160",
@@ -7836,8 +8027,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "RESIDENCE LES BALCONS D'HOULGATE 97 RUE DES BAINS 14510 HOULGATE",
+      "gerants": [
+        {
+          "nom": "COLETTE JACQUELINE LUCIENNE POINTEL (LATIMIER)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "THOMAS RAYMOND ANDRE POINTEL",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "14160",
@@ -7848,8 +8048,21 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "31 RUE DU DOCTEUR VINAVER 78520 LIMAY",
+      "gerants": [
+        {
+          "nom": "DOMINIQUE CHAUVIGNE",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "LIMIN CHAUVIGNE (LI)",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "LIQUAN LI",
+          "qualite": "Autre"
+        }
+      ]
     },
     {
       "zone": "14160",
@@ -7859,9 +8072,18 @@
       "sci_siren": "789630415",
       "code_droit": "P",
       "millesime": 2025,
-      "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "sci_active": "non",
+      "siege_social": "71 RUE DU DOCTEUR CALMETTE 94350 VILLIERS-SUR-MARNE",
+      "gerants": [
+        {
+          "nom": "FLORENT RAMOS",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "SEBASTIEN RAMOS",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "14160",
@@ -7897,8 +8119,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "13 RUE DE BRUXELLES 14860 RANVILLE",
+      "gerants": [
+        {
+          "nom": "PATRICK PIERRE ANDRE DESERT",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "SANDRINA SUZANNE PIERRETTE DESERT (NIEL)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "14160",
@@ -7930,8 +8161,13 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "70 RUE DE LA PLAGE 76400 FECAMP",
+      "gerants": [
+        {
+          "nom": "GUILLAUME JEAN-MARIE DOMINIQUE LE BER",
+          "qualite": "Gérant"
+        }
+      ]
     },
     {
       "zone": "14160",
@@ -8068,8 +8304,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "10 AVENUE DES DUNETTES 14390 CABOURG",
+      "gerants": [
+        {
+          "nom": "ANNE-MARIE FRANCOISE JEANNE SICHMAN (BOULICAULT)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "PASCAL ANDRE GABRIEL SOURBE",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "14160",
@@ -8080,8 +8325,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "LES MARECHAUX 14340 BONNEBOSQ",
+      "gerants": [
+        {
+          "nom": "JEAN-FRANCOIS MARCHAND",
+          "qualite": "Gérant"
+        },
+        {
+          "nom": "CATHERINE ANDREE PIERRETTE MARCHAND (MAUGE)",
+          "qualite": "Gérant"
+        }
+      ]
     },
     {
       "zone": "14160",
@@ -8309,8 +8563,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "HARAS DE LA CROIX HEULAND 14430 DOUVILLE-EN-AUGE",
+      "gerants": [
+        {
+          "nom": "STAN MATHIEU",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "ESTHER ROSENBLUM",
+          "qualite": "Associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "14430",
@@ -8388,8 +8651,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "HARAS DE LA CROIX HEULAND 14430 DOUVILLE-EN-AUGE",
+      "gerants": [
+        {
+          "nom": "STAN MATHIEU",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "ESTHER ROSENBLUM",
+          "qualite": "Associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "14430",
@@ -9482,6 +9754,27 @@
         {
           "nom": "EMMANUEL JACQUES PIERRE MARCEL PORCQ",
           "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "14430",
+      "parcelle": "AN0004",
+      "adresse_bien": "5655 RUE DU PLESSIS ESMANGARD 14430 Dozule",
+      "sci_nom": "SCI LES GRANGES",
+      "sci_siren": "449509637",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "PERICENTRE V 82 AVENUE DE THIES 14000 CAEN",
+      "gerants": [
+        {
+          "nom": "SYLVAIN LEFEVRE",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "MARYLINE SYLVETTE MONIQUE LEFEVRE (RAMOND)",
+          "qualite": "Associé indéfiniment responsable"
         }
       ]
     },
@@ -11801,6 +12094,27 @@
     },
     {
       "zone": "14510",
+      "parcelle": "AC0155",
+      "adresse_bien": "7 BD JACQUES LANDRY 14510 Houlgate",
+      "sci_nom": "HOULGATE ROSERAIE",
+      "sci_siren": "340297258",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "52 BOULEVARD D'INKERMANN 92200 NEUILLY-SUR-SEINE",
+      "gerants": [
+        {
+          "nom": "JACQUES BOUVET",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "DANIELLE BOUVET (GRILLOT)",
+          "qualite": "Autre"
+        }
+      ]
+    },
+    {
+      "zone": "14510",
       "parcelle": "AC0172",
       "adresse_bien": "2 RUE DE BEUZEVAL 14510 Houlgate",
       "sci_nom": "ELIA",
@@ -12633,6 +12947,23 @@
         {
           "nom": "PATRICIA FRANCOISE FIJALKOWSKI (VEREL)",
           "qualite": "Associé indéfiniment responsable"
+        }
+      ]
+    },
+    {
+      "zone": "14510",
+      "parcelle": "AE0003",
+      "adresse_bien": "82 RUE DES BAINS 14510 Houlgate",
+      "sci_nom": "SCCV LANCE-IMMO NL1",
+      "sci_siren": "815307848",
+      "code_droit": "P",
+      "millesime": 2025,
+      "sci_active": "oui",
+      "siege_social": "3 RUE DE LEBISEY 14000 CAEN",
+      "gerants": [
+        {
+          "nom": "NICOLAS LANCE",
+          "qualite": "Gérant et associé indéfiniment responsable"
         }
       ]
     },
@@ -13928,8 +14259,13 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "34 RUE PONCELET 75017 PARIS",
+      "gerants": [
+        {
+          "nom": "JEAN-FRANCOIS COUEC",
+          "qualite": "Gérant"
+        }
+      ]
     },
     {
       "zone": "14510",
@@ -14082,8 +14418,25 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "BOULEVARD LOUIS PILLU 14510 HOULGATE",
+      "gerants": [
+        {
+          "nom": "REGINE JOSSE (BIDAULT)",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "PASCALE BEAUDICHON (JOSSE)",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "ROGER LOUIS ADRIEN JOSSE",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "SYLVIE JOSSE",
+          "qualite": "Associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "14510",
@@ -14094,8 +14447,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "34 RUE DU COLONEL DE ROCHEBRUNE 92500 RUEIL-MALMAISON",
+      "gerants": [
+        {
+          "nom": "MARIA HILALI",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "SYLVIE RABIN",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "14510",
@@ -14127,8 +14489,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "15 RUE JEAN MERMOZ 78980 BREVAL",
+      "gerants": [
+        {
+          "nom": "MARTINE RENEE DENISE MALHAPPE (LAPORTE)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "PHILIPPE MALHAPPE",
+          "qualite": "Associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "14510",
@@ -14197,8 +14568,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "9 RUE DE L'AUBERGE 51500 CHAMPFLEURY",
+      "gerants": [
+        {
+          "nom": "JEAN-CHRISTOPHE HENRI ARMAND MEULLE",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "CAROLINE ANNE MEULLE NÉE BECHAMBES",
+          "qualite": "Associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "14510",
@@ -14209,8 +14589,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "RESIDENCE LES BALCONS D'HOULGATE 97 RUE DES BAINS 14510 HOULGATE",
+      "gerants": [
+        {
+          "nom": "COLETTE JACQUELINE LUCIENNE POINTEL (LATIMIER)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "THOMAS RAYMOND ANDRE POINTEL",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "14510",
@@ -14447,8 +14836,25 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "VILLA CLAIR BOIS 2 RUE MORTEMART 78640 VILLIERS-SAINT-FREDERIC",
+      "gerants": [
+        {
+          "nom": "FRANÇOISE LOUISE JEANNE NOEL (MARTIN)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "GÉRARD PIERRE JACQUES NOEL",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "JEAN-FRANÇOIS GÉRARD PIERRE NOEL",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "THIERRY GÉRARD PIERRE NOEL",
+          "qualite": "Associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "14510",
@@ -14459,8 +14865,29 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "131 RUE DES LANDES 78400 CHATOU",
+      "gerants": [
+        {
+          "nom": "BENOIT CHAIN",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "CECILE CHAIN",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "JEANNE LEBLOND (CHAIN)",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "MARIE HAUDSCHUMACHER (CHAIN)",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "PHILIPPE CHAIN",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "14510",
@@ -14471,8 +14898,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "26 BOULEVARD BEAUMARCHAIS 75011 PARIS",
+      "gerants": [
+        {
+          "nom": "MIREILLE BASSEVILLE",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "PHILIPPE BASSEVILLE",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "14510",
@@ -14516,8 +14952,25 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "11 B RUE DES BAINS 14510 HOULGATE",
+      "gerants": [
+        {
+          "nom": "BERTRAND PIERRE PHILIPPE LEGER",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "OCEANE MAYA LEGER",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "ULYSSE ELLIOT LEGER",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "DINA RUTH LEGER (N'SINDJI)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "14510",
@@ -14528,8 +14981,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "3 ALLEE DES CYTISES 78580 MAULE",
+      "gerants": [
+        {
+          "nom": "LEONEL CAVACO DOS SANTOS",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "DAVID PERIN",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "14510",
@@ -14540,8 +15002,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "LE CLOS PARQUET ROUTE D'AGUESSEAU 14360 TROUVILLE-SUR-MER",
+      "gerants": [
+        {
+          "nom": "MAGALI STEPHANIE EMMANUELLE LEGRAND",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "LOIC LUCIEN PIQUENET",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "14510",
@@ -14552,8 +15023,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "16 RUE ABBE AGNEZ 14510 HOULGATE",
+      "gerants": [
+        {
+          "nom": "CLAUDE BOUSKILA",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "CORINNE MARCELLE MADELEINE BOUSKILA (CHASTE)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "14510",
@@ -14589,8 +15069,13 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "3 BOULEVARD LOUIS PILLU 14510 HOULGATE",
+      "gerants": [
+        {
+          "nom": "DIDIER ALBERT GERMAIN JAMME",
+          "qualite": "Gérant"
+        }
+      ]
     },
     {
       "zone": "14510",
@@ -14701,8 +15186,29 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "LE PRESBYTERE 27270 SAINT-AUBIN-DU-THENNEY",
+      "gerants": [
+        {
+          "nom": "FRANCOISE JOSETTE GERARDIN (CHOLLET)",
+          "qualite": "Gérant et associé indéfiniment et solidairement responsable"
+        },
+        {
+          "nom": "CHARLES-EDOUARD GERARDIN",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "MARIE-CECILE GERARDIN",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "PATRICE GERARDIN",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "FREDERIQUE GUIBLAIS (SUIRE)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "14510",
@@ -14713,8 +15219,21 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "LE PRESBYTERE 27270 SAINT-AUBIN-DU-THENNEY",
+      "gerants": [
+        {
+          "nom": "CHARLES-EDOUARD GERARDIN",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "MARIE-CECILE GERARDIN",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "PATRICE GERARDIN",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "14510",
@@ -14725,8 +15244,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "PARC RESIDENCIEL DE LA CORNICHE 3 CHEMIN DES SYCOMORES 14510 HOULGATE",
+      "gerants": [
+        {
+          "nom": "DAVID OLIVIER STEPHAN DUMONT",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "CLEMENTINE FRANCOISE VALERIE DUMONT (JACQUEMET)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "14510",
@@ -14821,8 +15349,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "CRS DU CHEMIN 14390 VARAVILLE",
+      "gerants": [
+        {
+          "nom": "VALERIE BRIEND",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "CHRISTOPHE FERNANDES DA SILVA",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "14510",
@@ -14833,8 +15370,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "27 RUE PAUL BERT 78800 HOUILLES",
+      "gerants": [
+        {
+          "nom": "SANDRINE CALVET CHAMBERT (CALVET)",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "JULIEN CHAMBERT",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "14510",
@@ -14866,8 +15412,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "97 ALLEE DU BOUTON D'OR 76160 RONCHEROLLES-SUR-LE-VIVIER",
+      "gerants": [
+        {
+          "nom": "DELPHINE YVETTE MARIE MOUILLIE (MAILLET)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "STANISLAS MOUILLIE",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "14510",
@@ -14878,8 +15433,21 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "9 RUE ALPHONSE HAUSSAIRE 95880 ENGHIEN-LES-BAINS",
+      "gerants": [
+        {
+          "nom": "MARIE CHRISTINE SCHERRMANN (COULOMB)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "CAROLINE FRANCE SIMONE SCHERRMANN",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "MARIE AGNES SCHERRMANN",
+          "qualite": "Autre"
+        }
+      ]
     },
     {
       "zone": "14510",
@@ -14911,8 +15479,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "44 AVENUE DU VAL 91420 MORANGIS",
+      "gerants": [
+        {
+          "nom": "LUIS MIGUEL DIAS GOMES",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "CELINE DIAS GOMES (SIMAO)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "14510",
@@ -14923,8 +15500,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "5 ROUTE DE SAINT-REMY 10150 VOUE",
+      "gerants": [
+        {
+          "nom": "ANDRE PIERRE CHRISTIAN PHILIPPE DUVAL",
+          "qualite": "Gérant"
+        },
+        {
+          "nom": "LUCIE MIREILLE JEANNE LITWIN",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "14510",
@@ -14935,8 +15521,25 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "2 RUE DU DOCTEUR TENINE 94250 GENTILLY",
+      "gerants": [
+        {
+          "nom": "BRICE MAILLET",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "CORALINE MAILLET",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "THIERRY MAILLET",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "ISABELLE MAILLET (MARECHAL)",
+          "qualite": "Autre"
+        }
+      ]
     },
     {
       "zone": "14510",
@@ -14989,8 +15592,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "26 BOULEVARD BEAUMARCHAIS 75011 PARIS",
+      "gerants": [
+        {
+          "nom": "MIREILLE BASSEVILLE",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "PHILIPPE BASSEVILLE",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "14510",
@@ -15167,8 +15779,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "SAINT-GERMAIN-VILLAGE 33 IMP LE PRE VERT 27500 PONT-AUDEMER",
+      "gerants": [
+        {
+          "nom": "NICOLE MICHELINE REPEL (MORDANT)",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "ALAIN JACQUES MICHEL REPEL",
+          "qualite": "Autre"
+        }
+      ]
     },
     {
       "zone": "14510",
@@ -15312,8 +15933,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "5 RUE DU 11 NOVEMBRE 27170 NASSANDRES SUR RISLE",
+      "gerants": [
+        {
+          "nom": "CYRIL BERCHER",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "SANDRINE LAVARDE (BERCHER)",
+          "qualite": "Autre"
+        }
+      ]
     },
     {
       "zone": "14510",
@@ -15453,8 +16083,25 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "7 RUE DE VARIZE 75016 PARIS",
+      "gerants": [
+        {
+          "nom": "ALEXANDRE FERRIEU",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "CHARLES FERRIEU",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "CYRIL FERRIEU",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "MARIE FERRIEU",
+          "qualite": "Autre"
+        }
+      ]
     },
     {
       "zone": "14510",
@@ -16198,8 +16845,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "9 CHEMIN DE TROUSSEAUVILLE 14510 HOULGATE",
+      "gerants": [
+        {
+          "nom": "JEROME ALEXANDRE MICHEL HUCHE",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "AURELIE SABRINA CHRISTINE HUCHE (SCELLES)",
+          "qualite": "Associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "14510",
@@ -16210,8 +16866,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "ZA CHEMIN DE TROUSSEAUVILLE 14510 HOULGATE",
+      "gerants": [
+        {
+          "nom": "CORINNE MARIE KERAVEL",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "DOMINIQUE ANDRE KERAVEL",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "14510",
@@ -16222,7 +16887,7 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
+      "siege_social": "11 RUE TRONCHET 75008 PARIS",
       "gerants": []
     },
     {
@@ -16234,8 +16899,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "CHEMIN DE TROUSSEAUVILLE 14510 HOULGATE",
+      "gerants": [
+        {
+          "nom": "REGINE RAYMONDE MAURICETTE VARIGAULT (LEFEVRE)",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "LAURENT JEAN VARIGAULT",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "14510",
@@ -16246,8 +16920,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "9 CHEMIN DE TROUSSEAUVILLE 14510 HOULGATE",
+      "gerants": [
+        {
+          "nom": "JEROME ALEXANDRE MICHEL HUCHE",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "AURELIE SABRINA CHRISTINE HUCHE (SCELLES)",
+          "qualite": "Associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "14510",
@@ -16258,8 +16941,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "9 CHEMIN DE TROUSSEAUVILLE 14510 HOULGATE",
+      "gerants": [
+        {
+          "nom": "JEROME ALEXANDRE MICHEL HUCHE",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "AURELIE SABRINA CHRISTINE HUCHE (SCELLES)",
+          "qualite": "Associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "14510",
@@ -16270,8 +16962,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "CHEMIN DE TROUSSEAUVILLE 14510 HOULGATE",
+      "gerants": [
+        {
+          "nom": "BRUNO RENE AMAND MARIE",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "CHRISTELLE GEORGETTE ANTOINETTE BEAURY (MARIE)",
+          "qualite": "Associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "14510",
@@ -16282,8 +16983,25 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "15 ROUTE DE PACY 27120 DOUAINS",
+      "gerants": [
+        {
+          "nom": "DAVID YVES BOUCHER",
+          "qualite": "Gérant"
+        },
+        {
+          "nom": "MATHILDE MICHÈLE MONIQUE BOUCHER",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "PAULINE JULIETTE MARION BOUCHER",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "VIRGINIE YVONNE BOUCHER (PERRIN)",
+          "qualite": "Gérant"
+        }
+      ]
     },
     {
       "zone": "14510",
@@ -16356,8 +17074,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "ROUTE DE LA VALLEE 14510 HOULGATE",
+      "gerants": [
+        {
+          "nom": "GUY RAYMOND GERMAIN CAMBOUR",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "BEATRICE MADELEINE CLAUDETTE CAMBOUR (DUTAC)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "14510",
@@ -16631,8 +17358,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "6 IMPASSE JEAN BART 78800 HOUILLES",
+      "gerants": [
+        {
+          "nom": "OLIVIER GABRIEL ROBIN",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "ELSA GAELLE SIMON",
+          "qualite": "Autre"
+        }
+      ]
     },
     {
       "zone": "14510",
@@ -16693,8 +17429,21 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "175 RUE DU PERREUX 95100 ARGENTEUIL",
+      "gerants": [
+        {
+          "nom": "LAURENT GEORGES ROGER BONNET",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "JULIE MARIA MADELEINE BONNET  (BRETON )",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "PHILIPPE ANDRE MARIE BRETON",
+          "qualite": "Autre"
+        }
+      ]
     },
     {
       "zone": "14510",
@@ -16705,8 +17454,25 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "43 B RUE DESNOUETTES 75015 PARIS",
+      "gerants": [
+        {
+          "nom": "CLAIRE DE VECCHI",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "EDOUARD DE VECCHI",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "GUILLAUME DE VECCHI",
+          "qualite": "Autre"
+        },
+        {
+          "nom": "ISABELLE HINCKER",
+          "qualite": "Gérant"
+        }
+      ]
     },
     {
       "zone": "14510",
@@ -16852,8 +17618,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "LIEU MANOURY CD 49 14160 PERIERS-EN-AUGE",
+      "gerants": [
+        {
+          "nom": "MICHEL RENE PIERRE BATTAIA",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "OLIVIER BATTAIA",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "14160",
@@ -16948,8 +17723,17 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "LE LIEU CAUVIN 14160 PERIERS-EN-AUGE",
+      "gerants": [
+        {
+          "nom": "ISABELLE ANNE BRIGITTE DUFILS-AUGER (AUGER)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "FRANCOIS JACQUES DUFILS-AUGER (DUFILS)",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "14160",
@@ -17002,8 +17786,21 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "ROUTE DE ROUEN 14430 PUTOT-EN-AUGE",
+      "gerants": [
+        {
+          "nom": "MICHELINE LILIANE JACQUELINE HENRIETTE PUECH (ALLALAH)",
+          "qualite": "Associé indéfiniment responsable"
+        },
+        {
+          "nom": "BENJAMIN MAXIME PUECH",
+          "qualite": "Gérant et associé indéfiniment responsable"
+        },
+        {
+          "nom": "CAROLINE SYLVIANE PUECH",
+          "qualite": "Associé indéfiniment responsable"
+        }
+      ]
     },
     {
       "zone": "14430",
@@ -17299,8 +18096,13 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "34 RUE DE LA FAISANDERIE 75016 PARIS",
+      "gerants": [
+        {
+          "nom": "GABRIEL CHARLES MARIE HABIB VIELLARD",
+          "qualite": "Autre"
+        }
+      ]
     },
     {
       "zone": "14430",
@@ -17311,8 +18113,13 @@
       "code_droit": "P",
       "millesime": 2025,
       "sci_active": "oui",
-      "siege_social": "",
-      "gerants": []
+      "siege_social": "34 RUE DE LA FAISANDERIE 75016 PARIS",
+      "gerants": [
+        {
+          "nom": "GABRIEL CHARLES MARIE HABIB VIELLARD",
+          "qualite": "Autre"
+        }
+      ]
     },
     {
       "zone": "14430",
