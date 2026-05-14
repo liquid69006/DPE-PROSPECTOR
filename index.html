@@ -1457,26 +1457,13 @@ function showToast(msg, warn=false) {
   toastTimer = setTimeout(()=>t.classList.remove('show'), 2800);
 }
 
-// ════════════════════════════════════════
-//  FERMETURE MODALS AU CLIC DEHORS
-// ════════════════════════════════════════
-['modal-conseillers','modal-password','modal-courrier','modal-choix-courrier','modal-msb'].forEach(id => {
-  const mel = document.getElementById(id);
-  if (!mel) return;
-  mel.addEventListener('click', e => {
-    if (e.target.id===id) {
-      if(id==='modal-conseillers') closeModalConseillers();
-      if(id==='modal-password')   closeModalPassword();
-      if(id==='modal-courrier')   fermerModalCourrier();
-    }
-  });
-});
+// FERMETURE MODALS — déplacé dans DOMContentLoaded
 
 
 // ════════════════════════════════════════
 //  COURRIER — LOGIQUE DOCXTEMPLATER
 // ════════════════════════════════════════
-let courrierTemplateBuffer = null; // ArrayBuffer du .docx uploadé
+var courrierTemplateBuffer = null; // ArrayBuffer du .docx uploadé
 
 function parseSiegeSocial(siege) {
   if (!siege) return { adresse: '', cp: '', ville: '' };
@@ -1831,6 +1818,20 @@ function escHtml(str) {
 //  INIT AU CHARGEMENT
 // ════════════════════════════════════════
 window.addEventListener('DOMContentLoaded', async () => {
+  // Fermeture modales au clic en dehors
+  ['modal-conseillers','modal-password','modal-courrier','modal-choix-courrier','modal-msb'].forEach(id => {
+    const mel = document.getElementById(id);
+    if (!mel) return;
+    mel.addEventListener('click', e => {
+      if (e.target.id === id) {
+        if (id==='modal-conseillers') closeModalConseillers();
+        if (id==='modal-password')   closeModalPassword();
+        if (id==='modal-courrier')   fermerModalCourrier();
+        if (id==='modal-choix-courrier') fermerChoixCourrier();
+        if (id==='modal-msb')        fermerMSB();
+      }
+    });
+  });
   // Détecter lien de reset (?reset=TOKEN)
   const params = new URLSearchParams(location.search);
   const rt     = params.get('reset');
