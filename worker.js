@@ -579,7 +579,7 @@ async function handleRequest(request, env) {
       if (!msbKey) return err('Clé API MySendingBox non configurée', 400);
 
       const body = await request.json();
-      const { html, to } = body;
+      const { html, to, postage_type, color, both_sides } = body;
       if (!html || !to) return err('Paramètres manquants', 400);
 
       // Récupérer l'expéditeur stocké
@@ -618,9 +618,9 @@ async function handleRequest(request, env) {
             from: fromMSB,
             source_file: html,
             source_file_type: 'html',
-            color: 'color',
-            postage_type: 'ecopli',
-            double_sided: false,
+            color: color || 'color',
+            postage_type: postage_type || 'ecopli',
+            both_sides: (both_sides === true || both_sides === 'true'),
             address_placement: 'insert_blank_page',
           }),
         });

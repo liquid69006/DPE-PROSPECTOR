@@ -2239,7 +2239,6 @@ async function ouvrirApercuCourriers(sess, win) {
   });
 
   const sendable = items.filter(x => x.valid).length;
-  const cost     = (sendable * 1.40).toFixed(2);
 
   const sheets = items.map((it, i) => {
     const chip = it.valid
@@ -2264,6 +2263,14 @@ async function ouvrirApercuCourriers(sess, win) {
     +   '.msb-toolbar h2{font-size:14px;margin:0;}'
     +   '.msb-toolbar .spacer{flex:1;}'
     +   '.msb-info{opacity:.85;}'
+    +   '.msb-opts{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}'
+    +   '.msb-opts label{display:flex;align-items:center;gap:5px;font-size:12px;'
+    +     'opacity:.9;white-space:nowrap;}'
+    +   '.msb-opts select{background:#1f2937;color:#fff;border:1px solid #4b5563;'
+    +     'border-radius:4px;padding:4px 8px;font-size:12px;cursor:pointer;'
+    +     'font-family:Arial,sans-serif;}'
+    +   '.msb-opts select:focus{outline:1px solid #16a34a;}'
+    +   '#msb-est{font-size:12px;opacity:.85;white-space:nowrap;font-weight:700;}'
     +   '.msb-btn{border:0;border-radius:6px;padding:9px 16px;font-size:13px;'
     +     'font-weight:700;cursor:pointer;}'
     +   '.msb-btn.go{background:#16a34a;color:#fff;}'
@@ -2294,7 +2301,28 @@ async function ouvrirApercuCourriers(sess, win) {
     + '<div class="msb-toolbar">'
     +   '<h2>📮 Aperçu des courriers</h2>'
     +   '<span class="msb-info">' + items.length + ' courrier(s) — '
-    +   sendable + ' envoyable(s) — ~' + cost + ' € HT</span>'
+    +   sendable + ' envoyable(s)</span>'
+    +   '<div class="msb-opts">'
+    +     '<label>Affranchissement '
+    +       '<select id="msb-postage">'
+    +         '<option value="ecopli" selected>✉ Ecopli (J+3)</option>'
+    +         '<option value="prioritaire">✉ Prioritaire (J+1)</option>'
+    +       '</select>'
+    +     '</label>'
+    +     '<label>Impression '
+    +       '<select id="msb-color">'
+    +         '<option value="color" selected>🎨 Couleur</option>'
+    +         '<option value="bw">⬛ Noir &amp; blanc</option>'
+    +       '</select>'
+    +     '</label>'
+    +     '<label>Pages '
+    +       '<select id="msb-sides">'
+    +         '<option value="false" selected>1️⃣ Recto seul</option>'
+    +         '<option value="true">2️⃣ Recto-verso</option>'
+    +       '</select>'
+    +     '</label>'
+    +     '<span id="msb-est"></span>'
+    +   '</div>'
     +   '<span class="spacer"></span>'
     +   '<div id="msb-prog"><div id="msb-bar"></div></div>'
     +   '<span id="msb-counter" class="msb-info"></span>'
@@ -2315,6 +2343,30 @@ async function ouvrirApercuCourriers(sess, win) {
   const goBtn    = win.document.getElementById('msb-go');
   const closeBtn = win.document.getElementById('msb-close');
   if (closeBtn) closeBtn.onclick = function () { win.close(); };
+
+  // Estimation de coût dynamique selon les options d'impression (indicatif).
+  function msbUnitCost(postage, color, both) {
+    let u = 1.40;                                       // ecopli couleur recto
+    if (postage === 'prioritaire') u += 0.28;
+    if (color === 'bw') u -= 0.20;
+    if (both === 'true' || both === true) u += 0.10;
+    return u;
+  }
+  function majEstimation() {
+    const pEl = win.document.getElementById('msb-postage');
+    const cEl = win.document.getElementById('msb-color');
+    const sEl = win.document.getElementById('msb-sides');
+    const estEl = win.document.getElementById('msb-est');
+    if (!pEl || !cEl || !sEl || !estEl) return;
+    const u   = msbUnitCost(pEl.value, cEl.value, sEl.value);
+    const tot = (u * sendable).toFixed(2);
+    estEl.textContent = '~' + u.toFixed(2) + ' €/courrier — total ~' + tot + ' € HT';
+  }
+  ['msb-postage', 'msb-color', 'msb-sides'].forEach(function (id) {
+    const el = win.document.getElementById(id);
+    if (el) el.onchange = majEstimation;
+  });
+  majEstimation();
   if (goBtn) {
     if (!sendable) {
       goBtn.disabled = true;
@@ -2344,6 +2396,17 @@ async function demarrerEnvoiMSBApercu(sess, items, win, today) {
   goBtn.textContent = '⏳ Envoi en cours…';
   if (closeBtn) closeBtn.disabled = true;
   if (prog) prog.style.display = 'block';
+
+  // Options d'impression choisies dans la barre d'outils de l'aperçu.
+  const postageEl = D.getElementById('msb-postage');
+  const colorEl   = D.getElementById('msb-color');
+  const sidesEl   = D.getElementById('msb-sides');
+  const postage_type = postageEl ? postageEl.value : 'ecopli';
+  const color        = colorEl   ? colorEl.value   : 'color';
+  const both_sides   = sidesEl   ? sidesEl.value === 'true' : false;
+
+  // Geler les options pendant l'envoi.
+  [postageEl, colorEl, sidesEl].forEach(function (el) { if (el) el.disabled = true; });
 
   const sendable = items.filter(x => x.valid).length;
   let ok = 0, err = 0, skip = 0;
@@ -2378,6 +2441,9 @@ async function demarrerEnvoiMSBApercu(sess, items, win, today) {
             city: it.siege.ville,
             country: 'France',
           },
+          postage_type,
+          color,
+          both_sides,
         }),
       });
       if (resp.ok) {
