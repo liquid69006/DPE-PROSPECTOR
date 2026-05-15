@@ -2144,77 +2144,224 @@ async function confirmerEnvoiMSB() {
   const btn      = document.getElementById('msb-btn-envoyer');
   const sess     = getSession();
 
-  // Si déjà configurée et pas modifiée, on utilise la clé en KV directement
-  if (isAlreadyConfigured && inputVal.startsWith('••••••')) {
-    status.textContent = '⏳ Envoi en cours...';
-    btn.disabled = true;
-    await lancerEnvoiMSB(sess, null); // null = utiliser la clé stockée en KV
-    btn.disabled = false;
-    return;
-  }
+  // Clé déjà en KV et non modifiée → on l'utilise telle quelle
+  const useStoredKey = isAlreadyConfigured && inputVal.startsWith('••••••');
 
-  // Nouvelle clé saisie : valider et sauvegarder
-  if (!inputVal || inputVal.length < 10) {
+  // Valider la clé AVANT d'ouvrir quoi que ce soit
+  if (!useStoredKey && (!inputVal || inputVal.length < 10)) {
     status.textContent = '❌ Veuillez saisir une clé API valide.';
     return;
   }
 
-  btn.disabled = true;
-  status.textContent = '⏳ Vérification de la clé...';
+  // Ouvrir la fenêtre d'aperçu MAINTENANT (dans le geste utilisateur)
+  // pour ne pas être bloqué par le bloqueur de pop-up après un await.
+  const win = window.open('', 'apercuCourriersMSB',
+    'width=980,height=900,scrollbars=yes,resizable=yes');
+  if (!win) {
+    status.textContent = '❌ Autorisez les fenêtres pop-up pour ce site, puis réessayez.';
+    return;
+  }
+  win.document.write('<!doctype html><meta charset="utf-8"><title>Aperçu des courriers…</title>'
+    + '<body style="font-family:Arial,sans-serif;background:#525659;color:#fff;'
+    + 'display:flex;align-items:center;justify-content:center;height:100vh;margin:0;">'
+    + '<div>⏳ Préparation de l\'aperçu…</div></body>');
+  win.document.close();
 
+  btn.disabled = true;
   try {
-    // Sauvegarder dans le KV du Worker (lié à l'agence)
-    const saveResp = await fetch(`${API_URL}/msb-key/${sess.agence}`, {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${sess.token}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ api_key: inputVal })
-    });
-    if (!saveResp.ok) {
-      status.textContent = '❌ Impossible de sauvegarder la clé.';
-      btn.disabled = false;
-      return;
+    // Sauvegarder la nouvelle clé dans le KV du Worker (lié à l'agence)
+    if (!useStoredKey) {
+      status.textContent = '⏳ Enregistrement de la clé…';
+      const saveResp = await fetch(`${API_URL}/msb-key/${sess.agence}`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${sess.token}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ api_key: inputVal })
+      });
+      if (!saveResp.ok) {
+        status.textContent = '❌ Impossible de sauvegarder la clé.';
+        try { win.close(); } catch(_) {}
+        btn.disabled = false;
+        return;
+      }
+      input.dataset.configured = 'true';
     }
-    input.dataset.configured = 'true';
-    status.textContent = '✅ Clé API sauvegardée. Lancement de l\'envoi...';
-    btn.disabled = false;
-    await lancerEnvoiMSB(sess, inputVal);
+
+    // Générer l'aperçu — RIEN n'est envoyé à MySendingBox à ce stade.
+    status.textContent = '⏳ Génération de l\'aperçu…';
+    await ouvrirApercuCourriers(sess, win);
+    status.textContent = '👁 Aperçu ouvert — confirmez l\'envoi dans la nouvelle fenêtre.';
   } catch(e) {
     status.textContent = '❌ Erreur : ' + e.message;
-    btn.disabled = false;
+    try { win.close(); } catch(_) {}
   }
+  btn.disabled = false;
 }
 
 
 
-async function lancerEnvoiMSB(sess, apiKeyOverride) {
-  const status = document.getElementById('msb-status');
-  const btn    = document.getElementById('msb-btn-envoyer');
-  btn.disabled = true;
-
-  // Récupérer la liste des SCI à envoyer (même filtre que pour le docx)
+// Construit l'aperçu de TOUS les courriers dans une fenêtre dédiée.
+// Aucun envoi n'a lieu ici : l'envoi ne démarre qu'au clic sur
+// « Confirmer l'envoi » dans cette fenêtre (→ demarrerEnvoiMSBApercu).
+async function ouvrirApercuCourriers(sess, win) {
   const liste = filtrerSciPourCourrier();
+  const today = new Date().toLocaleDateString('fr-FR', {day:'numeric', month:'long', year:'numeric'});
+
   if (!liste.length) {
-    status.textContent = '❌ Aucune SCI sélectionnée.';
-    btn.disabled = false;
+    win.document.open();
+    win.document.write('<!doctype html><meta charset="utf-8"><title>Aucun courrier</title>'
+      + '<body style="font-family:Arial,sans-serif;background:#525659;color:#fff;'
+      + 'text-align:center;padding-top:90px;margin:0;">❌ Aucune SCI sélectionnée.'
+      + '<br><br><button onclick="window.close()" '
+      + 'style="padding:8px 16px;cursor:pointer;">Fermer</button></body>');
+    win.document.close();
+    fermerMSB();
     return;
   }
 
-  const today = new Date().toLocaleDateString('fr-FR', {day:'numeric', month:'long', year:'numeric'});
-  let ok = 0, errors = 0;
+  // Style du courrier (identique pour tous) extrait une seule fois.
+  // Le logo base64 (~540 Ko) est dédupliqué : référencé une seule fois
+  // en CSS pour l'aperçu. L'envoi réel régénère le HTML complet.
+  const sample     = generateCourrierHTML(liste[0], today);
+  const styleBlock = (sample.match(/<style[\s\S]*?<\/style>/i) || [''])[0];
+  const logoM      = sample.match(/<img[^>]*\bsrc=["'](data:image\/[^"']+)["']/i);
+  const logoUri    = logoM ? logoM[1] : '';
 
-  status.textContent = `⏳ Envoi de ${liste.length} courriers...`;
-
-  for (let i = 0; i < liste.length; i++) {
-    const sci = liste[i];
+  const items = liste.map(sci => {
     const siege = parseSiegeSocial(sci.siege_social);
-    if (!siege.cp || !siege.ville) { errors++; continue; }
+    const valid = !!(siege.cp && siege.ville);
+    let body = (generateCourrierHTML(sci, today)
+      .match(/<body[^>]*>([\s\S]*?)<\/body>/i) || ['', ''])[1];
+    body = body.replace(/<img\b[^>]*>/i, '<span class="c21logo"></span>');
+    return { sci, siege, valid, body };
+  });
 
-    const htmlContent = generateCourrierHTML(sci, today);
+  const sendable = items.filter(x => x.valid).length;
+  const cost     = (sendable * 1.40).toFixed(2);
 
-    // Passer par le Worker pour ne pas exposer la clé API
+  const sheets = items.map((it, i) => {
+    const chip = it.valid
+      ? '<div class="sheet-status" id="st-' + i + '">À envoyer</div>'
+      : '<div class="sheet-status warn" id="st-' + i + '">⚠ Adresse incomplète — non envoyé</div>';
+    return '<section class="courrier-sheet' + (it.valid ? '' : ' invalid') + '">'
+      + chip + it.body + '</section>';
+  }).join('');
+
+  const DOC =
+      '<!doctype html><html lang="fr"><head><meta charset="utf-8">'
+    + '<title>Aperçu — ' + items.length + ' courrier(s)</title>'
+    + styleBlock
+    + '<style>'
+    +   'html,body{margin:0;background:#525659;}'
+    +   'body{padding:0!important;}'
+    +   ".c21logo{display:block;width:70px;height:70px;margin:auto;"
+    +     "background:url('" + logoUri + "') no-repeat center/contain;}"
+    +   '.msb-toolbar{position:fixed;top:0;left:0;right:0;z-index:99;background:#1f2937;'
+    +     'color:#fff;display:flex;align-items:center;gap:14px;padding:10px 18px;'
+    +     'font-family:Arial,sans-serif;font-size:13px;box-shadow:0 2px 8px rgba(0,0,0,.4);}'
+    +   '.msb-toolbar h2{font-size:14px;margin:0;}'
+    +   '.msb-toolbar .spacer{flex:1;}'
+    +   '.msb-info{opacity:.85;}'
+    +   '.msb-btn{border:0;border-radius:6px;padding:9px 16px;font-size:13px;'
+    +     'font-weight:700;cursor:pointer;}'
+    +   '.msb-btn.go{background:#16a34a;color:#fff;}'
+    +   '.msb-btn.go:disabled{background:#6b7280;cursor:default;}'
+    +   '.msb-btn.close{background:#374151;color:#fff;}'
+    +   '#msb-prog{display:none;width:220px;height:8px;background:#374151;'
+    +     'border-radius:5px;overflow:hidden;}'
+    +   '#msb-bar{height:100%;width:0;background:#16a34a;transition:width .25s;}'
+    +   '#msb-stat{font-size:12px;}'
+    +   '.sheets-wrap{padding:74px 0 50px;}'
+    +   '.courrier-sheet{position:relative;width:210mm;min-height:297mm;'
+    +     'margin:0 auto 26px;background:#fff;box-shadow:0 3px 18px rgba(0,0,0,.5);'
+    +     'box-sizing:border-box;padding:15mm;}'
+    +   '.courrier-sheet.invalid{outline:3px solid #f59e0b;}'
+    +   '.sheet-status{position:absolute;top:10px;right:10px;'
+    +     'font:700 11px/1 Arial,sans-serif;padding:6px 10px;border-radius:999px;'
+    +     'background:#e5e7eb;color:#374151;z-index:5;}'
+    +   '.sheet-status.ok{background:#16a34a;color:#fff;}'
+    +   '.sheet-status.fail{background:#dc2626;color:#fff;}'
+    +   '.sheet-status.pending{background:#2563eb;color:#fff;}'
+    +   '.sheet-status.warn{background:#f59e0b;color:#fff;}'
+    +   '@media print{.msb-toolbar,.sheet-status{display:none!important;}'
+    +     'html,body{background:#fff;}.sheets-wrap{padding:0!important;}'
+    +     '.courrier-sheet{box-shadow:none!important;margin:0!important;'
+    +     'width:auto!important;min-height:auto!important;outline:none!important;'
+    +     'page-break-after:always;}}'
+    + '</style></head><body>'
+    + '<div class="msb-toolbar">'
+    +   '<h2>📮 Aperçu des courriers</h2>'
+    +   '<span class="msb-info">' + items.length + ' courrier(s) — '
+    +   sendable + ' envoyable(s) — ~' + cost + ' € HT</span>'
+    +   '<span class="spacer"></span>'
+    +   '<div id="msb-prog"><div id="msb-bar"></div></div>'
+    +   '<span id="msb-counter" class="msb-info"></span>'
+    +   '<span id="msb-stat"></span>'
+    +   '<button class="msb-btn go" id="msb-go">✅ Confirmer l\'envoi ('
+    +   sendable + ')</button>'
+    +   '<button class="msb-btn close" id="msb-close">Fermer</button>'
+    + '</div>'
+    + '<div class="sheets-wrap">' + sheets + '</div>'
+    + '</body></html>';
+
+  win.document.open();
+  win.document.write(DOC);
+  win.document.close();
+
+  // Câblage des boutons depuis la fenêtre principale : le token et la
+  // boucle d'envoi restent dans ce contexte (jamais exposés dans le pop-up).
+  const goBtn    = win.document.getElementById('msb-go');
+  const closeBtn = win.document.getElementById('msb-close');
+  if (closeBtn) closeBtn.onclick = function () { win.close(); };
+  if (goBtn) {
+    if (!sendable) {
+      goBtn.disabled = true;
+      goBtn.textContent = 'Aucune adresse valide';
+    } else {
+      goBtn.onclick = function () {
+        demarrerEnvoiMSBApercu(sess, items, win, today);
+      };
+    }
+  }
+  try { win.focus(); } catch(_) {}
+  fermerMSB();
+}
+
+// Boucle d'envoi déclenchée par « Confirmer l'envoi » dans l'aperçu.
+async function demarrerEnvoiMSBApercu(sess, items, win, today) {
+  const D = win.document;
+  const goBtn    = D.getElementById('msb-go');
+  const closeBtn = D.getElementById('msb-close');
+  const bar      = D.getElementById('msb-bar');
+  const prog     = D.getElementById('msb-prog');
+  const stat     = D.getElementById('msb-stat');
+  const counter  = D.getElementById('msb-counter');
+  if (!goBtn) return; // fenêtre déjà fermée
+
+  goBtn.disabled = true;
+  goBtn.textContent = '⏳ Envoi en cours…';
+  if (closeBtn) closeBtn.disabled = true;
+  if (prog) prog.style.display = 'block';
+
+  const sendable = items.filter(x => x.valid).length;
+  let ok = 0, err = 0, skip = 0;
+
+  for (let i = 0; i < items.length; i++) {
+    if (win.closed) break; // l'utilisateur a fermé la fenêtre
+    const it   = items[i];
+    const chip = D.getElementById('st-' + i);
+
+    if (!it.valid) {
+      skip++;
+      if (chip) { chip.textContent = '⚠ Ignoré (adresse incomplète)'; chip.className = 'sheet-status warn'; }
+      continue;
+    }
+    if (chip) { chip.textContent = '⏳ Envoi…'; chip.className = 'sheet-status pending'; }
+
+    // Passer par le Worker pour ne pas exposer la clé API.
+    // Le HTML complet (logo inclus) est régénéré ici pour MySendingBox.
     try {
       const resp = await fetch(`${API_URL}/msb-send/${sess.agence}`, {
         method: 'POST',
@@ -2223,12 +2370,12 @@ async function lancerEnvoiMSB(sess, apiKeyOverride) {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          html: htmlContent,
+          html: generateCourrierHTML(it.sci, today),
           to: {
-            name: sci.sci_nom,
-            address_line1: siege.adresse,
-            zip_code: siege.cp,
-            city: siege.ville,
+            name: it.sci.sci_nom,
+            address_line1: it.siege.adresse,
+            zip_code: it.siege.cp,
+            city: it.siege.ville,
             country: 'France',
           },
         }),
@@ -2236,32 +2383,38 @@ async function lancerEnvoiMSB(sess, apiKeyOverride) {
       if (resp.ok) {
         const data = await resp.json().catch(() => ({}));
         ok++;
-        // Afficher le lien de prévisualisation du 1er courrier
-        if (ok === 1) {
-          const previewUrl = data.file_for_corus?.url || data.file?.url;
-          if (previewUrl) {
-            status.innerHTML = `⏳ ${ok}/${liste.length} — <a href="${previewUrl}" target="_blank" style="color:var(--accent);text-decoration:underline;">👁 Prévisualiser le 1er courrier</a>`;
-          }
+        if (chip) { chip.textContent = '✅ Envoyé'; chip.className = 'sheet-status ok'; }
+        if (ok === 1 && stat) {
+          const u = data.file_for_corus?.url || data.file?.url;
+          if (u) stat.innerHTML = '<a href="' + u + '" target="_blank" '
+            + 'style="color:#fff;text-decoration:underline;">👁 1er courrier généré</a>';
         }
       } else {
-        const errData = await resp.json().catch(() => ({}));
-        console.error('MSB error:', errData);
-        errors++;
+        const e = await resp.json().catch(() => ({}));
+        console.error('MSB error:', e);
+        err++;
+        if (chip) { chip.textContent = '❌ Échec'; chip.className = 'sheet-status fail'; }
       }
     } catch(e) {
-      errors++;
+      err++;
+      if (chip) { chip.textContent = '❌ Erreur réseau'; chip.className = 'sheet-status fail'; }
     }
 
-    // Mise à jour du statut toutes les 10 lettres
-    if ((i + 1) % 10 === 0 || i === liste.length - 1) {
-      status.textContent = `⏳ ${i+1}/${liste.length} — ✅ ${ok} envoyés, ❌ ${errors} erreurs`;
+    if (!win.closed) {
+      const done = ok + err;
+      if (bar)     bar.style.width = Math.round((done / sendable) * 100) + '%';
+      if (counter) counter.textContent =
+        `${done}/${sendable} — ✅ ${ok}  ❌ ${err}` + (skip ? `  ⚠ ${skip}` : '');
     }
   }
 
-  status.textContent = `✅ Terminé — ${ok} courriers envoyés, ${errors} erreurs`;
-  btn.disabled = false;
+  if (!win.closed) {
+    if (goBtn)    goBtn.style.display = 'none';
+    if (closeBtn) closeBtn.disabled = false;
+    if (stat)     stat.textContent =
+      `✅ Terminé — ${ok} envoyés, ${err} erreurs` + (skip ? `, ${skip} ignorés` : '');
+  }
   if (ok > 0) showToast(`✅ ${ok} courriers envoyés via MySendingBox`);
-  fermerMSB();
 }
 
 async function genererCourrier() {
@@ -2617,7 +2770,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     <div style="display:flex;gap:10px;">
       <button class="btn-reset" onclick="fermerMSB()">Annuler</button>
       <button class="btn-primary" id="msb-btn-envoyer" onclick="confirmerEnvoiMSB()" style="flex:1;">
-        📮 Envoyer les courriers
+        👁 Aperçu avant envoi
       </button>
     </div>
   </div>

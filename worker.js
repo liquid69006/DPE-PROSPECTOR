@@ -26,6 +26,7 @@ const IDENTIFIANTS = {
   "pernety":   "pernety",
   "houlgate":  "houlgate",
   "villers":   "villers",
+  "lopez":     "lopez",
 };
 
 // ══════════════════════════════════════════════════════
@@ -42,6 +43,7 @@ const AGENCES_CONFIG = {
     dataJsonPath: "data/dauphine-lacassagne.json",
     conseillers_defaut: ["À attribuer", "Gérald", "Philippe", "Robin", "Kévin", "Yann"],
     zones: ["Dauphiné-Lacassagne", "Montchat"],
+    sci_enabled: true,
   },
   "motte-picquet": {
     nom: "Century 21 La Motte Picquet",
@@ -51,6 +53,7 @@ const AGENCES_CONFIG = {
     dataJsonPath: "data/motte-picquet.json",
     conseillers_defaut: ["À attribuer", "Jean-Marie", "Bérénice", "Joël"],
     zones: ["La Motte Picquet"],
+    sci_enabled: false,
   },
   "pernety": {
     nom: "Century 21 Pernéty",
@@ -60,6 +63,7 @@ const AGENCES_CONFIG = {
     dataJsonPath: "data/pernety.json",
     conseillers_defaut: ["À attribuer", "Mathis", "Julien", "Philippe", "Fahd", "Maxime", "Cyril", "Melchior"],
     zones: ["Pernéty"],
+    sci_enabled: false,
   },
   "houlgate": {
     nom: "Century 21 Bagot — Houlgate",
@@ -69,6 +73,7 @@ const AGENCES_CONFIG = {
     dataJsonPath: "data/houlgate.json",
     conseillers_defaut: ["À attribuer"],
     zones: ["14510", "14160", "14430"],
+    sci_enabled: false,
   },
   "villers": {
     nom: "Century 21 Bagot — Villers-sur-Mer",
@@ -78,6 +83,22 @@ const AGENCES_CONFIG = {
     dataJsonPath: "data/villers.json",
     conseillers_defaut: ["À attribuer"],
     zones: ["14910", "14640"],
+    sci_enabled: false,
+  },
+  "lopez": {
+    nom: "Century 21 Lopez",
+    ville: "Paris 14e & 15e",
+    couleur: "#7c3aed",
+    email: "ybufferne@century21.fr",
+    // lopez n'a pas de dataJsonPath unique — les données DPE viennent de motte-picquet + pernety
+    dataJsonPath: "data/motte-picquet.json",   // utilisé comme fallback, surchargé côté dashboard
+    conseillers_defaut: ["À attribuer", "Jean-Marie", "Bérénice", "Joël", "Mathis", "Julien", "Philippe", "Fahd", "Maxime", "Cyril", "Melchior"],
+    zones: ["La Motte Picquet", "Pernéty"],
+    sci_enabled: true,
+    // Agences DPE dont lopez agrège les assignments
+    dpe_agences: ["motte-picquet", "pernety"],
+    // Agences SCI dont lopez agrège les données
+    sci_agences: ["motte-picquet", "pernety"],
   },
 };
 
@@ -150,6 +171,7 @@ const json = (data, status=200) =>
   new Response(JSON.stringify(data), { status, headers:{...CORS,"Content-Type":"application/json"} });
 
 const err = (msg, status=400) => json({ error: msg }, status);
+const ok  = (data)            => json(data, 200);
 
 // ══════════════════════════════════════════════════════
 //  EMAIL BREVO
@@ -200,7 +222,19 @@ function htmlReset(agenceNom, resetUrl) {
 export default {
   async fetch(request, env) {
     if (request.method === "OPTIONS") return new Response(null, { headers: CORS });
+    try {
+      return await handleRequest(request, env);
+    } catch(e) {
+      // Toujours renvoyer CORS même sur erreur 500
+      return new Response(JSON.stringify({ error: e.message }), {
+        status: 500,
+        headers: { ...CORS, "Content-Type": "application/json" }
+      });
+    }
+  }
+};
 
+async function handleRequest(request, env) {
     const url    = new URL(request.url);
     const path   = url.pathname.replace(/\/$/, "");
     const method = request.method;
@@ -256,6 +290,9 @@ export default {
           dataJsonPath: cfg.dataJsonPath,
           zones:        cfg.zones,
           conseillers,
+          sci_enabled:  cfg.sci_enabled || false,
+          dpe_agences:  cfg.dpe_agences || null,   // null = agence simple, array = agence composite
+          sci_agences:  cfg.sci_agences || null,
         },
       });
     }
@@ -317,7 +354,10 @@ export default {
       if (!token) return [null, err("Token manquant", 401)];
       const payload = await verifyJwt(token, JWT_SECRET);
       if (!payload) return [null, err("Token invalide ou expiré", 401)];
-      if (agenceId && payload.agence !== agenceId) return [null, err("Accès refusé", 403)];
+      // Lopez peut accéder aux routes de motte-picquet et pernety
+      const lopezAgences = ["motte-picquet", "pernety"];
+      const isLopezAccess = payload.agence === "lopez" && lopezAgences.includes(agenceId);
+      if (agenceId && payload.agence !== agenceId && !isLopezAccess) return [null, err("Accès refusé", 403)];
       return [payload, null];
     }
 
@@ -352,16 +392,55 @@ export default {
     const assignMatch = path.match(/^\/assignments\/([a-z0-9-]+)$/);
     if (assignMatch) {
       const agenceId = assignMatch[1];
-      const [, authErr] = await requireAuth(agenceId);
+      const [payload, authErr] = await requireAuth(agenceId);
       if (authErr) return authErr;
 
+      // Lopez agrège les assignments de motte-picquet + pernety
+      const isLopez = payload.agence === "lopez";
+      const lopezAgences = AGENCES_CONFIG["lopez"].dpe_agences;
+
       if (method === "GET") {
+        if (isLopez) {
+          // Fusionner les assignments des deux agences
+          let merged = {};
+          for (const ag of lopezAgences) {
+            const raw = await env.DPE_KV.get(`assignments:${ag}`);
+            if (raw) Object.assign(merged, JSON.parse(raw));
+          }
+          return json({ assignments: merged });
+        }
         const raw = await env.DPE_KV.get(`assignments:${agenceId}`);
         return json({ assignments: raw ? JSON.parse(raw) : {} });
       }
+
       if (method === "POST") {
         let body; try { body = await request.json(); } catch { return err("JSON invalide"); }
         if (typeof body.assignments !== "object") return err("assignments doit être un objet");
+
+        if (isLopez) {
+          // Répartir les assignments dans les bonnes clés KV selon la zone du DPE
+          // Le dashboard envoie tous les assignments fusionnés — on les re-dispatche
+          // en lisant les assignments existants de chaque agence pour savoir à qui appartient chaque DPE
+          const motteCurrent = JSON.parse(await env.DPE_KV.get(`assignments:motte-picquet`) || "{}");
+          const pernetyCurrent = JSON.parse(await env.DPE_KV.get(`assignments:pernety`) || "{}");
+          const motteNew = {};
+          const pernetyNew = {};
+
+          for (const [dpeId, val] of Object.entries(body.assignments)) {
+            // Si la clé existait déjà dans motte → reste dans motte
+            // Si la clé existait déjà dans pernety → reste dans pernety
+            // Si nouvelle clé → on utilise la zone indiquée dans val.zone
+            if (dpeId in motteCurrent || val?.zone === "La Motte Picquet") {
+              motteNew[dpeId] = val;
+            } else {
+              pernetyNew[dpeId] = val;
+            }
+          }
+          await env.DPE_KV.put(`assignments:motte-picquet`, JSON.stringify(motteNew));
+          await env.DPE_KV.put(`assignments:pernety`, JSON.stringify(pernetyNew));
+          return json({ ok: true, count: Object.keys(body.assignments).length });
+        }
+
         await env.DPE_KV.put(`assignments:${agenceId}`, JSON.stringify(body.assignments));
         return json({ ok: true, count: Object.keys(body.assignments).length });
       }
@@ -392,6 +471,55 @@ export default {
     const consMatch = path.match(/^\/conseillers\/([a-z0-9-]+)$/);
     if (consMatch) {
       const agenceId = consMatch[1];
+      const [payload, authErr] = await requireAuth(agenceId);
+      if (authErr) return authErr;
+      const cfg = AGENCES_CONFIG[agenceId];
+      const isLopez = payload.agence === "lopez";
+      const lopezAgences = AGENCES_CONFIG["lopez"].dpe_agences;
+
+      if (method === "GET") {
+        if (isLopez) {
+          let merged = [{ nom: "À attribuer", agence: null }];
+          for (const ag of lopezAgences) {
+            const raw = await env.DPE_KV.get(`conseillers:${ag}`);
+            const liste = raw ? JSON.parse(raw) : (AGENCES_CONFIG[ag]?.conseillers_defaut || []);
+            liste.filter(c => c && c !== "À attribuer").forEach(c => {
+              if (!merged.find(m => m.nom === c)) merged.push({ nom: c, agence: ag });
+            });
+          }
+          return json({ conseillers: merged.map(m => m.nom), conseillers_detail: merged });
+        }
+        const raw = await env.DPE_KV.get(`conseillers:${agenceId}`);
+        const conseillers = raw ? JSON.parse(raw) : (cfg?.conseillers_defaut || ["À attribuer"]);
+        return json({ conseillers });
+      }
+
+      if (method === "POST") {
+        let body; try { body = await request.json(); } catch { return err("JSON invalide"); }
+        if (!Array.isArray(body.conseillers)) return err("conseillers doit être un tableau");
+
+        if (isLopez) {
+          if (!Array.isArray(body.conseillers_detail)) return err("conseillers_detail requis pour lopez", 400);
+          const motteList = ["À attribuer"];
+          const pernetyList = ["À attribuer"];
+          for (const item of body.conseillers_detail) {
+            if (!item.nom || item.nom === "À attribuer") continue;
+            if (item.agence === "motte-picquet") motteList.push(item.nom);
+            else if (item.agence === "pernety") pernetyList.push(item.nom);
+          }
+          await env.DPE_KV.put(`conseillers:motte-picquet`, JSON.stringify(motteList));
+          await env.DPE_KV.put(`conseillers:pernety`, JSON.stringify(pernetyList));
+          return json({ ok: true, conseillers: [...motteList, ...pernetyList.filter(c => c !== "À attribuer")] });
+        }
+
+        const list = ["À attribuer", ...body.conseillers.filter(c => c && c !== "À attribuer")];
+        await env.DPE_KV.put(`conseillers:${agenceId}`, JSON.stringify(list));
+        return json({ ok: true, conseillers: list });
+      }
+      return err("Méthode non supportée", 405);
+    }
+    if (consMatch) {
+      const agenceId = consMatch[1];
       const [, authErr] = await requireAuth(agenceId);
       if (authErr) return authErr;
       const cfg = AGENCES_CONFIG[agenceId];
@@ -412,7 +540,99 @@ export default {
       return err("Méthode non supportée", 405);
     }
 
-    // ── /lib/:file ── proxy GitHub Raw pour libs JS (évite CSP sandbox) ──
+    // ── /msb-key/:agence ── clé API MySendingBox par agence ──────────────
+    const msbKeyMatch = path.match(/^\/msb-key\/([a-z0-9-]+)$/);
+    if (msbKeyMatch) {
+      const agenceId = msbKeyMatch[1];
+      const [, authErr] = await requireAuth(agenceId);
+      if (authErr) return authErr;
+
+      if (method === 'GET') {
+        const key = await env.DPE_KV.get(`msb_key:${agenceId}`);
+        // On retourne juste si une clé existe, pas la clé elle-même
+        return ok({ configured: !!key, preview: key ? key.slice(0,6) + '...' : null });
+      }
+
+      if (method === 'POST') {
+        const body = await request.json();
+        const { api_key } = body;
+        if (!api_key || api_key.trim().length < 10) return err('Clé API invalide', 400);
+        await env.DPE_KV.put(`msb_key:${agenceId}`, api_key.trim());
+        return ok({ saved: true });
+      }
+
+      if (method === 'DELETE') {
+        await env.DPE_KV.delete(`msb_key:${agenceId}`);
+        return ok({ deleted: true });
+      }
+    }
+
+        // ── /msb-send/:agence ── envoi courrier via MySendingBox ──────────────
+    const msbSendMatch = path.match(/^\/msb-send\/([a-z0-9-]+)$/);
+    if (msbSendMatch && method === 'POST') {
+      const agenceId = msbSendMatch[1];
+      const [, authErr] = await requireAuth(agenceId);
+      if (authErr) return authErr;
+
+      // Récupérer la clé API stockée
+      const msbKey = await env.DPE_KV.get(`msb_key:${agenceId}`);
+      if (!msbKey) return err('Clé API MySendingBox non configurée', 400);
+
+      const body = await request.json();
+      const { html, to } = body;
+      if (!html || !to) return err('Paramètres manquants', 400);
+
+      // Récupérer l'expéditeur stocké
+      const fromRaw = await env.DPE_KV.get(`msb_from:${agenceId}`);
+      const from = fromRaw ? JSON.parse(fromRaw) : {
+        name: 'CENTURY 21 Dauphiné-Lacassagne',
+        address_line1: '224 rue Paul Bert',
+        zip_code: '69003',
+        city: 'Lyon',
+        country: 'France',
+      };
+
+      try {
+        const toMSB = {
+          name:               (to.name        || '').slice(0, 45),
+          address_line1:      (to.address_line1 || '').slice(0, 45),
+          address_city:       (to.city         || '').slice(0, 35),
+          address_postalcode: (to.zip_code     || '').slice(0, 10),
+          address_country:    'France',
+        };
+        const fromMSB = {
+          name:               (from.name        || '').slice(0, 45),
+          address_line1:      (from.address_line1 || '').slice(0, 45),
+          address_city:       (from.city         || '').slice(0, 35),
+          address_postalcode: (from.zip_code     || '').slice(0, 10),
+          address_country:    'France',
+        };
+        const msbResp = await fetch('https://api.mysendingbox.fr/letters', {
+          method: 'POST',
+          headers: {
+            'Authorization': 'Basic ' + btoa(msbKey + ':'),
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            to:   toMSB,
+            from: fromMSB,
+            source_file: html,
+            source_file_type: 'html',
+            color: 'color',
+            postage_type: 'ecopli',
+            double_sided: false,
+            address_placement: 'insert_blank_page',
+          }),
+        });
+        const msbData = await msbResp.json();
+        if (!msbResp.ok) return err(`MSB ${msbResp.status}: ${JSON.stringify(msbData)}`, 502);
+        return ok({ id: msbData._id, status: msbData.status?.name, file_for_corus: msbData.file_for_corus, file: msbData.file });
+      } catch(e) {
+        return err('Erreur réseau MySendingBox', 502);
+      }
+    }
+
+        // ── /lib/:file ── proxy GitHub Raw pour libs JS (évite CSP sandbox) ──
     const libMatch = path.match(/^\/lib\/([a-z0-9._-]+\.(?:js))$/);
     if (libMatch && method === "GET") {
       const fileName = libMatch[1];
@@ -462,5 +682,4 @@ export default {
     }
 
     return err("Route inconnue", 404);
-  },
-};
+}
