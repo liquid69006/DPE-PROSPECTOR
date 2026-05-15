@@ -308,9 +308,12 @@ td{padding:11px 14px;vertical-align:middle;}
 ═══════════════════════════════════════ */
 @media(max-width:768px){
 
-  /* Header mobile — safe area iPhone */
-  header{position:fixed;top:0;left:0;right:0;padding-top:env(safe-area-inset-top);z-index:200;}
-  #screen-dashboard{margin-top:var(--header-h,80px);}
+  /* Header mobile — fixed + safe area iPhone */
+  header{
+    position:fixed;top:0;left:0;right:0;
+    padding-top:env(safe-area-inset-top);
+    z-index:300;
+  }
   .header-inner{flex-wrap:wrap;gap:8px;padding:10px 14px;height:auto;}
   .header-logo{font-size:16px;}
   .header-agence{font-size:12px;}
@@ -323,9 +326,10 @@ td{padding:11px 14px;vertical-align:middle;}
   /* Zone cartes */
   #mobile-view{display:block;}
 
-  /* Sélecteur conseiller */
+  /* Sélecteur conseiller — fixed sous le header */
   .mobile-conseiller-bar{
-    position:sticky;top:var(--header-h,80px);z-index:201;
+    position:fixed;top:var(--header-h,60px);left:0;right:0;
+    z-index:299;
     background:var(--surface);
     border-bottom:1px solid var(--border);
     padding:10px 14px;
@@ -1274,6 +1278,7 @@ function renderTable() {
   if (window.innerWidth <= 768) {
     buildMobilePills();
     renderCards();
+    setTimeout(setHeaderHeight, 50);
   }
 }
 
@@ -2449,10 +2454,21 @@ window.addEventListener('DOMContentLoaded', async () => {
 
   // Safe area : positionne la barre sticky sous le header
   function setHeaderHeight() {
-    const h = document.querySelector('header')?.offsetHeight || 0;
-    document.documentElement.style.setProperty('--header-h', h + 'px');
+    const hdr = document.querySelector('header');
+    const bar = document.querySelector('.mobile-conseiller-bar');
+    const hdrH = hdr ? hdr.offsetHeight : 60;
+    const barH = bar ? bar.offsetHeight : 0;
+    document.documentElement.style.setProperty('--header-h', hdrH + 'px');
+    // Pousser le contenu sous header + barre sur mobile
+    if (window.innerWidth <= 768) {
+      const mobileView = document.getElementById('mobile-view');
+      if (mobileView) mobileView.style.paddingTop = (hdrH + barH) + 'px';
+      const controls = document.querySelector('.mobile-controls');
+      if (controls) controls.style.top = (hdrH + barH) + 'px';
+    }
   }
-  setHeaderHeight();
+  // Attendre que le DOM soit rendu pour mesurer
+  setTimeout(setHeaderHeight, 100);
   window.addEventListener('resize', setHeaderHeight);
 </script>
 </body>
