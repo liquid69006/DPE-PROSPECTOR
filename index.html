@@ -626,6 +626,17 @@ td{padding:11px 14px;vertical-align:middle;}
         <button class="mobile-sort-btn" id="sort-adresse" onclick="setMobileSort('adresse')">Adresse</button>
         <button class="mobile-sort-dir" id="sort-dir" onclick="toggleMobileSortDir()">&#8595;</button>
       </div>
+      <div class="mobile-sort-row" id="mobile-typo-row">
+        <span class="mobile-sort-label">Type</span>
+        <button class="mobile-sort-btn active" id="typ-tous" onclick="setMobileTypo('tous')">Tous</button>
+        <button class="mobile-sort-btn" id="typ-maison" onclick="setMobileTypo('maison')">Maison</button>
+        <button class="mobile-sort-btn" id="typ-appart" onclick="setMobileTypo('appartement')">Appart.</button>
+        <button class="mobile-sort-btn" id="typ-collectif" onclick="setMobileTypo('immeuble')">Collectif</button>
+      </div>
+      <div class="mobile-sort-row" id="mobile-zone-row" style="display:none">
+        <span class="mobile-sort-label">Zone</span>
+        <div id="mobile-zone-pills" style="display:flex;gap:8px;flex-wrap:wrap;"></div>
+      </div>
     </div>
     <div class="mobile-cards" id="mobile-cards"></div>
   </div>
@@ -1277,6 +1288,7 @@ function renderTable() {
   // Vue mobile
   if (window.innerWidth <= 768) {
     buildMobilePills();
+    buildMobileZone();
     renderCards();
     setTimeout(setHeaderHeight, 50);
   }
@@ -1287,7 +1299,43 @@ function renderTable() {
 // ════════════════════════════════════════
 let mobileConseillerActif = '';
 let mobileSortCol = 'date';   // 'date' | 'adresse'
-let mobileSortDir = 'desc';   // 'asc' | 'desc'
+let mobileSortDir = 'desc';   // 'asc'  | 'desc'
+let mobileTypo    = 'tous';   // 'tous' | 'maison' | 'appartement' | 'immeuble'
+let mobileZone    = '';       // '' = toutes
+
+function setMobileTypo(val) {
+  mobileTypo = val;
+  ['tous','maison','appart','collectif'].forEach(k => {
+    const b = document.getElementById('typ-' + k);
+    if (b) b.classList.remove('active');
+  });
+  const map = {tous:'tous',maison:'maison',appartement:'appart',immeuble:'collectif'};
+  const b = document.getElementById('typ-' + map[val]);
+  if (b) b.classList.add('active');
+  renderCards();
+}
+
+function setMobileZone(val) {
+  mobileZone = val;
+  document.querySelectorAll('.mobile-zone-pill').forEach(b => b.classList.remove('active'));
+  const active = document.querySelector(`.mobile-zone-pill[data-zone='${val}']`);
+  if (active) active.classList.add('active');
+  renderCards();
+}
+
+function buildMobileZone() {
+  const zones = [...new Set(allDpe.map(d => d.zone).filter(Boolean))].sort();
+  const row = document.getElementById('mobile-zone-row');
+  const container = document.getElementById('mobile-zone-pills');
+  if (!row || !container) return;
+  if (zones.length <= 1) { row.style.display = 'none'; return; }
+  row.style.display = 'flex';
+  const allZones = ['', ...zones];
+  container.innerHTML = allZones.map(z => 
+    `<button class="mobile-sort-btn mobile-zone-pill${mobileZone === z ? ' active' : ''}" 
+      data-zone="${z}" onclick="setMobileZone('${z}')">${z || 'Toutes'}</button>`
+  ).join('');
+}
 
 function setMobileSort(col) {
   mobileSortCol = col;
@@ -1333,6 +1381,16 @@ function renderCards() {
       const a = assignments[dpe.numero_dpe] || {};
       return (a.conseiller || 'À attribuer') === mobileConseillerActif;
     });
+  }
+
+  // Filtre typologie
+  if (mobileTypo !== 'tous') {
+    data = data.filter(dpe => (dpe.type_batiment || '').toLowerCase() === mobileTypo);
+  }
+
+  // Filtre zone
+  if (mobileZone) {
+    data = data.filter(dpe => (dpe.zone || '') === mobileZone);
   }
 
   // Filtre recherche
