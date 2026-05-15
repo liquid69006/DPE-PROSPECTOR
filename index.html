@@ -309,8 +309,13 @@ td{padding:11px 14px;vertical-align:middle;}
 @media(max-width:768px){
 
   /* Header mobile — safe area iPhone */
-  header{padding-top:env(safe-area-inset-top);}
+  header{
+    position:fixed;top:0;left:0;right:0;
+    padding-top:env(safe-area-inset-top);
+    z-index:200;
+  }
   .header-inner{flex-wrap:wrap;gap:8px;padding:10px 14px;height:auto;}
+  #screen-dashboard{margin-top:var(--header-h, 80px);}
   .header-logo{font-size:16px;}
   .header-agence{font-size:12px;}
   .mode-switch{display:none !important;}
@@ -324,7 +329,7 @@ td{padding:11px 14px;vertical-align:middle;}
 
   /* Sélecteur conseiller */
   .mobile-conseiller-bar{
-    position:sticky;top:0;z-index:100;
+    position:sticky;top:var(--header-h, 80px);z-index:150;
     background:var(--surface);
     border-bottom:1px solid var(--border);
     padding:10px 14px;
