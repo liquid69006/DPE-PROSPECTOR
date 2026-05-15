@@ -635,7 +635,9 @@ td{padding:11px 14px;vertical-align:middle;}
       </div>
       <div class="mobile-sort-row" id="mobile-zone-row" style="display:none">
         <span class="mobile-sort-label">Zone</span>
-        <div id="mobile-zone-pills" style="display:flex;gap:8px;flex-wrap:wrap;"></div>
+        <select id="mobile-zone-select" onchange="setMobileZone(this.value)"
+          style="flex:1;padding:6px 10px;border-radius:8px;border:1px solid var(--border);background:var(--surface2);color:var(--text);font-size:13px;font-family:inherit;">
+        </select>
       </div>
     </div>
     <div class="mobile-cards" id="mobile-cards"></div>
@@ -1315,26 +1317,33 @@ function setMobileTypo(val) {
   renderCards();
 }
 
-function setMobileZone(val) {
-  mobileZone = val;
-  document.querySelectorAll('.mobile-zone-pill').forEach(b => b.classList.remove('active'));
-  const active = document.querySelector(`.mobile-zone-pill[data-zone='${val}']`);
-  if (active) active.classList.add('active');
-  renderCards();
+function normalizeZone(z) {
+  // Normalise les variantes avec/sans accent pour dedoublonner
+  return (z || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
 }
 
 function buildMobileZone() {
-  const zones = [...new Set(allDpe.map(d => d.zone).filter(Boolean))].sort();
+  // Dedoublonner par valeur normalisee, garder la version avec accents
+  const seen = new Map();
+  allDpe.forEach(d => {
+    if (!d.zone) return;
+    const key = normalizeZone(d.zone);
+    if (!seen.has(key)) seen.set(key, d.zone);
+  });
+  const zones = [...seen.values()].sort();
   const row = document.getElementById('mobile-zone-row');
-  const container = document.getElementById('mobile-zone-pills');
-  if (!row || !container) return;
+  const sel = document.getElementById('mobile-zone-select');
+  if (!row || !sel) return;
   if (zones.length <= 1) { row.style.display = 'none'; return; }
   row.style.display = 'flex';
-  const allZones = ['', ...zones];
-  container.innerHTML = allZones.map(z => 
-    `<button class="mobile-sort-btn mobile-zone-pill${mobileZone === z ? ' active' : ''}" 
-      data-zone="${z}" onclick="setMobileZone('${z}')">${z || 'Toutes'}</button>`
-  ).join('');
+  sel.innerHTML = `<option value=''>Toutes</option>` +
+    zones.map(z => `<option value='${z}'${mobileZone===z?' selected':''}>${z}</option>`).join('');
+}
+
+function setMobileZone(val) {
+  mobileZone = val;
+  // Filtre aussi les variantes sans accent
+  renderCards();
 }
 
 function setMobileSort(col) {
@@ -1390,7 +1399,8 @@ function renderCards() {
 
   // Filtre zone
   if (mobileZone) {
-    data = data.filter(dpe => (dpe.zone || '') === mobileZone);
+    const nz = normalizeZone(mobileZone);
+    data = data.filter(dpe => normalizeZone(dpe.zone) === nz);
   }
 
   // Filtre recherche
