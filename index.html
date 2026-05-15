@@ -291,39 +291,6 @@ td{padding:11px 14px;vertical-align:middle;}
 }
 .dir-cell:hover .dir-tooltip{display:block;}
 
-/* Bouton note desktop */
-.btn-note{
-  background:none;border:1px solid var(--border);border-radius:6px;
-  padding:3px 7px;cursor:pointer;font-size:14px;
-  transition:all .15s;opacity:.5;
-}
-.btn-note:hover{opacity:1;border-color:var(--orange);}
-.btn-note.has-note{opacity:1;border-color:var(--orange);background:rgba(190,175,135,.1);}
-
-/* Modale note desktop */
-.note-modal-overlay{
-  display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);
-  z-index:9999;align-items:center;justify-content:center;
-}
-.note-modal-overlay.open{display:flex;}
-.note-modal{
-  background:var(--surface);border:1px solid var(--border);border-radius:14px;
-  padding:24px;width:420px;max-width:90vw;display:flex;flex-direction:column;gap:14px;
-}
-.note-modal h3{font-size:15px;color:var(--text);font-weight:600;}
-.note-modal textarea{
-  width:100%;padding:10px 14px;border-radius:10px;border:1px solid var(--border);
-  background:var(--surface2);color:var(--text);font-size:14px;font-family:inherit;
-  resize:vertical;min-height:100px;outline:none;
-}
-.note-modal textarea:focus{border-color:var(--orange);}
-.note-modal-actions{display:flex;gap:8px;justify-content:flex-end;}
-.note-modal-actions button{
-  padding:8px 18px;border-radius:8px;border:none;cursor:pointer;font-size:13px;font-family:inherit;
-}
-.btn-note-cancel{background:var(--surface2);color:var(--text2);}
-.btn-note-save{background:var(--orange);color:#1a1008;font-weight:600;}
-
 /* sci nom lien */
 .td-sci-nom strong{display:block;font-weight:600;font-size:13px;}
 .td-sci-nom small{color:var(--text2);font-size:11px;}
@@ -341,8 +308,8 @@ td{padding:11px 14px;vertical-align:middle;}
 ═══════════════════════════════════════ */
 @media(max-width:768px){
 
-  /* Header simplifié */
-  .header-inner{flex-wrap:wrap;gap:8px;padding:10px 14px;}
+  /* Header simplifié — safe area iPhone */
+  .header-inner{flex-wrap:wrap;gap:8px;padding:calc(env(safe-area-inset-top) + 10px) 14px 10px;}
   .header-logo{font-size:16px;}
   .header-agence{font-size:12px;}
   .mode-switch{order:3;width:100%;}
@@ -460,22 +427,6 @@ td{padding:11px 14px;vertical-align:middle;}
     transition:transform .2s;
   }
   .mobile-sort-dir.asc{transform:rotate(180deg);}
-
-/* Notes */
-  .card-note-toggle{
-    width:100%;padding:7px 12px;border-radius:8px;border:1px solid var(--border);
-    background:var(--surface2);color:var(--text2);font-size:12px;
-    text-align:left;cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:6px;
-  }
-  .card-note-toggle.has-note{color:var(--orange);border-color:var(--orange);}
-  .card-note-area{display:none;margin-top:6px;}
-  .card-note-area.open{display:block;}
-  .card-note-area textarea{
-    width:100%;padding:9px 12px;border-radius:8px;border:1px solid var(--border);
-    background:var(--surface2);color:var(--text);font-size:13px;font-family:inherit;
-    resize:none;min-height:72px;outline:none;
-  }
-  .card-note-area textarea:focus{border-color:var(--orange);}
 
 /* Sur desktop, cacher la vue mobile */
 @media(min-width:769px){
@@ -668,13 +619,6 @@ td{padding:11px 14px;vertical-align:middle;}
         <button class="mobile-sort-btn active" id="sort-date" onclick="setMobileSort('date')">Date</button>
         <button class="mobile-sort-btn" id="sort-adresse" onclick="setMobileSort('adresse')">Adresse</button>
         <button class="mobile-sort-dir" id="sort-dir" onclick="toggleMobileSortDir()">&#8595;</button>
-      </div>
-      <div class="mobile-sort-row">
-        <span class="mobile-sort-label">Type</span>
-        <button class="mobile-sort-btn active" id="typ-tous"       onclick="setMobileTypo('tous')">Tous</button>
-        <button class="mobile-sort-btn"         id="typ-maison"    onclick="setMobileTypo('maison')">Maison</button>
-        <button class="mobile-sort-btn"         id="typ-appart"    onclick="setMobileTypo('appartement')">Appart.</button>
-        <button class="mobile-sort-btn"         id="typ-collectif" onclick="setMobileTypo('immeuble')">Collectif</button>
       </div>
     </div>
     <div class="mobile-cards" id="mobile-cards"></div>
@@ -1335,21 +1279,8 @@ function renderTable() {
 //  MOBILE — Cartes DPE
 // ════════════════════════════════════════
 let mobileConseillerActif = '';
-let mobileSortCol  = 'date';        // 'date' | 'adresse'
-let mobileSortDir  = 'desc';        // 'asc'  | 'desc'
-let mobileTypo     = 'tous';        // 'tous' | 'maison' | 'appartement' | 'immeuble'
-
-function setMobileTypo(val) {
-  mobileTypo = val;
-  ['tous','maison','appart','collectif'].forEach(k => {
-    const btn = document.getElementById('typ-' + k);
-    if (btn) btn.classList.remove('active');
-  });
-  const map = {tous:'tous', maison:'maison', appartement:'appart', immeuble:'collectif'};
-  const btn = document.getElementById('typ-' + map[val]);
-  if (btn) btn.classList.add('active');
-  renderCards();
-}
+let mobileSortCol = 'date';   // 'date' | 'adresse'
+let mobileSortDir = 'desc';   // 'asc' | 'desc'
 
 function setMobileSort(col) {
   mobileSortCol = col;
@@ -1395,11 +1326,6 @@ function renderCards() {
       const a = assignments[dpe.numero_dpe] || {};
       return (a.conseiller || 'À attribuer') === mobileConseillerActif;
     });
-  }
-
-  // Filtre typologie
-  if (mobileTypo !== 'tous') {
-    data = data.filter(dpe => (dpe.type_batiment || '').toLowerCase() === mobileTypo);
   }
 
   // Filtre recherche
@@ -1460,70 +1386,8 @@ function renderCards() {
       <div class="card-statut">
         <select onchange="updateAssignment('${id}','statut',this.value)">${statOpts}</select>
       </div>
-      <div class="card-note">
-        <button class="card-note-toggle${a.note ? ' has-note' : ''}"
-          onclick="toggleCardNote('${id}')">
-          📝 ${a.note ? 'Note enregistrée' : 'Ajouter une note'}
-        </button>
-        <div class="card-note-area" id="note-area-${id}">
-          <textarea placeholder="Votre note..."
-            onblur="saveNote('${id}', this.value)">${a.note || ''}</textarea>
-        </div>
-      </div>
     </div>`;
   }).join('');
-}
-
-// ── Note desktop ──
-let noteModalId = null;
-
-function openNoteModal(id) {
-  noteModalId = id;
-  const a = assignments[id] || {};
-  const dpe = allDpe.find(d => d.numero_dpe === id);
-  document.getElementById('note-modal-title').textContent = '📝 ' + (dpe?.adresse_ban || id);
-  document.getElementById('note-modal-textarea').value = a.note || '';
-  document.getElementById('note-modal-overlay').classList.add('open');
-  setTimeout(() => document.getElementById('note-modal-textarea').focus(), 50);
-}
-
-function closeNoteModal(e) {
-  if (e && e.target !== document.getElementById('note-modal-overlay')) return;
-  document.getElementById('note-modal-overlay').classList.remove('open');
-  noteModalId = null;
-}
-
-function saveNoteModal() {
-  if (!noteModalId) return;
-  const val = document.getElementById('note-modal-textarea').value.trim();
-  updateAssignment(noteModalId, 'note', val);
-  // Mettre à jour l'icône dans le tableau
-  document.querySelectorAll('.btn-note').forEach(btn => {
-    if (btn.getAttribute('onclick')?.includes(noteModalId)) {
-      btn.classList.toggle('has-note', !!val);
-      btn.title = val || 'Ajouter une note';
-    }
-  });
-  document.getElementById('note-modal-overlay').classList.remove('open');
-  noteModalId = null;
-}
-
-// ── Note mobile ──
-function toggleCardNote(id) {
-  const area = document.getElementById('note-area-' + id);
-  if (!area) return;
-  area.classList.toggle('open');
-  if (area.classList.contains('open')) area.querySelector('textarea').focus();
-}
-
-function saveNote(id, value) {
-  updateAssignment(id, 'note', value.trim());
-  // Mettre à jour le libellé du bouton
-  const btn = document.querySelector(`#note-area-${id}`)?.previousElementSibling;
-  if (btn) {
-    btn.textContent = value.trim() ? '📝 Note enregistrée' : '📝 Ajouter une note';
-    btn.classList.toggle('has-note', !!value.trim());
-  }
 }
 
 function renderRow(dpe) {
@@ -1576,10 +1440,6 @@ function renderRow(dpe) {
     <td>${isRen?'<span class="badge-type renouv">🔄 Renouvellement</span>':'<span class="badge-type premier">🆕 Premier</span>'}</td>
     <td><select class="statut-select" onchange="updateAssignment('${id}','statut',this.value)">${statOpts}</select></td>
     <td><select class="conseiller-select" onchange="updateAssignment('${id}','conseiller',this.value)">${consOpts}</select></td>
-    <td>
-      <button class="btn-note${a.note?' has-note':''}" title="${a.note||'Ajouter une note'}"
-        onclick="openNoteModal('${id}')">📝</button>
-    </td>
     <td>${(()=>{
       if(dpe.geopoint){
         const [lat,lon]=dpe.geopoint.split(',');
@@ -2578,18 +2438,6 @@ window.addEventListener('DOMContentLoaded', async () => {
   showLogin();
 });
 </script>
-
-<!-- Modale note desktop -->
-<div class="note-modal-overlay" id="note-modal-overlay" onclick="closeNoteModal(event)">
-  <div class="note-modal">
-    <h3 id="note-modal-title">Note</h3>
-    <textarea id="note-modal-textarea" placeholder="Votre note sur ce bien..."></textarea>
-    <div class="note-modal-actions">
-      <button class="btn-note-cancel" onclick="closeNoteModal()">Annuler</button>
-      <button class="btn-note-save" onclick="saveNoteModal()">Enregistrer</button>
-    </div>
-  </div>
-</div>
 
 <!-- PWA Service Worker -->
 <script>
