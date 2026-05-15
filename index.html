@@ -308,8 +308,9 @@ td{padding:11px 14px;vertical-align:middle;}
 ═══════════════════════════════════════ */
 @media(max-width:768px){
 
-  /* Header simplifié — safe area iPhone */
-  .header-inner{flex-wrap:wrap;gap:8px;padding:calc(env(safe-area-inset-top) + 10px) 14px 10px;}
+  /* Header mobile — safe area iPhone */
+  header{padding-top:env(safe-area-inset-top);}
+  .header-inner{flex-wrap:wrap;gap:8px;padding:10px 14px;height:auto;}
   .header-logo{font-size:16px;}
   .header-agence{font-size:12px;}
   .mode-switch{order:3;width:100%;}
@@ -323,7 +324,7 @@ td{padding:11px 14px;vertical-align:middle;}
 
   /* Sélecteur conseiller */
   .mobile-conseiller-bar{
-    position:sticky;top:0;z-index:100;
+    position:sticky;top:var(--header-h, 0px);z-index:99;
     background:var(--surface);
     border-bottom:1px solid var(--border);
     padding:10px 14px;
@@ -2444,6 +2445,14 @@ window.addEventListener('DOMContentLoaded', async () => {
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/sw.js');
   }
+
+  // Safe area : positionne la barre sticky sous le header
+  function setHeaderHeight() {
+    const h = document.querySelector('header')?.offsetHeight || 0;
+    document.documentElement.style.setProperty('--header-h', h + 'px');
+  }
+  setHeaderHeight();
+  window.addEventListener('resize', setHeaderHeight);
 </script>
 </body>
 </html>
