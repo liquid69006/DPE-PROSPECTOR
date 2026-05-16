@@ -698,6 +698,7 @@ td{padding:11px 14px;vertical-align:middle;}
         <th>Statut SCI</th>
         <th class="sortable" onclick="sortTableSci('statut')">Prospection <span class="si"></span></th>
         <th class="sortable" onclick="sortTableSci('conseiller')">Conseiller <span class="si"></span></th>
+        <th>Dernier courrier</th>
       </tr></thead>
       <tbody id="sci-tbody"></tbody>
     </table>
@@ -1825,6 +1826,7 @@ function switchMode(mode) {
 let allSci         = [];
 let sciAssignments = {};
 let sciSortCurrent = {col:'zone', dir:'asc'};
+let derniersCourriers = {};   // { "<siren>": "<ISO date>" } — envois live uniquement
 
 async function loadSciData() {
   try {
@@ -1894,6 +1896,17 @@ async function loadSciData() {
       const o = document.createElement('option'); o.value = z; o.textContent = z;
       selZoneSci.appendChild(o);
     });
+
+    // Dates du dernier courrier réel (envois live uniquement)
+    try {
+      const dcResp = await fetch(`${API_URL}/dernierCourrier/${agenceId}`, {
+        headers:{'Authorization':`Bearer ${authToken}`},
+      });
+      if (dcResp.ok) {
+        const dcData = await dcResp.json();
+        derniersCourriers = dcData.dates || {};
+      }
+    } catch(e) {}
 
     renderTableSci();
   } catch(e) {
@@ -1997,6 +2010,7 @@ function renderRowSci(sci) {
       : '<span class="badge-sci-inactif">❌ Inactive</span>'}</td>
     <td><select class="statut-select" onchange="updateSciAssignment('${id}','statut',this.value)">${statOpts}</select></td>
     <td><select class="conseiller-select" onchange="updateSciAssignment('${id}','conseiller',this.value)">${consOpts}</select></td>
+    <td>${derniersCourriers[sci.sci_siren] ? fmtDate(String(derniersCourriers[sci.sci_siren]).slice(0,10)) : '—'}</td>
   </tr>`;
 }
 
@@ -2442,6 +2456,7 @@ async function ouvrirApercuCourriers(sess, win) {
       },
       body: JSON.stringify({
         docx_base64: docxBase64,
+        siren: firstValid.sci.sci_siren,
         to: {
           name: firstValid.sci.sci_nom,
           address_line1: firstValid.siege.adresse,
@@ -2662,6 +2677,7 @@ async function demarrerEnvoiMSBApercu(sess, items, win, today) {
         },
         body: JSON.stringify({
           docx_base64: docxBase64,
+          siren: it.sci.sci_siren,
           to: {
             name: it.sci.sci_nom,
             address_line1: it.siege.adresse,

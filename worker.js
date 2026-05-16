@@ -797,7 +797,7 @@ async function handleRequest(request, env) {
       if (!msbKey) return err('Clé API MySendingBox non configurée', 400);
 
       const body = await request.json();
-      const { html, docx_base64, to, postage_type, color, both_sides } = body;
+      const { html, docx_base64, to, postage_type, color, both_sides, siren } = body;
       if ((!html && !docx_base64) || !to) return err('Paramètres manquants', 400);
 
       // Récupérer l'expéditeur stocké
@@ -884,10 +884,39 @@ async function handleRequest(request, env) {
         }
         const msbData = await msbResp.json();
         if (!msbResp.ok) return err(`MSB ${msbResp.status}: ${JSON.stringify(msbData)}`, 502);
-        return ok({ id: msbData._id, status: msbData.status?.name, file_for_corus: msbData.file_for_corus, file: msbData.file });
+
+        // Tracer uniquement les envois réels (clé live), jamais les tests.
+        if (msbData.live_mode === true && siren) {
+          await env.DPE_KV.put(`dernierCourrier:${agenceId}:${siren}`, new Date().toISOString());
+        }
+
+        return ok({ id: msbData._id, status: msbData.status?.name, live_mode: msbData.live_mode === true, file_for_corus: msbData.file_for_corus, file: msbData.file });
       } catch(e) {
         return err('Erreur réseau MySendingBox', 502);
       }
+    }
+
+    // ── GET /dernierCourrier/:agence ── date du dernier courrier réel par SCI ──
+    const dcMatch = path.match(/^\/dernierCourrier\/([a-z0-9-]+)$/);
+    if (dcMatch && method === 'GET') {
+      const agenceId = dcMatch[1];
+      const [, authErr] = await requireAuth(agenceId);
+      if (authErr) return authErr;
+
+      const prefix = `dernierCourrier:${agenceId}:`;
+      const dates  = {};
+      let cursor;
+      do {
+        const listed = await env.DPE_KV.list({ prefix, cursor });
+        for (const k of listed.keys) {
+          const siren = k.name.slice(prefix.length);
+          const v = await env.DPE_KV.get(k.name);
+          if (v) dates[siren] = v;
+        }
+        cursor = listed.list_complete ? null : listed.cursor;
+      } while (cursor);
+
+      return ok({ dates });
     }
 
         // ── /lib/:file ── proxy GitHub Raw pour libs JS (évite CSP sandbox) ──
