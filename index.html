@@ -679,6 +679,12 @@ td{padding:11px 14px;vertical-align:middle;}
         <option>Ne plus contacter</option>
       </select>
       <select id="sci-filter-conseiller"><option value="">Tous conseillers</option></select>
+      <select id="sci-filter-biens">
+        <option value="">Tous portefeuilles</option>
+        <option value="2">2+ biens</option>
+        <option value="5">5+ biens</option>
+        <option value="10">10+ biens</option>
+      </select>
       <button class="btn-reset" id="btn-filtre-etranger" data-on="0" onclick="toggleFiltreEtranger()">🌍 SCI à l'étranger</button>
       <button class="btn-reset" onclick="resetFiltresSci()">✕ Réinitialiser</button>
       <button class="btn-reset" id="btn-courrier" onclick="ouvrirModalCourrier()" style="border-color:#BEAF87;color:#BEAF87;">📨 Courrier</button>
@@ -1989,6 +1995,7 @@ function renderRowSci(sci) {
     data-statut="${statut}"
     data-conseiller="${conseil}"
     data-sci-nom="${(sci.sci_nom||'').replace(/"/g,'&quot;')}"
+    data-biens="${sci.nb_biens_total||1}"
     data-search="${adresseNorm} ${sciNomNorm} ${dirigeants}">
     <td><span class="badge-zone">${zone||'—'}</span></td>
     <td class="td-sci-nom">
@@ -2005,6 +2012,7 @@ function renderRowSci(sci) {
     </td>
     <td>${renderDirigeant(sci.gerants, 0)}</td>
     <td>${renderDirigeant(sci.gerants, 1)}</td>
+    <td style="text-align:center;">${badgeBiens(sci.nb_biens_total)}</td>
     <td>${actif
       ? '<span class="badge-sci-actif">✅ Active</span>'
       : '<span class="badge-sci-inactif">❌ Inactive</span>'}</td>
@@ -2012,6 +2020,14 @@ function renderRowSci(sci) {
     <td><select class="conseiller-select" onchange="updateSciAssignment('${id}','conseiller',this.value)">${consOpts}</select></td>
     <td>${derniersCourriers[sci.sci_siren] ? fmtDate(String(derniersCourriers[sci.sci_siren]).slice(0,10)) : '—'}</td>
   </tr>`;
+}
+
+function badgeBiens(n) {
+  const nb = parseInt(n) || 1;
+  if (nb >= 10) return `<span style="background:#dc2626;color:#fff;padding:2px 7px;border-radius:10px;font-size:11px;font-weight:700;">?? ${nb}</span>`;
+  if (nb >= 5)  return `<span style="background:#ea580c;color:#fff;padding:2px 7px;border-radius:10px;font-size:11px;font-weight:700;">?? ${nb}</span>`;
+  if (nb >= 2)  return `<span style="background:#d97706;color:#fff;padding:2px 7px;border-radius:10px;font-size:11px;font-weight:700;">?? ${nb}</span>`;
+  return `<span style="color:var(--text2);font-size:11px;">?? 1</span>`;
 }
 
 function updateSciAssignment(id, key, value) {
@@ -2046,6 +2062,8 @@ function applyFiltresSci() {
     if (actif      && row.dataset.actif !== actif) ok = false;
     if (statut     && row.dataset.statut !== statut) ok = false;
     if (conseiller && row.dataset.conseiller !== conseiller) ok = false;
+    const minBiens = document.getElementById('sci-filter-biens')?.value;
+    if (minBiens && (parseInt(row.dataset.biens)||1) < parseInt(minBiens)) ok = false;
     if (onlyEtranger && ok) {
       const sci = allSci.find(s => s.sci_nom === row.dataset.sciNom);
       const sg  = sci && sci.siege_social;
@@ -2077,7 +2095,7 @@ function toggleFiltreEtranger() {
 }
 
 function resetFiltresSci() {
-  ['sci-search','sci-filter-zone','sci-filter-actif','sci-filter-statut','sci-filter-conseiller']
+  ['sci-search','sci-filter-zone','sci-filter-actif','sci-filter-statut','sci-filter-conseiller','sci-filter-biens']
     .forEach(id => { const el = document.getElementById(id); if(el) el.value = ''; });
   const btnEtr = document.getElementById('btn-filtre-etranger');
   if (btnEtr) setBtnEtrangerVisuel(btnEtr, false);
@@ -2112,7 +2130,7 @@ function sortTableSci(col) {
 }
 
 // Filtres live SCI
-['sci-search','sci-filter-zone','sci-filter-actif','sci-filter-statut','sci-filter-conseiller']
+['sci-search','sci-filter-zone','sci-filter-actif','sci-filter-statut','sci-filter-conseiller','sci-filter-biens']
   .forEach(id => {
     const el = document.getElementById(id); if (!el) return;
     if (!el) return;
