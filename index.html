@@ -1957,7 +1957,7 @@ var courrierTemplateBuffer = null; // ArrayBuffer du .docx uploadé
 function parseSiegeSocial(siege) {
   if (!siege) return { adresse: '', cp: '', ville: '' };
   // Trouver tous les codes postaux français (01000-99999) dans la chaîne
-  const allCPs = [...siege.matchAll(/\b(?:0[1-9]|[1-8]\d|9[0-5]|97[1-6])\d{3}\b/g)];
+  const allCPs = [...siege.matchAll(/\b(?:(?:0[1-9]|[1-8]\d|9[0-5])\d{3}|97[1-6]\d{2})\b/g)];
   if (!allCPs.length) return { adresse: siege.slice(0, 60), cp: '', ville: '' };
   // Prendre le dernier CP trouvé (cas d'adresses multiples collées)
   const lastCP = allCPs[allCPs.length - 1];
