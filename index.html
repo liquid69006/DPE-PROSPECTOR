@@ -458,7 +458,6 @@ td{padding:11px 14px;vertical-align:middle;}
 </style>
   <script src="https://dpe-prospector-api.yann-bufferne.workers.dev/lib/pizzip.min.js"></script>
   <script src="https://dpe-prospector-api.yann-bufferne.workers.dev/lib/docxtemplater.min.js"></script>
-  <script src="https://dpe-prospector-api.yann-bufferne.workers.dev/lib/mammoth.browser.min.js"></script>
   <!-- PWA -->
   <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#BEAF87">
@@ -2411,20 +2410,13 @@ async function ouvrirApercuCourriers(sess, win) {
     return;
   }
 
-  // Le logo (image du modèle Word, embarquée en base64 par mammoth) est
-  // dédupliqué : référencé une seule fois en CSS pour l'aperçu.
-  const sample     = await generateCourrierHTMLFromDocx(liste[0], today);
-  const styleBlock = (sample.match(/<style[\s\S]*?<\/style>/i) || [''])[0];
-  const logoM      = sample.match(/<img[^>]*\bsrc=["'](data:image\/[^"']+)["']/i);
-  const logoUri    = logoM ? logoM[1] : '';
-
-  const items = await Promise.all(liste.map(async sci => {
+  // Aperçu simplifié : on ne peut pas rendre un .docx dans le navigateur.
+  // Une carte par SCI (nom + adresse + statut) ; le .docx part tel quel.
+  const items = liste.map(sci => {
     const siege = parseSiegeSocial(sci.siege_social);
     const valid = !!(siege.cp && siege.ville);
-    let body = await generateCourrierHTMLFromDocx(sci, today);
-    body = body.replace(/<img\b[^>]*>/i, '<span class="c21logo"></span>');
-    return { sci, siege, valid, body };
-  }));
+    return { sci, siege, valid };
+  });
 
   const sendable = items.filter(x => x.valid).length;
 
@@ -2432,19 +2424,26 @@ async function ouvrirApercuCourriers(sess, win) {
     const chip = it.valid
       ? '<div class="sheet-status" id="st-' + i + '">À envoyer</div>'
       : '<div class="sheet-status warn" id="st-' + i + '">⚠ Adresse incomplète — non envoyé</div>';
+    const nom     = escHtml(it.sci.sci_nom || '—');
+    const cpVille = ((it.siege.cp || '') + ' ' + (it.siege.ville || '')).trim();
+    const adresse = [it.siege.adresse, cpVille].filter(Boolean).map(escHtml).join('<br>');
     return '<section class="courrier-sheet' + (it.valid ? '' : ' invalid') + '">'
-      + chip + it.body + '</section>';
+      + chip
+      + '<div class="sci-card"><div class="sci-nom">' + nom + '</div>'
+      + '<div class="sci-adr">' + (adresse || '<em>Adresse incomplète</em>') + '</div></div>'
+      + '</section>';
   }).join('');
 
   const DOC =
       '<!doctype html><html lang="fr"><head><meta charset="utf-8">'
     + '<title>Aperçu — ' + items.length + ' courrier(s)</title>'
-    + styleBlock
     + '<style>'
     +   'html,body{margin:0;background:#525659;}'
     +   'body{padding:0!important;}'
-    +   ".c21logo{display:block;width:70px;height:70px;margin:auto;"
-    +     "background:url('" + logoUri + "') no-repeat center/contain;}"
+    +   '.sci-card{display:flex;flex-direction:column;gap:14px;justify-content:center;'
+    +     'align-items:center;height:100%;text-align:center;font-family:Arial,sans-serif;}'
+    +   '.sci-nom{font-size:20px;font-weight:700;color:#111;}'
+    +   '.sci-adr{font-size:14px;color:#374151;line-height:1.6;}'
     +   '.msb-toolbar{position:fixed;top:0;left:0;right:0;z-index:99;background:#1f2937;'
     +     'color:#fff;display:flex;align-items:center;gap:14px;padding:10px 18px;'
     +     'font-family:Arial,sans-serif;font-size:13px;box-shadow:0 2px 8px rgba(0,0,0,.4);}'
@@ -2490,6 +2489,7 @@ async function ouvrirApercuCourriers(sess, win) {
     +   '<h2>📮 Aperçu des courriers</h2>'
     +   '<span class="msb-info">' + items.length + ' courrier(s) — '
     +   sendable + ' envoyable(s)</span>'
+    +   '<span class="msb-info">📄 Aperçu simplifié — le courrier Word sera envoyé tel quel à MySendingBox</span>'
     +   '<div class="msb-opts">'
     +     '<label>Affranchissement '
     +       '<select id="msb-postage">'
@@ -2617,9 +2617,9 @@ async function demarrerEnvoiMSBApercu(sess, items, win, today) {
     if (chip) { chip.textContent = '⏳ Envoi…'; chip.className = 'sheet-status pending'; }
 
     // Passer par le Worker pour ne pas exposer la clé API.
-    // Le HTML complet (logo inclus) est régénéré ici pour MySendingBox.
+    // Le .docx rendu (base64) est envoyé tel quel à MySendingBox.
     try {
-      const courrierHtml = await generateCourrierHTMLFromDocx(it.sci, today);
+      const docxBase64 = await generateCourrierDocxBase64(it.sci, today);
       const resp = await fetch(`${API_URL}/msb-send/${sess.agence}`, {
         method: 'POST',
         headers: {
@@ -2627,7 +2627,7 @@ async function demarrerEnvoiMSBApercu(sess, items, win, today) {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          html: courrierHtml,
+          docx_base64: docxBase64,
           to: {
             name: it.sci.sci_nom,
             address_line1: it.siege.adresse,
@@ -2780,12 +2780,9 @@ async function genererCourrier() {
 // ════════════════════════════════════════
 //  GÉNÉRATION HTML COURRIER (pour MySendingBox)
 // ════════════════════════════════════════
-async function generateCourrierHTMLFromDocx(sci, today) {
+async function generateCourrierDocxBase64(sci, today) {
   if (!courrierTemplateBuffer) {
     throw new Error('Veuillez d\'abord charger un modèle Word');
-  }
-  if (!window.mammoth || typeof window.mammoth.convertToHtml !== 'function') {
-    throw new Error('Bibliothèque mammoth non chargée');
   }
 
   const siege  = parseSiegeSocial(sci.siege_social);
@@ -2814,10 +2811,8 @@ async function generateCourrierHTMLFromDocx(sci, today) {
   xml = xml.replace(/Monsieur ou Madame/g, 'M. ou Mme.');
   doc.getZip().file('word/document.xml', xml);
 
-  // Conversion du .docx rendu → HTML via mammoth
-  const arrayBuffer = doc.getZip().generate({ type: 'arraybuffer' });
-  const result = await window.mammoth.convertToHtml({ arrayBuffer });
-  return result.value;
+  // .docx rendu renvoyé en base64 — envoyé tel quel à MySendingBox
+  return doc.getZip().generate({ type: 'base64' });
 }
 
 function escHtml(str) {
