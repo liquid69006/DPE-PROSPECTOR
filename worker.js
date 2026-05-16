@@ -605,6 +605,14 @@ async function handleRequest(request, env) {
           liste.filter(c => c && c !== "À attribuer").forEach(c => merged.add(c));
         }
         noms = [...merged];
+      } else if (agenceId === "bagot") {
+        const merged = new Set();
+        for (const ag of (AGENCES_CONFIG["bagot"].dpe_agences || [])) {
+          const raw = await env.DPE_KV.get(`conseillers:${ag}`);
+          const liste = raw ? JSON.parse(raw) : (AGENCES_CONFIG[ag]?.conseillers_defaut || []);
+          liste.filter(c => c && c !== "À attribuer").forEach(c => merged.add(c));
+        }
+        noms = [...merged];
       } else {
         const raw = await env.DPE_KV.get(`conseillers:${agenceId}`);
         const liste = raw ? JSON.parse(raw) : (cfg.conseillers_defaut || []);
@@ -659,11 +667,24 @@ async function handleRequest(request, env) {
       const cfg = AGENCES_CONFIG[agenceId];
       const isLopez = payload.agence === "lopez";
       const lopezAgences = AGENCES_CONFIG["lopez"].dpe_agences;
+      const isBagot = payload.agence === "bagot";
+      const bagotAgences = AGENCES_CONFIG["bagot"].dpe_agences;
 
       if (method === "GET") {
         if (isLopez) {
           let merged = [{ nom: "À attribuer", agence: null }];
           for (const ag of lopezAgences) {
+            const raw = await env.DPE_KV.get(`conseillers:${ag}`);
+            const liste = raw ? JSON.parse(raw) : (AGENCES_CONFIG[ag]?.conseillers_defaut || []);
+            liste.filter(c => c && c !== "À attribuer").forEach(c => {
+              if (!merged.find(m => m.nom === c)) merged.push({ nom: c, agence: ag });
+            });
+          }
+          return json({ conseillers: merged.map(m => m.nom), conseillers_detail: merged });
+        }
+        if (isBagot) {
+          let merged = [{ nom: "À attribuer", agence: null }];
+          for (const ag of bagotAgences) {
             const raw = await env.DPE_KV.get(`conseillers:${ag}`);
             const liste = raw ? JSON.parse(raw) : (AGENCES_CONFIG[ag]?.conseillers_defaut || []);
             liste.filter(c => c && c !== "À attribuer").forEach(c => {
@@ -693,6 +714,20 @@ async function handleRequest(request, env) {
           await env.DPE_KV.put(`conseillers:motte-picquet`, JSON.stringify(motteList));
           await env.DPE_KV.put(`conseillers:pernety`, JSON.stringify(pernetyList));
           return json({ ok: true, conseillers: [...motteList, ...pernetyList.filter(c => c !== "À attribuer")] });
+        }
+
+        if (isBagot) {
+          if (!Array.isArray(body.conseillers_detail)) return err("conseillers_detail requis pour bagot", 400);
+          const houlgateList = ["À attribuer"];
+          const villersList = ["À attribuer"];
+          for (const item of body.conseillers_detail) {
+            if (!item.nom || item.nom === "À attribuer") continue;
+            if (item.agence === "houlgate") houlgateList.push(item.nom);
+            else if (item.agence === "villers") villersList.push(item.nom);
+          }
+          await env.DPE_KV.put(`conseillers:houlgate`, JSON.stringify(houlgateList));
+          await env.DPE_KV.put(`conseillers:villers`, JSON.stringify(villersList));
+          return json({ ok: true, conseillers: [...houlgateList, ...villersList.filter(c => c !== "À attribuer")] });
         }
 
         const list = ["À attribuer", ...body.conseillers.filter(c => c && c !== "À attribuer")];
