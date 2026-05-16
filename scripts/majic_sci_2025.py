@@ -181,19 +181,19 @@ def geocoder_ban_batch(adresses):
                     zones = (zones + [None] * n)[:n]
                 return lons, lats, zones
             except ERREURS_RESEAU as e:
-                print(f"     ⚠ Échec lot ({n} adr.) tentative {tentative + 1}/3 : "
+                print(f"     [!] Échec lot ({n} adr.) tentative {tentative + 1}/3 : "
                       f"{type(e).__name__}")
                 if tentative < 2:
                     time.sleep(2 * (tentative + 1))
         # Échecs répétés : sous-découper le lot fautif
         if n > 50:
             mid = n // 2
-            print(f"     ↳ sous-découpage du lot en {mid} + {n - mid}")
+            print(f"     -> sous-découpage du lot en {mid} + {n - mid}")
             g1 = _traiter(lot[:mid])
             g2 = _traiter(lot[mid:])
             return g1[0] + g2[0], g1[1] + g2[1], g1[2] + g2[2]
         # Lot irrécupérable : placeholders pour préserver l'alignement
-        print(f"     ✗ Lot abandonné ({n} adr.) — coordonnées vides")
+        print(f"     [x] Lot abandonné ({n} adr.) — coordonnées vides")
         return [None] * n, [None] * n, [None] * n
 
     lons_all, lats_all, zones_all = [], [], []
@@ -322,7 +322,7 @@ def main(fichier):
     print(f"    Total SCI  : {len(resultats)}")
     print(f"    Actives    : {actives}")
     print(f"    Inactives  : {len(resultats) - actives}")
-    print(f"    SCI multi-biens : {multi_cibles} ← portefeuilles à cibler")
+    print(f"    SCI multi-biens : {multi_cibles} <- portefeuilles à cibler")
 
     # 6. Export JSON (pour DPE Prospector)
     import os
@@ -334,7 +334,7 @@ def main(fichier):
             "derniere_maj": datetime.now().isoformat(),
             "sci":          resultats,
         }, f, ensure_ascii=False, indent=2)
-    print(f"\n  Export JSON → {out_json}")
+    print(f"\n  Export JSON -> {out_json}")
 
     # 7. Export CSV lisible
     max_dir = max((len(r["gerants"]) for r in resultats), default=0)
@@ -362,7 +362,7 @@ def main(fichier):
                 row[f"dirigeant_{i}"] = g["nom"]
                 row[f"qualite_{i}"]   = g["qualite"]
             writer.writerow(row)
-    print(f"  Export CSV  → {out_csv}")
+    print(f"  Export CSV  -> {out_csv}")
     print("=" * 60)
 
 # ─────────────────────────────────────────────────────────────────
