@@ -2386,64 +2386,99 @@ async function ouvrirApercuCourriers(sess, win) {
   const liste = filtrerSciPourCourrier();
   const today = new Date().toLocaleDateString('fr-FR', {day:'numeric', month:'long', year:'numeric'});
 
-  if (!liste.length) {
+  const errPage = function (msg) {
     win.document.open();
-    win.document.write('<!doctype html><meta charset="utf-8"><title>Aucun courrier</title>'
+    win.document.write('<!doctype html><meta charset="utf-8"><title>Aperçu</title>'
       + '<body style="font-family:Arial,sans-serif;background:#525659;color:#fff;'
-      + 'text-align:center;padding-top:90px;margin:0;">❌ Aucune SCI sélectionnée.'
+      + 'text-align:center;padding-top:90px;margin:0;">' + msg
       + '<br><br><button onclick="window.close()" '
       + 'style="padding:8px 16px;cursor:pointer;">Fermer</button></body>');
     win.document.close();
-    fermerMSB();
-    return;
-  }
+  };
 
-  if (!courrierTemplateBuffer) {
-    win.document.open();
-    win.document.write('<!doctype html><meta charset="utf-8"><title>Modèle manquant</title>'
-      + '<body style="font-family:Arial,sans-serif;background:#525659;color:#fff;'
-      + 'text-align:center;padding-top:90px;margin:0;">❌ Veuillez d\'abord charger un modèle Word.'
-      + '<br><br><button onclick="window.close()" '
-      + 'style="padding:8px 16px;cursor:pointer;">Fermer</button></body>');
-    win.document.close();
-    fermerMSB();
-    return;
-  }
+  if (!liste.length)           { errPage('❌ Aucune SCI sélectionnée.'); fermerMSB(); return; }
+  if (!courrierTemplateBuffer) { errPage('❌ Veuillez d\'abord charger un modèle Word.'); fermerMSB(); return; }
 
-  // Aperçu simplifié : on ne peut pas rendre un .docx dans le navigateur.
-  // Une carte par SCI (nom + adresse + statut) ; le .docx part tel quel.
   const items = liste.map(sci => {
     const siege = parseSiegeSocial(sci.siege_social);
     const valid = !!(siege.cp && siege.ville);
     return { sci, siege, valid };
   });
+  const sendable   = items.filter(x => x.valid).length;
+  const firstValid = items.find(x => x.valid);
+  if (!firstValid) {
+    errPage('❌ Aucune adresse valide — impossible de générer un aperçu.');
+    fermerMSB();
+    return;
+  }
 
-  const sendable = items.filter(x => x.valid).length;
+  // 1) État de chargement pendant la génération de l'aperçu MSB
+  win.document.open();
+  win.document.write('<!doctype html><meta charset="utf-8"><title>Aperçu en cours…</title>'
+    + '<body style="font-family:Arial,sans-serif;background:#525659;color:#fff;'
+    + 'display:flex;flex-direction:column;align-items:center;justify-content:center;'
+    + 'height:100vh;margin:0;gap:14px;">'
+    + '<div style="font-size:34px;">📄</div>'
+    + '<div>⏳ Génération de l\'aperçu MySendingBox…</div>'
+    + '<div style="opacity:.7;font-size:13px;">Envoi du 1er courrier pour prévisualisation</div>'
+    + '</body>');
+  win.document.close();
 
-  const sheets = items.map((it, i) => {
-    const chip = it.valid
-      ? '<div class="sheet-status" id="st-' + i + '">À envoyer</div>'
-      : '<div class="sheet-status warn" id="st-' + i + '">⚠ Adresse incomplète — non envoyé</div>';
-    const nom     = escHtml(it.sci.sci_nom || '—');
-    const cpVille = ((it.siege.cp || '') + ' ' + (it.siege.ville || '')).trim();
-    const adresse = [it.siege.adresse, cpVille].filter(Boolean).map(escHtml).join('<br>');
-    return '<section class="courrier-sheet' + (it.valid ? '' : ' invalid') + '">'
-      + chip
-      + '<div class="sci-card"><div class="sci-nom">' + nom + '</div>'
-      + '<div class="sci-adr">' + (adresse || '<em>Adresse incomplète</em>') + '</div></div>'
-      + '</section>';
-  }).join('');
+  // 2-4) docx du 1er SCI valide → MSB → URL du PDF d'aperçu
+  // Options par défaut (la barre d'outils n'existe pas encore à ce stade).
+  const postage_type = 'ecopli';
+  const color        = 'color';
+  const both_sides   = false;
+  let pdfUrl = null, errMsg = null;
+  try {
+    const docxBase64 = await generateCourrierDocxBase64(firstValid.sci, today);
+    const resp = await fetch(`${API_URL}/msb-send/${sess.agence}`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${sess.token}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        docx_base64: docxBase64,
+        to: {
+          name: firstValid.sci.sci_nom,
+          address_line1: firstValid.siege.adresse,
+          zip_code: firstValid.siege.cp,
+          city: firstValid.siege.ville,
+          country: 'France',
+        },
+        postage_type,
+        color,
+        both_sides,
+      }),
+    });
+    if (resp.ok) {
+      const data = await resp.json().catch(() => ({}));
+      pdfUrl = (data.file_for_corus && data.file_for_corus.url) || (data.file && data.file.url) || null;
+      if (!pdfUrl) errMsg = "MySendingBox n'a pas renvoyé d'aperçu PDF.";
+    } else {
+      const e = await resp.json().catch(() => ({}));
+      errMsg = 'Erreur MySendingBox : ' + (e.error || ('HTTP ' + resp.status));
+    }
+  } catch (e) {
+    errMsg = (e && e.message) ? e.message : 'Erreur réseau MySendingBox.';
+  }
 
+  if (win.closed) { fermerMSB(); return; }
+
+  // 6) Erreur MSB → message + bouton fermer
+  if (errMsg) {
+    errPage('❌ ' + escHtml(errMsg));
+    fermerMSB();
+    return;
+  }
+
+  // 5) Fenêtre d'aperçu : barre d'outils + iframe PDF (aperçu réel MSB)
   const DOC =
       '<!doctype html><html lang="fr"><head><meta charset="utf-8">'
     + '<title>Aperçu — ' + items.length + ' courrier(s)</title>'
     + '<style>'
-    +   'html,body{margin:0;background:#525659;}'
-    +   'body{padding:0!important;}'
-    +   '.sci-card{display:flex;flex-direction:column;gap:14px;justify-content:center;'
-    +     'align-items:center;height:100%;text-align:center;font-family:Arial,sans-serif;}'
-    +   '.sci-nom{font-size:20px;font-weight:700;color:#111;}'
-    +   '.sci-adr{font-size:14px;color:#374151;line-height:1.6;}'
+    +   'html,body{margin:0;height:100%;background:#525659;overflow:hidden;}'
     +   '.msb-toolbar{position:fixed;top:0;left:0;right:0;z-index:99;background:#1f2937;'
     +     'color:#fff;display:flex;align-items:center;gap:14px;padding:10px 18px;'
     +     'font-family:Arial,sans-serif;font-size:13px;box-shadow:0 2px 8px rgba(0,0,0,.4);}'
@@ -2467,29 +2502,14 @@ async function ouvrirApercuCourriers(sess, win) {
     +     'border-radius:5px;overflow:hidden;}'
     +   '#msb-bar{height:100%;width:0;background:#16a34a;transition:width .25s;}'
     +   '#msb-stat{font-size:12px;}'
-    +   '.sheets-wrap{padding:74px 0 50px;}'
-    +   '.courrier-sheet{position:relative;width:210mm;min-height:297mm;'
-    +     'margin:0 auto 26px;background:#fff;box-shadow:0 3px 18px rgba(0,0,0,.5);'
-    +     'box-sizing:border-box;padding:15mm;}'
-    +   '.courrier-sheet.invalid{outline:3px solid #f59e0b;}'
-    +   '.sheet-status{position:absolute;top:10px;right:10px;'
-    +     'font:700 11px/1 Arial,sans-serif;padding:6px 10px;border-radius:999px;'
-    +     'background:#e5e7eb;color:#374151;z-index:5;}'
-    +   '.sheet-status.ok{background:#16a34a;color:#fff;}'
-    +   '.sheet-status.fail{background:#dc2626;color:#fff;}'
-    +   '.sheet-status.pending{background:#2563eb;color:#fff;}'
-    +   '.sheet-status.warn{background:#f59e0b;color:#fff;}'
-    +   '@media print{.msb-toolbar,.sheet-status{display:none!important;}'
-    +     'html,body{background:#fff;}.sheets-wrap{padding:0!important;}'
-    +     '.courrier-sheet{box-shadow:none!important;margin:0!important;'
-    +     'width:auto!important;min-height:auto!important;outline:none!important;'
-    +     'page-break-after:always;}}'
+    +   '.msb-frame{padding-top:56px;box-sizing:border-box;}'
     + '</style></head><body>'
     + '<div class="msb-toolbar">'
-    +   '<h2>📮 Aperçu des courriers</h2>'
+    +   '<h2>📮 Aperçu MySendingBox</h2>'
     +   '<span class="msb-info">' + items.length + ' courrier(s) — '
     +   sendable + ' envoyable(s)</span>'
-    +   '<span class="msb-info">📄 Aperçu simplifié — le courrier Word sera envoyé tel quel à MySendingBox</span>'
+    +   '<span class="msb-info">📄 Aperçu du 1er courrier — vérifiez avant de confirmer l\'envoi de '
+    +   sendable + ' courriers</span>'
     +   '<div class="msb-opts">'
     +     '<label>Affranchissement '
     +       '<select id="msb-postage">'
@@ -2517,9 +2537,11 @@ async function ouvrirApercuCourriers(sess, win) {
     +   '<span id="msb-stat"></span>'
     +   '<button class="msb-btn go" id="msb-go">✅ Confirmer l\'envoi ('
     +   sendable + ')</button>'
-    +   '<button class="msb-btn close" id="msb-close">Fermer</button>'
+    +   '<button class="msb-btn close" id="msb-close">Annuler</button>'
     + '</div>'
-    + '<div class="sheets-wrap">' + sheets + '</div>'
+    + '<div class="msb-frame">'
+    +   '<iframe src="' + pdfUrl + '" style="width:100%;height:calc(100vh - 70px);border:none;"></iframe>'
+    + '</div>'
     + '</body></html>';
 
   win.document.open();
