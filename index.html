@@ -732,10 +732,6 @@ td{padding:11px 14px;vertical-align:middle;}
         <span>Exclure les SCI avec liquidateur</span>
       </label>
       <label style="display:grid;grid-template-columns:20px 1fr;align-items:center;gap:8px;margin-bottom:10px;cursor:pointer;">
-        <input type="checkbox" id="courrier-exclure-sans-gerant" checked>
-        <span>Exclure les SCI sans gérant connu</span>
-      </label>
-      <label style="display:grid;grid-template-columns:20px 1fr;align-items:center;gap:8px;margin-bottom:10px;cursor:pointer;">
         <input type="checkbox" id="courrier-exclure-client" checked>
         <span>Exclure les SCI "Déjà client"</span>
       </label>
@@ -746,6 +742,10 @@ td{padding:11px 14px;vertical-align:middle;}
       <label style="display:grid;grid-template-columns:20px 1fr;align-items:center;gap:8px;margin-bottom:10px;cursor:pointer;">
         <input type="checkbox" id="courrier-exclure-sans-siege" checked>
         <span>Exclure les SCI sans siège social</span>
+      </label>
+      <label style="display:grid;grid-template-columns:20px 1fr;align-items:center;gap:8px;margin-bottom:10px;cursor:pointer;">
+        <input type="checkbox" id="courrier-exclure-etranger" checked>
+        <span>Exclure les SCI à l'étranger</span>
       </label>
       <label style="display:grid;grid-template-columns:20px 1fr;align-items:center;gap:8px;margin-bottom:10px;cursor:pointer;">
         <input type="checkbox" id="courrier-seulement-visibles">
@@ -1806,6 +1806,11 @@ function renderRowSci(sci) {
   const actif   = sci.sci_active === 'oui';
   const zone    = sci.zone || '';
 
+  // SCI « à l'étranger » : siège présent, diffusable, mais sans code postal FR détecté
+  const estEtranger = !!sci.siege_social
+    && !sci.siege_social.includes('[NON-DIFFUSIBLE]')
+    && parseSiegeSocial(sci.siege_social).cp === '';
+
   // Dirigeant 1 : qualité pour data-attr (filtrage)
   const qual1 = (sci.gerants && sci.gerants[0]) ? (sci.gerants[0].qualite || '') : '';
 
@@ -1833,7 +1838,7 @@ function renderRowSci(sci) {
       <small>${sci.sci_siren||''}</small>
     </td>
     <td style="font-size:11px;color:var(--text2);max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="${sci.siege_social||''}">
-      ${sci.siege_social||'<span class="no-data">—</span>'}
+      ${estEtranger ? '<span class="badge-etranger" style="display:inline-block;font-size:9px;font-weight:700;background:#f59e0b;color:#fff;padding:1px 6px;border-radius:999px;margin-right:4px;vertical-align:middle;">🌍 Étranger</span>' : ''}${sci.siege_social||'<span class="no-data">—</span>'}
     </td>
     <td>${renderDirigeant(sci.gerants, 0)}</td>
     <td>${renderDirigeant(sci.gerants, 1)}</td>
@@ -1988,7 +1993,7 @@ function aLiquidateur(gerants) {
 function filtrerSciPourCourrier() {
   const exclInactives     = document.getElementById('courrier-exclure-inactives').checked;
   const exclLiquidateur   = document.getElementById('courrier-exclure-liquidateur').checked;
-  const exclSansGerant    = document.getElementById('courrier-exclure-sans-gerant').checked;
+  const exclEtranger      = document.getElementById('courrier-exclure-etranger').checked;
   const exclClient        = document.getElementById('courrier-exclure-client').checked;
   const exclNpc           = document.getElementById('courrier-exclure-npc').checked;
   const exclSansSiege     = document.getElementById('courrier-exclure-sans-siege').checked;
@@ -2001,7 +2006,10 @@ function filtrerSciPourCourrier() {
     : [...allSci];
   if (exclInactives)   liste = liste.filter(s => s.sci_active === 'oui');
   if (exclLiquidateur) liste = liste.filter(s => !aLiquidateur(s.gerants));
-  if (exclSansGerant)  liste = liste.filter(s => getPremierGerant(s.gerants));
+  if (exclEtranger) liste = liste.filter(s => {
+    if (!s.siege_social || s.siege_social.includes('[NON-DIFFUSIBLE]')) return true;
+    return parseSiegeSocial(s.siege_social).cp !== '';
+  });
   if (exclSansSiege) liste = liste.filter(s => s.siege_social && s.siege_social.trim() !== '');
   if (exclClient || exclNpc) {
     liste = liste.filter(s => {
@@ -2032,7 +2040,7 @@ function ouvrirModalCourrier() {
   majCompteCourrier();
 
   ['courrier-exclure-inactives','courrier-exclure-liquidateur',
-   'courrier-exclure-sans-gerant','courrier-exclure-client','courrier-exclure-npc',
+   'courrier-exclure-etranger','courrier-exclure-client','courrier-exclure-npc',
    'courrier-exclure-sans-siege','courrier-seulement-visibles'].forEach(id => {
     const el = document.getElementById(id);
     if (el) el.onchange = majCompteCourrier;
