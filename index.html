@@ -1979,7 +1979,9 @@ function renderRowSci(sci) {
     data-search="${adresseNorm} ${sciNomNorm} ${dirigeants}">
     <td><span class="badge-zone">${zone||'—'}</span></td>
     <td class="td-sci-nom">
-      <strong>${sci.adresse_bien||'—'}</strong>
+      <strong>${sci.adresse_bien
+        ? '<a href="https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(sci.adresse_bien) + '" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:2px;cursor:pointer;">📍 ' + sci.adresse_bien + '</a>'
+        : '—'}</strong>
     </td>
     <td class="td-sci-nom">
       <a href="${'https://www.pappers.fr/entreprise/' + (sci.sci_nom||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'') + (sci.sci_siren ? '-' + sci.sci_siren : '')}" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:2px;cursor:pointer;">${sci.sci_nom||'—'}</a>
