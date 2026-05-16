@@ -679,11 +679,7 @@ td{padding:11px 14px;vertical-align:middle;}
         <option>Ne plus contacter</option>
       </select>
       <select id="sci-filter-conseiller"><option value="">Tous conseillers</option></select>
-      <select id="sci-filter-qualite">
-        <option value="">Tous dirigeants</option>
-        <option value="Gérant">Gérant uniquement</option>
-        <option value="Liquidateur" data-exclude="true">Exclure liquidateurs</option>
-      </select>
+      <button class="btn-reset" id="btn-filtre-etranger" data-on="0" onclick="toggleFiltreEtranger()">🌍 SCI à l'étranger</button>
       <button class="btn-reset" onclick="resetFiltresSci()">✕ Réinitialiser</button>
       <button class="btn-reset" id="btn-courrier" onclick="ouvrirModalCourrier()" style="border-color:#BEAF87;color:#BEAF87;">📨 Courrier</button>
       <span class="count-badge" id="sci-count-badge"></span>
@@ -1806,14 +1802,6 @@ function renderRowSci(sci) {
   const actif   = sci.sci_active === 'oui';
   const zone    = sci.zone || '';
 
-  // SCI « à l'étranger » : siège présent, diffusable, mais sans code postal FR détecté
-  const estEtranger = !!sci.siege_social
-    && !sci.siege_social.includes('[NON-DIFFUSIBLE]')
-    && parseSiegeSocial(sci.siege_social).cp === '';
-
-  // Dirigeant 1 : qualité pour data-attr (filtrage)
-  const qual1 = (sci.gerants && sci.gerants[0]) ? (sci.gerants[0].qualite || '') : '';
-
   const statOpts = STATUTS_SCI.map(s=>`<option value="${s}"${statut===s?' selected':''}>${s}</option>`).join('');
   const consOpts = conseillers.map(c=>`<option value="${c}"${conseil===c?' selected':''}>${c||'—'}</option>`).join('');
 
@@ -1826,7 +1814,6 @@ function renderRowSci(sci) {
     data-actif="${sci.sci_active||'oui'}"
     data-statut="${statut}"
     data-conseiller="${conseil}"
-    data-qualite1="${qual1}"
     data-sci-nom="${(sci.sci_nom||'').replace(/"/g,'&quot;')}"
     data-search="${adresseNorm} ${sciNomNorm} ${dirigeants}">
     <td><span class="badge-zone">${zone||'—'}</span></td>
@@ -1838,7 +1825,7 @@ function renderRowSci(sci) {
       <small>${sci.sci_siren||''}</small>
     </td>
     <td style="font-size:11px;color:var(--text2);max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="${sci.siege_social||''}">
-      ${estEtranger ? '<span class="badge-etranger" style="display:inline-block;font-size:9px;font-weight:700;background:#f59e0b;color:#fff;padding:1px 6px;border-radius:999px;margin-right:4px;vertical-align:middle;">🌍 Étranger</span>' : ''}${sci.siege_social||'<span class="no-data">—</span>'}
+      ${sci.siege_social||'<span class="no-data">—</span>'}
     </td>
     <td>${renderDirigeant(sci.gerants, 0)}</td>
     <td>${renderDirigeant(sci.gerants, 1)}</td>
@@ -1871,7 +1858,8 @@ function applyFiltresSci() {
   const actif     = document.getElementById('sci-filter-actif').value;
   const statut    = document.getElementById('sci-filter-statut').value;
   const conseiller= document.getElementById('sci-filter-conseiller').value;
-  const qualite   = document.getElementById('sci-filter-qualite').value;
+  const btnEtr      = document.getElementById('btn-filtre-etranger');
+  const onlyEtranger= !!btnEtr && btnEtr.dataset.on === '1';
 
   let visible = 0;
   document.querySelectorAll('#sci-tbody tr').forEach(row => {
@@ -1881,8 +1869,11 @@ function applyFiltresSci() {
     if (actif      && row.dataset.actif !== actif) ok = false;
     if (statut     && row.dataset.statut !== statut) ok = false;
     if (conseiller && row.dataset.conseiller !== conseiller) ok = false;
-    if (qualite === 'Gérant'      && row.dataset.qualite1 !== 'Gérant') ok = false;
-    if (qualite === 'Liquidateur' && row.dataset.qualite1 === 'Liquidateur') ok = false;
+    if (onlyEtranger && ok) {
+      const sci = allSci.find(s => s.sci_nom === row.dataset.sciNom);
+      const sg  = sci && sci.siege_social;
+      if (!sg || sg.includes('[NON-DIFFUSIBLE]') || parseSiegeSocial(sg).cp !== '') ok = false;
+    }
 
     row.style.display = ok ? '' : 'none';
     if (ok) visible++;
@@ -1893,9 +1884,26 @@ function applyFiltresSci() {
   document.getElementById('table-sci').style.display    = visible === 0 ? 'none' : '';
 }
 
+// Bascule « SCI à l'étranger » : filtre appliqué par-dessus les filtres existants.
+function setBtnEtrangerVisuel(b, on) {
+  b.dataset.on = on ? '1' : '0';
+  b.style.background  = on ? 'var(--accent)' : '';
+  b.style.color       = on ? '#fff'          : '';
+  b.style.borderColor = on ? 'var(--accent)' : '';
+}
+
+function toggleFiltreEtranger() {
+  const b = document.getElementById('btn-filtre-etranger');
+  if (!b) return;
+  setBtnEtrangerVisuel(b, b.dataset.on !== '1');
+  applyFiltresSci();
+}
+
 function resetFiltresSci() {
-  ['sci-search','sci-filter-zone','sci-filter-actif','sci-filter-statut','sci-filter-conseiller','sci-filter-qualite']
+  ['sci-search','sci-filter-zone','sci-filter-actif','sci-filter-statut','sci-filter-conseiller']
     .forEach(id => { const el = document.getElementById(id); if(el) el.value = ''; });
+  const btnEtr = document.getElementById('btn-filtre-etranger');
+  if (btnEtr) setBtnEtrangerVisuel(btnEtr, false);
   applyFiltresSci();
 }
 
@@ -1927,7 +1935,7 @@ function sortTableSci(col) {
 }
 
 // Filtres live SCI
-['sci-search','sci-filter-zone','sci-filter-actif','sci-filter-statut','sci-filter-conseiller','sci-filter-qualite']
+['sci-search','sci-filter-zone','sci-filter-actif','sci-filter-statut','sci-filter-conseiller']
   .forEach(id => {
     const el = document.getElementById(id); if (!el) return;
     if (!el) return;
