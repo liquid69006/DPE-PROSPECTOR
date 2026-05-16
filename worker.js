@@ -177,6 +177,18 @@ async function hashPassword(pwd) {
 }
 
 // ══════════════════════════════════════════════════════
+//  LOGIN CONSEILLER (slug sans accents + suffixe agence)
+//  Source unique de vérité partagée par /create et /sessions.
+// ══════════════════════════════════════════════════════
+
+function conseillerLoginFor(agenceId, prenom) {
+  const shortName = agenceId.split("-")[0];
+  const slug = (prenom || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "")
+    .replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+  return slug ? `${slug}.${shortName}` : null;
+}
+
+// ══════════════════════════════════════════════════════
 //  HELPERS RÉPONSE
 // ══════════════════════════════════════════════════════
 
@@ -541,12 +553,8 @@ async function handleRequest(request, env) {
       const prenom = (body.prenom || "").trim();
       if (!prenom) return err("prenom requis", 400);
 
-      const shortName = agenceId.split("-")[0];
-      // Slug sans accents ni caractères spéciaux (compatible clé KV + route DELETE)
-      const slug = prenom.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "")
-        .replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
-      if (!slug) return err("prenom invalide", 400);
-      const login = `${slug}.${shortName}`;
+      const login = conseillerLoginFor(agenceId, prenom);
+      if (!login) return err("prenom invalide", 400);
 
       // Mot de passe : 8 caractères alphanumériques (alphabet sans ambiguïté)
       const ALPHA = "abcdefghijkmnpqrstuvwxyz23456789";
@@ -574,6 +582,43 @@ async function handleRequest(request, env) {
       await sendEmail(env, cfg.email, `Nouveau conseiller — ${prenom}`, htmlMail);
 
       return ok({ ok: true, login, password });
+    }
+
+    // ── GET /conseillers/:agence/sessions ── état des sessions conseillers ──
+    const consSessMatch = path.match(/^\/conseillers\/([a-z0-9-]+)\/sessions$/);
+    if (consSessMatch && method === "GET") {
+      const agenceId = consSessMatch[1];
+      const [payload, authErr] = await requireAuth(agenceId);
+      if (authErr) return authErr;
+      if (payload.role === "conseiller") return err("Réservé au patron", 403);
+
+      const cfg = AGENCES_CONFIG[agenceId];
+      if (!cfg) return err("Agence inconnue", 404);
+
+      // Liste des prénoms de conseillers (même source que GET /conseillers/:agence)
+      let noms;
+      if (agenceId === "lopez") {
+        const merged = new Set();
+        for (const ag of (AGENCES_CONFIG["lopez"].dpe_agences || [])) {
+          const raw = await env.DPE_KV.get(`conseillers:${ag}`);
+          const liste = raw ? JSON.parse(raw) : (AGENCES_CONFIG[ag]?.conseillers_defaut || []);
+          liste.filter(c => c && c !== "À attribuer").forEach(c => merged.add(c));
+        }
+        noms = [...merged];
+      } else {
+        const raw = await env.DPE_KV.get(`conseillers:${agenceId}`);
+        const liste = raw ? JSON.parse(raw) : (cfg.conseillers_defaut || []);
+        noms = liste.filter(c => c && c !== "À attribuer");
+      }
+
+      const sessions = {};
+      for (const nom of noms) {
+        const login = conseillerLoginFor(agenceId, nom);
+        if (!login) continue;
+        const v = await env.DPE_KV.get(`role:${agenceId}:${login}`);
+        sessions[login] = v === "conseiller";
+      }
+      return ok({ sessions });
     }
 
     // ── DELETE /conseillers/:agence/:login ── supprimer une session ──

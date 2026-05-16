@@ -1168,6 +1168,8 @@ function refreshConseillerFilter() {
 // ── Modal conseillers ─────────────────────────────────────────
 let conseillersDraftDetail = []; // [{ nom, agence }] — utilisé uniquement pour lopez
 
+let conseillerSessions = {};   // { "<login>": true|false } — sessions actives
+
 function openModalConseillers() {
   const isLopez = agenceId === 'lopez';
   // Afficher/masquer le select agence
@@ -1183,10 +1185,12 @@ function openModalConseillers() {
     conseillersDraft = [...conseillers];
   }
 
+  conseillerSessions = {};
   renderConseillerList();
   document.getElementById('modal-conseillers').classList.add('open');
   document.getElementById('new-conseiller-input').value = '';
   document.getElementById('conseiller-error').textContent = '';
+  loadConseillerSessions();   // récupère l'état des sessions puis re-render
 }
 
 function closeModalConseillers() {
@@ -1206,12 +1210,16 @@ function renderConseillerList() {
     const badge = isLopez && !fixed
       ? `<span style="font-size:11px;color:var(--text2);margin-left:6px;background:var(--surface2);padding:2px 6px;border-radius:4px;">${c.agence === 'motte-picquet' ? 'Motte' : 'Pernéty'}</span>`
       : '';
-    const sessionBtns = (userRole === 'patron' && !fixed) ? `
-        <button onclick="creerSessionConseiller(${i})" title="Créer une session de connexion" style="background:#16a34a;color:#fff;border:none;border-radius:6px;padding:4px 9px;font-size:11px;font-weight:600;cursor:pointer;">🔑 Session</button>
-        <button onclick="supprimerSessionConseiller(${i})" title="Supprimer la session de connexion" style="background:none;border:1px solid var(--border);color:var(--text2);border-radius:6px;padding:4px 8px;font-size:11px;cursor:pointer;">✖</button>` : '';
+    let sessionBtn = '';
+    if (userRole === 'patron' && !fixed) {
+      const login = conseillerLogin(c.nom);
+      sessionBtn = conseillerSessions[login]
+        ? `<button onclick="supprimerSessionConseiller(${i})" title="Supprimer la session de connexion (${login})" style="background:none;border:1px solid var(--border);color:var(--text2);border-radius:6px;padding:4px 9px;font-size:11px;cursor:pointer;">✖ Supprimer</button>`
+        : `<button onclick="creerSessionConseiller(${i})" title="Créer une session de connexion" style="background:#16a34a;color:#fff;border:none;border-radius:6px;padding:4px 9px;font-size:11px;font-weight:600;cursor:pointer;">🔑 Créer session</button>`;
+    }
     const delBtn = fixed ? '' : `<button class="btn-del" onclick="removeConseiller(${i})" title="Retirer de la liste">🗑</button>`;
     li.innerHTML = `<span>${c.nom || '—'}${badge}</span>
-      <span style="display:flex;align-items:center;gap:6px;">${sessionBtns}${delBtn}</span>`;
+      <span style="display:flex;align-items:center;gap:6px;">${sessionBtn}${delBtn}</span>`;
     ul.appendChild(li);
   });
 }
@@ -1291,6 +1299,23 @@ function conseillerLogin(nom) {
   return slug + '.' + short;
 }
 
+// Récupère l'état des sessions (login → bool) puis re-render la liste.
+async function loadConseillerSessions() {
+  try {
+    const resp = await fetch(`${API_URL}/conseillers/${agenceId}/sessions`, {
+      headers: { 'Authorization': `Bearer ${authToken}` },
+    });
+    if (resp.ok) {
+      const data = await resp.json().catch(() => ({}));
+      conseillerSessions = data.sessions || {};
+    }
+  } catch {}
+  // Ne re-render que si le modal est encore ouvert
+  if (document.getElementById('modal-conseillers').classList.contains('open')) {
+    renderConseillerList();
+  }
+}
+
 async function creerSessionConseiller(i) {
   const nom = conseillerNomByIndex(i);
   if (!nom || nom === 'À attribuer') return;
@@ -1304,6 +1329,7 @@ async function creerSessionConseiller(i) {
     const data = await resp.json().catch(() => ({}));
     if (!resp.ok) { showToast('⚠️ ' + (data.error || 'Erreur création session'), true); return; }
     showSessionInfoModal(data.login, data.password);
+    await loadConseillerSessions();   // rafraîchit les boutons
   } catch {
     showToast('⚠️ Serveur inaccessible', true);
   }
@@ -1322,6 +1348,7 @@ async function supprimerSessionConseiller(i) {
     const data = await resp.json().catch(() => ({}));
     if (!resp.ok) { showToast('⚠️ ' + (data.error || 'Erreur suppression'), true); return; }
     showToast('✅ Session supprimée');
+    await loadConseillerSessions();   // rafraîchit les boutons
   } catch {
     showToast('⚠️ Serveur inaccessible', true);
   }
