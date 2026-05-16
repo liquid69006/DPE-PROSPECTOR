@@ -1172,14 +1172,26 @@ let conseillerSessions = {};   // { "<login>": true|false } — sessions actives
 
 function openModalConseillers() {
   const isLopez = agenceId === 'lopez';
+  const isBagot = agenceId === 'bagot';
   // Afficher/masquer le select agence
-  document.getElementById('new-conseiller-agence').style.display = isLopez ? 'block' : 'none';
+  document.getElementById('new-conseiller-agence').style.display = (isLopez || isBagot) ? 'block' : 'none';
+  // Options du sélecteur de sous-agence selon le compte composite
+  if (isBagot) {
+    document.getElementById('new-conseiller-agence').innerHTML =
+      '<option value="houlgate">Houlgate</option><option value="villers">Villers</option>';
+  }
 
   if (isLopez) {
     // Reconstruire le draft détaillé depuis conseillers_detail si dispo
     conseillersDraftDetail = (agenceConfig.conseillers_detail || []).map(c => ({ ...c }));
     if (!conseillersDraftDetail.length) {
       conseillersDraftDetail = conseillers.map(c => ({ nom: c, agence: c === 'À attribuer' ? null : 'motte-picquet' }));
+    }
+  } else if (isBagot) {
+    // Reconstruire le draft détaillé depuis conseillers_detail si dispo
+    conseillersDraftDetail = (agenceConfig.conseillers_detail || []).map(c => ({ ...c }));
+    if (!conseillersDraftDetail.length) {
+      conseillersDraftDetail = conseillers.map(c => ({ nom: c, agence: c === 'À attribuer' ? null : 'houlgate' }));
     }
   } else {
     conseillersDraft = [...conseillers];
@@ -1201,15 +1213,20 @@ function renderConseillerList() {
   const ul = document.getElementById('conseiller-list');
   ul.innerHTML = '';
   const isLopez = agenceId === 'lopez';
-  const list = isLopez ? conseillersDraftDetail : conseillersDraft.map(n => ({ nom: n, agence: null }));
+  const isBagot = agenceId === 'bagot';
+  const list = (isLopez || isBagot) ? conseillersDraftDetail : conseillersDraft.map(n => ({ nom: n, agence: null }));
 
   list.forEach((c, i) => {
     const fixed = c.nom === 'À attribuer';
     const li = document.createElement('li');
     li.className = 'conseiller-item' + (fixed ? ' fixed' : '');
-    const badge = isLopez && !fixed
-      ? `<span style="font-size:11px;color:var(--text2);margin-left:6px;background:var(--surface2);padding:2px 6px;border-radius:4px;">${c.agence === 'motte-picquet' ? 'Motte' : 'Pernéty'}</span>`
-      : '';
+    let badge = '';
+    if (isLopez && !fixed) {
+      badge = `<span style="font-size:11px;color:var(--text2);margin-left:6px;background:var(--surface2);padding:2px 6px;border-radius:4px;">${c.agence === 'motte-picquet' ? 'Motte' : 'Pernéty'}</span>`;
+    }
+    if (isBagot && !fixed) {
+      badge = `<span style="font-size:11px;color:var(--text2);margin-left:6px;background:var(--surface2);padding:2px 6px;border-radius:4px;">${c.agence === 'houlgate' ? 'Houlgate' : 'Villers'}</span>`;
+    }
     let sessionBtn = '';
     if (userRole === 'patron' && !fixed) {
       const login = conseillerLogin(c.nom);
@@ -1232,8 +1249,15 @@ function addConseiller() {
   if (!name) { errEl.textContent = 'Entrez un prénom.'; return; }
 
   const isLopez = agenceId === 'lopez';
+  const isBagot = agenceId === 'bagot';
 
   if (isLopez) {
+    const agence = document.getElementById('new-conseiller-agence').value;
+    if (conseillersDraftDetail.find(c => c.nom.toLowerCase() === name.toLowerCase())) {
+      errEl.textContent = 'Ce conseiller existe déjà.'; return;
+    }
+    conseillersDraftDetail.push({ nom: name, agence });
+  } else if (isBagot) {
     const agence = document.getElementById('new-conseiller-agence').value;
     if (conseillersDraftDetail.find(c => c.nom.toLowerCase() === name.toLowerCase())) {
       errEl.textContent = 'Ce conseiller existe déjà.'; return;
@@ -1251,7 +1275,9 @@ function addConseiller() {
 
 function removeConseiller(i) {
   const isLopez = agenceId === 'lopez';
+  const isBagot = agenceId === 'bagot';
   if (isLopez) conseillersDraftDetail.splice(i, 1);
+  else if (isBagot) conseillersDraftDetail.splice(i, 1);
   else conseillersDraft.splice(i, 1);
   renderConseillerList();
 }
@@ -1260,8 +1286,9 @@ async function saveConseillers() {
   const btn = document.querySelector('#modal-conseillers .btn-confirm');
   btn.disabled = true; btn.textContent = 'Enregistrement…';
   const isLopez = agenceId === 'lopez';
+  const isBagot = agenceId === 'bagot';
   try {
-    const body = isLopez
+    const body = (isLopez || isBagot)
       ? { conseillers: conseillersDraftDetail.map(c => c.nom), conseillers_detail: conseillersDraftDetail }
       : { conseillers: conseillersDraft };
 
@@ -1273,7 +1300,7 @@ async function saveConseillers() {
     if (!resp.ok) throw new Error();
     const data = await resp.json();
     conseillers = data.conseillers;
-    if (isLopez) agenceConfig.conseillers_detail = conseillersDraftDetail;
+    if (isLopez || isBagot) agenceConfig.conseillers_detail = conseillersDraftDetail;
     refreshConseillerFilter();
     closeModalConseillers();
     showToast('✅ Conseillers mis à jour');
@@ -1287,9 +1314,11 @@ async function saveConseillers() {
 
 // ── Sessions conseillers (création / suppression de comptes) ──
 function conseillerNomByIndex(i) {
-  const arr = (agenceId === 'lopez') ? conseillersDraftDetail : conseillersDraft;
+  const isLopez = agenceId === 'lopez';
+  const isBagot = agenceId === 'bagot';
+  const arr = (isLopez || isBagot) ? conseillersDraftDetail : conseillersDraft;
   const item = arr[i];
-  return (agenceId === 'lopez') ? (item && item.nom) : item;
+  return (isLopez || isBagot) ? (item && item.nom) : item;
 }
 // Doit produire EXACTEMENT le même login que le Worker (slug sans accents).
 function conseillerLogin(nom) {
