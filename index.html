@@ -1786,7 +1786,7 @@ function sortTable(col) {
 //  MODE SWITCH DPE / SCI
 // ════════════════════════════════════════
 let currentMode = 'dpe';
-const AGENCES_SCI = ['dauphine-lacassagne', 'lopez']; // Seules agences avec SCI Prospector
+const AGENCES_SCI = ['dauphine-lacassagne', 'lopez', 'bagot']; // Seules agences avec SCI Prospector
 
 function switchMode(mode) {
   currentMode = mode;
@@ -1831,12 +1831,37 @@ async function loadSciData() {
     let rawSci = [];
 
     if (agenceConfig.sci_agences && agenceConfig.sci_agences.length > 0) {
-      // Compte composite (lopez, bagot…) — fusionner les JSON SCI des sous-agences
-      for (const ag of agenceConfig.sci_agences) {
-        const resp = await fetch(`${GITHUB_RAW}/data/${ag}-sci.json?t=${Date.now()}`);
-        if (!resp.ok) continue;
-        const data = await resp.json();
-        rawSci = rawSci.concat(data.sci || []);
+      const isLopez = agenceId === 'lopez';
+      const isBagot = agenceId === 'bagot';
+      if (isLopez) {
+        // Compte composite lopez — fusionner motte-picquet-sci + pernety-sci
+        const sciPaths = {
+          'motte-picquet': 'data/motte-picquet-sci.json',
+          'pernety':       'data/pernety-sci.json',
+        };
+        for (const ag of agenceConfig.sci_agences) {
+          const sciPath = sciPaths[ag];
+          if (!sciPath) continue;
+          const resp = await fetch(`${GITHUB_RAW}/${sciPath}?t=${Date.now()}`);
+          if (!resp.ok) continue;
+          const data = await resp.json();
+          rawSci = rawSci.concat(data.sci || []);
+        }
+      }
+      if (isBagot) {
+        // Compte composite bagot — fusionner houlgate-sci + villers-sci
+        const sciPaths = {
+          'houlgate': 'data/houlgate-sci.json',
+          'villers':  'data/villers-sci.json',
+        };
+        for (const ag of agenceConfig.sci_agences) {
+          const sciPath = sciPaths[ag];
+          if (!sciPath) continue;
+          const resp = await fetch(`${GITHUB_RAW}/${sciPath}?t=${Date.now()}`);
+          if (!resp.ok) continue;
+          const data = await resp.json();
+          rawSci = rawSci.concat(data.sci || []);
+        }
       }
     } else {
       // Compte simple — chemin standard agence-sci.json
