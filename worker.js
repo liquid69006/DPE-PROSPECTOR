@@ -825,23 +825,63 @@ async function handleRequest(request, env) {
           address_postalcode: (from.zip_code     || '').slice(0, 10),
           address_country:    'France',
         };
-        const msbResp = await fetch('https://api.mysendingbox.fr/letters', {
-          method: 'POST',
-          headers: {
-            'Authorization': 'Basic ' + btoa(msbKey + ':'),
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            to:   toMSB,
-            from: fromMSB,
-            source_file: docx_base64 ? docx_base64 : html,
-            source_file_type: docx_base64 ? 'docx' : 'html',
-            color: color || 'color',
-            postage_type: postage_type || 'ecopli',
-            both_sides: (both_sides === true || both_sides === 'true'),
-            address_placement: 'insert_blank_page',
-          }),
-        });
+        const colorVal   = color || 'color';
+        const postageVal = postage_type || 'ecopli';
+        const bothVal    = (both_sides === true || both_sides === 'true');
+
+        let msbResp;
+        if (docx_base64) {
+          // MSB exige multipart/form-data quand source_file_type = 'file'
+          const bin   = atob(docx_base64);
+          const bytes = new Uint8Array(bin.length);
+          for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+          const blob  = new Blob([bytes], {
+            type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+          });
+
+          const fd = new FormData();
+          fd.append('source_file', blob, 'courrier.docx');
+          fd.append('source_file_type', 'file');
+          fd.append('to[name]',               toMSB.name);
+          fd.append('to[address_line1]',      toMSB.address_line1);
+          fd.append('to[address_postalcode]', toMSB.address_postalcode);
+          fd.append('to[address_city]',       toMSB.address_city);
+          fd.append('to[address_country]',    toMSB.address_country);
+          fd.append('from[name]',               fromMSB.name);
+          fd.append('from[address_line1]',      fromMSB.address_line1);
+          fd.append('from[address_postalcode]', fromMSB.address_postalcode);
+          fd.append('from[address_city]',       fromMSB.address_city);
+          fd.append('from[address_country]',    fromMSB.address_country);
+          fd.append('color', colorVal);
+          fd.append('postage_type', postageVal);
+          fd.append('both_sides', String(bothVal));
+          fd.append('address_placement', 'insert_blank_page');
+
+          // NE PAS définir Content-Type : fetch ajoute la boundary multipart
+          msbResp = await fetch('https://api.mysendingbox.fr/letters', {
+            method: 'POST',
+            headers: { 'Authorization': 'Basic ' + btoa(msbKey + ':') },
+            body: fd,
+          });
+        } else {
+          msbResp = await fetch('https://api.mysendingbox.fr/letters', {
+            method: 'POST',
+            headers: {
+              'Authorization': 'Basic ' + btoa(msbKey + ':'),
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              to:   toMSB,
+              from: fromMSB,
+              source_file: html,
+              source_file_type: 'html',
+              color: colorVal,
+              postage_type: postageVal,
+              both_sides: bothVal,
+              address_placement: 'insert_blank_page',
+            }),
+          });
+        }
         const msbData = await msbResp.json();
         if (!msbResp.ok) return err(`MSB ${msbResp.status}: ${JSON.stringify(msbData)}`, 502);
         return ok({ id: msbData._id, status: msbData.status?.name, file_for_corus: msbData.file_for_corus, file: msbData.file });
