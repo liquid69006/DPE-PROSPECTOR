@@ -2627,6 +2627,7 @@ async function demarrerEnvoiMSBApercu(sess, items, win, today) {
 
   const sendable = items.filter(x => x.valid).length;
   let ok = 0, err = 0, skip = 0;
+  let firstValidSkipped = false;
 
   for (let i = 0; i < items.length; i++) {
     if (win.closed) break; // l'utilisateur a fermé la fenêtre
@@ -2638,6 +2639,15 @@ async function demarrerEnvoiMSBApercu(sess, items, win, today) {
       if (chip) { chip.textContent = '⚠ Ignoré (adresse incomplète)'; chip.className = 'sheet-status warn'; }
       continue;
     }
+
+    // Le 1er SCI valide a déjà été envoyé lors de la génération de l'aperçu.
+    if (!firstValidSkipped && it.valid) {
+      firstValidSkipped = true;
+      skip++;
+      if (chip) { chip.textContent = '✅ Envoyé (aperçu)'; chip.className = 'sheet-status ok'; }
+      continue;
+    }
+
     if (chip) { chip.textContent = '⏳ Envoi…'; chip.className = 'sheet-status pending'; }
 
     // Passer par le Worker pour ne pas exposer la clé API.
