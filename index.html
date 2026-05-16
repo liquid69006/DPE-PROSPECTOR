@@ -701,7 +701,7 @@ td{padding:11px 14px;vertical-align:middle;}
         <th>Siège social</th>
         <th>Dirigeant 1</th>
         <th>Dirigeant 2</th>
-        <th>Biens</th>
+        <th class="sortable" onclick="sortTableSci('biens')">Biens <span class="si"></span></th>
         <th>Statut SCI</th>
         <th class="sortable" onclick="sortTableSci('statut')">Prospection <span class="si"></span></th>
         <th class="sortable" onclick="sortTableSci('conseiller')">Conseiller <span class="si"></span></th>
@@ -2025,10 +2025,10 @@ function renderRowSci(sci) {
 
 function badgeBiens(n) {
   const nb = parseInt(n) || 1;
-  if (nb >= 10) return `<span style="background:#dc2626;color:#fff;padding:2px 7px;border-radius:10px;font-size:11px;font-weight:700;">?? ${nb}</span>`;
-  if (nb >= 5)  return `<span style="background:#ea580c;color:#fff;padding:2px 7px;border-radius:10px;font-size:11px;font-weight:700;">?? ${nb}</span>`;
-  if (nb >= 2)  return `<span style="background:#d97706;color:#fff;padding:2px 7px;border-radius:10px;font-size:11px;font-weight:700;">?? ${nb}</span>`;
-  return `<span style="color:var(--text2);font-size:11px;">?? 1</span>`;
+  if (nb >= 10) return `<span style="background:#dc2626;color:#fff;padding:2px 8px;border-radius:10px;font-size:12px;font-weight:700;">${nb}</span>`;
+  if (nb >= 5)  return `<span style="background:#ea580c;color:#fff;padding:2px 8px;border-radius:10px;font-size:12px;font-weight:700;">${nb}</span>`;
+  if (nb >= 2)  return `<span style="background:#d97706;color:#fff;padding:2px 8px;border-radius:10px;font-size:12px;font-weight:700;">${nb}</span>`;
+  return `<span style="background:var(--surface2);color:var(--text2);padding:2px 8px;border-radius:10px;font-size:12px;font-weight:600;">1</span>`;
 }
 
 function updateSciAssignment(id, key, value) {
@@ -2120,11 +2120,14 @@ function sortTableSci(col) {
       case 'sci':       return row.querySelectorAll('.td-sci-nom strong')[1]?.textContent.trim().toLowerCase() || '';
       case 'statut':    return row.dataset.statut || '';
       case 'conseiller':return row.dataset.conseiller || '';
+      case 'biens':     return parseInt(row.dataset.biens) || 1;
       default:          return '';
     }
   };
+  const numeric = (col === 'biens');
   rows.sort((a,b) => {
     const dir = sciSortCurrent.dir === 'asc' ? 1 : -1;
+    if (numeric) return (val(a) - val(b)) * dir;
     return val(a).localeCompare(val(b), 'fr') * dir;
   });
   rows.forEach(r => tbody.appendChild(r));
