@@ -101,27 +101,33 @@ def construire_adresse(row):
 def geocoder_ban_batch(adresses):
     """
     Géocode une liste d'adresses via l'API BAN batch.
-    Découpe en lots de 500 pour éviter les erreurs 502.
+    Découpe en lots de 500 max et accumule les résultats.
+    Résilient aux IncompleteRead / timeouts : réessaie le lot puis le
+    sous-découpe en cas d'échec persistant, sans jamais perdre
+    l'alignement (toujours un triplet par adresse en entrée).
     Retourne trois listes parallèles : lons, lats, zones.
     """
     import io
     import csv as csvmod
+    import http.client
+    import urllib.error
 
     TAILLE_LOT = 500
-    lons_all, lats_all, zones_all = [], [], []
+    ERREURS_RESEAU = (
+        http.client.IncompleteRead,
+        urllib.error.URLError,
+        TimeoutError,
+        ConnectionError,
+    )
 
-    for debut in range(0, len(adresses), TAILLE_LOT):
-        lot = adresses[debut:debut + TAILLE_LOT]
-        print(f"     Lot {debut//TAILLE_LOT + 1}/{-(-len(adresses)//TAILLE_LOT)} ({len(lot)} adresses)...")
-
-        # Construire le CSV du lot
+    def _appel_ban(lot):
+        """Envoie un lot à la BAN et renvoie (lons, lats, zones) alignés sur `lot`."""
         buf = io.StringIO()
         buf.write("adresse\n")
         for a in lot:
             buf.write(a.replace('"', '') + "\n")
         csv_bytes = buf.getvalue().encode("utf-8")
 
-        # Requête multipart
         boundary = "----BAN_BATCH_BOUNDARY"
         body = (
             f"--{boundary}\r\n"
@@ -141,7 +147,7 @@ def geocoder_ban_batch(adresses):
         with urllib.request.urlopen(req, timeout=120) as r:
             result_csv = r.read().decode("utf-8")
 
-        # Parser la réponse CSV
+        lons, lats, zones = [], [], []
         reader = csvmod.DictReader(io.StringIO(result_csv))
         for row in reader:
             try:
@@ -156,9 +162,50 @@ def geocoder_ban_batch(adresses):
             else:
                 lon = lat = None
                 zone = None
-            lons_all.append(lon)
-            lats_all.append(lat)
-            zones_all.append(zone)
+            lons.append(lon)
+            lats.append(lat)
+            zones.append(zone)
+        return lons, lats, zones
+
+    def _traiter(lot):
+        """Traite un lot avec réessais ; sous-découpe si l'échec persiste."""
+        n = len(lot)
+        for tentative in range(3):
+            try:
+                lons, lats, zones = _appel_ban(lot)
+                # La BAN doit renvoyer une ligne par adresse ;
+                # on complète/tronque pour garder l'alignement.
+                if len(lons) != n:
+                    lons  = (lons  + [None] * n)[:n]
+                    lats  = (lats  + [None] * n)[:n]
+                    zones = (zones + [None] * n)[:n]
+                return lons, lats, zones
+            except ERREURS_RESEAU as e:
+                print(f"     ⚠ Échec lot ({n} adr.) tentative {tentative + 1}/3 : "
+                      f"{type(e).__name__}")
+                if tentative < 2:
+                    time.sleep(2 * (tentative + 1))
+        # Échecs répétés : sous-découper le lot fautif
+        if n > 50:
+            mid = n // 2
+            print(f"     ↳ sous-découpage du lot en {mid} + {n - mid}")
+            g1 = _traiter(lot[:mid])
+            g2 = _traiter(lot[mid:])
+            return g1[0] + g2[0], g1[1] + g2[1], g1[2] + g2[2]
+        # Lot irrécupérable : placeholders pour préserver l'alignement
+        print(f"     ✗ Lot abandonné ({n} adr.) — coordonnées vides")
+        return [None] * n, [None] * n, [None] * n
+
+    lons_all, lats_all, zones_all = [], [], []
+    nb_lots = -(-len(adresses) // TAILLE_LOT)
+
+    for debut in range(0, len(adresses), TAILLE_LOT):
+        lot = adresses[debut:debut + TAILLE_LOT]
+        print(f"     Lot {debut // TAILLE_LOT + 1}/{nb_lots} ({len(lot)} adresses)...")
+        lons, lats, zones = _traiter(lot)
+        lons_all.extend(lons)
+        lats_all.extend(lats)
+        zones_all.extend(zones)
 
     return lons_all, lats_all, zones_all
 
@@ -203,6 +250,19 @@ def main(fichier):
     # 1. Lecture parquet
     print("\n  1. Lecture fichier parquet...")
     df  = pq.ParquetFile(fichier).read().to_pandas()
+
+    # 1bis. Comptage des biens totaux par SIREN sur TOUTE la France
+    #        (avant le filtre Lyon 3e) — repère les portefeuilles SCI.
+    df_fr = df[df["forme_juridique"] == "6540"].copy()
+    df_fr["cle_fr"] = (df_fr["section"].astype(str)
+                       + df_fr["numero_parcelle"].astype(str)
+                       + df_fr["numero_siren"].astype(str))
+    df_fr_dedup = df_fr.drop_duplicates(subset=["cle_fr"])
+    nb_biens_par_siren = df_fr_dedup.groupby("numero_siren").size().to_dict()
+    nb_multi_fr = sum(1 for v in nb_biens_par_siren.values() if v >= 2)
+    print(f"     {len(nb_biens_par_siren)} SIREN SCI distincts en France")
+    print(f"     SCI multi-biens : {nb_multi_fr}")
+
     df3 = df[(df["code_insee"] == "69383") & (df["forme_juridique"] == "6540")].copy()
     millesime = int(df3["millesime"].iloc[0]) if len(df3) else 2025
     print(f"     {len(df3)} locaux SCI — Lyon 3e — millésime {millesime}")
@@ -247,6 +307,7 @@ def main(fichier):
             "adresse_bien": construire_adresse(row),
             "sci_nom":      row["denomination"],
             "sci_siren":    siren,
+            "nb_biens_total": int(nb_biens_par_siren.get(row["numero_siren"], 1)),
             "code_droit":   row["code_droit"],
             "millesime":    millesime,
             "sci_active":   "oui" if actif else "non",
@@ -256,10 +317,12 @@ def main(fichier):
 
     # Stats finales
     actives = sum(1 for r in resultats if r["sci_active"] == "oui")
+    multi_cibles = sum(1 for r in resultats if r["nb_biens_total"] >= 2)
     print(f"\n  Résultats finaux :")
     print(f"    Total SCI  : {len(resultats)}")
     print(f"    Actives    : {actives}")
     print(f"    Inactives  : {len(resultats) - actives}")
+    print(f"    SCI multi-biens : {multi_cibles} ← portefeuilles à cibler")
 
     # 6. Export JSON (pour DPE Prospector)
     import os
