@@ -21,12 +21,16 @@
 // ══════════════════════════════════════════════════════
 
 const IDENTIFIANTS = {
+  // Patrons (mono ou multi-agence) — valeur = id agence (composite ou simple)
+  "bufferne":  "dauphine-lacassagne",
+  "bagot":     "bagot",        // composite houlgate + villers
+  "lopez":     "lopez",        // composite motte-picquet + pernety (inchangé)
+  // Identifiants courts (fallbacks)
   "dauphine":  "dauphine-lacassagne",
   "motte":     "motte-picquet",
   "pernety":   "pernety",
   "houlgate":  "houlgate",
   "villers":   "villers",
-  "lopez":     "lopez",
 };
 
 // ══════════════════════════════════════════════════════
@@ -39,7 +43,7 @@ const AGENCES_CONFIG = {
     nom: "Century 21 Dauphiné-Lacassagne",
     ville: "Lyon 3e",
     couleur: "#1d4ed8",
-    email: "dauphine.lacassagne@century21.fr",
+    email: "ybufferne@century21.fr",
     dataJsonPath: "data/dauphine-lacassagne.json",
     conseillers_defaut: ["À attribuer", "Gérald", "Philippe", "Robin", "Kévin", "Yann"],
     zones: ["Dauphiné-Lacassagne", "Montchat"],
@@ -99,6 +103,21 @@ const AGENCES_CONFIG = {
     dpe_agences: ["motte-picquet", "pernety"],
     // Agences SCI dont lopez agrège les données
     sci_agences: ["motte-picquet", "pernety"],
+  },
+  "bagot": {
+    nom: "Century 21 Bagot",
+    ville: "Houlgate & Villers-sur-Mer",
+    couleur: "#b45309",
+    email: "marine-bagot@century21.fr",
+    // bagot n'a pas de JSON propre — données DPE depuis houlgate + villers
+    dataJsonPath: "data/houlgate.json",   // fallback, surchargé côté dashboard
+    conseillers_defaut: ["À attribuer"],
+    zones: ["14510", "14160", "14430", "14910", "14640"],
+    sci_enabled: false,
+    // Agences DPE dont bagot agrège les assignments
+    dpe_agences: ["houlgate", "villers"],
+    // Agences SCI dont bagot agrège les données
+    sci_agences: ["houlgate", "villers"],
   },
 };
 
@@ -251,38 +270,74 @@ async function handleRequest(request, env) {
       const { agence: identifiant, password } = body;
       if (!identifiant || !password) return err("identifiant et password requis");
 
-      // Résoudre identifiant court ("dauphine") → id interne ("dauphine-lacassagne")
-      // Erreur générique pour ne pas révéler quels identifiants existent
-      const agence = IDENTIFIANTS[identifiant.toLowerCase().trim()] || identifiant;
-      const cfg = AGENCES_CONFIG[agence];
+      const idLower = identifiant.toLowerCase().trim();
+
+      // ── Résolution identifiant → agence ────────────────────────
+      //  1) identifiant patron connu (court "dauphine" ou direct "lopez")
+      //  2) login conseiller "prenom.shortname" → agence déduite du suffixe
+      //  Erreur générique pour ne pas révéler quels identifiants existent.
+      let agence = null;
+      let isConseillerLogin = false;
+      if (IDENTIFIANTS[idLower]) {
+        agence = IDENTIFIANTS[idLower];
+      } else if (AGENCES_CONFIG[idLower]) {
+        agence = idLower;
+      } else if (idLower.includes(".")) {
+        const suffix   = idLower.slice(idLower.lastIndexOf(".") + 1);
+        const resolved = IDENTIFIANTS[suffix] || (AGENCES_CONFIG[suffix] ? suffix : null);
+        if (resolved && AGENCES_CONFIG[resolved]) { agence = resolved; isConseillerLogin = true; }
+      }
+      const cfg = agence ? AGENCES_CONFIG[agence] : null;
       if (!cfg) return err("Identifiant ou mot de passe incorrect", 401);
 
-      // Mot de passe stocké en KV (hash SHA-256), fallback sur secret Wrangler
-      const storedHash = await env.DPE_KV.get(`pwd:${agence}`);
+      // ── Rôle : 'conseiller' si role:<agence>:<login> === 'conseiller' ──
+      const roleVal = await env.DPE_KV.get(`role:${agence}:${idLower}`);
+      const role    = (roleVal === "conseiller") ? "conseiller" : "patron";
+
+      // Un login "prenom.xxx" doit correspondre à une session conseiller existante
+      if (isConseillerLogin && role !== "conseiller") {
+        return err("Identifiant ou mot de passe incorrect", 401);
+      }
+
+      // ── Vérification mot de passe ──────────────────────────────
+      //  conseiller : pwd:<login>  |  patron : pwd:<agence> (+ fallback secret)
       let valid = false;
-      if (storedHash) {
-        valid = (await hashPassword(password)) === storedHash;
+      if (role === "conseiller") {
+        const storedHash = await env.DPE_KV.get(`pwd:${idLower}`);
+        if (storedHash) valid = (await hashPassword(password)) === storedHash;
       } else {
-        // Premier démarrage : mot de passe depuis secrets Wrangler
-        const secretKey = `PWD_${agence.toUpperCase().replace(/-/g,"_")}`;
-        const plainPwd  = env[secretKey];
-        if (!plainPwd) return err("Mot de passe non configuré", 500);
-        if (password === plainPwd) {
-          // Migrer vers KV hashé
-          await env.DPE_KV.put(`pwd:${agence}`, await hashPassword(password));
-          valid = true;
+        const storedHash = await env.DPE_KV.get(`pwd:${agence}`);
+        if (storedHash) {
+          valid = (await hashPassword(password)) === storedHash;
+        } else {
+          // Premier démarrage : mot de passe depuis secrets Wrangler
+          const secretKey = `PWD_${agence.toUpperCase().replace(/-/g,"_")}`;
+          const plainPwd  = env[secretKey];
+          if (!plainPwd) return err("Mot de passe non configuré", 500);
+          if (password === plainPwd) {
+            await env.DPE_KV.put(`pwd:${agence}`, await hashPassword(password));
+            valid = true;
+          }
         }
       }
       if (!valid) return err("Mot de passe incorrect", 401);
 
-      const token = await signJwt({ agence, exp: Date.now() + TOKEN_TTL_MS }, JWT_SECRET);
+      // Agences accessibles : sous-agences si composite, sinon l'agence seule
+      const agences = (Array.isArray(cfg.dpe_agences) && cfg.dpe_agences.length)
+        ? cfg.dpe_agences
+        : [agence];
+
+      const token = await signJwt(
+        { agence, agences, role, exp: Date.now() + TOKEN_TTL_MS },
+        JWT_SECRET
+      );
 
       // Charger conseillers depuis KV (ou défaut)
       const consRaw    = await env.DPE_KV.get(`conseillers:${agence}`);
       const conseillers = consRaw ? JSON.parse(consRaw) : cfg.conseillers_defaut;
 
       return json({
-        token, agence,
+        token, agence, role, agences,
         config: {
           nom:          cfg.nom,
           ville:        cfg.ville,
@@ -293,6 +348,7 @@ async function handleRequest(request, env) {
           sci_enabled:  cfg.sci_enabled || false,
           dpe_agences:  cfg.dpe_agences || null,   // null = agence simple, array = agence composite
           sci_agences:  cfg.sci_agences || null,
+          role,
         },
       });
     }
@@ -354,10 +410,13 @@ async function handleRequest(request, env) {
       if (!token) return [null, err("Token manquant", 401)];
       const payload = await verifyJwt(token, JWT_SECRET);
       if (!payload) return [null, err("Token invalide ou expiré", 401)];
-      // Lopez peut accéder aux routes de motte-picquet et pernety
-      const lopezAgences = ["motte-picquet", "pernety"];
-      const isLopezAccess = payload.agence === "lopez" && lopezAgences.includes(agenceId);
-      if (agenceId && payload.agence !== agenceId && !isLopezAccess) return [null, err("Accès refusé", 403)];
+      // Agences autorisées : l'agence du token, ses sous-agences (composite
+      // lopez/bagot) et toute agence listée dans payload.agences.
+      const composite = AGENCES_CONFIG[payload.agence];
+      const allowed   = new Set([payload.agence]);
+      if (Array.isArray(payload.agences))            payload.agences.forEach(a => allowed.add(a));
+      if (composite && Array.isArray(composite.dpe_agences)) composite.dpe_agences.forEach(a => allowed.add(a));
+      if (agenceId && !allowed.has(agenceId)) return [null, err("Accès refusé", 403)];
       return [payload, null];
     }
 
@@ -465,6 +524,85 @@ async function handleRequest(request, env) {
         return json({ ok: true, count: Object.keys(body.assignments).length });
       }
       return err("Méthode non supportée", 405);
+    }
+
+    // ── POST /conseillers/:agence/create ── créer une session conseiller ──
+    const consCreateMatch = path.match(/^\/conseillers\/([a-z0-9-]+)\/create$/);
+    if (consCreateMatch && method === "POST") {
+      const agenceId = consCreateMatch[1];
+      const [payload, authErr] = await requireAuth(agenceId);
+      if (authErr) return authErr;
+      if (payload.role === "conseiller") return err("Réservé au patron", 403);
+
+      const cfg = AGENCES_CONFIG[agenceId];
+      if (!cfg) return err("Agence inconnue", 404);
+
+      let body; try { body = await request.json(); } catch { return err("JSON invalide"); }
+      const prenom = (body.prenom || "").trim();
+      if (!prenom) return err("prenom requis", 400);
+
+      const shortName = agenceId.split("-")[0];
+      // Slug sans accents ni caractères spéciaux (compatible clé KV + route DELETE)
+      const slug = prenom.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+      if (!slug) return err("prenom invalide", 400);
+      const login = `${slug}.${shortName}`;
+
+      // Mot de passe : 8 caractères alphanumériques (alphabet sans ambiguïté)
+      const ALPHA = "abcdefghijkmnpqrstuvwxyz23456789";
+      const rnd   = crypto.getRandomValues(new Uint8Array(8));
+      let password = "";
+      for (let i = 0; i < 8; i++) password += ALPHA[rnd[i] % ALPHA.length];
+
+      await env.DPE_KV.put(`pwd:${login}`, await hashPassword(password));
+      await env.DPE_KV.put(`role:${agenceId}:${login}`, "conseiller");
+
+      const htmlMail = `<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"></head>
+<body style="font-family:sans-serif;background:#f1f5f9;padding:32px;">
+<div style="max-width:480px;margin:0 auto;background:#fff;border-radius:12px;padding:40px;box-shadow:0 4px 24px rgba(0,0,0,0.08);">
+  <div style="font-size:24px;font-weight:700;margin-bottom:16px;">Nouveau conseiller — ${prenom}</div>
+  <p style="color:#374151;line-height:1.6;">Une session a été créée pour <strong>${prenom}</strong> (${cfg.nom}).</p>
+  <p style="color:#374151;line-height:1.6;">
+    Identifiant : <strong>${login}</strong><br>
+    Mot de passe : <strong>${password}</strong>
+  </p>
+  <p style="font-size:13px;color:#6b7280;line-height:1.6;">
+    Communiquez ces accès au conseiller. Il est recommandé de changer le mot de passe
+    après la première connexion.
+  </p>
+</div></body></html>`;
+      await sendEmail(env, cfg.email, `Nouveau conseiller — ${prenom}`, htmlMail);
+
+      return ok({ ok: true, login, password });
+    }
+
+    // ── DELETE /conseillers/:agence/:login ── supprimer une session ──
+    const consDelMatch = path.match(/^\/conseillers\/([a-z0-9-]+)\/([a-z0-9.-]+)$/);
+    if (consDelMatch && method === "DELETE") {
+      const agenceId = consDelMatch[1];
+      const login    = consDelMatch[2];
+      const [payload, authErr] = await requireAuth(agenceId);
+      if (authErr) return authErr;
+      if (payload.role === "conseiller") return err("Réservé au patron", 403);
+
+      const cfg = AGENCES_CONFIG[agenceId];
+      if (!cfg) return err("Agence inconnue", 404);
+
+      await env.DPE_KV.delete(`pwd:${login}`);
+      await env.DPE_KV.delete(`role:${agenceId}:${login}`);
+
+      const htmlMail = `<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"></head>
+<body style="font-family:sans-serif;background:#f1f5f9;padding:32px;">
+<div style="max-width:480px;margin:0 auto;background:#fff;border-radius:12px;padding:40px;box-shadow:0 4px 24px rgba(0,0,0,0.08);">
+  <div style="font-size:24px;font-weight:700;margin-bottom:16px;">Session supprimée — ${login}</div>
+  <p style="color:#374151;line-height:1.6;">
+    La session conseiller <strong>${login}</strong> (${cfg.nom}) a été supprimée.
+    Cet identifiant ne permet plus de se connecter.
+  </p>
+</div></body></html>`;
+      await sendEmail(env, cfg.email, `Session supprimée — ${login}`, htmlMail);
+
+      return ok({ ok: true });
     }
 
     // ── /conseillers/:agence ──────────────────────────
