@@ -737,6 +737,22 @@ td{padding:11px 14px;vertical-align:middle;}
         style="position:absolute;right:8px;top:50%;transform:translateY(-50%);
                cursor:pointer;color:var(--text2);font-size:14px;" title="Effacer">✕</span>
     </div>
+    <div id="secteur-colhead" style="display:none;position:sticky;top:0;z-index:5;
+         background:var(--surface);border-bottom:2px solid var(--border);
+         font-size:11px;font-weight:700;color:var(--text2);padding:7px 0;
+         align-items:center;">
+      <span style="flex:0 0 280px;width:280px;padding:0 4px;box-sizing:border-box;">Adresse</span>
+      <span style="flex:0 0 60px;width:60px;padding:0 4px;box-sizing:border-box;text-align:right;">Lgts</span>
+      <span style="flex:0 0 45px;width:45px;padding:0 4px;box-sizing:border-box;text-align:right;">2021</span>
+      <span style="flex:0 0 45px;width:45px;padding:0 4px;box-sizing:border-box;text-align:right;">2022</span>
+      <span style="flex:0 0 45px;width:45px;padding:0 4px;box-sizing:border-box;text-align:right;">2023</span>
+      <span style="flex:0 0 45px;width:45px;padding:0 4px;box-sizing:border-box;text-align:right;">2024</span>
+      <span style="flex:0 0 45px;width:45px;padding:0 4px;box-sizing:border-box;text-align:right;">2025</span>
+      <span style="flex:0 0 55px;width:55px;padding:0 4px;box-sizing:border-box;text-align:right;">Total</span>
+      <span style="flex:0 0 70px;width:70px;padding:0 4px;box-sizing:border-box;text-align:right;">Taux/an</span>
+      <span style="flex:0 0 90px;width:90px;padding:0 4px;box-sizing:border-box;text-align:center;">Classement</span>
+      <span style="flex:1;min-width:0;padding:0 4px;"></span>
+    </div>
     <div id="secteur-tree" style="font-size:13px;">
       <div style="color:var(--text2);padding:20px;text-align:center;">Chargement…</div>
     </div>
@@ -2016,6 +2032,28 @@ function secteurFilter() {
 }
 window.secteurFilter = secteurFilter;
 
+// Taux de rotation ANNUEL = (ventes 5 ans / lots / 5) * 100, 1 décimale
+function sctTauxAnnuel(v, l) { return (l && l > 0) ? Math.round(v / l / 5 * 1000) / 10 : null; }
+function sctClassAnnuel(t) {
+  if (t == null) return '';
+  if (t >= 5)   return 'Très actif';
+  if (t >= 2.5) return 'Actif';
+  if (t >= 1)   return 'Modéré';
+  return 'Figé';
+}
+const SCTW = { adr: 280, lots: 60, an: 45, tot: 55, taux: 70, cls: 90 };
+function sctCell(h, w, al) {
+  return `<span style="flex:0 0 ${w}px;width:${w}px;${al ? 'text-align:' + al + ';' : ''}`
+    + `overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:0 4px;`
+    + `box-sizing:border-box;">${h}</span>`;
+}
+function sctBadge(cls) {
+  return cls
+    ? `<span style="background:${ROT_COLOR[cls] || '#6b7280'};color:#fff;padding:1px 7px;`
+      + `border-radius:10px;font-size:11px;font-weight:700;">${esc(cls)}</span>`
+    : '<span style="color:var(--text2);">—</span>';
+}
+
 function renderSecteur() {
   const d = secteurData, tree = document.getElementById('secteur-tree');
   if (!d) return;
@@ -2052,12 +2090,6 @@ function renderSecteur() {
     (parIris[y].length) - (parIris[x].length));
   ordre.forEach((ci, ii) => {
     const I = irisById[ci];
-    const titreI = I
-      ? `IRIS — ${esc(I.nom_iris)} | ${Math.round(I.nb_residences_principales || 0)} RP `
-        + `| ${I.part_proprietaires != null ? I.part_proprietaires + '% propr.' : 'propr. n.d.'} `
-        + `| ${I.part_locataires != null ? I.part_locataires + '% locat.' : 'locat. n.d.'} `
-        + `| revenu médian ${I.revenu_median != null ? I.revenu_median + '€' : 'n.d.'}`
-      : `IRIS non déterminé`;
     const idI = 'sct-i' + ii;
     // regrouper par îlot (assignations)
     const parIlot = {};
@@ -2070,21 +2102,21 @@ function renderSecteur() {
       (x === 'Îlot non assigné') - (y === 'Îlot non assigné') ||
       (parseInt(x.replace(/\D/g, '')) || 0) - (parseInt(y.replace(/\D/g, '')) || 0));
     let inner = '';
+    let irisV = 0, irisL = 0, irisAllV = 0;   // agrégats IRIS (V/L sur RNC pour le taux)
     ilotKeys.forEach((ik, ij) => {
       const idJ = idI + '-j' + ij;
       let rows = '';
+      let iloV = 0, iloL = 0, iloAllV = 0;
       parIlot[ik].forEach(a => {
         const cp = coproByCle[a.cle];
         const rnc = !!cp;
         if (rnc) nbRnc++; else nbEst++;
         const as = secteurAssign[a.cle] || {};
-        // adresse non geocodee (lon/lat absents -> code_iris null) : adresse=null.
-        // On affiche alors la cle_adresse lisible pour ne pas avoir de ligne vide.
         const hasAdr = a.adresse != null && String(a.adresse).trim() !== '';
         const adrTxt = hasAdr ? a.adresse
           : (a.cle ? a.cle.replace(/\|/g, ' ') : '(adresse inconnue)');
         const flagGeo = hasAdr ? ''
-          : ` <span style="color:var(--text2);font-size:10px;">(non géocodée)</span>`;
+          : ` <span style="color:var(--text2);font-size:10px;">(non géoc.)</span>`;
         const nomPerso = secteurNoms[a.cle];
         const dispNom = (nomPerso != null && String(nomPerso).trim() !== '')
           ? String(nomPerso) : adrTxt;
@@ -2092,76 +2124,94 @@ function renderSecteur() {
         const effV = {};
         ANS.forEach(y => { effV[y] = ((a.ventes_par_an || {})[y] || 0) + (mi ? (mi.ventes[y] || 0) : 0); });
         const effTot = ANS.reduce((s, y) => s + effV[y], 0);
-        let effTaux = (rnc && cp.taux_rotation_5ans != null) ? cp.taux_rotation_5ans : null;
-        let effCls = rnc ? (cp.classement_rotation || '') : '';
-        if (mi && cp.nb_lots_habitation > 0) {
-          const baseV = cp.nb_ventes_2021_2025 || 0;
-          const addV = ANS.reduce((s, y) => s + (mi.ventes[y] || 0), 0);
-          effTaux = Math.round((baseV + addV) / cp.nb_lots_habitation * 1000) / 10;
-          effCls = effTaux >= 20 ? 'Tres actif' : effTaux >= 10 ? 'Actif'
-                 : effTaux >= 5 ? 'Modere' : 'Fige';
-        }
-        const fusBadge = mi
-          ? ` <span onclick="secteurUndoFusion('${esc(a.cle)}')"`
-            + ` title="${esc(mi.count + ' adresse(s) fusionnée(s) : ' + mi.srcs.join(', ') + ' — cliquer pour défaire')}"`
-            + ` style="background:#0ea5e9;color:#fff;padding:1px 7px;border-radius:10px;font-size:11px;font-weight:700;cursor:pointer;">🔗 ${mi.count}</span>`
-          : '';
-        const ventes = ANS.map(y => `${y}:${effV[y]}`).join(' ');
-        const cls = effCls;
-        const taux = effTaux != null ? effTaux + '%' : '—';
-        const badgeRnc = rnc
-          ? `<span style="color:#16a34a;">RNC ✅ ${cp.nb_lots_habitation != null ? cp.nb_lots_habitation + ' lgts' : ''}</span>`
-          : `<span style="color:#d97706;">⚠️ Estimation</span>`;
-        const badgeRot = cls
-          ? `<span style="background:${ROT_COLOR[cls] || '#6b7280'};color:#fff;padding:1px 7px;border-radius:10px;font-size:11px;font-weight:700;">${esc(cls)}</span>`
-          : '';
+        const lots = (rnc && cp.nb_lots_habitation != null) ? cp.nb_lots_habitation : null;
+        const taux = sctTauxAnnuel(effTot, lots);   // taux ANNUEL de l'adresse
+        const cls = sctClassAnnuel(taux);
+
+        // agrégats : ventes totales partout ; ratio taux uniquement sur RNC (lots connus)
+        iloAllV += effTot;
+        if (lots && lots > 0) { iloV += effTot; iloL += lots; }
+
         const sci = a.sci_proprietaire === 'oui'
-          ? ` <span style="color:#7c3aed;font-size:11px;">SCI ${esc(a.sci_nom || '')}</span>` : '';
+          ? ` <span style="color:#7c3aed;font-size:10px;">SCI ${esc(a.sci_nom || '')}</span>` : '';
+        const fusBadge = mi
+          ? `<span onclick="secteurUndoFusion('${esc(a.cle)}')"`
+            + ` title="${esc(mi.count + ' adresse(s) fusionnée(s) : ' + mi.srcs.join(', ') + ' — cliquer pour défaire')}"`
+            + ` style="background:#0ea5e9;color:#fff;padding:0 5px;border-radius:9px;font-size:10px;font-weight:700;cursor:pointer;">🔗${mi.count}</span>`
+          : '';
         const ilotSel = `<select onchange="secteurSetAssign('${esc(a.cle)}','ilot',this.value)" `
-          + `style="background:#1f2937;color:#fff;border:1px solid #4b5563;border-radius:4px;font-size:11px;padding:2px 4px;">`
+          + `style="background:#1f2937;color:#fff;border:1px solid #4b5563;border-radius:4px;font-size:11px;padding:1px 3px;">`
           + `<option value="">îlot…</option>`
           + Array.from({ length: 81 }, (_, n) => n + 1).map(n =>
               `<option value="${n}"${as.ilot === n ? ' selected' : ''}>${n}</option>`).join('')
           + `</select>`;
         const typeSel = !rnc
-          ? ` <select onchange="secteurSetAssign('${esc(a.cle)}','type',this.value)" `
-            + `style="background:#1f2937;color:#fff;border:1px solid #4b5563;border-radius:4px;font-size:11px;padding:2px 4px;">`
+          ? `<select onchange="secteurSetAssign('${esc(a.cle)}','type',this.value)" `
+            + `style="background:#1f2937;color:#fff;border:1px solid #4b5563;border-radius:4px;font-size:11px;padding:1px 3px;">`
             + TYPE_OPTS.map(([v, l]) =>
                 `<option value="${v}"${as.type === v ? ' selected' : ''}>${esc(l)}</option>`).join('')
             + `</select>` : '';
-        rows += `<div class="sct-row" data-sct-addr="${esc(secteurNorm(dispNom + ' ' + adrTxt))}" `
-          + `style="padding:5px 8px;border-bottom:1px solid var(--border);display:flex;`
-          + `align-items:center;gap:8px;flex-wrap:wrap;">`
-          + `<span style="min-width:230px;">📍 `
-          + `<span class="sct-nm" data-cle="${esc(a.cle)}">${esc(dispNom)}</span>`
-          + ` <button onclick="secteurRename(this)" title="Renommer" `
-          + `style="background:transparent;border:none;color:var(--text2);cursor:pointer;font-size:12px;padding:0;">✏️</button>`
-          + `${flagGeo}${sci}</span>`
-          + `<span style="font-size:11px;">${badgeRnc}</span>`
-          + `<span style="font-size:11px;color:var(--text2);">${ventes} | Total:${effTot}</span>`
-          + `<span style="font-size:11px;">Rotation:${taux}</span> ${badgeRot}${fusBadge}`
-          + `<span class="spacer" style="flex:1;"></span>`
-          + `<button onclick="secteurRapprocher('${esc(a.cle)}')" title="Rapprocher d'une copropriété RNC" `
+
+        const nameCell = `📍 <span class="sct-nm" data-cle="${esc(a.cle)}">${esc(dispNom)}</span>`
+          + `${flagGeo}${sci}`;
+        const actions = `<button onclick="secteurRapprocher('${esc(a.cle)}')" title="Rapprocher d'une copropriété RNC" `
           + `style="background:transparent;border:1px solid #4b5563;color:#0ea5e9;border-radius:4px;`
-          + `font-size:12px;padding:2px 6px;cursor:pointer;">🔗</button>`
-          + `${ilotSel}${typeSel}</div>`;
+          + `font-size:11px;padding:1px 5px;cursor:pointer;">🔗</button>`
+          + `<button onclick="secteurRename(this)" title="Renommer" `
+          + `style="background:transparent;border:none;color:var(--text2);cursor:pointer;font-size:11px;padding:0;">✏️</button>`
+          + `${fusBadge}${ilotSel}${typeSel}`;
+
+        rows += `<div class="sct-row" data-sct-addr="${esc(secteurNorm(dispNom + ' ' + adrTxt))}" `
+          + `title="${esc(adrTxt)}" `
+          + `style="display:flex;align-items:center;border-bottom:1px solid var(--border);`
+          + `padding:4px 0;font-size:12px;">`
+          + sctCell(nameCell, SCTW.adr)
+          + sctCell(lots != null ? lots : '<span style="color:var(--text2);">—</span>', SCTW.lots, 'right')
+          + ANS.map(y => sctCell(String(effV[y] || 0), SCTW.an, 'right')).join('')
+          + sctCell(`<b>${effTot}</b>`, SCTW.tot, 'right')
+          + sctCell(taux != null ? taux + '%' : '<span style="color:var(--text2);">—</span>', SCTW.taux, 'right')
+          + sctCell(sctBadge(cls), SCTW.cls, 'center')
+          + `<span style="flex:1;min-width:0;display:flex;align-items:center;gap:5px;padding:0 4px;">${actions}</span>`
+          + `</div>`;
       });
-      inner += `<div class="sct-ilot" style="margin:6px 0 6px 16px;">`
-        + `<div style="cursor:pointer;font-weight:600;padding:4px 0;" onclick="secteurToggle('${idJ}')">`
-        + `<span id="${idJ}-h">▼</span> ${esc(ik)} `
+      irisAllV += iloAllV; irisV += iloV; irisL += iloL;
+
+      const iloTaux = sctTauxAnnuel(iloV, iloL);
+      const iloStats = `<span style="color:var(--text2);font-size:11px;">`
+        + `${iloL ? iloL + ' lgts' : 'lgts n.d.'} · ${(iloAllV / 5).toFixed(1)} ventes/an · `
+        + `taux ${iloTaux != null ? iloTaux + '%' : '—'}</span> `
+        + `${iloTaux != null ? sctBadge(sctClassAnnuel(iloTaux)) : ''}`;
+      inner += `<div class="sct-ilot">`
+        + `<div style="cursor:pointer;font-weight:600;padding:6px 8px;background:rgba(190,175,135,.06);`
+        + `border-top:1px solid var(--border);display:flex;align-items:center;gap:10px;" `
+        + `onclick="secteurToggle('${idJ}')">`
+        + `<span><span id="${idJ}-h">▼</span> ${esc(ik)} `
         + `<span style="background:var(--surface2);color:var(--text2);padding:1px 7px;border-radius:10px;font-size:11px;">`
-        + `${parIlot[ik].length} adresse${parIlot[ik].length > 1 ? 's' : ''}</span></div>`
+        + `${parIlot[ik].length}</span></span>`
+        + `<span style="flex:1;"></span>${iloStats}</div>`
         + `<div id="${idJ}" class="sct-ilot-body" style="display:block;">${rows}</div></div>`;
     });
+
+    const irisTaux = sctTauxAnnuel(irisV, irisL);
+    const nomIris = I ? `IRIS — ${esc(I.nom_iris)}` : 'IRIS non déterminé';
+    const irisStats = `<span style="color:var(--text2);font-size:11px;">`
+      + `${irisL ? irisL + ' lgts' : 'lgts n.d.'} · ${(irisAllV / 5).toFixed(1)} ventes/an · `
+      + `taux ${irisTaux != null ? irisTaux + '%' : '—'}`
+      + (I && I.part_proprietaires != null ? ` · ${I.part_proprietaires}% propr.` : '')
+      + (I && I.part_locataires != null ? ` · ${I.part_locataires}% locat.` : '')
+      + `</span> ${irisTaux != null ? sctBadge(sctClassAnnuel(irisTaux)) : ''}`;
     html += `<div class="sct-iris" style="margin-bottom:8px;border:1px solid var(--border);border-radius:8px;overflow:hidden;">`
-      + `<div style="cursor:pointer;font-weight:700;padding:8px 10px;background:rgba(190,175,135,.12);" `
-      + `onclick="secteurToggle('${idI}')"><span id="${idI}-h">${ii === 0 ? '▼' : '▶'}</span> ${titreI}</div>`
-      + `<div id="${idI}" class="sct-iris-body" style="display:${ii === 0 ? 'block' : 'none'};padding:4px 8px;">${inner}</div></div>`;
+      + `<div style="cursor:pointer;font-weight:700;padding:8px 10px;background:rgba(190,175,135,.14);`
+      + `display:flex;align-items:center;gap:10px;" onclick="secteurToggle('${idI}')">`
+      + `<span><span id="${idI}-h">${ii === 0 ? '▼' : '▶'}</span> ${nomIris}</span>`
+      + `<span style="flex:1;"></span>${irisStats}</div>`
+      + `<div id="${idI}" class="sct-iris-body" style="display:${ii === 0 ? 'block' : 'none'};">${inner}</div></div>`;
   });
   document.getElementById('secteur-resume').textContent =
     `${(d.adresses || []).length} adresses · ${nbRnc} RNC ✅ · ${nbEst} estimées · `
     + `${(d.iris || []).length} IRIS`;
   tree.innerHTML = html || '<div style="padding:20px;color:var(--text2);">Aucune donnée.</div>';
+  document.getElementById('secteur-colhead').style.display = html ? 'flex' : 'none';
 }
 
 // ── Rapprochement manuel adresse DVF <-> copropriété RNC ──────────
