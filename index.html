@@ -2099,6 +2099,18 @@ function renderSecteur() {
     ANS.forEach(y => { m.ventes[y] = (m.ventes[y] || 0) + ((sa.ventes_par_an || {})[y] || 0); });
   });
 
+  // ── Fusion AUTOMATIQUE BDNB (meme batiment_groupe_id) ──
+  const autoMerged = {};            // principalCle -> { count, ventes:{}, srcs:[] }
+  (d.adresses || []).forEach(a => {
+    if (a._fusion_auto && a._fusion_cible && !fusedSrc[a.cle]) {
+      fusedSrc[a.cle] = true;
+      const am = autoMerged[a._fusion_cible] = autoMerged[a._fusion_cible]
+        || { count: 0, ventes: {}, srcs: [] };
+      am.count++; am.srcs.push(a.cle);
+      ANS.forEach(y => { am.ventes[y] = (am.ventes[y] || 0) + ((a.ventes_par_an || {})[y] || 0); });
+    }
+  });
+
   const parIris = {};
   (d.adresses || []).forEach(a => {
     if (fusedSrc[a.cle]) return;     // source fusionnée : retirée de l'arbre
@@ -2139,11 +2151,14 @@ function renderSecteur() {
         const flagGeo = hasAdr ? ''
           : ` <span style="color:var(--text2);font-size:10px;">(non géoc.)</span>`;
         const nomPerso = secteurNoms[a.cle];
+        const autoLabel = a._fusion_auto_label || null;   // "139/141/143 RUE BARABAN"
         const dispNom = (nomPerso != null && String(nomPerso).trim() !== '')
-          ? String(nomPerso) : adrTxt;
+          ? String(nomPerso) : (autoLabel || adrTxt);
         const mi = (cp && mergedInto[a.cle]) ? mergedInto[a.cle] : null;
+        const am = autoMerged[a.cle] || null;             // fusion auto BDNB
         const effV = {};
-        ANS.forEach(y => { effV[y] = ((a.ventes_par_an || {})[y] || 0) + (mi ? (mi.ventes[y] || 0) : 0); });
+        ANS.forEach(y => { effV[y] = ((a.ventes_par_an || {})[y] || 0)
+          + (mi ? (mi.ventes[y] || 0) : 0) + (am ? (am.ventes[y] || 0) : 0); });
         const effTot = ANS.reduce((s, y) => s + effV[y], 0);
         const lots = (rnc && cp.nb_lots_habitation != null) ? cp.nb_lots_habitation : null;
         // Taux affiché : RNC -> lots copro ; hors-RNC -> nb_log_bdnb si dispo
@@ -2161,13 +2176,22 @@ function renderSecteur() {
             + ` title="${esc(mi.count + ' adresse(s) fusionnée(s) : ' + mi.srcs.join(', ') + ' — cliquer pour défaire')}"`
             + ` style="background:#0ea5e9;color:#fff;padding:0 5px;border-radius:9px;font-size:10px;font-weight:700;cursor:pointer;">🔗${mi.count}</span>`
           : '';
+        const autoBadge = am
+          ? `<span title="${esc('Fusion auto BDNB (même bâtiment) — ' + am.count
+              + ' adresse(s) : ' + am.srcs.join(', '))}"`
+            + ` style="background:#7c3aed;color:#fff;padding:0 5px;border-radius:9px;font-size:10px;font-weight:700;">🏢${am.count}</span>`
+          : '';
         const ilotSel = `<select onchange="secteurSetAssign('${esc(a.cle)}','ilot',this.value)" `
           + `style="background:#1f2937;color:#fff;border:1px solid #4b5563;border-radius:4px;font-size:11px;padding:1px 3px;width:54px;flex:none;">`
           + `<option value="">îlot…</option>`
           + Array.from({ length: 81 }, (_, n) => n + 1).map(n =>
               `<option value="${n}"${as.ilot === n ? ' selected' : ''}>${n}</option>`).join('')
           + `</select>`;
-        const typeSel = !rnc
+        // Type masqué si données BDNB (déjà qualifié) — visible seulement
+        // pour les vraies inconnues (ni RNC ni BDNB)
+        const hasBdnb = (a.nb_log_bdnb != null && a.nb_log_bdnb > 0)
+          || (a.classe_dpe != null && a.classe_dpe !== '');
+        const typeSel = (!rnc && !hasBdnb)
           ? `<select onchange="secteurSetAssign('${esc(a.cle)}','type',this.value)" `
             + `style="background:#1f2937;color:#fff;border:1px solid #4b5563;border-radius:4px;font-size:11px;padding:1px 3px;width:104px;flex:none;">`
             + TYPE_OPTS.map(([v, l]) =>
@@ -2198,7 +2222,7 @@ function renderSecteur() {
           + `font-size:11px;padding:1px 5px;cursor:pointer;">🔗</button>`
           + `<button onclick="secteurRename(this)" title="Renommer" `
           + `style="background:transparent;border:none;color:var(--text2);cursor:pointer;font-size:11px;padding:0;">✏️</button>`
-          + `${fusBadge}${ilotSel}${typeSel}`;
+          + `${fusBadge}${autoBadge}${ilotSel}${typeSel}`;
 
         rows += `<div class="sct-row" data-sct-addr="${esc(secteurNorm(dispNom + ' ' + adrTxt))}" `
           + `title="${esc(adrTxt)}" `
