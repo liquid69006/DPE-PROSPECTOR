@@ -742,6 +742,7 @@ td{padding:11px 14px;vertical-align:middle;}
          font-size:11px;font-weight:700;color:var(--text2);padding:7px 0;
          align-items:center;">
       <span style="flex:1 1 0;min-width:160px;padding:0 4px;box-sizing:border-box;text-align:left;">Adresse</span>
+      <span style="flex:0 0 180px;width:180px;padding:0 4px;box-sizing:border-box;text-align:left;">SCI</span>
       <span style="flex:0 0 80px;width:80px;padding:0 4px;box-sizing:border-box;text-align:center;">Lgts</span>
       <span style="flex:0 0 75px;width:75px;padding:0 4px;box-sizing:border-box;text-align:center;">2021</span>
       <span style="flex:0 0 75px;width:75px;padding:0 4px;box-sizing:border-box;text-align:center;">2022</span>
@@ -2041,7 +2042,7 @@ function sctClassAnnuel(t) {
   if (t >= 1)   return 'Modéré';
   return 'Figé';
 }
-const SCTW = { lots: 80, an: 75, tot: 80, taux: 90, cls: 110, act: 220, adrMin: 160 };
+const SCTW = { sci: 180, lots: 80, an: 75, tot: 80, taux: 90, cls: 110, act: 220, adrMin: 160 };
 function sctCell(h, w, al) {
   return `<span style="flex:0 0 ${w}px;width:${w}px;text-align:${al || 'center'};`
     + `overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:0 4px;`
@@ -2163,6 +2164,23 @@ function renderSecteur() {
 
         const nameCell = `📍 <span class="sct-nm" data-cle="${esc(a.cle)}">${esc(dispNom)}</span>`
           + `${flagGeo}`;
+        // Colonne SCI propriétaire (nom + lien Pappers si SIREN)
+        const sciNm = (a.sci_proprietaire === 'oui' && a.sci_nom
+          && String(a.sci_nom).trim()) ? String(a.sci_nom).trim() : '';
+        let sciCell;
+        if (sciNm) {
+          const slug = sciNm.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')
+            .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+          const url = 'https://www.pappers.fr/entreprise/' + slug
+            + (a.sci_siren ? '-' + a.sci_siren : '');
+          sciCell = a.sci_siren
+            ? `<a href="${url}" target="_blank" rel="noopener" title="${esc(sciNm)}" `
+              + `style="color:#7c3aed;font-size:10px;text-decoration:underline;text-underline-offset:2px;">`
+              + `${esc(sciNm)}</a>`
+            : `<span title="${esc(sciNm)}" style="color:#7c3aed;font-size:10px;">${esc(sciNm)}</span>`;
+        } else {
+          sciCell = '<span style="color:var(--text2);">—</span>';
+        }
         const actions = `<button onclick="secteurRapprocher('${esc(a.cle)}')" title="Rapprocher d'une copropriété RNC" `
           + `style="background:transparent;border:1px solid #4b5563;color:#0ea5e9;border-radius:4px;`
           + `font-size:11px;padding:1px 5px;cursor:pointer;">🔗</button>`
@@ -2175,6 +2193,7 @@ function renderSecteur() {
           + `style="display:flex;align-items:center;border-bottom:1px solid var(--border);`
           + `padding:4px 0;font-size:12px;">`
           + sctAdr(nameCell)
+          + sctCell(sciCell, SCTW.sci, 'left')
           + sctCell(lots != null ? lots : '<span style="color:var(--text2);">—</span>', SCTW.lots, 'center')
           + ANS.map(y => sctCell(String(effV[y] || 0), SCTW.an, 'center')).join('')
           + sctCell(`<b>${effTot}</b>`, SCTW.tot, 'center')
@@ -2216,9 +2235,22 @@ function renderSecteur() {
       + `<span style="flex:1;"></span>${irisStats}</div>`
       + `<div id="${idI}" class="sct-iris-body" style="display:${ii === 0 ? 'block' : 'none'};">${inner}</div></div>`;
   });
+  // Agrégats secteur depuis les copropriétés RNC (lots + ventes 5 ans)
+  let secL = 0, secV = 0;
+  (d.coproprietes || []).forEach(c => {
+    const l = Number(c.nb_lots_habitation);
+    if (Number.isFinite(l) && l > 0) {
+      secL += l;
+      secV += Number(c.nb_ventes_2021_2025) || 0;
+    }
+  });
+  const secVAn = secV / 5;
+  const secTaux = secL > 0 ? Math.round(secV / secL / 5 * 1000) / 10 : null;
   document.getElementById('secteur-resume').textContent =
-    `${(d.adresses || []).length} adresses · ${nbRnc} RNC ✅ · ${nbEst} estimées · `
-    + `${(d.iris || []).length} IRIS`;
+    `${(d.adresses || []).length} adresses · ${nbRnc} RNC · ${nbEst} estimées · `
+    + `${secL.toLocaleString('fr-FR')} lgts · `
+    + `${secVAn.toLocaleString('fr-FR', { minimumFractionDigits: 1, maximumFractionDigits: 1 })} ventes/an · `
+    + `taux secteur ${secTaux != null ? secTaux : '—'}%/an`;
   tree.innerHTML = html || '<div style="padding:20px;color:var(--text2);">Aucune donnée.</div>';
   document.getElementById('secteur-colhead').style.display = html ? 'flex' : 'none';
 }
