@@ -2120,6 +2120,9 @@ function renderSecteur() {
   let html = '';
   let nbRnc = 0, nbEst = 0, nbBdnb = 0;
   let secAllV = 0, secL = 0;        // header = somme des IRIS = somme des adresses
+  // Dédoublonnage du parc : un bâtiment BDNB (batiment_groupe_id) ou une
+  // copro RNC ne compte ses logements qu'UNE fois (1re adresse rencontrée).
+  const seenLgts = new Set();
   const ordre = Object.keys(parIris).sort((x, y) =>
     (parIris[y].length) - (parIris[x].length));
   ordre.forEach((ci, ii) => {
@@ -2168,11 +2171,17 @@ function renderSecteur() {
         const taux = sctTauxAnnuel(effTot, denomAff);   // taux ANNUEL de l'adresse
         const cls = sctClassAnnuel(taux);
 
-        // agrégats harmonisés : dénominateur = denomAff (nb_log_bdnb sinon
-        // nb_lots_habitation), numérateur = toutes les ventes (effTot).
+        // agrégats : numérateur = toutes les ventes (effTot, sommables car
+        // distinctes) ; dénominateur = denomAff compté UNE seule fois par
+        // bâtiment BDNB / copro RNC -> parc réel sans double-comptage.
         // Même base à tous les niveaux -> header = Σ IRIS = Σ adresses.
         iloAllV += effTot;
-        if (denomAff && denomAff > 0) iloL += denomAff;
+        if (denomAff && denomAff > 0) {
+          const lgtKey = rnc
+            ? 'rnc:' + (cp.numero_immatriculation || cp.cle_adresse || a.cle)
+            : (a.batiment_groupe_id ? 'bg:' + a.batiment_groupe_id : 'adr:' + a.cle);
+          if (!seenLgts.has(lgtKey)) { seenLgts.add(lgtKey); iloL += denomAff; }
+        }
 
         const fusBadge = mi
           ? `<span onclick="secteurUndoFusion('${esc(a.cle)}')"`
