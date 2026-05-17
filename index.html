@@ -728,20 +728,28 @@ td{padding:11px 14px;vertical-align:middle;}
         <b style="color:#d97706;">Modéré</b> ·
         <b style="color:#6b7280;">Figé</b></span>
     </div>
-    <div style="margin-bottom:12px;position:relative;max-width:420px;">
-      <input id="secteur-search" type="text" autocomplete="off"
-        placeholder="🔍 Rechercher une adresse…" oninput="secteurFilter()"
-        style="width:100%;box-sizing:border-box;background:#1f2937;color:#fff;
-               border:1px solid #4b5563;border-radius:6px;padding:7px 30px 7px 10px;font-size:13px;">
-      <span onclick="document.getElementById('secteur-search').value='';secteurFilter();"
-        style="position:absolute;right:8px;top:50%;transform:translateY(-50%);
-               cursor:pointer;color:var(--text2);font-size:14px;" title="Effacer">✕</span>
+    <div style="margin-bottom:12px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+      <div style="position:relative;flex:1;min-width:240px;max-width:420px;">
+        <input id="secteur-search" type="text" autocomplete="off"
+          placeholder="🔍 Rechercher une adresse…" oninput="secteurFilter()"
+          style="width:100%;box-sizing:border-box;background:#1f2937;color:#fff;
+                 border:1px solid #4b5563;border-radius:6px;padding:7px 30px 7px 10px;font-size:13px;">
+        <span onclick="document.getElementById('secteur-search').value='';secteurFilter();"
+          style="position:absolute;right:8px;top:50%;transform:translateY(-50%);
+                 cursor:pointer;color:var(--text2);font-size:14px;" title="Effacer">✕</span>
+      </div>
+      <button id="secteur-nolog-btn" onclick="secteurToggleNoLog()"
+        title="N'afficher que les adresses sans logements connus (ni BDNB ni RNC)"
+        style="padding:7px 14px;border:1px solid var(--border);border-radius:6px;
+               background:var(--surface2);color:var(--text);font-size:13px;
+               cursor:pointer;white-space:nowrap;">🏠 Sans logements</button>
     </div>
     <div id="secteur-colhead" style="display:none;position:sticky;top:0;z-index:5;
          background:var(--surface);border-bottom:2px solid var(--border);
          font-size:11px;font-weight:700;color:var(--text2);padding:7px 0;
          align-items:center;">
       <span style="flex:1 1 0;min-width:160px;padding:0 4px;box-sizing:border-box;text-align:left;">Adresse</span>
+      <span style="flex:0 0 150px;width:150px;padding:0 4px;box-sizing:border-box;text-align:left;">Syndic</span>
       <span style="flex:0 0 45px;width:45px;padding:0 4px;box-sizing:border-box;text-align:center;">DPE</span>
       <span style="flex:0 0 180px;width:180px;padding:0 4px;box-sizing:border-box;text-align:left;">SCI</span>
       <span style="flex:0 0 80px;width:80px;padding:0 4px;box-sizing:border-box;text-align:center;">Lgts</span>
@@ -1922,6 +1930,18 @@ function switchMode(mode) {
 let secteurData = null, secteurLoaded = false, secteurAssign = {}, secteurSaveTimer = null;
 let secteurFusions = {};            // { srcCle: dstCleAdresse }  (adresse DVF -> copro RNC)
 let secteurNoms = {};               // { cle: "nom personnalisé" }  (renommage inline)
+let secteurNoLog = false;           // filtre "Sans logements" (toggle)
+function secteurToggleNoLog() {
+  secteurNoLog = !secteurNoLog;
+  const b = document.getElementById('secteur-nolog-btn');
+  if (b) {
+    b.style.background = secteurNoLog ? 'var(--orange)' : 'var(--surface2)';
+    b.style.color = secteurNoLog ? '#fff' : 'var(--text)';
+    b.style.borderColor = secteurNoLog ? 'var(--orange)' : 'var(--border)';
+  }
+  renderSecteur();
+}
+window.secteurToggleNoLog = secteurToggleNoLog;
 let sctFusSrc = null, sctFusPick = null;   // etat de la modale de rapprochement
 
 async function loadSecteurData() {
@@ -2043,7 +2063,7 @@ function sctClassAnnuel(t) {
   if (t >= 1)   return 'Modéré';
   return 'Figé';
 }
-const SCTW = { dpe: 45, sci: 180, lots: 80, an: 75, tot: 80, taux: 90, cls: 110, act: 220, adrMin: 160 };
+const SCTW = { syndic: 150, dpe: 45, sci: 180, lots: 80, an: 75, tot: 80, taux: 90, cls: 110, act: 220, adrMin: 160 };
 const DPE_COLOR = { A: '#15803d', B: '#15803d', C: '#16a34a', D: '#ca8a04',
   E: '#ea580c', F: '#dc2626', G: '#dc2626' };
 function sctDpe(c) {
@@ -2114,11 +2134,17 @@ function renderSecteur() {
   const parIris = {};
   (d.adresses || []).forEach(a => {
     if (fusedSrc[a.cle]) return;     // source fusionnée : retirée de l'arbre
+    if (secteurNoLog) {              // filtre "Sans logements"
+      const cpx = coproByCle[a.cle];
+      const hasLog = (a.nb_log_bdnb > 0)
+        || (cpx && cpx.nb_lots_habitation > 0);
+      if (hasLog) return;
+    }
     const ci = a.code_iris || '_nd';
     (parIris[ci] = parIris[ci] || []).push(a);
   });
   let html = '';
-  let nbRnc = 0, nbEst = 0, nbBdnb = 0;
+  let nbRnc = 0, nbEst = 0, nbBdnb = 0, nbShown = 0;
   let secAllV = 0, secL = 0;        // header = somme des IRIS = somme des adresses
   // Dédoublonnage du parc : un bâtiment BDNB (batiment_groupe_id) ou une
   // copro RNC ne compte ses logements qu'UNE fois (1re adresse rencontrée).
@@ -2147,6 +2173,7 @@ function renderSecteur() {
       parIlot[ik].forEach(a => {
         const cp = coproByCle[a.cle];
         const rnc = !!cp;
+        nbShown++;
         if (rnc) nbRnc++; else { nbEst++; if (a.nb_log_bdnb > 0) nbBdnb++; }
         const as = secteurAssign[a.cle] || {};
         const hasAdr = a.adresse != null && String(a.adresse).trim() !== '';
@@ -2235,12 +2262,19 @@ function renderSecteur() {
           + `<button onclick="secteurRename(this)" title="Renommer" `
           + `style="background:transparent;border:none;color:var(--text2);cursor:pointer;font-size:11px;padding:0;">✏️</button>`
           + `${fusBadge}${autoBadge}${ilotSel}${typeSel}`;
+        // Syndic (RNC : raison sociale du représentant légal) ; "non connu" -> —
+        const synNm = (a.syndic && !/^\s*non connu\s*$/i.test(a.syndic))
+          ? String(a.syndic).trim() : '';
+        const syndicCell = synNm
+          ? `<span title="${esc(synNm)}" style="font-size:10px;">${esc(synNm)}</span>`
+          : '<span style="color:var(--text2);">—</span>';
 
         rows += `<div class="sct-row" data-sct-addr="${esc(secteurNorm(dispNom + ' ' + adrTxt))}" `
           + `title="${esc(adrTxt)}" `
           + `style="display:flex;align-items:center;border-bottom:1px solid var(--border);`
           + `padding:4px 0;font-size:12px;">`
           + sctAdr(nameCell)
+          + sctCell(syndicCell, SCTW.syndic, 'left')
           + sctCell(sctDpe(a.classe_dpe), SCTW.dpe, 'center')
           + sctCell(sciCell, SCTW.sci, 'left')
           + sctCell(lots != null ? lots
@@ -2293,7 +2327,7 @@ function renderSecteur() {
   const secVAn = secAllV / 5;
   const secTaux = secL > 0 ? Math.round(secAllV / secL / 5 * 1000) / 10 : null;
   document.getElementById('secteur-resume').textContent =
-    `${(d.adresses || []).length} adresses · ${nbRnc} RNC · ${nbBdnb} BDNB · `
+    `${nbShown} adresses · ${nbRnc} RNC · ${nbBdnb} BDNB · `
     + `${secL.toLocaleString('fr-FR')} lgts · `
     + `${secVAn.toLocaleString('fr-FR', { minimumFractionDigits: 1, maximumFractionDigits: 1 })} ventes/an · `
     + `taux secteur ${secTaux != null ? secTaux : '—'}%/an`;
