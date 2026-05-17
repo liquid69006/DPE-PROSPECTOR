@@ -740,6 +740,35 @@ td{padding:11px 14px;vertical-align:middle;}
     <div id="secteur-tree" style="font-size:13px;">
       <div style="color:var(--text2);padding:20px;text-align:center;">Chargement…</div>
     </div>
+
+    <div id="sct-fusion-overlay" style="display:none;position:fixed;inset:0;
+         background:rgba(0,0,0,.6);z-index:9999;align-items:center;justify-content:center;">
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;
+           width:min(680px,94vw);max-height:88vh;display:flex;flex-direction:column;overflow:hidden;">
+        <div style="padding:12px 16px;border-bottom:1px solid var(--border);">
+          <div style="font-weight:700;font-size:15px;color:#BEAF87;">🔗 Rapprocher d'une copropriété RNC</div>
+          <div id="sct-fus-src" style="font-size:13px;color:var(--text2);margin-top:4px;"></div>
+        </div>
+        <div style="padding:10px 16px;">
+          <input id="sct-fus-search" type="text" autocomplete="off"
+            placeholder="🔍 Filtrer les copropriétés (nom ou adresse)…"
+            oninput="secteurFusionList()"
+            style="width:100%;box-sizing:border-box;background:#1f2937;color:#fff;
+                   border:1px solid #4b5563;border-radius:6px;padding:7px 10px;font-size:13px;">
+        </div>
+        <div id="sct-fus-list" style="overflow:auto;padding:0 16px;flex:1;"></div>
+        <div style="padding:12px 16px;border-top:1px solid var(--border);display:flex;
+             align-items:center;gap:10px;justify-content:flex-end;">
+          <span id="sct-fus-pick" style="flex:1;font-size:12px;color:var(--text2);"></span>
+          <button onclick="secteurFusionClose()"
+            style="background:var(--surface2);color:var(--text);border:1px solid var(--border);
+                   border-radius:6px;padding:8px 16px;cursor:pointer;font-size:13px;">Annuler</button>
+          <button id="sct-fus-ok" onclick="secteurDoFusion()" disabled
+            style="background:#0ea5e9;color:#fff;border:none;border-radius:6px;padding:8px 18px;
+                   cursor:pointer;font-size:13px;font-weight:600;opacity:.5;">Fusionner</button>
+        </div>
+      </div>
+    </div>
   </div><!-- /section-secteur -->
 </div>
 
@@ -1873,6 +1902,8 @@ function switchMode(mode) {
 //  SECTEUR PROSPECTOR
 // ════════════════════════════════════════
 let secteurData = null, secteurLoaded = false, secteurAssign = {}, secteurSaveTimer = null;
+let secteurFusions = {};            // { srcCle: dstCleAdresse }  (adresse DVF -> copro RNC)
+let sctFusSrc = null, sctFusPick = null;   // etat de la modale de rapprochement
 
 async function loadSecteurData() {
   const tree = document.getElementById('secteur-tree');
@@ -1887,8 +1918,12 @@ async function loadSecteurData() {
   try {
     const ra = await fetch(`${API_URL}/secteur-assignments/${agenceId}`, {
       headers: { 'Authorization': `Bearer ${authToken}` } });
-    if (ra.ok) secteurAssign = (await ra.json()).assignments || {};
-  } catch { secteurAssign = {}; }
+    if (ra.ok) {
+      const j = await ra.json();
+      secteurAssign = j.assignments || {};
+      secteurFusions = j.fusions || {};         // fusions appliquees avant rendu
+    }
+  } catch { secteurAssign = {}; secteurFusions = {}; }
   renderSecteur();
 }
 
@@ -1899,7 +1934,7 @@ function secteurSave() {
       await fetch(`${API_URL}/secteur-assignments/${agenceId}`, {
         method: 'POST',
         headers: { 'Authorization': `Bearer ${authToken}`, 'Content-Type': 'application/json' },
-        body: JSON.stringify({ assignments: secteurAssign }) });
+        body: JSON.stringify({ assignments: secteurAssign, fusions: secteurFusions }) });
       showToast('✅ Secteur enregistré');
     } catch { showToast('⚠️ Échec enregistrement secteur', true); }
   }, 1200);
@@ -1987,12 +2022,28 @@ function renderSecteur() {
   (d.coproprietes || []).forEach(c => { if (c.cle_adresse) coproByCle[c.cle_adresse] = c; });
   const irisById = {};
   (d.iris || []).forEach(i => irisById[i.code_iris] = i);
+  const ANS = ['2021', '2022', '2023', '2024', '2025'];
+
+  // ── Fusions : adresse DVF source rattachée à une copro RNC cible ──
+  const adrByCle = {};
+  (d.adresses || []).forEach(a => { adrByCle[a.cle] = a; });
+  const mergedInto = {};            // dstCle -> { count, ventes:{an}, srcs:[] }
+  const fusedSrc = {};              // srcCle -> true (exclue de l'arbre)
+  Object.keys(secteurFusions || {}).forEach(src => {
+    const dst = secteurFusions[src], sa = adrByCle[src];
+    if (!sa || !dst || src === dst) return;
+    fusedSrc[src] = true;
+    const m = mergedInto[dst] = mergedInto[dst] || { count: 0, ventes: {}, srcs: [] };
+    m.count++; m.srcs.push(src);
+    ANS.forEach(y => { m.ventes[y] = (m.ventes[y] || 0) + ((sa.ventes_par_an || {})[y] || 0); });
+  });
+
   const parIris = {};
   (d.adresses || []).forEach(a => {
+    if (fusedSrc[a.cle]) return;     // source fusionnée : retirée de l'arbre
     const ci = a.code_iris || '_nd';
     (parIris[ci] = parIris[ci] || []).push(a);
   });
-  const ANS = ['2021', '2022', '2023', '2024', '2025'];
   let html = '';
   let nbRnc = 0, nbEst = 0;
   const ordre = Object.keys(parIris).sort((x, y) =>
@@ -2032,9 +2083,27 @@ function renderSecteur() {
           : (a.cle ? a.cle.replace(/\|/g, ' ') : '(adresse inconnue)');
         const flagGeo = hasAdr ? ''
           : ` <span style="color:var(--text2);font-size:10px;">(non géocodée)</span>`;
-        const ventes = ANS.map(y => `${y}:${(a.ventes_par_an || {})[y] || 0}`).join(' ');
-        const cls = rnc ? (cp.classement_rotation || '') : '';
-        const taux = rnc && cp.taux_rotation_5ans != null ? cp.taux_rotation_5ans + '%' : '—';
+        const mi = (cp && mergedInto[a.cle]) ? mergedInto[a.cle] : null;
+        const effV = {};
+        ANS.forEach(y => { effV[y] = ((a.ventes_par_an || {})[y] || 0) + (mi ? (mi.ventes[y] || 0) : 0); });
+        const effTot = ANS.reduce((s, y) => s + effV[y], 0);
+        let effTaux = (rnc && cp.taux_rotation_5ans != null) ? cp.taux_rotation_5ans : null;
+        let effCls = rnc ? (cp.classement_rotation || '') : '';
+        if (mi && cp.nb_lots_habitation > 0) {
+          const baseV = cp.nb_ventes_2021_2025 || 0;
+          const addV = ANS.reduce((s, y) => s + (mi.ventes[y] || 0), 0);
+          effTaux = Math.round((baseV + addV) / cp.nb_lots_habitation * 1000) / 10;
+          effCls = effTaux >= 20 ? 'Tres actif' : effTaux >= 10 ? 'Actif'
+                 : effTaux >= 5 ? 'Modere' : 'Fige';
+        }
+        const fusBadge = mi
+          ? ` <span onclick="secteurUndoFusion('${esc(a.cle)}')"`
+            + ` title="${esc(mi.count + ' adresse(s) fusionnée(s) : ' + mi.srcs.join(', ') + ' — cliquer pour défaire')}"`
+            + ` style="background:#0ea5e9;color:#fff;padding:1px 7px;border-radius:10px;font-size:11px;font-weight:700;cursor:pointer;">🔗 ${mi.count}</span>`
+          : '';
+        const ventes = ANS.map(y => `${y}:${effV[y]}`).join(' ');
+        const cls = effCls;
+        const taux = effTaux != null ? effTaux + '%' : '—';
         const badgeRnc = rnc
           ? `<span style="color:#16a34a;">RNC ✅ ${cp.nb_lots_habitation != null ? cp.nb_lots_habitation + ' lgts' : ''}</span>`
           : `<span style="color:#d97706;">⚠️ Estimation</span>`;
@@ -2060,9 +2129,13 @@ function renderSecteur() {
           + `align-items:center;gap:8px;flex-wrap:wrap;">`
           + `<span style="min-width:230px;">📍 ${esc(adrTxt)}${flagGeo}${sci}</span>`
           + `<span style="font-size:11px;">${badgeRnc}</span>`
-          + `<span style="font-size:11px;color:var(--text2);">${ventes} | Total:${a.nb_ventes_total || 0}</span>`
-          + `<span style="font-size:11px;">Rotation:${taux}</span> ${badgeRot}`
-          + `<span class="spacer" style="flex:1;"></span>${ilotSel}${typeSel}</div>`;
+          + `<span style="font-size:11px;color:var(--text2);">${ventes} | Total:${effTot}</span>`
+          + `<span style="font-size:11px;">Rotation:${taux}</span> ${badgeRot}${fusBadge}`
+          + `<span class="spacer" style="flex:1;"></span>`
+          + `<button onclick="secteurRapprocher('${esc(a.cle)}')" title="Rapprocher d'une copropriété RNC" `
+          + `style="background:transparent;border:1px solid #4b5563;color:#0ea5e9;border-radius:4px;`
+          + `font-size:12px;padding:2px 6px;cursor:pointer;">🔗</button>`
+          + `${ilotSel}${typeSel}</div>`;
       });
       inner += `<div class="sct-ilot" style="margin:6px 0 6px 16px;">`
         + `<div style="cursor:pointer;font-weight:600;padding:4px 0;" onclick="secteurToggle('${idJ}')">`
@@ -2081,6 +2154,105 @@ function renderSecteur() {
     + `${(d.iris || []).length} IRIS`;
   tree.innerHTML = html || '<div style="padding:20px;color:var(--text2);">Aucune donnée.</div>';
 }
+
+// ── Rapprochement manuel adresse DVF <-> copropriété RNC ──────────
+function secteurVoieKey(cle) {
+  const p = String(cle == null ? '' : cle).split('|');
+  return secteurNorm((p[1] || '') + ' ' + (p.slice(2).join('|') || ''));
+}
+function secteurDist(la1, lo1, la2, lo2) {
+  if ([la1, lo1, la2, lo2].some(v => v == null || isNaN(v))) return Infinity;
+  const R = 6371000, r = Math.PI / 180;
+  const dla = (la2 - la1) * r, dlo = (lo2 - lo1) * r;
+  const x = Math.sin(dla / 2) ** 2
+    + Math.cos(la1 * r) * Math.cos(la2 * r) * Math.sin(dlo / 2) ** 2;
+  return 2 * R * Math.asin(Math.sqrt(x));
+}
+function secteurRapprocher(srcCle) {
+  if (!secteurData) return;
+  sctFusSrc = srcCle; sctFusPick = null;
+  const sa = (secteurData.adresses || []).find(a => a.cle === srcCle) || {};
+  const txt = (sa.adresse && String(sa.adresse).trim())
+    ? sa.adresse : srcCle.replace(/\|/g, ' ');
+  document.getElementById('sct-fus-src').textContent =
+    'Adresse source : ' + txt + '  (' + srcCle + ')';
+  const s = document.getElementById('sct-fus-search'); if (s) s.value = '';
+  document.getElementById('sct-fus-pick').textContent = '';
+  const ok = document.getElementById('sct-fus-ok');
+  ok.disabled = true; ok.style.opacity = .5;
+  secteurFusionList();
+  document.getElementById('sct-fusion-overlay').style.display = 'flex';
+}
+window.secteurRapprocher = secteurRapprocher;
+function secteurFusionList() {
+  const src = sctFusSrc;
+  if (!src || !secteurData) return;
+  const sa = (secteurData.adresses || []).find(a => a.cle === src) || {};
+  const sVoie = secteurVoieKey(src);
+  const q = secteurNorm((document.getElementById('sct-fus-search') || {}).value || '');
+  let list = (secteurData.coproprietes || []).filter(c => c.cle_adresse && c.cle_adresse !== src);
+  if (q) list = list.filter(c =>
+    secteurNorm((c.nom_copropriete || '') + ' ' + (c.adresse || '') + ' ' + (c.cle_adresse || '')).indexOf(q) !== -1);
+  list = list.map(c => ({
+    c,
+    same: secteurVoieKey(c.cle_adresse) === sVoie ? 0 : 1,
+    dist: secteurDist(sa.latitude, sa.longitude, c.latitude, c.longitude),
+  })).sort((A, B) => A.same - B.same || A.dist - B.dist
+    || String(A.c.nom_copropriete || '').localeCompare(String(B.c.nom_copropriete || '')));
+  const box = document.getElementById('sct-fus-list');
+  box.innerHTML = list.slice(0, 200).map(({ c, same, dist }) => {
+    const sel = sctFusPick === c.cle_adresse;
+    const dtxt = isFinite(dist)
+      ? (dist < 1000 ? Math.round(dist) + ' m' : (dist / 1000).toFixed(1) + ' km') : '';
+    const tx = c.taux_rotation_5ans != null ? c.taux_rotation_5ans + '%' : '—';
+    return `<div onclick="secteurFusionPick('${esc(c.cle_adresse)}')" `
+      + `style="padding:8px;border:1px solid ${sel ? '#0ea5e9' : 'var(--border)'};`
+      + `background:${sel ? 'rgba(14,165,233,.12)' : 'transparent'};border-radius:6px;margin:6px 0;cursor:pointer;">`
+      + `<div style="font-weight:600;">${esc(c.nom_copropriete || '(sans nom)')}`
+      + (same === 0 ? ` <span style="color:#16a34a;font-size:11px;">• même voie</span>` : '')
+      + (dtxt ? ` <span style="color:var(--text2);font-size:11px;">• ${dtxt}</span>` : '') + `</div>`
+      + `<div style="font-size:12px;color:var(--text2);">${esc(String(c.adresse || '').split('|')[0].trim() || c.cle_adresse)}</div>`
+      + `<div style="font-size:11px;color:var(--text2);margin-top:2px;">`
+      + `${c.nb_lots_habitation != null ? c.nb_lots_habitation + ' lgts' : 'lgts n.d.'} · `
+      + `rotation ${tx} · ${esc(c.classement_rotation || '')}</div></div>`;
+  }).join('') || '<div style="padding:16px;color:var(--text2);">Aucune copropriété.</div>';
+}
+window.secteurFusionList = secteurFusionList;
+function secteurFusionPick(cle) {
+  sctFusPick = cle;
+  const ok = document.getElementById('sct-fus-ok');
+  ok.disabled = false; ok.style.opacity = 1;
+  const c = (secteurData.coproprietes || []).find(x => x.cle_adresse === cle);
+  document.getElementById('sct-fus-pick').textContent =
+    c ? ('Cible : ' + (c.nom_copropriete || cle)) : '';
+  secteurFusionList();
+}
+window.secteurFusionPick = secteurFusionPick;
+function secteurDoFusion() {
+  if (!sctFusSrc || !sctFusPick) return;
+  if (sctFusSrc === sctFusPick) { showToast('⚠️ Source = cible', true); return; }
+  secteurFusions[sctFusSrc] = sctFusPick;
+  secteurFusionClose();
+  secteurSave();
+  renderSecteur();
+  showToast('🔗 Adresse rapprochée');
+}
+window.secteurDoFusion = secteurDoFusion;
+function secteurUndoFusion(dstCle) {
+  const srcs = Object.keys(secteurFusions).filter(s => secteurFusions[s] === dstCle);
+  if (!srcs.length) return;
+  if (!confirm('Défaire ' + srcs.length + ' fusion(s) vers cette copropriété ?')) return;
+  srcs.forEach(s => { delete secteurFusions[s]; });
+  secteurSave();
+  renderSecteur();
+  showToast('Fusion(s) défaite(s)');
+}
+window.secteurUndoFusion = secteurUndoFusion;
+function secteurFusionClose() {
+  document.getElementById('sct-fusion-overlay').style.display = 'none';
+  sctFusSrc = null; sctFusPick = null;
+}
+window.secteurFusionClose = secteurFusionClose;
 
 // ════════════════════════════════════════
 //  DONNÉES SCI

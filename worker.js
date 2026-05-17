@@ -549,13 +549,23 @@ async function handleRequest(request, env) {
 
       if (method === "GET") {
         const raw = await env.DPE_KV.get(`secteur_assignments:${agenceId}`);
-        return json({ assignments: raw ? JSON.parse(raw) : {} });
+        let parsed = raw ? JSON.parse(raw) : {};
+        // Retro-compat : ancien format = objet d'assignations a plat.
+        // Nouveau format = { assignments:{...}, fusions:{...} }.
+        const isWrapped = parsed && (parsed.assignments !== undefined || parsed.fusions !== undefined);
+        const assignments = isWrapped ? (parsed.assignments || {}) : parsed;
+        const fusions = isWrapped ? (parsed.fusions || {}) : {};
+        return json({ assignments, fusions });
       }
       if (method === "POST") {
         let body; try { body = await request.json(); } catch { return err("JSON invalide"); }
-        if (typeof body.assignments !== "object") return err("assignments doit être un objet");
-        await env.DPE_KV.put(`secteur_assignments:${agenceId}`, JSON.stringify(body.assignments));
-        return json({ ok: true, count: Object.keys(body.assignments).length });
+        if (typeof body.assignments !== "object" || body.assignments === null)
+          return err("assignments doit être un objet");
+        const fusions = (body.fusions && typeof body.fusions === "object") ? body.fusions : {};
+        await env.DPE_KV.put(`secteur_assignments:${agenceId}`,
+          JSON.stringify({ assignments: body.assignments, fusions }));
+        return json({ ok: true, assignments: Object.keys(body.assignments).length,
+                      fusions: Object.keys(fusions).length });
       }
       return err("Méthode non supportée", 405);
     }
