@@ -728,6 +728,15 @@ td{padding:11px 14px;vertical-align:middle;}
         <b style="color:#d97706;">Modéré</b> ·
         <b style="color:#6b7280;">Figé</b></span>
     </div>
+    <div style="margin-bottom:12px;position:relative;max-width:420px;">
+      <input id="secteur-search" type="text" autocomplete="off"
+        placeholder="🔍 Rechercher une adresse…" oninput="secteurFilter()"
+        style="width:100%;box-sizing:border-box;background:#1f2937;color:#fff;
+               border:1px solid #4b5563;border-radius:6px;padding:7px 30px 7px 10px;font-size:13px;">
+      <span onclick="document.getElementById('secteur-search').value='';secteurFilter();"
+        style="position:absolute;right:8px;top:50%;transform:translateY(-50%);
+               cursor:pointer;color:var(--text2);font-size:14px;" title="Effacer">✕</span>
+    </div>
     <div id="secteur-tree" style="font-size:13px;">
       <div style="color:var(--text2);padding:20px;text-align:center;">Chargement…</div>
     </div>
@@ -1926,6 +1935,50 @@ function esc(s) {
   return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 
+function secteurNorm(s) {
+  return String(s == null ? '' : s).toLowerCase()
+    .normalize('NFD').replace(/[̀-ͯ]/g, '')
+    .replace(/\s+/g, ' ').trim();
+}
+
+// Filtre temps reel par adresse : masque les lignes non concordantes et
+// deplie automatiquement l'ilot + l'IRIS parents des adresses trouvees.
+// Recherche vide -> retour a l'affichage normal (re-rendu complet).
+function secteurFilter() {
+  const inp = document.getElementById('secteur-search');
+  const q = secteurNorm(inp ? inp.value : '');
+  const tree = document.getElementById('secteur-tree');
+  if (!tree) return;
+  if (!q) { renderSecteur(); return; }
+  tree.querySelectorAll('.sct-iris').forEach(iris => {
+    const ib = iris.querySelector('.sct-iris-body');
+    let irisHas = false;
+    iris.querySelectorAll('.sct-ilot').forEach(ilot => {
+      const jb = ilot.querySelector('.sct-ilot-body');
+      let ilotHas = false;
+      ilot.querySelectorAll('.sct-row').forEach(r => {
+        const m = (r.getAttribute('data-sct-addr') || '').indexOf(q) !== -1;
+        r.style.display = m ? 'flex' : 'none';
+        if (m) ilotHas = true;
+      });
+      ilot.style.display = ilotHas ? '' : 'none';
+      if (jb) {
+        jb.style.display = ilotHas ? 'block' : 'none';
+        const h = document.getElementById(jb.id + '-h');
+        if (h) h.textContent = ilotHas ? '▼' : '▶';
+      }
+      if (ilotHas) irisHas = true;
+    });
+    iris.style.display = irisHas ? '' : 'none';
+    if (ib) {
+      ib.style.display = irisHas ? 'block' : 'none';
+      const h = document.getElementById(ib.id + '-h');
+      if (h) h.textContent = irisHas ? '▼' : '▶';
+    }
+  });
+}
+window.secteurFilter = secteurFilter;
+
 function renderSecteur() {
   const d = secteurData, tree = document.getElementById('secteur-tree');
   if (!d) return;
@@ -1995,7 +2048,8 @@ function renderSecteur() {
             + TYPE_OPTS.map(([v, l]) =>
                 `<option value="${v}"${as.type === v ? ' selected' : ''}>${esc(l)}</option>`).join('')
             + `</select>` : '';
-        rows += `<div style="padding:5px 8px;border-bottom:1px solid var(--border);display:flex;`
+        rows += `<div class="sct-row" data-sct-addr="${esc(secteurNorm(a.adresse))}" `
+          + `style="padding:5px 8px;border-bottom:1px solid var(--border);display:flex;`
           + `align-items:center;gap:8px;flex-wrap:wrap;">`
           + `<span style="min-width:230px;">📍 ${esc(a.adresse)}${sci}</span>`
           + `<span style="font-size:11px;">${badgeRnc}</span>`
@@ -2003,17 +2057,17 @@ function renderSecteur() {
           + `<span style="font-size:11px;">Rotation:${taux}</span> ${badgeRot}`
           + `<span class="spacer" style="flex:1;"></span>${ilotSel}${typeSel}</div>`;
       });
-      inner += `<div style="margin:6px 0 6px 16px;">`
+      inner += `<div class="sct-ilot" style="margin:6px 0 6px 16px;">`
         + `<div style="cursor:pointer;font-weight:600;padding:4px 0;" onclick="secteurToggle('${idJ}')">`
         + `<span id="${idJ}-h">▼</span> ${esc(ik)} `
         + `<span style="background:var(--surface2);color:var(--text2);padding:1px 7px;border-radius:10px;font-size:11px;">`
         + `${parIlot[ik].length} adresse${parIlot[ik].length > 1 ? 's' : ''}</span></div>`
-        + `<div id="${idJ}" style="display:block;">${rows}</div></div>`;
+        + `<div id="${idJ}" class="sct-ilot-body" style="display:block;">${rows}</div></div>`;
     });
-    html += `<div style="margin-bottom:8px;border:1px solid var(--border);border-radius:8px;overflow:hidden;">`
+    html += `<div class="sct-iris" style="margin-bottom:8px;border:1px solid var(--border);border-radius:8px;overflow:hidden;">`
       + `<div style="cursor:pointer;font-weight:700;padding:8px 10px;background:rgba(190,175,135,.12);" `
       + `onclick="secteurToggle('${idI}')"><span id="${idI}-h">${ii === 0 ? '▼' : '▶'}</span> ${titreI}</div>`
-      + `<div id="${idI}" style="display:${ii === 0 ? 'block' : 'none'};padding:4px 8px;">${inner}</div></div>`;
+      + `<div id="${idI}" class="sct-iris-body" style="display:${ii === 0 ? 'block' : 'none'};padding:4px 8px;">${inner}</div></div>`;
   });
   document.getElementById('secteur-resume').textContent =
     `${(d.adresses || []).length} adresses · ${nbRnc} RNC ✅ · ${nbEst} estimées · `
