@@ -1903,6 +1903,7 @@ function switchMode(mode) {
 // ════════════════════════════════════════
 let secteurData = null, secteurLoaded = false, secteurAssign = {}, secteurSaveTimer = null;
 let secteurFusions = {};            // { srcCle: dstCleAdresse }  (adresse DVF -> copro RNC)
+let secteurNoms = {};               // { cle: "nom personnalisé" }  (renommage inline)
 let sctFusSrc = null, sctFusPick = null;   // etat de la modale de rapprochement
 
 async function loadSecteurData() {
@@ -1922,8 +1923,9 @@ async function loadSecteurData() {
       const j = await ra.json();
       secteurAssign = j.assignments || {};
       secteurFusions = j.fusions || {};         // fusions appliquees avant rendu
+      secteurNoms = j.noms || {};               // noms perso appliques avant rendu
     }
-  } catch { secteurAssign = {}; secteurFusions = {}; }
+  } catch { secteurAssign = {}; secteurFusions = {}; secteurNoms = {}; }
   renderSecteur();
 }
 
@@ -1934,7 +1936,7 @@ function secteurSave() {
       await fetch(`${API_URL}/secteur-assignments/${agenceId}`, {
         method: 'POST',
         headers: { 'Authorization': `Bearer ${authToken}`, 'Content-Type': 'application/json' },
-        body: JSON.stringify({ assignments: secteurAssign, fusions: secteurFusions }) });
+        body: JSON.stringify({ assignments: secteurAssign, fusions: secteurFusions, noms: secteurNoms }) });
       showToast('✅ Secteur enregistré');
     } catch { showToast('⚠️ Échec enregistrement secteur', true); }
   }, 1200);
@@ -2083,6 +2085,9 @@ function renderSecteur() {
           : (a.cle ? a.cle.replace(/\|/g, ' ') : '(adresse inconnue)');
         const flagGeo = hasAdr ? ''
           : ` <span style="color:var(--text2);font-size:10px;">(non géocodée)</span>`;
+        const nomPerso = secteurNoms[a.cle];
+        const dispNom = (nomPerso != null && String(nomPerso).trim() !== '')
+          ? String(nomPerso) : adrTxt;
         const mi = (cp && mergedInto[a.cle]) ? mergedInto[a.cle] : null;
         const effV = {};
         ANS.forEach(y => { effV[y] = ((a.ventes_par_an || {})[y] || 0) + (mi ? (mi.ventes[y] || 0) : 0); });
@@ -2124,10 +2129,14 @@ function renderSecteur() {
             + TYPE_OPTS.map(([v, l]) =>
                 `<option value="${v}"${as.type === v ? ' selected' : ''}>${esc(l)}</option>`).join('')
             + `</select>` : '';
-        rows += `<div class="sct-row" data-sct-addr="${esc(secteurNorm(adrTxt))}" `
+        rows += `<div class="sct-row" data-sct-addr="${esc(secteurNorm(dispNom + ' ' + adrTxt))}" `
           + `style="padding:5px 8px;border-bottom:1px solid var(--border);display:flex;`
           + `align-items:center;gap:8px;flex-wrap:wrap;">`
-          + `<span style="min-width:230px;">📍 ${esc(adrTxt)}${flagGeo}${sci}</span>`
+          + `<span style="min-width:230px;">📍 `
+          + `<span class="sct-nm" data-cle="${esc(a.cle)}">${esc(dispNom)}</span>`
+          + ` <button onclick="secteurRename(this)" title="Renommer" `
+          + `style="background:transparent;border:none;color:var(--text2);cursor:pointer;font-size:12px;padding:0;">✏️</button>`
+          + `${flagGeo}${sci}</span>`
           + `<span style="font-size:11px;">${badgeRnc}</span>`
           + `<span style="font-size:11px;color:var(--text2);">${ventes} | Total:${effTot}</span>`
           + `<span style="font-size:11px;">Rotation:${taux}</span> ${badgeRot}${fusBadge}`
@@ -2253,6 +2262,44 @@ function secteurFusionClose() {
   sctFusSrc = null; sctFusPick = null;
 }
 window.secteurFusionClose = secteurFusionClose;
+
+// ── Renommage inline d'une adresse / copropriété ─────────────────
+function secteurNomOriginal(cle) {
+  const a = ((secteurData && secteurData.adresses) || []).find(x => x.cle === cle);
+  if (a && a.adresse != null && String(a.adresse).trim() !== '') return String(a.adresse);
+  return String(cle == null ? '' : cle).replace(/\|/g, ' ');
+}
+function secteurRename(btn) {
+  const row = btn.closest('.sct-row'); if (!row) return;
+  const span = row.querySelector('.sct-nm'); if (!span) return;
+  const cle = span.getAttribute('data-cle');
+  const inp = document.createElement('input');
+  inp.type = 'text'; inp.value = span.textContent;
+  inp.style.cssText = 'background:#1f2937;color:#fff;border:1px solid #0ea5e9;'
+    + 'border-radius:4px;font-size:13px;padding:2px 6px;min-width:200px;';
+  let done = false;
+  function commit() {
+    if (done) return; done = true;
+    const v = inp.value.trim();
+    if (!v || v === secteurNomOriginal(cle)) delete secteurNoms[cle];
+    else secteurNoms[cle] = v;
+    secteurSave();
+    renderSecteur();
+  }
+  function cancel() {
+    if (done) return; done = true;
+    renderSecteur();                 // restaure le nom original/perso courant
+  }
+  inp.addEventListener('keydown', e => {
+    if (e.key === 'Enter') { e.preventDefault(); commit(); }
+    else if (e.key === 'Escape') { e.preventDefault(); cancel(); }
+  });
+  inp.addEventListener('blur', commit);
+  btn.style.display = 'none';
+  span.replaceWith(inp);
+  inp.focus(); inp.select();
+}
+window.secteurRename = secteurRename;
 
 // ════════════════════════════════════════
 //  DONNÉES SCI
