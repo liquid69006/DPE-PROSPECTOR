@@ -742,6 +742,7 @@ td{padding:11px 14px;vertical-align:middle;}
          font-size:11px;font-weight:700;color:var(--text2);padding:7px 0;
          align-items:center;">
       <span style="flex:1 1 0;min-width:160px;padding:0 4px;box-sizing:border-box;text-align:left;">Adresse</span>
+      <span style="flex:0 0 45px;width:45px;padding:0 4px;box-sizing:border-box;text-align:center;">DPE</span>
       <span style="flex:0 0 180px;width:180px;padding:0 4px;box-sizing:border-box;text-align:left;">SCI</span>
       <span style="flex:0 0 80px;width:80px;padding:0 4px;box-sizing:border-box;text-align:center;">Lgts</span>
       <span style="flex:0 0 75px;width:75px;padding:0 4px;box-sizing:border-box;text-align:center;">2021</span>
@@ -2042,7 +2043,15 @@ function sctClassAnnuel(t) {
   if (t >= 1)   return 'Modéré';
   return 'Figé';
 }
-const SCTW = { sci: 180, lots: 80, an: 75, tot: 80, taux: 90, cls: 110, act: 220, adrMin: 160 };
+const SCTW = { dpe: 45, sci: 180, lots: 80, an: 75, tot: 80, taux: 90, cls: 110, act: 220, adrMin: 160 };
+const DPE_COLOR = { A: '#15803d', B: '#15803d', C: '#16a34a', D: '#ca8a04',
+  E: '#ea580c', F: '#dc2626', G: '#dc2626' };
+function sctDpe(c) {
+  if (!c) return '<span style="color:var(--text2);">—</span>';
+  const bg = DPE_COLOR[String(c).toUpperCase()] || '#6b7280';
+  return `<span style="background:${bg};color:#fff;padding:1px 6px;border-radius:9px;`
+    + `font-size:11px;font-weight:700;">${esc(String(c).toUpperCase())}</span>`;
+}
 function sctCell(h, w, al) {
   return `<span style="flex:0 0 ${w}px;width:${w}px;text-align:${al || 'center'};`
     + `overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:0 4px;`
@@ -2137,7 +2146,10 @@ function renderSecteur() {
         ANS.forEach(y => { effV[y] = ((a.ventes_par_an || {})[y] || 0) + (mi ? (mi.ventes[y] || 0) : 0); });
         const effTot = ANS.reduce((s, y) => s + effV[y], 0);
         const lots = (rnc && cp.nb_lots_habitation != null) ? cp.nb_lots_habitation : null;
-        const taux = sctTauxAnnuel(effTot, lots);   // taux ANNUEL de l'adresse
+        // Taux affiché : RNC -> lots copro ; hors-RNC -> nb_log_bdnb si dispo
+        const denomAff = (lots != null) ? lots
+          : (a.nb_log_bdnb != null && a.nb_log_bdnb > 0 ? a.nb_log_bdnb : null);
+        const taux = sctTauxAnnuel(effTot, denomAff);   // taux ANNUEL de l'adresse
         const cls = sctClassAnnuel(taux);
 
         // agrégats : ventes totales partout ; ratio taux uniquement sur RNC (lots connus)
@@ -2193,6 +2205,7 @@ function renderSecteur() {
           + `style="display:flex;align-items:center;border-bottom:1px solid var(--border);`
           + `padding:4px 0;font-size:12px;">`
           + sctAdr(nameCell)
+          + sctCell(sctDpe(a.classe_dpe), SCTW.dpe, 'center')
           + sctCell(sciCell, SCTW.sci, 'left')
           + sctCell(lots != null ? lots : '<span style="color:var(--text2);">—</span>', SCTW.lots, 'center')
           + ANS.map(y => sctCell(String(effV[y] || 0), SCTW.an, 'center')).join('')
