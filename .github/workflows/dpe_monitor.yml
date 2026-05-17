@@ -34,10 +34,10 @@ jobs:
           ZONES_JSON:         ${{ secrets.ZONES_JSON }}
         run: python dpe_monitor.py
 
-      - name: 📊 Commit data/ + cache
+      - name: 📊 Commit cache + data (persistance Git, pas d'actions/cache)
         run: |
-          git config user.name "DPE Prospector Bot"
+          git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add data/ dpe_cache.json
-          git diff --staged --quiet || git commit -m "📊 Mise à jour DPE [$(date '+%d/%m/%Y')]"
+          git add dpe_cache.json data/*.json
+          git commit -m "Update cache and data [skip ci]" || echo "Nothing to commit"
           git push
