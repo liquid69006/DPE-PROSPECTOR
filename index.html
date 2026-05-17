@@ -2008,7 +2008,7 @@ function renderSecteur() {
         + `<span id="${idJ}-h">▼</span> ${esc(ik)} `
         + `<span style="background:var(--surface2);color:var(--text2);padding:1px 7px;border-radius:10px;font-size:11px;">`
         + `${parIlot[ik].length} adresse${parIlot[ik].length > 1 ? 's' : ''}</span></div>`
-        + `<div id="${idJ}" style="display:${ik === 'Îlot non assigné' ? 'none' : 'block'};">${rows}</div></div>`;
+        + `<div id="${idJ}" style="display:block;">${rows}</div></div>`;
     });
     html += `<div style="margin-bottom:8px;border:1px solid var(--border);border-radius:8px;overflow:hidden;">`
       + `<div style="cursor:pointer;font-weight:700;padding:8px 10px;background:rgba(190,175,135,.12);" `
