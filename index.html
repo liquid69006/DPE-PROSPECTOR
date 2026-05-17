@@ -741,17 +741,17 @@ td{padding:11px 14px;vertical-align:middle;}
          background:var(--surface);border-bottom:2px solid var(--border);
          font-size:11px;font-weight:700;color:var(--text2);padding:7px 0;
          align-items:center;">
-      <span style="flex:2 1 0;min-width:160px;padding:0 4px;box-sizing:border-box;text-align:left;">Adresse</span>
-      <span style="flex:0 0 55px;width:55px;padding:0 4px;box-sizing:border-box;text-align:center;">Lgts</span>
-      <span style="flex:0 0 45px;width:45px;padding:0 4px;box-sizing:border-box;text-align:center;">2021</span>
-      <span style="flex:0 0 45px;width:45px;padding:0 4px;box-sizing:border-box;text-align:center;">2022</span>
-      <span style="flex:0 0 45px;width:45px;padding:0 4px;box-sizing:border-box;text-align:center;">2023</span>
-      <span style="flex:0 0 45px;width:45px;padding:0 4px;box-sizing:border-box;text-align:center;">2024</span>
-      <span style="flex:0 0 45px;width:45px;padding:0 4px;box-sizing:border-box;text-align:center;">2025</span>
-      <span style="flex:0 0 55px;width:55px;padding:0 4px;box-sizing:border-box;text-align:center;">Total</span>
-      <span style="flex:0 0 65px;width:65px;padding:0 4px;box-sizing:border-box;text-align:center;">Taux/an</span>
-      <span style="flex:0 0 85px;width:85px;padding:0 4px;box-sizing:border-box;text-align:center;">Classement</span>
-      <span style="flex:1 1 0;min-width:180px;padding:0 4px;box-sizing:border-box;text-align:center;">Actions</span>
+      <span style="flex:1 1 0;min-width:160px;padding:0 4px;box-sizing:border-box;text-align:left;">Adresse</span>
+      <span style="flex:0 0 80px;width:80px;padding:0 4px;box-sizing:border-box;text-align:center;">Lgts</span>
+      <span style="flex:0 0 75px;width:75px;padding:0 4px;box-sizing:border-box;text-align:center;">2021</span>
+      <span style="flex:0 0 75px;width:75px;padding:0 4px;box-sizing:border-box;text-align:center;">2022</span>
+      <span style="flex:0 0 75px;width:75px;padding:0 4px;box-sizing:border-box;text-align:center;">2023</span>
+      <span style="flex:0 0 75px;width:75px;padding:0 4px;box-sizing:border-box;text-align:center;">2024</span>
+      <span style="flex:0 0 75px;width:75px;padding:0 4px;box-sizing:border-box;text-align:center;">2025</span>
+      <span style="flex:0 0 80px;width:80px;padding:0 4px;box-sizing:border-box;text-align:center;">Total</span>
+      <span style="flex:0 0 90px;width:90px;padding:0 4px;box-sizing:border-box;text-align:center;">Taux/an</span>
+      <span style="flex:0 0 110px;width:110px;padding:0 4px;box-sizing:border-box;text-align:center;">Classement</span>
+      <span style="flex:0 0 220px;width:220px;padding:0 4px;box-sizing:border-box;text-align:center;">Actions</span>
     </div>
     <div id="secteur-tree" style="font-size:13px;">
       <div style="color:var(--text2);padding:20px;text-align:center;">Chargement…</div>
@@ -2041,21 +2041,21 @@ function sctClassAnnuel(t) {
   if (t >= 1)   return 'Modéré';
   return 'Figé';
 }
-const SCTW = { lots: 55, an: 45, tot: 55, taux: 65, cls: 85, adrMin: 160, actMin: 180 };
+const SCTW = { lots: 80, an: 75, tot: 80, taux: 90, cls: 110, act: 220, adrMin: 160 };
 function sctCell(h, w, al) {
   return `<span style="flex:0 0 ${w}px;width:${w}px;text-align:${al || 'center'};`
     + `overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:0 4px;`
     + `box-sizing:border-box;">${h}</span>`;
 }
-// Cellule "Adresse" : flex:2 (2 parts de l'espace disponible), alignée à gauche.
+// Cellule "Adresse" : flex:1 (prend tout l'espace restant), alignée à gauche.
 function sctAdr(h) {
-  return `<span style="flex:2 1 0;min-width:${SCTW.adrMin}px;text-align:left;`
+  return `<span style="flex:1 1 0;min-width:${SCTW.adrMin}px;text-align:left;`
     + `overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:0 4px;`
     + `box-sizing:border-box;">${h}</span>`;
 }
-// Cellule "Actions" : flex:1 (1 part de l'espace disponible).
+// Cellule "Actions" : largeur fixe.
 function sctAct(h) {
-  return `<span style="flex:1 1 0;min-width:${SCTW.actMin}px;box-sizing:border-box;`
+  return `<span style="flex:0 0 ${SCTW.act}px;width:${SCTW.act}px;box-sizing:border-box;`
     + `display:flex;align-items:center;gap:5px;padding:0 4px;overflow:hidden;">${h}</span>`;
 }
 function sctBadge(cls) {
