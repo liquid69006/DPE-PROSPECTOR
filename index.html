@@ -2119,6 +2119,7 @@ function renderSecteur() {
   });
   let html = '';
   let nbRnc = 0, nbEst = 0, nbBdnb = 0;
+  let secAllV = 0, secL = 0;        // header = somme des IRIS = somme des adresses
   const ordre = Object.keys(parIris).sort((x, y) =>
     (parIris[y].length) - (parIris[x].length));
   ordre.forEach((ci, ii) => {
@@ -2135,11 +2136,11 @@ function renderSecteur() {
       (x === 'Îlot non assigné') - (y === 'Îlot non assigné') ||
       (parseInt(x.replace(/\D/g, '')) || 0) - (parseInt(y.replace(/\D/g, '')) || 0));
     let inner = '';
-    let irisV = 0, irisL = 0, irisAllV = 0;   // agrégats IRIS (V/L sur RNC pour le taux)
+    let irisL = 0, irisAllV = 0;   // agrégats IRIS (denomAff / toutes ventes)
     ilotKeys.forEach((ik, ij) => {
       const idJ = idI + '-j' + ij;
       let rows = '';
-      let iloV = 0, iloL = 0, iloAllV = 0;
+      let iloL = 0, iloAllV = 0;
       parIlot[ik].forEach(a => {
         const cp = coproByCle[a.cle];
         const rnc = !!cp;
@@ -2167,9 +2168,11 @@ function renderSecteur() {
         const taux = sctTauxAnnuel(effTot, denomAff);   // taux ANNUEL de l'adresse
         const cls = sctClassAnnuel(taux);
 
-        // agrégats : ventes totales partout ; ratio taux uniquement sur RNC (lots connus)
+        // agrégats harmonisés : dénominateur = denomAff (nb_log_bdnb sinon
+        // nb_lots_habitation), numérateur = toutes les ventes (effTot).
+        // Même base à tous les niveaux -> header = Σ IRIS = Σ adresses.
         iloAllV += effTot;
-        if (lots && lots > 0) { iloV += effTot; iloL += lots; }
+        if (denomAff && denomAff > 0) iloL += denomAff;
 
         const fusBadge = mi
           ? `<span onclick="secteurUndoFusion('${esc(a.cle)}')"`
@@ -2242,9 +2245,9 @@ function renderSecteur() {
           + sctAct(actions)
           + `</div>`;
       });
-      irisAllV += iloAllV; irisV += iloV; irisL += iloL;
+      irisAllV += iloAllV; irisL += iloL;
 
-      const iloTaux = sctTauxAnnuel(iloV, iloL);
+      const iloTaux = sctTauxAnnuel(iloAllV, iloL);
       const iloStats = `<span style="color:var(--text2);font-size:11px;">`
         + `${iloL ? iloL + ' lgts' : 'lgts n.d.'} · ${(iloAllV / 5).toFixed(1)} ventes/an · `
         + `taux ${iloTaux != null ? iloTaux + '%' : '—'}</span> `
@@ -2260,7 +2263,8 @@ function renderSecteur() {
         + `<div id="${idJ}" class="sct-ilot-body" style="display:block;">${rows}</div></div>`;
     });
 
-    const irisTaux = sctTauxAnnuel(irisV, irisL);
+    secAllV += irisAllV; secL += irisL;          // header = Σ IRIS
+    const irisTaux = sctTauxAnnuel(irisAllV, irisL);
     const nomIris = I ? `IRIS — ${esc(I.nom_iris)}` : 'IRIS non déterminé';
     const irisStats = `<span style="color:var(--text2);font-size:11px;">`
       + `${irisL ? irisL + ' lgts' : 'lgts n.d.'} · ${(irisAllV / 5).toFixed(1)} ventes/an · `
@@ -2275,17 +2279,10 @@ function renderSecteur() {
       + `<span style="flex:1;"></span>${irisStats}</div>`
       + `<div id="${idI}" class="sct-iris-body" style="display:${ii === 0 ? 'block' : 'none'};">${inner}</div></div>`;
   });
-  // Agrégats secteur depuis les copropriétés RNC (lots + ventes 5 ans)
-  let secL = 0, secV = 0;
-  (d.coproprietes || []).forEach(c => {
-    const l = Number(c.nb_lots_habitation);
-    if (Number.isFinite(l) && l > 0) {
-      secL += l;
-      secV += Number(c.nb_ventes_2021_2025) || 0;
-    }
-  });
-  const secVAn = secV / 5;
-  const secTaux = secL > 0 ? Math.round(secV / secL / 5 * 1000) / 10 : null;
+  // Header = somme des IRIS = somme des adresses visibles (même base :
+  // dénominateur denomAff, numérateur toutes ventes effTot).
+  const secVAn = secAllV / 5;
+  const secTaux = secL > 0 ? Math.round(secAllV / secL / 5 * 1000) / 10 : null;
   document.getElementById('secteur-resume').textContent =
     `${(d.adresses || []).length} adresses · ${nbRnc} RNC · ${nbBdnb} BDNB · `
     + `${secL.toLocaleString('fr-FR')} lgts · `
