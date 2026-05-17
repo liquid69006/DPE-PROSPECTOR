@@ -12540,7 +12540,7 @@
       "sci_proprietaire": "oui",
       "sci_nom": "SCI LE PIGEON BLEU",
       "sci_siren": "823519962",
-      "syndic": "non connu",
+      "syndic": "REGIE FRANCOIS GOFFIN",
       "ventes_par_an": {
         "2021": 2,
         "2022": 2,
@@ -12549,12 +12549,12 @@
         "2025": 1
       },
       "nb_ventes_total": 18,
-      "nb_log_bdnb": 30,
+      "nb_log_bdnb": 12,
       "annee_construction": 2013,
       "classe_dpe": "C",
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
-      "batiment_groupe_id": "bdnb-bg-GTJK-YJDJ-ECAN",
+      "batiment_groupe_id": "bdnb-bg-4UPX-Y7FC-4PM3",
       "_bdnb_match": "immat",
       "_fusion_auto_label": "128/130 RUE ANTOINE CHARIAL",
       "_fusion_auto_sources": [
@@ -13519,7 +13519,7 @@
       "sci_proprietaire": "oui",
       "sci_nom": "LYON LACASSAGNE 2018",
       "sci_siren": "842630972",
-      "syndic": "non connu",
+      "syndic": "FONCIA LYON",
       "ventes_par_an": {
         "2021": 2,
         "2022": 5,
@@ -13534,7 +13534,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-8B4G-CNCN-QCZE",
-      "_bdnb_match": "num_voie"
+      "_bdnb_match": "immat"
     },
     {
       "cle": "7|RUE|DE MONTBRILLANT",
@@ -13582,12 +13582,12 @@
         "2025": 2
       },
       "nb_ventes_total": 6,
-      "nb_log_bdnb": 27,
-      "annee_construction": 2004,
-      "classe_dpe": "C",
+      "nb_log_bdnb": 58,
+      "annee_construction": 2003,
+      "classe_dpe": "D",
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
-      "batiment_groupe_id": "bdnb-bg-ZVE8-JEVU-TZ7Q",
+      "batiment_groupe_id": "bdnb-bg-9MYW-M2VT-GSQE",
       "_bdnb_match": "immat"
     },
     {
@@ -14946,16 +14946,16 @@
       "sci_proprietaire": "oui",
       "sci_nom": "SCI DDS",
       "sci_siren": "930317003",
-      "syndic": null,
+      "syndic": "LYMMOBILIER",
       "ventes_par_an": {},
       "nb_ventes_total": 0,
-      "nb_log_bdnb": 13,
-      "annee_construction": 1977,
-      "classe_dpe": "D",
-      "type_batiment": "immeuble",
+      "nb_log_bdnb": 31,
+      "annee_construction": 1962,
+      "classe_dpe": "E",
+      "type_batiment": "appartement",
       "type_chauffage": "gaz",
-      "batiment_groupe_id": "bdnb-bg-ZS47-TD9J-M4FB",
-      "_bdnb_match": "num_voie"
+      "batiment_groupe_id": "bdnb-bg-YAR9-LWKG-N28H",
+      "_bdnb_match": "immat"
     },
     {
       "cle": "2|RUE|TURBIL",
@@ -15411,7 +15411,7 @@
       "sci_proprietaire": "oui",
       "sci_nom": "NEWHOUSE",
       "sci_siren": "905073946",
-      "syndic": "non connu",
+      "syndic": "CHOMETTE",
       "ventes_par_an": {
         "2021": 1,
         "2023": 2,
@@ -15425,7 +15425,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-MLQ3-6L3N-HFMK",
-      "_bdnb_match": "immat"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "35|RUE|ANTOINE CHARIAL",
@@ -15690,7 +15690,7 @@
       "sci_proprietaire": "oui",
       "sci_nom": "FLACHER",
       "sci_siren": "308709237",
-      "syndic": "non connu",
+      "syndic": "SOC ADMIN & GESTION IMMEUB ROLIN BAINSON",
       "ventes_par_an": {
         "2021": 2,
         "2023": 3,
@@ -15698,19 +15698,15 @@
         "2025": 2
       },
       "nb_ventes_total": 9,
-      "nb_log_bdnb": 154,
-      "annee_construction": 1972,
-      "classe_dpe": "D",
-      "type_batiment": "appartement",
-      "type_chauffage": "reseau de chaleur",
-      "batiment_groupe_id": "bdnb-bg-9B3F-ZKT4-JZ9V",
-      "_bdnb_match": "immat",
-      "_fusion_auto_label": "61/63/65/67 RUE BARABAN",
-      "_fusion_auto_sources": [
-        "67|RUE|BARABAN",
-        "63|RUE|BARABAN",
-        "65|RUE|BARABAN"
-      ]
+      "nb_log_bdnb": null,
+      "annee_construction": null,
+      "classe_dpe": null,
+      "type_batiment": null,
+      "type_chauffage": null,
+      "batiment_groupe_id": "bdnb-bg-W624-4P36-PURP",
+      "_bdnb_match": "num_voie",
+      "_fusion_auto": true,
+      "_fusion_cible": "59|RUE|BARABAN"
     },
     {
       "cle": "62|RUE|ST MAXIMIN",
@@ -16949,16 +16945,16 @@
       "sci_proprietaire": "oui",
       "sci_nom": "SCI CLAUDIUS",
       "sci_siren": "790514160",
-      "syndic": null,
+      "syndic": "REGIE DU LYONNAIS",
       "ventes_par_an": {},
       "nb_ventes_total": 0,
-      "nb_log_bdnb": null,
-      "annee_construction": 2014,
-      "classe_dpe": null,
-      "type_batiment": null,
-      "type_chauffage": null,
-      "batiment_groupe_id": "bdnb-bg-WPVN-TN1Z-KE2S",
-      "_bdnb_match": "gps"
+      "nb_log_bdnb": 25,
+      "annee_construction": 1957,
+      "classe_dpe": "D",
+      "type_batiment": "maison",
+      "type_chauffage": "electricite",
+      "batiment_groupe_id": "bdnb-bg-U7C2-SHCF-D72B",
+      "_bdnb_match": "immat"
     },
     {
       "cle": "27|RUE|ST MAXIMIN",
@@ -18128,7 +18124,7 @@
       "sci_proprietaire": "oui",
       "sci_nom": "SCI SAINT REMY",
       "sci_siren": "449998459",
-      "syndic": null,
+      "syndic": "REGIE BAGNERES ET LEPINE",
       "ventes_par_an": {
         "2022": 1,
         "2023": 1,
@@ -18141,7 +18137,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "reseau de chaleur",
       "batiment_groupe_id": "bdnb-bg-4NPE-6GZX-QJ7R",
-      "_bdnb_match": "num_voie"
+      "_bdnb_match": "immat"
     },
     {
       "cle": "82|RUE|ANTOINE CHARIAL",
@@ -18779,16 +18775,16 @@
       "sci_proprietaire": "oui",
       "sci_nom": "SANS SOUCI IMMOBILIER H E P S",
       "sci_siren": "790020119",
-      "syndic": null,
+      "syndic": "REGIE FRANCOIS GOFFIN",
       "ventes_par_an": {},
       "nb_ventes_total": 0,
-      "nb_log_bdnb": null,
-      "annee_construction": 1993,
-      "classe_dpe": null,
-      "type_batiment": null,
-      "type_chauffage": null,
-      "batiment_groupe_id": "bdnb-bg-HZKH-DKDL-A563",
-      "_bdnb_match": "num_voie"
+      "nb_log_bdnb": 59,
+      "annee_construction": 1999,
+      "classe_dpe": "C",
+      "type_batiment": "immeuble",
+      "type_chauffage": "gaz",
+      "batiment_groupe_id": "bdnb-bg-MXAK-H6X5-46X1",
+      "_bdnb_match": "immat"
     },
     {
       "cle": "12|RUE|LOUIS JASSERON",
@@ -19237,7 +19233,7 @@
       "sci_proprietaire": "oui",
       "sci_nom": "SCI FONFRAN I",
       "sci_siren": "520287087",
-      "syndic": null,
+      "syndic": "FONCIA LYON",
       "ventes_par_an": {
         "2021": 7,
         "2022": 3,
@@ -19245,13 +19241,13 @@
         "2025": 2
       },
       "nb_ventes_total": 13,
-      "nb_log_bdnb": 42,
-      "annee_construction": 1990,
-      "classe_dpe": "C",
+      "nb_log_bdnb": 68,
+      "annee_construction": 1978,
+      "classe_dpe": "D",
       "type_batiment": "appartement",
-      "type_chauffage": "gaz",
-      "batiment_groupe_id": "bdnb-bg-PFFK-6Z9V-TUP1",
-      "_bdnb_match": "num_voie",
+      "type_chauffage": "electricite",
+      "batiment_groupe_id": "bdnb-bg-YFY8-XRG7-16PK",
+      "_bdnb_match": "immat",
       "_fusion_auto_label": "13/15 RUE ST ANTOINE",
       "_fusion_auto_sources": [
         "13|RUE|ST ANTOINE"
@@ -19268,7 +19264,7 @@
       "sci_proprietaire": "oui",
       "sci_nom": "CHO-VER",
       "sci_siren": "481996189",
-      "syndic": null,
+      "syndic": "non connu",
       "ventes_par_an": {
         "2021": 2,
         "2022": 1,
@@ -19349,7 +19345,7 @@
       "sci_proprietaire": "oui",
       "sci_nom": "SCI COGI 71",
       "sci_siren": "340710656",
-      "syndic": null,
+      "syndic": "non connu",
       "ventes_par_an": {
         "2021": 1,
         "2022": 1,
@@ -19358,13 +19354,13 @@
         "2025": 1
       },
       "nb_ventes_total": 5,
-      "nb_log_bdnb": 18,
-      "annee_construction": 1880,
-      "classe_dpe": "D",
+      "nb_log_bdnb": 45,
+      "annee_construction": 1934,
+      "classe_dpe": "E",
       "type_batiment": "appartement",
-      "type_chauffage": "electricite",
-      "batiment_groupe_id": "bdnb-bg-BYKE-3R6H-S1VF",
-      "_bdnb_match": "num_voie",
+      "type_chauffage": "gaz",
+      "batiment_groupe_id": "bdnb-bg-K4P3-8SNY-YGD3",
+      "_bdnb_match": "immat",
       "_fusion_auto": true,
       "_fusion_cible": "165|AVENUE|FELIX FAURE"
     },
@@ -19885,16 +19881,16 @@
       "sci_proprietaire": "oui",
       "sci_nom": "SCI DE VOUGY",
       "sci_siren": "539929158",
-      "syndic": null,
+      "syndic": "REGIE LYON METROPOLE",
       "ventes_par_an": {},
       "nb_ventes_total": 0,
       "nb_log_bdnb": 7,
-      "annee_construction": 1780,
-      "classe_dpe": "E",
-      "type_batiment": "immeuble",
-      "type_chauffage": "electricite",
-      "batiment_groupe_id": "bdnb-bg-8DAZ-BNGP-DB8X",
-      "_bdnb_match": "num_voie"
+      "annee_construction": 1850,
+      "classe_dpe": null,
+      "type_batiment": null,
+      "type_chauffage": null,
+      "batiment_groupe_id": "bdnb-bg-CBPR-FNNH-5LS3",
+      "_bdnb_match": "immat"
     },
     {
       "cle": "26|RUE|CLAUDIUS PIONCHON",
@@ -20477,7 +20473,7 @@
       "sci_proprietaire": "oui",
       "sci_nom": "SCI MARION FONCIER",
       "sci_siren": "834168122",
-      "syndic": null,
+      "syndic": "FONCIA LYON",
       "ventes_par_an": {
         "2021": 3,
         "2022": 1,
@@ -20486,13 +20482,13 @@
         "2025": 1
       },
       "nb_ventes_total": 8,
-      "nb_log_bdnb": 1,
-      "annee_construction": 1800,
-      "classe_dpe": null,
-      "type_batiment": null,
-      "type_chauffage": null,
-      "batiment_groupe_id": "bdnb-bg-LS26-PDJ2-S81A",
-      "_bdnb_match": "num_voie",
+      "nb_log_bdnb": 60,
+      "annee_construction": 1987,
+      "classe_dpe": "D",
+      "type_batiment": "appartement",
+      "type_chauffage": "electricite",
+      "batiment_groupe_id": "bdnb-bg-HRU7-Q3L9-HXJT",
+      "_bdnb_match": "immat",
       "_fusion_auto_label": "35/37 AVENUE LACASSAGNE",
       "_fusion_auto_sources": [
         "35|AVENUE|LACASSAGNE"
@@ -20565,7 +20561,7 @@
       "sci_proprietaire": "oui",
       "sci_nom": "SCI SMJ",
       "sci_siren": "883913386",
-      "syndic": "non connu",
+      "syndic": "REGIE DU LYONNAIS",
       "ventes_par_an": {
         "2022": 1,
         "2023": 1,
@@ -20578,7 +20574,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-YTPJ-Q2XB-2DEF",
-      "_bdnb_match": "immat",
+      "_bdnb_match": "num_voie",
       "_fusion_auto_label": "39/43 RUE GUILLOUD",
       "_fusion_auto_sources": [
         "43|RUE|GUILLOUD"
@@ -20987,7 +20983,7 @@
       "batiment_groupe_id": "bdnb-bg-9B3F-ZKT4-JZ9V",
       "_bdnb_match": "num_voie",
       "_fusion_auto": true,
-      "_fusion_cible": "61|RUE|BARABAN"
+      "_fusion_cible": "67|RUE|BARABAN"
     },
     {
       "cle": "64|RUE|DU DAUPHINE",
@@ -21041,8 +21037,11 @@
       "type_chauffage": "reseau de chaleur",
       "batiment_groupe_id": "bdnb-bg-9B3F-ZKT4-JZ9V",
       "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "61|RUE|BARABAN"
+      "_fusion_auto_label": "63/65/67 RUE BARABAN",
+      "_fusion_auto_sources": [
+        "63|RUE|BARABAN",
+        "65|RUE|BARABAN"
+      ]
     },
     {
       "cle": "73|COURS|ALBERT THOMAS",
@@ -21365,7 +21364,7 @@
       "sci_proprietaire": "oui",
       "sci_nom": "SCI R O B",
       "sci_siren": "949761050",
-      "syndic": null,
+      "syndic": "REGIE CENTRALE IMMOBILIERE",
       "ventes_par_an": {
         "2022": 2,
         "2023": 1,
@@ -21571,7 +21570,7 @@
       "sci_proprietaire": "inconnu",
       "sci_nom": "",
       "sci_siren": "",
-      "syndic": null,
+      "syndic": "GALYO",
       "ventes_par_an": {
         "2021": 1,
         "2025": 1
@@ -21583,7 +21582,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-A7ZQ-2FYK-N2Z2",
-      "_bdnb_match": "num_voie",
+      "_bdnb_match": "immat",
       "_fusion_auto_label": "23/25 RUE DE MONTBRILLANT",
       "_fusion_auto_sources": [
         "23|RUE|DE MONTBRILLANT"
@@ -22098,19 +22097,19 @@
       "sci_proprietaire": "inconnu",
       "sci_nom": "",
       "sci_siren": "",
-      "syndic": null,
+      "syndic": "REGIE DE VENDIN",
       "ventes_par_an": {
         "2022": 2,
         "2025": 1
       },
       "nb_ventes_total": 3,
-      "nb_log_bdnb": 2,
-      "annee_construction": 1968,
-      "classe_dpe": "E",
-      "type_batiment": "maison",
-      "type_chauffage": "fioul",
-      "batiment_groupe_id": "bdnb-bg-324Y-G9R6-B2ZS",
-      "_bdnb_match": "num_voie",
+      "nb_log_bdnb": 50,
+      "annee_construction": 1962,
+      "classe_dpe": "D",
+      "type_batiment": "immeuble",
+      "type_chauffage": "gaz",
+      "batiment_groupe_id": "bdnb-bg-YTPF-DAGN-K1LQ",
+      "_bdnb_match": "immat",
       "_fusion_auto": true,
       "_fusion_cible": "9|RUE|DE LA METALLURGIE"
     },
@@ -23183,7 +23182,7 @@
       "sci_proprietaire": "oui",
       "sci_nom": "SCI LE PIGEON BLEU",
       "sci_siren": "823519962",
-      "syndic": null,
+      "syndic": "REGIE FRANCOIS GOFFIN",
       "ventes_par_an": {
         "2021": 1,
         "2022": 1,
@@ -23196,7 +23195,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-4UPX-Y7FC-4PM3",
-      "_bdnb_match": "num_voie",
+      "_bdnb_match": "immat",
       "_fusion_auto": true,
       "_fusion_cible": "128|RUE|ANTOINE CHARIAL"
     },
@@ -24035,7 +24034,7 @@
       "sci_proprietaire": "non",
       "sci_nom": "",
       "sci_siren": "",
-      "syndic": null,
+      "syndic": "FONCIA LYON",
       "ventes_par_an": {
         "2021": 1,
         "2022": 3,
@@ -24049,7 +24048,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "reseau de chaleur",
       "batiment_groupe_id": "bdnb-bg-4BCZ-EFDZ-724F",
-      "_bdnb_match": "num_voie",
+      "_bdnb_match": "immat",
       "_fusion_auto_label": "12/20 RUE ST SIDOINE",
       "_fusion_auto_sources": [
         "12|RUE|ST SIDOINE"
@@ -26091,7 +26090,7 @@
       "sci_proprietaire": "non",
       "sci_nom": "",
       "sci_siren": "",
-      "syndic": null,
+      "syndic": "non connu",
       "ventes_par_an": {
         "2022": 1
       },
@@ -26102,7 +26101,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-BRNB-KK97-9XY7",
-      "_bdnb_match": "num_voie"
+      "_bdnb_match": "immat"
     },
     {
       "cle": "5|RUE|MOISSONNIER",
@@ -26501,7 +26500,7 @@
       "batiment_groupe_id": "bdnb-bg-9B3F-ZKT4-JZ9V",
       "_bdnb_match": "num_voie",
       "_fusion_auto": true,
-      "_fusion_cible": "61|RUE|BARABAN"
+      "_fusion_cible": "67|RUE|BARABAN"
     },
     {
       "cle": "68|RUE|DU DAUPHINE",
@@ -28404,7 +28403,7 @@
       "sci_proprietaire": "non",
       "sci_nom": "",
       "sci_siren": "",
-      "syndic": "non connu",
+      "syndic": "ANJALYS GESTION IMMOBILIERE",
       "ventes_par_an": {
         "2021": 11,
         "2022": 15,
@@ -28417,7 +28416,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-5PV4-4ZZM-SWV8",
-      "_bdnb_match": "immat"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "129|AVENUE|FELIX FAURE",
@@ -31598,18 +31597,18 @@
       "sci_proprietaire": "oui",
       "sci_nom": "LEON DE CHARLY",
       "sci_siren": "417506722",
-      "syndic": null,
+      "syndic": "REGIE ROCHON - LESNE",
       "ventes_par_an": {
         "2022": 1
       },
       "nb_ventes_total": 1,
-      "nb_log_bdnb": 1,
-      "annee_construction": 1930,
-      "classe_dpe": "D",
-      "type_batiment": "maison",
-      "type_chauffage": null,
-      "batiment_groupe_id": "bdnb-bg-BALG-5MRC-2XQ6",
-      "_bdnb_match": "num_voie"
+      "nb_log_bdnb": 26,
+      "annee_construction": 1959,
+      "classe_dpe": "E",
+      "type_batiment": "appartement",
+      "type_chauffage": "electricite",
+      "batiment_groupe_id": "bdnb-bg-212B-J3A4-DL3G",
+      "_bdnb_match": "immat"
     },
     {
       "cle": "20|RUE|JEANNE HACHETTE",
@@ -32072,7 +32071,7 @@
       "sci_proprietaire": "oui",
       "sci_nom": "VALFAN",
       "sci_siren": "834687741",
-      "syndic": null,
+      "syndic": "CORNEILLE SAINT MARC",
       "ventes_par_an": {
         "2022": 2,
         "2023": 2
@@ -32084,7 +32083,7 @@
       "type_batiment": "immeuble",
       "type_chauffage": "reseau de chaleur",
       "batiment_groupe_id": "bdnb-bg-XFV3-8SMG-PGQD",
-      "_bdnb_match": "num_voie"
+      "_bdnb_match": "immat"
     },
     {
       "cle": "210|AVENUE|FELIX FAURE",
@@ -33313,7 +33312,7 @@
       "sci_proprietaire": "oui",
       "sci_nom": "COBE",
       "sci_siren": "499129690",
-      "syndic": null,
+      "syndic": "FONCIA LYON",
       "ventes_par_an": {},
       "nb_ventes_total": 0,
       "nb_log_bdnb": 43,
@@ -33322,7 +33321,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-M1J3-4PX2-GLHX",
-      "_bdnb_match": "num_voie",
+      "_bdnb_match": "immat",
       "_fusion_auto": true,
       "_fusion_cible": "22|RUE|MAURICE FLANDIN"
     },
@@ -33879,18 +33878,18 @@
       "sci_proprietaire": "oui",
       "sci_nom": "SCI AG2C",
       "sci_siren": "800129819",
-      "syndic": "non connu",
+      "syndic": "CHAMPENOISE DE GESTION",
       "ventes_par_an": {
         "2023": 1
       },
       "nb_ventes_total": 1,
-      "nb_log_bdnb": 18,
+      "nb_log_bdnb": 11,
       "annee_construction": 1900,
       "classe_dpe": "G",
       "type_batiment": "immeuble",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-RUV7-747H-Z31A",
-      "_bdnb_match": "immat"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "257|RUE|PAUL BERT",
@@ -34730,19 +34729,19 @@
       "sci_proprietaire": "oui",
       "sci_nom": "SCI SAINT PIERRE",
       "sci_siren": "U22681233",
-      "syndic": null,
+      "syndic": "HAPPY SYNDIC",
       "ventes_par_an": {
         "2021": 1,
         "2022": 2
       },
       "nb_ventes_total": 3,
-      "nb_log_bdnb": 49,
-      "annee_construction": 2002,
-      "classe_dpe": "C",
-      "type_batiment": "appartement",
+      "nb_log_bdnb": 20,
+      "annee_construction": 1954,
+      "classe_dpe": "E",
+      "type_batiment": "immeuble",
       "type_chauffage": "gaz",
-      "batiment_groupe_id": "bdnb-bg-4RMJ-W193-8VZA",
-      "_bdnb_match": "num_voie",
+      "batiment_groupe_id": "bdnb-bg-SCQS-HYN4-PPDQ",
+      "_bdnb_match": "immat",
       "_fusion_auto_label": "27/29 RUE DE LA METALLURGIE",
       "_fusion_auto_sources": [
         "27|RUE|DE LA METALLURGIE"
@@ -34999,11 +34998,11 @@
       "ventes_par_an": {},
       "nb_ventes_total": 0,
       "nb_log_bdnb": 11,
-      "annee_construction": 1936,
-      "classe_dpe": "F",
+      "annee_construction": 1935,
+      "classe_dpe": "D",
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
-      "batiment_groupe_id": "bdnb-bg-4EZ3-GBS9-XGWY",
+      "batiment_groupe_id": "bdnb-bg-1LHG-5G1W-QJ9J",
       "_bdnb_match": "immat"
     },
     {
@@ -37424,7 +37423,7 @@
       "sci_proprietaire": "non",
       "sci_nom": "",
       "sci_siren": "",
-      "syndic": null,
+      "syndic": "non connu",
       "ventes_par_an": {
         "2021": 1
       },
@@ -37435,7 +37434,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-YTPJ-Q2XB-2DEF",
-      "_bdnb_match": "num_voie",
+      "_bdnb_match": "immat",
       "_fusion_auto": true,
       "_fusion_cible": "39|RUE|GUILLOUD"
     },
@@ -38252,18 +38251,18 @@
       "sci_proprietaire": "oui",
       "sci_nom": "SANJO IMMO",
       "sci_siren": "901854463",
-      "syndic": "non connu",
+      "syndic": "CITYA VENDOME LUMIERE",
       "ventes_par_an": {
         "2022": 1,
         "2023": 2
       },
       "nb_ventes_total": 3,
-      "nb_log_bdnb": 14,
-      "annee_construction": 1994,
+      "nb_log_bdnb": 6,
+      "annee_construction": 1991,
       "classe_dpe": "C",
-      "type_batiment": "immeuble",
+      "type_batiment": "appartement",
       "type_chauffage": "gaz",
-      "batiment_groupe_id": "bdnb-bg-J4G1-U13J-EJGH",
+      "batiment_groupe_id": "bdnb-bg-EDS8-9W4U-U4UB",
       "_bdnb_match": "immat"
     },
     {
@@ -38461,16 +38460,16 @@
       "sci_proprietaire": "oui",
       "sci_nom": "SCI SANTANA",
       "sci_siren": "414546838",
-      "syndic": null,
+      "syndic": "REGIE ROCHON - LESNE",
       "ventes_par_an": {},
       "nb_ventes_total": 0,
-      "nb_log_bdnb": 8,
-      "annee_construction": 1932,
-      "classe_dpe": null,
-      "type_batiment": null,
-      "type_chauffage": null,
-      "batiment_groupe_id": "bdnb-bg-1UR9-XSR5-4E78",
-      "_bdnb_match": "num_voie"
+      "nb_log_bdnb": 15,
+      "annee_construction": 1930,
+      "classe_dpe": "F",
+      "type_batiment": "appartement",
+      "type_chauffage": "electricite",
+      "batiment_groupe_id": "bdnb-bg-E3ZW-PDHN-JM11",
+      "_bdnb_match": "immat"
     },
     {
       "cle": "51|RUE|DU DAUPHINE",
@@ -39131,7 +39130,11 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-W624-4P36-PURP",
-      "_bdnb_match": "num_voie"
+      "_bdnb_match": "num_voie",
+      "_fusion_auto_label": "59/61 RUE BARABAN",
+      "_fusion_auto_sources": [
+        "61|RUE|BARABAN"
+      ]
     },
     {
       "cle": "6|RUE|BARA",
@@ -39487,15 +39490,15 @@
       "sci_proprietaire": "oui",
       "sci_nom": "AVENIR 37",
       "sci_siren": "820688786",
-      "syndic": "non connu",
+      "syndic": "FONCIA LYON",
       "ventes_par_an": {},
       "nb_ventes_total": 0,
-      "nb_log_bdnb": 12,
-      "annee_construction": 1933,
-      "classe_dpe": "C",
+      "nb_log_bdnb": 13,
+      "annee_construction": 1935,
+      "classe_dpe": "F",
       "type_batiment": "appartement",
-      "type_chauffage": "gaz",
-      "batiment_groupe_id": "bdnb-bg-32K4-P9LB-8DPE",
+      "type_chauffage": "electricite",
+      "batiment_groupe_id": "bdnb-bg-5ZLP-VALF-5EDP",
       "_bdnb_match": "immat"
     },
     {
