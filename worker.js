@@ -48,6 +48,7 @@ const AGENCES_CONFIG = {
     conseillers_defaut: ["À attribuer", "Gérald", "Philippe", "Robin", "Kévin", "Yann"],
     zones: ["Dauphiné-Lacassagne", "Montchat"],
     sci_enabled: true,
+    secteur_enabled: true,
   },
   "motte-picquet": {
     nom: "Century 21 La Motte Picquet",
@@ -358,6 +359,7 @@ async function handleRequest(request, env) {
           zones:        cfg.zones,
           conseillers,
           sci_enabled:  cfg.sci_enabled || false,
+          secteur_enabled: cfg.secteur_enabled || false,
           dpe_agences:  cfg.dpe_agences || null,   // null = agence simple, array = agence composite
           sci_agences:  cfg.sci_agences || null,
           role,
@@ -533,6 +535,26 @@ async function handleRequest(request, env) {
         let body; try { body = await request.json(); } catch { return err("JSON invalide"); }
         if (typeof body.assignments !== "object") return err("assignments doit être un objet");
         await env.DPE_KV.put(`sci-assignments:${agenceId}`, JSON.stringify(body.assignments));
+        return json({ ok: true, count: Object.keys(body.assignments).length });
+      }
+      return err("Méthode non supportée", 405);
+    }
+
+    // ── /secteur-assignments/:agence ── ilots + qualifications ────────
+    const secteurAssignMatch = path.match(/^\/secteur-assignments\/([a-z0-9-]+)$/);
+    if (secteurAssignMatch) {
+      const agenceId = secteurAssignMatch[1];
+      const [, authErr] = await requireAuth(agenceId);
+      if (authErr) return authErr;
+
+      if (method === "GET") {
+        const raw = await env.DPE_KV.get(`secteur_assignments:${agenceId}`);
+        return json({ assignments: raw ? JSON.parse(raw) : {} });
+      }
+      if (method === "POST") {
+        let body; try { body = await request.json(); } catch { return err("JSON invalide"); }
+        if (typeof body.assignments !== "object") return err("assignments doit être un objet");
+        await env.DPE_KV.put(`secteur_assignments:${agenceId}`, JSON.stringify(body.assignments));
         return json({ ok: true, count: Object.keys(body.assignments).length });
       }
       return err("Méthode non supportée", 405);

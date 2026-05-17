@@ -539,6 +539,7 @@ td{padding:11px 14px;vertical-align:middle;}
       <div class="mode-switch" id="mode-switch" style="display:none;">
         <button class="mode-btn active-dpe" id="btn-mode-dpe" onclick="switchMode('dpe')">📊 DPE</button>
         <button class="mode-btn" id="btn-mode-sci" onclick="switchMode('sci')">🏢 SCI</button>
+        <button class="mode-btn" id="btn-mode-secteur" onclick="switchMode('secteur')" style="display:none;">🗺 Secteur</button>
       </div>
 
       <div class="header-stats">
@@ -715,6 +716,22 @@ td{padding:11px 14px;vertical-align:middle;}
     </div>
   </div>
   </div><!-- /section-sci -->
+
+  <div id="section-secteur" style="display:none;padding:14px 18px;">
+    <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:12px;">
+      <h2 style="font-size:16px;margin:0;color:#BEAF87;">🗺 Secteur Prospector — Dauphiné-Lacassagne</h2>
+      <span id="secteur-resume" style="font-size:12px;color:var(--text2);"></span>
+      <span class="spacer" style="flex:1;"></span>
+      <span style="font-size:11px;color:var(--text2);">Rotation :
+        <b style="color:#16a34a;">Très actif</b> ·
+        <b style="color:#2563eb;">Actif</b> ·
+        <b style="color:#d97706;">Modéré</b> ·
+        <b style="color:#6b7280;">Figé</b></span>
+    </div>
+    <div id="secteur-tree" style="font-size:13px;">
+      <div style="color:var(--text2);padding:20px;text-align:center;">Chargement…</div>
+    </div>
+  </div><!-- /section-secteur -->
 </div>
 
 <!-- ════════════════════════════════════════
@@ -1052,6 +1069,12 @@ async function initDashboard(token, agence, config, role) {
   // Afficher le switch SCI uniquement pour les agences concernées
   if (AGENCES_SCI.includes(agence)) {
     document.getElementById('mode-switch').style.display = 'flex';
+  }
+  // Afficher le bouton Secteur uniquement si secteur_enabled (worker)
+  if (config && config.secteur_enabled) {
+    document.getElementById('mode-switch').style.display = 'flex';
+    const bsec = document.getElementById('btn-mode-secteur');
+    if (bsec) bsec.style.display = '';
   }
   switchMode('dpe'); // forcer état initial
   applyRoleUI();     // masque SCI / conseillers si rôle conseiller
@@ -1798,33 +1821,204 @@ const AGENCES_SCI = ['dauphine-lacassagne', 'lopez', 'bagot']; // Seules agences
 
 function switchMode(mode) {
   currentMode = mode;
-  const isDpe = mode === 'dpe';
+  const isDpe = mode === 'dpe', isSci = mode === 'sci', isSect = mode === 'secteur';
 
   document.getElementById('section-dpe').style.display = isDpe ? 'block' : 'none';
-  document.getElementById('section-sci').style.display = isDpe ? 'none' : 'block';
-  document.getElementById('stats-dpe').style.display   = isDpe ? 'flex' : 'none';
-  document.getElementById('stats-sci').style.display   = isDpe ? 'none' : 'flex';
+  document.getElementById('section-sci').style.display = isSci ? 'block' : 'none';
+  const ssec = document.getElementById('section-secteur');
+  if (ssec) ssec.style.display = isSect ? 'block' : 'none';
+  document.getElementById('stats-dpe').style.display = isDpe ? 'flex' : 'none';
+  document.getElementById('stats-sci').style.display = isSci ? 'flex' : 'none';
 
   document.getElementById('btn-mode-dpe').className = 'mode-btn' + (isDpe ? ' active-dpe' : '');
-  document.getElementById('btn-mode-sci').className = 'mode-btn' + (!isDpe ? ' active-sci' : '');
+  document.getElementById('btn-mode-sci').className = 'mode-btn' + (isSci ? ' active-sci' : '');
+  const bsec = document.getElementById('btn-mode-secteur');
+  if (bsec) bsec.className = 'mode-btn' + (isSect ? ' active-sci' : '');  // meme famille Century 21
 
   // Logo
   const logoPrefix = document.getElementById('logo-prefix');
   const logoSuffix = document.getElementById('logo-suffix');
   if (logoPrefix) {
-    logoPrefix.textContent = isDpe ? 'DPE' : 'SCI';
+    logoPrefix.textContent = isDpe ? 'DPE' : (isSci ? 'SCI' : 'SECT');
     logoPrefix.style.color = isDpe ? 'var(--accent2)' : '#BEAF87';
     logoSuffix.style.color = isDpe ? '' : '#BEAF87';
   }
 
-  // Changer couleur header
-  if (!isDpe) {
-    document.documentElement.style.setProperty('--accent',  '#BEAF87');
-    document.documentElement.style.setProperty('--accent2', '#A19276');
-  } else {
+  // Changer couleur header (DPE = couleur agence, SCI/Secteur = Century 21)
+  if (isDpe) {
     document.documentElement.style.setProperty('--accent',  agenceConfig?.couleur || '#1d4ed8');
     document.documentElement.style.setProperty('--accent2', agenceConfig?.couleur || '#3b82f6');
+  } else {
+    document.documentElement.style.setProperty('--accent',  '#BEAF87');
+    document.documentElement.style.setProperty('--accent2', '#A19276');
   }
+
+  // Chargement paresseux des donnees Secteur (1re ouverture seulement)
+  if (isSect && !secteurLoaded) { secteurLoaded = true; loadSecteurData(); }
+}
+
+// ════════════════════════════════════════
+//  DONNÉES SCI
+// ════════════════════════════════════════
+// ════════════════════════════════════════
+//  SECTEUR PROSPECTOR
+// ════════════════════════════════════════
+let secteurData = null, secteurLoaded = false, secteurAssign = {}, secteurSaveTimer = null;
+
+async function loadSecteurData() {
+  const tree = document.getElementById('secteur-tree');
+  try {
+    const r = await fetch(`${GITHUB_RAW}/data/secteur_dauphine_lacassagne_light.json?t=${Date.now()}`);
+    if (!r.ok) throw new Error('json');
+    secteurData = await r.json();
+  } catch {
+    tree.innerHTML = '<div style="color:#dc2626;padding:20px;">⚠️ Données secteur indisponibles.</div>';
+    return;
+  }
+  try {
+    const ra = await fetch(`${API_URL}/secteur-assignments/${agenceId}`, {
+      headers: { 'Authorization': `Bearer ${authToken}` } });
+    if (ra.ok) secteurAssign = (await ra.json()).assignments || {};
+  } catch { secteurAssign = {}; }
+  renderSecteur();
+}
+
+function secteurSave() {
+  clearTimeout(secteurSaveTimer);
+  secteurSaveTimer = setTimeout(async () => {
+    try {
+      await fetch(`${API_URL}/secteur-assignments/${agenceId}`, {
+        method: 'POST',
+        headers: { 'Authorization': `Bearer ${authToken}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ assignments: secteurAssign }) });
+      showToast('✅ Secteur enregistré');
+    } catch { showToast('⚠️ Échec enregistrement secteur', true); }
+  }, 1200);
+}
+
+const ROT_COLOR = { 'Tres actif': '#16a34a', 'Très actif': '#16a34a',
+  'Actif': '#2563eb', 'Modere': '#d97706', 'Modéré': '#d97706', 'Fige': '#6b7280', 'Figé': '#6b7280' };
+const TYPE_OPTS = [['', '— type —'], ['copro_non_immat', 'Copropriété non immatriculée'],
+  ['mono', 'Mono-propriété'], ['social', 'Logements sociaux'],
+  ['bureaux', 'Bureaux'], ['non_qualifie', 'Non qualifié']];
+
+function secteurSetAssign(key, field, val) {
+  if (!secteurAssign[key]) secteurAssign[key] = {};
+  if (val === '' || val == null) delete secteurAssign[key][field];
+  else secteurAssign[key][field] = field === 'ilot' ? parseInt(val) : val;
+  if (!Object.keys(secteurAssign[key]).length) delete secteurAssign[key];
+  secteurSave();
+  if (field === 'ilot') renderSecteur();   // ré-grouper par îlot
+}
+window.secteurSetAssign = secteurSetAssign;
+
+function secteurToggle(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const open = el.style.display !== 'none';
+  el.style.display = open ? 'none' : 'block';
+  const h = document.getElementById(id + '-h');
+  if (h) h.textContent = open ? '▶' : '▼';
+}
+window.secteurToggle = secteurToggle;
+
+function esc(s) {
+  return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+function renderSecteur() {
+  const d = secteurData, tree = document.getElementById('secteur-tree');
+  if (!d) return;
+  // copro par cle_adresse (jointure RNC) ; adresses par code_iris
+  const coproByCle = {};
+  (d.coproprietes || []).forEach(c => { if (c.cle_adresse) coproByCle[c.cle_adresse] = c; });
+  const irisById = {};
+  (d.iris || []).forEach(i => irisById[i.code_iris] = i);
+  const parIris = {};
+  (d.adresses || []).forEach(a => {
+    const ci = a.code_iris || '_nd';
+    (parIris[ci] = parIris[ci] || []).push(a);
+  });
+  const ANS = ['2021', '2022', '2023', '2024', '2025'];
+  let html = '';
+  let nbRnc = 0, nbEst = 0;
+  const ordre = Object.keys(parIris).sort((x, y) =>
+    (parIris[y].length) - (parIris[x].length));
+  ordre.forEach((ci, ii) => {
+    const I = irisById[ci];
+    const titreI = I
+      ? `IRIS — ${esc(I.nom_iris)} | ${Math.round(I.nb_residences_principales || 0)} RP `
+        + `| ${I.part_proprietaires != null ? I.part_proprietaires + '% propr.' : 'propr. n.d.'} `
+        + `| ${I.part_locataires != null ? I.part_locataires + '% locat.' : 'locat. n.d.'} `
+        + `| revenu médian ${I.revenu_median != null ? I.revenu_median + '€' : 'n.d.'}`
+      : `IRIS non déterminé`;
+    const idI = 'sct-i' + ii;
+    // regrouper par îlot (assignations)
+    const parIlot = {};
+    parIris[ci].forEach(a => {
+      const as = secteurAssign[a.cle] || {};
+      const k = (as.ilot != null) ? ('Îlot ' + as.ilot) : 'Îlot non assigné';
+      (parIlot[k] = parIlot[k] || []).push(a);
+    });
+    const ilotKeys = Object.keys(parIlot).sort((x, y) =>
+      (x === 'Îlot non assigné') - (y === 'Îlot non assigné') ||
+      (parseInt(x.replace(/\D/g, '')) || 0) - (parseInt(y.replace(/\D/g, '')) || 0));
+    let inner = '';
+    ilotKeys.forEach((ik, ij) => {
+      const idJ = idI + '-j' + ij;
+      let rows = '';
+      parIlot[ik].forEach(a => {
+        const cp = coproByCle[a.cle];
+        const rnc = !!cp;
+        if (rnc) nbRnc++; else nbEst++;
+        const as = secteurAssign[a.cle] || {};
+        const ventes = ANS.map(y => `${y}:${(a.ventes_par_an || {})[y] || 0}`).join(' ');
+        const cls = rnc ? (cp.classement_rotation || '') : '';
+        const taux = rnc && cp.taux_rotation_5ans != null ? cp.taux_rotation_5ans + '%' : '—';
+        const badgeRnc = rnc
+          ? `<span style="color:#16a34a;">RNC ✅ ${cp.nb_lots_habitation != null ? cp.nb_lots_habitation + ' lgts' : ''}</span>`
+          : `<span style="color:#d97706;">⚠️ Estimation</span>`;
+        const badgeRot = cls
+          ? `<span style="background:${ROT_COLOR[cls] || '#6b7280'};color:#fff;padding:1px 7px;border-radius:10px;font-size:11px;font-weight:700;">${esc(cls)}</span>`
+          : '';
+        const sci = a.sci_proprietaire === 'oui'
+          ? ` <span style="color:#7c3aed;font-size:11px;">SCI ${esc(a.sci_nom || '')}</span>` : '';
+        const ilotSel = `<select onchange="secteurSetAssign('${esc(a.cle)}','ilot',this.value)" `
+          + `style="background:#1f2937;color:#fff;border:1px solid #4b5563;border-radius:4px;font-size:11px;padding:2px 4px;">`
+          + `<option value="">îlot…</option>`
+          + Array.from({ length: 81 }, (_, n) => n + 1).map(n =>
+              `<option value="${n}"${as.ilot === n ? ' selected' : ''}>${n}</option>`).join('')
+          + `</select>`;
+        const typeSel = !rnc
+          ? ` <select onchange="secteurSetAssign('${esc(a.cle)}','type',this.value)" `
+            + `style="background:#1f2937;color:#fff;border:1px solid #4b5563;border-radius:4px;font-size:11px;padding:2px 4px;">`
+            + TYPE_OPTS.map(([v, l]) =>
+                `<option value="${v}"${as.type === v ? ' selected' : ''}>${esc(l)}</option>`).join('')
+            + `</select>` : '';
+        rows += `<div style="padding:5px 8px;border-bottom:1px solid var(--border);display:flex;`
+          + `align-items:center;gap:8px;flex-wrap:wrap;">`
+          + `<span style="min-width:230px;">📍 ${esc(a.adresse)}${sci}</span>`
+          + `<span style="font-size:11px;">${badgeRnc}</span>`
+          + `<span style="font-size:11px;color:var(--text2);">${ventes} | Total:${a.nb_ventes_total || 0}</span>`
+          + `<span style="font-size:11px;">Rotation:${taux}</span> ${badgeRot}`
+          + `<span class="spacer" style="flex:1;"></span>${ilotSel}${typeSel}</div>`;
+      });
+      inner += `<div style="margin:6px 0 6px 16px;">`
+        + `<div style="cursor:pointer;font-weight:600;padding:4px 0;" onclick="secteurToggle('${idJ}')">`
+        + `<span id="${idJ}-h">▼</span> ${esc(ik)} `
+        + `<span style="background:var(--surface2);color:var(--text2);padding:1px 7px;border-radius:10px;font-size:11px;">`
+        + `${parIlot[ik].length} adresse${parIlot[ik].length > 1 ? 's' : ''}</span></div>`
+        + `<div id="${idJ}" style="display:${ik === 'Îlot non assigné' ? 'none' : 'block'};">${rows}</div></div>`;
+    });
+    html += `<div style="margin-bottom:8px;border:1px solid var(--border);border-radius:8px;overflow:hidden;">`
+      + `<div style="cursor:pointer;font-weight:700;padding:8px 10px;background:rgba(190,175,135,.12);" `
+      + `onclick="secteurToggle('${idI}')"><span id="${idI}-h">${ii === 0 ? '▼' : '▶'}</span> ${titreI}</div>`
+      + `<div id="${idI}" style="display:${ii === 0 ? 'block' : 'none'};padding:4px 8px;">${inner}</div></div>`;
+  });
+  document.getElementById('secteur-resume').textContent =
+    `${(d.adresses || []).length} adresses · ${nbRnc} RNC ✅ · ${nbEst} estimées · `
+    + `${(d.iris || []).length} IRIS`;
+  tree.innerHTML = html || '<div style="padding:20px;color:var(--text2);">Aucune donnée.</div>';
 }
 
 // ════════════════════════════════════════
