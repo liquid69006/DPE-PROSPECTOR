@@ -2025,6 +2025,13 @@ function renderSecteur() {
         const rnc = !!cp;
         if (rnc) nbRnc++; else nbEst++;
         const as = secteurAssign[a.cle] || {};
+        // adresse non geocodee (lon/lat absents -> code_iris null) : adresse=null.
+        // On affiche alors la cle_adresse lisible pour ne pas avoir de ligne vide.
+        const hasAdr = a.adresse != null && String(a.adresse).trim() !== '';
+        const adrTxt = hasAdr ? a.adresse
+          : (a.cle ? a.cle.replace(/\|/g, ' ') : '(adresse inconnue)');
+        const flagGeo = hasAdr ? ''
+          : ` <span style="color:var(--text2);font-size:10px;">(non géocodée)</span>`;
         const ventes = ANS.map(y => `${y}:${(a.ventes_par_an || {})[y] || 0}`).join(' ');
         const cls = rnc ? (cp.classement_rotation || '') : '';
         const taux = rnc && cp.taux_rotation_5ans != null ? cp.taux_rotation_5ans + '%' : '—';
@@ -2048,10 +2055,10 @@ function renderSecteur() {
             + TYPE_OPTS.map(([v, l]) =>
                 `<option value="${v}"${as.type === v ? ' selected' : ''}>${esc(l)}</option>`).join('')
             + `</select>` : '';
-        rows += `<div class="sct-row" data-sct-addr="${esc(secteurNorm(a.adresse))}" `
+        rows += `<div class="sct-row" data-sct-addr="${esc(secteurNorm(adrTxt))}" `
           + `style="padding:5px 8px;border-bottom:1px solid var(--border);display:flex;`
           + `align-items:center;gap:8px;flex-wrap:wrap;">`
-          + `<span style="min-width:230px;">📍 ${esc(a.adresse)}${sci}</span>`
+          + `<span style="min-width:230px;">📍 ${esc(adrTxt)}${flagGeo}${sci}</span>`
           + `<span style="font-size:11px;">${badgeRnc}</span>`
           + `<span style="font-size:11px;color:var(--text2);">${ventes} | Total:${a.nb_ventes_total || 0}</span>`
           + `<span style="font-size:11px;">Rotation:${taux}</span> ${badgeRot}`
