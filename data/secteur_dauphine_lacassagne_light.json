@@ -56,7 +56,7 @@
       "revenu_median_secteur_methode": "mediane des medians IRIS Filosofi 2020 (approx., n=14)",
       "nb_adresses_croisement": 1166
     },
-    "_light": "Version allegee : metadata + iris (sans geometrie) + coproprietes/adresses slim. Cles canoniques bis-safe. Adresses completees depuis copro RNC puis BAN. BDNB joint (immat RNC + GPS<50m) : nb_log_bdnb / annee_construction / classe_dpe / type_batiment / type_chauffage. Denominateur du taux = nb_log BDNB (sinon nb_lots_habitation RNC), nb_lots_habitation_rnc conserve. Ventes adresse 2021-2025."
+    "_light": "Version allegee : metadata + iris (sans geometrie) + coproprietes/adresses slim. Cles canoniques bis-safe. Adresses completees depuis copro RNC puis BAN. BDNB joint (immat RNC + GPS<50m) : nb_log_bdnb / annee_construction / classe_dpe / type_batiment / type_chauffage. Denominateur du taux = lots RNC prioritaire (BDNB seulement si pas de lots RNC), nb_lots_habitation_rnc conserve. Fusion auto par copro RNC multi-numeros puis par batiment_groupe_id BDNB (parite homogene). Ventes adresse 2021-2025."
   },
   "iris": [
     {
@@ -640,15 +640,15 @@
       "code_iris": "693830602",
       "cle_adresse": "16|RUE|DU DAUPHINE",
       "nb_lots_total": 53,
-      "nb_lots_habitation": 22,
+      "nb_lots_habitation": 20,
       "nb_lots_habitation_rnc": 20,
       "nb_log_bdnb": 22,
       "nb_ventes_2021_2025": 1,
       "ventes_par_an": {
         "2023": 1
       },
-      "taux_rotation_5ans": 4.5,
-      "classement_rotation": "Fige"
+      "taux_rotation_5ans": 5.0,
+      "classement_rotation": "Modere"
     },
     {
       "numero_immatriculation": "AA0008367",
@@ -676,7 +676,7 @@
       "code_iris": "693830502",
       "cle_adresse": "19|RUE|TURBIL",
       "nb_lots_total": 38,
-      "nb_lots_habitation": 11,
+      "nb_lots_habitation": 13,
       "nb_lots_habitation_rnc": 13,
       "nb_log_bdnb": 11,
       "nb_ventes_2021_2025": 5,
@@ -685,7 +685,7 @@
         "2022": 2,
         "2025": 1
       },
-      "taux_rotation_5ans": 45.5,
+      "taux_rotation_5ans": 38.5,
       "classement_rotation": "Tres actif"
     },
     {
@@ -697,7 +697,7 @@
       "code_iris": "693830604",
       "cle_adresse": "7B|RUE|DU PROFESSEUR PAUL SISLEY",
       "nb_lots_total": 452,
-      "nb_lots_habitation": 229,
+      "nb_lots_habitation": 225,
       "nb_lots_habitation_rnc": 225,
       "nb_log_bdnb": 229,
       "nb_ventes_2021_2025": 0,
@@ -714,7 +714,7 @@
       "code_iris": "693830604",
       "cle_adresse": "11|RUE|DES DAHLIAS",
       "nb_lots_total": 210,
-      "nb_lots_habitation": 19,
+      "nb_lots_habitation": 62,
       "nb_lots_habitation_rnc": 62,
       "nb_log_bdnb": 19,
       "nb_ventes_2021_2025": 17,
@@ -725,7 +725,7 @@
         "2025": 2,
         "2023": 5
       },
-      "taux_rotation_5ans": 89.5,
+      "taux_rotation_5ans": 27.4,
       "classement_rotation": "Tres actif"
     },
     {
@@ -783,14 +783,14 @@
       "code_iris": "693830402",
       "cle_adresse": "14|RUE|ROPOSTE",
       "nb_lots_total": 33,
-      "nb_lots_habitation": 14,
+      "nb_lots_habitation": 15,
       "nb_lots_habitation_rnc": 15,
       "nb_log_bdnb": 14,
       "nb_ventes_2021_2025": 1,
       "ventes_par_an": {
         "2022": 1
       },
-      "taux_rotation_5ans": 7.1,
+      "taux_rotation_5ans": 6.7,
       "classement_rotation": "Modere"
     },
     {
@@ -802,7 +802,7 @@
       "code_iris": "693830401",
       "cle_adresse": "11|AVENUE|GEORGES POMPIDOU",
       "nb_lots_total": 261,
-      "nb_lots_habitation": 66,
+      "nb_lots_habitation": 80,
       "nb_lots_habitation_rnc": 80,
       "nb_log_bdnb": 66,
       "nb_ventes_2021_2025": 4,
@@ -812,7 +812,7 @@
         "2024": 1,
         "2021": 1
       },
-      "taux_rotation_5ans": 6.1,
+      "taux_rotation_5ans": 5.0,
       "classement_rotation": "Modere"
     },
     {
@@ -824,7 +824,7 @@
       "code_iris": "693830404",
       "cle_adresse": "24|RUE|DE LA CITE",
       "nb_lots_total": 372,
-      "nb_lots_habitation": 30,
+      "nb_lots_habitation": 126,
       "nb_lots_habitation_rnc": 126,
       "nb_log_bdnb": 30,
       "nb_ventes_2021_2025": 13,
@@ -835,8 +835,8 @@
         "2024": 1,
         "2023": 2
       },
-      "taux_rotation_5ans": 43.3,
-      "classement_rotation": "Tres actif"
+      "taux_rotation_5ans": 10.3,
+      "classement_rotation": "Actif"
     },
     {
       "numero_immatriculation": "AA1456987",
@@ -886,7 +886,7 @@
       "code_iris": "693830501",
       "cle_adresse": "27|AVENUE|LACASSAGNE",
       "nb_lots_total": 1134,
-      "nb_lots_habitation": 373,
+      "nb_lots_habitation": 369,
       "nb_lots_habitation_rnc": 369,
       "nb_log_bdnb": 373,
       "nb_ventes_2021_2025": 85,
@@ -897,7 +897,7 @@
         "2022": 18,
         "2021": 23
       },
-      "taux_rotation_5ans": 22.8,
+      "taux_rotation_5ans": 23.0,
       "classement_rotation": "Tres actif"
     },
     {
@@ -909,14 +909,14 @@
       "code_iris": "693830502",
       "cle_adresse": "76|RUE|ANTOINE CHARIAL",
       "nb_lots_total": 349,
-      "nb_lots_habitation": 119,
+      "nb_lots_habitation": 111,
       "nb_lots_habitation_rnc": 111,
       "nb_log_bdnb": 119,
       "nb_ventes_2021_2025": 3,
       "ventes_par_an": {
         "2021": 3
       },
-      "taux_rotation_5ans": 2.5,
+      "taux_rotation_5ans": 2.7,
       "classement_rotation": "Fige"
     },
     {
@@ -945,7 +945,7 @@
       "code_iris": "693830601",
       "cle_adresse": "180|AVENUE|FELIX FAURE",
       "nb_lots_total": 114,
-      "nb_lots_habitation": 23,
+      "nb_lots_habitation": 46,
       "nb_lots_habitation_rnc": 46,
       "nb_log_bdnb": 23,
       "nb_ventes_2021_2025": 3,
@@ -954,8 +954,8 @@
         "2024": 1,
         "2021": 1
       },
-      "taux_rotation_5ans": 13.0,
-      "classement_rotation": "Actif"
+      "taux_rotation_5ans": 6.5,
+      "classement_rotation": "Modere"
     },
     {
       "numero_immatriculation": "AA1827336",
@@ -966,7 +966,7 @@
       "code_iris": "693830405",
       "cle_adresse": "3|RUE|FRANCOIS GILLET",
       "nb_lots_total": 145,
-      "nb_lots_habitation": 32,
+      "nb_lots_habitation": 30,
       "nb_lots_habitation_rnc": 30,
       "nb_log_bdnb": 32,
       "nb_ventes_2021_2025": 7,
@@ -977,7 +977,7 @@
         "2024": 1,
         "2021": 1
       },
-      "taux_rotation_5ans": 21.9,
+      "taux_rotation_5ans": 23.3,
       "classement_rotation": "Tres actif"
     },
     {
@@ -1030,7 +1030,7 @@
       "code_iris": "693830403",
       "cle_adresse": "38|AVENUE|GEORGES POMPIDOU",
       "nb_lots_total": 110,
-      "nb_lots_habitation": 54,
+      "nb_lots_habitation": 55,
       "nb_lots_habitation_rnc": 55,
       "nb_log_bdnb": 54,
       "nb_ventes_2021_2025": 0,
@@ -1085,7 +1085,7 @@
       "code_iris": "693830405",
       "cle_adresse": "10|RUE|FREDERIC MISTRAL",
       "nb_lots_total": 74,
-      "nb_lots_habitation": 29,
+      "nb_lots_habitation": 37,
       "nb_lots_habitation_rnc": 37,
       "nb_log_bdnb": 29,
       "nb_ventes_2021_2025": 13,
@@ -1096,7 +1096,7 @@
         "2022": 2,
         "2025": 1
       },
-      "taux_rotation_5ans": 44.8,
+      "taux_rotation_5ans": 35.1,
       "classement_rotation": "Tres actif"
     },
     {
@@ -1108,7 +1108,7 @@
       "code_iris": "693830401",
       "cle_adresse": "23|RUE|RIBOUD",
       "nb_lots_total": 95,
-      "nb_lots_habitation": 35,
+      "nb_lots_habitation": 37,
       "nb_lots_habitation_rnc": 37,
       "nb_log_bdnb": 35,
       "nb_ventes_2021_2025": 4,
@@ -1117,7 +1117,7 @@
         "2021": 1,
         "2025": 1
       },
-      "taux_rotation_5ans": 11.4,
+      "taux_rotation_5ans": 10.8,
       "classement_rotation": "Actif"
     },
     {
@@ -1129,7 +1129,7 @@
       "code_iris": "693830405",
       "cle_adresse": "141|RUE|ANTOINE CHARIAL",
       "nb_lots_total": 163,
-      "nb_lots_habitation": 32,
+      "nb_lots_habitation": 54,
       "nb_lots_habitation_rnc": 54,
       "nb_log_bdnb": 32,
       "nb_ventes_2021_2025": 0,
@@ -1146,7 +1146,7 @@
       "code_iris": "693830405",
       "cle_adresse": "12|RUE|ST EUSEBE",
       "nb_lots_total": 96,
-      "nb_lots_habitation": 55,
+      "nb_lots_habitation": 33,
       "nb_lots_habitation_rnc": 33,
       "nb_log_bdnb": 55,
       "nb_ventes_2021_2025": 0,
@@ -1225,7 +1225,7 @@
       "code_iris": "693830501",
       "cle_adresse": "39|RUE|MAURICE FLANDIN",
       "nb_lots_total": 60,
-      "nb_lots_habitation": 17,
+      "nb_lots_habitation": 18,
       "nb_lots_habitation_rnc": 18,
       "nb_log_bdnb": 17,
       "nb_ventes_2021_2025": 5,
@@ -1235,7 +1235,7 @@
         "2021": 1,
         "2024": 1
       },
-      "taux_rotation_5ans": 29.4,
+      "taux_rotation_5ans": 27.8,
       "classement_rotation": "Tres actif"
     },
     {
@@ -1283,7 +1283,7 @@
       "code_iris": "693830604",
       "cle_adresse": "14|RUE|BARA",
       "nb_lots_total": 127,
-      "nb_lots_habitation": 18,
+      "nb_lots_habitation": 43,
       "nb_lots_habitation_rnc": 43,
       "nb_log_bdnb": 18,
       "nb_ventes_2021_2025": 5,
@@ -1292,8 +1292,8 @@
         "2024": 1,
         "2022": 1
       },
-      "taux_rotation_5ans": 27.8,
-      "classement_rotation": "Tres actif"
+      "taux_rotation_5ans": 11.6,
+      "classement_rotation": "Actif"
     },
     {
       "numero_immatriculation": "AA2223808",
@@ -1304,7 +1304,7 @@
       "code_iris": "693830502",
       "cle_adresse": "256|RUE|PAUL BERT",
       "nb_lots_total": 40,
-      "nb_lots_habitation": 9,
+      "nb_lots_habitation": 8,
       "nb_lots_habitation_rnc": 8,
       "nb_log_bdnb": 9,
       "nb_ventes_2021_2025": 0,
@@ -1343,7 +1343,7 @@
       "code_iris": "693830502",
       "cle_adresse": "213|AVENUE|FELIX FAURE",
       "nb_lots_total": 50,
-      "nb_lots_habitation": 21,
+      "nb_lots_habitation": 23,
       "nb_lots_habitation_rnc": 23,
       "nb_log_bdnb": 21,
       "nb_ventes_2021_2025": 0,
@@ -1360,7 +1360,7 @@
       "code_iris": "693830601",
       "cle_adresse": "196|AVENUE|FELIX FAURE",
       "nb_lots_total": 10,
-      "nb_lots_habitation": 7,
+      "nb_lots_habitation": 8,
       "nb_lots_habitation_rnc": 8,
       "nb_log_bdnb": 7,
       "nb_ventes_2021_2025": 0,
@@ -1377,7 +1377,7 @@
       "code_iris": "693830603",
       "cle_adresse": "42A||50 RUE ST MAXIMIN",
       "nb_lots_total": 190,
-      "nb_lots_habitation": 64,
+      "nb_lots_habitation": 63,
       "nb_lots_habitation_rnc": 63,
       "nb_log_bdnb": 64,
       "nb_ventes_2021_2025": 0,
@@ -1394,7 +1394,7 @@
       "code_iris": "693830502",
       "cle_adresse": "139|RUE|BARABAN",
       "nb_lots_total": 114,
-      "nb_lots_habitation": 46,
+      "nb_lots_habitation": 48,
       "nb_lots_habitation_rnc": 48,
       "nb_log_bdnb": 46,
       "nb_ventes_2021_2025": 13,
@@ -1404,7 +1404,7 @@
         "2022": 4,
         "2021": 2
       },
-      "taux_rotation_5ans": 28.3,
+      "taux_rotation_5ans": 27.1,
       "classement_rotation": "Tres actif"
     },
     {
@@ -1416,7 +1416,7 @@
       "code_iris": "693830402",
       "cle_adresse": "23|RUE|ROPOSTE",
       "nb_lots_total": 145,
-      "nb_lots_habitation": 48,
+      "nb_lots_habitation": 47,
       "nb_lots_habitation_rnc": 47,
       "nb_log_bdnb": 48,
       "nb_ventes_2021_2025": 5,
@@ -1425,7 +1425,7 @@
         "2023": 1,
         "2024": 2
       },
-      "taux_rotation_5ans": 10.4,
+      "taux_rotation_5ans": 10.6,
       "classement_rotation": "Actif"
     },
     {
@@ -1460,7 +1460,7 @@
       "code_iris": "693830604",
       "cle_adresse": "3B|RUE|BARA",
       "nb_lots_total": 12,
-      "nb_lots_habitation": 11,
+      "nb_lots_habitation": 12,
       "nb_lots_habitation_rnc": 12,
       "nb_log_bdnb": 11,
       "nb_ventes_2021_2025": 0,
@@ -1477,7 +1477,7 @@
       "code_iris": "693830601",
       "cle_adresse": "170|AVENUE|FELIX FAURE",
       "nb_lots_total": 87,
-      "nb_lots_habitation": 39,
+      "nb_lots_habitation": 40,
       "nb_lots_habitation_rnc": 40,
       "nb_log_bdnb": 39,
       "nb_ventes_2021_2025": 0,
@@ -1494,7 +1494,7 @@
       "code_iris": "693830502",
       "cle_adresse": "42|RUE|TURBIL",
       "nb_lots_total": 36,
-      "nb_lots_habitation": 18,
+      "nb_lots_habitation": 15,
       "nb_lots_habitation_rnc": 15,
       "nb_log_bdnb": 18,
       "nb_ventes_2021_2025": 2,
@@ -1502,7 +1502,7 @@
         "2022": 1,
         "2025": 1
       },
-      "taux_rotation_5ans": 11.1,
+      "taux_rotation_5ans": 13.3,
       "classement_rotation": "Actif"
     },
     {
@@ -1531,7 +1531,7 @@
       "code_iris": "693830603",
       "cle_adresse": "15|RUE|GUILLOUD",
       "nb_lots_total": 85,
-      "nb_lots_habitation": 31,
+      "nb_lots_habitation": 33,
       "nb_lots_habitation_rnc": 33,
       "nb_log_bdnb": 31,
       "nb_ventes_2021_2025": 11,
@@ -1541,7 +1541,7 @@
         "2025": 3,
         "2021": 3
       },
-      "taux_rotation_5ans": 35.5,
+      "taux_rotation_5ans": 33.3,
       "classement_rotation": "Tres actif"
     },
     {
@@ -1637,7 +1637,7 @@
       "code_iris": "693830501",
       "cle_adresse": "249|RUE|PAUL BERT",
       "nb_lots_total": 74,
-      "nb_lots_habitation": 26,
+      "nb_lots_habitation": 27,
       "nb_lots_habitation_rnc": 27,
       "nb_log_bdnb": 26,
       "nb_ventes_2021_2025": 4,
@@ -1645,7 +1645,7 @@
         "2025": 3,
         "2021": 1
       },
-      "taux_rotation_5ans": 15.4,
+      "taux_rotation_5ans": 14.8,
       "classement_rotation": "Actif"
     },
     {
@@ -1657,7 +1657,7 @@
       "code_iris": "693830601",
       "cle_adresse": "198|AVENUE|FELIX FAURE",
       "nb_lots_total": 38,
-      "nb_lots_habitation": 13,
+      "nb_lots_habitation": 19,
       "nb_lots_habitation_rnc": 19,
       "nb_log_bdnb": 13,
       "nb_ventes_2021_2025": 0,
@@ -1693,7 +1693,7 @@
       "code_iris": "693830401",
       "cle_adresse": "19|RUE|RIBOUD",
       "nb_lots_total": 92,
-      "nb_lots_habitation": 28,
+      "nb_lots_habitation": 24,
       "nb_lots_habitation_rnc": 24,
       "nb_log_bdnb": 28,
       "nb_ventes_2021_2025": 6,
@@ -1702,7 +1702,7 @@
         "2023": 2,
         "2025": 1
       },
-      "taux_rotation_5ans": 21.4,
+      "taux_rotation_5ans": 25.0,
       "classement_rotation": "Tres actif"
     },
     {
@@ -1714,7 +1714,7 @@
       "code_iris": "693830401",
       "cle_adresse": "19|RUE|ST ANTOINE",
       "nb_lots_total": 135,
-      "nb_lots_habitation": 40,
+      "nb_lots_habitation": 41,
       "nb_lots_habitation_rnc": 41,
       "nb_log_bdnb": 40,
       "nb_ventes_2021_2025": 0,
@@ -1750,7 +1750,7 @@
       "code_iris": "693830401",
       "cle_adresse": "240|COURS|LAFAYETTE",
       "nb_lots_total": 74,
-      "nb_lots_habitation": 22,
+      "nb_lots_habitation": 26,
       "nb_lots_habitation_rnc": 26,
       "nb_log_bdnb": 22,
       "nb_ventes_2021_2025": 2,
@@ -1758,7 +1758,7 @@
         "2023": 1,
         "2022": 1
       },
-      "taux_rotation_5ans": 9.1,
+      "taux_rotation_5ans": 7.7,
       "classement_rotation": "Modere"
     },
     {
@@ -1770,7 +1770,7 @@
       "code_iris": "693830603",
       "cle_adresse": "33|RUE|ST MAXIMIN",
       "nb_lots_total": 144,
-      "nb_lots_habitation": 37,
+      "nb_lots_habitation": 39,
       "nb_lots_habitation_rnc": 39,
       "nb_log_bdnb": 37,
       "nb_ventes_2021_2025": 0,
@@ -1909,7 +1909,7 @@
       "code_iris": "693830602",
       "cle_adresse": "34|RUE|DU DAUPHINE",
       "nb_lots_total": 53,
-      "nb_lots_habitation": 16,
+      "nb_lots_habitation": 19,
       "nb_lots_habitation_rnc": 19,
       "nb_log_bdnb": 16,
       "nb_ventes_2021_2025": 9,
@@ -1919,7 +1919,7 @@
         "2024": 2,
         "2021": 1
       },
-      "taux_rotation_5ans": 56.2,
+      "taux_rotation_5ans": 47.4,
       "classement_rotation": "Tres actif"
     },
     {
@@ -1971,7 +1971,7 @@
       "code_iris": "693830405",
       "cle_adresse": "7|RUE|FRANCOIS GILLET",
       "nb_lots_total": 207,
-      "nb_lots_habitation": 58,
+      "nb_lots_habitation": 59,
       "nb_lots_habitation_rnc": 59,
       "nb_log_bdnb": 58,
       "nb_ventes_2021_2025": 11,
@@ -1981,7 +1981,7 @@
         "2023": 2,
         "2021": 1
       },
-      "taux_rotation_5ans": 19.0,
+      "taux_rotation_5ans": 18.6,
       "classement_rotation": "Actif"
     },
     {
@@ -1993,7 +1993,7 @@
       "code_iris": "693830403",
       "cle_adresse": "19|RUE|ANTOINE CHARIAL",
       "nb_lots_total": 227,
-      "nb_lots_habitation": 36,
+      "nb_lots_habitation": 113,
       "nb_lots_habitation_rnc": 113,
       "nb_log_bdnb": 36,
       "nb_ventes_2021_2025": 25,
@@ -2004,7 +2004,7 @@
         "2025": 6,
         "2024": 7
       },
-      "taux_rotation_5ans": 69.4,
+      "taux_rotation_5ans": 22.1,
       "classement_rotation": "Tres actif"
     },
     {
@@ -2036,7 +2036,7 @@
       "code_iris": "693830602",
       "cle_adresse": "12|RUE|ST PHILIPPE",
       "nb_lots_total": 25,
-      "nb_lots_habitation": 8,
+      "nb_lots_habitation": 21,
       "nb_lots_habitation_rnc": 21,
       "nb_log_bdnb": 8,
       "nb_ventes_2021_2025": 0,
@@ -2073,7 +2073,7 @@
       "code_iris": "693830402",
       "cle_adresse": "51|RUE|D AUBIGNY",
       "nb_lots_total": 101,
-      "nb_lots_habitation": 18,
+      "nb_lots_habitation": 41,
       "nb_lots_habitation_rnc": 41,
       "nb_log_bdnb": 18,
       "nb_ventes_2021_2025": 3,
@@ -2081,8 +2081,8 @@
         "2022": 2,
         "2025": 1
       },
-      "taux_rotation_5ans": 16.7,
-      "classement_rotation": "Actif"
+      "taux_rotation_5ans": 7.3,
+      "classement_rotation": "Modere"
     },
     {
       "numero_immatriculation": "AA5659529",
@@ -2176,7 +2176,7 @@
       "code_iris": "693830603",
       "cle_adresse": "24|RUE|ST PHILIPPE",
       "nb_lots_total": 14,
-      "nb_lots_habitation": 7,
+      "nb_lots_habitation": 6,
       "nb_lots_habitation_rnc": 6,
       "nb_log_bdnb": 7,
       "nb_ventes_2021_2025": 0,
@@ -2193,7 +2193,7 @@
       "code_iris": "693830501",
       "cle_adresse": "156|RUE|BARABAN",
       "nb_lots_total": 21,
-      "nb_lots_habitation": 11,
+      "nb_lots_habitation": 13,
       "nb_lots_habitation_rnc": 13,
       "nb_log_bdnb": 11,
       "nb_ventes_2021_2025": 4,
@@ -2201,7 +2201,7 @@
         "2025": 2,
         "2024": 2
       },
-      "taux_rotation_5ans": 36.4,
+      "taux_rotation_5ans": 30.8,
       "classement_rotation": "Tres actif"
     },
     {
@@ -2213,7 +2213,7 @@
       "code_iris": "693830404",
       "cle_adresse": "54|RUE|ST ANTOINE",
       "nb_lots_total": 227,
-      "nb_lots_habitation": 14,
+      "nb_lots_habitation": 109,
       "nb_lots_habitation_rnc": 109,
       "nb_log_bdnb": 14,
       "nb_ventes_2021_2025": 0,
@@ -2230,7 +2230,7 @@
       "code_iris": "693830405",
       "cle_adresse": "2|RUE|STE ANNE DE BARABAN",
       "nb_lots_total": 19,
-      "nb_lots_habitation": 8,
+      "nb_lots_habitation": 10,
       "nb_lots_habitation_rnc": 10,
       "nb_log_bdnb": 8,
       "nb_ventes_2021_2025": 0,
@@ -2247,7 +2247,7 @@
       "code_iris": "693830602",
       "cle_adresse": "49|RUE|DU DAUPHINE",
       "nb_lots_total": 102,
-      "nb_lots_habitation": 60,
+      "nb_lots_habitation": 57,
       "nb_lots_habitation_rnc": 57,
       "nb_log_bdnb": 60,
       "nb_ventes_2021_2025": 10,
@@ -2258,7 +2258,7 @@
         "2022": 2,
         "2025": 2
       },
-      "taux_rotation_5ans": 16.7,
+      "taux_rotation_5ans": 17.5,
       "classement_rotation": "Actif"
     },
     {
@@ -2304,7 +2304,7 @@
       "code_iris": "693830604",
       "cle_adresse": "52|RUE|ST MAXIMIN",
       "nb_lots_total": 113,
-      "nb_lots_habitation": 37,
+      "nb_lots_habitation": 36,
       "nb_lots_habitation_rnc": 36,
       "nb_log_bdnb": 37,
       "nb_ventes_2021_2025": 0,
@@ -2321,7 +2321,7 @@
       "code_iris": "693830602",
       "cle_adresse": "59|RUE|DU DAUPHINE",
       "nb_lots_total": 50,
-      "nb_lots_habitation": 23,
+      "nb_lots_habitation": 24,
       "nb_lots_habitation_rnc": 24,
       "nb_log_bdnb": 23,
       "nb_ventes_2021_2025": 10,
@@ -2332,7 +2332,7 @@
         "2021": 2,
         "2023": 1
       },
-      "taux_rotation_5ans": 43.5,
+      "taux_rotation_5ans": 41.7,
       "classement_rotation": "Tres actif"
     },
     {
@@ -2344,14 +2344,14 @@
       "code_iris": "693830401",
       "cle_adresse": "246|COURS|LAFAYETTE",
       "nb_lots_total": 69,
-      "nb_lots_habitation": 19,
+      "nb_lots_habitation": 17,
       "nb_lots_habitation_rnc": 17,
       "nb_log_bdnb": 19,
       "nb_ventes_2021_2025": 2,
       "ventes_par_an": {
         "2021": 2
       },
-      "taux_rotation_5ans": 10.5,
+      "taux_rotation_5ans": 11.8,
       "classement_rotation": "Actif"
     },
     {
@@ -2384,7 +2384,7 @@
       "code_iris": "693830604",
       "cle_adresse": "14|RUE|DOCTEUR REBATEL",
       "nb_lots_total": 82,
-      "nb_lots_habitation": 43,
+      "nb_lots_habitation": 40,
       "nb_lots_habitation_rnc": 40,
       "nb_log_bdnb": 43,
       "nb_ventes_2021_2025": 0,
@@ -2401,15 +2401,15 @@
       "code_iris": "693830401",
       "cle_adresse": "236|COURS|LAFAYETTE",
       "nb_lots_total": 2,
-      "nb_lots_habitation": 18,
+      "nb_lots_habitation": 2,
       "nb_lots_habitation_rnc": 2,
       "nb_log_bdnb": 18,
       "nb_ventes_2021_2025": 1,
       "ventes_par_an": {
         "2021": 1
       },
-      "taux_rotation_5ans": 5.6,
-      "classement_rotation": "Modere"
+      "taux_rotation_5ans": 50.0,
+      "classement_rotation": "Tres actif"
     },
     {
       "numero_immatriculation": "AA7082068",
@@ -2462,14 +2462,14 @@
       "code_iris": "693830601",
       "cle_adresse": "242|AVENUE|FELIX FAURE",
       "nb_lots_total": 21,
-      "nb_lots_habitation": 7,
+      "nb_lots_habitation": 10,
       "nb_lots_habitation_rnc": 10,
       "nb_log_bdnb": 7,
       "nb_ventes_2021_2025": 1,
       "ventes_par_an": {
         "2021": 1
       },
-      "taux_rotation_5ans": 14.3,
+      "taux_rotation_5ans": 10.0,
       "classement_rotation": "Actif"
     },
     {
@@ -2481,7 +2481,7 @@
       "code_iris": "693830502",
       "cle_adresse": "1|RUE|TURBIL",
       "nb_lots_total": 54,
-      "nb_lots_habitation": 27,
+      "nb_lots_habitation": 28,
       "nb_lots_habitation_rnc": 28,
       "nb_log_bdnb": 27,
       "nb_ventes_2021_2025": 0,
@@ -2498,7 +2498,7 @@
       "code_iris": "693830502",
       "cle_adresse": "4|RUE|MEYNIS",
       "nb_lots_total": 79,
-      "nb_lots_habitation": 35,
+      "nb_lots_habitation": 34,
       "nb_lots_habitation_rnc": 34,
       "nb_log_bdnb": 35,
       "nb_ventes_2021_2025": 2,
@@ -2506,7 +2506,7 @@
         "2022": 1,
         "2025": 1
       },
-      "taux_rotation_5ans": 5.7,
+      "taux_rotation_5ans": 5.9,
       "classement_rotation": "Modere"
     },
     {
@@ -2518,7 +2518,7 @@
       "code_iris": "693830603",
       "cle_adresse": "31|RUE|DU PROFESSEUR PAUL SISLEY",
       "nb_lots_total": 68,
-      "nb_lots_habitation": 30,
+      "nb_lots_habitation": 32,
       "nb_lots_habitation_rnc": 32,
       "nb_log_bdnb": 30,
       "nb_ventes_2021_2025": 0,
@@ -2573,7 +2573,7 @@
       "code_iris": "693830603",
       "cle_adresse": "16|RUE|GUILLOUD",
       "nb_lots_total": 155,
-      "nb_lots_habitation": 48,
+      "nb_lots_habitation": 50,
       "nb_lots_habitation_rnc": 50,
       "nb_log_bdnb": 48,
       "nb_ventes_2021_2025": 4,
@@ -2582,7 +2582,7 @@
         "2021": 1,
         "2025": 2
       },
-      "taux_rotation_5ans": 8.3,
+      "taux_rotation_5ans": 8.0,
       "classement_rotation": "Modere"
     },
     {
@@ -2594,7 +2594,7 @@
       "code_iris": "693830404",
       "cle_adresse": "17|RUE|LOUIS JASSERON",
       "nb_lots_total": 57,
-      "nb_lots_habitation": 45,
+      "nb_lots_habitation": 29,
       "nb_lots_habitation_rnc": 29,
       "nb_log_bdnb": 45,
       "nb_ventes_2021_2025": 6,
@@ -2602,8 +2602,8 @@
         "2022": 3,
         "2025": 3
       },
-      "taux_rotation_5ans": 13.3,
-      "classement_rotation": "Actif"
+      "taux_rotation_5ans": 20.7,
+      "classement_rotation": "Tres actif"
     },
     {
       "numero_immatriculation": "AA7503493",
@@ -2636,7 +2636,7 @@
       "code_iris": "693830403",
       "cle_adresse": "57|RUE|ANTOINE CHARIAL",
       "nb_lots_total": 15,
-      "nb_lots_habitation": 14,
+      "nb_lots_habitation": 15,
       "nb_lots_habitation_rnc": 15,
       "nb_log_bdnb": 14,
       "nb_ventes_2021_2025": 3,
@@ -2644,7 +2644,7 @@
         "2022": 2,
         "2023": 1
       },
-      "taux_rotation_5ans": 21.4,
+      "taux_rotation_5ans": 20.0,
       "classement_rotation": "Tres actif"
     },
     {
@@ -2679,7 +2679,7 @@
       "code_iris": "693830403",
       "cle_adresse": "35|RUE|ANTOINE CHARIAL",
       "nb_lots_total": 159,
-      "nb_lots_habitation": 62,
+      "nb_lots_habitation": 61,
       "nb_lots_habitation_rnc": 61,
       "nb_log_bdnb": 62,
       "nb_ventes_2021_2025": 9,
@@ -2689,7 +2689,7 @@
         "2021": 2,
         "2022": 3
       },
-      "taux_rotation_5ans": 14.5,
+      "taux_rotation_5ans": 14.8,
       "classement_rotation": "Actif"
     },
     {
@@ -2701,7 +2701,7 @@
       "code_iris": "693830603",
       "cle_adresse": "10|RUE|VILLON",
       "nb_lots_total": 114,
-      "nb_lots_habitation": 35,
+      "nb_lots_habitation": 34,
       "nb_lots_habitation_rnc": 34,
       "nb_log_bdnb": 35,
       "nb_ventes_2021_2025": 0,
@@ -2752,7 +2752,7 @@
       "code_iris": "693830405",
       "cle_adresse": "14|RUE|DE L ESPERANCE",
       "nb_lots_total": 196,
-      "nb_lots_habitation": 95,
+      "nb_lots_habitation": 61,
       "nb_lots_habitation_rnc": 61,
       "nb_log_bdnb": 95,
       "nb_ventes_2021_2025": 3,
@@ -2760,7 +2760,7 @@
         "2021": 1,
         "2024": 2
       },
-      "taux_rotation_5ans": 3.2,
+      "taux_rotation_5ans": 4.9,
       "classement_rotation": "Fige"
     },
     {
@@ -2808,7 +2808,7 @@
       "code_iris": "693830401",
       "cle_adresse": "8|RUE|ETIENNE RICHERAND",
       "nb_lots_total": 65,
-      "nb_lots_habitation": 29,
+      "nb_lots_habitation": 27,
       "nb_lots_habitation_rnc": 27,
       "nb_log_bdnb": 29,
       "nb_ventes_2021_2025": 8,
@@ -2818,7 +2818,7 @@
         "2024": 2,
         "2023": 2
       },
-      "taux_rotation_5ans": 27.6,
+      "taux_rotation_5ans": 29.6,
       "classement_rotation": "Tres actif"
     },
     {
@@ -2850,7 +2850,7 @@
       "code_iris": "693830502",
       "cle_adresse": "1|RUE|ST EUSEBE",
       "nb_lots_total": 16,
-      "nb_lots_habitation": 21,
+      "nb_lots_habitation": 12,
       "nb_lots_habitation_rnc": 12,
       "nb_log_bdnb": 21,
       "nb_ventes_2021_2025": 0,
@@ -2884,7 +2884,7 @@
       "code_iris": "693830603",
       "cle_adresse": "10|RUE|DES DAHLIAS",
       "nb_lots_total": 45,
-      "nb_lots_habitation": 20,
+      "nb_lots_habitation": 22,
       "nb_lots_habitation_rnc": 22,
       "nb_log_bdnb": 20,
       "nb_ventes_2021_2025": 0,
@@ -2901,7 +2901,7 @@
       "code_iris": "693830502",
       "cle_adresse": "239|AVENUE|FELIX FAURE",
       "nb_lots_total": 41,
-      "nb_lots_habitation": 16,
+      "nb_lots_habitation": 18,
       "nb_lots_habitation_rnc": 18,
       "nb_log_bdnb": 16,
       "nb_ventes_2021_2025": 4,
@@ -2910,7 +2910,7 @@
         "2025": 1,
         "2022": 1
       },
-      "taux_rotation_5ans": 25.0,
+      "taux_rotation_5ans": 22.2,
       "classement_rotation": "Tres actif"
     },
     {
@@ -2922,7 +2922,7 @@
       "code_iris": "693830601",
       "cle_adresse": "115|RUE|DU DAUPHINE",
       "nb_lots_total": 76,
-      "nb_lots_habitation": 23,
+      "nb_lots_habitation": 25,
       "nb_lots_habitation_rnc": 25,
       "nb_log_bdnb": 23,
       "nb_ventes_2021_2025": 8,
@@ -2932,7 +2932,7 @@
         "2023": 2,
         "2024": 2
       },
-      "taux_rotation_5ans": 34.8,
+      "taux_rotation_5ans": 32.0,
       "classement_rotation": "Tres actif"
     },
     {
@@ -2967,7 +2967,7 @@
       "code_iris": "693830401",
       "cle_adresse": "270|COURS|LAFAYETTE",
       "nb_lots_total": 127,
-      "nb_lots_habitation": 21,
+      "nb_lots_habitation": 41,
       "nb_lots_habitation_rnc": 41,
       "nb_log_bdnb": 21,
       "nb_ventes_2021_2025": 7,
@@ -2976,8 +2976,8 @@
         "2025": 2,
         "2021": 3
       },
-      "taux_rotation_5ans": 33.3,
-      "classement_rotation": "Tres actif"
+      "taux_rotation_5ans": 17.1,
+      "classement_rotation": "Actif"
     },
     {
       "numero_immatriculation": "AA8736043",
@@ -2988,7 +2988,7 @@
       "code_iris": "693830501",
       "cle_adresse": "139|AVENUE|FELIX FAURE",
       "nb_lots_total": 174,
-      "nb_lots_habitation": 39,
+      "nb_lots_habitation": 83,
       "nb_lots_habitation_rnc": 83,
       "nb_log_bdnb": 39,
       "nb_ventes_2021_2025": 7,
@@ -2998,8 +2998,8 @@
         "2023": 3,
         "2025": 1
       },
-      "taux_rotation_5ans": 17.9,
-      "classement_rotation": "Actif"
+      "taux_rotation_5ans": 8.4,
+      "classement_rotation": "Modere"
     },
     {
       "numero_immatriculation": "AA8848095",
@@ -3010,7 +3010,7 @@
       "code_iris": "693830603",
       "cle_adresse": "68|RUE|DU DAUPHINE",
       "nb_lots_total": 147,
-      "nb_lots_habitation": 45,
+      "nb_lots_habitation": 46,
       "nb_lots_habitation_rnc": 46,
       "nb_log_bdnb": 45,
       "nb_ventes_2021_2025": 4,
@@ -3019,7 +3019,7 @@
         "2024": 1,
         "2023": 1
       },
-      "taux_rotation_5ans": 8.9,
+      "taux_rotation_5ans": 8.7,
       "classement_rotation": "Modere"
     },
     {
@@ -3031,7 +3031,7 @@
       "code_iris": "693830603",
       "cle_adresse": "62|RUE|DU DAUPHINE",
       "nb_lots_total": 67,
-      "nb_lots_habitation": 18,
+      "nb_lots_habitation": 21,
       "nb_lots_habitation_rnc": 21,
       "nb_log_bdnb": 18,
       "nb_ventes_2021_2025": 0,
@@ -3048,7 +3048,7 @@
       "code_iris": "693830501",
       "cle_adresse": "40|RUE|ANTOINE CHARIAL",
       "nb_lots_total": 193,
-      "nb_lots_habitation": 84,
+      "nb_lots_habitation": 85,
       "nb_lots_habitation_rnc": 85,
       "nb_log_bdnb": 84,
       "nb_ventes_2021_2025": 8,
@@ -3058,7 +3058,7 @@
         "2024": 2,
         "2023": 2
       },
-      "taux_rotation_5ans": 9.5,
+      "taux_rotation_5ans": 9.4,
       "classement_rotation": "Modere"
     },
     {
@@ -3070,7 +3070,7 @@
       "code_iris": "693830402",
       "cle_adresse": "294|COURS|LAFAYETTE",
       "nb_lots_total": 169,
-      "nb_lots_habitation": 29,
+      "nb_lots_habitation": 58,
       "nb_lots_habitation_rnc": 58,
       "nb_log_bdnb": 29,
       "nb_ventes_2021_2025": 3,
@@ -3078,8 +3078,8 @@
         "2023": 2,
         "2024": 1
       },
-      "taux_rotation_5ans": 10.3,
-      "classement_rotation": "Actif"
+      "taux_rotation_5ans": 5.2,
+      "classement_rotation": "Modere"
     },
     {
       "numero_immatriculation": "AA9087800",
@@ -3090,7 +3090,7 @@
       "code_iris": "693830601",
       "cle_adresse": "30|AVENUE|LACASSAGNE",
       "nb_lots_total": 30,
-      "nb_lots_habitation": 18,
+      "nb_lots_habitation": 15,
       "nb_lots_habitation_rnc": 15,
       "nb_log_bdnb": 18,
       "nb_ventes_2021_2025": 7,
@@ -3099,7 +3099,7 @@
         "2021": 1,
         "2022": 1
       },
-      "taux_rotation_5ans": 38.9,
+      "taux_rotation_5ans": 46.7,
       "classement_rotation": "Tres actif"
     },
     {
@@ -3111,14 +3111,14 @@
       "code_iris": "693830402",
       "cle_adresse": "35|RUE|ETIENNE RICHERAND",
       "nb_lots_total": 25,
-      "nb_lots_habitation": 12,
+      "nb_lots_habitation": 11,
       "nb_lots_habitation_rnc": 11,
       "nb_log_bdnb": 12,
       "nb_ventes_2021_2025": 2,
       "ventes_par_an": {
         "2024": 2
       },
-      "taux_rotation_5ans": 16.7,
+      "taux_rotation_5ans": 18.2,
       "classement_rotation": "Actif"
     },
     {
@@ -3171,7 +3171,7 @@
       "code_iris": "693830402",
       "cle_adresse": "41|RUE|ETIENNE RICHERAND",
       "nb_lots_total": 10,
-      "nb_lots_habitation": 7,
+      "nb_lots_habitation": 9,
       "nb_lots_habitation_rnc": 9,
       "nb_log_bdnb": 7,
       "nb_ventes_2021_2025": 0,
@@ -3205,14 +3205,14 @@
       "code_iris": "693830501",
       "cle_adresse": "158|RUE|BARABAN",
       "nb_lots_total": 14,
-      "nb_lots_habitation": 13,
+      "nb_lots_habitation": 12,
       "nb_lots_habitation_rnc": 12,
       "nb_log_bdnb": 13,
       "nb_ventes_2021_2025": 1,
       "ventes_par_an": {
         "2025": 1
       },
-      "taux_rotation_5ans": 7.7,
+      "taux_rotation_5ans": 8.3,
       "classement_rotation": "Modere"
     },
     {
@@ -3302,7 +3302,7 @@
       "code_iris": "693830603",
       "cle_adresse": "38|RUE|ST MAXIMIN",
       "nb_lots_total": 167,
-      "nb_lots_habitation": 53,
+      "nb_lots_habitation": 51,
       "nb_lots_habitation_rnc": 51,
       "nb_log_bdnb": 53,
       "nb_ventes_2021_2025": 0,
@@ -3339,14 +3339,14 @@
       "code_iris": "693830401",
       "cle_adresse": "248|COURS|LAFAYETTE",
       "nb_lots_total": 49,
-      "nb_lots_habitation": 22,
+      "nb_lots_habitation": 23,
       "nb_lots_habitation_rnc": 23,
       "nb_log_bdnb": 22,
       "nb_ventes_2021_2025": 2,
       "ventes_par_an": {
         "2021": 2
       },
-      "taux_rotation_5ans": 9.1,
+      "taux_rotation_5ans": 8.7,
       "classement_rotation": "Modere"
     },
     {
@@ -3400,7 +3400,7 @@
       "code_iris": "693830401",
       "cle_adresse": "232|COURS|LAFAYETTE",
       "nb_lots_total": 23,
-      "nb_lots_habitation": 22,
+      "nb_lots_habitation": 23,
       "nb_lots_habitation_rnc": 23,
       "nb_log_bdnb": 22,
       "nb_ventes_2021_2025": 0,
@@ -3417,7 +3417,7 @@
       "code_iris": "693830401",
       "cle_adresse": "2B|RUE|RIBOUD",
       "nb_lots_total": 69,
-      "nb_lots_habitation": 31,
+      "nb_lots_habitation": 30,
       "nb_lots_habitation_rnc": 30,
       "nb_log_bdnb": 31,
       "nb_ventes_2021_2025": 0,
@@ -3434,7 +3434,7 @@
       "code_iris": "693830602",
       "cle_adresse": "7|COURS|ALBERT THOMAS",
       "nb_lots_total": 244,
-      "nb_lots_habitation": 151,
+      "nb_lots_habitation": 90,
       "nb_lots_habitation_rnc": 90,
       "nb_log_bdnb": 151,
       "nb_ventes_2021_2025": 15,
@@ -3444,8 +3444,8 @@
         "2023": 3,
         "2021": 3
       },
-      "taux_rotation_5ans": 9.9,
-      "classement_rotation": "Modere"
+      "taux_rotation_5ans": 16.7,
+      "classement_rotation": "Actif"
     },
     {
       "numero_immatriculation": "AB0222935",
@@ -3478,7 +3478,7 @@
       "code_iris": "693830501",
       "cle_adresse": "7|RUE|GABILLOT",
       "nb_lots_total": 69,
-      "nb_lots_habitation": 29,
+      "nb_lots_habitation": 31,
       "nb_lots_habitation_rnc": 31,
       "nb_log_bdnb": 29,
       "nb_ventes_2021_2025": 4,
@@ -3487,7 +3487,7 @@
         "2021": 1,
         "2025": 1
       },
-      "taux_rotation_5ans": 13.8,
+      "taux_rotation_5ans": 12.9,
       "classement_rotation": "Actif"
     },
     {
@@ -3539,7 +3539,7 @@
       "code_iris": "693830502",
       "cle_adresse": "153|RUE|BARABAN",
       "nb_lots_total": 120,
-      "nb_lots_habitation": 16,
+      "nb_lots_habitation": 43,
       "nb_lots_habitation_rnc": 43,
       "nb_log_bdnb": 16,
       "nb_ventes_2021_2025": 10,
@@ -3550,7 +3550,7 @@
         "2021": 1,
         "2023": 2
       },
-      "taux_rotation_5ans": 62.5,
+      "taux_rotation_5ans": 23.3,
       "classement_rotation": "Tres actif"
     },
     {
@@ -3617,7 +3617,7 @@
       "code_iris": "693830601",
       "cle_adresse": "2|RUE|DES CADETS DE LA FRANCE LIBRE",
       "nb_lots_total": 376,
-      "nb_lots_habitation": 121,
+      "nb_lots_habitation": 124,
       "nb_lots_habitation_rnc": 124,
       "nb_log_bdnb": 121,
       "nb_ventes_2021_2025": 0,
@@ -3700,14 +3700,14 @@
       "code_iris": "693830405",
       "cle_adresse": "29|RUE|CLAUDIUS PIONCHON",
       "nb_lots_total": 51,
-      "nb_lots_habitation": 42,
+      "nb_lots_habitation": 25,
       "nb_lots_habitation_rnc": 25,
       "nb_log_bdnb": 42,
       "nb_ventes_2021_2025": 1,
       "ventes_par_an": {
         "2023": 1
       },
-      "taux_rotation_5ans": 2.4,
+      "taux_rotation_5ans": 4.0,
       "classement_rotation": "Fige"
     },
     {
@@ -3755,7 +3755,7 @@
       "code_iris": "693830501",
       "cle_adresse": "2|RUE|GABILLOT",
       "nb_lots_total": 100,
-      "nb_lots_habitation": 47,
+      "nb_lots_habitation": 48,
       "nb_lots_habitation_rnc": 48,
       "nb_log_bdnb": 47,
       "nb_ventes_2021_2025": 8,
@@ -3766,7 +3766,7 @@
         "2022": 1,
         "2021": 3
       },
-      "taux_rotation_5ans": 17.0,
+      "taux_rotation_5ans": 16.7,
       "classement_rotation": "Actif"
     },
     {
@@ -3778,7 +3778,7 @@
       "code_iris": "693830402",
       "cle_adresse": "36|RUE|ST ANTOINE",
       "nb_lots_total": 266,
-      "nb_lots_habitation": 42,
+      "nb_lots_habitation": 87,
       "nb_lots_habitation_rnc": 87,
       "nb_log_bdnb": 42,
       "nb_ventes_2021_2025": 0,
@@ -3795,7 +3795,7 @@
       "code_iris": "693830604",
       "cle_adresse": "13|RUE|DU PROFESSEUR PAUL SISLEY",
       "nb_lots_total": 156,
-      "nb_lots_habitation": 75,
+      "nb_lots_habitation": 74,
       "nb_lots_habitation_rnc": 74,
       "nb_log_bdnb": 75,
       "nb_ventes_2021_2025": 0,
@@ -3877,7 +3877,7 @@
       "code_iris": "693830402",
       "cle_adresse": "56|RUE|BARABAN",
       "nb_lots_total": 76,
-      "nb_lots_habitation": 26,
+      "nb_lots_habitation": 27,
       "nb_lots_habitation_rnc": 27,
       "nb_log_bdnb": 26,
       "nb_ventes_2021_2025": 2,
@@ -3885,7 +3885,7 @@
         "2021": 1,
         "2023": 1
       },
-      "taux_rotation_5ans": 7.7,
+      "taux_rotation_5ans": 7.4,
       "classement_rotation": "Modere"
     },
     {
@@ -3918,7 +3918,7 @@
       "code_iris": "693830404",
       "cle_adresse": "18|RUE|LOUIS JASSERON",
       "nb_lots_total": 374,
-      "nb_lots_habitation": 114,
+      "nb_lots_habitation": 110,
       "nb_lots_habitation_rnc": 110,
       "nb_log_bdnb": 114,
       "nb_ventes_2021_2025": 12,
@@ -3929,7 +3929,7 @@
         "2025": 2,
         "2021": 2
       },
-      "taux_rotation_5ans": 10.5,
+      "taux_rotation_5ans": 10.9,
       "classement_rotation": "Actif"
     },
     {
@@ -3996,7 +3996,7 @@
       "code_iris": "693830405",
       "cle_adresse": "3|RUE|DE NAZARETH",
       "nb_lots_total": 149,
-      "nb_lots_habitation": 53,
+      "nb_lots_habitation": 51,
       "nb_lots_habitation_rnc": 51,
       "nb_log_bdnb": 53,
       "nb_ventes_2021_2025": 10,
@@ -4007,7 +4007,7 @@
         "2022": 3,
         "2024": 2
       },
-      "taux_rotation_5ans": 18.9,
+      "taux_rotation_5ans": 19.6,
       "classement_rotation": "Actif"
     },
     {
@@ -4041,14 +4041,14 @@
       "code_iris": "693830501",
       "cle_adresse": "112|RUE|BARABAN",
       "nb_lots_total": 67,
-      "nb_lots_habitation": 30,
+      "nb_lots_habitation": 33,
       "nb_lots_habitation_rnc": 33,
       "nb_log_bdnb": 30,
       "nb_ventes_2021_2025": 1,
       "ventes_par_an": {
         "2023": 1
       },
-      "taux_rotation_5ans": 3.3,
+      "taux_rotation_5ans": 3.0,
       "classement_rotation": "Fige"
     },
     {
@@ -4111,7 +4111,7 @@
       "code_iris": "693830601",
       "cle_adresse": "79|RUE|DU DAUPHINE",
       "nb_lots_total": 32,
-      "nb_lots_habitation": 10,
+      "nb_lots_habitation": 13,
       "nb_lots_habitation_rnc": 13,
       "nb_log_bdnb": 10,
       "nb_ventes_2021_2025": 19,
@@ -4120,7 +4120,7 @@
         "2025": 4,
         "2022": 12
       },
-      "taux_rotation_5ans": 190.0,
+      "taux_rotation_5ans": 146.2,
       "classement_rotation": "Tres actif"
     },
     {
@@ -4132,7 +4132,7 @@
       "code_iris": "693830601",
       "cle_adresse": "238|AVENUE|FELIX FAURE",
       "nb_lots_total": 169,
-      "nb_lots_habitation": 29,
+      "nb_lots_habitation": 65,
       "nb_lots_habitation_rnc": 65,
       "nb_log_bdnb": 29,
       "nb_ventes_2021_2025": 3,
@@ -4140,8 +4140,8 @@
         "2024": 2,
         "2021": 1
       },
-      "taux_rotation_5ans": 10.3,
-      "classement_rotation": "Actif"
+      "taux_rotation_5ans": 4.6,
+      "classement_rotation": "Fige"
     },
     {
       "numero_immatriculation": "AB1910728",
@@ -4152,7 +4152,7 @@
       "code_iris": "693830603",
       "cle_adresse": "20T|RUE|GUILLOUD",
       "nb_lots_total": 44,
-      "nb_lots_habitation": 26,
+      "nb_lots_habitation": 32,
       "nb_lots_habitation_rnc": 32,
       "nb_log_bdnb": 26,
       "nb_ventes_2021_2025": 0,
@@ -4169,7 +4169,7 @@
       "code_iris": "693830405",
       "cle_adresse": "50|RUE|STE ANNE DE BARABAN",
       "nb_lots_total": 74,
-      "nb_lots_habitation": 64,
+      "nb_lots_habitation": 23,
       "nb_lots_habitation_rnc": 23,
       "nb_log_bdnb": 64,
       "nb_ventes_2021_2025": 0,
@@ -4186,7 +4186,7 @@
       "code_iris": "693830502",
       "cle_adresse": "349|RUE|PAUL BERT",
       "nb_lots_total": 50,
-      "nb_lots_habitation": 25,
+      "nb_lots_habitation": 27,
       "nb_lots_habitation_rnc": 27,
       "nb_log_bdnb": 25,
       "nb_ventes_2021_2025": 2,
@@ -4194,7 +4194,7 @@
         "2025": 1,
         "2023": 1
       },
-      "taux_rotation_5ans": 8.0,
+      "taux_rotation_5ans": 7.4,
       "classement_rotation": "Modere"
     },
     {
@@ -4206,7 +4206,7 @@
       "code_iris": "693830404",
       "cle_adresse": "12|RUE|ST SIDOINE",
       "nb_lots_total": 498,
-      "nb_lots_habitation": 164,
+      "nb_lots_habitation": 165,
       "nb_lots_habitation_rnc": 165,
       "nb_log_bdnb": 164,
       "nb_ventes_2021_2025": 0,
@@ -4242,7 +4242,7 @@
       "code_iris": "693830602",
       "cle_adresse": "32|RUE|DU DAUPHINE",
       "nb_lots_total": 28,
-      "nb_lots_habitation": 28,
+      "nb_lots_habitation": 27,
       "nb_lots_habitation_rnc": 27,
       "nb_log_bdnb": 28,
       "nb_ventes_2021_2025": 4,
@@ -4252,7 +4252,7 @@
         "2022": 1,
         "2024": 1
       },
-      "taux_rotation_5ans": 14.3,
+      "taux_rotation_5ans": 14.8,
       "classement_rotation": "Actif"
     },
     {
@@ -4264,7 +4264,7 @@
       "code_iris": "693830604",
       "cle_adresse": "60|AVENUE|LACASSAGNE",
       "nb_lots_total": 14,
-      "nb_lots_habitation": 12,
+      "nb_lots_habitation": 14,
       "nb_lots_habitation_rnc": 14,
       "nb_log_bdnb": 12,
       "nb_ventes_2021_2025": 0,
@@ -4281,14 +4281,14 @@
       "code_iris": "693830602",
       "cle_adresse": "1|RUE|ROSSAN",
       "nb_lots_total": 138,
-      "nb_lots_habitation": 31,
+      "nb_lots_habitation": 53,
       "nb_lots_habitation_rnc": 53,
       "nb_log_bdnb": 31,
       "nb_ventes_2021_2025": 1,
       "ventes_par_an": {
         "2021": 1
       },
-      "taux_rotation_5ans": 3.2,
+      "taux_rotation_5ans": 1.9,
       "classement_rotation": "Fige"
     },
     {
@@ -4300,7 +4300,7 @@
       "code_iris": "693830401",
       "cle_adresse": "13|RUE|ST ANTOINE",
       "nb_lots_total": 263,
-      "nb_lots_habitation": 68,
+      "nb_lots_habitation": 72,
       "nb_lots_habitation_rnc": 72,
       "nb_log_bdnb": 68,
       "nb_ventes_2021_2025": 0,
@@ -4334,7 +4334,7 @@
       "code_iris": "693830404",
       "cle_adresse": "61|RUE|BARABAN",
       "nb_lots_total": 466,
-      "nb_lots_habitation": 154,
+      "nb_lots_habitation": 149,
       "nb_lots_habitation_rnc": 149,
       "nb_log_bdnb": 154,
       "nb_ventes_2021_2025": 9,
@@ -4344,7 +4344,7 @@
         "2023": 3,
         "2021": 2
       },
-      "taux_rotation_5ans": 5.8,
+      "taux_rotation_5ans": 6.0,
       "classement_rotation": "Modere"
     },
     {
@@ -4356,7 +4356,7 @@
       "code_iris": "693830602",
       "cle_adresse": "41|RUE|DU DAUPHINE",
       "nb_lots_total": 11,
-      "nb_lots_habitation": 10,
+      "nb_lots_habitation": 11,
       "nb_lots_habitation_rnc": 11,
       "nb_log_bdnb": 10,
       "nb_ventes_2021_2025": 0,
@@ -4411,7 +4411,7 @@
       "code_iris": "693830602",
       "cle_adresse": "45|RUE|DU DAUPHINE",
       "nb_lots_total": 37,
-      "nb_lots_habitation": 15,
+      "nb_lots_habitation": 11,
       "nb_lots_habitation_rnc": 11,
       "nb_log_bdnb": 15,
       "nb_ventes_2021_2025": 0,
@@ -4445,7 +4445,7 @@
       "code_iris": "693830401",
       "cle_adresse": "15|RUE|DE LA VILLETTE",
       "nb_lots_total": 46,
-      "nb_lots_habitation": 22,
+      "nb_lots_habitation": 23,
       "nb_lots_habitation_rnc": 23,
       "nb_log_bdnb": 22,
       "nb_ventes_2021_2025": 0,
@@ -4462,7 +4462,7 @@
       "code_iris": "693830604",
       "cle_adresse": "30|RUE|DOCTEUR REBATEL",
       "nb_lots_total": 194,
-      "nb_lots_habitation": 56,
+      "nb_lots_habitation": 60,
       "nb_lots_habitation_rnc": 60,
       "nb_log_bdnb": 56,
       "nb_ventes_2021_2025": 0,
@@ -4479,7 +4479,7 @@
       "code_iris": "693830604",
       "cle_adresse": "51|RUE|ST MAXIMIN",
       "nb_lots_total": 170,
-      "nb_lots_habitation": 51,
+      "nb_lots_habitation": 50,
       "nb_lots_habitation_rnc": 50,
       "nb_log_bdnb": 51,
       "nb_ventes_2021_2025": 0,
@@ -4547,14 +4547,14 @@
       "code_iris": "693830601",
       "cle_adresse": "17|RUE|DAVID",
       "nb_lots_total": 30,
-      "nb_lots_habitation": 15,
+      "nb_lots_habitation": 16,
       "nb_lots_habitation_rnc": 16,
       "nb_log_bdnb": 15,
       "nb_ventes_2021_2025": 1,
       "ventes_par_an": {
         "2022": 1
       },
-      "taux_rotation_5ans": 6.7,
+      "taux_rotation_5ans": 6.2,
       "classement_rotation": "Modere"
     },
     {
@@ -4586,7 +4586,7 @@
       "code_iris": "693830601",
       "cle_adresse": "146|AVENUE|FELIX FAURE",
       "nb_lots_total": 140,
-      "nb_lots_habitation": 39,
+      "nb_lots_habitation": 34,
       "nb_lots_habitation_rnc": 34,
       "nb_log_bdnb": 39,
       "nb_ventes_2021_2025": 5,
@@ -4595,7 +4595,7 @@
         "2023": 2,
         "2021": 1
       },
-      "taux_rotation_5ans": 12.8,
+      "taux_rotation_5ans": 14.7,
       "classement_rotation": "Actif"
     },
     {
@@ -4607,7 +4607,7 @@
       "code_iris": "693830502",
       "cle_adresse": "308|RUE|PAUL BERT",
       "nb_lots_total": 64,
-      "nb_lots_habitation": 31,
+      "nb_lots_habitation": 30,
       "nb_lots_habitation_rnc": 30,
       "nb_log_bdnb": 31,
       "nb_ventes_2021_2025": 6,
@@ -4616,8 +4616,8 @@
         "2021": 2,
         "2025": 1
       },
-      "taux_rotation_5ans": 19.4,
-      "classement_rotation": "Actif"
+      "taux_rotation_5ans": 20.0,
+      "classement_rotation": "Tres actif"
     },
     {
       "numero_immatriculation": "AB2892800",
@@ -4628,14 +4628,14 @@
       "code_iris": "693830502",
       "cle_adresse": "32|RUE|TURBIL",
       "nb_lots_total": 40,
-      "nb_lots_habitation": 20,
+      "nb_lots_habitation": 16,
       "nb_lots_habitation_rnc": 16,
       "nb_log_bdnb": 20,
       "nb_ventes_2021_2025": 2,
       "ventes_par_an": {
         "2021": 2
       },
-      "taux_rotation_5ans": 10.0,
+      "taux_rotation_5ans": 12.5,
       "classement_rotation": "Actif"
     },
     {
@@ -4647,7 +4647,7 @@
       "code_iris": "693830502",
       "cle_adresse": "23|RUE|TURBIL",
       "nb_lots_total": 122,
-      "nb_lots_habitation": 57,
+      "nb_lots_habitation": 56,
       "nb_lots_habitation_rnc": 56,
       "nb_log_bdnb": 57,
       "nb_ventes_2021_2025": 15,
@@ -4658,7 +4658,7 @@
         "2023": 1,
         "2025": 2
       },
-      "taux_rotation_5ans": 26.3,
+      "taux_rotation_5ans": 26.8,
       "classement_rotation": "Tres actif"
     },
     {
@@ -4692,7 +4692,7 @@
       "code_iris": "693830502",
       "cle_adresse": "40|RUE|TURBIL",
       "nb_lots_total": 53,
-      "nb_lots_habitation": 21,
+      "nb_lots_habitation": 22,
       "nb_lots_habitation_rnc": 22,
       "nb_log_bdnb": 21,
       "nb_ventes_2021_2025": 5,
@@ -4702,7 +4702,7 @@
         "2025": 2,
         "2023": 1
       },
-      "taux_rotation_5ans": 23.8,
+      "taux_rotation_5ans": 22.7,
       "classement_rotation": "Tres actif"
     },
     {
@@ -4714,7 +4714,7 @@
       "code_iris": "693830603",
       "cle_adresse": "18|RUE|ST MAXIMIN",
       "nb_lots_total": 67,
-      "nb_lots_habitation": 22,
+      "nb_lots_habitation": 26,
       "nb_lots_habitation_rnc": 26,
       "nb_log_bdnb": 22,
       "nb_ventes_2021_2025": 0,
@@ -4731,14 +4731,14 @@
       "code_iris": "693830604",
       "cle_adresse": "17|RUE|DE MONTBRILLANT",
       "nb_lots_total": 46,
-      "nb_lots_habitation": 14,
+      "nb_lots_habitation": 13,
       "nb_lots_habitation_rnc": 13,
       "nb_log_bdnb": 14,
       "nb_ventes_2021_2025": 1,
       "ventes_par_an": {
         "2023": 1
       },
-      "taux_rotation_5ans": 7.1,
+      "taux_rotation_5ans": 7.7,
       "classement_rotation": "Modere"
     },
     {
@@ -4770,7 +4770,7 @@
       "code_iris": "693830403",
       "cle_adresse": "4|RUE|DES TEINTURIERS",
       "nb_lots_total": 62,
-      "nb_lots_habitation": 32,
+      "nb_lots_habitation": 16,
       "nb_lots_habitation_rnc": 16,
       "nb_log_bdnb": 32,
       "nb_ventes_2021_2025": 3,
@@ -4778,8 +4778,8 @@
         "2022": 2,
         "2021": 1
       },
-      "taux_rotation_5ans": 9.4,
-      "classement_rotation": "Modere"
+      "taux_rotation_5ans": 18.8,
+      "classement_rotation": "Actif"
     },
     {
       "numero_immatriculation": "AB2945129",
@@ -4826,7 +4826,7 @@
       "code_iris": "693830603",
       "cle_adresse": "13|RUE|DES TUILIERS",
       "nb_lots_total": 56,
-      "nb_lots_habitation": 23,
+      "nb_lots_habitation": 24,
       "nb_lots_habitation_rnc": 24,
       "nb_log_bdnb": 23,
       "nb_ventes_2021_2025": 3,
@@ -4834,7 +4834,7 @@
         "2022": 2,
         "2023": 1
       },
-      "taux_rotation_5ans": 13.0,
+      "taux_rotation_5ans": 12.5,
       "classement_rotation": "Actif"
     },
     {
@@ -4846,7 +4846,7 @@
       "code_iris": "693830404",
       "cle_adresse": "316|COURS|LAFAYETTE",
       "nb_lots_total": 21,
-      "nb_lots_habitation": 12,
+      "nb_lots_habitation": 9,
       "nb_lots_habitation_rnc": 9,
       "nb_log_bdnb": 12,
       "nb_ventes_2021_2025": 5,
@@ -4855,7 +4855,7 @@
         "2022": 2,
         "2024": 1
       },
-      "taux_rotation_5ans": 41.7,
+      "taux_rotation_5ans": 55.6,
       "classement_rotation": "Tres actif"
     },
     {
@@ -4867,7 +4867,7 @@
       "code_iris": "693830502",
       "cle_adresse": "177|AVENUE|FELIX FAURE",
       "nb_lots_total": 272,
-      "nb_lots_habitation": 85,
+      "nb_lots_habitation": 83,
       "nb_lots_habitation_rnc": 83,
       "nb_log_bdnb": 85,
       "nb_ventes_2021_2025": 14,
@@ -4878,7 +4878,7 @@
         "2024": 1,
         "2022": 2
       },
-      "taux_rotation_5ans": 16.5,
+      "taux_rotation_5ans": 16.9,
       "classement_rotation": "Actif"
     },
     {
@@ -4969,7 +4969,7 @@
       "code_iris": "693830603",
       "cle_adresse": "27|RUE|GUILLOUD",
       "nb_lots_total": 245,
-      "nb_lots_habitation": 81,
+      "nb_lots_habitation": 87,
       "nb_lots_habitation_rnc": 87,
       "nb_log_bdnb": 81,
       "nb_ventes_2021_2025": 7,
@@ -4979,7 +4979,7 @@
         "2021": 1,
         "2023": 1
       },
-      "taux_rotation_5ans": 8.6,
+      "taux_rotation_5ans": 8.0,
       "classement_rotation": "Modere"
     },
     {
@@ -4991,7 +4991,7 @@
       "code_iris": "693830402",
       "cle_adresse": "30|RUE|BARABAN",
       "nb_lots_total": 293,
-      "nb_lots_habitation": 96,
+      "nb_lots_habitation": 95,
       "nb_lots_habitation_rnc": 95,
       "nb_log_bdnb": 96,
       "nb_ventes_2021_2025": 20,
@@ -5002,7 +5002,7 @@
         "2024": 2,
         "2023": 4
       },
-      "taux_rotation_5ans": 20.8,
+      "taux_rotation_5ans": 21.1,
       "classement_rotation": "Tres actif"
     },
     {
@@ -5014,7 +5014,7 @@
       "code_iris": "693830601",
       "cle_adresse": "1|RUE|JEAN PIERRE LEVY",
       "nb_lots_total": 216,
-      "nb_lots_habitation": 84,
+      "nb_lots_habitation": 89,
       "nb_lots_habitation_rnc": 89,
       "nb_log_bdnb": 84,
       "nb_ventes_2021_2025": 6,
@@ -5024,7 +5024,7 @@
         "2024": 1,
         "2022": 2
       },
-      "taux_rotation_5ans": 7.1,
+      "taux_rotation_5ans": 6.7,
       "classement_rotation": "Modere"
     },
     {
@@ -5036,7 +5036,7 @@
       "code_iris": "693830601",
       "cle_adresse": "9|RUE|DAVID",
       "nb_lots_total": 253,
-      "nb_lots_habitation": 85,
+      "nb_lots_habitation": 84,
       "nb_lots_habitation_rnc": 84,
       "nb_log_bdnb": 85,
       "nb_ventes_2021_2025": 3,
@@ -5044,7 +5044,7 @@
         "2024": 1,
         "2025": 2
       },
-      "taux_rotation_5ans": 3.5,
+      "taux_rotation_5ans": 3.6,
       "classement_rotation": "Fige"
     },
     {
@@ -5095,7 +5095,7 @@
       "code_iris": "693830401",
       "cle_adresse": "262|COURS|LAFAYETTE",
       "nb_lots_total": 74,
-      "nb_lots_habitation": 37,
+      "nb_lots_habitation": 36,
       "nb_lots_habitation_rnc": 36,
       "nb_log_bdnb": 37,
       "nb_ventes_2021_2025": 6,
@@ -5104,7 +5104,7 @@
         "2024": 2,
         "2022": 2
       },
-      "taux_rotation_5ans": 16.2,
+      "taux_rotation_5ans": 16.7,
       "classement_rotation": "Actif"
     },
     {
@@ -5133,7 +5133,7 @@
       "code_iris": "693830601",
       "cle_adresse": "10|RUE|DAVID",
       "nb_lots_total": 25,
-      "nb_lots_habitation": 12,
+      "nb_lots_habitation": 13,
       "nb_lots_habitation_rnc": 13,
       "nb_log_bdnb": 12,
       "nb_ventes_2021_2025": 0,
@@ -5150,7 +5150,7 @@
       "code_iris": "693830404",
       "cle_adresse": "308|COURS|LAFAYETTE",
       "nb_lots_total": 37,
-      "nb_lots_habitation": 12,
+      "nb_lots_habitation": 13,
       "nb_lots_habitation_rnc": 13,
       "nb_log_bdnb": 12,
       "nb_ventes_2021_2025": 0,
@@ -5167,15 +5167,15 @@
       "code_iris": "693830602",
       "cle_adresse": "47|COURS|ALBERT THOMAS",
       "nb_lots_total": 18,
-      "nb_lots_habitation": 10,
+      "nb_lots_habitation": 13,
       "nb_lots_habitation_rnc": 13,
       "nb_log_bdnb": 10,
       "nb_ventes_2021_2025": 2,
       "ventes_par_an": {
         "2024": 2
       },
-      "taux_rotation_5ans": 20.0,
-      "classement_rotation": "Tres actif"
+      "taux_rotation_5ans": 15.4,
+      "classement_rotation": "Actif"
     },
     {
       "numero_immatriculation": "AB4676706",
@@ -5186,14 +5186,14 @@
       "code_iris": "693830501",
       "cle_adresse": "213|RUE|PAUL BERT",
       "nb_lots_total": 40,
-      "nb_lots_habitation": 15,
+      "nb_lots_habitation": 17,
       "nb_lots_habitation_rnc": 17,
       "nb_log_bdnb": 15,
       "nb_ventes_2021_2025": 1,
       "ventes_par_an": {
         "2024": 1
       },
-      "taux_rotation_5ans": 6.7,
+      "taux_rotation_5ans": 5.9,
       "classement_rotation": "Modere"
     },
     {
@@ -5205,7 +5205,7 @@
       "code_iris": "693830603",
       "cle_adresse": "23|RUE|ST MAXIMIN",
       "nb_lots_total": 247,
-      "nb_lots_habitation": 41,
+      "nb_lots_habitation": 76,
       "nb_lots_habitation_rnc": 76,
       "nb_log_bdnb": 41,
       "nb_ventes_2021_2025": 0,
@@ -5259,7 +5259,7 @@
       "code_iris": "693830601",
       "cle_adresse": "200|AVENUE|FELIX FAURE",
       "nb_lots_total": 29,
-      "nb_lots_habitation": 13,
+      "nb_lots_habitation": 14,
       "nb_lots_habitation_rnc": 14,
       "nb_log_bdnb": 13,
       "nb_ventes_2021_2025": 0,
@@ -5276,14 +5276,14 @@
       "code_iris": "693830602",
       "cle_adresse": "36|RUE|DU DAUPHINE",
       "nb_lots_total": 43,
-      "nb_lots_habitation": 20,
+      "nb_lots_habitation": 19,
       "nb_lots_habitation_rnc": 19,
       "nb_log_bdnb": 20,
       "nb_ventes_2021_2025": 1,
       "ventes_par_an": {
         "2021": 1
       },
-      "taux_rotation_5ans": 5.0,
+      "taux_rotation_5ans": 5.3,
       "classement_rotation": "Modere"
     },
     {
@@ -5337,7 +5337,7 @@
       "code_iris": "693830404",
       "cle_adresse": "73|RUE|BARABAN",
       "nb_lots_total": 56,
-      "nb_lots_habitation": 16,
+      "nb_lots_habitation": 19,
       "nb_lots_habitation_rnc": 19,
       "nb_log_bdnb": 16,
       "nb_ventes_2021_2025": 5,
@@ -5346,7 +5346,7 @@
         "2022": 1,
         "2024": 1
       },
-      "taux_rotation_5ans": 31.2,
+      "taux_rotation_5ans": 26.3,
       "classement_rotation": "Tres actif"
     },
     {
@@ -5380,7 +5380,7 @@
       "code_iris": "693830405",
       "cle_adresse": "8T|RUE|DE NAZARETH",
       "nb_lots_total": 161,
-      "nb_lots_habitation": 50,
+      "nb_lots_habitation": 49,
       "nb_lots_habitation_rnc": 49,
       "nb_log_bdnb": 50,
       "nb_ventes_2021_2025": 0,
@@ -5414,7 +5414,7 @@
       "code_iris": "693830601",
       "cle_adresse": "228|AVENUE|FELIX FAURE",
       "nb_lots_total": 114,
-      "nb_lots_habitation": 27,
+      "nb_lots_habitation": 47,
       "nb_lots_habitation_rnc": 47,
       "nb_log_bdnb": 27,
       "nb_ventes_2021_2025": 2,
@@ -5422,8 +5422,8 @@
         "2024": 1,
         "2023": 1
       },
-      "taux_rotation_5ans": 7.4,
-      "classement_rotation": "Modere"
+      "taux_rotation_5ans": 4.3,
+      "classement_rotation": "Fige"
     },
     {
       "numero_immatriculation": "AB6005698",
@@ -5470,7 +5470,7 @@
       "code_iris": "693830604",
       "cle_adresse": "9B|RUE|DE MONTBRILLANT",
       "nb_lots_total": 190,
-      "nb_lots_habitation": 58,
+      "nb_lots_habitation": 59,
       "nb_lots_habitation_rnc": 59,
       "nb_log_bdnb": 58,
       "nb_ventes_2021_2025": 0,
@@ -5487,7 +5487,7 @@
       "code_iris": "693830604",
       "cle_adresse": "9|RUE|DE MONTBRILLANT",
       "nb_lots_total": 92,
-      "nb_lots_habitation": 27,
+      "nb_lots_habitation": 28,
       "nb_lots_habitation_rnc": 28,
       "nb_log_bdnb": 27,
       "nb_ventes_2021_2025": 15,
@@ -5498,7 +5498,7 @@
         "2022": 3,
         "2024": 2
       },
-      "taux_rotation_5ans": 55.6,
+      "taux_rotation_5ans": 53.6,
       "classement_rotation": "Tres actif"
     },
     {
@@ -5510,7 +5510,7 @@
       "code_iris": "693830602",
       "cle_adresse": "38|RUE|JEANNE HACHETTE",
       "nb_lots_total": 197,
-      "nb_lots_habitation": 73,
+      "nb_lots_habitation": 72,
       "nb_lots_habitation_rnc": 72,
       "nb_log_bdnb": 73,
       "nb_ventes_2021_2025": 6,
@@ -5519,7 +5519,7 @@
         "2021": 1,
         "2022": 2
       },
-      "taux_rotation_5ans": 8.2,
+      "taux_rotation_5ans": 8.3,
       "classement_rotation": "Modere"
     },
     {
@@ -5585,7 +5585,7 @@
       "code_iris": "693830401",
       "cle_adresse": "56|RUE|MAURICE FLANDIN",
       "nb_lots_total": 122,
-      "nb_lots_habitation": 36,
+      "nb_lots_habitation": 38,
       "nb_lots_habitation_rnc": 38,
       "nb_log_bdnb": 36,
       "nb_ventes_2021_2025": 9,
@@ -5595,7 +5595,7 @@
         "2023": 2,
         "2024": 1
       },
-      "taux_rotation_5ans": 25.0,
+      "taux_rotation_5ans": 23.7,
       "classement_rotation": "Tres actif"
     },
     {
@@ -5607,7 +5607,7 @@
       "code_iris": "693830501",
       "cle_adresse": "51|RUE|MAURICE FLANDIN",
       "nb_lots_total": 40,
-      "nb_lots_habitation": 17,
+      "nb_lots_habitation": 18,
       "nb_lots_habitation_rnc": 18,
       "nb_log_bdnb": 17,
       "nb_ventes_2021_2025": 0,
@@ -5645,7 +5645,7 @@
       "code_iris": "693830502",
       "cle_adresse": "175|AVENUE|FELIX FAURE",
       "nb_lots_total": 28,
-      "nb_lots_habitation": 12,
+      "nb_lots_habitation": 13,
       "nb_lots_habitation_rnc": 13,
       "nb_log_bdnb": 12,
       "nb_ventes_2021_2025": 4,
@@ -5655,7 +5655,7 @@
         "2024": 1,
         "2023": 1
       },
-      "taux_rotation_5ans": 33.3,
+      "taux_rotation_5ans": 30.8,
       "classement_rotation": "Tres actif"
     },
     {
@@ -5667,7 +5667,7 @@
       "code_iris": "693830402",
       "cle_adresse": "1|RUE|DES PETITES SOEURS",
       "nb_lots_total": 235,
-      "nb_lots_habitation": 75,
+      "nb_lots_habitation": 76,
       "nb_lots_habitation_rnc": 76,
       "nb_log_bdnb": 75,
       "nb_ventes_2021_2025": 8,
@@ -5677,7 +5677,7 @@
         "2021": 1,
         "2022": 2
       },
-      "taux_rotation_5ans": 10.7,
+      "taux_rotation_5ans": 10.5,
       "classement_rotation": "Actif"
     },
     {
@@ -5689,7 +5689,7 @@
       "code_iris": "693830401",
       "cle_adresse": "22|RUE|MAURICE FLANDIN",
       "nb_lots_total": 104,
-      "nb_lots_habitation": 43,
+      "nb_lots_habitation": 45,
       "nb_lots_habitation_rnc": 45,
       "nb_log_bdnb": 43,
       "nb_ventes_2021_2025": 0,
@@ -5706,7 +5706,7 @@
       "code_iris": "693830603",
       "cle_adresse": "50|RUE|DU DAUPHINE",
       "nb_lots_total": 403,
-      "nb_lots_habitation": 88,
+      "nb_lots_habitation": 122,
       "nb_lots_habitation_rnc": 122,
       "nb_log_bdnb": 88,
       "nb_ventes_2021_2025": 13,
@@ -5717,7 +5717,7 @@
         "2023": 3,
         "2025": 1
       },
-      "taux_rotation_5ans": 14.8,
+      "taux_rotation_5ans": 10.7,
       "classement_rotation": "Actif"
     },
     {
@@ -5751,7 +5751,7 @@
       "code_iris": "693830601",
       "cle_adresse": "42|AVENUE|LACASSAGNE",
       "nb_lots_total": 255,
-      "nb_lots_habitation": 54,
+      "nb_lots_habitation": 85,
       "nb_lots_habitation_rnc": 85,
       "nb_log_bdnb": 54,
       "nb_ventes_2021_2025": 13,
@@ -5761,8 +5761,8 @@
         "2022": 3,
         "2023": 4
       },
-      "taux_rotation_5ans": 24.1,
-      "classement_rotation": "Tres actif"
+      "taux_rotation_5ans": 15.3,
+      "classement_rotation": "Actif"
     },
     {
       "numero_immatriculation": "AB7762370",
@@ -5833,7 +5833,7 @@
       "code_iris": "693830502",
       "cle_adresse": "128|RUE|ANTOINE CHARIAL",
       "nb_lots_total": 201,
-      "nb_lots_habitation": 30,
+      "nb_lots_habitation": 100,
       "nb_lots_habitation_rnc": 100,
       "nb_log_bdnb": 30,
       "nb_ventes_2021_2025": 18,
@@ -5844,8 +5844,8 @@
         "2022": 2,
         "2021": 2
       },
-      "taux_rotation_5ans": 60.0,
-      "classement_rotation": "Tres actif"
+      "taux_rotation_5ans": 18.0,
+      "classement_rotation": "Actif"
     },
     {
       "numero_immatriculation": "AB8301665",
@@ -5856,15 +5856,15 @@
       "code_iris": "693830601",
       "cle_adresse": "1|RUE|DE LA METALLURGIE",
       "nb_lots_total": 34,
-      "nb_lots_habitation": 10,
+      "nb_lots_habitation": 21,
       "nb_lots_habitation_rnc": 21,
       "nb_log_bdnb": 10,
       "nb_ventes_2021_2025": 1,
       "ventes_par_an": {
         "2025": 1
       },
-      "taux_rotation_5ans": 10.0,
-      "classement_rotation": "Actif"
+      "taux_rotation_5ans": 4.8,
+      "classement_rotation": "Fige"
     },
     {
       "numero_immatriculation": "AB8301905",
@@ -5892,7 +5892,7 @@
       "code_iris": "693830603",
       "cle_adresse": "22|RUE|ST MAXIMIN",
       "nb_lots_total": 149,
-      "nb_lots_habitation": 37,
+      "nb_lots_habitation": 39,
       "nb_lots_habitation_rnc": 39,
       "nb_log_bdnb": 37,
       "nb_ventes_2021_2025": 0,
@@ -5909,7 +5909,7 @@
       "code_iris": "693830603",
       "cle_adresse": "6|RUE|VILLON",
       "nb_lots_total": 120,
-      "nb_lots_habitation": 44,
+      "nb_lots_habitation": 45,
       "nb_lots_habitation_rnc": 45,
       "nb_log_bdnb": 44,
       "nb_ventes_2021_2025": 0,
@@ -5926,7 +5926,7 @@
       "code_iris": "693830603",
       "cle_adresse": "4|RUE|VILLON",
       "nb_lots_total": 99,
-      "nb_lots_habitation": 38,
+      "nb_lots_habitation": 39,
       "nb_lots_habitation_rnc": 39,
       "nb_log_bdnb": 38,
       "nb_ventes_2021_2025": 0,
@@ -5981,7 +5981,7 @@
       "code_iris": "693830603",
       "cle_adresse": "9|RUE|ROGER BRECHAN",
       "nb_lots_total": 90,
-      "nb_lots_habitation": 41,
+      "nb_lots_habitation": 43,
       "nb_lots_habitation_rnc": 43,
       "nb_log_bdnb": 41,
       "nb_ventes_2021_2025": 5,
@@ -5991,7 +5991,7 @@
         "2024": 2,
         "2022": 1
       },
-      "taux_rotation_5ans": 12.2,
+      "taux_rotation_5ans": 11.6,
       "classement_rotation": "Actif"
     },
     {
@@ -6026,7 +6026,7 @@
       "code_iris": "693830502",
       "cle_adresse": "185|AVENUE|FELIX FAURE",
       "nb_lots_total": 232,
-      "nb_lots_habitation": 88,
+      "nb_lots_habitation": 108,
       "nb_lots_habitation_rnc": 108,
       "nb_log_bdnb": 88,
       "nb_ventes_2021_2025": 20,
@@ -6037,8 +6037,8 @@
         "2021": 8,
         "2023": 2
       },
-      "taux_rotation_5ans": 22.7,
-      "classement_rotation": "Tres actif"
+      "taux_rotation_5ans": 18.5,
+      "classement_rotation": "Actif"
     },
     {
       "numero_immatriculation": "AB8779696",
@@ -6089,7 +6089,7 @@
       "code_iris": "693830502",
       "cle_adresse": "312|RUE|PAUL BERT",
       "nb_lots_total": 65,
-      "nb_lots_habitation": 26,
+      "nb_lots_habitation": 25,
       "nb_lots_habitation_rnc": 25,
       "nb_log_bdnb": 26,
       "nb_ventes_2021_2025": 3,
@@ -6098,7 +6098,7 @@
         "2023": 1,
         "2024": 1
       },
-      "taux_rotation_5ans": 11.5,
+      "taux_rotation_5ans": 12.0,
       "classement_rotation": "Actif"
     },
     {
@@ -6110,7 +6110,7 @@
       "code_iris": "693830402",
       "cle_adresse": "300|COURS|LAFAYETTE",
       "nb_lots_total": 148,
-      "nb_lots_habitation": 77,
+      "nb_lots_habitation": 71,
       "nb_lots_habitation_rnc": 71,
       "nb_log_bdnb": 77,
       "nb_ventes_2021_2025": 16,
@@ -6121,7 +6121,7 @@
         "2024": 2,
         "2025": 1
       },
-      "taux_rotation_5ans": 20.8,
+      "taux_rotation_5ans": 22.5,
       "classement_rotation": "Tres actif"
     },
     {
@@ -6150,7 +6150,7 @@
       "code_iris": "693830501",
       "cle_adresse": "11|AVENUE|LACASSAGNE",
       "nb_lots_total": 150,
-      "nb_lots_habitation": 24,
+      "nb_lots_habitation": 53,
       "nb_lots_habitation_rnc": 53,
       "nb_log_bdnb": 24,
       "nb_ventes_2021_2025": 3,
@@ -6158,8 +6158,8 @@
         "2021": 2,
         "2024": 1
       },
-      "taux_rotation_5ans": 12.5,
-      "classement_rotation": "Actif"
+      "taux_rotation_5ans": 5.7,
+      "classement_rotation": "Modere"
     },
     {
       "numero_immatriculation": "AB8847345",
@@ -6193,7 +6193,7 @@
       "code_iris": "693830501",
       "cle_adresse": "118|RUE|BARABAN",
       "nb_lots_total": 105,
-      "nb_lots_habitation": 28,
+      "nb_lots_habitation": 49,
       "nb_lots_habitation_rnc": 49,
       "nb_log_bdnb": 28,
       "nb_ventes_2021_2025": 3,
@@ -6201,8 +6201,8 @@
         "2021": 2,
         "2023": 1
       },
-      "taux_rotation_5ans": 10.7,
-      "classement_rotation": "Actif"
+      "taux_rotation_5ans": 6.1,
+      "classement_rotation": "Modere"
     },
     {
       "numero_immatriculation": "AB8925216",
@@ -6213,7 +6213,7 @@
       "code_iris": "693830502",
       "cle_adresse": "27|RUE|TURBIL",
       "nb_lots_total": 131,
-      "nb_lots_habitation": 37,
+      "nb_lots_habitation": 47,
       "nb_lots_habitation_rnc": 47,
       "nb_log_bdnb": 37,
       "nb_ventes_2021_2025": 6,
@@ -6223,7 +6223,7 @@
         "2023": 2,
         "2024": 1
       },
-      "taux_rotation_5ans": 16.2,
+      "taux_rotation_5ans": 12.8,
       "classement_rotation": "Actif"
     },
     {
@@ -6254,7 +6254,7 @@
       "code_iris": "693830501",
       "cle_adresse": "231|RUE|PAUL BERT",
       "nb_lots_total": 15,
-      "nb_lots_habitation": 8,
+      "nb_lots_habitation": 9,
       "nb_lots_habitation_rnc": 9,
       "nb_log_bdnb": 8,
       "nb_ventes_2021_2025": 3,
@@ -6263,7 +6263,7 @@
         "2023": 1,
         "2021": 1
       },
-      "taux_rotation_5ans": 37.5,
+      "taux_rotation_5ans": 33.3,
       "classement_rotation": "Tres actif"
     },
     {
@@ -6275,7 +6275,7 @@
       "code_iris": "693830501",
       "cle_adresse": "211|RUE|PAUL BERT",
       "nb_lots_total": 21,
-      "nb_lots_habitation": 17,
+      "nb_lots_habitation": 15,
       "nb_lots_habitation_rnc": 15,
       "nb_log_bdnb": 17,
       "nb_ventes_2021_2025": 0,
@@ -6337,7 +6337,7 @@
       "code_iris": "693830603",
       "cle_adresse": "1|RUE|VILLON",
       "nb_lots_total": 120,
-      "nb_lots_habitation": 58,
+      "nb_lots_habitation": 59,
       "nb_lots_habitation_rnc": 59,
       "nb_log_bdnb": 58,
       "nb_ventes_2021_2025": 0,
@@ -6354,7 +6354,7 @@
       "code_iris": "693830405",
       "cle_adresse": "46|AVENUE|GEORGES POMPIDOU",
       "nb_lots_total": 230,
-      "nb_lots_habitation": 19,
+      "nb_lots_habitation": 74,
       "nb_lots_habitation_rnc": 74,
       "nb_log_bdnb": 19,
       "nb_ventes_2021_2025": 8,
@@ -6364,8 +6364,8 @@
         "2024": 3,
         "2022": 1
       },
-      "taux_rotation_5ans": 42.1,
-      "classement_rotation": "Tres actif"
+      "taux_rotation_5ans": 10.8,
+      "classement_rotation": "Actif"
     },
     {
       "numero_immatriculation": "AB9349358",
@@ -6376,7 +6376,7 @@
       "code_iris": "693830501",
       "cle_adresse": "212|RUE|PAUL BERT",
       "nb_lots_total": 39,
-      "nb_lots_habitation": 16,
+      "nb_lots_habitation": 15,
       "nb_lots_habitation_rnc": 15,
       "nb_log_bdnb": 16,
       "nb_ventes_2021_2025": 3,
@@ -6385,8 +6385,8 @@
         "2023": 1,
         "2021": 1
       },
-      "taux_rotation_5ans": 18.8,
-      "classement_rotation": "Actif"
+      "taux_rotation_5ans": 20.0,
+      "classement_rotation": "Tres actif"
     },
     {
       "numero_immatriculation": "AB9349846",
@@ -6414,7 +6414,7 @@
       "code_iris": "693830502",
       "cle_adresse": "12|RUE|FREDERIC MISTRAL",
       "nb_lots_total": 24,
-      "nb_lots_habitation": 6,
+      "nb_lots_habitation": 7,
       "nb_lots_habitation_rnc": 7,
       "nb_log_bdnb": 6,
       "nb_ventes_2021_2025": 0,
@@ -6448,7 +6448,7 @@
       "code_iris": "693830502",
       "cle_adresse": "227|AVENUE|FELIX FAURE",
       "nb_lots_total": 19,
-      "nb_lots_habitation": 7,
+      "nb_lots_habitation": 9,
       "nb_lots_habitation_rnc": 9,
       "nb_log_bdnb": 7,
       "nb_ventes_2021_2025": 0,
@@ -6465,7 +6465,7 @@
       "code_iris": "693830405",
       "cle_adresse": "6|RUE|FREDERIC MISTRAL",
       "nb_lots_total": 18,
-      "nb_lots_habitation": 7,
+      "nb_lots_habitation": 8,
       "nb_lots_habitation_rnc": 8,
       "nb_log_bdnb": 7,
       "nb_ventes_2021_2025": 0,
@@ -6499,7 +6499,7 @@
       "code_iris": "693830604",
       "cle_adresse": "48|AVENUE|LACASSAGNE",
       "nb_lots_total": 62,
-      "nb_lots_habitation": 16,
+      "nb_lots_habitation": 17,
       "nb_lots_habitation_rnc": 17,
       "nb_log_bdnb": 16,
       "nb_ventes_2021_2025": 0,
@@ -6516,7 +6516,7 @@
       "code_iris": "693830401",
       "cle_adresse": "282|COURS|LAFAYETTE",
       "nb_lots_total": 25,
-      "nb_lots_habitation": 11,
+      "nb_lots_habitation": 10,
       "nb_lots_habitation_rnc": 10,
       "nb_log_bdnb": 11,
       "nb_ventes_2021_2025": 2,
@@ -6524,8 +6524,8 @@
         "2025": 1,
         "2022": 1
       },
-      "taux_rotation_5ans": 18.2,
-      "classement_rotation": "Actif"
+      "taux_rotation_5ans": 20.0,
+      "classement_rotation": "Tres actif"
     },
     {
       "numero_immatriculation": "AB9797408",
@@ -6558,7 +6558,7 @@
       "code_iris": "693830502",
       "cle_adresse": "24|RUE|FREDERIC MISTRAL",
       "nb_lots_total": 30,
-      "nb_lots_habitation": 9,
+      "nb_lots_habitation": 8,
       "nb_lots_habitation_rnc": 8,
       "nb_log_bdnb": 9,
       "nb_ventes_2021_2025": 0,
@@ -6630,7 +6630,7 @@
       "code_iris": "693830601",
       "cle_adresse": "41|AVENUE|LACASSAGNE",
       "nb_lots_total": 46,
-      "nb_lots_habitation": 14,
+      "nb_lots_habitation": 12,
       "nb_lots_habitation_rnc": 12,
       "nb_log_bdnb": 14,
       "nb_ventes_2021_2025": 2,
@@ -6638,7 +6638,7 @@
         "2024": 1,
         "2025": 1
       },
-      "taux_rotation_5ans": 14.3,
+      "taux_rotation_5ans": 16.7,
       "classement_rotation": "Actif"
     },
     {
@@ -6650,7 +6650,7 @@
       "code_iris": "693830603",
       "cle_adresse": "1|RUE|DES TUILIERS",
       "nb_lots_total": 27,
-      "nb_lots_habitation": 28,
+      "nb_lots_habitation": 27,
       "nb_lots_habitation_rnc": 27,
       "nb_log_bdnb": 28,
       "nb_ventes_2021_2025": 5,
@@ -6660,7 +6660,7 @@
         "2022": 1,
         "2023": 1
       },
-      "taux_rotation_5ans": 17.9,
+      "taux_rotation_5ans": 18.5,
       "classement_rotation": "Actif"
     },
     {
@@ -6672,7 +6672,7 @@
       "code_iris": "693830502",
       "cle_adresse": "336|RUE|PAUL BERT",
       "nb_lots_total": 69,
-      "nb_lots_habitation": 17,
+      "nb_lots_habitation": 16,
       "nb_lots_habitation_rnc": 16,
       "nb_log_bdnb": 17,
       "nb_ventes_2021_2025": 0,
@@ -6708,7 +6708,7 @@
       "code_iris": "693830405",
       "cle_adresse": "10|RUE|DE NAZARETH",
       "nb_lots_total": 45,
-      "nb_lots_habitation": 21,
+      "nb_lots_habitation": 22,
       "nb_lots_habitation_rnc": 22,
       "nb_log_bdnb": 21,
       "nb_ventes_2021_2025": 0,
@@ -6725,7 +6725,7 @@
       "code_iris": "693830602",
       "cle_adresse": "38|RUE|DU DAUPHINE",
       "nb_lots_total": 47,
-      "nb_lots_habitation": 21,
+      "nb_lots_habitation": 20,
       "nb_lots_habitation_rnc": 20,
       "nb_log_bdnb": 21,
       "nb_ventes_2021_2025": 5,
@@ -6735,7 +6735,7 @@
         "2024": 1,
         "2023": 1
       },
-      "taux_rotation_5ans": 23.8,
+      "taux_rotation_5ans": 25.0,
       "classement_rotation": "Tres actif"
     },
     {
@@ -6769,7 +6769,7 @@
       "code_iris": "693830603",
       "cle_adresse": "77|COURS|ALBERT THOMAS",
       "nb_lots_total": 49,
-      "nb_lots_habitation": 46,
+      "nb_lots_habitation": 48,
       "nb_lots_habitation_rnc": 48,
       "nb_log_bdnb": 46,
       "nb_ventes_2021_2025": 8,
@@ -6780,7 +6780,7 @@
         "2024": 1,
         "2023": 1
       },
-      "taux_rotation_5ans": 17.4,
+      "taux_rotation_5ans": 16.7,
       "classement_rotation": "Actif"
     },
     {
@@ -6792,7 +6792,7 @@
       "code_iris": "693830601",
       "cle_adresse": "34|AVENUE|LACASSAGNE",
       "nb_lots_total": 14,
-      "nb_lots_habitation": 11,
+      "nb_lots_habitation": 12,
       "nb_lots_habitation_rnc": 12,
       "nb_log_bdnb": 11,
       "nb_ventes_2021_2025": 2,
@@ -6800,7 +6800,7 @@
         "2024": 1,
         "2021": 1
       },
-      "taux_rotation_5ans": 18.2,
+      "taux_rotation_5ans": 16.7,
       "classement_rotation": "Actif"
     },
     {
@@ -6812,7 +6812,7 @@
       "code_iris": "693830601",
       "cle_adresse": "34B|AVENUE|LACASSAGNE",
       "nb_lots_total": 33,
-      "nb_lots_habitation": 6,
+      "nb_lots_habitation": 8,
       "nb_lots_habitation_rnc": 8,
       "nb_log_bdnb": 6,
       "nb_ventes_2021_2025": 0,
@@ -6829,7 +6829,7 @@
       "code_iris": "693830403",
       "cle_adresse": "104|RUE|BARABAN",
       "nb_lots_total": 161,
-      "nb_lots_habitation": 50,
+      "nb_lots_habitation": 53,
       "nb_lots_habitation_rnc": 53,
       "nb_log_bdnb": 50,
       "nb_ventes_2021_2025": 7,
@@ -6840,7 +6840,7 @@
         "2023": 1,
         "2022": 1
       },
-      "taux_rotation_5ans": 14.0,
+      "taux_rotation_5ans": 13.2,
       "classement_rotation": "Actif"
     },
     {
@@ -6852,7 +6852,7 @@
       "code_iris": "693830404",
       "cle_adresse": "27|RUE|BARABAN",
       "nb_lots_total": 26,
-      "nb_lots_habitation": 9,
+      "nb_lots_habitation": 10,
       "nb_lots_habitation_rnc": 10,
       "nb_log_bdnb": 9,
       "nb_ventes_2021_2025": 3,
@@ -6860,7 +6860,7 @@
         "2022": 1,
         "2021": 2
       },
-      "taux_rotation_5ans": 33.3,
+      "taux_rotation_5ans": 30.0,
       "classement_rotation": "Tres actif"
     },
     {
@@ -6872,7 +6872,7 @@
       "code_iris": "693830602",
       "cle_adresse": "1|RUE|GUILLOUD",
       "nb_lots_total": 217,
-      "nb_lots_habitation": 69,
+      "nb_lots_habitation": 70,
       "nb_lots_habitation_rnc": 70,
       "nb_log_bdnb": 69,
       "nb_ventes_2021_2025": 10,
@@ -6882,7 +6882,7 @@
         "2025": 2,
         "2023": 2
       },
-      "taux_rotation_5ans": 14.5,
+      "taux_rotation_5ans": 14.3,
       "classement_rotation": "Actif"
     },
     {
@@ -6894,15 +6894,15 @@
       "code_iris": "693830601",
       "cle_adresse": "6|RUE|CARRY",
       "nb_lots_total": 16,
-      "nb_lots_habitation": 9,
+      "nb_lots_habitation": 12,
       "nb_lots_habitation_rnc": 12,
       "nb_log_bdnb": 9,
       "nb_ventes_2021_2025": 2,
       "ventes_par_an": {
         "2025": 2
       },
-      "taux_rotation_5ans": 22.2,
-      "classement_rotation": "Tres actif"
+      "taux_rotation_5ans": 16.7,
+      "classement_rotation": "Actif"
     },
     {
       "numero_immatriculation": "AC1878495",
@@ -6994,7 +6994,7 @@
       "code_iris": "693830601",
       "cle_adresse": "9|RUE|DE LA METALLURGIE",
       "nb_lots_total": 160,
-      "nb_lots_habitation": 50,
+      "nb_lots_habitation": 52,
       "nb_lots_habitation_rnc": 52,
       "nb_log_bdnb": 50,
       "nb_ventes_2021_2025": 0,
@@ -7011,7 +7011,7 @@
       "code_iris": "693830603",
       "cle_adresse": "28|RUE|ST PHILIPPE",
       "nb_lots_total": 89,
-      "nb_lots_habitation": 33,
+      "nb_lots_habitation": 34,
       "nb_lots_habitation_rnc": 34,
       "nb_log_bdnb": 33,
       "nb_ventes_2021_2025": 0,
@@ -7028,15 +7028,15 @@
       "code_iris": "693830501",
       "cle_adresse": "148|RUE|BARABAN",
       "nb_lots_total": 25,
-      "nb_lots_habitation": 15,
+      "nb_lots_habitation": 21,
       "nb_lots_habitation_rnc": 21,
       "nb_log_bdnb": 15,
       "nb_ventes_2021_2025": 3,
       "ventes_par_an": {
         "2021": 3
       },
-      "taux_rotation_5ans": 20.0,
-      "classement_rotation": "Tres actif"
+      "taux_rotation_5ans": 14.3,
+      "classement_rotation": "Actif"
     },
     {
       "numero_immatriculation": "AC3078680",
@@ -7047,7 +7047,7 @@
       "code_iris": "693830602",
       "cle_adresse": "11|COURS|ALBERT THOMAS",
       "nb_lots_total": 27,
-      "nb_lots_habitation": 15,
+      "nb_lots_habitation": 16,
       "nb_lots_habitation_rnc": 16,
       "nb_log_bdnb": 15,
       "nb_ventes_2021_2025": 2,
@@ -7055,7 +7055,7 @@
         "2024": 1,
         "2023": 1
       },
-      "taux_rotation_5ans": 13.3,
+      "taux_rotation_5ans": 12.5,
       "classement_rotation": "Actif"
     },
     {
@@ -7089,7 +7089,7 @@
       "code_iris": "693830401",
       "cle_adresse": "272|COURS|LAFAYETTE",
       "nb_lots_total": 209,
-      "nb_lots_habitation": 78,
+      "nb_lots_habitation": 86,
       "nb_lots_habitation_rnc": 86,
       "nb_log_bdnb": 78,
       "nb_ventes_2021_2025": 22,
@@ -7100,7 +7100,7 @@
         "2022": 9,
         "2024": 1
       },
-      "taux_rotation_5ans": 28.2,
+      "taux_rotation_5ans": 25.6,
       "classement_rotation": "Tres actif"
     },
     {
@@ -7112,7 +7112,7 @@
       "code_iris": "693830401",
       "cle_adresse": "25|RUE|ST ANTOINE",
       "nb_lots_total": 191,
-      "nb_lots_habitation": 60,
+      "nb_lots_habitation": 63,
       "nb_lots_habitation_rnc": 63,
       "nb_log_bdnb": 60,
       "nb_ventes_2021_2025": 0,
@@ -7191,14 +7191,14 @@
       "code_iris": "693830502",
       "cle_adresse": "254|RUE|PAUL BERT",
       "nb_lots_total": 13,
-      "nb_lots_habitation": 18,
+      "nb_lots_habitation": 11,
       "nb_lots_habitation_rnc": 11,
       "nb_log_bdnb": 18,
       "nb_ventes_2021_2025": 1,
       "ventes_par_an": {
         "2023": 1
       },
-      "taux_rotation_5ans": 5.6,
+      "taux_rotation_5ans": 9.1,
       "classement_rotation": "Modere"
     },
     {
@@ -7210,15 +7210,15 @@
       "code_iris": "693830501",
       "cle_adresse": "243|RUE|PAUL BERT",
       "nb_lots_total": 46,
-      "nb_lots_habitation": 7,
+      "nb_lots_habitation": 11,
       "nb_lots_habitation_rnc": 11,
       "nb_log_bdnb": 7,
       "nb_ventes_2021_2025": 1,
       "ventes_par_an": {
         "2021": 1
       },
-      "taux_rotation_5ans": 14.3,
-      "classement_rotation": "Actif"
+      "taux_rotation_5ans": 9.1,
+      "classement_rotation": "Modere"
     },
     {
       "numero_immatriculation": "AC3805199",
@@ -7246,7 +7246,7 @@
       "code_iris": "693830502",
       "cle_adresse": "322|RUE|PAUL BERT",
       "nb_lots_total": 25,
-      "nb_lots_habitation": 8,
+      "nb_lots_habitation": 13,
       "nb_lots_habitation_rnc": 13,
       "nb_log_bdnb": 8,
       "nb_ventes_2021_2025": 3,
@@ -7255,7 +7255,7 @@
         "2021": 1,
         "2024": 1
       },
-      "taux_rotation_5ans": 37.5,
+      "taux_rotation_5ans": 23.1,
       "classement_rotation": "Tres actif"
     },
     {
@@ -7267,7 +7267,7 @@
       "code_iris": "693830502",
       "cle_adresse": "165|AVENUE|FELIX FAURE",
       "nb_lots_total": 142,
-      "nb_lots_habitation": 45,
+      "nb_lots_habitation": 43,
       "nb_lots_habitation_rnc": 43,
       "nb_log_bdnb": 45,
       "nb_ventes_2021_2025": 0,
@@ -7304,7 +7304,7 @@
       "code_iris": "693830501",
       "cle_adresse": "10|RUE|GABILLOT",
       "nb_lots_total": 86,
-      "nb_lots_habitation": 28,
+      "nb_lots_habitation": 29,
       "nb_lots_habitation_rnc": 29,
       "nb_log_bdnb": 28,
       "nb_ventes_2021_2025": 5,
@@ -7313,7 +7313,7 @@
         "2024": 2,
         "2021": 2
       },
-      "taux_rotation_5ans": 17.9,
+      "taux_rotation_5ans": 17.2,
       "classement_rotation": "Actif"
     },
     {
@@ -7345,7 +7345,7 @@
       "code_iris": "693830405",
       "cle_adresse": "27|RUE|ST EUSEBE",
       "nb_lots_total": 100,
-      "nb_lots_habitation": 66,
+      "nb_lots_habitation": 41,
       "nb_lots_habitation_rnc": 41,
       "nb_log_bdnb": 66,
       "nb_ventes_2021_2025": 0,
@@ -7362,7 +7362,7 @@
       "code_iris": "693830601",
       "cle_adresse": "32|AVENUE|LACASSAGNE",
       "nb_lots_total": 18,
-      "nb_lots_habitation": 15,
+      "nb_lots_habitation": 16,
       "nb_lots_habitation_rnc": 16,
       "nb_log_bdnb": 15,
       "nb_ventes_2021_2025": 2,
@@ -7370,7 +7370,7 @@
         "2025": 1,
         "2021": 1
       },
-      "taux_rotation_5ans": 13.3,
+      "taux_rotation_5ans": 12.5,
       "classement_rotation": "Actif"
     },
     {
@@ -7382,7 +7382,7 @@
       "code_iris": "693830604",
       "cle_adresse": "11|RUE|DE MONTBRILLANT",
       "nb_lots_total": 102,
-      "nb_lots_habitation": 35,
+      "nb_lots_habitation": 34,
       "nb_lots_habitation_rnc": 34,
       "nb_log_bdnb": 35,
       "nb_ventes_2021_2025": 8,
@@ -7391,7 +7391,7 @@
         "2023": 2,
         "2022": 2
       },
-      "taux_rotation_5ans": 22.9,
+      "taux_rotation_5ans": 23.5,
       "classement_rotation": "Tres actif"
     },
     {
@@ -7474,7 +7474,7 @@
       "code_iris": "693830502",
       "cle_adresse": "318|RUE|PAUL BERT",
       "nb_lots_total": 14,
-      "nb_lots_habitation": 7,
+      "nb_lots_habitation": 6,
       "nb_lots_habitation_rnc": 6,
       "nb_log_bdnb": 7,
       "nb_ventes_2021_2025": 2,
@@ -7482,7 +7482,7 @@
         "2023": 1,
         "2024": 1
       },
-      "taux_rotation_5ans": 28.6,
+      "taux_rotation_5ans": 33.3,
       "classement_rotation": "Tres actif"
     },
     {
@@ -7537,7 +7537,7 @@
       "code_iris": "693830405",
       "cle_adresse": "14|RUE|DE NAZARETH",
       "nb_lots_total": 13,
-      "nb_lots_habitation": 7,
+      "nb_lots_habitation": 8,
       "nb_lots_habitation_rnc": 8,
       "nb_log_bdnb": 7,
       "nb_ventes_2021_2025": 3,
@@ -7545,7 +7545,7 @@
         "2021": 2,
         "2025": 1
       },
-      "taux_rotation_5ans": 42.9,
+      "taux_rotation_5ans": 37.5,
       "classement_rotation": "Tres actif"
     },
     {
@@ -7557,7 +7557,7 @@
       "code_iris": "693830602",
       "cle_adresse": "4|RUE|ROGER BRECHAN",
       "nb_lots_total": 72,
-      "nb_lots_habitation": 20,
+      "nb_lots_habitation": 23,
       "nb_lots_habitation_rnc": 23,
       "nb_log_bdnb": 20,
       "nb_ventes_2021_2025": 2,
@@ -7565,8 +7565,8 @@
         "2022": 1,
         "2023": 1
       },
-      "taux_rotation_5ans": 10.0,
-      "classement_rotation": "Actif"
+      "taux_rotation_5ans": 8.7,
+      "classement_rotation": "Modere"
     },
     {
       "numero_immatriculation": "AC6493506",
@@ -7577,7 +7577,7 @@
       "code_iris": "693830402",
       "cle_adresse": "35|RUE|ST ANTOINE",
       "nb_lots_total": 80,
-      "nb_lots_habitation": 72,
+      "nb_lots_habitation": 48,
       "nb_lots_habitation_rnc": 48,
       "nb_log_bdnb": 72,
       "nb_ventes_2021_2025": 0,
@@ -7594,7 +7594,7 @@
       "code_iris": "693830502",
       "cle_adresse": "351|RUE|PAUL BERT",
       "nb_lots_total": 10,
-      "nb_lots_habitation": 6,
+      "nb_lots_habitation": 10,
       "nb_lots_habitation_rnc": 10,
       "nb_log_bdnb": 6,
       "nb_ventes_2021_2025": 0,
@@ -7611,7 +7611,7 @@
       "code_iris": "693830501",
       "cle_adresse": "79|RUE|ETIENNE RICHERAND",
       "nb_lots_total": 85,
-      "nb_lots_habitation": 29,
+      "nb_lots_habitation": 30,
       "nb_lots_habitation_rnc": 30,
       "nb_log_bdnb": 29,
       "nb_ventes_2021_2025": 4,
@@ -7620,7 +7620,7 @@
         "2021": 1,
         "2023": 1
       },
-      "taux_rotation_5ans": 13.8,
+      "taux_rotation_5ans": 13.3,
       "classement_rotation": "Actif"
     },
     {
@@ -7632,7 +7632,7 @@
       "code_iris": "693830404",
       "cle_adresse": "320|COURS|LAFAYETTE",
       "nb_lots_total": 24,
-      "nb_lots_habitation": 7,
+      "nb_lots_habitation": 11,
       "nb_lots_habitation_rnc": 11,
       "nb_log_bdnb": 7,
       "nb_ventes_2021_2025": 2,
@@ -7640,8 +7640,8 @@
         "2025": 1,
         "2024": 1
       },
-      "taux_rotation_5ans": 28.6,
-      "classement_rotation": "Tres actif"
+      "taux_rotation_5ans": 18.2,
+      "classement_rotation": "Actif"
     },
     {
       "numero_immatriculation": "AC6640528",
@@ -7669,7 +7669,7 @@
       "code_iris": "693830501",
       "cle_adresse": "229|RUE|PAUL BERT",
       "nb_lots_total": 21,
-      "nb_lots_habitation": 12,
+      "nb_lots_habitation": 14,
       "nb_lots_habitation_rnc": 14,
       "nb_log_bdnb": 12,
       "nb_ventes_2021_2025": 4,
@@ -7678,7 +7678,7 @@
         "2023": 1,
         "2021": 1
       },
-      "taux_rotation_5ans": 33.3,
+      "taux_rotation_5ans": 28.6,
       "classement_rotation": "Tres actif"
     },
     {
@@ -7707,14 +7707,14 @@
       "code_iris": "693830402",
       "cle_adresse": "15|RUE|ROPOSTE",
       "nb_lots_total": 46,
-      "nb_lots_habitation": 16,
+      "nb_lots_habitation": 20,
       "nb_lots_habitation_rnc": 20,
       "nb_log_bdnb": 16,
       "nb_ventes_2021_2025": 1,
       "ventes_par_an": {
         "2023": 1
       },
-      "taux_rotation_5ans": 6.2,
+      "taux_rotation_5ans": 5.0,
       "classement_rotation": "Modere"
     },
     {
@@ -7743,7 +7743,7 @@
       "code_iris": "693830601",
       "cle_adresse": "220|AVENUE|FELIX FAURE",
       "nb_lots_total": 52,
-      "nb_lots_habitation": 16,
+      "nb_lots_habitation": 17,
       "nb_lots_habitation_rnc": 17,
       "nb_log_bdnb": 16,
       "nb_ventes_2021_2025": 6,
@@ -7752,7 +7752,7 @@
         "2024": 1,
         "2021": 2
       },
-      "taux_rotation_5ans": 37.5,
+      "taux_rotation_5ans": 35.3,
       "classement_rotation": "Tres actif"
     },
     {
@@ -7808,7 +7808,7 @@
       "code_iris": "693830401",
       "cle_adresse": "224|COURS|LAFAYETTE",
       "nb_lots_total": 172,
-      "nb_lots_habitation": 135,
+      "nb_lots_habitation": 91,
       "nb_lots_habitation_rnc": 91,
       "nb_log_bdnb": 135,
       "nb_ventes_2021_2025": 12,
@@ -7818,8 +7818,8 @@
         "2021": 1,
         "2023": 4
       },
-      "taux_rotation_5ans": 8.9,
-      "classement_rotation": "Modere"
+      "taux_rotation_5ans": 13.2,
+      "classement_rotation": "Actif"
     },
     {
       "numero_immatriculation": "AC7467194",
@@ -7830,7 +7830,7 @@
       "code_iris": "693830405",
       "cle_adresse": "93|RUE|BARABAN",
       "nb_lots_total": 21,
-      "nb_lots_habitation": 18,
+      "nb_lots_habitation": 17,
       "nb_lots_habitation_rnc": 17,
       "nb_log_bdnb": 18,
       "nb_ventes_2021_2025": 0,
@@ -7847,7 +7847,7 @@
       "code_iris": "693830603",
       "cle_adresse": "30||30B R DU PROFESSEUR PAUL SISLEY",
       "nb_lots_total": 87,
-      "nb_lots_habitation": 45,
+      "nb_lots_habitation": 43,
       "nb_lots_habitation_rnc": 43,
       "nb_log_bdnb": 45,
       "nb_ventes_2021_2025": 0,
@@ -7909,14 +7909,14 @@
       "code_iris": "693830501",
       "cle_adresse": "152|RUE|BARABAN",
       "nb_lots_total": 34,
-      "nb_lots_habitation": 12,
+      "nb_lots_habitation": 13,
       "nb_lots_habitation_rnc": 13,
       "nb_log_bdnb": 12,
       "nb_ventes_2021_2025": 1,
       "ventes_par_an": {
         "2022": 1
       },
-      "taux_rotation_5ans": 8.3,
+      "taux_rotation_5ans": 7.7,
       "classement_rotation": "Modere"
     },
     {
@@ -7945,7 +7945,7 @@
       "code_iris": "693830501",
       "cle_adresse": "246|RUE|PAUL BERT",
       "nb_lots_total": 48,
-      "nb_lots_habitation": 16,
+      "nb_lots_habitation": 42,
       "nb_lots_habitation_rnc": 42,
       "nb_log_bdnb": 16,
       "nb_ventes_2021_2025": 3,
@@ -7953,8 +7953,8 @@
         "2025": 1,
         "2023": 2
       },
-      "taux_rotation_5ans": 18.8,
-      "classement_rotation": "Actif"
+      "taux_rotation_5ans": 7.1,
+      "classement_rotation": "Modere"
     },
     {
       "numero_immatriculation": "AC7995285",
@@ -7965,14 +7965,14 @@
       "code_iris": "693830401",
       "cle_adresse": "209|RUE|PAUL BERT",
       "nb_lots_total": 39,
-      "nb_lots_habitation": 17,
+      "nb_lots_habitation": 15,
       "nb_lots_habitation_rnc": 15,
       "nb_log_bdnb": 17,
       "nb_ventes_2021_2025": 1,
       "ventes_par_an": {
         "2021": 1
       },
-      "taux_rotation_5ans": 5.9,
+      "taux_rotation_5ans": 6.7,
       "classement_rotation": "Modere"
     },
     {
@@ -7984,7 +7984,7 @@
       "code_iris": "693830604",
       "cle_adresse": "60B|AVENUE|LACASSAGNE",
       "nb_lots_total": 14,
-      "nb_lots_habitation": 13,
+      "nb_lots_habitation": 12,
       "nb_lots_habitation_rnc": 12,
       "nb_log_bdnb": 13,
       "nb_ventes_2021_2025": 0,
@@ -8001,7 +8001,7 @@
       "code_iris": "693830401",
       "cle_adresse": "234|COURS|LAFAYETTE",
       "nb_lots_total": 68,
-      "nb_lots_habitation": 26,
+      "nb_lots_habitation": 30,
       "nb_lots_habitation_rnc": 30,
       "nb_log_bdnb": 26,
       "nb_ventes_2021_2025": 4,
@@ -8010,7 +8010,7 @@
         "2025": 1,
         "2022": 2
       },
-      "taux_rotation_5ans": 15.4,
+      "taux_rotation_5ans": 13.3,
       "classement_rotation": "Actif"
     },
     {
@@ -8022,14 +8022,14 @@
       "code_iris": "693830404",
       "cle_adresse": "77|RUE|BARABAN",
       "nb_lots_total": 44,
-      "nb_lots_habitation": 15,
+      "nb_lots_habitation": 19,
       "nb_lots_habitation_rnc": 19,
       "nb_log_bdnb": 15,
       "nb_ventes_2021_2025": 1,
       "ventes_par_an": {
         "2024": 1
       },
-      "taux_rotation_5ans": 6.7,
+      "taux_rotation_5ans": 5.3,
       "classement_rotation": "Modere"
     },
     {
@@ -8041,7 +8041,7 @@
       "code_iris": "693830401",
       "cle_adresse": "76|RUE|MAURICE FLANDIN",
       "nb_lots_total": 77,
-      "nb_lots_habitation": 24,
+      "nb_lots_habitation": 25,
       "nb_lots_habitation_rnc": 25,
       "nb_log_bdnb": 24,
       "nb_ventes_2021_2025": 5,
@@ -8052,7 +8052,7 @@
         "2022": 1,
         "2024": 1
       },
-      "taux_rotation_5ans": 20.8,
+      "taux_rotation_5ans": 20.0,
       "classement_rotation": "Tres actif"
     },
     {
@@ -8064,7 +8064,7 @@
       "code_iris": "693830604",
       "cle_adresse": "15|RUE|DE MONTBRILLANT",
       "nb_lots_total": 66,
-      "nb_lots_habitation": 30,
+      "nb_lots_habitation": 29,
       "nb_lots_habitation_rnc": 29,
       "nb_log_bdnb": 30,
       "nb_ventes_2021_2025": 6,
@@ -8074,7 +8074,7 @@
         "2022": 1,
         "2025": 2
       },
-      "taux_rotation_5ans": 20.0,
+      "taux_rotation_5ans": 20.7,
       "classement_rotation": "Tres actif"
     },
     {
@@ -8137,7 +8137,7 @@
       "code_iris": "693830405",
       "cle_adresse": "6|RUE|DE NAZARETH",
       "nb_lots_total": 248,
-      "nb_lots_habitation": 41,
+      "nb_lots_habitation": 39,
       "nb_lots_habitation_rnc": 39,
       "nb_log_bdnb": 41,
       "nb_ventes_2021_2025": 9,
@@ -8148,7 +8148,7 @@
         "2024": 1,
         "2021": 1
       },
-      "taux_rotation_5ans": 22.0,
+      "taux_rotation_5ans": 23.1,
       "classement_rotation": "Tres actif"
     },
     {
@@ -8160,7 +8160,7 @@
       "code_iris": "693830601",
       "cle_adresse": "176|AVENUE|FELIX FAURE",
       "nb_lots_total": 23,
-      "nb_lots_habitation": 23,
+      "nb_lots_habitation": 21,
       "nb_lots_habitation_rnc": 21,
       "nb_log_bdnb": 23,
       "nb_ventes_2021_2025": 3,
@@ -8168,7 +8168,7 @@
         "2024": 1,
         "2021": 2
       },
-      "taux_rotation_5ans": 13.0,
+      "taux_rotation_5ans": 14.3,
       "classement_rotation": "Actif"
     },
     {
@@ -8180,7 +8180,7 @@
       "code_iris": "693830501",
       "cle_adresse": "228|RUE|PAUL BERT",
       "nb_lots_total": 15,
-      "nb_lots_habitation": 7,
+      "nb_lots_habitation": 13,
       "nb_lots_habitation_rnc": 13,
       "nb_log_bdnb": 7,
       "nb_ventes_2021_2025": 3,
@@ -8188,7 +8188,7 @@
         "2021": 1,
         "2022": 2
       },
-      "taux_rotation_5ans": 42.9,
+      "taux_rotation_5ans": 23.1,
       "classement_rotation": "Tres actif"
     },
     {
@@ -8217,7 +8217,7 @@
       "code_iris": "693830603",
       "cle_adresse": "40|RUE|ST PHILIPPE",
       "nb_lots_total": 21,
-      "nb_lots_habitation": 15,
+      "nb_lots_habitation": 17,
       "nb_lots_habitation_rnc": 17,
       "nb_log_bdnb": 15,
       "nb_ventes_2021_2025": 0,
@@ -8275,7 +8275,7 @@
       "code_iris": "693830401",
       "cle_adresse": "21|RUE|MAURICE FLANDIN",
       "nb_lots_total": 33,
-      "nb_lots_habitation": 27,
+      "nb_lots_habitation": 26,
       "nb_lots_habitation_rnc": 26,
       "nb_log_bdnb": 27,
       "nb_ventes_2021_2025": 4,
@@ -8284,7 +8284,7 @@
         "2021": 2,
         "2025": 1
       },
-      "taux_rotation_5ans": 14.8,
+      "taux_rotation_5ans": 15.4,
       "classement_rotation": "Actif"
     },
     {
@@ -8319,7 +8319,7 @@
       "code_iris": "693830604",
       "cle_adresse": "26|RUE|DOCTEUR REBATEL",
       "nb_lots_total": 140,
-      "nb_lots_habitation": 50,
+      "nb_lots_habitation": 52,
       "nb_lots_habitation_rnc": 52,
       "nb_log_bdnb": 50,
       "nb_ventes_2021_2025": 0,
@@ -8355,7 +8355,7 @@
       "code_iris": "693830404",
       "cle_adresse": "37|RUE|BARABAN",
       "nb_lots_total": 59,
-      "nb_lots_habitation": 28,
+      "nb_lots_habitation": 29,
       "nb_lots_habitation_rnc": 29,
       "nb_log_bdnb": 28,
       "nb_ventes_2021_2025": 3,
@@ -8364,7 +8364,7 @@
         "2024": 1,
         "2022": 1
       },
-      "taux_rotation_5ans": 10.7,
+      "taux_rotation_5ans": 10.3,
       "classement_rotation": "Actif"
     },
     {
@@ -8376,7 +8376,7 @@
       "code_iris": "693830402",
       "cle_adresse": "52|RUE|ETIENNE RICHERAND",
       "nb_lots_total": 45,
-      "nb_lots_habitation": 31,
+      "nb_lots_habitation": 4,
       "nb_lots_habitation_rnc": 4,
       "nb_log_bdnb": 31,
       "nb_ventes_2021_2025": 7,
@@ -8385,7 +8385,7 @@
         "2024": 3,
         "2022": 1
       },
-      "taux_rotation_5ans": 22.6,
+      "taux_rotation_5ans": 175.0,
       "classement_rotation": "Tres actif"
     },
     {
@@ -8397,7 +8397,7 @@
       "code_iris": "693830604",
       "cle_adresse": "34|RUE|DOCTEUR REBATEL",
       "nb_lots_total": 12,
-      "nb_lots_habitation": 10,
+      "nb_lots_habitation": 12,
       "nb_lots_habitation_rnc": 12,
       "nb_log_bdnb": 10,
       "nb_ventes_2021_2025": 0,
@@ -8414,7 +8414,7 @@
       "code_iris": "693830601",
       "cle_adresse": "141|RUE|DU DAUPHINE",
       "nb_lots_total": 23,
-      "nb_lots_habitation": 12,
+      "nb_lots_habitation": 13,
       "nb_lots_habitation_rnc": 13,
       "nb_log_bdnb": 12,
       "nb_ventes_2021_2025": 0,
@@ -8507,14 +8507,14 @@
       "code_iris": "693830402",
       "cle_adresse": "49|RUE|ETIENNE RICHERAND",
       "nb_lots_total": 9,
-      "nb_lots_habitation": 8,
+      "nb_lots_habitation": 9,
       "nb_lots_habitation_rnc": 9,
       "nb_log_bdnb": 8,
       "nb_ventes_2021_2025": 1,
       "ventes_par_an": {
         "2021": 1
       },
-      "taux_rotation_5ans": 12.5,
+      "taux_rotation_5ans": 11.1,
       "classement_rotation": "Actif"
     },
     {
@@ -8526,14 +8526,14 @@
       "code_iris": "693830601",
       "cle_adresse": "140|AVENUE|FELIX FAURE",
       "nb_lots_total": 20,
-      "nb_lots_habitation": 17,
+      "nb_lots_habitation": 18,
       "nb_lots_habitation_rnc": 18,
       "nb_log_bdnb": 17,
       "nb_ventes_2021_2025": 2,
       "ventes_par_an": {
         "2024": 2
       },
-      "taux_rotation_5ans": 11.8,
+      "taux_rotation_5ans": 11.1,
       "classement_rotation": "Actif"
     },
     {
@@ -8566,15 +8566,15 @@
       "code_iris": "693830405",
       "cle_adresse": "95|RUE|BARABAN",
       "nb_lots_total": 19,
-      "nb_lots_habitation": 7,
+      "nb_lots_habitation": 15,
       "nb_lots_habitation_rnc": 15,
       "nb_log_bdnb": 7,
       "nb_ventes_2021_2025": 1,
       "ventes_par_an": {
         "2021": 1
       },
-      "taux_rotation_5ans": 14.3,
-      "classement_rotation": "Actif"
+      "taux_rotation_5ans": 6.7,
+      "classement_rotation": "Modere"
     },
     {
       "numero_immatriculation": "AD1252527",
@@ -8604,7 +8604,7 @@
       "code_iris": "693830401",
       "cle_adresse": "256|COURS|LAFAYETTE",
       "nb_lots_total": 15,
-      "nb_lots_habitation": 3,
+      "nb_lots_habitation": 5,
       "nb_lots_habitation_rnc": 5,
       "nb_log_bdnb": 3,
       "nb_ventes_2021_2025": 2,
@@ -8612,7 +8612,7 @@
         "2025": 1,
         "2021": 1
       },
-      "taux_rotation_5ans": 66.7,
+      "taux_rotation_5ans": 40.0,
       "classement_rotation": "Tres actif"
     },
     {
@@ -8645,7 +8645,7 @@
       "code_iris": "693830601",
       "cle_adresse": "202|AVENUE|FELIX FAURE",
       "nb_lots_total": 18,
-      "nb_lots_habitation": 17,
+      "nb_lots_habitation": 18,
       "nb_lots_habitation_rnc": 18,
       "nb_log_bdnb": 17,
       "nb_ventes_2021_2025": 5,
@@ -8653,7 +8653,7 @@
         "2021": 4,
         "2022": 1
       },
-      "taux_rotation_5ans": 29.4,
+      "taux_rotation_5ans": 27.8,
       "classement_rotation": "Tres actif"
     },
     {
@@ -8665,7 +8665,7 @@
       "code_iris": "693830604",
       "cle_adresse": "19|RUE|DE MONTBRILLANT",
       "nb_lots_total": 55,
-      "nb_lots_habitation": 14,
+      "nb_lots_habitation": 19,
       "nb_lots_habitation_rnc": 19,
       "nb_log_bdnb": 14,
       "nb_ventes_2021_2025": 2,
@@ -8673,7 +8673,7 @@
         "2023": 1,
         "2025": 1
       },
-      "taux_rotation_5ans": 14.3,
+      "taux_rotation_5ans": 10.5,
       "classement_rotation": "Actif"
     },
     {
@@ -8685,7 +8685,7 @@
       "code_iris": "693830501",
       "cle_adresse": "11|RUE|GABILLOT",
       "nb_lots_total": 44,
-      "nb_lots_habitation": 13,
+      "nb_lots_habitation": 14,
       "nb_lots_habitation_rnc": 14,
       "nb_log_bdnb": 13,
       "nb_ventes_2021_2025": 0,
@@ -8702,7 +8702,7 @@
       "code_iris": "693830601",
       "cle_adresse": "166|AVENUE|FELIX FAURE",
       "nb_lots_total": 32,
-      "nb_lots_habitation": 18,
+      "nb_lots_habitation": 17,
       "nb_lots_habitation_rnc": 17,
       "nb_log_bdnb": 18,
       "nb_ventes_2021_2025": 5,
@@ -8711,7 +8711,7 @@
         "2021": 3,
         "2025": 1
       },
-      "taux_rotation_5ans": 27.8,
+      "taux_rotation_5ans": 29.4,
       "classement_rotation": "Tres actif"
     },
     {
@@ -8766,7 +8766,7 @@
       "code_iris": "693830502",
       "cle_adresse": "347|RUE|PAUL BERT",
       "nb_lots_total": 25,
-      "nb_lots_habitation": 10,
+      "nb_lots_habitation": 8,
       "nb_lots_habitation_rnc": 8,
       "nb_log_bdnb": 10,
       "nb_ventes_2021_2025": 4,
@@ -8775,7 +8775,7 @@
         "2022": 1,
         "2021": 2
       },
-      "taux_rotation_5ans": 40.0,
+      "taux_rotation_5ans": 50.0,
       "classement_rotation": "Tres actif"
     },
     {
@@ -8787,7 +8787,7 @@
       "code_iris": "693830601",
       "cle_adresse": "45|AVENUE|LACASSAGNE",
       "nb_lots_total": 39,
-      "nb_lots_habitation": 18,
+      "nb_lots_habitation": 19,
       "nb_lots_habitation_rnc": 19,
       "nb_log_bdnb": 18,
       "nb_ventes_2021_2025": 0,
@@ -8804,7 +8804,7 @@
       "code_iris": "693830601",
       "cle_adresse": "188|AVENUE|FELIX FAURE",
       "nb_lots_total": 12,
-      "nb_lots_habitation": 11,
+      "nb_lots_habitation": 12,
       "nb_lots_habitation_rnc": 12,
       "nb_log_bdnb": 11,
       "nb_ventes_2021_2025": 3,
@@ -8813,7 +8813,7 @@
         "2023": 1,
         "2022": 1
       },
-      "taux_rotation_5ans": 27.3,
+      "taux_rotation_5ans": 25.0,
       "classement_rotation": "Tres actif"
     },
     {
@@ -8899,14 +8899,14 @@
       "code_iris": "693830601",
       "cle_adresse": "190|AVENUE|FELIX FAURE",
       "nb_lots_total": 19,
-      "nb_lots_habitation": 18,
+      "nb_lots_habitation": 19,
       "nb_lots_habitation_rnc": 19,
       "nb_log_bdnb": 18,
       "nb_ventes_2021_2025": 1,
       "ventes_par_an": {
         "2025": 1
       },
-      "taux_rotation_5ans": 5.6,
+      "taux_rotation_5ans": 5.3,
       "classement_rotation": "Modere"
     },
     {
@@ -8918,7 +8918,7 @@
       "code_iris": "693830404",
       "cle_adresse": "52|RUE|ST ANTOINE",
       "nb_lots_total": 39,
-      "nb_lots_habitation": 14,
+      "nb_lots_habitation": 15,
       "nb_lots_habitation_rnc": 15,
       "nb_log_bdnb": 14,
       "nb_ventes_2021_2025": 0,
@@ -8935,7 +8935,7 @@
       "code_iris": "693830405",
       "cle_adresse": "8|RUE|STE ANNE DE BARABAN",
       "nb_lots_total": 17,
-      "nb_lots_habitation": 14,
+      "nb_lots_habitation": 17,
       "nb_lots_habitation_rnc": 17,
       "nb_log_bdnb": 14,
       "nb_ventes_2021_2025": 0,
@@ -8972,7 +8972,7 @@
       "code_iris": "693830603",
       "cle_adresse": "37|RUE|ST MAXIMIN",
       "nb_lots_total": 82,
-      "nb_lots_habitation": 28,
+      "nb_lots_habitation": 27,
       "nb_lots_habitation_rnc": 27,
       "nb_log_bdnb": 28,
       "nb_ventes_2021_2025": 0,
@@ -8989,7 +8989,7 @@
       "code_iris": "693830601",
       "cle_adresse": "45B|AVENUE|LACASSAGNE",
       "nb_lots_total": 10,
-      "nb_lots_habitation": 8,
+      "nb_lots_habitation": 9,
       "nb_lots_habitation_rnc": 9,
       "nb_log_bdnb": 8,
       "nb_ventes_2021_2025": 0,
@@ -9006,7 +9006,7 @@
       "code_iris": "693830502",
       "cle_adresse": "7||PTR ST EUSEBE",
       "nb_lots_total": 75,
-      "nb_lots_habitation": 33,
+      "nb_lots_habitation": 34,
       "nb_lots_habitation_rnc": 34,
       "nb_log_bdnb": 33,
       "nb_ventes_2021_2025": 0,
@@ -9023,14 +9023,14 @@
       "code_iris": "693830501",
       "cle_adresse": "7|RUE|MOISSONNIER",
       "nb_lots_total": 47,
-      "nb_lots_habitation": 14,
+      "nb_lots_habitation": 13,
       "nb_lots_habitation_rnc": 13,
       "nb_log_bdnb": 14,
       "nb_ventes_2021_2025": 2,
       "ventes_par_an": {
         "2021": 2
       },
-      "taux_rotation_5ans": 14.3,
+      "taux_rotation_5ans": 15.4,
       "classement_rotation": "Actif"
     },
     {
@@ -9042,7 +9042,7 @@
       "code_iris": "693830404",
       "cle_adresse": "48|RUE|ST ANTOINE",
       "nb_lots_total": 6,
-      "nb_lots_habitation": 6,
+      "nb_lots_habitation": 5,
       "nb_lots_habitation_rnc": 5,
       "nb_log_bdnb": 6,
       "nb_ventes_2021_2025": 0,
@@ -9059,7 +9059,7 @@
       "code_iris": "693830502",
       "cle_adresse": "128|RUE|ANTOINE CHARIAL",
       "nb_lots_total": 201,
-      "nb_lots_habitation": 12,
+      "nb_lots_habitation": 100,
       "nb_lots_habitation_rnc": 100,
       "nb_log_bdnb": 12,
       "nb_ventes_2021_2025": 0,
@@ -9157,14 +9157,14 @@
       "code_iris": "693830502",
       "cle_adresse": "215|AVENUE|FELIX FAURE",
       "nb_lots_total": 23,
-      "nb_lots_habitation": 15,
+      "nb_lots_habitation": 17,
       "nb_lots_habitation_rnc": 17,
       "nb_log_bdnb": 15,
       "nb_ventes_2021_2025": 1,
       "ventes_par_an": {
         "2024": 1
       },
-      "taux_rotation_5ans": 6.7,
+      "taux_rotation_5ans": 5.9,
       "classement_rotation": "Modere"
     },
     {
@@ -9193,7 +9193,7 @@
       "code_iris": "693830502",
       "cle_adresse": "330|RUE|PAUL BERT",
       "nb_lots_total": 20,
-      "nb_lots_habitation": 5,
+      "nb_lots_habitation": 6,
       "nb_lots_habitation_rnc": 6,
       "nb_log_bdnb": 5,
       "nb_ventes_2021_2025": 2,
@@ -9201,7 +9201,7 @@
         "2024": 1,
         "2025": 1
       },
-      "taux_rotation_5ans": 40.0,
+      "taux_rotation_5ans": 33.3,
       "classement_rotation": "Tres actif"
     },
     {
@@ -9213,15 +9213,15 @@
       "code_iris": "693830501",
       "cle_adresse": "251|RUE|PAUL BERT",
       "nb_lots_total": 17,
-      "nb_lots_habitation": 15,
+      "nb_lots_habitation": 9,
       "nb_lots_habitation_rnc": 9,
       "nb_log_bdnb": 15,
       "nb_ventes_2021_2025": 1,
       "ventes_par_an": {
         "2024": 1
       },
-      "taux_rotation_5ans": 6.7,
-      "classement_rotation": "Modere"
+      "taux_rotation_5ans": 11.1,
+      "classement_rotation": "Actif"
     },
     {
       "numero_immatriculation": "AD4803763",
@@ -9251,7 +9251,7 @@
       "code_iris": "693830601",
       "cle_adresse": "77|RUE|DU DAUPHINE",
       "nb_lots_total": 15,
-      "nb_lots_habitation": 7,
+      "nb_lots_habitation": 8,
       "nb_lots_habitation_rnc": 8,
       "nb_log_bdnb": 7,
       "nb_ventes_2021_2025": 3,
@@ -9259,7 +9259,7 @@
         "2022": 2,
         "2024": 1
       },
-      "taux_rotation_5ans": 42.9,
+      "taux_rotation_5ans": 37.5,
       "classement_rotation": "Tres actif"
     },
     {
@@ -9324,7 +9324,7 @@
       "code_iris": "693830603",
       "cle_adresse": "20|RUE|ROGER BRECHAN",
       "nb_lots_total": 12,
-      "nb_lots_habitation": 7,
+      "nb_lots_habitation": 6,
       "nb_lots_habitation_rnc": 6,
       "nb_log_bdnb": 7,
       "nb_ventes_2021_2025": 0,
@@ -9341,7 +9341,7 @@
       "code_iris": "693830604",
       "cle_adresse": "80|RUE|DU DAUPHINE",
       "nb_lots_total": 16,
-      "nb_lots_habitation": 7,
+      "nb_lots_habitation": 8,
       "nb_lots_habitation_rnc": 8,
       "nb_log_bdnb": 7,
       "nb_ventes_2021_2025": 0,
@@ -9375,7 +9375,7 @@
       "code_iris": "693830502",
       "cle_adresse": "314|RUE|PAUL BERT",
       "nb_lots_total": 115,
-      "nb_lots_habitation": 39,
+      "nb_lots_habitation": 36,
       "nb_lots_habitation_rnc": 36,
       "nb_log_bdnb": 39,
       "nb_ventes_2021_2025": 7,
@@ -9385,7 +9385,7 @@
         "2023": 2,
         "2021": 1
       },
-      "taux_rotation_5ans": 17.9,
+      "taux_rotation_5ans": 19.4,
       "classement_rotation": "Actif"
     },
     {
@@ -9397,7 +9397,7 @@
       "code_iris": "693830502",
       "cle_adresse": "326|RUE|PAUL BERT",
       "nb_lots_total": 10,
-      "nb_lots_habitation": 9,
+      "nb_lots_habitation": 5,
       "nb_lots_habitation_rnc": 5,
       "nb_log_bdnb": 9,
       "nb_ventes_2021_2025": 2,
@@ -9405,7 +9405,7 @@
         "2024": 1,
         "2021": 1
       },
-      "taux_rotation_5ans": 22.2,
+      "taux_rotation_5ans": 40.0,
       "classement_rotation": "Tres actif"
     },
     {
@@ -9456,7 +9456,7 @@
       "code_iris": "693830601",
       "cle_adresse": "71|RUE|DU DAUPHINE",
       "nb_lots_total": 18,
-      "nb_lots_habitation": 13,
+      "nb_lots_habitation": 14,
       "nb_lots_habitation_rnc": 14,
       "nb_log_bdnb": 13,
       "nb_ventes_2021_2025": 0,
@@ -9473,7 +9473,7 @@
       "code_iris": "693830604",
       "cle_adresse": "20B|AVENUE|LACASSAGNE 22 AVENUE LACASSAGNE",
       "nb_lots_total": 188,
-      "nb_lots_habitation": 97,
+      "nb_lots_habitation": 98,
       "nb_lots_habitation_rnc": 98,
       "nb_log_bdnb": 97,
       "nb_ventes_2021_2025": 0,
@@ -9490,7 +9490,7 @@
       "code_iris": "693830601",
       "cle_adresse": "51B|AVENUE|LACASSAGNE",
       "nb_lots_total": 18,
-      "nb_lots_habitation": 15,
+      "nb_lots_habitation": 16,
       "nb_lots_habitation_rnc": 16,
       "nb_log_bdnb": 15,
       "nb_ventes_2021_2025": 0,
@@ -9507,15 +9507,15 @@
       "code_iris": "693830405",
       "cle_adresse": "149|RUE|ANTOINE CHARIAL",
       "nb_lots_total": 15,
-      "nb_lots_habitation": 15,
+      "nb_lots_habitation": 7,
       "nb_lots_habitation_rnc": 7,
       "nb_log_bdnb": 15,
       "nb_ventes_2021_2025": 1,
       "ventes_par_an": {
         "2022": 1
       },
-      "taux_rotation_5ans": 6.7,
-      "classement_rotation": "Modere"
+      "taux_rotation_5ans": 14.3,
+      "classement_rotation": "Actif"
     },
     {
       "numero_immatriculation": "AD5611009",
@@ -9526,7 +9526,7 @@
       "code_iris": "693830604",
       "cle_adresse": "25|RUE|DU PROFESSEUR PAUL SISLEY",
       "nb_lots_total": 164,
-      "nb_lots_habitation": 23,
+      "nb_lots_habitation": 42,
       "nb_lots_habitation_rnc": 42,
       "nb_log_bdnb": 23,
       "nb_ventes_2021_2025": 0,
@@ -9560,7 +9560,7 @@
       "code_iris": "693830402",
       "cle_adresse": "19|RUE|ROPOSTE",
       "nb_lots_total": 5,
-      "nb_lots_habitation": 5,
+      "nb_lots_habitation": 4,
       "nb_lots_habitation_rnc": 4,
       "nb_log_bdnb": 5,
       "nb_ventes_2021_2025": 0,
@@ -9594,7 +9594,7 @@
       "code_iris": "693830403",
       "cle_adresse": "98|RUE|BARABAN",
       "nb_lots_total": 27,
-      "nb_lots_habitation": 11,
+      "nb_lots_habitation": 12,
       "nb_lots_habitation_rnc": 12,
       "nb_log_bdnb": 11,
       "nb_ventes_2021_2025": 0,
@@ -9611,7 +9611,7 @@
       "code_iris": "693830604",
       "cle_adresse": "58|AVENUE|LACASSAGNE",
       "nb_lots_total": 56,
-      "nb_lots_habitation": 27,
+      "nb_lots_habitation": 28,
       "nb_lots_habitation_rnc": 28,
       "nb_log_bdnb": 27,
       "nb_ventes_2021_2025": 7,
@@ -9621,7 +9621,7 @@
         "2021": 1,
         "2024": 1
       },
-      "taux_rotation_5ans": 25.9,
+      "taux_rotation_5ans": 25.0,
       "classement_rotation": "Tres actif"
     },
     {
@@ -9650,7 +9650,7 @@
       "code_iris": "693830502",
       "cle_adresse": "3|RUE|TURBIL",
       "nb_lots_total": 29,
-      "nb_lots_habitation": 27,
+      "nb_lots_habitation": 29,
       "nb_lots_habitation_rnc": 29,
       "nb_log_bdnb": 27,
       "nb_ventes_2021_2025": 0,
@@ -9701,7 +9701,7 @@
       "code_iris": "693830501",
       "cle_adresse": "218|RUE|PAUL BERT",
       "nb_lots_total": 48,
-      "nb_lots_habitation": 15,
+      "nb_lots_habitation": 22,
       "nb_lots_habitation_rnc": 22,
       "nb_log_bdnb": 15,
       "nb_ventes_2021_2025": 2,
@@ -9709,8 +9709,8 @@
         "2022": 1,
         "2023": 1
       },
-      "taux_rotation_5ans": 13.3,
-      "classement_rotation": "Actif"
+      "taux_rotation_5ans": 9.1,
+      "classement_rotation": "Modere"
     },
     {
       "numero_immatriculation": "AD7296320",
@@ -9721,7 +9721,7 @@
       "code_iris": "693830603",
       "cle_adresse": "79|COURS|ALBERT THOMAS",
       "nb_lots_total": 31,
-      "nb_lots_habitation": 28,
+      "nb_lots_habitation": 30,
       "nb_lots_habitation_rnc": 30,
       "nb_log_bdnb": 28,
       "nb_ventes_2021_2025": 8,
@@ -9731,7 +9731,7 @@
         "2025": 1,
         "2022": 2
       },
-      "taux_rotation_5ans": 28.6,
+      "taux_rotation_5ans": 26.7,
       "classement_rotation": "Tres actif"
     },
     {
@@ -9743,7 +9743,7 @@
       "code_iris": "693830405",
       "cle_adresse": "99|RUE|BARABAN",
       "nb_lots_total": 19,
-      "nb_lots_habitation": 5,
+      "nb_lots_habitation": 7,
       "nb_lots_habitation_rnc": 7,
       "nb_log_bdnb": 5,
       "nb_ventes_2021_2025": 0,
@@ -9760,14 +9760,14 @@
       "code_iris": "693830602",
       "cle_adresse": "30|RUE|DU DAUPHINE",
       "nb_lots_total": 22,
-      "nb_lots_habitation": 9,
+      "nb_lots_habitation": 10,
       "nb_lots_habitation_rnc": 10,
       "nb_log_bdnb": 9,
       "nb_ventes_2021_2025": 1,
       "ventes_par_an": {
         "2021": 1
       },
-      "taux_rotation_5ans": 11.1,
+      "taux_rotation_5ans": 10.0,
       "classement_rotation": "Actif"
     },
     {
@@ -9860,7 +9860,7 @@
       "code_iris": "693830601",
       "cle_adresse": "23|RUE|DE LA METALLURGIE",
       "nb_lots_total": 86,
-      "nb_lots_habitation": 35,
+      "nb_lots_habitation": 36,
       "nb_lots_habitation_rnc": 36,
       "nb_log_bdnb": 35,
       "nb_ventes_2021_2025": 4,
@@ -9869,7 +9869,7 @@
         "2024": 1,
         "2022": 2
       },
-      "taux_rotation_5ans": 11.4,
+      "taux_rotation_5ans": 11.1,
       "classement_rotation": "Actif"
     },
     {
@@ -9881,7 +9881,7 @@
       "code_iris": "693830404",
       "cle_adresse": "50|RUE|ST ANTOINE",
       "nb_lots_total": 50,
-      "nb_lots_habitation": 26,
+      "nb_lots_habitation": 25,
       "nb_lots_habitation_rnc": 25,
       "nb_log_bdnb": 26,
       "nb_ventes_2021_2025": 0,
@@ -9915,7 +9915,7 @@
       "code_iris": "693830405",
       "cle_adresse": "155|RUE|ANTOINE CHARIAL",
       "nb_lots_total": 24,
-      "nb_lots_habitation": 7,
+      "nb_lots_habitation": 8,
       "nb_lots_habitation_rnc": 8,
       "nb_log_bdnb": 7,
       "nb_ventes_2021_2025": 3,
@@ -9924,7 +9924,7 @@
         "2024": 1,
         "2021": 1
       },
-      "taux_rotation_5ans": 42.9,
+      "taux_rotation_5ans": 37.5,
       "classement_rotation": "Tres actif"
     },
     {
@@ -9936,7 +9936,7 @@
       "code_iris": "693830502",
       "cle_adresse": "48|RUE|TURBIL",
       "nb_lots_total": 44,
-      "nb_lots_habitation": 19,
+      "nb_lots_habitation": 18,
       "nb_lots_habitation_rnc": 18,
       "nb_log_bdnb": 19,
       "nb_ventes_2021_2025": 4,
@@ -9945,7 +9945,7 @@
         "2022": 1,
         "2024": 2
       },
-      "taux_rotation_5ans": 21.1,
+      "taux_rotation_5ans": 22.2,
       "classement_rotation": "Tres actif"
     },
     {
@@ -9979,7 +9979,7 @@
       "code_iris": "693830602",
       "cle_adresse": "24|RUE|DU DAUPHINE",
       "nb_lots_total": 14,
-      "nb_lots_habitation": 13,
+      "nb_lots_habitation": 7,
       "nb_lots_habitation_rnc": 7,
       "nb_log_bdnb": 13,
       "nb_ventes_2021_2025": 2,
@@ -9987,8 +9987,8 @@
         "2021": 1,
         "2025": 1
       },
-      "taux_rotation_5ans": 15.4,
-      "classement_rotation": "Actif"
+      "taux_rotation_5ans": 28.6,
+      "classement_rotation": "Tres actif"
     },
     {
       "numero_immatriculation": "AE1195031",
@@ -9999,7 +9999,7 @@
       "code_iris": "693830502",
       "cle_adresse": "24|RUE|DE L ESPERANCE",
       "nb_lots_total": 20,
-      "nb_lots_habitation": 7,
+      "nb_lots_habitation": 10,
       "nb_lots_habitation_rnc": 10,
       "nb_log_bdnb": 7,
       "nb_ventes_2021_2025": 3,
@@ -10007,7 +10007,7 @@
         "2025": 1,
         "2023": 2
       },
-      "taux_rotation_5ans": 42.9,
+      "taux_rotation_5ans": 30.0,
       "classement_rotation": "Tres actif"
     },
     {
@@ -10036,7 +10036,7 @@
       "code_iris": "693830502",
       "cle_adresse": "264B|RUE|PAUL BERT",
       "nb_lots_total": 36,
-      "nb_lots_habitation": 25,
+      "nb_lots_habitation": 8,
       "nb_lots_habitation_rnc": 8,
       "nb_log_bdnb": 25,
       "nb_ventes_2021_2025": 0,
@@ -10112,7 +10112,7 @@
       "code_iris": "693830405",
       "cle_adresse": "4|RUE|STE ANNE DE BARABAN",
       "nb_lots_total": 92,
-      "nb_lots_habitation": 29,
+      "nb_lots_habitation": 27,
       "nb_lots_habitation_rnc": 27,
       "nb_log_bdnb": 29,
       "nb_ventes_2021_2025": 0,
@@ -10151,7 +10151,7 @@
       "code_iris": "693830502",
       "cle_adresse": "142|RUE|ANTOINE CHARIAL",
       "nb_lots_total": 17,
-      "nb_lots_habitation": 8,
+      "nb_lots_habitation": 9,
       "nb_lots_habitation_rnc": 9,
       "nb_log_bdnb": 8,
       "nb_ventes_2021_2025": 12,
@@ -10160,7 +10160,7 @@
         "2022": 6,
         "2021": 2
       },
-      "taux_rotation_5ans": 150.0,
+      "taux_rotation_5ans": 133.3,
       "classement_rotation": "Tres actif"
     },
     {
@@ -10172,7 +10172,7 @@
       "code_iris": "693830602",
       "cle_adresse": "51|RUE|DU DAUPHINE",
       "nb_lots_total": 19,
-      "nb_lots_habitation": 9,
+      "nb_lots_habitation": 8,
       "nb_lots_habitation_rnc": 8,
       "nb_log_bdnb": 9,
       "nb_ventes_2021_2025": 2,
@@ -10180,7 +10180,7 @@
         "2022": 1,
         "2023": 1
       },
-      "taux_rotation_5ans": 22.2,
+      "taux_rotation_5ans": 25.0,
       "classement_rotation": "Tres actif"
     },
     {
@@ -10192,7 +10192,7 @@
       "code_iris": "693830502",
       "cle_adresse": "147|RUE|BARABAN",
       "nb_lots_total": 22,
-      "nb_lots_habitation": 10,
+      "nb_lots_habitation": 11,
       "nb_lots_habitation_rnc": 11,
       "nb_log_bdnb": 10,
       "nb_ventes_2021_2025": 2,
@@ -10200,8 +10200,8 @@
         "2023": 1,
         "2025": 1
       },
-      "taux_rotation_5ans": 20.0,
-      "classement_rotation": "Tres actif"
+      "taux_rotation_5ans": 18.2,
+      "classement_rotation": "Actif"
     },
     {
       "numero_immatriculation": "AE6121685",
@@ -10212,7 +10212,7 @@
       "code_iris": "693830604",
       "cle_adresse": "3|RUE|BARA",
       "nb_lots_total": 24,
-      "nb_lots_habitation": 11,
+      "nb_lots_habitation": 12,
       "nb_lots_habitation_rnc": 12,
       "nb_log_bdnb": 11,
       "nb_ventes_2021_2025": 0,
@@ -10266,7 +10266,7 @@
       "code_iris": "693830602",
       "cle_adresse": "39|COURS|ALBERT THOMAS",
       "nb_lots_total": 35,
-      "nb_lots_habitation": 33,
+      "nb_lots_habitation": 35,
       "nb_lots_habitation_rnc": 35,
       "nb_log_bdnb": 33,
       "nb_ventes_2021_2025": 11,
@@ -10277,7 +10277,7 @@
         "2024": 4,
         "2021": 1
       },
-      "taux_rotation_5ans": 33.3,
+      "taux_rotation_5ans": 31.4,
       "classement_rotation": "Tres actif"
     },
     {
@@ -10289,7 +10289,7 @@
       "code_iris": "693830402",
       "cle_adresse": "28|RUE|BARABAN",
       "nb_lots_total": 54,
-      "nb_lots_habitation": 24,
+      "nb_lots_habitation": 25,
       "nb_lots_habitation_rnc": 25,
       "nb_log_bdnb": 24,
       "nb_ventes_2021_2025": 5,
@@ -10299,7 +10299,7 @@
         "2022": 1,
         "2024": 1
       },
-      "taux_rotation_5ans": 20.8,
+      "taux_rotation_5ans": 20.0,
       "classement_rotation": "Tres actif"
     },
     {
@@ -10311,7 +10311,7 @@
       "code_iris": "693830604",
       "cle_adresse": "66|AVENUE|LACASSAGNE",
       "nb_lots_total": 115,
-      "nb_lots_habitation": 69,
+      "nb_lots_habitation": 51,
       "nb_lots_habitation_rnc": 51,
       "nb_log_bdnb": 69,
       "nb_ventes_2021_2025": 0,
@@ -10328,7 +10328,7 @@
       "code_iris": "693830401",
       "cle_adresse": "17|RUE|ST ANTOINE",
       "nb_lots_total": 90,
-      "nb_lots_habitation": 42,
+      "nb_lots_habitation": 45,
       "nb_lots_habitation_rnc": 45,
       "nb_log_bdnb": 42,
       "nb_ventes_2021_2025": 0,
@@ -10345,15 +10345,15 @@
       "code_iris": "693830501",
       "cle_adresse": "76|RUE|ETIENNE RICHERAND",
       "nb_lots_total": 139,
-      "nb_lots_habitation": 13,
+      "nb_lots_habitation": 41,
       "nb_lots_habitation_rnc": 41,
       "nb_log_bdnb": 13,
       "nb_ventes_2021_2025": 1,
       "ventes_par_an": {
         "2023": 1
       },
-      "taux_rotation_5ans": 7.7,
-      "classement_rotation": "Modere"
+      "taux_rotation_5ans": 2.4,
+      "classement_rotation": "Fige"
     },
     {
       "numero_immatriculation": "AE9778358",
@@ -10364,7 +10364,7 @@
       "code_iris": "693830404",
       "cle_adresse": "50B|RUE|ST ANTOINE",
       "nb_lots_total": 27,
-      "nb_lots_habitation": 11,
+      "nb_lots_habitation": 27,
       "nb_lots_habitation_rnc": 27,
       "nb_log_bdnb": 11,
       "nb_ventes_2021_2025": 0,
@@ -10398,7 +10398,7 @@
       "code_iris": "693830502",
       "cle_adresse": "20|RUE|FREDERIC MISTRAL",
       "nb_lots_total": 3,
-      "nb_lots_habitation": 11,
+      "nb_lots_habitation": 3,
       "nb_lots_habitation_rnc": 3,
       "nb_log_bdnb": 11,
       "nb_ventes_2021_2025": 9,
@@ -10408,7 +10408,7 @@
         "2021": 3,
         "2023": 2
       },
-      "taux_rotation_5ans": 81.8,
+      "taux_rotation_5ans": 300.0,
       "classement_rotation": "Tres actif"
     },
     {
@@ -10420,7 +10420,7 @@
       "code_iris": "693830601",
       "cle_adresse": "184|AVENUE|FELIX FAURE",
       "nb_lots_total": 29,
-      "nb_lots_habitation": 15,
+      "nb_lots_habitation": 13,
       "nb_lots_habitation_rnc": 13,
       "nb_log_bdnb": 15,
       "nb_ventes_2021_2025": 7,
@@ -10430,7 +10430,7 @@
         "2024": 1,
         "2025": 2
       },
-      "taux_rotation_5ans": 46.7,
+      "taux_rotation_5ans": 53.8,
       "classement_rotation": "Tres actif"
     },
     {
@@ -10442,7 +10442,7 @@
       "code_iris": "693830602",
       "cle_adresse": "13|RUE|ROSSAN",
       "nb_lots_total": 73,
-      "nb_lots_habitation": 11,
+      "nb_lots_habitation": 31,
       "nb_lots_habitation_rnc": 31,
       "nb_log_bdnb": 11,
       "nb_ventes_2021_2025": 6,
@@ -10452,8 +10452,8 @@
         "2023": 1,
         "2025": 1
       },
-      "taux_rotation_5ans": 54.5,
-      "classement_rotation": "Tres actif"
+      "taux_rotation_5ans": 19.4,
+      "classement_rotation": "Actif"
     },
     {
       "numero_immatriculation": "AF4080479",
@@ -10483,7 +10483,7 @@
       "code_iris": "693830404",
       "cle_adresse": "28|RUE|DE LA CITE",
       "nb_lots_total": 42,
-      "nb_lots_habitation": 34,
+      "nb_lots_habitation": 22,
       "nb_lots_habitation_rnc": 22,
       "nb_log_bdnb": 34,
       "nb_ventes_2021_2025": 8,
@@ -10492,7 +10492,7 @@
         "2024": 3,
         "2023": 2
       },
-      "taux_rotation_5ans": 23.5,
+      "taux_rotation_5ans": 36.4,
       "classement_rotation": "Tres actif"
     },
     {
@@ -10647,7 +10647,7 @@
       "code_iris": "693830502",
       "cle_adresse": "331|RUE|PAUL BERT",
       "nb_lots_total": 3,
-      "nb_lots_habitation": 11,
+      "nb_lots_habitation": 2,
       "nb_lots_habitation_rnc": 2,
       "nb_log_bdnb": 11,
       "nb_ventes_2021_2025": 3,
@@ -10655,7 +10655,7 @@
         "2023": 2,
         "2021": 1
       },
-      "taux_rotation_5ans": 27.3,
+      "taux_rotation_5ans": 150.0,
       "classement_rotation": "Tres actif"
     },
     {
@@ -10667,14 +10667,14 @@
       "code_iris": "693830404",
       "cle_adresse": "312|COURS|LAFAYETTE",
       "nb_lots_total": 9,
-      "nb_lots_habitation": 9,
+      "nb_lots_habitation": 8,
       "nb_lots_habitation_rnc": 8,
       "nb_log_bdnb": 9,
       "nb_ventes_2021_2025": 1,
       "ventes_par_an": {
         "2025": 1
       },
-      "taux_rotation_5ans": 11.1,
+      "taux_rotation_5ans": 12.5,
       "classement_rotation": "Actif"
     },
     {
@@ -10686,7 +10686,7 @@
       "code_iris": "693830501",
       "cle_adresse": "30|RUE|ANTOINE CHARIAL",
       "nb_lots_total": 177,
-      "nb_lots_habitation": 54,
+      "nb_lots_habitation": 55,
       "nb_lots_habitation_rnc": 55,
       "nb_log_bdnb": 54,
       "nb_ventes_2021_2025": 8,
@@ -10697,7 +10697,7 @@
         "2022": 4,
         "2024": 1
       },
-      "taux_rotation_5ans": 14.8,
+      "taux_rotation_5ans": 14.5,
       "classement_rotation": "Actif"
     },
     {
@@ -10726,7 +10726,7 @@
       "code_iris": "693830502",
       "cle_adresse": "337|RUE|PAUL BERT",
       "nb_lots_total": 12,
-      "nb_lots_habitation": 11,
+      "nb_lots_habitation": 12,
       "nb_lots_habitation_rnc": 12,
       "nb_log_bdnb": 11,
       "nb_ventes_2021_2025": 2,
@@ -10734,7 +10734,7 @@
         "2023": 1,
         "2021": 1
       },
-      "taux_rotation_5ans": 18.2,
+      "taux_rotation_5ans": 16.7,
       "classement_rotation": "Actif"
     },
     {
@@ -10855,7 +10855,7 @@
       "code_iris": "693830601",
       "cle_adresse": "226|AVENUE|FELIX FAURE",
       "nb_lots_total": 25,
-      "nb_lots_habitation": 11,
+      "nb_lots_habitation": 12,
       "nb_lots_habitation_rnc": 12,
       "nb_log_bdnb": 11,
       "nb_ventes_2021_2025": 0,
@@ -10872,7 +10872,7 @@
       "code_iris": "693830402",
       "cle_adresse": "19|RUE|ETIENNE RICHERAND",
       "nb_lots_total": 24,
-      "nb_lots_habitation": 7,
+      "nb_lots_habitation": 8,
       "nb_lots_habitation_rnc": 8,
       "nb_log_bdnb": 7,
       "nb_ventes_2021_2025": 3,
@@ -10880,7 +10880,7 @@
         "2021": 2,
         "2022": 1
       },
-      "taux_rotation_5ans": 42.9,
+      "taux_rotation_5ans": 37.5,
       "classement_rotation": "Tres actif"
     },
     {
@@ -10909,7 +10909,7 @@
       "code_iris": "693830502",
       "cle_adresse": "8|RUE|ST EUSEBE",
       "nb_lots_total": 35,
-      "nb_lots_habitation": 32,
+      "nb_lots_habitation": 15,
       "nb_lots_habitation_rnc": 15,
       "nb_log_bdnb": 32,
       "nb_ventes_2021_2025": 0,
@@ -10943,7 +10943,7 @@
       "code_iris": "693830602",
       "cle_adresse": "41|COURS|ALBERT THOMAS 24 RUE DES TUILIERS",
       "nb_lots_total": 75,
-      "nb_lots_habitation": 33,
+      "nb_lots_habitation": 34,
       "nb_lots_habitation_rnc": 34,
       "nb_log_bdnb": 33,
       "nb_ventes_2021_2025": 0,
@@ -10994,7 +10994,7 @@
       "code_iris": "693830501",
       "cle_adresse": "128|RUE|BARABAN",
       "nb_lots_total": 40,
-      "nb_lots_habitation": 18,
+      "nb_lots_habitation": 24,
       "nb_lots_habitation_rnc": 24,
       "nb_log_bdnb": 18,
       "nb_ventes_2021_2025": 28,
@@ -11003,7 +11003,7 @@
         "2023": 2,
         "2021": 11
       },
-      "taux_rotation_5ans": 155.6,
+      "taux_rotation_5ans": 116.7,
       "classement_rotation": "Tres actif"
     },
     {
@@ -11015,7 +11015,7 @@
       "code_iris": "693830402",
       "cle_adresse": "29|RUE|ETIENNE RICHERAND",
       "nb_lots_total": 124,
-      "nb_lots_habitation": 64,
+      "nb_lots_habitation": 65,
       "nb_lots_habitation_rnc": 65,
       "nb_log_bdnb": 64,
       "nb_ventes_2021_2025": 0,
@@ -11054,7 +11054,7 @@
       "code_iris": "693830601",
       "cle_adresse": "43|AVENUE|LACASSAGNE",
       "nb_lots_total": 58,
-      "nb_lots_habitation": 24,
+      "nb_lots_habitation": 23,
       "nb_lots_habitation_rnc": 23,
       "nb_log_bdnb": 24,
       "nb_ventes_2021_2025": 14,
@@ -11065,7 +11065,7 @@
         "2023": 1,
         "2024": 2
       },
-      "taux_rotation_5ans": 58.3,
+      "taux_rotation_5ans": 60.9,
       "classement_rotation": "Tres actif"
     },
     {
@@ -11077,15 +11077,15 @@
       "code_iris": "693830401",
       "cle_adresse": "4|RUE|ETIENNE RICHERAND",
       "nb_lots_total": 5,
-      "nb_lots_habitation": 19,
+      "nb_lots_habitation": 4,
       "nb_lots_habitation_rnc": 4,
       "nb_log_bdnb": 19,
       "nb_ventes_2021_2025": 1,
       "ventes_par_an": {
         "2021": 1
       },
-      "taux_rotation_5ans": 5.3,
-      "classement_rotation": "Modere"
+      "taux_rotation_5ans": 25.0,
+      "classement_rotation": "Tres actif"
     },
     {
       "numero_immatriculation": "AH1523554",
@@ -11138,14 +11138,14 @@
       "code_iris": "693830501",
       "cle_adresse": "150|RUE|BARABAN",
       "nb_lots_total": 25,
-      "nb_lots_habitation": 13,
+      "nb_lots_habitation": 14,
       "nb_lots_habitation_rnc": 14,
       "nb_log_bdnb": 13,
       "nb_ventes_2021_2025": 1,
       "ventes_par_an": {
         "2022": 1
       },
-      "taux_rotation_5ans": 7.7,
+      "taux_rotation_5ans": 7.1,
       "classement_rotation": "Modere"
     },
     {
@@ -11235,15 +11235,15 @@
       "code_iris": "693830404",
       "cle_adresse": "24|RUE|CLAUDIUS PIONCHON",
       "nb_lots_total": 106,
-      "nb_lots_habitation": 61,
+      "nb_lots_habitation": 60,
       "nb_lots_habitation_rnc": 60,
       "nb_log_bdnb": 61,
       "nb_ventes_2021_2025": 6,
       "ventes_par_an": {
         "2023": 6
       },
-      "taux_rotation_5ans": 9.8,
-      "classement_rotation": "Modere"
+      "taux_rotation_5ans": 10.0,
+      "classement_rotation": "Actif"
     },
     {
       "numero_immatriculation": "AH8002198",
@@ -11277,7 +11277,7 @@
       "code_iris": "693830501",
       "cle_adresse": "220|RUE|PAUL BERT",
       "nb_lots_total": 33,
-      "nb_lots_habitation": 32,
+      "nb_lots_habitation": 31,
       "nb_lots_habitation_rnc": 31,
       "nb_log_bdnb": 32,
       "nb_ventes_2021_2025": 0,
@@ -11294,7 +11294,7 @@
       "code_iris": "693830502",
       "cle_adresse": "252B|RUE|PAUL BERT",
       "nb_lots_total": 26,
-      "nb_lots_habitation": 7,
+      "nb_lots_habitation": 19,
       "nb_lots_habitation_rnc": 19,
       "nb_log_bdnb": 7,
       "nb_ventes_2021_2025": 0,
@@ -11353,7 +11353,7 @@
       "code_iris": "693830405",
       "cle_adresse": "53|RUE|STE ANNE DE BARABAN",
       "nb_lots_total": 35,
-      "nb_lots_habitation": 11,
+      "nb_lots_habitation": 20,
       "nb_lots_habitation_rnc": 20,
       "nb_log_bdnb": 11,
       "nb_ventes_2021_2025": 0,
@@ -11387,15 +11387,15 @@
       "code_iris": "693830502",
       "cle_adresse": "156|RUE|ANTOINE CHARIAL",
       "nb_lots_total": 12,
-      "nb_lots_habitation": 5,
+      "nb_lots_habitation": 7,
       "nb_lots_habitation_rnc": 7,
       "nb_log_bdnb": 5,
       "nb_ventes_2021_2025": 1,
       "ventes_par_an": {
         "2023": 1
       },
-      "taux_rotation_5ans": 20.0,
-      "classement_rotation": "Tres actif"
+      "taux_rotation_5ans": 14.3,
+      "classement_rotation": "Actif"
     },
     {
       "numero_immatriculation": "AI3897188",
@@ -11483,7 +11483,7 @@
       "code_iris": "693830604",
       "cle_adresse": "7|RUE|PROFESSEUR PAUL SISLEY",
       "nb_lots_total": 102,
-      "nb_lots_habitation": 33,
+      "nb_lots_habitation": 34,
       "nb_lots_habitation_rnc": 34,
       "nb_log_bdnb": 33,
       "nb_ventes_2021_2025": 2,
@@ -11491,7 +11491,7 @@
         "2021": 1,
         "2023": 1
       },
-      "taux_rotation_5ans": 6.1,
+      "taux_rotation_5ans": 5.9,
       "classement_rotation": "Modere"
     },
     {
@@ -11582,15 +11582,15 @@
       "code_iris": "693830401",
       "cle_adresse": "1|RUE|DE LA VILLETTE",
       "nb_lots_total": 31,
-      "nb_lots_habitation": 24,
+      "nb_lots_habitation": 12,
       "nb_lots_habitation_rnc": 12,
       "nb_log_bdnb": 24,
       "nb_ventes_2021_2025": 1,
       "ventes_par_an": {
         "2024": 1
       },
-      "taux_rotation_5ans": 4.2,
-      "classement_rotation": "Fige"
+      "taux_rotation_5ans": 8.3,
+      "classement_rotation": "Modere"
     }
   ],
   "adresses": [
@@ -11977,7 +11977,11 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-GTJK-YJDJ-ECAN",
-      "_bdnb_match": "immat"
+      "_bdnb_match": "immat",
+      "_fusion_auto_label": "128/130 RUE ANTOINE CHARIAL",
+      "_fusion_auto_sources": [
+        "130|RUE|ANTOINE CHARIAL"
+      ]
     },
     {
       "cle": "219|AVENUE|FELIX FAURE",
@@ -12058,7 +12062,11 @@
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-YTPF-DAGN-K1LQ",
-      "_bdnb_match": "immat"
+      "_bdnb_match": "immat",
+      "_fusion_auto_label": "9/11 RUE DE LA METALLURGIE",
+      "_fusion_auto_sources": [
+        "11|RUE|DE LA METALLURGIE"
+      ]
     },
     {
       "cle": "14|RUE|DU DOCTEUR REBATEL",
@@ -14156,7 +14164,11 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-K4P3-8SNY-YGD3",
-      "_bdnb_match": "immat"
+      "_bdnb_match": "immat",
+      "_fusion_auto_label": "165/167 AVENUE FELIX FAURE",
+      "_fusion_auto_sources": [
+        "167|AVENUE|FELIX FAURE"
+      ]
     },
     {
       "cle": "166|RUE|BARABAN",
@@ -15847,7 +15859,11 @@
       "type_batiment": "appartement",
       "type_chauffage": "reseau de chaleur",
       "batiment_groupe_id": "bdnb-bg-7TYE-FUDZ-T2KQ",
-      "_bdnb_match": "immat"
+      "_bdnb_match": "immat",
+      "_fusion_auto_label": "17/19 RUE ST ANTOINE",
+      "_fusion_auto_sources": [
+        "17|RUE|ST ANTOINE"
+      ]
     },
     {
       "cle": "2|RUE|GABILLOT",
@@ -15926,7 +15942,11 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-81HL-8BC6-UPG6",
-      "_bdnb_match": "immat"
+      "_bdnb_match": "immat",
+      "_fusion_auto_label": "2/8 RUE ST EUSEBE",
+      "_fusion_auto_sources": [
+        "8|RUE|ST EUSEBE"
+      ]
     },
     {
       "cle": "20|AVENUE|GEORGES POMPIDOU",
@@ -18016,7 +18036,9 @@
       "type_batiment": "appartement",
       "type_chauffage": "reseau de chaleur",
       "batiment_groupe_id": "bdnb-bg-4BCZ-EFDZ-724F",
-      "_bdnb_match": "immat"
+      "_bdnb_match": "immat",
+      "_fusion_auto": true,
+      "_fusion_cible": "20|RUE|ST SIDOINE"
     },
     {
       "cle": "13|AVENUE|GEORGES POMPIDOU",
@@ -18410,7 +18432,11 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-PFFK-6Z9V-TUP1",
-      "_bdnb_match": "num_voie"
+      "_bdnb_match": "num_voie",
+      "_fusion_auto_label": "13/15 RUE ST ANTOINE",
+      "_fusion_auto_sources": [
+        "13|RUE|ST ANTOINE"
+      ]
     },
     {
       "cle": "15|RUE|ST EUSEBE",
@@ -18515,7 +18541,9 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-BYKE-3R6H-S1VF",
-      "_bdnb_match": "num_voie"
+      "_bdnb_match": "num_voie",
+      "_fusion_auto": true,
+      "_fusion_cible": "165|AVENUE|FELIX FAURE"
     },
     {
       "cle": "168|AVENUE|FELIX FAURE",
@@ -19599,7 +19627,11 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-LS26-PDJ2-S81A",
-      "_bdnb_match": "num_voie"
+      "_bdnb_match": "num_voie",
+      "_fusion_auto_label": "35/37 AVENUE LACASSAGNE",
+      "_fusion_auto_sources": [
+        "35|AVENUE|LACASSAGNE"
+      ]
     },
     {
       "cle": "37|RUE|BARABAN",
@@ -19678,7 +19710,11 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-YTPJ-Q2XB-2DEF",
-      "_bdnb_match": "immat"
+      "_bdnb_match": "immat",
+      "_fusion_auto_label": "39/43 RUE GUILLOUD",
+      "_fusion_auto_sources": [
+        "43|RUE|GUILLOUD"
+      ]
     },
     {
       "cle": "39|RUE|MAURICE FLANDIN",
@@ -19704,7 +19740,11 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-BR23-GTEH-A2R5",
-      "_bdnb_match": "immat"
+      "_bdnb_match": "immat",
+      "_fusion_auto_label": "39/41 RUE MAURICE FLANDIN",
+      "_fusion_auto_sources": [
+        "41|RUE|MAURICE FLANDIN"
+      ]
     },
     {
       "cle": "40|RUE|ANTOINE CHARIAL",
@@ -19781,7 +19821,9 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-2U6C-ECJX-TB83",
-      "_bdnb_match": "immat"
+      "_bdnb_match": "immat",
+      "_fusion_auto": true,
+      "_fusion_cible": "39|RUE|MAURICE FLANDIN"
     },
     {
       "cle": "41|RUE|ST ANTOINE",
@@ -20036,11 +20078,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-FBLV-MDEK-PE5T",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "6/8 RUE ST EUSEBE",
-      "_fusion_auto_sources": [
-        "8|RUE|ST EUSEBE"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "63|RUE|BARABAN",
@@ -20365,11 +20403,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-YFY8-XRG7-16PK",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": null,
-      "_fusion_auto_sources": [
-        "13|RUE|ST ANTOINE"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "9|RUE|ROGER BRECHAN",
@@ -21151,7 +21185,9 @@
       "type_batiment": "maison",
       "type_chauffage": "fioul",
       "batiment_groupe_id": "bdnb-bg-324Y-G9R6-B2ZS",
-      "_bdnb_match": "num_voie"
+      "_bdnb_match": "num_voie",
+      "_fusion_auto": true,
+      "_fusion_cible": "9|RUE|DE LA METALLURGIE"
     },
     {
       "cle": "234|AVENUE|FELIX FAURE",
@@ -22193,7 +22229,9 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-4UPX-Y7FC-4PM3",
-      "_bdnb_match": "num_voie"
+      "_bdnb_match": "num_voie",
+      "_fusion_auto": true,
+      "_fusion_cible": "128|RUE|ANTOINE CHARIAL"
     },
     {
       "cle": "14|RUE|DE NAZARETH",
@@ -22615,7 +22653,9 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-PFFK-6Z9V-TUP1",
-      "_bdnb_match": "immat"
+      "_bdnb_match": "immat",
+      "_fusion_auto": true,
+      "_fusion_cible": "19|RUE|ST ANTOINE"
     },
     {
       "cle": "17|RUE|ST MAXIMIN",
@@ -23009,7 +23049,11 @@
       "type_batiment": "appartement",
       "type_chauffage": "reseau de chaleur",
       "batiment_groupe_id": "bdnb-bg-4BCZ-EFDZ-724F",
-      "_bdnb_match": "num_voie"
+      "_bdnb_match": "num_voie",
+      "_fusion_auto_label": "12/20 RUE ST SIDOINE",
+      "_fusion_auto_sources": [
+        "12|RUE|ST SIDOINE"
+      ]
     },
     {
       "cle": "20|RUE|ST VICTORIEN",
@@ -24427,7 +24471,9 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-HRU7-Q3L9-HXJT",
-      "_bdnb_match": "immat"
+      "_bdnb_match": "immat",
+      "_fusion_auto": true,
+      "_fusion_cible": "37|AVENUE|LACASSAGNE"
     },
     {
       "cle": "35|RUE|GUILLOUD",
@@ -27355,7 +27401,7 @@
       "batiment_groupe_id": "bdnb-bg-YFY8-XRG7-16PK",
       "_bdnb_match": "immat",
       "_fusion_auto": true,
-      "_fusion_cible": "89|RUE|BELLECOMBE"
+      "_fusion_cible": "15|RUE|ST ANTOINE"
     },
     {
       "cle": "13|RUE|ST SIDOINE",
@@ -32701,7 +32747,9 @@
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-SCQS-HYN4-PPDQ",
-      "_bdnb_match": "immat"
+      "_bdnb_match": "immat",
+      "_fusion_auto": true,
+      "_fusion_cible": "29|RUE|DE LA METALLURGIE"
     },
     {
       "cle": "27|RUE|DE LA VILLETTE",
@@ -33246,7 +33294,11 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-4RMJ-W193-8VZA",
-      "_bdnb_match": "num_voie"
+      "_bdnb_match": "num_voie",
+      "_fusion_auto_label": "27/29 RUE DE LA METALLURGIE",
+      "_fusion_auto_sources": [
+        "27|RUE|DE LA METALLURGIE"
+      ]
     },
     {
       "cle": "29|RUE|DU DAUPHINE",
@@ -35204,7 +35256,11 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-U297-N64A-4SXK",
-      "_bdnb_match": "immat"
+      "_bdnb_match": "immat",
+      "_fusion_auto_label": "4/6 RUE DES TEINTURIERS",
+      "_fusion_auto_sources": [
+        "6|RUE|DES TEINTURIERS"
+      ]
     },
     {
       "cle": "4|RUE|DU DAUPHINE",
@@ -35816,7 +35872,9 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-YTPJ-Q2XB-2DEF",
-      "_bdnb_match": "num_voie"
+      "_bdnb_match": "num_voie",
+      "_fusion_auto": true,
+      "_fusion_cible": "39|RUE|GUILLOUD"
     },
     {
       "cle": "43|RUE|MAURICE FLANDIN",
@@ -37610,7 +37668,9 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-U297-N64A-4SXK",
-      "_bdnb_match": "num_voie"
+      "_bdnb_match": "num_voie",
+      "_fusion_auto": true,
+      "_fusion_cible": "4|RUE|DES TEINTURIERS"
     },
     {
       "cle": "6|RUE|DU DAUPHINE",
@@ -38810,7 +38870,7 @@
       "batiment_groupe_id": "bdnb-bg-FBLV-MDEK-PE5T",
       "_bdnb_match": "immat",
       "_fusion_auto": true,
-      "_fusion_cible": "6|RUE|ST EUSEBE"
+      "_fusion_cible": "2|RUE|ST EUSEBE"
     },
     {
       "cle": "8|RUE|ST THEODORE",
