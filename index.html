@@ -2207,7 +2207,10 @@ function renderSecteur() {
           + sctAdr(nameCell)
           + sctCell(sctDpe(a.classe_dpe), SCTW.dpe, 'center')
           + sctCell(sciCell, SCTW.sci, 'left')
-          + sctCell(lots != null ? lots : '<span style="color:var(--text2);">—</span>', SCTW.lots, 'center')
+          + sctCell(lots != null ? lots
+              : (denomAff != null
+                  ? `<span title="logements BDNB (hors RNC)" style="color:var(--text2);">${denomAff}</span>`
+                  : '<span style="color:var(--text2);">—</span>'), SCTW.lots, 'center')
           + ANS.map(y => sctCell(String(effV[y] || 0), SCTW.an, 'center')).join('')
           + sctCell(`<b>${effTot}</b>`, SCTW.tot, 'center')
           + sctCell(taux != null ? taux + '%' : '<span style="color:var(--text2);">—</span>', SCTW.taux, 'center')
