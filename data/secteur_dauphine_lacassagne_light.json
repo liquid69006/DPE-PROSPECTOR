@@ -11704,12 +11704,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-9SJM-2V31-SHKZ",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "13/14/15 RUE ST VICTORIEN",
-      "_fusion_auto_sources": [
-        "14|RUE|ST VICTORIEN",
-        "15|RUE|ST VICTORIEN"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "14|RUE|DU DAUPHINE",
@@ -11844,13 +11839,7 @@
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-6UE1-UT3G-U7D2",
-      "_bdnb_match": "immat",
-      "_fusion_auto_label": "25/26/28/30 RUE ST ANTOINE",
-      "_fusion_auto_sources": [
-        "30|RUE|ST ANTOINE",
-        "26|RUE|ST ANTOINE",
-        "28|RUE|ST ANTOINE"
-      ]
+      "_bdnb_match": "immat"
     },
     {
       "cle": "28|RUE|ETIENNE RICHERAND",
@@ -11877,15 +11866,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "reseau de chaleur",
       "batiment_groupe_id": "bdnb-bg-8U51-96UR-3947",
-      "_bdnb_match": "immat",
-      "_fusion_auto_label": null,
-      "_fusion_auto_sources": [
-        "24|RUE|ETIENNE RICHERAND",
-        "11|RUE|TERNOIS",
-        "13|RUE|TERNOIS",
-        "15|RUE|TERNOIS",
-        "17|RUE|TERNOIS"
-      ]
+      "_bdnb_match": "immat"
     },
     {
       "cle": "5|RUE|JEAN PIERRE LEVY",
@@ -11943,16 +11924,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-4DUC-A62Z-LN35",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "9/10/12/13/14/16/17 RUE LOUIS JASSERON",
-      "_fusion_auto_sources": [
-        "13|RUE|LOUIS JASSERON",
-        "12|RUE|LOUIS JASSERON",
-        "17|RUE|LOUIS JASSERON",
-        "14|RUE|LOUIS JASSERON",
-        "10|RUE|LOUIS JASSERON",
-        "9|RUE|LOUIS JASSERON"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "11|RUE|PROFESSEUR PAUL SISLEY",
@@ -12086,11 +12058,7 @@
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-YTPF-DAGN-K1LQ",
-      "_bdnb_match": "immat",
-      "_fusion_auto_label": null,
-      "_fusion_auto_sources": [
-        "182|AVENUE|FELIX FAURE"
-      ]
+      "_bdnb_match": "immat"
     },
     {
       "cle": "14|RUE|DU DOCTEUR REBATEL",
@@ -12179,12 +12147,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-ME8U-UNJZ-8JBU",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "27/29/32 RUE D AUBIGNY",
-      "_fusion_auto_sources": [
-        "27|RUE|D AUBIGNY",
-        "29|RUE|D AUBIGNY"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "50|RUE|ETIENNE RICHERAND",
@@ -12211,11 +12174,7 @@
       "type_batiment": "immeuble",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-FR1V-1HV3-KKUP",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": null,
-      "_fusion_auto_sources": [
-        "1|RUE|DES PETITES SOEURS"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "53|RUE|ETIENNE RICHERAND",
@@ -12273,11 +12232,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-G2ZQ-H667-PH4K",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "53/54 RUE DU DAUPHINE",
-      "_fusion_auto_sources": [
-        "53|RUE|DU DAUPHINE"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "84|RUE|DU DAUPHINE",
@@ -12675,12 +12630,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-HQEA-L5JU-AGCT",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "13/14/15 AVENUE GEORGES POMPIDOU",
-      "_fusion_auto_sources": [
-        "13|AVENUE|GEORGES POMPIDOU",
-        "14|AVENUE|GEORGES POMPIDOU"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "177|AVENUE|FELIX FAURE",
@@ -12733,11 +12683,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-LD4C-VJY6-N5SJ",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": null,
-      "_fusion_auto_sources": [
-        "23|RUE|DE LA METALLURGIE"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "22|AVENUE|GEORGES POMPIDOU",
@@ -13128,11 +13074,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-HV4Y-ENCA-KLHP",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "11/12 AVENUE LACASSAGNE",
-      "_fusion_auto_sources": [
-        "11|AVENUE|LACASSAGNE"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "18|RUE|LOUIS JASSERON",
@@ -13242,12 +13184,7 @@
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-FY5V-RU9S-BEUY",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "1/2/4 RUE CADETS DE LA FRANCE LIBRE",
-      "_fusion_auto_sources": [
-        "4|RUE|CADETS DE LA FRANCE LIBRE",
-        "1|RUE|CADETS DE LA FRANCE LIBRE"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "2|RUE|MEYNIS",
@@ -13414,9 +13351,7 @@
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-FY5V-RU9S-BEUY",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "2|RUE|CADETS DE LA FRANCE LIBRE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "44|RUE|TURBIL",
@@ -13468,11 +13403,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "reseau de chaleur",
       "batiment_groupe_id": "bdnb-bg-FS5T-27SZ-1D73",
-      "_bdnb_match": "immat",
-      "_fusion_auto_label": "46/47 AVENUE GEORGES POMPIDOU",
-      "_fusion_auto_sources": [
-        "47|AVENUE|GEORGES POMPIDOU"
-      ]
+      "_bdnb_match": "immat"
     },
     {
       "cle": "48|RUE|ETIENNE RICHERAND",
@@ -13525,13 +13456,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-4F6G-4P2Q-RRZK",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "48/49/50/51 RUE ST MAXIMIN",
-      "_fusion_auto_sources": [
-        "51|RUE|ST MAXIMIN",
-        "50|RUE|ST MAXIMIN",
-        "49|RUE|ST MAXIMIN"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "49|RUE|DU DAUPHINE",
@@ -13616,13 +13541,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-5NH2-EJ2E-JZXH",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "57/76/81/93 RUE BARABAN",
-      "_fusion_auto_sources": [
-        "81|RUE|BARABAN",
-        "76|RUE|BARABAN",
-        "93|RUE|BARABAN"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "59|RUE|DU DAUPHINE",
@@ -13756,11 +13675,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-K5KX-NEHV-8KAS",
-      "_bdnb_match": "immat",
-      "_fusion_auto_label": "8/9 RUE FRANCOIS GILLET",
-      "_fusion_auto_sources": [
-        "9|RUE|FRANCOIS GILLET"
-      ]
+      "_bdnb_match": "immat"
     },
     {
       "cle": "11|RUE|DE L ESPERANCE",
@@ -13784,11 +13699,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-4BJ1-EQDH-V7QL",
-      "_bdnb_match": "immat",
-      "_fusion_auto_label": "11/12 RUE DE L ESPERANCE",
-      "_fusion_auto_sources": [
-        "12|RUE|DE L ESPERANCE"
-      ]
+      "_bdnb_match": "immat"
     },
     {
       "cle": "30|RUE|ST PHILIPPE",
@@ -13869,13 +13780,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-XEH3-TX1E-4BGK",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "52/53/54/56 RUE ST MAXIMIN",
-      "_fusion_auto_sources": [
-        "52|RUE|ST MAXIMIN",
-        "54|RUE|ST MAXIMIN",
-        "56|RUE|ST MAXIMIN"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "1|RUE|GUILLOUD",
@@ -13959,11 +13864,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-WQZA-TNRT-44JS",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "9/10 RUE DES TEINTURIERS",
-      "_fusion_auto_sources": [
-        "9|RUE|DES TEINTURIERS"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "104|RUE|BARABAN",
@@ -14122,11 +14023,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-95RE-NAQE-VLTC",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": null,
-      "_fusion_auto_sources": [
-        "14|RUE|KIMMERLING"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "143|RUE|BARABAN",
@@ -14313,9 +14210,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-KY6U-AHNX-6BKG",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "15|RUE|MAURICE FLANDIN"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "187|AVENUE|FELIX FAURE",
@@ -14386,9 +14281,7 @@
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-ZS47-TD9J-M4FB",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "11|RUE|RIBOUD"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "2|RUE|TURBIL",
@@ -14763,9 +14656,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-LZZ6-J5TA-PURF",
-      "_bdnb_match": "gps",
-      "_fusion_auto": true,
-      "_fusion_cible": "6|RUE|DE VILLON"
+      "_bdnb_match": "gps"
     },
     {
       "cle": "3|RUE|FRANCOIS GILLET",
@@ -14792,11 +14683,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-6D6N-M1N7-38NB",
-      "_bdnb_match": "immat",
-      "_fusion_auto_label": "2/3 RUE FRANCOIS GILLET",
-      "_fusion_auto_sources": [
-        "2|RUE|FRANCOIS GILLET"
-      ]
+      "_bdnb_match": "immat"
     },
     {
       "cle": "308|RUE|PAUL BERT",
@@ -14873,12 +14760,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-3T3A-VTAP-UHBF",
-      "_bdnb_match": "immat",
-      "_fusion_auto_label": "34/35/37 RUE ANTOINE CHARIAL",
-      "_fusion_auto_sources": [
-        "37|RUE|ANTOINE CHARIAL",
-        "34|RUE|ANTOINE CHARIAL"
-      ]
+      "_bdnb_match": "immat"
     },
     {
       "cle": "36|RUE|TURBIL",
@@ -14904,11 +14786,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-4V6N-5ABF-Q89H",
-      "_bdnb_match": "immat",
-      "_fusion_auto_label": "36/37 RUE TURBIL",
-      "_fusion_auto_sources": [
-        "37|RUE|TURBIL"
-      ]
+      "_bdnb_match": "immat"
     },
     {
       "cle": "39|RUE|ST ANTOINE",
@@ -14934,9 +14812,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-576W-T8B7-57ET",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "41|RUE|ST ANTOINE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "4|RUE|CLAUDIUS PIONCHON",
@@ -14963,9 +14839,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-B7XN-JTJZ-HPB4",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "8|RUE|CLAUDIUS PIONCHON"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "4|RUE|STE ANNE DE BARABAN",
@@ -15021,11 +14895,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-H56H-S1A8-M34J",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "40/41 AVENUE LACASSAGNE",
-      "_fusion_auto_sources": [
-        "41|AVENUE|LACASSAGNE"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "42|AVENUE|LACASSAGNE",
@@ -15219,12 +15089,7 @@
       "type_batiment": "immeuble",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-ZRJZ-GNPH-8KBH",
-      "_bdnb_match": "immat",
-      "_fusion_auto_label": "7/10/11 RUE FRANCOIS GILLET",
-      "_fusion_auto_sources": [
-        "10|RUE|FRANCOIS GILLET",
-        "11|RUE|FRANCOIS GILLET"
-      ]
+      "_bdnb_match": "immat"
     },
     {
       "cle": "79|RUE|DU DAUPHINE",
@@ -15409,9 +15274,7 @@
       "type_batiment": "immeuble",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-FR1V-1HV3-KKUP",
-      "_bdnb_match": "immat",
-      "_fusion_auto": true,
-      "_fusion_cible": "50|RUE|ETIENNE RICHERAND"
+      "_bdnb_match": "immat"
     },
     {
       "cle": "1|RUE|JEAN PIERRE LEVY",
@@ -15492,11 +15355,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-GFKS-DC3T-CRB1",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "7/10 RUE MEYNIS",
-      "_fusion_auto_sources": [
-        "7|RUE|MEYNIS"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "10|RUE|ST MAXIMIN",
@@ -15681,9 +15540,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-YQDT-7VMV-E5S5",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "15|RUE|ETIENNE RICHERAND"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "136|RUE|ANTOINE CHARIAL",
@@ -15707,11 +15564,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-TYEL-NYRS-F6BJ",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "136/137 RUE ANTOINE CHARIAL",
-      "_fusion_auto_sources": [
-        "137|RUE|ANTOINE CHARIAL"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "139|RUE|DU DAUPHINE",
@@ -15789,12 +15642,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-YQDT-7VMV-E5S5",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "13/14/15 RUE ETIENNE RICHERAND",
-      "_fusion_auto_sources": [
-        "13|RUE|ETIENNE RICHERAND",
-        "14|RUE|ETIENNE RICHERAND"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "15|RUE|GUILLOUD",
@@ -15873,9 +15721,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-4DUC-A62Z-LN35",
-      "_bdnb_match": "immat",
-      "_fusion_auto": true,
-      "_fusion_cible": "16|RUE|LOUIS JASSERON"
+      "_bdnb_match": "immat"
     },
     {
       "cle": "18|RUE|DES DAHLIAS",
@@ -15924,12 +15770,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-NWNV-GU7Z-XPMJ",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "18/19/20 RUE ETIENNE RICHERAND",
-      "_fusion_auto_sources": [
-        "19|RUE|ETIENNE RICHERAND",
-        "20|RUE|ETIENNE RICHERAND"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "182|AVENUE|FELIX FAURE",
@@ -15954,9 +15795,7 @@
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-YTPF-DAGN-K1LQ",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "9|RUE|DE LA METALLURGIE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "184|AVENUE|FELIX FAURE",
@@ -16062,11 +15901,7 @@
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-PP7G-YWLB-1ZEC",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "2/3 RUE LOUIS JASSERON",
-      "_fusion_auto_sources": [
-        "3|RUE|LOUIS JASSERON"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "2|RUE|ST EUSEBE",
@@ -16091,11 +15926,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-81HL-8BC6-UPG6",
-      "_bdnb_match": "immat",
-      "_fusion_auto_label": "2/3 RUE ST EUSEBE",
-      "_fusion_auto_sources": [
-        "3|RUE|ST EUSEBE"
-      ]
+      "_bdnb_match": "immat"
     },
     {
       "cle": "20|AVENUE|GEORGES POMPIDOU",
@@ -16175,11 +16006,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-SBHG-VQWK-FCA9",
-      "_bdnb_match": "immat",
-      "_fusion_auto_label": "21/22 RUE ETIENNE RICHERAND",
-      "_fusion_auto_sources": [
-        "22|RUE|ETIENNE RICHERAND"
-      ]
+      "_bdnb_match": "immat"
     },
     {
       "cle": "223|AVENUE|FELIX FAURE",
@@ -16230,11 +16057,7 @@
       "type_batiment": "immeuble",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-DPD7-7ZP1-GHVU",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "23/24 RUE STE ANNE DE BARABAN",
-      "_fusion_auto_sources": [
-        "24|RUE|STE ANNE DE BARABAN"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "237|AVENUE|FELIX FAURE",
@@ -16359,9 +16182,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-QN57-TWQK-FEX6",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "23|RUE|ROPOSTE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "264|RUE|PAUL BERT",
@@ -16382,9 +16203,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-WPVN-TN1Z-KE2S",
-      "_bdnb_match": "gps",
-      "_fusion_auto": true,
-      "_fusion_cible": "71|RUE|PAUL BERT"
+      "_bdnb_match": "gps"
     },
     {
       "cle": "27|RUE|ST MAXIMIN",
@@ -16619,12 +16438,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-W2RS-K6JM-Z1H3",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "3/4/5 RUE MAURICE FLANDIN",
-      "_fusion_auto_sources": [
-        "4|RUE|MAURICE FLANDIN",
-        "5|RUE|MAURICE FLANDIN"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "3|RUE|ST MAXIMIN",
@@ -16792,9 +16606,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-3T3A-VTAP-UHBF",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "35|RUE|ANTOINE CHARIAL"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "38|RUE|JEANNE HACHETTE",
@@ -17049,9 +16861,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-VNCL-DWLL-H5X5",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "6|RUE|CADETS DE LA FRANCE LIBRE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "5|RUE|ETIENNE RICHERAND",
@@ -17078,11 +16888,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-L2CK-SQ4L-G991",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "4/5 RUE ETIENNE RICHERAND",
-      "_fusion_auto_sources": [
-        "4|RUE|ETIENNE RICHERAND"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "5|RUE|MAURICE FLANDIN",
@@ -17107,9 +16913,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-W2RS-K6JM-Z1H3",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "3|RUE|MAURICE FLANDIN"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "50|RUE|DU DAUPHINE",
@@ -17160,9 +16964,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-HQWX-SRVS-WAVH",
-      "_bdnb_match": "immat",
-      "_fusion_auto": true,
-      "_fusion_cible": "51|RUE|ST ANTOINE"
+      "_bdnb_match": "immat"
     },
     {
       "cle": "52|RUE|ETIENNE RICHERAND",
@@ -17217,11 +17019,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-XXU3-L2LW-69P8",
-      "_bdnb_match": "immat",
-      "_fusion_auto_label": "6/7 AVENUE LACASSAGNE",
-      "_fusion_auto_sources": [
-        "7|AVENUE|LACASSAGNE"
-      ]
+      "_bdnb_match": "immat"
     },
     {
       "cle": "6|RUE|CADETS DE LA FRANCE LIBRE",
@@ -17246,11 +17044,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-VNCL-DWLL-H5X5",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "5/6 RUE CADETS DE LA FRANCE LIBRE",
-      "_fusion_auto_sources": [
-        "5|RUE|CADETS DE LA FRANCE LIBRE"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "6|RUE|DE NAZARETH",
@@ -17302,11 +17096,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-LZZ6-J5TA-PURF",
-      "_bdnb_match": "gps",
-      "_fusion_auto_label": "3/6 RUE DE VILLON",
-      "_fusion_auto_sources": [
-        "3|RUE|DE VILLON"
-      ]
+      "_bdnb_match": "gps"
     },
     {
       "cle": "66|RUE|STE ANNE DE BARABAN",
@@ -17441,12 +17231,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-WSTK-SKSS-P2M2",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "6/7/8 RUE DE LA METALLURGIE",
-      "_fusion_auto_sources": [
-        "6|RUE|DE LA METALLURGIE",
-        "8|RUE|DE LA METALLURGIE"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "71|COURS|ALBERT THOMAS",
@@ -17533,13 +17318,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-B7XN-JTJZ-HPB4",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "4/6/8/11 RUE CLAUDIUS PIONCHON",
-      "_fusion_auto_sources": [
-        "4|RUE|CLAUDIUS PIONCHON",
-        "6|RUE|CLAUDIUS PIONCHON",
-        "11|RUE|CLAUDIUS PIONCHON"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "8|RUE|DE NAZARETH",
@@ -17729,12 +17508,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-77CU-S4U4-AGR1",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "36/37/38 RUE BARABAN",
-      "_fusion_auto_sources": [
-        "36|RUE|BARABAN",
-        "37|RUE|BARABAN"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "330|RUE|PAUL BERT",
@@ -17784,11 +17558,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "reseau de chaleur",
       "batiment_groupe_id": "bdnb-bg-ZNN2-SAMJ-S68B",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "48/49 AVENUE GEORGES POMPIDOU",
-      "_fusion_auto_sources": [
-        "49|AVENUE|GEORGES POMPIDOU"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "10|RUE|ST PHILIPPE",
@@ -17861,9 +17631,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-FW4B-YECQ-FPCT",
-      "_bdnb_match": "immat",
-      "_fusion_auto": true,
-      "_fusion_cible": "12|RUE|CARRY"
+      "_bdnb_match": "immat"
     },
     {
       "cle": "8|RUE|MARCEL PEHU",
@@ -17992,9 +17760,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-4F6G-4P2Q-RRZK",
-      "_bdnb_match": "immat",
-      "_fusion_auto": true,
-      "_fusion_cible": "48|RUE|ST MAXIMIN"
+      "_bdnb_match": "immat"
     },
     {
       "cle": "1|RUE|DES TUILIERS",
@@ -18099,11 +17865,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-1DBJ-3PC2-EVUG",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "7/10 RUE ST VICTORIEN",
-      "_fusion_auto_sources": [
-        "7|RUE|ST VICTORIEN"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "11|AVENUE|GEORGES POMPIDOU",
@@ -18183,9 +17945,7 @@
       "type_batiment": "maison",
       "type_chauffage": "fioul",
       "batiment_groupe_id": "bdnb-bg-324Y-G9R6-B2ZS",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "10|RUE|DE LA METALLURGIE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "12|RUE|GUILLOUD",
@@ -18231,9 +17991,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-4DUC-A62Z-LN35",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "16|RUE|LOUIS JASSERON"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "12|RUE|ST SIDOINE",
@@ -18258,9 +18016,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "reseau de chaleur",
       "batiment_groupe_id": "bdnb-bg-4BCZ-EFDZ-724F",
-      "_bdnb_match": "immat",
-      "_fusion_auto": true,
-      "_fusion_cible": "20|RUE|ST SIDOINE"
+      "_bdnb_match": "immat"
     },
     {
       "cle": "13|AVENUE|GEORGES POMPIDOU",
@@ -18285,9 +18041,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-HQEA-L5JU-AGCT",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "15|AVENUE|GEORGES POMPIDOU"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "13|PLACE|FERRANDIERE",
@@ -18421,9 +18175,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-4DUC-A62Z-LN35",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "16|RUE|LOUIS JASSERON"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "131|RUE|ANTOINE CHARIAL",
@@ -18532,9 +18284,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-9SJM-2V31-SHKZ",
-      "_bdnb_match": "immat",
-      "_fusion_auto": true,
-      "_fusion_cible": "13|RUE|ST VICTORIEN"
+      "_bdnb_match": "immat"
     },
     {
       "cle": "140|AVENUE|FELIX FAURE",
@@ -18634,12 +18384,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-KY6U-AHNX-6BKG",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "14/15/17 RUE MAURICE FLANDIN",
-      "_fusion_auto_sources": [
-        "17|RUE|MAURICE FLANDIN",
-        "14|RUE|MAURICE FLANDIN"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "15|RUE|ST ANTOINE",
@@ -18665,12 +18410,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-PFFK-6Z9V-TUP1",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "15/17/18 RUE ST ANTOINE",
-      "_fusion_auto_sources": [
-        "17|RUE|ST ANTOINE",
-        "18|RUE|ST ANTOINE"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "15|RUE|ST EUSEBE",
@@ -18697,12 +18437,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-H9T9-DYCH-XSSS",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "12/14/15 RUE ST EUSEBE",
-      "_fusion_auto_sources": [
-        "12|RUE|ST EUSEBE",
-        "14|RUE|ST EUSEBE"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "16|RUE|ETIENNE RICHERAND",
@@ -18728,11 +18463,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-G15W-CLD7-6WBT",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "16/17 RUE ETIENNE RICHERAND",
-      "_fusion_auto_sources": [
-        "17|RUE|ETIENNE RICHERAND"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "166|AVENUE|FELIX FAURE",
@@ -18757,11 +18488,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-BYKE-3R6H-S1VF",
-      "_bdnb_match": "immat",
-      "_fusion_auto_label": "166/167 AVENUE FELIX FAURE",
-      "_fusion_auto_sources": [
-        "167|AVENUE|FELIX FAURE"
-      ]
+      "_bdnb_match": "immat"
     },
     {
       "cle": "167|AVENUE|FELIX FAURE",
@@ -18788,9 +18515,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-BYKE-3R6H-S1VF",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "166|AVENUE|FELIX FAURE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "168|AVENUE|FELIX FAURE",
@@ -19053,11 +18778,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-9DFR-GCRL-WUGG",
-      "_bdnb_match": "immat",
-      "_fusion_auto_label": "21/22 AVENUE LACASSAGNE",
-      "_fusion_auto_sources": [
-        "22|AVENUE|LACASSAGNE"
-      ]
+      "_bdnb_match": "immat"
     },
     {
       "cle": "21|RUE|DE MONTBRILLANT",
@@ -19158,13 +18879,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-QN57-TWQK-FEX6",
-      "_bdnb_match": "immat",
-      "_fusion_auto_label": "23/24/25/27 RUE ROPOSTE",
-      "_fusion_auto_sources": [
-        "25|RUE|ROPOSTE",
-        "27|RUE|ROPOSTE",
-        "24|RUE|ROPOSTE"
-      ]
+      "_bdnb_match": "immat"
     },
     {
       "cle": "230|RUE|PAUL BERT",
@@ -19259,9 +18974,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "reseau de chaleur",
       "batiment_groupe_id": "bdnb-bg-WLXU-6YKR-D8DU",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "23|AVENUE|LACASSAGNE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "25|RUE|GUILLOUD",
@@ -19496,9 +19209,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-81HL-8BC6-UPG6",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "2|RUE|ST EUSEBE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "30|RUE|ANTOINE CHARIAL",
@@ -19609,9 +19320,7 @@
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-6UE1-UT3G-U7D2",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "25|RUE|ST ANTOINE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "30|RUE|TURBIL",
@@ -19659,11 +19368,7 @@
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-7A21-PPNH-TLQM",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "31/32 RUE PROFESSEUR PAUL SISLEY",
-      "_fusion_auto_sources": [
-        "32|RUE|PROFESSEUR PAUL SISLEY"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "31|RUE|STE ANNE DE BARABAN",
@@ -19794,11 +19499,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-9QRD-SMSX-T5SC",
-      "_bdnb_match": "immat",
-      "_fusion_auto_label": "31/32 RUE DU DAUPHINE",
-      "_fusion_auto_sources": [
-        "31|RUE|DU DAUPHINE"
-      ]
+      "_bdnb_match": "immat"
     },
     {
       "cle": "320|COURS|LAFAYETTE",
@@ -19848,11 +19549,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-BJP6-W4Q2-72UZ",
-      "_bdnb_match": "immat",
-      "_fusion_auto_label": "33/34 RUE DU DAUPHINE",
-      "_fusion_auto_sources": [
-        "33|RUE|DU DAUPHINE"
-      ]
+      "_bdnb_match": "immat"
     },
     {
       "cle": "35|RUE|ETIENNE RICHERAND",
@@ -19902,11 +19599,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-LS26-PDJ2-S81A",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "36/37 AVENUE LACASSAGNE",
-      "_fusion_auto_sources": [
-        "36|AVENUE|LACASSAGNE"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "37|RUE|BARABAN",
@@ -19931,9 +19624,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-77CU-S4U4-AGR1",
-      "_bdnb_match": "immat",
-      "_fusion_auto": true,
-      "_fusion_cible": "38|RUE|BARABAN"
+      "_bdnb_match": "immat"
     },
     {
       "cle": "37|RUE|ST MAXIMIN",
@@ -19987,13 +19678,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-YTPJ-Q2XB-2DEF",
-      "_bdnb_match": "immat",
-      "_fusion_auto_label": null,
-      "_fusion_auto_sources": [
-        "41|RUE|GUILLOUD",
-        "43|RUE|GUILLOUD",
-        "44|RUE|DU DOCTEUR REBATEL"
-      ]
+      "_bdnb_match": "immat"
     },
     {
       "cle": "39|RUE|MAURICE FLANDIN",
@@ -20071,9 +19756,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-H56H-S1A8-M34J",
-      "_bdnb_match": "immat",
-      "_fusion_auto": true,
-      "_fusion_cible": "40|AVENUE|LACASSAGNE"
+      "_bdnb_match": "immat"
     },
     {
       "cle": "41|RUE|MAURICE FLANDIN",
@@ -20125,12 +19808,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-576W-T8B7-57ET",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "39/41/42 RUE ST ANTOINE",
-      "_fusion_auto_sources": [
-        "39|RUE|ST ANTOINE",
-        "42|RUE|ST ANTOINE"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "47|COURS|ALBERT THOMAS",
@@ -20257,9 +19935,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-GMWN-9ZYS-LQGQ",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "4|RUE|MARCEL PEHU"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "5|RUE|ST PHILIPPE",
@@ -20772,9 +20448,7 @@
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-KVDR-XPSM-PDB5",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "94|RUE|BELLECOMBE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "94|RUE|BELLECOMBE",
@@ -20800,12 +20474,7 @@
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-KVDR-XPSM-PDB5",
-      "_bdnb_match": "immat",
-      "_fusion_auto_label": "93/94/96 RUE BELLECOMBE",
-      "_fusion_auto_sources": [
-        "96|RUE|BELLECOMBE",
-        "93|RUE|BELLECOMBE"
-      ]
+      "_bdnb_match": "immat"
     },
     {
       "cle": "19|RUE|TURBIL",
@@ -20880,9 +20549,7 @@
       "type_batiment": "immeuble",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-H6H4-644T-6NRG",
-      "_bdnb_match": "immat",
-      "_fusion_auto": true,
-      "_fusion_cible": "20|RUE|ST VICTORIEN"
+      "_bdnb_match": "immat"
     },
     {
       "cle": "19|RUE|DE MONTBRILLANT",
@@ -20930,9 +20597,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-GMWN-9ZYS-LQGQ",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "4|RUE|MARCEL PEHU"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "21|RUE|GUILLOUD",
@@ -20955,9 +20620,7 @@
       "type_batiment": "maison",
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-BALG-5MRC-2XQ6",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "18|RUE|GUILLOUD"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "25|RUE|DE MONTBRILLANT",
@@ -21035,9 +20698,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-77CU-S4U4-AGR1",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "38|RUE|BARABAN"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "20|RUE|ST VICTORIEN",
@@ -21063,9 +20724,7 @@
       "type_batiment": "immeuble",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-H6H4-644T-6NRG",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "20|RUE|ST VICTORIEN"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "6|RUE|TURBIL",
@@ -21184,9 +20843,7 @@
       "type_batiment": "maison",
       "type_chauffage": "fioul",
       "batiment_groupe_id": "bdnb-bg-324Y-G9R6-B2ZS",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "10|RUE|DE LA METALLURGIE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "25|RUE|ST MAXIMIN",
@@ -21210,9 +20867,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-KLT7-6KAC-4JYW",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "24|RUE|ST MAXIMIN"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "6|RUE|MAURICE FLANDIN",
@@ -21237,9 +20892,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-6RYY-NUCS-XLRZ",
-      "_bdnb_match": "immat",
-      "_fusion_auto": true,
-      "_fusion_cible": "7|RUE|MAURICE FLANDIN"
+      "_bdnb_match": "immat"
     },
     {
       "cle": "66|RUE|ANTOINE CHARIAL",
@@ -21290,9 +20943,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-5NH2-EJ2E-JZXH",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "57|RUE|BARABAN"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "4|RUE|MEYNIS",
@@ -21500,9 +21151,7 @@
       "type_batiment": "maison",
       "type_chauffage": "fioul",
       "batiment_groupe_id": "bdnb-bg-324Y-G9R6-B2ZS",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "10|RUE|DE LA METALLURGIE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "234|AVENUE|FELIX FAURE",
@@ -21549,11 +21198,7 @@
       "type_batiment": "maison",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-P6SW-C8ML-QMSG",
-      "_bdnb_match": "immat",
-      "_fusion_auto_label": "17/18 RUE DE LA METALLURGIE",
-      "_fusion_auto_sources": [
-        "17|RUE|DE LA METALLURGIE"
-      ]
+      "_bdnb_match": "immat"
     },
     {
       "cle": "1|RUE|DE LA METALLURGIE",
@@ -21576,9 +21221,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-51HE-8CSW-Q4A6",
-      "_bdnb_match": "immat",
-      "_fusion_auto": true,
-      "_fusion_cible": "2|RUE|DE LA METALLURGIE"
+      "_bdnb_match": "immat"
     },
     {
       "cle": "42|RUE|TURBIL",
@@ -21816,9 +21459,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "reseau de chaleur",
       "batiment_groupe_id": "bdnb-bg-71B2-4HSV-Y9VP",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "51|AVENUE|GEORGES POMPIDOU"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "24|RUE|DU DAUPHINE",
@@ -21842,11 +21483,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-9M8H-GBKD-7X86",
-      "_bdnb_match": "immat",
-      "_fusion_auto_label": "23/24 RUE DU DAUPHINE",
-      "_fusion_auto_sources": [
-        "23|RUE|DU DAUPHINE"
-      ]
+      "_bdnb_match": "immat"
     },
     {
       "cle": "36|RUE|DU DOCTEUR REBATEL",
@@ -21968,9 +21605,7 @@
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-FY5V-RU9S-BEUY",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "2|RUE|CADETS DE LA FRANCE LIBRE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "1|RUE|DE LA VILLETTE",
@@ -21993,11 +21628,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-ZTQ2-TQY1-5MFV",
-      "_bdnb_match": "immat",
-      "_fusion_auto_label": "1/2 RUE DE LA VILLETTE",
-      "_fusion_auto_sources": [
-        "2|RUE|DE LA VILLETTE"
-      ]
+      "_bdnb_match": "immat"
     },
     {
       "cle": "1|RUE|DE VILLON",
@@ -22094,13 +21725,7 @@
       "type_batiment": "maison",
       "type_chauffage": "fioul",
       "batiment_groupe_id": "bdnb-bg-324Y-G9R6-B2ZS",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "10/11/12/13 RUE DE LA METALLURGIE",
-      "_fusion_auto_sources": [
-        "12|RUE|DE LA METALLURGIE",
-        "11|RUE|DE LA METALLURGIE",
-        "13|RUE|DE LA METALLURGIE"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "10|RUE|DU DAUPHINE",
@@ -22155,9 +21780,7 @@
       "type_batiment": "immeuble",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-ZRJZ-GNPH-8KBH",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "7|RUE|FRANCOIS GILLET"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "10|RUE|LOUIS JASSERON",
@@ -22180,9 +21803,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-4DUC-A62Z-LN35",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "16|RUE|LOUIS JASSERON"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "10|RUE|STE ANNE DE BARABAN",
@@ -22233,13 +21854,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-5RMC-KXL7-E97N",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "4/6/7/10 RUE TERNOIS",
-      "_fusion_auto_sources": [
-        "4|RUE|TERNOIS",
-        "6|RUE|TERNOIS",
-        "7|RUE|TERNOIS"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "11|AVENUE|LACASSAGNE",
@@ -22263,9 +21878,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-HV4Y-ENCA-KLHP",
-      "_bdnb_match": "immat",
-      "_fusion_auto": true,
-      "_fusion_cible": "12|AVENUE|LACASSAGNE"
+      "_bdnb_match": "immat"
     },
     {
       "cle": "11|COURS|ALBERT THOMAS",
@@ -22316,13 +21929,7 @@
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-ZS47-TD9J-M4FB",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "2/10/11/12 RUE RIBOUD",
-      "_fusion_auto_sources": [
-        "10|RUE|RIBOUD",
-        "12|RUE|RIBOUD",
-        "2|RUE|RIBOUD"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "11|RUE|ROGER BRECHAN",
@@ -22406,11 +22013,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-ED7P-8YCZ-L6UX",
-      "_bdnb_match": "immat",
-      "_fusion_auto_label": "11/12 RUE BARA",
-      "_fusion_auto_sources": [
-        "11|RUE|BARA"
-      ]
+      "_bdnb_match": "immat"
     },
     {
       "cle": "12|RUE|CARRY",
@@ -22436,14 +22039,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-FW4B-YECQ-FPCT",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "6/7/8/12/14 RUE CARRY",
-      "_fusion_auto_sources": [
-        "8|RUE|CARRY",
-        "6|RUE|CARRY",
-        "14|RUE|CARRY",
-        "7|RUE|CARRY"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "12|RUE|DU DOCTEUR REBATEL",
@@ -22520,13 +22116,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-AX8P-5ZM6-3A3B",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "120/121/123/124 RUE ANTOINE CHARIAL",
-      "_fusion_auto_sources": [
-        "120|RUE|ANTOINE CHARIAL",
-        "121|RUE|ANTOINE CHARIAL",
-        "123|RUE|ANTOINE CHARIAL"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "13|RUE|MAURICE FLANDIN",
@@ -22651,9 +22241,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-YQDT-7VMV-E5S5",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "15|RUE|ETIENNE RICHERAND"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "14|RUE|LOUIS JASSERON",
@@ -22677,9 +22265,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-4DUC-A62Z-LN35",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "16|RUE|LOUIS JASSERON"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "14|RUE|ST MAXIMIN",
@@ -22734,9 +22320,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "reseau de chaleur",
       "batiment_groupe_id": "bdnb-bg-4BCZ-EFDZ-724F",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "20|RUE|ST SIDOINE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "147|RUE|BARABAN",
@@ -22834,9 +22418,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-9SJM-2V31-SHKZ",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "13|RUE|ST VICTORIEN"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "154|RUE|ANTOINE CHARIAL",
@@ -22935,11 +22517,7 @@
       "type_batiment": "appartement",
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-H7YV-VH5E-JFY8",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "15/16 RUE DAVID",
-      "_fusion_auto_sources": [
-        "15|RUE|DAVID"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "16|RUE|DES TUILIERS",
@@ -22988,9 +22566,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-F53L-NRUL-61CZ",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "16|RUE|PROFESSEUR PAUL SISLEY"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "17|RUE|ROGER BRECHAN",
@@ -23014,11 +22590,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-Q2M9-ECBB-3GVY",
-      "_bdnb_match": "immat",
-      "_fusion_auto_label": "16/17 RUE ROGER BRECHAN",
-      "_fusion_auto_sources": [
-        "16|RUE|ROGER BRECHAN"
-      ]
+      "_bdnb_match": "immat"
     },
     {
       "cle": "17|RUE|ST ANTOINE",
@@ -23043,9 +22615,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-PFFK-6Z9V-TUP1",
-      "_bdnb_match": "immat",
-      "_fusion_auto": true,
-      "_fusion_cible": "15|RUE|ST ANTOINE"
+      "_bdnb_match": "immat"
     },
     {
       "cle": "17|RUE|ST MAXIMIN",
@@ -23093,9 +22663,7 @@
       "type_batiment": "immeuble",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-H6H4-644T-6NRG",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "20|RUE|ST VICTORIEN"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "175|AVENUE|FELIX FAURE",
@@ -23170,12 +22738,7 @@
       "type_batiment": "maison",
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-BALG-5MRC-2XQ6",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "18/20/21 RUE GUILLOUD",
-      "_fusion_auto_sources": [
-        "20|RUE|GUILLOUD",
-        "21|RUE|GUILLOUD"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "18|RUE|ST ANTOINE",
@@ -23199,9 +22762,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-PFFK-6Z9V-TUP1",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "15|RUE|ST ANTOINE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "183|AVENUE|FELIX FAURE",
@@ -23371,11 +22932,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-51HE-8CSW-Q4A6",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "1/2 RUE DE LA METALLURGIE",
-      "_fusion_auto_sources": [
-        "1|RUE|DE LA METALLURGIE"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "2|RUE|DE VILLON",
@@ -23426,9 +22983,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-NWNV-GU7Z-XPMJ",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "18|RUE|ETIENNE RICHERAND"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "20|RUE|ST SIDOINE",
@@ -23454,16 +23009,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "reseau de chaleur",
       "batiment_groupe_id": "bdnb-bg-4BCZ-EFDZ-724F",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "12/13/14/15/16/18/20 RUE ST SIDOINE",
-      "_fusion_auto_sources": [
-        "12|RUE|ST SIDOINE",
-        "14|RUE|ST SIDOINE",
-        "18|RUE|ST SIDOINE",
-        "13|RUE|ST SIDOINE",
-        "15|RUE|ST SIDOINE",
-        "16|RUE|ST SIDOINE"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "20|RUE|ST VICTORIEN",
@@ -23489,13 +23035,7 @@
       "type_batiment": "immeuble",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-H6H4-644T-6NRG",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "16/17/20 RUE ST VICTORIEN",
-      "_fusion_auto_sources": [
-        "20|RUE|ST VICTORIEN",
-        "16|RUE|ST VICTORIEN",
-        "17|RUE|ST VICTORIEN"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "21|RUE|CLAUDIUS PIONCHON",
@@ -23614,9 +23154,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-9DFR-GCRL-WUGG",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "21|AVENUE|LACASSAGNE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "22|RUE|DU DAUPHINE",
@@ -23640,11 +23178,7 @@
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-VRQ2-82K8-7HRF",
-      "_bdnb_match": "immat",
-      "_fusion_auto_label": "21/22 RUE DU DAUPHINE",
-      "_fusion_auto_sources": [
-        "21|RUE|DU DAUPHINE"
-      ]
+      "_bdnb_match": "immat"
     },
     {
       "cle": "22|RUE|LOUIS JASSERON",
@@ -23668,11 +23202,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-VPLJ-N3JJ-SW4G",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "22/23 RUE LOUIS JASSERON",
-      "_fusion_auto_sources": [
-        "23|RUE|LOUIS JASSERON"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "22|RUE|ROPOSTE",
@@ -23772,12 +23302,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "reseau de chaleur",
       "batiment_groupe_id": "bdnb-bg-WLXU-6YKR-D8DU",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "23/24/26 AVENUE LACASSAGNE",
-      "_fusion_auto_sources": [
-        "24|AVENUE|LACASSAGNE",
-        "26|AVENUE|LACASSAGNE"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "23|RUE|DE LA METALLURGIE",
@@ -23802,9 +23327,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-LD4C-VJY6-N5SJ",
-      "_bdnb_match": "immat",
-      "_fusion_auto": true,
-      "_fusion_cible": "194|AVENUE|FELIX FAURE"
+      "_bdnb_match": "immat"
     },
     {
       "cle": "23|RUE|DE MONTBRILLANT",
@@ -23903,11 +23426,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-9P8K-R96Z-PWH2",
-      "_bdnb_match": "immat",
-      "_fusion_auto_label": "239/240 AVENUE FELIX FAURE",
-      "_fusion_auto_sources": [
-        "240|AVENUE|FELIX FAURE"
-      ]
+      "_bdnb_match": "immat"
     },
     {
       "cle": "24|RUE|DE LA METALLURGIE",
@@ -23933,11 +23452,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-4RMJ-W193-8VZA",
-      "_bdnb_match": "immat",
-      "_fusion_auto_label": "24/29 RUE DE LA METALLURGIE",
-      "_fusion_auto_sources": [
-        "29|RUE|DE LA METALLURGIE"
-      ]
+      "_bdnb_match": "immat"
     },
     {
       "cle": "24|RUE|ETIENNE RICHERAND",
@@ -23962,9 +23477,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "reseau de chaleur",
       "batiment_groupe_id": "bdnb-bg-8U51-96UR-3947",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "28|RUE|ETIENNE RICHERAND"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "24|RUE|ST ANTOINE",
@@ -23988,9 +23501,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-ALA1-7UY8-ULUG",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "21|RUE|ST ANTOINE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "24|RUE|ST MAXIMIN",
@@ -24014,11 +23525,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-KLT7-6KAC-4JYW",
-      "_bdnb_match": "immat",
-      "_fusion_auto_label": "24/25 RUE ST MAXIMIN",
-      "_fusion_auto_sources": [
-        "25|RUE|ST MAXIMIN"
-      ]
+      "_bdnb_match": "immat"
     },
     {
       "cle": "24|RUE|ST PHILIPPE",
@@ -24041,11 +23548,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-Z5KY-TX3N-8L23",
-      "_bdnb_match": "immat",
-      "_fusion_auto_label": "23/24 RUE ST PHILIPPE",
-      "_fusion_auto_sources": [
-        "23|RUE|ST PHILIPPE"
-      ]
+      "_bdnb_match": "immat"
     },
     {
       "cle": "24|RUE|STE ANNE DE BARABAN",
@@ -24069,9 +23572,7 @@
       "type_batiment": "immeuble",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-DPD7-7ZP1-GHVU",
-      "_bdnb_match": "immat",
-      "_fusion_auto": true,
-      "_fusion_cible": "23|RUE|STE ANNE DE BARABAN"
+      "_bdnb_match": "immat"
     },
     {
       "cle": "246|RUE|PAUL BERT",
@@ -24292,9 +23793,7 @@
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-6UE1-UT3G-U7D2",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "25|RUE|ST ANTOINE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "27|RUE|PROFESSEUR PAUL SISLEY",
@@ -24344,9 +23843,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-35NH-CNYH-DY2X",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "277|RUE|PAUL BERT"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "277|RUE|PAUL BERT",
@@ -24371,11 +23868,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-35NH-CNYH-DY2X",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "272/277 RUE PAUL BERT",
-      "_fusion_auto_sources": [
-        "272|RUE|PAUL BERT"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "28|RUE|BARABAN",
@@ -24546,11 +24039,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-R9KQ-ZAYE-712F",
-      "_bdnb_match": "gps",
-      "_fusion_auto_label": "3/4 RUE MILIEU",
-      "_fusion_auto_sources": [
-        "4|RUE|MILIEU"
-      ]
+      "_bdnb_match": "gps"
     },
     {
       "cle": "3|RUE|ROSSAN",
@@ -24792,9 +24281,7 @@
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-7A21-PPNH-TLQM",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "31|RUE|PROFESSEUR PAUL SISLEY"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "322|RUE|PAUL BERT",
@@ -24842,9 +24329,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-FSS5-TB5T-HU7V",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "31|AVENUE|GEORGES POMPIDOU"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "34|AVENUE|LACASSAGNE",
@@ -25040,9 +24525,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-4V6N-5ABF-Q89H",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "36|RUE|TURBIL"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "38|RUE|DU DAUPHINE",
@@ -25118,9 +24601,7 @@
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-6BRM-AZZY-6Q8H",
-      "_bdnb_match": "immat",
-      "_fusion_auto": true,
-      "_fusion_cible": "40|RUE|ST MAXIMIN"
+      "_bdnb_match": "immat"
     },
     {
       "cle": "4|RUE|DAVID",
@@ -25167,12 +24648,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-GMWN-9ZYS-LQGQ",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "3/4/5 RUE MARCEL PEHU",
-      "_fusion_auto_sources": [
-        "5|RUE|MARCEL PEHU",
-        "3|RUE|MARCEL PEHU"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "4|RUE|MAURICE FLANDIN",
@@ -25198,9 +24674,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-W2RS-K6JM-Z1H3",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "3|RUE|MAURICE FLANDIN"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "40|RUE|DU DAUPHINE",
@@ -25252,11 +24726,7 @@
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-6BRM-AZZY-6Q8H",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "39/40 RUE ST MAXIMIN",
-      "_fusion_auto_sources": [
-        "39|RUE|ST MAXIMIN"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "40|RUE|ST PHILIPPE",
@@ -25406,12 +24876,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-PWDK-M71Z-3JJQ",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "43/44/46 RUE ST MAXIMIN",
-      "_fusion_auto_sources": [
-        "43|RUE|ST MAXIMIN",
-        "44|RUE|ST MAXIMIN"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "47|RUE|ANTOINE CHARIAL",
@@ -25586,9 +25051,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-4F6G-4P2Q-RRZK",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "48|RUE|ST MAXIMIN"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "51|RUE|PROFESSEUR PAUL SISLEY",
@@ -25640,11 +25103,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-TD3K-MD6A-6F6R",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "51/52 RUE DU DAUPHINE",
-      "_fusion_auto_sources": [
-        "51|RUE|DU DAUPHINE"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "52|RUE|ST MAXIMIN",
@@ -25669,9 +25128,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-XEH3-TX1E-4BGK",
-      "_bdnb_match": "immat",
-      "_fusion_auto": true,
-      "_fusion_cible": "53|RUE|ST MAXIMIN"
+      "_bdnb_match": "immat"
     },
     {
       "cle": "54|RUE|ETIENNE RICHERAND",
@@ -25825,9 +25282,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-WSTK-SKSS-P2M2",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "7|RUE|DE LA METALLURGIE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "6|RUE|STE ANNE DE BARABAN",
@@ -26003,9 +25458,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-SDMB-7CKJ-3Q9D",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "72|RUE|MAURICE FLANDIN"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "71|RUE|PAUL BERT",
@@ -26030,21 +25483,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-WPVN-TN1Z-KE2S",
-      "_bdnb_match": "gps",
-      "_fusion_auto_label": "37/71/148/158/163/188/202/205/257/264/290/293 RUE PAUL BERT",
-      "_fusion_auto_sources": [
-        "148|RUE|PAUL BERT",
-        "290|RUE|PAUL BERT",
-        "158|RUE|PAUL BERT",
-        "163|RUE|PAUL BERT",
-        "188|RUE|PAUL BERT",
-        "202|RUE|PAUL BERT",
-        "205|RUE|PAUL BERT",
-        "257|RUE|PAUL BERT",
-        "264|RUE|PAUL BERT",
-        "293|RUE|PAUL BERT",
-        "37|RUE|PAUL BERT"
-      ]
+      "_bdnb_match": "gps"
     },
     {
       "cle": "72|RUE|DU DAUPHINE",
@@ -26100,12 +25539,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-SDMB-7CKJ-3Q9D",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": null,
-      "_fusion_auto_sources": [
-        "70|RUE|MAURICE FLANDIN",
-        "75|RUE|DE LA VILLETTE"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "73|RUE|BARABAN",
@@ -26278,9 +25712,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-FW4B-YECQ-FPCT",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "12|RUE|CARRY"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "8|RUE|DU DAUPHINE",
@@ -26574,9 +26006,7 @@
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-KVDR-XPSM-PDB5",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "94|RUE|BELLECOMBE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "97|RUE|DU DAUPHINE",
@@ -26644,12 +26074,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-SQC2-49E9-C6J1",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "1/2/3 RUE CARRY",
-      "_fusion_auto_sources": [
-        "2|RUE|CARRY",
-        "3|RUE|CARRY"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "1|RUE|DE L ESPERANCE",
@@ -26736,9 +26161,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-RD68-16FV-HRL3",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "236|COURS|LAFAYETTE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "1|RUE|ST ANTOINE",
@@ -26864,11 +26287,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-GXGN-3H97-F4RU",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "10/11 RUE DES PETITES SOEURS",
-      "_fusion_auto_sources": [
-        "11|RUE|DES PETITES SOEURS"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "10|RUE|GANDOLIERE",
@@ -26891,12 +26310,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-CXP2-X59F-KFA2",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "10/47/48 RUE GANDOLIERE",
-      "_fusion_auto_sources": [
-        "47|RUE|GANDOLIERE",
-        "48|RUE|GANDOLIERE"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "10|RUE|RIBOUD",
@@ -26917,9 +26331,7 @@
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-ZS47-TD9J-M4FB",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "11|RUE|RIBOUD"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "10|RUE|ROGER BRECHAN",
@@ -27049,9 +26461,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-ED7P-8YCZ-L6UX",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "12|RUE|BARA"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "11|RUE|CLAUDIUS PIONCHON",
@@ -27072,9 +26482,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-B7XN-JTJZ-HPB4",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "8|RUE|CLAUDIUS PIONCHON"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "11|RUE|DAVID",
@@ -27097,11 +26505,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-7VPW-6YPJ-XASZ",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "11/12 RUE DAVID",
-      "_fusion_auto_sources": [
-        "12|RUE|DAVID"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "11|RUE|DES PETITES SOEURS",
@@ -27122,9 +26526,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-GXGN-3H97-F4RU",
-      "_bdnb_match": "immat",
-      "_fusion_auto": true,
-      "_fusion_cible": "10|RUE|DES PETITES SOEURS"
+      "_bdnb_match": "immat"
     },
     {
       "cle": "11|RUE|DU DAUPHINE",
@@ -27145,14 +26547,7 @@
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-L2AS-75JZ-QX89",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "4/6/7/9/11 RUE DU DAUPHINE",
-      "_fusion_auto_sources": [
-        "4|RUE|DU DAUPHINE",
-        "6|RUE|DU DAUPHINE",
-        "7|RUE|DU DAUPHINE",
-        "9|RUE|DU DAUPHINE"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "11|RUE|FRANCOIS GILLET",
@@ -27173,9 +26568,7 @@
       "type_batiment": "immeuble",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-ZRJZ-GNPH-8KBH",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "7|RUE|FRANCOIS GILLET"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "11|RUE|GUILLOUD",
@@ -27288,9 +26681,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "reseau de chaleur",
       "batiment_groupe_id": "bdnb-bg-8U51-96UR-3947",
-      "_bdnb_match": "gps",
-      "_fusion_auto": true,
-      "_fusion_cible": "28|RUE|ETIENNE RICHERAND"
+      "_bdnb_match": "gps"
     },
     {
       "cle": "112|RUE|BARABAN",
@@ -27451,9 +26842,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-7VPW-6YPJ-XASZ",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "11|RUE|DAVID"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "12|RUE|DE L ESPERANCE",
@@ -27474,9 +26863,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-4BJ1-EQDH-V7QL",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "11|RUE|DE L ESPERANCE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "12|RUE|DE MONTBRILLANT",
@@ -27543,9 +26930,7 @@
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-ZS47-TD9J-M4FB",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "11|RUE|RIBOUD"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "12|RUE|ROPOSTE",
@@ -27589,9 +26974,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-H9T9-DYCH-XSSS",
-      "_bdnb_match": "immat",
-      "_fusion_auto": true,
-      "_fusion_cible": "15|RUE|ST EUSEBE"
+      "_bdnb_match": "immat"
     },
     {
       "cle": "12|RUE|ST PHILIPPE",
@@ -27640,9 +27023,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-AX8P-5ZM6-3A3B",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "124|RUE|ANTOINE CHARIAL"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "121|RUE|ANTOINE CHARIAL",
@@ -27663,9 +27044,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-AX8P-5ZM6-3A3B",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "124|RUE|ANTOINE CHARIAL"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "121|RUE|BARABAN",
@@ -27730,9 +27109,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-AX8P-5ZM6-3A3B",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "124|RUE|ANTOINE CHARIAL"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "125|RUE|BARABAN",
@@ -27753,11 +27130,7 @@
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-27E6-B9R7-15AK",
-      "_bdnb_match": "immat",
-      "_fusion_auto_label": "125/126 RUE BARABAN",
-      "_fusion_auto_sources": [
-        "126|RUE|BARABAN"
-      ]
+      "_bdnb_match": "immat"
     },
     {
       "cle": "126|RUE|BARABAN",
@@ -27778,9 +27151,7 @@
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-27E6-B9R7-15AK",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "125|RUE|BARABAN"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "127|AVENUE|FELIX FAURE",
@@ -27847,9 +27218,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-QNDY-JKBL-KRG6",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "138|AVENUE|FELIX FAURE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "13|RUE|CLAUDIUS PIONCHON",
@@ -28007,9 +27376,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "reseau de chaleur",
       "batiment_groupe_id": "bdnb-bg-4BCZ-EFDZ-724F",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "20|RUE|ST SIDOINE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "13|RUE|TERNOIS",
@@ -28030,9 +27397,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "reseau de chaleur",
       "batiment_groupe_id": "bdnb-bg-8U51-96UR-3947",
-      "_bdnb_match": "gps",
-      "_fusion_auto": true,
-      "_fusion_cible": "28|RUE|ETIENNE RICHERAND"
+      "_bdnb_match": "gps"
     },
     {
       "cle": "130|RUE|BARABAN",
@@ -28126,9 +27491,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-W5E1-2VY3-48EC",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "133|RUE|BARABAN"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "133|RUE|BARABAN",
@@ -28152,11 +27515,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-W5E1-2VY3-48EC",
-      "_bdnb_match": "immat",
-      "_fusion_auto_label": "132/133 RUE BARABAN",
-      "_fusion_auto_sources": [
-        "132|RUE|BARABAN"
-      ]
+      "_bdnb_match": "immat"
     },
     {
       "cle": "134|RUE|ANTOINE CHARIAL",
@@ -28240,9 +27599,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-TYEL-NYRS-F6BJ",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "136|RUE|ANTOINE CHARIAL"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "137|RUE|DU DAUPHINE",
@@ -28287,11 +27644,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-QNDY-JKBL-KRG6",
-      "_bdnb_match": "immat",
-      "_fusion_auto_label": "129/138 AVENUE FELIX FAURE",
-      "_fusion_auto_sources": [
-        "129|AVENUE|FELIX FAURE"
-      ]
+      "_bdnb_match": "immat"
     },
     {
       "cle": "14|AVENUE|GEORGES POMPIDOU",
@@ -28314,9 +27667,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-HQEA-L5JU-AGCT",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "15|AVENUE|GEORGES POMPIDOU"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "14|AVENUE|LACASSAGNE",
@@ -28360,9 +27711,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-FW4B-YECQ-FPCT",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "12|RUE|CARRY"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "14|RUE|FRANCOIS GILLET",
@@ -28477,9 +27826,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-95RE-NAQE-VLTC",
-      "_bdnb_match": "gps",
-      "_fusion_auto": true,
-      "_fusion_cible": "141|AVENUE|FELIX FAURE"
+      "_bdnb_match": "gps"
     },
     {
       "cle": "14|RUE|MAURICE FLANDIN",
@@ -28500,9 +27847,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-KY6U-AHNX-6BKG",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "15|RUE|MAURICE FLANDIN"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "14|RUE|ROPOSTE",
@@ -28550,9 +27895,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-H9T9-DYCH-XSSS",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "15|RUE|ST EUSEBE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "141|RUE|ANTOINE CHARIAL",
@@ -28712,14 +28055,7 @@
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-AX5E-DBFL-VSF4",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "148/150/151/152/154 AVENUE FELIX FAURE",
-      "_fusion_auto_sources": [
-        "150|AVENUE|FELIX FAURE",
-        "151|AVENUE|FELIX FAURE",
-        "152|AVENUE|FELIX FAURE",
-        "154|AVENUE|FELIX FAURE"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "148|RUE|BARABAN",
@@ -28765,9 +28101,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-WPVN-TN1Z-KE2S",
-      "_bdnb_match": "gps",
-      "_fusion_auto": true,
-      "_fusion_cible": "71|RUE|PAUL BERT"
+      "_bdnb_match": "gps"
     },
     {
       "cle": "149|RUE|BARABAN",
@@ -28885,9 +28219,7 @@
       "type_batiment": "appartement",
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-H7YV-VH5E-JFY8",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "16|RUE|DAVID"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "15|RUE|DE LA VILLETTE",
@@ -28996,9 +28328,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "reseau de chaleur",
       "batiment_groupe_id": "bdnb-bg-4BCZ-EFDZ-724F",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "20|RUE|ST SIDOINE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "15|RUE|TERNOIS",
@@ -29019,9 +28349,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "reseau de chaleur",
       "batiment_groupe_id": "bdnb-bg-8U51-96UR-3947",
-      "_bdnb_match": "gps",
-      "_fusion_auto": true,
-      "_fusion_cible": "28|RUE|ETIENNE RICHERAND"
+      "_bdnb_match": "gps"
     },
     {
       "cle": "150|AVENUE|FELIX FAURE",
@@ -29042,9 +28370,7 @@
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-AX5E-DBFL-VSF4",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "148|AVENUE|FELIX FAURE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "150|RUE|BARABAN",
@@ -29088,9 +28414,7 @@
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-AX5E-DBFL-VSF4",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "148|AVENUE|FELIX FAURE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "152|AVENUE|FELIX FAURE",
@@ -29111,9 +28435,7 @@
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-AX5E-DBFL-VSF4",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "148|AVENUE|FELIX FAURE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "152|RUE|ANTOINE CHARIAL",
@@ -29178,9 +28500,7 @@
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-AX5E-DBFL-VSF4",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "148|AVENUE|FELIX FAURE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "154|RUE|BARABAN",
@@ -29222,12 +28542,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-V431-EBHY-Y74D",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "155/156/158 AVENUE FELIX FAURE",
-      "_fusion_auto_sources": [
-        "156|AVENUE|FELIX FAURE",
-        "158|AVENUE|FELIX FAURE"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "155|RUE|BARABAN",
@@ -29269,9 +28584,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-V431-EBHY-Y74D",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "155|AVENUE|FELIX FAURE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "157|RUE|BARABAN",
@@ -29313,9 +28626,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-V431-EBHY-Y74D",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "155|AVENUE|FELIX FAURE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "158|RUE|PAUL BERT",
@@ -29336,9 +28647,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-WPVN-TN1Z-KE2S",
-      "_bdnb_match": "gps",
-      "_fusion_auto": true,
-      "_fusion_cible": "71|RUE|PAUL BERT"
+      "_bdnb_match": "gps"
     },
     {
       "cle": "16|AVENUE|GEORGES POMPIDOU",
@@ -29359,11 +28668,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-V4JK-AHTA-BJP3",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "16/21 AVENUE GEORGES POMPIDOU",
-      "_fusion_auto_sources": [
-        "21|AVENUE|GEORGES POMPIDOU"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "16|AVENUE|LACASSAGNE",
@@ -29566,11 +28871,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-F53L-NRUL-61CZ",
-      "_bdnb_match": "immat",
-      "_fusion_auto_label": "16/17 RUE PROFESSEUR PAUL SISLEY",
-      "_fusion_auto_sources": [
-        "17|RUE|PROFESSEUR PAUL SISLEY"
-      ]
+      "_bdnb_match": "immat"
     },
     {
       "cle": "16|RUE|ROGER BRECHAN",
@@ -29591,9 +28892,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-Q2M9-ECBB-3GVY",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "17|RUE|ROGER BRECHAN"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "16|RUE|ST EUSEBE",
@@ -29614,12 +28913,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-LK7X-LXHQ-XLJ9",
-      "_bdnb_match": "immat",
-      "_fusion_auto_label": "16/17/18 RUE ST EUSEBE",
-      "_fusion_auto_sources": [
-        "17|RUE|ST EUSEBE",
-        "18|RUE|ST EUSEBE"
-      ]
+      "_bdnb_match": "immat"
     },
     {
       "cle": "16|RUE|ST SIDOINE",
@@ -29640,9 +28934,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "reseau de chaleur",
       "batiment_groupe_id": "bdnb-bg-4BCZ-EFDZ-724F",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "20|RUE|ST SIDOINE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "16|RUE|STE ANNE DE BARABAN",
@@ -29798,9 +29090,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-WPVN-TN1Z-KE2S",
-      "_bdnb_match": "gps",
-      "_fusion_auto": true,
-      "_fusion_cible": "71|RUE|PAUL BERT"
+      "_bdnb_match": "gps"
     },
     {
       "cle": "168|RUE|BARABAN",
@@ -29909,9 +29199,7 @@
       "type_batiment": "maison",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-P6SW-C8ML-QMSG",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "18|RUE|DE LA METALLURGIE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "17|RUE|DE MONTBRILLANT",
@@ -29955,13 +29243,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-KKR4-ST1S-LSG2",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "17/18/19/20 RUE DU DAUPHINE",
-      "_fusion_auto_sources": [
-        "18|RUE|DU DAUPHINE",
-        "19|RUE|DU DAUPHINE",
-        "20|RUE|DU DAUPHINE"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "17|RUE|ETIENNE RICHERAND",
@@ -29982,9 +29264,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-G15W-CLD7-6WBT",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "16|RUE|ETIENNE RICHERAND"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "17|RUE|ROPOSTE",
@@ -30026,9 +29306,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-LK7X-LXHQ-XLJ9",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "16|RUE|ST EUSEBE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "17|RUE|TERNOIS",
@@ -30049,9 +29327,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "reseau de chaleur",
       "batiment_groupe_id": "bdnb-bg-8U51-96UR-3947",
-      "_bdnb_match": "gps",
-      "_fusion_auto": true,
-      "_fusion_cible": "28|RUE|ETIENNE RICHERAND"
+      "_bdnb_match": "gps"
     },
     {
       "cle": "171|AVENUE|FELIX FAURE",
@@ -30161,9 +29437,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-KKR4-ST1S-LSG2",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "17|RUE|DU DAUPHINE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "18|RUE|GENERAL MOUTON DUVERNET",
@@ -30235,9 +29509,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-LK7X-LXHQ-XLJ9",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "16|RUE|ST EUSEBE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "18|RUE|ST SIDOINE",
@@ -30260,9 +29532,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "reseau de chaleur",
       "batiment_groupe_id": "bdnb-bg-4BCZ-EFDZ-724F",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "20|RUE|ST SIDOINE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "18|RUE|TURBIL",
@@ -30329,9 +29599,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-WPVN-TN1Z-KE2S",
-      "_bdnb_match": "gps",
-      "_fusion_auto": true,
-      "_fusion_cible": "71|RUE|PAUL BERT"
+      "_bdnb_match": "gps"
     },
     {
       "cle": "19|RUE|DE LA VILLETTE",
@@ -30394,9 +29662,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-KKR4-ST1S-LSG2",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "17|RUE|DU DAUPHINE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "19|RUE|ETIENNE RICHERAND",
@@ -30420,9 +29686,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-NWNV-GU7Z-XPMJ",
-      "_bdnb_match": "immat",
-      "_fusion_auto": true,
-      "_fusion_cible": "18|RUE|ETIENNE RICHERAND"
+      "_bdnb_match": "immat"
     },
     {
       "cle": "192|AVENUE|FELIX FAURE",
@@ -30615,9 +29879,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-SQC2-49E9-C6J1",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "1|RUE|CARRY"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "2|RUE|D AUBIGNY",
@@ -30686,9 +29948,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-ZTQ2-TQY1-5MFV",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "1|RUE|DE LA VILLETTE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "2|RUE|DES PETITES SOEURS",
@@ -30774,9 +30034,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-6D6N-M1N7-38NB",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "3|RUE|FRANCOIS GILLET"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "2|RUE|ST PHILIPPE",
@@ -30905,9 +30163,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-KKR4-ST1S-LSG2",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "17|RUE|DU DAUPHINE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "20|RUE|DU DOCTEUR REBATEL",
@@ -30995,9 +30251,7 @@
       "type_batiment": "maison",
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-BALG-5MRC-2XQ6",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "18|RUE|GUILLOUD"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "20|RUE|JEANNE HACHETTE",
@@ -31104,9 +30358,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-WPVN-TN1Z-KE2S",
-      "_bdnb_match": "gps",
-      "_fusion_auto": true,
-      "_fusion_cible": "71|RUE|PAUL BERT"
+      "_bdnb_match": "gps"
     },
     {
       "cle": "203|AVENUE|FELIX FAURE",
@@ -31127,12 +30379,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-R4LN-QEZ1-8YT5",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "203/204/206 AVENUE FELIX FAURE",
-      "_fusion_auto_sources": [
-        "204|AVENUE|FELIX FAURE",
-        "206|AVENUE|FELIX FAURE"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "204|AVENUE|FELIX FAURE",
@@ -31153,9 +30400,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-R4LN-QEZ1-8YT5",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "203|AVENUE|FELIX FAURE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "205|RUE|PAUL BERT",
@@ -31176,9 +30421,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-WPVN-TN1Z-KE2S",
-      "_bdnb_match": "gps",
-      "_fusion_auto": true,
-      "_fusion_cible": "71|RUE|PAUL BERT"
+      "_bdnb_match": "gps"
     },
     {
       "cle": "206|AVENUE|FELIX FAURE",
@@ -31199,9 +30442,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-R4LN-QEZ1-8YT5",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "203|AVENUE|FELIX FAURE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "206|RUE|PAUL BERT",
@@ -31291,9 +30532,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-V4JK-AHTA-BJP3",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "16|AVENUE|GEORGES POMPIDOU"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "21|RUE|ANTOINE CHARIAL",
@@ -31377,9 +30616,7 @@
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-VRQ2-82K8-7HRF",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "22|RUE|DU DAUPHINE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "21|RUE|ST ANTOINE",
@@ -31402,11 +30639,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-ALA1-7UY8-ULUG",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "21/24 RUE ST ANTOINE",
-      "_fusion_auto_sources": [
-        "24|RUE|ST ANTOINE"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "21|RUE|ST EUSEBE",
@@ -31427,11 +30660,7 @@
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-HE83-8SVJ-XDMR",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "21/22 RUE ST EUSEBE",
-      "_fusion_auto_sources": [
-        "22|RUE|ST EUSEBE"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "21|RUE|ST VICTORIEN",
@@ -31625,11 +30854,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-7PX7-EGXC-YLCW",
-      "_bdnb_match": "gps",
-      "_fusion_auto_label": null,
-      "_fusion_auto_sources": [
-        "222|COURS|LAFAYETTE"
-      ]
+      "_bdnb_match": "gps"
     },
     {
       "cle": "215|RUE|PAUL BERT",
@@ -31853,9 +31078,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-SBHG-VQWK-FCA9",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "21|RUE|ETIENNE RICHERAND"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "22|RUE|GABILLOT",
@@ -31989,9 +31212,7 @@
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-HE83-8SVJ-XDMR",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "21|RUE|ST EUSEBE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "22|RUE|STE ANNE DE BARABAN",
@@ -32054,9 +31275,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-7PX7-EGXC-YLCW",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "215|RUE|DE BONNEL"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "226|AVENUE|FELIX FAURE",
@@ -32273,9 +31492,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-9M8H-GBKD-7X86",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "24|RUE|DU DAUPHINE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "23|RUE|LOUIS JASSERON",
@@ -32296,9 +31513,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-VPLJ-N3JJ-SW4G",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "22|RUE|LOUIS JASSERON"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "23|RUE|MAURICE FLANDIN",
@@ -32365,9 +31580,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-Z5KY-TX3N-8L23",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "24|RUE|ST PHILIPPE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "231|RUE|PAUL BERT",
@@ -32520,11 +31733,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-RD68-16FV-HRL3",
-      "_bdnb_match": "immat",
-      "_fusion_auto_label": null,
-      "_fusion_auto_sources": [
-        "1|RUE|MAURICE FLANDIN"
-      ]
+      "_bdnb_match": "immat"
     },
     {
       "cle": "24|RUE|CLAUDIUS PIONCHON",
@@ -32745,9 +31954,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-QN57-TWQK-FEX6",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "23|RUE|ROPOSTE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "24|RUE|ST VICTORIEN",
@@ -32819,9 +32026,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-9P8K-R96Z-PWH2",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "239|AVENUE|FELIX FAURE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "240|COURS|LAFAYETTE",
@@ -33249,9 +32454,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-WPVN-TN1Z-KE2S",
-      "_bdnb_match": "gps",
-      "_fusion_auto": true,
-      "_fusion_cible": "71|RUE|PAUL BERT"
+      "_bdnb_match": "gps"
     },
     {
       "cle": "26|AVENUE|LACASSAGNE",
@@ -33272,9 +32475,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "reseau de chaleur",
       "batiment_groupe_id": "bdnb-bg-WLXU-6YKR-D8DU",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "23|AVENUE|LACASSAGNE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "26|RUE|DE LA METALLURGIE",
@@ -33295,9 +32496,7 @@
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-SCQS-HYN4-PPDQ",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "27|RUE|DE LA METALLURGIE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "26|RUE|DE LA VILLETTE",
@@ -33479,9 +32678,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-ME8U-UNJZ-8JBU",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "32|RUE|D AUBIGNY"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "27|RUE|DE LA METALLURGIE",
@@ -33504,11 +32701,7 @@
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-SCQS-HYN4-PPDQ",
-      "_bdnb_match": "immat",
-      "_fusion_auto_label": "26/27 RUE DE LA METALLURGIE",
-      "_fusion_auto_sources": [
-        "26|RUE|DE LA METALLURGIE"
-      ]
+      "_bdnb_match": "immat"
     },
     {
       "cle": "27|RUE|DE LA VILLETTE",
@@ -33615,9 +32808,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-QN57-TWQK-FEX6",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "23|RUE|ROPOSTE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "27|RUE|ST EUSEBE",
@@ -33682,9 +32873,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-U3Q7-1AD8-Z67B",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "279|RUE|PAUL BERT"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "279|RUE|PAUL BERT",
@@ -33707,12 +32896,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-U3Q7-1AD8-Z67B",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "278/279/280 RUE PAUL BERT",
-      "_fusion_auto_sources": [
-        "278|RUE|PAUL BERT",
-        "280|RUE|PAUL BERT"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "28|RUE|DU DOCTEUR REBATEL",
@@ -33780,9 +32964,7 @@
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-6UE1-UT3G-U7D2",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "25|RUE|ST ANTOINE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "280|RUE|PAUL BERT",
@@ -33803,9 +32985,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-U3Q7-1AD8-Z67B",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "279|RUE|PAUL BERT"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "282|RUE|PAUL BERT",
@@ -33826,11 +33006,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-WPSJ-ZJGX-8JY7",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "282/283 RUE PAUL BERT",
-      "_fusion_auto_sources": [
-        "283|RUE|PAUL BERT"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "283|RUE|PAUL BERT",
@@ -33851,9 +33027,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-WPSJ-ZJGX-8JY7",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "282|RUE|PAUL BERT"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "284|COURS|LAFAYETTE",
@@ -34027,9 +33201,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-ME8U-UNJZ-8JBU",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "32|RUE|D AUBIGNY"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "29|RUE|DE L ESPERANCE",
@@ -34074,9 +33246,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-4RMJ-W193-8VZA",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "24|RUE|DE LA METALLURGIE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "29|RUE|DU DAUPHINE",
@@ -34118,9 +33288,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-VGNW-N4HU-YD2U",
-      "_bdnb_match": "immat",
-      "_fusion_auto": true,
-      "_fusion_cible": "43|RUE|D AUBIGNY"
+      "_bdnb_match": "immat"
     },
     {
       "cle": "29|RUE|MAURICE FLANDIN",
@@ -34164,9 +33332,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-WPVN-TN1Z-KE2S",
-      "_bdnb_match": "gps",
-      "_fusion_auto": true,
-      "_fusion_cible": "71|RUE|PAUL BERT"
+      "_bdnb_match": "gps"
     },
     {
       "cle": "293|RUE|PAUL BERT",
@@ -34187,9 +33353,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-WPVN-TN1Z-KE2S",
-      "_bdnb_match": "gps",
-      "_fusion_auto": true,
-      "_fusion_cible": "71|RUE|PAUL BERT"
+      "_bdnb_match": "gps"
     },
     {
       "cle": "298|COURS|LAFAYETTE",
@@ -34350,9 +33514,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-SQC2-49E9-C6J1",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "1|RUE|CARRY"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "3|RUE|DES PETITES SOEURS",
@@ -34394,9 +33556,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-U297-N64A-4SXK",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "4|RUE|DES TEINTURIERS"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "3|RUE|LOUIS JASSERON",
@@ -34420,9 +33580,7 @@
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-PP7G-YWLB-1ZEC",
-      "_bdnb_match": "immat",
-      "_fusion_auto": true,
-      "_fusion_cible": "2|RUE|LOUIS JASSERON"
+      "_bdnb_match": "immat"
     },
     {
       "cle": "3|RUE|MEYNIS",
@@ -34647,14 +33805,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-HG7J-CA18-P3VG",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": null,
-      "_fusion_auto_sources": [
-        "32|RUE|MAURICE FLANDIN",
-        "36|RUE|MAURICE FLANDIN",
-        "5|RUE|D AUBIGNY",
-        "7|RUE|D AUBIGNY"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "30|RUE|PROFESSEUR PAUL SISLEY",
@@ -34767,12 +33918,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-FSS5-TB5T-HU7V",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "31/33/34 AVENUE GEORGES POMPIDOU",
-      "_fusion_auto_sources": [
-        "34|AVENUE|GEORGES POMPIDOU",
-        "33|AVENUE|GEORGES POMPIDOU"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "31|RUE|ANTOINE CHARIAL",
@@ -34839,9 +33985,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-9QRD-SMSX-T5SC",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "32|RUE|DU DAUPHINE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "31|RUE|ST ANTOINE",
@@ -34961,9 +34105,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-HG7J-CA18-P3VG",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "30|RUE|MAURICE FLANDIN"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "32|RUE|TURBIL",
@@ -35150,9 +34292,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-FSS5-TB5T-HU7V",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "31|AVENUE|GEORGES POMPIDOU"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "33|COURS|ALBERT THOMAS",
@@ -35215,9 +34355,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-BJP6-W4Q2-72UZ",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "34|RUE|DU DAUPHINE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "33|RUE|ETIENNE RICHERAND",
@@ -35372,9 +34510,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-3T3A-VTAP-UHBF",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "35|RUE|ANTOINE CHARIAL"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "34|RUE|BARABAN",
@@ -35578,9 +34714,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-QXAH-Y7QM-A3JB",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "36|RUE|DU DAUPHINE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "35|RUE|ST MAXIMIN",
@@ -35669,9 +34803,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-LS26-PDJ2-S81A",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "37|AVENUE|LACASSAGNE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "36|RUE|DU DAUPHINE",
@@ -35694,11 +34826,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-QXAH-Y7QM-A3JB",
-      "_bdnb_match": "immat",
-      "_fusion_auto_label": "35/36 RUE DU DAUPHINE",
-      "_fusion_auto_sources": [
-        "35|RUE|DU DAUPHINE"
-      ]
+      "_bdnb_match": "immat"
     },
     {
       "cle": "36|RUE|JEANNE HACHETTE",
@@ -35742,9 +34870,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-HG7J-CA18-P3VG",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "30|RUE|MAURICE FLANDIN"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "36|RUE|STE ANNE DE BARABAN",
@@ -35851,9 +34977,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-WPVN-TN1Z-KE2S",
-      "_bdnb_match": "gps",
-      "_fusion_auto": true,
-      "_fusion_cible": "71|RUE|PAUL BERT"
+      "_bdnb_match": "gps"
     },
     {
       "cle": "38|AVENUE|GEORGES POMPIDOU",
@@ -35895,14 +35019,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-G42R-WCCY-9KFD",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "38/40/44/53/86 RUE DE LA VILLETTE",
-      "_fusion_auto_sources": [
-        "40|RUE|DE LA VILLETTE",
-        "44|RUE|DE LA VILLETTE",
-        "53|RUE|DE LA VILLETTE",
-        "86|RUE|DE LA VILLETTE"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "39|RUE|D AUBIGNY",
@@ -35923,9 +35040,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-VGNW-N4HU-YD2U",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "43|RUE|D AUBIGNY"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "39|RUE|DE LA CITE",
@@ -36065,12 +35180,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-9Q8J-7KPH-2P9U",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "4/5/6 RUE DE LA VILLETTE",
-      "_fusion_auto_sources": [
-        "5|RUE|DE LA VILLETTE",
-        "6|RUE|DE LA VILLETTE"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "4|RUE|DES TEINTURIERS",
@@ -36094,12 +35204,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-U297-N64A-4SXK",
-      "_bdnb_match": "immat",
-      "_fusion_auto_label": "3/4/6 RUE DES TEINTURIERS",
-      "_fusion_auto_sources": [
-        "6|RUE|DES TEINTURIERS",
-        "3|RUE|DES TEINTURIERS"
-      ]
+      "_bdnb_match": "immat"
     },
     {
       "cle": "4|RUE|DU DAUPHINE",
@@ -36120,9 +35225,7 @@
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-L2AS-75JZ-QX89",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "11|RUE|DU DAUPHINE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "4|RUE|ETIENNE RICHERAND",
@@ -36145,9 +35248,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-L2CK-SQ4L-G991",
-      "_bdnb_match": "immat",
-      "_fusion_auto": true,
-      "_fusion_cible": "5|RUE|ETIENNE RICHERAND"
+      "_bdnb_match": "immat"
     },
     {
       "cle": "4|RUE|FREDERIC MISTRAL",
@@ -36210,9 +35311,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-R9KQ-ZAYE-712F",
-      "_bdnb_match": "gps",
-      "_fusion_auto": true,
-      "_fusion_cible": "3|RUE|MILIEU"
+      "_bdnb_match": "gps"
     },
     {
       "cle": "4|RUE|ROGER BRECHAN",
@@ -36259,9 +35358,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-5RMC-KXL7-E97N",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "10|RUE|TERNOIS"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "40|AVENUE|GEORGES POMPIDOU",
@@ -36307,9 +35404,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-VGNW-N4HU-YD2U",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "43|RUE|D AUBIGNY"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "40|RUE|DE LA CITE",
@@ -36330,9 +35425,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-L5QL-8Y76-N9CC",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "41|RUE|DE LA CITE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "40|RUE|DE LA VILLETTE",
@@ -36353,9 +35446,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-G42R-WCCY-9KFD",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "38|RUE|DE LA VILLETTE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "40|RUE|STE ANNE DE BARABAN",
@@ -36421,9 +35512,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-VGNW-N4HU-YD2U",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "43|RUE|D AUBIGNY"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "41|RUE|DE LA CITE",
@@ -36446,11 +35535,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-L5QL-8Y76-N9CC",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "40/41 RUE DE LA CITE",
-      "_fusion_auto_sources": [
-        "40|RUE|DE LA CITE"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "41|RUE|ETIENNE RICHERAND",
@@ -36494,9 +35579,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-YTPJ-Q2XB-2DEF",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "39|RUE|GUILLOUD"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "41|RUE|ST MAXIMIN",
@@ -36561,9 +35644,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-VGNW-N4HU-YD2U",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "43|RUE|D AUBIGNY"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "42|RUE|DE LA CITE",
@@ -36626,9 +35707,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-576W-T8B7-57ET",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "41|RUE|ST ANTOINE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "42|RUE|STE ANNE DE BARABAN",
@@ -36672,15 +35751,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-VGNW-N4HU-YD2U",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": null,
-      "_fusion_auto_sources": [
-        "29|RUE|ETIENNE RICHERAND",
-        "39|RUE|D AUBIGNY",
-        "40|RUE|D AUBIGNY",
-        "41|RUE|D AUBIGNY",
-        "42|RUE|D AUBIGNY"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "43|RUE|DU DAUPHINE",
@@ -36745,9 +35816,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-YTPJ-Q2XB-2DEF",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "39|RUE|GUILLOUD"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "43|RUE|MAURICE FLANDIN",
@@ -36793,9 +35862,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-PWDK-M71Z-3JJQ",
-      "_bdnb_match": "immat",
-      "_fusion_auto": true,
-      "_fusion_cible": "46|RUE|ST MAXIMIN"
+      "_bdnb_match": "immat"
     },
     {
       "cle": "44|RUE|DE LA VILLETTE",
@@ -36816,9 +35883,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-G42R-WCCY-9KFD",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "38|RUE|DE LA VILLETTE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "44|RUE|DU DOCTEUR REBATEL",
@@ -36839,9 +35904,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-YTPJ-Q2XB-2DEF",
-      "_bdnb_match": "gps",
-      "_fusion_auto": true,
-      "_fusion_cible": "39|RUE|GUILLOUD"
+      "_bdnb_match": "gps"
     },
     {
       "cle": "44|RUE|ST ANTOINE",
@@ -36885,9 +35948,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-PWDK-M71Z-3JJQ",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "46|RUE|ST MAXIMIN"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "45|AVENUE|LACASSAGNE",
@@ -36996,9 +36057,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "reseau de chaleur",
       "batiment_groupe_id": "bdnb-bg-FS5T-27SZ-1D73",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "46|AVENUE|GEORGES POMPIDOU"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "47|AVENUE|LACASSAGNE",
@@ -37088,9 +36147,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-CXP2-X59F-KFA2",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "10|RUE|GANDOLIERE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "47|RUE|MAURICE FLANDIN",
@@ -37174,9 +36231,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-CXP2-X59F-KFA2",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "10|RUE|GANDOLIERE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "48|RUE|STE ANNE DE BARABAN",
@@ -37197,11 +36252,7 @@
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-YBQ5-DZK6-AMBC",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "48/49 RUE STE ANNE DE BARABAN",
-      "_fusion_auto_sources": [
-        "49|RUE|STE ANNE DE BARABAN"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "49|AVENUE|GEORGES POMPIDOU",
@@ -37222,9 +36273,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "reseau de chaleur",
       "batiment_groupe_id": "bdnb-bg-ZNN2-SAMJ-S68B",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "48|AVENUE|GEORGES POMPIDOU"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "49|RUE|DE LA CITE",
@@ -37343,9 +36392,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-4F6G-4P2Q-RRZK",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "48|RUE|ST MAXIMIN"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "49|RUE|STE ANNE DE BARABAN",
@@ -37366,9 +36413,7 @@
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-YBQ5-DZK6-AMBC",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "48|RUE|STE ANNE DE BARABAN"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "5|AVENUE|LACASSAGNE",
@@ -37496,9 +36541,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-HG7J-CA18-P3VG",
-      "_bdnb_match": "gps",
-      "_fusion_auto": true,
-      "_fusion_cible": "30|RUE|MAURICE FLANDIN"
+      "_bdnb_match": "gps"
     },
     {
       "cle": "5|RUE|DAVID",
@@ -37540,9 +36583,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-9Q8J-7KPH-2P9U",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "4|RUE|DE LA VILLETTE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "5|RUE|DE MONTBRILLANT",
@@ -37587,11 +36628,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-T125-SHNC-BAM6",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "5/8 RUE JEANNE KOEHLER",
-      "_fusion_auto_sources": [
-        "8|RUE|JEANNE KOEHLER"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "5|RUE|MILIEU",
@@ -37612,12 +36649,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-JC6A-SZUS-8UAJ",
-      "_bdnb_match": "gps",
-      "_fusion_auto_label": "5/6/7 RUE MILIEU",
-      "_fusion_auto_sources": [
-        "6|RUE|MILIEU",
-        "7|RUE|MILIEU"
-      ]
+      "_bdnb_match": "gps"
     },
     {
       "cle": "5|RUE|PROFESSEUR PAUL SISLEY",
@@ -37638,9 +36670,7 @@
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-AM81-DZPJ-QXMN",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "6|RUE|PROFESSEUR PAUL SISLEY"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "5|RUE|ROGER BRECHAN",
@@ -37730,12 +36760,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-UD36-AJ94-ZSUK",
-      "_bdnb_match": "immat",
-      "_fusion_auto_label": "50/51/52 RUE STE ANNE DE BARABAN",
-      "_fusion_auto_sources": [
-        "51|RUE|STE ANNE DE BARABAN",
-        "52|RUE|STE ANNE DE BARABAN"
-      ]
+      "_bdnb_match": "immat"
     },
     {
       "cle": "51|AVENUE|GEORGES POMPIDOU",
@@ -37758,11 +36783,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "reseau de chaleur",
       "batiment_groupe_id": "bdnb-bg-71B2-4HSV-Y9VP",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "51/52 AVENUE GEORGES POMPIDOU",
-      "_fusion_auto_sources": [
-        "52|AVENUE|GEORGES POMPIDOU"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "51|AVENUE|LACASSAGNE",
@@ -37807,9 +36828,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-TD3K-MD6A-6F6R",
-      "_bdnb_match": "immat",
-      "_fusion_auto": true,
-      "_fusion_cible": "52|RUE|DU DAUPHINE"
+      "_bdnb_match": "immat"
     },
     {
       "cle": "51|RUE|MAURICE FLANDIN",
@@ -37855,11 +36874,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-HQWX-SRVS-WAVH",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "50/51 RUE ST ANTOINE",
-      "_fusion_auto_sources": [
-        "50|RUE|ST ANTOINE"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "51|RUE|STE ANNE DE BARABAN",
@@ -37880,9 +36895,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-UD36-AJ94-ZSUK",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "50|RUE|STE ANNE DE BARABAN"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "52|RUE|BARABAN",
@@ -37947,9 +36960,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-UD36-AJ94-ZSUK",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "50|RUE|STE ANNE DE BARABAN"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "53|COURS|ALBERT THOMAS",
@@ -38012,9 +37023,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-G42R-WCCY-9KFD",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "38|RUE|DE LA VILLETTE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "53|RUE|DU DAUPHINE",
@@ -38035,9 +37044,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-G2ZQ-H667-PH4K",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "54|RUE|DU DAUPHINE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "53|RUE|MAURICE FLANDIN",
@@ -38155,11 +37162,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-YVGR-P2M6-VRZX",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "54/55 RUE DE LA VILLETTE",
-      "_fusion_auto_sources": [
-        "55|RUE|DE LA VILLETTE"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "54|RUE|ST ANTOINE",
@@ -38203,9 +37206,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-XEH3-TX1E-4BGK",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "53|RUE|ST MAXIMIN"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "55|RUE|DE LA VILLETTE",
@@ -38226,9 +37227,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-YVGR-P2M6-VRZX",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "54|RUE|DE LA VILLETTE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "55|RUE|DU DAUPHINE",
@@ -38347,9 +37346,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-XEH3-TX1E-4BGK",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "53|RUE|ST MAXIMIN"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "57|RUE|ANTOINE CHARIAL",
@@ -38485,9 +37482,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-B7XN-JTJZ-HPB4",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "8|RUE|CLAUDIUS PIONCHON"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "6|RUE|COMBET DESCOMBES",
@@ -38550,9 +37545,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-9Q8J-7KPH-2P9U",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "4|RUE|DE LA VILLETTE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "6|RUE|DE MONTBRILLANT",
@@ -38617,9 +37610,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-U297-N64A-4SXK",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "4|RUE|DES TEINTURIERS"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "6|RUE|DU DAUPHINE",
@@ -38640,9 +37631,7 @@
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-L2AS-75JZ-QX89",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "11|RUE|DU DAUPHINE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "6|RUE|JEAN RENOIR",
@@ -38707,9 +37696,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-JC6A-SZUS-8UAJ",
-      "_bdnb_match": "gps",
-      "_fusion_auto": true,
-      "_fusion_cible": "5|RUE|MILIEU"
+      "_bdnb_match": "gps"
     },
     {
       "cle": "6|RUE|PFR LOUIS ROCHE",
@@ -38753,11 +37740,7 @@
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-AM81-DZPJ-QXMN",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "5/6 RUE PROFESSEUR PAUL SISLEY",
-      "_fusion_auto_sources": [
-        "5|RUE|PROFESSEUR PAUL SISLEY"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "6|RUE|TERNOIS",
@@ -38780,9 +37763,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-5RMC-KXL7-E97N",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "10|RUE|TERNOIS"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "60|AVENUE|LACASSAGNE",
@@ -39065,9 +38046,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-XXU3-L2LW-69P8",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "6|AVENUE|LACASSAGNE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "7|PLACE|FERRANDIERE",
@@ -39113,9 +38092,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-FW4B-YECQ-FPCT",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "12|RUE|CARRY"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "7|RUE|D AUBIGNY",
@@ -39136,9 +38113,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-HG7J-CA18-P3VG",
-      "_bdnb_match": "gps",
-      "_fusion_auto": true,
-      "_fusion_cible": "30|RUE|MAURICE FLANDIN"
+      "_bdnb_match": "gps"
     },
     {
       "cle": "7|RUE|DES PETITES SOEURS",
@@ -39180,9 +38155,7 @@
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-L2AS-75JZ-QX89",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "11|RUE|DU DAUPHINE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "7|RUE|JEAN PIERRE LEVY",
@@ -39230,11 +38203,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-6RYY-NUCS-XLRZ",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "6/7 RUE MAURICE FLANDIN",
-      "_fusion_auto_sources": [
-        "6|RUE|MAURICE FLANDIN"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "7|RUE|MEYNIS",
@@ -39255,9 +38224,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-GFKS-DC3T-CRB1",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "10|RUE|MEYNIS"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "7|RUE|MILIEU",
@@ -39278,9 +38245,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-JC6A-SZUS-8UAJ",
-      "_bdnb_match": "gps",
-      "_fusion_auto": true,
-      "_fusion_cible": "5|RUE|MILIEU"
+      "_bdnb_match": "gps"
     },
     {
       "cle": "7|RUE|MOISSONNIER",
@@ -39352,9 +38317,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-1DBJ-3PC2-EVUG",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "10|RUE|ST VICTORIEN"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "7|RUE|TERNOIS",
@@ -39375,9 +38338,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-5RMC-KXL7-E97N",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "10|RUE|TERNOIS"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "71|RUE|BARABAN",
@@ -39465,9 +38426,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-SDMB-7CKJ-3Q9D",
-      "_bdnb_match": "immat",
-      "_fusion_auto": true,
-      "_fusion_cible": "72|RUE|MAURICE FLANDIN"
+      "_bdnb_match": "immat"
     },
     {
       "cle": "75|RUE|DU DAUPHINE",
@@ -39583,9 +38542,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-5NH2-EJ2E-JZXH",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "57|RUE|BARABAN"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "76|RUE|DU DAUPHINE",
@@ -39699,9 +38656,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-WSTK-SKSS-P2M2",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "7|RUE|DE LA METALLURGIE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "8|RUE|DE MONTBRILLANT",
@@ -39809,9 +38764,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-T125-SHNC-BAM6",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "5|RUE|JEANNE KOEHLER"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "8|RUE|MOISSONNIER",
@@ -39878,11 +38831,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-DGWW-GKPC-Z3DE",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "8/9 RUE ST THEODORE",
-      "_fusion_auto_sources": [
-        "9|RUE|ST THEODORE"
-      ]
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "80|RUE|ANTOINE CHARIAL",
@@ -40023,9 +38972,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-G42R-WCCY-9KFD",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "38|RUE|DE LA VILLETTE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "87|COURS|ALBERT THOMAS",
@@ -40155,9 +39102,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-WQZA-TNRT-44JS",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "10|RUE|DES TEINTURIERS"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "9|RUE|DES TUILIERS",
@@ -40201,9 +39146,7 @@
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-L2AS-75JZ-QX89",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "11|RUE|DU DAUPHINE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "9|RUE|FRANCOIS GILLET",
@@ -40224,9 +39167,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-K5KX-NEHV-8KAS",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "8|RUE|FRANCOIS GILLET"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "9|RUE|GABILLOT",
@@ -40294,9 +39235,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-4DUC-A62Z-LN35",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "16|RUE|LOUIS JASSERON"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "9|RUE|MILIEU",
@@ -40340,9 +39279,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-DGWW-GKPC-Z3DE",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "8|RUE|ST THEODORE"
+      "_bdnb_match": "num_voie"
     },
     {
       "cle": "9|RUE|TERNOIS",
@@ -40458,9 +39395,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-5NH2-EJ2E-JZXH",
-      "_bdnb_match": "immat",
-      "_fusion_auto": true,
-      "_fusion_cible": "57|RUE|BARABAN"
+      "_bdnb_match": "immat"
     },
     {
       "cle": "93|RUE|DE LA VILLETTE",

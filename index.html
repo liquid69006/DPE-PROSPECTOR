@@ -2118,7 +2118,7 @@ function renderSecteur() {
     (parIris[ci] = parIris[ci] || []).push(a);
   });
   let html = '';
-  let nbRnc = 0, nbEst = 0;
+  let nbRnc = 0, nbEst = 0, nbBdnb = 0;
   const ordre = Object.keys(parIris).sort((x, y) =>
     (parIris[y].length) - (parIris[x].length));
   ordre.forEach((ci, ii) => {
@@ -2143,7 +2143,7 @@ function renderSecteur() {
       parIlot[ik].forEach(a => {
         const cp = coproByCle[a.cle];
         const rnc = !!cp;
-        if (rnc) nbRnc++; else nbEst++;
+        if (rnc) nbRnc++; else { nbEst++; if (a.nb_log_bdnb > 0) nbBdnb++; }
         const as = secteurAssign[a.cle] || {};
         const hasAdr = a.adresse != null && String(a.adresse).trim() !== '';
         const adrTxt = hasAdr ? a.adresse
@@ -2287,7 +2287,7 @@ function renderSecteur() {
   const secVAn = secV / 5;
   const secTaux = secL > 0 ? Math.round(secV / secL / 5 * 1000) / 10 : null;
   document.getElementById('secteur-resume').textContent =
-    `${(d.adresses || []).length} adresses · ${nbRnc} RNC · ${nbEst} estimées · `
+    `${(d.adresses || []).length} adresses · ${nbRnc} RNC · ${nbBdnb} BDNB · `
     + `${secL.toLocaleString('fr-FR')} lgts · `
     + `${secVAn.toLocaleString('fr-FR', { minimumFractionDigits: 1, maximumFractionDigits: 1 })} ventes/an · `
     + `taux secteur ${secTaux != null ? secTaux : '—'}%/an`;
