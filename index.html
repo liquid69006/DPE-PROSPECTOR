@@ -2146,9 +2146,36 @@ function renderSecteur() {
   let html = '';
   let nbRnc = 0, nbEst = 0, nbBdnb = 0, nbShown = 0;
   let secAllV = 0, secL = 0;        // header = somme des IRIS = somme des adresses
-  // Dédoublonnage du parc : un bâtiment BDNB (batiment_groupe_id) ou une
-  // copro RNC ne compte ses logements qu'UNE fois (1re adresse rencontrée).
+  // Dédoublonnage du parc : unité = le BÂTIMENT (batiment_groupe_id) si
+  // dispo, sinon la copro (immat), sinon l'adresse. Une copro est
+  // rattachée au 1er bâtiment où elle apparaît -> un bâtiment compté UNE
+  // seule fois quelle que soit la source (corrige le double comptage
+  // rnc:immat + bg:bgid, ~8,4%). Valeur retenue : lots RNC cumulés des
+  // copros du bâtiment (prioritaire), sinon nb_log_bdnb.
   const seenLgts = new Set();
+  const immatBg = {};                 // immat -> bgid (rattachement copro->bâti)
+  const bgRncLots = {};               // bgid -> { immat: lots }
+  const bgBdnb = {};                  // bgid -> nb_log_bdnb (hors-RNC)
+  (d.adresses || []).forEach(a => {
+    if (fusedSrc[a.cle]) return;
+    const bg = a.batiment_groupe_id || null;
+    const cp = coproByCle[a.cle];
+    const im = cp ? (cp.numero_immatriculation || cp.cle_adresse || a.cle) : null;
+    const lots = (cp && cp.nb_lots_habitation > 0) ? cp.nb_lots_habitation : 0;
+    if (bg) {
+      if (im && lots > 0) {
+        if (immatBg[im] == null) immatBg[im] = bg;
+        (bgRncLots[immatBg[im]] = bgRncLots[immatBg[im]] || {})[im] = lots;
+      }
+      if (a.nb_log_bdnb > 0 && bgBdnb[bg] == null) bgBdnb[bg] = a.nb_log_bdnb;
+    }
+  });
+  const bgValue = {};                 // bgid -> logements (RNC prioritaire)
+  new Set(Object.keys(bgBdnb).concat(Object.keys(bgRncLots))).forEach(bg => {
+    bgValue[bg] = bgRncLots[bg]
+      ? Object.values(bgRncLots[bg]).reduce((s, v) => s + v, 0)
+      : (bgBdnb[bg] || 0);
+  });
   const ordre = Object.keys(parIris).sort((x, y) =>
     (parIris[y].length) - (parIris[x].length));
   ordre.forEach((ci, ii) => {
@@ -2203,11 +2230,21 @@ function renderSecteur() {
         // bâtiment BDNB / copro RNC -> parc réel sans double-comptage.
         // Même base à tous les niveaux -> header = Σ IRIS = Σ adresses.
         iloAllV += effTot;
-        if (denomAff && denomAff > 0) {
-          const lgtKey = rnc
-            ? 'rnc:' + (cp.numero_immatriculation || cp.cle_adresse || a.cle)
-            : (a.batiment_groupe_id ? 'bg:' + a.batiment_groupe_id : 'adr:' + a.cle);
-          if (!seenLgts.has(lgtKey)) { seenLgts.add(lgtKey); iloL += denomAff; }
+        // Clé unifiée par bâtiment : un bâti compté une seule fois (RNC
+        // ou BDNB). RNC sans bâti -> clé copro ; sinon -> clé adresse.
+        let lgtKey = null, lgtVal = 0;
+        if (a.batiment_groupe_id) {
+          lgtKey = 'bg:' + a.batiment_groupe_id;
+          lgtVal = bgValue[a.batiment_groupe_id] || 0;
+        } else if (rnc) {
+          const im = cp.numero_immatriculation || cp.cle_adresse || a.cle;
+          if (immatBg[im]) { lgtKey = 'bg:' + immatBg[im]; lgtVal = bgValue[immatBg[im]] || 0; }
+          else { lgtKey = 'rnc:' + im; lgtVal = (cp.nb_lots_habitation > 0 ? cp.nb_lots_habitation : 0); }
+        } else if (denomAff && denomAff > 0) {
+          lgtKey = 'adr:' + a.cle; lgtVal = denomAff;
+        }
+        if (lgtKey && lgtVal > 0 && !seenLgts.has(lgtKey)) {
+          seenLgts.add(lgtKey); iloL += lgtVal;
         }
 
         const fusBadge = mi
