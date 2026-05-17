@@ -17045,7 +17045,7 @@
       "longitude": 4.867797,
       "latitude": 45.75879,
       "code_iris": "693830405",
-      "_coord_source": "ban",
+      "_coord_source": "ban_street",
       "dans_majic": false,
       "sci_proprietaire": "inconnu",
       "sci_nom": "",
