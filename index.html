@@ -741,17 +741,17 @@ td{padding:11px 14px;vertical-align:middle;}
          background:var(--surface);border-bottom:2px solid var(--border);
          font-size:11px;font-weight:700;color:var(--text2);padding:7px 0;
          align-items:center;">
-      <span style="flex:1 1 auto;min-width:200px;padding:0 4px;box-sizing:border-box;">Adresse</span>
-      <span style="flex:0 0 60px;width:60px;padding:0 4px;box-sizing:border-box;text-align:right;">Lgts</span>
-      <span style="flex:0 0 45px;width:45px;padding:0 4px;box-sizing:border-box;text-align:right;">2021</span>
-      <span style="flex:0 0 45px;width:45px;padding:0 4px;box-sizing:border-box;text-align:right;">2022</span>
-      <span style="flex:0 0 45px;width:45px;padding:0 4px;box-sizing:border-box;text-align:right;">2023</span>
-      <span style="flex:0 0 45px;width:45px;padding:0 4px;box-sizing:border-box;text-align:right;">2024</span>
-      <span style="flex:0 0 45px;width:45px;padding:0 4px;box-sizing:border-box;text-align:right;">2025</span>
-      <span style="flex:0 0 55px;width:55px;padding:0 4px;box-sizing:border-box;text-align:right;">Total</span>
-      <span style="flex:0 0 70px;width:70px;padding:0 4px;box-sizing:border-box;text-align:right;">Taux/an</span>
-      <span style="flex:0 0 90px;width:90px;padding:0 4px;box-sizing:border-box;text-align:center;">Classement</span>
-      <span style="flex:0 0 250px;width:250px;padding:0 4px;box-sizing:border-box;text-align:center;">Actions</span>
+      <span style="flex:2 1 0;min-width:160px;padding:0 4px;box-sizing:border-box;text-align:left;">Adresse</span>
+      <span style="flex:0 0 55px;width:55px;padding:0 4px;box-sizing:border-box;text-align:center;">Lgts</span>
+      <span style="flex:0 0 45px;width:45px;padding:0 4px;box-sizing:border-box;text-align:center;">2021</span>
+      <span style="flex:0 0 45px;width:45px;padding:0 4px;box-sizing:border-box;text-align:center;">2022</span>
+      <span style="flex:0 0 45px;width:45px;padding:0 4px;box-sizing:border-box;text-align:center;">2023</span>
+      <span style="flex:0 0 45px;width:45px;padding:0 4px;box-sizing:border-box;text-align:center;">2024</span>
+      <span style="flex:0 0 45px;width:45px;padding:0 4px;box-sizing:border-box;text-align:center;">2025</span>
+      <span style="flex:0 0 55px;width:55px;padding:0 4px;box-sizing:border-box;text-align:center;">Total</span>
+      <span style="flex:0 0 65px;width:65px;padding:0 4px;box-sizing:border-box;text-align:center;">Taux/an</span>
+      <span style="flex:0 0 85px;width:85px;padding:0 4px;box-sizing:border-box;text-align:center;">Classement</span>
+      <span style="flex:1 1 0;min-width:180px;padding:0 4px;box-sizing:border-box;text-align:center;">Actions</span>
     </div>
     <div id="secteur-tree" style="font-size:13px;">
       <div style="color:var(--text2);padding:20px;text-align:center;">Chargement…</div>
@@ -2041,17 +2041,22 @@ function sctClassAnnuel(t) {
   if (t >= 1)   return 'Modéré';
   return 'Figé';
 }
-const SCTW = { lots: 60, an: 45, tot: 55, taux: 70, cls: 90, act: 250, adrMin: 200 };
+const SCTW = { lots: 55, an: 45, tot: 55, taux: 65, cls: 85, adrMin: 160, actMin: 180 };
 function sctCell(h, w, al) {
-  return `<span style="flex:0 0 ${w}px;width:${w}px;${al ? 'text-align:' + al + ';' : ''}`
+  return `<span style="flex:0 0 ${w}px;width:${w}px;text-align:${al || 'center'};`
     + `overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:0 4px;`
     + `box-sizing:border-box;">${h}</span>`;
 }
-// Cellule "Adresse" extensible : prend tout l'espace restant.
+// Cellule "Adresse" : flex:2 (2 parts de l'espace disponible), alignée à gauche.
 function sctAdr(h) {
-  return `<span style="flex:1 1 auto;min-width:${SCTW.adrMin}px;`
+  return `<span style="flex:2 1 0;min-width:${SCTW.adrMin}px;text-align:left;`
     + `overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:0 4px;`
     + `box-sizing:border-box;">${h}</span>`;
+}
+// Cellule "Actions" : flex:1 (1 part de l'espace disponible).
+function sctAct(h) {
+  return `<span style="flex:1 1 0;min-width:${SCTW.actMin}px;box-sizing:border-box;`
+    + `display:flex;align-items:center;gap:5px;padding:0 4px;overflow:hidden;">${h}</span>`;
 }
 function sctBadge(cls) {
   return cls
@@ -2138,8 +2143,6 @@ function renderSecteur() {
         iloAllV += effTot;
         if (lots && lots > 0) { iloV += effTot; iloL += lots; }
 
-        const sci = a.sci_proprietaire === 'oui'
-          ? ` <span style="color:#7c3aed;font-size:10px;">SCI ${esc(a.sci_nom || '')}</span>` : '';
         const fusBadge = mi
           ? `<span onclick="secteurUndoFusion('${esc(a.cle)}')"`
             + ` title="${esc(mi.count + ' adresse(s) fusionnée(s) : ' + mi.srcs.join(', ') + ' — cliquer pour défaire')}"`
@@ -2159,7 +2162,7 @@ function renderSecteur() {
             + `</select>` : '';
 
         const nameCell = `📍 <span class="sct-nm" data-cle="${esc(a.cle)}">${esc(dispNom)}</span>`
-          + `${flagGeo}${sci}`;
+          + `${flagGeo}`;
         const actions = `<button onclick="secteurRapprocher('${esc(a.cle)}')" title="Rapprocher d'une copropriété RNC" `
           + `style="background:transparent;border:1px solid #4b5563;color:#0ea5e9;border-radius:4px;`
           + `font-size:11px;padding:1px 5px;cursor:pointer;">🔗</button>`
@@ -2172,13 +2175,12 @@ function renderSecteur() {
           + `style="display:flex;align-items:center;border-bottom:1px solid var(--border);`
           + `padding:4px 0;font-size:12px;">`
           + sctAdr(nameCell)
-          + sctCell(lots != null ? lots : '<span style="color:var(--text2);">—</span>', SCTW.lots, 'right')
-          + ANS.map(y => sctCell(String(effV[y] || 0), SCTW.an, 'right')).join('')
-          + sctCell(`<b>${effTot}</b>`, SCTW.tot, 'right')
-          + sctCell(taux != null ? taux + '%' : '<span style="color:var(--text2);">—</span>', SCTW.taux, 'right')
+          + sctCell(lots != null ? lots : '<span style="color:var(--text2);">—</span>', SCTW.lots, 'center')
+          + ANS.map(y => sctCell(String(effV[y] || 0), SCTW.an, 'center')).join('')
+          + sctCell(`<b>${effTot}</b>`, SCTW.tot, 'center')
+          + sctCell(taux != null ? taux + '%' : '<span style="color:var(--text2);">—</span>', SCTW.taux, 'center')
           + sctCell(sctBadge(cls), SCTW.cls, 'center')
-          + `<span style="flex:0 0 ${SCTW.act}px;width:${SCTW.act}px;box-sizing:border-box;`
-          + `display:flex;align-items:center;gap:5px;padding:0 4px;overflow:hidden;">${actions}</span>`
+          + sctAct(actions)
           + `</div>`;
       });
       irisAllV += iloAllV; irisV += iloV; irisL += iloL;
