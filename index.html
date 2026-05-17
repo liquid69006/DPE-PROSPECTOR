@@ -2237,7 +2237,14 @@ function renderSecteur() {
                 `<option value="${v}"${as.type === v ? ' selected' : ''}>${esc(l)}</option>`).join('')
             + `</select>` : '';
 
-        const nameCell = `📍 <span class="sct-nm" data-cle="${esc(a.cle)}">${esc(dispNom)}</span>`
+        // Adresse cliquable -> Google Maps "ADRESSE Lyon 3" (nouvel onglet).
+        // On garde class="sct-nm" + data-cle : secteurRename() cible cet
+        // element (le ✏️ le remplace par un input, le clic ouvre Maps).
+        const mapsQ = encodeURIComponent(adrTxt + ' Lyon 3');
+        const nameCell = `📍 <a class="sct-nm" data-cle="${esc(a.cle)}" `
+          + `href="https://www.google.com/maps/search/?api=1&query=${mapsQ}" `
+          + `target="_blank" rel="noopener" title="Ouvrir « ${esc(adrTxt)} » dans Google Maps" `
+          + `style="color:inherit;text-decoration:none;cursor:pointer;">${esc(dispNom)}</a>`
           + `${flagGeo}`;
         // Colonne SCI propriétaire (nom + lien Pappers si SIREN)
         const sciNm = (a.sci_proprietaire === 'oui' && a.sci_nom
@@ -2266,7 +2273,10 @@ function renderSecteur() {
         const synNm = (a.syndic && !/^\s*non connu\s*$/i.test(a.syndic))
           ? String(a.syndic).trim() : '';
         const syndicCell = synNm
-          ? `<span title="${esc(synNm)}" style="font-size:10px;">${esc(synNm)}</span>`
+          ? `<a href="https://www.google.com/search?q=${encodeURIComponent(synNm + ' syndic Lyon')}" `
+            + `target="_blank" rel="noopener" title="${esc(synNm)} — rechercher sur Google" `
+            + `style="font-size:10px;color:inherit;text-decoration:underline;text-underline-offset:2px;">`
+            + `${esc(synNm)}</a>`
           : '<span style="color:var(--text2);">—</span>';
 
         rows += `<div class="sct-row" data-sct-addr="${esc(secteurNorm(dispNom + ' ' + adrTxt))}" `
