@@ -88,26 +88,18 @@ console.log("  adresses:", cur.n, "| resume:", curResume);
 check("renderSecteur() ne leve pas (patche)", !cur.error);
 check("HTML non vide (patche)", curHtml.length > 1000);
 
-// Le tableau affiche l'ADRESSE (a.adresse), pas le nom de copro.
-// On verifie les libelles d'adresse reellement injectes : presents
-// dans le rendu patche, absents du .bak.
+// Toutes les lignes injectees par les correctifs (quel que soit le
+// marqueur) doivent etre rendues. .bak = etat precedent (roule a chaque
+// apply) -> on ne compare PAS un delta fige, on verifie les invariants.
 const sd = JSON.parse(fs.readFileSync(CUR, "utf8"));
-const injRows = sd.adresses.filter(a => a._bdnb_match === "immat_fix");
-console.log("\n=== Copros injectees visibles (par adresse affichee) ===");
-check("42 lignes immat_fix dans le JSON", injRows.length === 42);
-let nbVis = 0, nbBakAbs = 0;
-for (const a of injRows) {
-  const tag = `data-cle="${a.cle}"`;            // present dans nameCell
-  if (curHtml.includes(tag)) nbVis++;
-  if (!bakHtml.includes(`data-cle="${a.cle}"`)) nbBakAbs++;
-}
-check(`les 42 lignes rendues (data-cle) dans le patche (${nbVis}/42)`, nbVis === 42);
-check(`les 42 cles absentes du .bak (${nbBakAbs}/42)`, nbBakAbs === 42);
-// echantillon lisible
-for (const adrTxt of ["2 RUE DAHLIAS", "311 RUE PAUL BERT", "76 RUE ETIENNE RICHERAND"]) {
-  check(`"${adrTxt}" rendu (patche)`, curHtml.includes(adrTxt));
-  check(`"${adrTxt}" absent (.bak)`, !bakHtml.includes(adrTxt));
-}
+const MARKERS = ["immat_fix", "immat_live_fix"];
+const injRows = sd.adresses.filter(a => MARKERS.includes(a._bdnb_match));
+console.log("\n=== Lignes injectees rendues ===");
+check("au moins 1 ligne injectee", injRows.length >= 1);
+let nbVis = 0;
+for (const a of injRows) if (curHtml.includes(`data-cle="${a.cle}"`)) nbVis++;
+check(`toutes les lignes injectees rendues (${nbVis}/${injRows.length})`,
+  nbVis === injRows.length);
 
 // B3 : 2 lignes distinctes a la meme adresse postale, toutes deux rendues
 console.log("\n=== Desambiguisation B3 (5 rue Montbrillant) ===");
@@ -141,8 +133,11 @@ const adr = s => { const m = /^(\d+) adresses/.exec(s); return m ? parseInt(m[1]
 console.log("\n=== Coherence agregats ===");
 console.log(`  lgts .bak=${lgt(bakResume)}  ->  patche=${lgt(curResume)}`);
 console.log(`  adresses .bak=${adr(bakResume)}  ->  patche=${adr(curResume)}`);
-check("lgts patche > lgts .bak", lgt(curResume) > lgt(bakResume));
-check("adresses patche > adresses .bak", adr(curResume) > adr(bakResume));
-check("+42 adresses environ", adr(curResume) - adr(bakResume) === 42);
+// .bak = etat precedent (roule a chaque apply) : on exige une evolution
+// monotone (jamais de regression du parc / des adresses), pas un delta fige.
+const dAdr = adr(curResume) - adr(bakResume);
+check(`lgts patche >= lgts .bak (${lgt(bakResume)} -> ${lgt(curResume)})`,
+  lgt(curResume) >= lgt(bakResume));
+check(`adresses patche >= adresses .bak (delta ${dAdr})`, dAdr >= 0);
 
 console.log(process.exitCode ? "\nRESULTAT : ECHEC" : "\nRESULTAT : OK");

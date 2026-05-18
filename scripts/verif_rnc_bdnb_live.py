@@ -25,6 +25,7 @@ ROOT = Path(__file__).resolve().parent.parent
 BDNB = ROOT / "data" / "bdnb_dauphine_lacassagne.json"
 LIGHT = ROOT / "data" / "secteur_dauphine_lacassagne_light.json"
 REPORT = ROOT / "data" / "verif_rnc_bdnb_live_report.md"
+SIDECAR = ROOT / "data" / "_rnc_bdnb_live_missing.json"
 
 API = "https://api.bdnb.io/v1/bdnb/donnees"
 PAUSE = 0.15
@@ -169,6 +170,13 @@ def main():
           ""]
     REPORT.write_text("\n".join(md), encoding="utf-8")
     print(f"Rapport écrit : {REPORT}")
+
+    # Sidecar machine : immat copro -> bgid live absents du snapshot
+    # (source unique pour l'enrichissement du snapshot).
+    sidecar = {r["immat"]: r["only_live"] for r in omissions}
+    SIDECAR.write_text(json.dumps(sidecar, ensure_ascii=False, indent=1),
+                       encoding="utf-8")
+    print(f"Sidecar écrit : {SIDECAR} ({len(sidecar)} copros)")
 
 
 if __name__ == "__main__":

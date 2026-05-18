@@ -1,63 +1,48 @@
 # Vérification RNC → BDNB — API live vs snapshot (lecture seule)
 
-API ouverte `api.bdnb.io/v1/bdnb/donnees/rel_batiment_groupe_rnc` (sans clé), table de relation `numero_immat` ↔ `batiment_groupe_id`. Compare l'ensemble live à `data/bdnb_dauphine_lacassagne.json`.
+API ouverte `api.bdnb.io/v1/bdnb/donnees/rel_batiment_groupe_rnc` (sans clé),
+table de relation `numero_immat` ↔ `batiment_groupe_id`. 553 copros du
+secteur vérifiées contre `data/bdnb_dauphine_lacassagne.json`.
 
-## Bilan
+## ⚠️ Correction d'interprétation
+
+Le comparatif brut `rel` vs snapshot trouve **20 copros / 23 `batiment_groupe_id`
+« only_live »**. Une première lecture (« le snapshot a omis 23 bâtiments,
+~1276 lgts ») est **fausse et surévaluée** : la relation RNC↔bâtiment est
+*many-to-many*, alors que le snapshot projette **un seul**
+`numero_immat_principal` par bâtiment. Quand un même bâtiment physique
+porte deux immatriculations RNC (ex. « LE PAVILLON DE FLORE » et
+« …FLORE II », ou un SDC + son syndicat secondaire), le snapshot le
+range sous l'une, et la liste secteur contient parfois l'autre. Le
+bâtiment **est déjà présent et déjà compté** sous l'immat jumelle.
+
+Re-caractérisation locale (snapshot + sidecar) des 23 bgid :
+
+| Catégorie | Bgid | Réalité |
+|---|--:|---|
+| Déjà dans le snapshot **et déjà visibles** au dashboard | **17** | bâtiment partagé par 2 immats RNC — logements **déjà comptés** sous la copro jumelle. Forcer le lien **double-compterait** (le dedup `bgValue` somme les lots RNC par bâtiment). |
+| Dans le snapshot mais invisibles | 2 | `202 AVENUE FELIX FAURE` (17 lgts), `254 RUE PAUL BERT` bgid `5S72` (7 lgts) — petits. |
+| **Absents du snapshot — HORS SECTEUR** | 4 | `PARC MISTRAL` → 62 Av. Marc Sangnier **69100 Villeurbanne** + 1 enregistrement vide ; `1 place des maison neuves` → 1 Place des Tapis **69004 Lyon 4e** (×2). À **ne pas** injecter dans un jeu Lyon 3e. |
+
+**Conclusion : le snapshot n'est pas matériellement incomplet.** Bilan
+directionnel inchangé et confirmé : **0 bâtiment du snapshot absent du
+live** (le snapshot n'est jamais faux). Aucun re-fetch / injection à
+faire. Résidu réel mineur : 2 petits bâtiments invisibles (~24 lgts) +
+un motif « immatriculation satellite » (copros « X II » jumelles d'un
+bâtiment déjà compté) — annotation produit éventuelle, pas un bug de
+complétude.
+
+## Bilan brut (niveau relation, à lire avec la correction ci-dessus)
 
 | Indicateur | Valeur |
 |---|--:|
 | Copros vérifiées | 553 |
-| Copros snapshot ≠ live | 20 |
-| **Copros où le snapshot a omis des bâtiments** | **20** |
-| Bâtiments live absents du snapshot | 23 (~1276.35 lgts) |
-| Bâtiments snapshot absents du live | 0 |
+| Copros `rel` live ≠ snapshot (par `numero_immat_principal`) | 20 |
+| Bâtiments du snapshot absents du live | **0** |
+| dont réellement absents du snapshot ET dans le secteur | **0** |
+| dont absents du snapshot mais hors secteur / vides | 4 |
+| dont déjà dans le snapshot (autre immat du même bâti) | 19 |
 
-## Top 20 — omissions du snapshot par logements
-
-| # | Immat | Copropriete | snap | live | +bât | +lgts | bgid live manquants au snapshot |
-|--:|---|---|--:|--:|--:|--:|---|
-| 1 | AB0222935 | LE PAVILLON DE FLORE II - MS32833 | 0 | 1 | 1 | 151.0 | bdnb-bg-W8VN-TH3A-X19Z |
-| 2 | AC3226362 | LA COUR SAINT ANTOINE | 1 | 2 | 1 | 121.61 | bdnb-bg-U4S4-QR1D-QNE5 |
-| 3 | AB8378317 | LES JARDINS DU CHATEAU | 1 | 2 | 1 | 115.67 | bdnb-bg-PU3N-4779-FEBT |
-| 4 | AA8146995 | ESPERANCE 12 - ESPACE EMERAUDE | 0 | 1 | 1 | 95.0 | bdnb-bg-NZ67-8FQ2-8L1E |
-| 5 | AC9670597 | 26 RUE DE TURBIL | 0 | 1 | 1 | 77.0 | bdnb-bg-TYWJ-CL2Y-E96B |
-| 6 | AH0111229 | PAUL BERT 314/316 | 0 | 1 | 1 | 74.0 | bdnb-bg-MLQ3-6L3N-HFMK |
-| 7 | AI3897188 | Résidence SAINT EUSEBE | 0 | 1 | 1 | 66.0 | bdnb-bg-MRTT-PSEJ-TWBW |
-| 8 | AD5237797 | SDC LE DUO I | 1 | 2 | 1 | 61.09 | bdnb-bg-6JZ9-FA72-RT9X |
-| 9 | AJ0217901 | LE GUILLOUD | 0 | 1 | 1 | 60.0 | bdnb-bg-YTPJ-Q2XB-2DEF |
-| 10 | AB0818369 | SAINT-MAXIMIN | 0 | 1 | 1 | 53.0 | bdnb-bg-J3X7-528N-6TTX |
-| 11 | AA3186756 | PARC MISTRAL | 0 | 2 | 2 | 52.0 | bdnb-bg-9EQE-Y8LA-N95M bdnb-bg-EJCA-TGBV-X3GU |
-| 12 | AA4868378 | La Closerie des Tilleuls II | 1 | 2 | 1 | 50.98 | bdnb-bg-6D6N-M1N7-38NB |
-| 13 | AC6278774 | L ENEIDE II - MS15806 | 0 | 1 | 1 | 46.0 | bdnb-bg-4DUC-A62Z-LN35 |
-| 14 | AA8440844 | ESPACE EMERAUDE BAT H | 0 | 1 | 1 | 45.0 | bdnb-bg-UD36-AJ94-ZSUK |
-| 15 | AH4739264 | URBAN PLACE | 0 | 1 | 1 | 44.0 | bdnb-bg-5PV4-4ZZM-SWV8 |
-| 16 | AB1081009 | SDC 31 RUE CLAUDIUS PIONCHON | 0 | 1 | 1 | 42.0 | bdnb-bg-BXEH-4Z8G-SH57 |
-| 17 | AD4134433 | 1 place des maison neuves | 0 | 2 | 2 | 36.0 | bdnb-bg-E44U-71Q9-CC2J bdnb-bg-NPQY-QDC3-YZW4 |
-| 18 | AE7492838 | 202 AVENUE FELIX FAURE | 0 | 1 | 1 | 36.0 | bdnb-bg-37ZL-S88G-NPNJ |
-| 19 | AA3284353 | L'HELIODORE | 0 | 1 | 1 | 32.0 | bdnb-bg-U297-N64A-4SXK |
-| 20 | AI6621486 | COPROPRIETE 254 RUE PAUL BERT | 0 | 2 | 2 | 18.0 | bdnb-bg-5S72-KVML-QK4E bdnb-bg-RUV7-747H-Z31A |
-
-## Top 20 — omissions du snapshot par nombre de bâtiments
-
-| # | Immat | Copropriete | snap | live | +bât | +lgts | bgid live manquants au snapshot |
-|--:|---|---|--:|--:|--:|--:|---|
-| 1 | AA3186756 | PARC MISTRAL | 0 | 2 | 2 | 52.0 | bdnb-bg-9EQE-Y8LA-N95M bdnb-bg-EJCA-TGBV-X3GU |
-| 2 | AD4134433 | 1 place des maison neuves | 0 | 2 | 2 | 36.0 | bdnb-bg-E44U-71Q9-CC2J bdnb-bg-NPQY-QDC3-YZW4 |
-| 3 | AI6621486 | COPROPRIETE 254 RUE PAUL BERT | 0 | 2 | 2 | 18.0 | bdnb-bg-5S72-KVML-QK4E bdnb-bg-RUV7-747H-Z31A |
-| 4 | AB0222935 | LE PAVILLON DE FLORE II - MS32833 | 0 | 1 | 1 | 151.0 | bdnb-bg-W8VN-TH3A-X19Z |
-| 5 | AC3226362 | LA COUR SAINT ANTOINE | 1 | 2 | 1 | 121.61 | bdnb-bg-U4S4-QR1D-QNE5 |
-| 6 | AB8378317 | LES JARDINS DU CHATEAU | 1 | 2 | 1 | 115.67 | bdnb-bg-PU3N-4779-FEBT |
-| 7 | AA8146995 | ESPERANCE 12 - ESPACE EMERAUDE | 0 | 1 | 1 | 95.0 | bdnb-bg-NZ67-8FQ2-8L1E |
-| 8 | AC9670597 | 26 RUE DE TURBIL | 0 | 1 | 1 | 77.0 | bdnb-bg-TYWJ-CL2Y-E96B |
-| 9 | AH0111229 | PAUL BERT 314/316 | 0 | 1 | 1 | 74.0 | bdnb-bg-MLQ3-6L3N-HFMK |
-| 10 | AI3897188 | Résidence SAINT EUSEBE | 0 | 1 | 1 | 66.0 | bdnb-bg-MRTT-PSEJ-TWBW |
-| 11 | AD5237797 | SDC LE DUO I | 1 | 2 | 1 | 61.09 | bdnb-bg-6JZ9-FA72-RT9X |
-| 12 | AJ0217901 | LE GUILLOUD | 0 | 1 | 1 | 60.0 | bdnb-bg-YTPJ-Q2XB-2DEF |
-| 13 | AB0818369 | SAINT-MAXIMIN | 0 | 1 | 1 | 53.0 | bdnb-bg-J3X7-528N-6TTX |
-| 14 | AA4868378 | La Closerie des Tilleuls II | 1 | 2 | 1 | 50.98 | bdnb-bg-6D6N-M1N7-38NB |
-| 15 | AC6278774 | L ENEIDE II - MS15806 | 0 | 1 | 1 | 46.0 | bdnb-bg-4DUC-A62Z-LN35 |
-| 16 | AA8440844 | ESPACE EMERAUDE BAT H | 0 | 1 | 1 | 45.0 | bdnb-bg-UD36-AJ94-ZSUK |
-| 17 | AH4739264 | URBAN PLACE | 0 | 1 | 1 | 44.0 | bdnb-bg-5PV4-4ZZM-SWV8 |
-| 18 | AB1081009 | SDC 31 RUE CLAUDIUS PIONCHON | 0 | 1 | 1 | 42.0 | bdnb-bg-BXEH-4Z8G-SH57 |
-| 19 | AE7492838 | 202 AVENUE FELIX FAURE | 0 | 1 | 1 | 36.0 | bdnb-bg-37ZL-S88G-NPNJ |
-| 20 | AA3284353 | L'HELIODORE | 0 | 1 | 1 | 32.0 | bdnb-bg-U297-N64A-4SXK |
+Détail nominatif des 23 bgid : voir la sortie de
+`python scripts/verif_rnc_bdnb_live.py` (sidecar
+`data/_rnc_bdnb_live_missing.json`) recroisée au snapshot.

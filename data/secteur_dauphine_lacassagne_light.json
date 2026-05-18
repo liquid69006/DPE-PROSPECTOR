@@ -54,10 +54,11 @@
       "part_locataires_moyenne_methode": "ponderee par RP 2022",
       "revenu_median_secteur": 25390,
       "revenu_median_secteur_methode": "mediane des medians IRIS Filosofi 2020 (approx., n=14)",
-      "nb_adresses_croisement": 1208
+      "nb_adresses_croisement": 1209
     },
     "_light": "Version allegee : metadata + iris (sans geometrie) + coproprietes/adresses slim. Cles canoniques bis-safe. Adresses completees depuis copro RNC puis BAN. BDNB joint (immat RNC + GPS<50m) : nb_log_bdnb / annee_construction / classe_dpe / type_batiment / type_chauffage. Denominateur du taux = lots RNC prioritaire (BDNB seulement si pas de lots RNC), nb_lots_habitation_rnc conserve. Fusion auto par copro RNC multi-numeros puis par batiment_groupe_id BDNB (parite homogene). Ventes adresse 2021-2025.",
-    "_correctif_rnc_immat": "42 adresses injectees via numero_immat_principal (_bdnb_match=immat_fix) dont 4 B3 a cle desambiguisee (cle_adresse copro suffixee #immat)."
+    "_correctif_rnc_immat": "42 adresses injectees via numero_immat_principal (_bdnb_match=immat_fix) dont 4 B3 a cle desambiguisee (cle_adresse copro suffixee #immat).",
+    "_correctif_invisible_insecteur": "1 adresses injectées (bgid in-secteur présent au snapshot sous immat jumelle, _bdnb_match=immat_live_fix)."
   },
   "iris": [
     {
@@ -44427,6 +44428,32 @@
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-XMZC-EM72-55Q1",
       "_bdnb_match": "immat_fix"
+    },
+    {
+      "cle": "202|AVENUE|FELIX FAURE",
+      "adresse": "202 AVENUE FELIX FAURE",
+      "longitude": 4.871415,
+      "latitude": 45.755035,
+      "code_iris": "693830601",
+      "_coord_source": "rnc_immat_fix",
+      "dans_majic": false,
+      "sci_proprietaire": "non",
+      "sci_nom": null,
+      "sci_siren": null,
+      "syndic": "SOC ADMIN & GESTION IMMEUB ROLIN BAINSON",
+      "_syndic_src": "rnic_live",
+      "ventes_par_an": {
+        "2021": 4,
+        "2022": 1
+      },
+      "nb_ventes_total": 5,
+      "nb_log_bdnb": 17,
+      "annee_construction": 1900,
+      "classe_dpe": "E",
+      "type_batiment": "appartement",
+      "type_chauffage": "electricite",
+      "batiment_groupe_id": "bdnb-bg-37ZL-S88G-NPNJ",
+      "_bdnb_match": "immat_live_fix"
     }
   ]
 }
