@@ -58,7 +58,7 @@ const AGENCES_CONFIG = {
     dataJsonPath: "data/motte-picquet.json",
     conseillers_defaut: ["À attribuer", "Jean-Marie", "Bérénice", "Joël"],
     zones: ["La Motte Picquet"],
-    sci_enabled: false,
+    sci_enabled: true,
     secteur_enabled: true,
   },
   "pernety": {
