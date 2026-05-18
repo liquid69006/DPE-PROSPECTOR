@@ -29,7 +29,7 @@ const SRC = [
   slice(2072, 2074),   // esc
   slice(2076, 2080),   // secteurNorm
   slice(2094, 2134),   // sctTauxAnnuel..sctBadge (helpers de rendu)
-  slice(2136, 2445),   // renderSecteur (parc RNC pur / toggle strict / hr-actif / sctQ)
+  slice(2136, 2469),   // renderSecteur (parc RNC + hors-RNC résid. BDNB / strict / hr-actif / sctQ)
 ].join("\n\n");
 
 function mkEl() {
@@ -185,17 +185,18 @@ const cl = t => vm.runInContext(`sctClassAnnuel(${t})`, sb);
   check(`sctClassAnnuel(${t}) == ${exp} (got ${got})`, got === exp);
 });
 // Taux secteur strict : classe self-consistante avec sctClassAnnuel
-// (generique). Baseline Dauphine REBASÉE : depuis le passage à un parc
-// RNC PUR (header/IRIS = Σ lots_habitation, sans fallback nb_log_bdnb),
-// le dénominateur baisse (~22,6k -> ~17,4k) -> taux strict ~3,2% ->
-// "Très actif" (avant : 2,5% "Actif" sur parc gonflé BDNB).
+// (generique). Baseline Dauphine REBASÉE (bascule usage_principal_bdnb) :
+// parc = lots RNC + hors-RNC RÉSIDENTIEL nb_log_bdnb (tertiaire/
+// secondaire/dépendance/inconnu exclus) -> ~22,3k -> taux strict ~2,5%
+// -> "Actif". Historique : 2,5% "Actif" (BDNB brut) -> 3,2% "Très actif"
+// (RNC pur, ~17,4k) -> 2,5% "Actif" (bascule résid., ~22,3k).
 const tStrict = parseFloat((/taux secteur ([\d.,]+)%/.exec(sR) || [])[1] || "NaN");
 const clS = cl(tStrict);
 console.log(`  taux secteur strict = ${tStrict}% -> ${clS}`);
 check(`classe strict bien definie (${clS})`,
   ["Figé", "Modéré", "Actif", "Très actif"].includes(clS));
-if (DAUPH) check(`Dauphine: strict ${tStrict}% classé "Très actif" (parc RNC pur)`,
-  clS === "Très actif");
+if (DAUPH) check(`Dauphine: strict ${tStrict}% classé "Actif" (bascule résid.)`,
+  clS === "Actif");
 
 // Recherche = filtre de DONNÉES : header/IRIS recalculés (non figés).
 // Terme de recherche derive des donnees (secteur-agnostique) : nom de
@@ -253,35 +254,56 @@ if (mfn) {
     /adrTxt \+ ' ' \+ secteurVille/.test(idx) && !/adrTxt \+ ' Lyon 3'/.test(idx));
 }
 
-// ── Change 1 : parc = base RNC PURE (header/IRIS) ────────────────
-// secL doit = Σ nb_lots_habitation des copros LIÉES (cle_adresse ∈
-// adresses rendues), dédupliquées par immat (bg:bgid regroupe sans
-// double-compter). Aucune contribution nb_log_bdnb hors-RNC.
-console.log("\n=== Change 1 : parc RNC pur (header) ===");
+// ── Change 1 (bascule) : parc = RNC + hors-RNC résidentiel BDNB ──
+// secL doit = réplique EXACTE de la dedup renderSecteur : clé bg:bgid
+// (RNC prioritaire, sinon hors-RNC résidentiel -> nb_log_bdnb, sinon
+// 0), sinon rnc:immat, sinon adr:cle (résid. sans bgid). Tertiaire /
+// secondaire / dépendance / usage inconnu -> 0.
+console.log("\n=== Change 1 : parc RNC + hors-RNC résidentiel (header) ===");
 const cur2 = runRender(CUR);            // brut, sans filtre
 const secL = lgt(cur2.els["secteur-resume"]._text || "");
-const adrShown = new Set();
-(sd.adresses || []).forEach(a => {
-  if (a._fusion_auto && a._fusion_cible) return;     // source fusionnée auto
-  adrShown.add(a.cle);
-});
-const seenIm = new Set(); let sumLinkedRnc = 0;
-(sd.adresses || []).forEach(a => {
-  if (!adrShown.has(a.cle)) return;
+const RESID = { "Résidentiel collectif": 1, "Résidentiel individuel": 1 };
+const uResid = a => !!(a && RESID[a.usage_principal_bdnb]);
+const shown = (sd.adresses || []).filter(a => !(a._fusion_auto && a._fusion_cible));
+const immatBg = {}, bgRnc = {}, bgResid = {};
+for (const a of shown) {
+  const bg = a.batiment_groupe_id || null;
   const c = cbc[a.cle];
-  if (!c || !(c.nb_lots_habitation > 0)) return;
-  const im = c.numero_immatriculation || c.cle_adresse || a.cle;
-  if (seenIm.has(im)) return;
-  seenIm.add(im); sumLinkedRnc += c.nb_lots_habitation;
+  const im = c ? (c.numero_immatriculation || c.cle_adresse || a.cle) : null;
+  const lots = (c && c.nb_lots_habitation > 0) ? c.nb_lots_habitation : 0;
+  if (bg && im && lots > 0) {
+    if (immatBg[im] == null) immatBg[im] = bg;
+    (bgRnc[immatBg[im]] = bgRnc[immatBg[im]] || {})[im] = lots;
+  }
+  if (bg && !c && uResid(a) && a.nb_log_bdnb > 0 && bgResid[bg] == null)
+    bgResid[bg] = a.nb_log_bdnb;
+}
+const bgVal = {};
+new Set(Object.keys(bgRnc).concat(Object.keys(bgResid))).forEach(bg => {
+  bgVal[bg] = bgRnc[bg]
+    ? Object.values(bgRnc[bg]).reduce((s, v) => s + v, 0)
+    : (bgResid[bg] || 0);
 });
-const ecart = sumLinkedRnc ? Math.abs(secL - sumLinkedRnc) / sumLinkedRnc : 1;
-console.log(`  secL=${secL}  Σ lots copros liées (dédup immat)=${sumLinkedRnc}`
-  + `  écart=${(ecart * 100).toFixed(2)}%`);
-check(`secL > 0 (parc RNC non vide)`, secL > 0);
-check(`secL cohérent avec Σ lots RNC liés (écart ${(ecart * 100).toFixed(2)}% < 2%)`,
-  ecart < 0.02);
-check(`secL <= Σ lots RNC liés (dédup, jamais de gonflement)`,
-  secL <= sumLinkedRnc + 1);
+const seen = new Set(); let expected = 0;
+for (const a of shown) {
+  const c = cbc[a.cle];
+  let k = null, v = 0;
+  if (a.batiment_groupe_id && bgVal[a.batiment_groupe_id] > 0) {
+    k = "bg:" + a.batiment_groupe_id; v = bgVal[a.batiment_groupe_id] || 0;
+  } else if (c) {
+    const im = c.numero_immatriculation || c.cle_adresse || a.cle;
+    if (immatBg[im]) { k = "bg:" + immatBg[im]; v = bgVal[immatBg[im]] || 0; }
+    else { k = "rnc:" + im; v = (c.nb_lots_habitation > 0 ? c.nb_lots_habitation : 0); }
+  } else if (uResid(a) && a.nb_log_bdnb > 0) {
+    k = "adr:" + a.cle; v = a.nb_log_bdnb;
+  }
+  if (k && v > 0 && !seen.has(k)) { seen.add(k); expected += v; }
+}
+console.log(`  secL=${secL}  attendu (réplique règle)=${expected}  `
+  + `écart=${secL - expected}`);
+check(`secL > 0`, secL > 0);
+check(`secL == réplique EXACTE de la règle parc (${secL} == ${expected})`,
+  secL === expected);
 
 // ── Change 2 : filtre "Hors-RNC actifs" ─────────────────────────
 // hors-RNC = pas de copro liée ET pas d'immat dénormalisé ; actif =

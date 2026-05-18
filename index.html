@@ -2153,6 +2153,14 @@ function renderSecteur() {
   // fallback sur ventes_par_an si absent. Pilote effV/taux/classe/header.
   const vpaOf = a => (secteurStrict && a && a.ventes_par_an_logement)
     ? a.ventes_par_an_logement : (a ? a.ventes_par_an : null);
+  // Règle d'affichage logements (cf. data/diag_bdnb_horsrnc.md) :
+  //   copro RNC -> lots RNC ; hors-RNC RÉSIDENTIEL -> nb_log_bdnb ;
+  //   tertiaire / secondaire / dépendance / usage inconnu -> 0.
+  // usage_principal_bdnb propagé du snapshot BDNB (100 % des bgid).
+  // Limite documentée : le logement social n'a pas de champ BDNB dédié
+  // -> compté comme résidentiel (approximation acceptée, volume marginal).
+  const USAGE_RESID = { 'Résidentiel collectif': 1, 'Résidentiel individuel': 1 };
+  const usageResid = a => !!(a && USAGE_RESID[a.usage_principal_bdnb]);
 
   // ── Fusions : adresse DVF source rattachée à une copro RNC cible ──
   const adrByCle = {};
@@ -2204,12 +2212,14 @@ function renderSecteur() {
   // Dédoublonnage du parc : unité = le BÂTIMENT (batiment_groupe_id) si
   // dispo, sinon la copro (immat). Une copro est rattachée au 1er bâtiment
   // où elle apparaît -> un bâtiment compté UNE seule fois (corrige le
-  // double comptage rnc:immat + bg:bgid, ~8,4%). BASE RNC PURE : valeur =
-  // Σ lots RNC (nb_lots_habitation) des copros du bâtiment ; AUCUN fallback
-  // nb_log_bdnb -> les adresses hors-RNC ne pèsent pas dans le parc.
+  // double comptage rnc:immat + bg:bgid, ~8,4%). Valeur du bâtiment :
+  // Σ lots RNC des copros (PRIORITAIRE) ; sinon, si le bâti est
+  // RÉSIDENTIEL (usage_principal_bdnb), nb_log_bdnb ; sinon 0
+  // (tertiaire / secondaire / dépendance / usage inconnu).
   const seenLgts = new Set();
   const immatBg = {};                 // immat -> bgid (rattachement copro->bâti)
   const bgRncLots = {};               // bgid -> { immat: lots RNC }
+  const bgBdnbResid = {};             // bgid -> nb_log_bdnb (hors-RNC résid.)
   (d.adresses || []).forEach(a => {
     if (fusedSrc[a.cle]) return;
     const bg = a.batiment_groupe_id || null;
@@ -2220,11 +2230,20 @@ function renderSecteur() {
       if (immatBg[im] == null) immatBg[im] = bg;
       (bgRncLots[immatBg[im]] = bgRncLots[immatBg[im]] || {})[im] = lots;
     }
+    // bâti hors-RNC résidentiel : retenir 1 valeur nb_log_bdnb par bgid
+    if (bg && !cp && usageResid(a) && a.nb_log_bdnb > 0
+        && bgBdnbResid[bg] == null) {
+      bgBdnbResid[bg] = a.nb_log_bdnb;
+    }
   });
-  const bgValue = {};                 // bgid -> Σ lots RNC (aucun fallback BDNB)
-  Object.keys(bgRncLots).forEach(bg => {
-    bgValue[bg] = Object.values(bgRncLots[bg]).reduce((s, v) => s + v, 0);
-  });
+  // RNC prioritaire ; fallback nb_log_bdnb UNIQUEMENT si bâti résidentiel
+  const bgValue = {};                 // bgid -> logements retenus
+  new Set(Object.keys(bgRncLots).concat(Object.keys(bgBdnbResid)))
+    .forEach(bg => {
+      bgValue[bg] = bgRncLots[bg]
+        ? Object.values(bgRncLots[bg]).reduce((s, v) => s + v, 0)
+        : (bgBdnbResid[bg] || 0);
+    });
   const ordre = Object.keys(parIris).sort((x, y) =>
     (parIris[y].length) - (parIris[x].length));
   ordre.forEach((ci, ii) => {
@@ -2278,22 +2297,24 @@ function renderSecteur() {
           + (mi ? (mi.ventes[y] || 0) : 0) + (am ? (am.ventes[y] || 0) : 0); });
         const effTot = ANS.reduce((s, y) => s + effV[y], 0);
         const lots = (rnc && cp.nb_lots_habitation != null) ? cp.nb_lots_habitation : null;
-        // Taux affiché : RNC -> lots copro ; hors-RNC -> nb_log_bdnb si dispo
+        // Taux/colonne affichés : RNC -> lots copro ; hors-RNC -> nb_log_bdnb
+        // UNIQUEMENT si bâti résidentiel (tertiaire/inconnu -> —, cohérent
+        // avec la base parc du header/IRIS).
         const denomAff = (lots != null) ? lots
-          : (a.nb_log_bdnb != null && a.nb_log_bdnb > 0 ? a.nb_log_bdnb : null);
+          : (usageResid(a) && a.nb_log_bdnb != null && a.nb_log_bdnb > 0
+              ? a.nb_log_bdnb : null);
         const taux = sctTauxAnnuel(effTot, denomAff);   // taux ANNUEL de l'adresse
         const cls = sctClassAnnuel(taux);
 
-        // agrégats : numérateur = toutes les ventes (effTot, sommables car
-        // distinctes) ; dénominateur = parc RNC PUR (lots copro) dédupliqué
-        // par bâtiment (bg:bgid) -> une copro/bâti comptée une seule fois.
-        // Les adresses hors-RNC ne pèsent PAS sur le parc (aucun nb_log_bdnb).
+        // agrégats : numérateur = toutes les ventes (effTot, sommables
+        // car distinctes) ; dénominateur = parc dédupliqué par bâtiment
+        // (clé bg:bgid -> un bâti compté UNE fois). Règle de valeur :
+        // copro RNC -> lots RNC ; hors-RNC résidentiel -> nb_log_bdnb ;
+        // tertiaire / secondaire / dépendance / inconnu -> 0.
         // Même base à tous les niveaux -> header = Σ IRIS = Σ adresses.
         iloAllV += effTot;
-        // Clé unifiée par bâtiment : un bâti compté une seule fois. Une
-        // adresse hors-RNC sans copro -> aucune contribution au parc ; si
-        // elle partage un bâti avec une copro RNC, les lots RNC du bâti
-        // sont comptés UNE fois via la clé bg:bgid (dédup conservée).
+        // Clé unifiée par bâtiment : RNC prioritaire, sinon bâti
+        // résidentiel hors-RNC (nb_log_bdnb), sinon aucune contribution.
         let lgtKey = null, lgtVal = 0;
         if (a.batiment_groupe_id && bgValue[a.batiment_groupe_id] > 0) {
           lgtKey = 'bg:' + a.batiment_groupe_id;
@@ -2302,6 +2323,9 @@ function renderSecteur() {
           const im = cp.numero_immatriculation || cp.cle_adresse || a.cle;
           if (immatBg[im]) { lgtKey = 'bg:' + immatBg[im]; lgtVal = bgValue[immatBg[im]] || 0; }
           else { lgtKey = 'rnc:' + im; lgtVal = (cp.nb_lots_habitation > 0 ? cp.nb_lots_habitation : 0); }
+        } else if (usageResid(a) && a.nb_log_bdnb > 0) {
+          // hors-RNC résidentiel SANS bgid -> clé adresse
+          lgtKey = 'adr:' + a.cle; lgtVal = a.nb_log_bdnb;
         }
         if (lgtKey && lgtVal > 0 && !seenLgts.has(lgtKey)) {
           seenLgts.add(lgtKey); iloL += lgtVal;
