@@ -32,10 +32,14 @@ import math
 import re
 from pathlib import Path
 
+import os
 ROOT = Path(__file__).resolve().parent.parent
-BDNB = ROOT / "data" / "bdnb_dauphine_lacassagne.json"
-LIGHT = ROOT / "data" / "secteur_dauphine_lacassagne_light.json"
-REPORT = ROOT / "data" / "verif_rnc_bdnb_report.md"
+# Secteur parametrable (defaut dauphine -> comportement inchange).
+SECTEUR = os.environ.get("SECTEUR", "dauphine_lacassagne")
+_SUF = "" if SECTEUR == "dauphine_lacassagne" else "_" + SECTEUR
+BDNB = ROOT / "data" / f"bdnb_{SECTEUR}.json"
+LIGHT = ROOT / "data" / f"secteur_{SECTEUR}_light.json"
+REPORT = ROOT / "data" / f"verif_rnc_bdnb_report{_SUF}.md"
 
 NON_RENSEIGNE = {"non connu", "", None}
 

@@ -38,11 +38,14 @@ import json
 import collections
 from pathlib import Path
 
+import os
 ROOT = Path(__file__).resolve().parent.parent
-BDNB = ROOT / "data" / "bdnb_dauphine_lacassagne.json"
-LIGHT = ROOT / "data" / "secteur_dauphine_lacassagne_light.json"
-CACHE = ROOT / "data" / "_horsrnc_bdnb_live.json"
-BAK = ROOT / "data" / "secteur_dauphine_lacassagne_light.json.prehorsrnc.bak"
+SECTEUR = os.environ.get("SECTEUR", "dauphine_lacassagne")
+_SUF = "" if SECTEUR == "dauphine_lacassagne" else "_" + SECTEUR
+BDNB = ROOT / "data" / f"bdnb_{SECTEUR}.json"
+LIGHT = ROOT / "data" / f"secteur_{SECTEUR}_light.json"
+CACHE = ROOT / "data" / f"_horsrnc_bdnb_live{_SUF}.json"
+BAK = ROOT / "data" / f"secteur_{SECTEUR}_light.json.prehorsrnc.bak"
 
 NR = {"non connu", "", None}
 

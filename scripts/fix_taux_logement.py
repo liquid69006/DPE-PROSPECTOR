@@ -46,10 +46,12 @@ import collections
 import re
 from pathlib import Path
 
+import os
 ROOT = Path(__file__).resolve().parent.parent
-LIGHT = ROOT / "data" / "secteur_dauphine_lacassagne_light.json"
-FULL = ROOT / "data" / "secteur_dauphine_lacassagne.json"
-BAK = ROOT / "data" / "secteur_dauphine_lacassagne_light.json.pretauxlog.bak"
+SECTEUR = os.environ.get("SECTEUR", "dauphine_lacassagne")
+LIGHT = ROOT / "data" / f"secteur_{SECTEUR}_light.json"
+FULL = ROOT / "data" / f"secteur_{SECTEUR}.json"
+BAK = ROOT / "data" / f"secteur_{SECTEUR}_light.json.pretauxlog.bak"
 
 ANS = ["2021", "2022", "2023", "2024", "2025"]
 ABBR = {"SAINT": "ST", "SAINTE": "STE", "DOCTEUR": "DR", "PROFESSEUR": "PR"}

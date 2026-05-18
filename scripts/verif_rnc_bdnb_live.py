@@ -21,30 +21,52 @@ import urllib.request
 import urllib.error
 from pathlib import Path
 
+import os
 ROOT = Path(__file__).resolve().parent.parent
-BDNB = ROOT / "data" / "bdnb_dauphine_lacassagne.json"
-LIGHT = ROOT / "data" / "secteur_dauphine_lacassagne_light.json"
-REPORT = ROOT / "data" / "verif_rnc_bdnb_live_report.md"
-SIDECAR = ROOT / "data" / "_rnc_bdnb_live_missing.json"
+SECTEUR = os.environ.get("SECTEUR", "dauphine_lacassagne")
+_SUF = "" if SECTEUR == "dauphine_lacassagne" else "_" + SECTEUR
+BDNB = ROOT / "data" / f"bdnb_{SECTEUR}.json"
+LIGHT = ROOT / "data" / f"secteur_{SECTEUR}_light.json"
+REPORT = ROOT / "data" / f"verif_rnc_bdnb_live_report{_SUF}.md"
+SIDECAR = ROOT / "data" / f"_rnc_bdnb_live_missing{_SUF}.json"
 
 API = "https://api.bdnb.io/v1/bdnb/donnees"
-PAUSE = 0.15
+PAUSE = 0.35
 NON_RENSEIGNE = {"non connu", "", None}
 # L'API ouverte plafonne les reponses anonymes a 10 lignes (limit/Range
 # ignores, offset fonctionne). On interroge donc 1 immat par requete
 # (eq.) : chaque copro a <=4 batiments -> jamais tronque.
 
 
-def get_json(url, retries=3):
+def get_json(url, retries=6):
+    """Robuste : backoff exponentiel + Retry-After sur 429/5xx (BDNB
+    open rate-limite). Renvoie [] apres epuisement (la passe continue)."""
     for i in range(retries):
         try:
             req = urllib.request.Request(url, headers={"User-Agent": "dpe-verif/1.0"})
             with urllib.request.urlopen(req, timeout=30) as r:
                 return json.loads(r.read().decode("utf-8"))
-        except (urllib.error.URLError, TimeoutError, json.JSONDecodeError) as e:
+        except urllib.error.HTTPError as e:
+            if e.code == 404:
+                return []
+            if e.code in (429, 502, 503, 504):
+                ra = e.headers.get("Retry-After") if e.headers else None
+                try:
+                    wait = float(ra)
+                except (TypeError, ValueError):
+                    wait = min(60.0, 3.0 * (2 ** i))
+                if i == retries - 1:
+                    print(f"    !! abandon {e.code} apres {retries} essais")
+                    return []
+                time.sleep(wait)
+            else:
+                if i == retries - 1:
+                    return []
+                time.sleep(2.0 * (i + 1))
+        except (urllib.error.URLError, TimeoutError, json.JSONDecodeError):
             if i == retries - 1:
-                raise
-            time.sleep(1.5 * (i + 1))
+                return []
+            time.sleep(2.0 * (i + 1))
     return []
 
 

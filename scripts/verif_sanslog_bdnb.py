@@ -34,18 +34,23 @@ import urllib.request
 import urllib.error
 from pathlib import Path
 
+import os
 ROOT = Path(__file__).resolve().parent.parent
-LIGHT = ROOT / "data" / "secteur_dauphine_lacassagne_light.json"
-BDNB = ROOT / "data" / "bdnb_dauphine_lacassagne.json"
-CACHE = ROOT / "data" / "_sanslog_bdnb_live.json"
-REPORT = ROOT / "data" / "verif_sanslog_bdnb_report.md"
+SECTEUR = os.environ.get("SECTEUR", "dauphine_lacassagne")
+_SUF = "" if SECTEUR == "dauphine_lacassagne" else "_" + SECTEUR
+LIGHT = ROOT / "data" / f"secteur_{SECTEUR}_light.json"
+BDNB = ROOT / "data" / f"bdnb_{SECTEUR}.json"
+CACHE = ROOT / "data" / f"_sanslog_bdnb_live{_SUF}.json"
+REPORT = ROOT / "data" / f"verif_sanslog_bdnb_report{_SUF}.md"
 
 API = "https://api.bdnb.io/v1/bdnb/donnees"
-PAUSE = 0.12
+PAUSE = 0.35
 NR = {"non connu", "", None}
 
 
-def get_json(url, retries=3):
+def get_json(url, retries=6):
+    """Robuste : 404 -> [] ; backoff exponentiel + Retry-After sur
+    429/5xx (BDNB open rate-limite) ; [] apres epuisement (continue)."""
     for i in range(retries):
         try:
             req = urllib.request.Request(url, headers={"User-Agent": "dpe-verif/1.0"})
@@ -54,13 +59,24 @@ def get_json(url, retries=3):
         except urllib.error.HTTPError as e:
             if e.code == 404:
                 return []
-            if i == retries - 1:
-                raise
-            time.sleep(1.5 * (i + 1))
+            if e.code in (429, 502, 503, 504):
+                ra = e.headers.get("Retry-After") if e.headers else None
+                try:
+                    wait = float(ra)
+                except (TypeError, ValueError):
+                    wait = min(60.0, 3.0 * (2 ** i))
+                if i == retries - 1:
+                    print(f"    !! abandon {e.code} apres {retries} essais")
+                    return []
+                time.sleep(wait)
+            else:
+                if i == retries - 1:
+                    return []
+                time.sleep(2.0 * (i + 1))
         except (urllib.error.URLError, TimeoutError, json.JSONDecodeError):
             if i == retries - 1:
-                raise
-            time.sleep(1.5 * (i + 1))
+                return []
+            time.sleep(2.0 * (i + 1))
     return []
 
 

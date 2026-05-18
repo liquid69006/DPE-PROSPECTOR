@@ -1,0 +1,482 @@
+{
+ "bdnb-bg-15NR-3HJJ-GNFF": {
+  "ffo_nb_log": null,
+  "ffo_usage": null,
+  "ffo_nb_niveau": null,
+  "ffo_annee": null,
+  "dpe_present": false,
+  "dpe_type": null
+ },
+ "bdnb-bg-1GJW-7MDQ-9RGA": {
+  "ffo_nb_log": 0,
+  "ffo_usage": "Tertiaire & Autres",
+  "ffo_nb_niveau": 1,
+  "ffo_annee": null,
+  "dpe_present": false,
+  "dpe_type": null
+ },
+ "bdnb-bg-23BP-5MYG-NN2P": {
+  "ffo_nb_log": 0,
+  "ffo_usage": "Tertiaire & Autres",
+  "ffo_nb_niveau": 1,
+  "ffo_annee": null,
+  "dpe_present": false,
+  "dpe_type": null
+ },
+ "bdnb-bg-27XU-NCLR-B72G": {
+  "ffo_nb_log": null,
+  "ffo_usage": null,
+  "ffo_nb_niveau": null,
+  "ffo_annee": null,
+  "dpe_present": false,
+  "dpe_type": null
+ },
+ "bdnb-bg-33PK-ZWGU-YPGU": {
+  "ffo_nb_log": 0,
+  "ffo_usage": "Tertiaire & Autres",
+  "ffo_nb_niveau": 1,
+  "ffo_annee": null,
+  "dpe_present": false,
+  "dpe_type": null
+ },
+ "bdnb-bg-4EHZ-51W9-YLYM": {
+  "ffo_nb_log": null,
+  "ffo_usage": null,
+  "ffo_nb_niveau": null,
+  "ffo_annee": null,
+  "dpe_present": false,
+  "dpe_type": null
+ },
+ "bdnb-bg-4UWJ-PQFW-CEK1": {
+  "ffo_nb_log": 0,
+  "ffo_usage": "Tertiaire & Autres",
+  "ffo_nb_niveau": 5,
+  "ffo_annee": 1890,
+  "dpe_present": false,
+  "dpe_type": null
+ },
+ "bdnb-bg-51LM-E65Q-8RZY": {
+  "ffo_nb_log": 0,
+  "ffo_usage": "Tertiaire & Autres",
+  "ffo_nb_niveau": 1,
+  "ffo_annee": null,
+  "dpe_present": false,
+  "dpe_type": null
+ },
+ "bdnb-bg-58BB-RR3Q-XPUQ": {
+  "ffo_nb_log": 0,
+  "ffo_usage": "Tertiaire & Autres",
+  "ffo_nb_niveau": 6,
+  "ffo_annee": null,
+  "dpe_present": false,
+  "dpe_type": null
+ },
+ "bdnb-bg-5KQ4-PGDJ-X5D7": {
+  "ffo_nb_log": 0,
+  "ffo_usage": "Tertiaire & Autres",
+  "ffo_nb_niveau": 1,
+  "ffo_annee": null,
+  "dpe_present": false,
+  "dpe_type": null
+ },
+ "bdnb-bg-5P8F-ABVD-F28T": {
+  "ffo_nb_log": 0,
+  "ffo_usage": "Tertiaire & Autres",
+  "ffo_nb_niveau": 1,
+  "ffo_annee": 2001,
+  "dpe_present": false,
+  "dpe_type": null
+ },
+ "bdnb-bg-64RL-SWJ7-1C4N": {
+  "ffo_nb_log": 0,
+  "ffo_usage": "Tertiaire & Autres",
+  "ffo_nb_niveau": 1,
+  "ffo_annee": null,
+  "dpe_present": false,
+  "dpe_type": null
+ },
+ "bdnb-bg-65TM-F2PN-KZNK": {
+  "ffo_nb_log": 0,
+  "ffo_usage": "Tertiaire & Autres",
+  "ffo_nb_niveau": 1,
+  "ffo_annee": null,
+  "dpe_present": false,
+  "dpe_type": null
+ },
+ "bdnb-bg-7WDC-QMY7-RRF6": {
+  "ffo_nb_log": 0,
+  "ffo_usage": "Tertiaire & Autres",
+  "ffo_nb_niveau": 1,
+  "ffo_annee": null,
+  "dpe_present": false,
+  "dpe_type": null
+ },
+ "bdnb-bg-8WWV-U8KH-X4VZ": {
+  "ffo_nb_log": 0,
+  "ffo_usage": "Tertiaire & Autres",
+  "ffo_nb_niveau": 1,
+  "ffo_annee": null,
+  "dpe_present": false,
+  "dpe_type": null
+ },
+ "bdnb-bg-9HGZ-1AN9-9EDJ": {
+  "ffo_nb_log": 0,
+  "ffo_usage": "Tertiaire & Autres",
+  "ffo_nb_niveau": 6,
+  "ffo_annee": 1925,
+  "dpe_present": false,
+  "dpe_type": null
+ },
+ "bdnb-bg-9WBD-WZ5J-JGZG": {
+  "ffo_nb_log": 0,
+  "ffo_usage": "Tertiaire & Autres",
+  "ffo_nb_niveau": 1,
+  "ffo_annee": 1980,
+  "dpe_present": false,
+  "dpe_type": null
+ },
+ "bdnb-bg-BH6F-JYLG-TQGF": {
+  "ffo_nb_log": null,
+  "ffo_usage": null,
+  "ffo_nb_niveau": null,
+  "ffo_annee": null,
+  "dpe_present": false,
+  "dpe_type": null
+ },
+ "bdnb-bg-BKC7-4MP3-R26Q": {
+  "ffo_nb_log": 0,
+  "ffo_usage": "Tertiaire & Autres",
+  "ffo_nb_niveau": 1,
+  "ffo_annee": 2019,
+  "dpe_present": false,
+  "dpe_type": null
+ },
+ "bdnb-bg-BU7B-B9AM-VEPF": {
+  "ffo_nb_log": 0,
+  "ffo_usage": "Tertiaire & Autres",
+  "ffo_nb_niveau": 1,
+  "ffo_annee": null,
+  "dpe_present": false,
+  "dpe_type": null
+ },
+ "bdnb-bg-BZ7D-Z6FZ-BLL6": {
+  "ffo_nb_log": 0,
+  "ffo_usage": "Tertiaire & Autres",
+  "ffo_nb_niveau": 1,
+  "ffo_annee": null,
+  "dpe_present": false,
+  "dpe_type": null
+ },
+ "bdnb-bg-CT5D-HHME-FNQU": {
+  "ffo_nb_log": 0,
+  "ffo_usage": "Tertiaire & Autres",
+  "ffo_nb_niveau": 1,
+  "ffo_annee": null,
+  "dpe_present": false,
+  "dpe_type": null
+ },
+ "bdnb-bg-DPHJ-S8B8-CJUJ": {
+  "ffo_nb_log": 0,
+  "ffo_usage": "Tertiaire & Autres",
+  "ffo_nb_niveau": 1,
+  "ffo_annee": null,
+  "dpe_present": false,
+  "dpe_type": null
+ },
+ "bdnb-bg-DQG7-SVNA-3WRJ": {
+  "ffo_nb_log": 0,
+  "ffo_usage": "Tertiaire & Autres",
+  "ffo_nb_niveau": 1,
+  "ffo_annee": null,
+  "dpe_present": false,
+  "dpe_type": null
+ },
+ "bdnb-bg-DUL7-MCJJ-Z9JU": {
+  "ffo_nb_log": 0,
+  "ffo_usage": "Tertiaire & Autres",
+  "ffo_nb_niveau": 1,
+  "ffo_annee": null,
+  "dpe_present": false,
+  "dpe_type": null
+ },
+ "bdnb-bg-FAWU-G662-QM38": {
+  "ffo_nb_log": 0,
+  "ffo_usage": "Tertiaire & Autres",
+  "ffo_nb_niveau": 1,
+  "ffo_annee": null,
+  "dpe_present": false,
+  "dpe_type": null
+ },
+ "bdnb-bg-GL8M-ZP7M-JP4T": {
+  "ffo_nb_log": 0,
+  "ffo_usage": "Tertiaire & Autres",
+  "ffo_nb_niveau": 4,
+  "ffo_annee": 2002,
+  "dpe_present": false,
+  "dpe_type": null
+ },
+ "bdnb-bg-GN29-NJCP-26BM": {
+  "ffo_nb_log": 0,
+  "ffo_usage": "Tertiaire & Autres",
+  "ffo_nb_niveau": 2,
+  "ffo_annee": 1850,
+  "dpe_present": false,
+  "dpe_type": null
+ },
+ "bdnb-bg-HS43-E39C-M4XS": {
+  "ffo_nb_log": 0,
+  "ffo_usage": "Tertiaire & Autres",
+  "ffo_nb_niveau": 1,
+  "ffo_annee": null,
+  "dpe_present": false,
+  "dpe_type": null
+ },
+ "bdnb-bg-J48X-KQFK-9B5P": {
+  "ffo_nb_log": 0,
+  "ffo_usage": "Tertiaire & Autres",
+  "ffo_nb_niveau": 1,
+  "ffo_annee": null,
+  "dpe_present": false,
+  "dpe_type": null
+ },
+ "bdnb-bg-J7K5-LCKD-MC3E": {
+  "ffo_nb_log": 0,
+  "ffo_usage": "Tertiaire & Autres",
+  "ffo_nb_niveau": 7,
+  "ffo_annee": 1880,
+  "dpe_present": false,
+  "dpe_type": null
+ },
+ "bdnb-bg-JRC3-LSDX-YZ9T": {
+  "ffo_nb_log": 0,
+  "ffo_usage": "Tertiaire & Autres",
+  "ffo_nb_niveau": 6,
+  "ffo_annee": 1993,
+  "dpe_present": false,
+  "dpe_type": null
+ },
+ "bdnb-bg-JW8K-UNYY-BAE9": {
+  "ffo_nb_log": 0,
+  "ffo_usage": "Tertiaire & Autres",
+  "ffo_nb_niveau": 1,
+  "ffo_annee": null,
+  "dpe_present": false,
+  "dpe_type": null
+ },
+ "bdnb-bg-KA9V-XPBP-FSXH": {
+  "ffo_nb_log": null,
+  "ffo_usage": null,
+  "ffo_nb_niveau": null,
+  "ffo_annee": null,
+  "dpe_present": false,
+  "dpe_type": null
+ },
+ "bdnb-bg-KMN1-AD27-BVJJ": {
+  "ffo_nb_log": 0,
+  "ffo_usage": "Tertiaire & Autres",
+  "ffo_nb_niveau": 1,
+  "ffo_annee": null,
+  "dpe_present": false,
+  "dpe_type": null
+ },
+ "bdnb-bg-KR3J-SLWP-GA8F": {
+  "ffo_nb_log": 0,
+  "ffo_usage": "Tertiaire & Autres",
+  "ffo_nb_niveau": 1,
+  "ffo_annee": 1988,
+  "dpe_present": false,
+  "dpe_type": null
+ },
+ "bdnb-bg-L2XZ-3A19-SXYH": {
+  "ffo_nb_log": 0,
+  "ffo_usage": "Tertiaire & Autres",
+  "ffo_nb_niveau": 1,
+  "ffo_annee": null,
+  "dpe_present": false,
+  "dpe_type": null
+ },
+ "bdnb-bg-LQVN-CLSM-29MT": {
+  "ffo_nb_log": 0,
+  "ffo_usage": "Tertiaire & Autres",
+  "ffo_nb_niveau": 1,
+  "ffo_annee": 1950,
+  "dpe_present": false,
+  "dpe_type": null
+ },
+ "bdnb-bg-LZJA-XGNN-A4XL": {
+  "ffo_nb_log": 0,
+  "ffo_usage": "Tertiaire & Autres",
+  "ffo_nb_niveau": 14,
+  "ffo_annee": 2009,
+  "dpe_present": false,
+  "dpe_type": null
+ },
+ "bdnb-bg-MC39-X7JB-H7H4": {
+  "ffo_nb_log": 0,
+  "ffo_usage": "Tertiaire & Autres",
+  "ffo_nb_niveau": 1,
+  "ffo_annee": 2007,
+  "dpe_present": false,
+  "dpe_type": null
+ },
+ "bdnb-bg-MYV6-D78S-F5E1": {
+  "ffo_nb_log": 0,
+  "ffo_usage": "Tertiaire & Autres",
+  "ffo_nb_niveau": 1,
+  "ffo_annee": 1850,
+  "dpe_present": false,
+  "dpe_type": null
+ },
+ "bdnb-bg-N3CE-YTEB-QRL6": {
+  "ffo_nb_log": 0,
+  "ffo_usage": "Tertiaire & Autres",
+  "ffo_nb_niveau": 1,
+  "ffo_annee": null,
+  "dpe_present": false,
+  "dpe_type": null
+ },
+ "bdnb-bg-NRAP-BDVS-KRFN": {
+  "ffo_nb_log": 0,
+  "ffo_usage": "Tertiaire & Autres",
+  "ffo_nb_niveau": 1,
+  "ffo_annee": 1992,
+  "dpe_present": false,
+  "dpe_type": null
+ },
+ "bdnb-bg-PVT9-7GJH-W99Q": {
+  "ffo_nb_log": 0,
+  "ffo_usage": "Tertiaire & Autres",
+  "ffo_nb_niveau": 1,
+  "ffo_annee": null,
+  "dpe_present": false,
+  "dpe_type": null
+ },
+ "bdnb-bg-QNR9-N4KK-K8A1": {
+  "ffo_nb_log": null,
+  "ffo_usage": null,
+  "ffo_nb_niveau": null,
+  "ffo_annee": null,
+  "dpe_present": false,
+  "dpe_type": null
+ },
+ "bdnb-bg-RFG6-62K4-6X9Z": {
+  "ffo_nb_log": 0,
+  "ffo_usage": "Tertiaire & Autres",
+  "ffo_nb_niveau": 1,
+  "ffo_annee": null,
+  "dpe_present": false,
+  "dpe_type": null
+ },
+ "bdnb-bg-S174-SFQV-PN5X": {
+  "ffo_nb_log": 0,
+  "ffo_usage": "Tertiaire & Autres",
+  "ffo_nb_niveau": 1,
+  "ffo_annee": 1973,
+  "dpe_present": false,
+  "dpe_type": null
+ },
+ "bdnb-bg-S543-UM97-SX5D": {
+  "ffo_nb_log": 0,
+  "ffo_usage": "Tertiaire & Autres",
+  "ffo_nb_niveau": 1,
+  "ffo_annee": 1900,
+  "dpe_present": false,
+  "dpe_type": null
+ },
+ "bdnb-bg-SJRT-PTDZ-KASE": {
+  "ffo_nb_log": 0,
+  "ffo_usage": "Tertiaire & Autres",
+  "ffo_nb_niveau": 11,
+  "ffo_annee": 1957,
+  "dpe_present": false,
+  "dpe_type": null
+ },
+ "bdnb-bg-T3SU-2TJY-TYEC": {
+  "ffo_nb_log": 0,
+  "ffo_usage": "Tertiaire & Autres",
+  "ffo_nb_niveau": 1,
+  "ffo_annee": null,
+  "dpe_present": false,
+  "dpe_type": null
+ },
+ "bdnb-bg-U52X-T1NJ-6PY4": {
+  "ffo_nb_log": 0,
+  "ffo_usage": "Tertiaire & Autres",
+  "ffo_nb_niveau": 1,
+  "ffo_annee": null,
+  "dpe_present": false,
+  "dpe_type": null
+ },
+ "bdnb-bg-UKZA-7G73-8VN6": {
+  "ffo_nb_log": 0,
+  "ffo_usage": "Tertiaire & Autres",
+  "ffo_nb_niveau": 2,
+  "ffo_annee": 1800,
+  "dpe_present": false,
+  "dpe_type": null
+ },
+ "bdnb-bg-V62Z-HLEN-EJVC": {
+  "ffo_nb_log": 0,
+  "ffo_usage": "Tertiaire & Autres",
+  "ffo_nb_niveau": 1,
+  "ffo_annee": null,
+  "dpe_present": false,
+  "dpe_type": null
+ },
+ "bdnb-bg-VSQB-KLH5-H3UY": {
+  "ffo_nb_log": 0,
+  "ffo_usage": "Tertiaire & Autres",
+  "ffo_nb_niveau": 1,
+  "ffo_annee": null,
+  "dpe_present": false,
+  "dpe_type": null
+ },
+ "bdnb-bg-WL1J-3FSP-P5WX": {
+  "ffo_nb_log": 0,
+  "ffo_usage": "Tertiaire & Autres",
+  "ffo_nb_niveau": 4,
+  "ffo_annee": 1968,
+  "dpe_present": false,
+  "dpe_type": null
+ },
+ "bdnb-bg-X4K2-RJV1-R4A1": {
+  "ffo_nb_log": 0,
+  "ffo_usage": "Tertiaire & Autres",
+  "ffo_nb_niveau": 1,
+  "ffo_annee": null,
+  "dpe_present": false,
+  "dpe_type": null
+ },
+ "bdnb-bg-XHH7-SYZY-QSFQ": {
+  "ffo_nb_log": null,
+  "ffo_usage": null,
+  "ffo_nb_niveau": null,
+  "ffo_annee": null,
+  "dpe_present": false,
+  "dpe_type": null
+ },
+ "bdnb-bg-YP2W-RH3W-6V55": {
+  "ffo_nb_log": 0,
+  "ffo_usage": "Tertiaire & Autres",
+  "ffo_nb_niveau": 1,
+  "ffo_annee": 1998,
+  "dpe_present": false,
+  "dpe_type": null
+ },
+ "bdnb-bg-YPL5-51RX-A71L": {
+  "ffo_nb_log": 0,
+  "ffo_usage": "Tertiaire & Autres",
+  "ffo_nb_niveau": 1,
+  "ffo_annee": null,
+  "dpe_present": false,
+  "dpe_type": null
+ },
+ "bdnb-bg-ZHL6-JQ17-WPU6": {
+  "ffo_nb_log": 0,
+  "ffo_usage": "Tertiaire & Autres",
+  "ffo_nb_niveau": 2,
+  "ffo_annee": 1963,
+  "dpe_present": false,
+  "dpe_type": null
+ }
+}

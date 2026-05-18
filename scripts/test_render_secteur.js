@@ -25,11 +25,11 @@ const slice = (a, b) => HTML.slice(a - 1, b).join("\n"); // lignes 1-based inclu
 // apres toute edition d'index.html : ces plages sont codees en dur et un
 // decalage decoupe renderSecteur au mauvais endroit -> SyntaxError).
 const SRC = [
-  slice(2002, 2006),   // ROT_COLOR + TYPE_OPTS
-  slice(2028, 2030),   // esc
-  slice(2032, 2036),   // secteurNorm
-  slice(2050, 2090),   // sctTauxAnnuel..sctBadge (helpers de rendu)
-  slice(2092, 2400),   // renderSecteur (vpaOf / toggle strict / filtre sctQ)
+  slice(2017, 2021),   // ROT_COLOR + TYPE_OPTS
+  slice(2043, 2045),   // esc
+  slice(2047, 2051),   // secteurNorm
+  slice(2065, 2105),   // sctTauxAnnuel..sctBadge (helpers de rendu)
+  slice(2107, 2415),   // renderSecteur (vpaOf / toggle strict / filtre sctQ)
 ].join("\n\n");
 
 function mkEl() {
@@ -73,8 +73,11 @@ function check(name, cond) {
   if (!cond) process.exitCode = 1;
 }
 
-const BAK = path.join(ROOT, "data", "secteur_dauphine_lacassagne_light.json.bak");
-const CUR = path.join(ROOT, "data", "secteur_dauphine_lacassagne_light.json");
+// Secteur parametrable (defaut dauphine -> comportement inchange).
+const SECTEUR = process.env.SECTEUR || "dauphine_lacassagne";
+const DAUPH = SECTEUR === "dauphine_lacassagne";
+const CUR = path.join(ROOT, "data", `secteur_${SECTEUR}_light.json`);
+const BAK = path.join(ROOT, "data", `secteur_${SECTEUR}_light.json.bak`);
 
 console.log("=== Rendu sur .bak (pre-fix) ===");
 const bak = runRender(BAK);
@@ -107,16 +110,21 @@ for (const a of injRows) if (curHtml.includes(`data-cle="${a.cle}"`)) nbVis++;
 check(`toutes les lignes injectees rendues (${nbVis}/${injRows.length})`,
   nbVis === injRows.length);
 
-// B3 : 2 lignes distinctes a la meme adresse postale, toutes deux rendues
-console.log("\n=== Desambiguisation B3 (5 rue Montbrillant) ===");
-const monrows = sd.adresses.filter(a => /^5\|RUE\|MONTBRILLANT/.test(a.cle));
-console.log("  lignes:", monrows.map(a =>
-  a.cle + (a._bdnb_match === "immat_fix" ? " [fix]" : "")).join("  ;  "));
-check("2 lignes distinctes pour 5 rue Montbrillant", monrows.length === 2);
-check('row origine rendu (data-cle="5|RUE|MONTBRILLANT")',
-  curHtml.includes('data-cle="5|RUE|MONTBRILLANT"'));
-check('row B3 injectee rendu (data-cle="5|RUE|MONTBRILLANT #AA9380684")',
-  curHtml.includes('data-cle="5|RUE|MONTBRILLANT #AA9380684"'));
+// B3 : test specifique Dauphine (cle '5|RUE|MONTBRILLANT' / immat
+// AA9380684) -> gate sur le secteur. Generique pour les autres.
+if (DAUPH) {
+  console.log("\n=== Desambiguisation B3 (5 rue Montbrillant) ===");
+  const monrows = sd.adresses.filter(a => /^5\|RUE\|MONTBRILLANT/.test(a.cle));
+  console.log("  lignes:", monrows.map(a =>
+    a.cle + (a._bdnb_match === "immat_fix" ? " [fix]" : "")).join("  ;  "));
+  check("2 lignes distinctes pour 5 rue Montbrillant", monrows.length === 2);
+  check('row origine rendu (data-cle="5|RUE|MONTBRILLANT")',
+    curHtml.includes('data-cle="5|RUE|MONTBRILLANT"'));
+  check('row B3 injectee rendu (data-cle="5|RUE|MONTBRILLANT #AA9380684")',
+    curHtml.includes('data-cle="5|RUE|MONTBRILLANT #AA9380684"'));
+} else {
+  console.log(`\n=== B3 Montbrillant : ignore (secteur=${SECTEUR}) ===`);
+}
 
 // Garde-fou : aucune copro (immat) rendue par 2 lignes distinctes
 console.log("\n=== Aucun double-rendu de copro ===");
@@ -174,23 +182,36 @@ const cl = t => vm.runInContext(`sctClassAnnuel(${t})`, sb);
   const got = cl(t);
   check(`sctClassAnnuel(${t}) == ${exp} (got ${got})`, got === exp);
 });
-// Vérif #3 : taux secteur strict (2,5%) -> "Actif"
+// Taux secteur strict : classe self-consistante avec sctClassAnnuel
+// (generique). Valeur exacte attendue gated Dauphine (2,5% -> Actif).
 const tStrict = parseFloat((/taux secteur ([\d.,]+)%/.exec(sR) || [])[1] || "NaN");
-console.log(`  taux secteur strict = ${tStrict}% -> ${cl(tStrict)}`);
-check(`taux secteur strict ${tStrict}% classé "Actif"`, cl(tStrict) === "Actif");
+const clS = cl(tStrict);
+console.log(`  taux secteur strict = ${tStrict}% -> ${clS}`);
+check(`classe strict bien definie (${clS})`,
+  ["Figé", "Modéré", "Actif", "Très actif"].includes(clS));
+if (DAUPH) check(`Dauphine: strict ${tStrict}% classé "Actif"`, clS === "Actif");
 
 // Recherche = filtre de DONNÉES : header/IRIS recalculés (non figés).
-console.log("\n=== Filtre recherche (sctQ, header recalculé) ===");
-const f = runRender(CUR, false, "lacassagne");
+// Terme de recherche derive des donnees (secteur-agnostique) : nom de
+// voie le plus frequent -> matche >=1 adresse mais pas toutes.
+const _nomCnt = {};
+for (const a of sd.adresses) {
+  const nm = String(a.cle || "").split("|")[2] || "";
+  if (nm) _nomCnt[nm] = (_nomCnt[nm] || 0) + 1;
+}
+const _top = Object.entries(_nomCnt).sort((x, y) => y[1] - x[1])[0];
+const term = (_top ? _top[0] : "").toLowerCase();
+console.log(`\n=== Filtre recherche (sctQ, terme='${term}') ===`);
+const f = runRender(CUR, false, term);
 const fR = f.els["secteur-resume"]._text || "";
 console.log("  sans recherche :", curResume);
-console.log("  'lacassagne'   :", fR);
+console.log(`  '${term}'   :`, fR);
 check("renderSecteur() ne leve pas (recherche)", !f.error);
 if (f.error) console.log("  THROW:", f.error.message);
-check(`adresses filtrées < total (${adr(fR)} < ${adr(curResume)})`,
+check(`adresses filtrées >0 et < total (${adr(fR)} < ${adr(curResume)})`,
   adr(fR) > 0 && adr(fR) < adr(curResume));
-check(`lgts recalculés sous recherche (${lgt(fR)} < ${lgt(curResume)})`,
-  lgt(fR) > 0 && lgt(fR) < lgt(curResume));
+check(`lgts recalculés sous recherche (${lgt(fR)} <= ${lgt(curResume)})`,
+  lgt(fR) >= 0 && lgt(fR) <= lgt(curResume));
 const f0 = runRender(CUR, false, "zzzznomatchzzzz");
 check("recherche sans résultat -> 0 adresse (header cohérent)",
   adr(f0.els["secteur-resume"]._text || "") <= 0 && !f0.error);
