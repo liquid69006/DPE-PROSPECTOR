@@ -59,6 +59,7 @@ const AGENCES_CONFIG = {
     conseillers_defaut: ["À attribuer", "Jean-Marie", "Bérénice", "Joël"],
     zones: ["La Motte Picquet"],
     sci_enabled: false,
+    secteur_enabled: true,
   },
   "pernety": {
     nom: "Century 21 Pernéty",
@@ -100,6 +101,7 @@ const AGENCES_CONFIG = {
     conseillers_defaut: ["À attribuer", "Jean-Marie", "Bérénice", "Joël", "Mathis", "Julien", "Philippe", "Fahd", "Maxime", "Cyril", "Melchior"],
     zones: ["La Motte Picquet", "Pernéty"],
     sci_enabled: true,
+    secteur_enabled: true,   // secteur = motte-picquet (composite via dpe_agences)
     // Agences DPE dont lopez agrège les assignments
     dpe_agences: ["motte-picquet", "pernety"],
     // Agences SCI dont lopez agrège les données

@@ -1963,10 +1963,24 @@ function secteurToggleStrict() {
 window.secteurToggleStrict = secteurToggleStrict;
 let sctFusSrc = null, sctFusPick = null;   // etat de la modale de rapprochement
 
+// Agence -> [fichier light secteur, id secteur pour les assignments KV].
+// motte-picquet ET lopez (composite) partagent le secteur motte-picquet
+// -> meme KV secteur_assignments:motte-picquet (requireAuth autorise
+// lopez via dpe_agences). Dauphine inchange (id secteur == agence).
+function secteurResolve() {
+  const M = {
+    'dauphine-lacassagne': ['secteur_dauphine_lacassagne_light.json', 'dauphine-lacassagne'],
+    'motte-picquet':       ['secteur_motte_picquet_light.json',        'motte-picquet'],
+    'lopez':               ['secteur_motte_picquet_light.json',        'motte-picquet'],
+  };
+  return M[agenceId] || M['dauphine-lacassagne'];
+}
+
 async function loadSecteurData() {
   const tree = document.getElementById('secteur-tree');
+  const [secFile, secId] = secteurResolve();
   try {
-    const r = await fetch(`${GITHUB_RAW}/data/secteur_dauphine_lacassagne_light.json?t=${Date.now()}`);
+    const r = await fetch(`${GITHUB_RAW}/data/${secFile}?t=${Date.now()}`);
     if (!r.ok) throw new Error('json');
     secteurData = await r.json();
   } catch {
@@ -1974,7 +1988,7 @@ async function loadSecteurData() {
     return;
   }
   try {
-    const ra = await fetch(`${API_URL}/secteur-assignments/${agenceId}`, {
+    const ra = await fetch(`${API_URL}/secteur-assignments/${secId}`, {
       headers: { 'Authorization': `Bearer ${authToken}` } });
     if (ra.ok) {
       const j = await ra.json();
@@ -1990,7 +2004,8 @@ function secteurSave() {
   clearTimeout(secteurSaveTimer);
   secteurSaveTimer = setTimeout(async () => {
     try {
-      await fetch(`${API_URL}/secteur-assignments/${agenceId}`, {
+      const [, secId] = secteurResolve();
+      await fetch(`${API_URL}/secteur-assignments/${secId}`, {
         method: 'POST',
         headers: { 'Authorization': `Bearer ${authToken}`, 'Content-Type': 'application/json' },
         body: JSON.stringify({ assignments: secteurAssign, fusions: secteurFusions, noms: secteurNoms }) });
