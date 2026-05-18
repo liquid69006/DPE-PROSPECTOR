@@ -50,12 +50,12 @@
       "part_locataires_moyenne": null,
       "revenu_median_secteur": null,
       "revenu_median_secteur_methode": "mediane des medians IRIS Filosofi (n=0 ; null tant que join INSEE non fait)",
-      "nb_adresses_croisement": 1315
+      "nb_adresses_croisement": 1305
     },
     "_light": "Version allegee motte-picquet : metadata + iris + coproprietes/adresses slim. Cles canoniques bis-safe, articles de tete retires, SAINT->ST. Syndic : RNC -> RNIC live -> jointure cadastrale. Fusion auto copro RNC multi-numeros (adresse_complementaire_1/2/3) puis batiment_groupe_id (parite homogene). Taux DUAL ANNUEL brut (ventes_par_an) + strict (ventes_par_an_logement, mutations >=1 lot habitation) ; seuils 0-1 Fige / 1-2 Modere / 2-3 Actif / >3 Tres actif.",
     "_correctif_rnc_immat": "46 adresses injectees via numero_immat_principal (_bdnb_match=immat_fix) dont 13 B3 a cle desambiguisee (cle_adresse copro suffixee #immat).",
     "_correctif_horsrnc": "58 adresses injectees (copros invisibles cat. A/B2 detectees par passe inverse hors-RNC ; lien live many-to-many ; _bdnb_match=immat_horsrnc_fix ; delta parc ESTIME +107 lgts -- estimation approximative, valider le reel via node scripts/test_render_secteur.js).",
-    "_correctif_taux_logement": "Champs ADDITIFS ventes_par_an_logement / nb_ventes_logement / taux_rotation_logement / classement_rotation_logement / _taux_logement_src ajoutes (353 adr avec delta dependance, 99 adr jointure incertaine = copie intacte+flag). `ventes_par_an`/`nb_ventes_total` NON modifies (autoritatifs). Ventes strictes 2858 vs 3801 (-24.8%). Dashboard inchange (lit toujours ventes_par_an) ; bascule = modif index.html separee."
+    "_correctif_taux_logement": "Champs ADDITIFS ventes_par_an_logement / nb_ventes_logement / taux_rotation_logement / classement_rotation_logement / _taux_logement_src ajoutes (351 adr avec delta dependance, 97 adr jointure incertaine = copie intacte+flag). `ventes_par_an`/`nb_ventes_total` NON modifies (autoritatifs). Ventes strictes 2840 vs 3781 (-24.9%). Dashboard inchange (lit toujours ventes_par_an) ; bascule = modif index.html separee."
   },
   "iris": [
     {
@@ -25605,48 +25605,6 @@
       "_taux_logement_src": "filtre_habitation"
     },
     {
-      "cle": "45|RUE|EGLISE",
-      "adresse": null,
-      "longitude": 2.288088,
-      "latitude": 48.844239,
-      "code_iris": "751156019",
-      "_coord_source": "ban",
-      "dans_majic": false,
-      "sci_proprietaire": "inconnu",
-      "sci_nom": "",
-      "sci_siren": "",
-      "syndic": null,
-      "_syndic_src": null,
-      "numero_immatriculation": null,
-      "nb_lots_habitation": null,
-      "ventes_par_an": {
-        "2021": 2,
-        "2023": 2,
-        "2024": 1,
-        "2025": 1
-      },
-      "nb_ventes_total": 6,
-      "ventes_par_an_logement": {
-        "2021": 2,
-        "2023": 1,
-        "2024": 1,
-        "2025": 1
-      },
-      "nb_ventes_logement": 5,
-      "taux_rotation": null,
-      "classement_rotation": null,
-      "taux_rotation_logement": null,
-      "classement_rotation_logement": "",
-      "nb_log_bdnb": null,
-      "annee_construction": null,
-      "classe_dpe": null,
-      "type_batiment": null,
-      "type_chauffage": null,
-      "batiment_groupe_id": null,
-      "_bdnb_match": null,
-      "_taux_logement_src": "filtre_habitation"
-    },
-    {
       "cle": "10|RUE|CESAR FRANCK",
       "adresse": "10 RUE CESAR FRANCK",
       "longitude": 2.309271,
@@ -30432,46 +30390,6 @@
       "batiment_groupe_id": "bdnb-bg-LUE3-5WSK-3JUM",
       "_bdnb_match": "immat",
       "_taux_logement_src": "filtre_habitation"
-    },
-    {
-      "cle": "7|RUE|EGLISE",
-      "adresse": null,
-      "longitude": 2.285157,
-      "latitude": 48.845372,
-      "code_iris": "751156016",
-      "_coord_source": "ban",
-      "dans_majic": false,
-      "sci_proprietaire": "inconnu",
-      "sci_nom": "",
-      "sci_siren": "",
-      "syndic": null,
-      "_syndic_src": null,
-      "numero_immatriculation": null,
-      "nb_lots_habitation": null,
-      "ventes_par_an": {
-        "2021": 1,
-        "2022": 2,
-        "2023": 1
-      },
-      "nb_ventes_total": 4,
-      "ventes_par_an_logement": {
-        "2021": 1,
-        "2022": 2,
-        "2023": 1
-      },
-      "nb_ventes_logement": 4,
-      "taux_rotation": null,
-      "classement_rotation": null,
-      "taux_rotation_logement": null,
-      "classement_rotation_logement": "",
-      "nb_log_bdnb": null,
-      "annee_construction": null,
-      "classe_dpe": null,
-      "type_batiment": null,
-      "type_chauffage": null,
-      "batiment_groupe_id": null,
-      "_bdnb_match": null,
-      "_taux_logement_src": "copie_sans_dependance"
     },
     {
       "cle": "1|RUE|JOSE MARIA DE HEREDIA",
@@ -39241,42 +39159,6 @@
       "_taux_logement_src": "copie_sans_dependance"
     },
     {
-      "cle": "6|RUE|EGLISE",
-      "adresse": null,
-      "longitude": 2.285074,
-      "latitude": 48.845258,
-      "code_iris": "751156016",
-      "_coord_source": "ban",
-      "dans_majic": false,
-      "sci_proprietaire": "inconnu",
-      "sci_nom": "",
-      "sci_siren": "",
-      "syndic": null,
-      "_syndic_src": null,
-      "numero_immatriculation": null,
-      "nb_lots_habitation": null,
-      "ventes_par_an": {
-        "2024": 2
-      },
-      "nb_ventes_total": 2,
-      "ventes_par_an_logement": {
-        "2024": 1
-      },
-      "nb_ventes_logement": 1,
-      "taux_rotation": null,
-      "classement_rotation": null,
-      "taux_rotation_logement": null,
-      "classement_rotation_logement": "",
-      "nb_log_bdnb": null,
-      "annee_construction": null,
-      "classe_dpe": null,
-      "type_batiment": null,
-      "type_chauffage": null,
-      "batiment_groupe_id": null,
-      "_bdnb_match": null,
-      "_taux_logement_src": "filtre_habitation"
-    },
-    {
       "cle": "36|AVENUE|SUFFREN",
       "adresse": null,
       "longitude": 2.294915,
@@ -39423,42 +39305,6 @@
       "_taux_logement_src": "copie_sans_dependance"
     },
     {
-      "cle": "8|IMPASSE|EGLISE",
-      "adresse": null,
-      "longitude": 2.291367,
-      "latitude": 48.843416,
-      "code_iris": "751156019",
-      "_coord_source": "ban",
-      "dans_majic": false,
-      "sci_proprietaire": "inconnu",
-      "sci_nom": "",
-      "sci_siren": "",
-      "syndic": null,
-      "_syndic_src": null,
-      "numero_immatriculation": null,
-      "nb_lots_habitation": null,
-      "ventes_par_an": {
-        "2024": 2
-      },
-      "nb_ventes_total": 2,
-      "ventes_par_an_logement": {
-        "2024": 2
-      },
-      "nb_ventes_logement": 2,
-      "taux_rotation": null,
-      "classement_rotation": null,
-      "taux_rotation_logement": null,
-      "classement_rotation_logement": "",
-      "nb_log_bdnb": null,
-      "annee_construction": null,
-      "classe_dpe": null,
-      "type_batiment": null,
-      "type_chauffage": null,
-      "batiment_groupe_id": null,
-      "_bdnb_match": null,
-      "_taux_logement_src": "copie_jointure_incertaine"
-    },
-    {
       "cle": "83|AVENUE|SEGUR",
       "adresse": null,
       "longitude": 2.305762,
@@ -39531,44 +39377,6 @@
       "batiment_groupe_id": "bdnb-bg-CE36-197R-8E67",
       "_bdnb_match": "immat",
       "_taux_logement_src": "copie_sans_dependance"
-    },
-    {
-      "cle": "5|IMPASSE|EGLISE",
-      "adresse": null,
-      "longitude": 2.291461,
-      "latitude": 48.843422,
-      "code_iris": "751156019",
-      "_coord_source": "ban",
-      "dans_majic": false,
-      "sci_proprietaire": "inconnu",
-      "sci_nom": "",
-      "sci_siren": "",
-      "syndic": null,
-      "_syndic_src": null,
-      "numero_immatriculation": null,
-      "nb_lots_habitation": null,
-      "ventes_par_an": {
-        "2021": 1,
-        "2025": 1
-      },
-      "nb_ventes_total": 2,
-      "ventes_par_an_logement": {
-        "2021": 1,
-        "2025": 1
-      },
-      "nb_ventes_logement": 2,
-      "taux_rotation": null,
-      "classement_rotation": null,
-      "taux_rotation_logement": null,
-      "classement_rotation_logement": "",
-      "nb_log_bdnb": null,
-      "annee_construction": null,
-      "classe_dpe": null,
-      "type_batiment": null,
-      "type_chauffage": null,
-      "batiment_groupe_id": null,
-      "_bdnb_match": null,
-      "_taux_logement_src": "copie_jointure_incertaine"
     },
     {
       "cle": "1|AVENUE|EMILE ACOLLAS",
@@ -44869,38 +44677,6 @@
       "_taux_logement_src": "filtre_habitation"
     },
     {
-      "cle": "67|QUAI|JACQUES CHIRAC",
-      "adresse": null,
-      "longitude": 2.295301,
-      "latitude": 48.860175,
-      "code_iris": "751072806",
-      "_coord_source": "ban",
-      "dans_majic": false,
-      "sci_proprietaire": "inconnu",
-      "sci_nom": "",
-      "sci_siren": "",
-      "syndic": null,
-      "_syndic_src": null,
-      "numero_immatriculation": null,
-      "nb_lots_habitation": null,
-      "ventes_par_an": {},
-      "nb_ventes_total": 0,
-      "ventes_par_an_logement": {},
-      "nb_ventes_logement": 0,
-      "taux_rotation": null,
-      "classement_rotation": null,
-      "taux_rotation_logement": null,
-      "classement_rotation_logement": "",
-      "nb_log_bdnb": null,
-      "annee_construction": null,
-      "classe_dpe": null,
-      "type_batiment": null,
-      "type_chauffage": null,
-      "batiment_groupe_id": null,
-      "_bdnb_match": null,
-      "_taux_logement_src": "copie_sans_dependance"
-    },
-    {
       "cle": "11|RUE|DANIEL STERN",
       "adresse": null,
       "longitude": 2.293479,
@@ -45195,42 +44971,6 @@
       "_taux_logement_src": "copie_sans_dependance"
     },
     {
-      "cle": "1|IMPASSE|EGLISE",
-      "adresse": null,
-      "longitude": 2.291267,
-      "latitude": 48.843172,
-      "code_iris": "751156019",
-      "_coord_source": "ban",
-      "dans_majic": false,
-      "sci_proprietaire": "inconnu",
-      "sci_nom": "",
-      "sci_siren": "",
-      "syndic": null,
-      "_syndic_src": null,
-      "numero_immatriculation": null,
-      "nb_lots_habitation": null,
-      "ventes_par_an": {
-        "2023": 1
-      },
-      "nb_ventes_total": 1,
-      "ventes_par_an_logement": {
-        "2023": 1
-      },
-      "nb_ventes_logement": 1,
-      "taux_rotation": null,
-      "classement_rotation": null,
-      "taux_rotation_logement": null,
-      "classement_rotation_logement": "",
-      "nb_log_bdnb": null,
-      "annee_construction": null,
-      "classe_dpe": null,
-      "type_batiment": null,
-      "type_chauffage": null,
-      "batiment_groupe_id": null,
-      "_bdnb_match": null,
-      "_taux_logement_src": "copie_sans_dependance"
-    },
-    {
       "cle": "25|RUE|JUGE",
       "adresse": null,
       "longitude": 2.293431,
@@ -45379,42 +45119,6 @@
       "_taux_logement_src": "copie_sans_dependance"
     },
     {
-      "cle": "75|RUE|EGLISE",
-      "adresse": null,
-      "longitude": 2.290587,
-      "latitude": 48.843273,
-      "code_iris": "751156019",
-      "_coord_source": "ban",
-      "dans_majic": false,
-      "sci_proprietaire": "inconnu",
-      "sci_nom": "",
-      "sci_siren": "",
-      "syndic": null,
-      "_syndic_src": null,
-      "numero_immatriculation": null,
-      "nb_lots_habitation": null,
-      "ventes_par_an": {
-        "2023": 1
-      },
-      "nb_ventes_total": 1,
-      "ventes_par_an_logement": {
-        "2023": 1
-      },
-      "nb_ventes_logement": 1,
-      "taux_rotation": null,
-      "classement_rotation": null,
-      "taux_rotation_logement": null,
-      "classement_rotation_logement": "",
-      "nb_log_bdnb": null,
-      "annee_construction": null,
-      "classe_dpe": null,
-      "type_batiment": null,
-      "type_chauffage": null,
-      "batiment_groupe_id": null,
-      "_bdnb_match": null,
-      "_taux_logement_src": "copie_sans_dependance"
-    },
-    {
       "cle": "|RUE|FONDARY",
       "adresse": null,
       "longitude": 2.294854,
@@ -45523,42 +45227,6 @@
       "_taux_logement_src": "copie_sans_dependance"
     },
     {
-      "cle": "85|RUE|EGLISE",
-      "adresse": null,
-      "longitude": 2.291218,
-      "latitude": 48.843028,
-      "code_iris": "751156019",
-      "_coord_source": "ban",
-      "dans_majic": false,
-      "sci_proprietaire": "inconnu",
-      "sci_nom": "",
-      "sci_siren": "",
-      "syndic": null,
-      "_syndic_src": null,
-      "numero_immatriculation": null,
-      "nb_lots_habitation": null,
-      "ventes_par_an": {
-        "2023": 1
-      },
-      "nb_ventes_total": 1,
-      "ventes_par_an_logement": {
-        "2023": 1
-      },
-      "nb_ventes_logement": 1,
-      "taux_rotation": null,
-      "classement_rotation": null,
-      "taux_rotation_logement": null,
-      "classement_rotation_logement": "",
-      "nb_log_bdnb": null,
-      "annee_construction": null,
-      "classe_dpe": null,
-      "type_batiment": null,
-      "type_chauffage": null,
-      "batiment_groupe_id": null,
-      "_bdnb_match": null,
-      "_taux_logement_src": "copie_sans_dependance"
-    },
-    {
       "cle": "91|RUE|FONDARY",
       "adresse": null,
       "longitude": 2.298622,
@@ -45592,42 +45260,6 @@
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-DN3P-4R65-2XG2",
       "_bdnb_match": "num_voie",
-      "_taux_logement_src": "copie_sans_dependance"
-    },
-    {
-      "cle": "3|IMPASSE|EGLISE",
-      "adresse": null,
-      "longitude": 2.291375,
-      "latitude": 48.843311,
-      "code_iris": "751156019",
-      "_coord_source": "ban",
-      "dans_majic": false,
-      "sci_proprietaire": "inconnu",
-      "sci_nom": "",
-      "sci_siren": "",
-      "syndic": null,
-      "_syndic_src": null,
-      "numero_immatriculation": null,
-      "nb_lots_habitation": null,
-      "ventes_par_an": {
-        "2021": 1
-      },
-      "nb_ventes_total": 1,
-      "ventes_par_an_logement": {
-        "2021": 1
-      },
-      "nb_ventes_logement": 1,
-      "taux_rotation": null,
-      "classement_rotation": null,
-      "taux_rotation_logement": null,
-      "classement_rotation_logement": "",
-      "nb_log_bdnb": null,
-      "annee_construction": null,
-      "classe_dpe": null,
-      "type_batiment": null,
-      "type_chauffage": null,
-      "batiment_groupe_id": null,
-      "_bdnb_match": null,
       "_taux_logement_src": "copie_sans_dependance"
     },
     {

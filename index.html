@@ -1950,6 +1950,7 @@ function secteurToggleNoLog() {
 }
 window.secteurToggleNoLog = secteurToggleNoLog;
 let secteurStrict = true;           // mode "logement strict" par DEFAUT (toggle ON au chargement)
+let secteurVille = 'Lyon 3';        // ville pour le lien Google Maps (dynamique selon l'agence)
 function secteurStrictBtnSync() {   // reflète l'état du toggle sur le bouton
   const b = document.getElementById('secteur-strict-btn');
   if (b) {
@@ -1975,16 +1976,18 @@ function secteurResolve() {
   // motte-picquet UNIQUEMENT (pas lopez : secteur_enabled=false cote
   // worker -> onglet masque ; defense en profondeur ici aussi).
   // [fichier light, id secteur (KV), nom affiché dans le header]
+  // [fichier light, id secteur (KV), nom header, ville pour Google Maps]
   const M = {
-    'dauphine-lacassagne': ['secteur_dauphine_lacassagne_light.json', 'dauphine-lacassagne', 'Dauphiné-Lacassagne (Lyon 3e)'],
-    'motte-picquet':       ['secteur_motte_picquet_light.json',        'motte-picquet',        'Motte-Picquet (Paris 15e - 7e)'],
+    'dauphine-lacassagne': ['secteur_dauphine_lacassagne_light.json', 'dauphine-lacassagne', 'Dauphiné-Lacassagne (Lyon 3e)', 'Lyon 3'],
+    'motte-picquet':       ['secteur_motte_picquet_light.json',        'motte-picquet',        'Motte-Picquet (Paris 15e - 7e)', 'Paris 15'],
   };
   return M[agenceId] || M['dauphine-lacassagne'];
 }
 
 async function loadSecteurData() {
   const tree = document.getElementById('secteur-tree');
-  const [secFile, secId, secName] = secteurResolve();
+  const [secFile, secId, secName, secVille] = secteurResolve();
+  secteurVille = secVille;           // pilote le lien Google Maps (dynamique)
   const tt = document.getElementById('secteur-titre');
   if (tt) tt.textContent = '🗺 Secteur Prospector — ' + secName;
   secteurStrictBtnSync();           // bouton "Ventes strictes" ON par défaut
@@ -2313,10 +2316,10 @@ function renderSecteur() {
                 `<option value="${v}"${as.type === v ? ' selected' : ''}>${esc(l)}</option>`).join('')
             + `</select>` : '';
 
-        // Adresse cliquable -> Google Maps "ADRESSE Lyon 3" (nouvel onglet).
-        // On garde class="sct-nm" + data-cle : secteurRename() cible cet
-        // element (le ✏️ le remplace par un input, le clic ouvre Maps).
-        const mapsQ = encodeURIComponent(adrTxt + ' Lyon 3');
+        // Adresse cliquable -> Google Maps "ADRESSE <ville>" (ville
+        // dynamique selon le secteur, cf. secteurVille). On garde
+        // class="sct-nm" + data-cle : secteurRename() cible cet element.
+        const mapsQ = encodeURIComponent(adrTxt + ' ' + secteurVille);
         const nameCell = `📍 <a class="sct-nm" data-cle="${esc(a.cle)}" `
           + `href="https://www.google.com/maps/search/?api=1&query=${mapsQ}" `
           + `target="_blank" rel="noopener" title="Ouvrir « ${esc(adrTxt)} » dans Google Maps" `

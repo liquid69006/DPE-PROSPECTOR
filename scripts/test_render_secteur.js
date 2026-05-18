@@ -25,11 +25,11 @@ const slice = (a, b) => HTML.slice(a - 1, b).join("\n"); // lignes 1-based inclu
 // apres toute edition d'index.html : ces plages sont codees en dur et un
 // decalage decoupe renderSecteur au mauvais endroit -> SyntaxError).
 const SRC = [
-  slice(2026, 2030),   // ROT_COLOR + TYPE_OPTS
-  slice(2052, 2054),   // esc
-  slice(2056, 2060),   // secteurNorm
-  slice(2074, 2114),   // sctTauxAnnuel..sctBadge (helpers de rendu)
-  slice(2116, 2424),   // renderSecteur (vpaOf / toggle strict / filtre sctQ)
+  slice(2029, 2033),   // ROT_COLOR + TYPE_OPTS
+  slice(2055, 2057),   // esc
+  slice(2059, 2063),   // secteurNorm
+  slice(2077, 2117),   // sctTauxAnnuel..sctBadge (helpers de rendu)
+  slice(2119, 2427),   // renderSecteur (vpaOf / toggle strict / filtre sctQ)
 ].join("\n\n");
 
 function mkEl() {
@@ -54,6 +54,7 @@ function runRender(jsonPath, strict, search) {
     secteurData,
     secteurFusions: {}, secteurNoms: {}, secteurAssign: {}, secteurNoLog: false,
     secteurStrict: !!strict,
+    secteurVille: process.env.SECTEUR === "motte_picquet" ? "Paris 15" : "Lyon 3",
     document: { getElementById: (id) => els[id] || mkEl() },
     console,
   };
@@ -229,17 +230,22 @@ check("loadSecteurData applique le nom (secteur-titre.textContent)",
 const mfn = idx.match(/function secteurResolve\(\)\s*\{[\s\S]*?\n\}/);
 check("secteurResolve() extractible", !!mfn);
 if (mfn) {
-  for (const [ag, exp] of [
-    ["dauphine-lacassagne", "Dauphiné-Lacassagne (Lyon 3e)"],
-    ["motte-picquet", "Motte-Picquet (Paris 15e - 7e)"]]) {
+  for (const [ag, exp, ville] of [
+    ["dauphine-lacassagne", "Dauphiné-Lacassagne (Lyon 3e)", "Lyon 3"],
+    ["motte-picquet", "Motte-Picquet (Paris 15e - 7e)", "Paris 15"]]) {
     let got;
     try {
       got = new Function("agenceId",
         mfn[0] + "\nreturn secteurResolve();")(ag);
     } catch (e) { got = ["ERR:" + e.message]; }
     const nom = Array.isArray(got) ? got[2] : undefined;
+    const vl = Array.isArray(got) ? got[3] : undefined;
     check(`secteurResolve('${ag}')[2] == "${exp}" (got ${nom})`, nom === exp);
+    check(`secteurResolve('${ag}')[3] ville == "${ville}" (got ${vl})`, vl === ville);
   }
+  // Maps : query dynamique via secteurVille (plus de 'Lyon 3' en dur)
+  check("Google Maps query utilise secteurVille (non code en dur)",
+    /adrTxt \+ ' ' \+ secteurVille/.test(idx) && !/adrTxt \+ ' Lyon 3'/.test(idx));
 }
 
 console.log(process.exitCode ? "\nRESULTAT : ECHEC" : "\nRESULTAT : OK");
