@@ -92,7 +92,7 @@ check("HTML non vide (patche)", curHtml.length > 1000);
 // marqueur) doivent etre rendues. .bak = etat precedent (roule a chaque
 // apply) -> on ne compare PAS un delta fige, on verifie les invariants.
 const sd = JSON.parse(fs.readFileSync(CUR, "utf8"));
-const MARKERS = ["immat_fix", "immat_live_fix"];
+const MARKERS = ["immat_fix", "immat_live_fix", "immat_horsrnc_fix"];
 const injRows = sd.adresses.filter(a => MARKERS.includes(a._bdnb_match));
 console.log("\n=== Lignes injectees rendues ===");
 check("au moins 1 ligne injectee", injRows.length >= 1);

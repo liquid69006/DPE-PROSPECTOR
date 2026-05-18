@@ -236,7 +236,9 @@ def main():
     meta["_correctif_horsrnc"] = (
         f"{len(a_injecter)} adresses injectees (copros invisibles cat. A/B2 "
         f"detectees par passe inverse hors-RNC ; lien live many-to-many ; "
-        f"_bdnb_match=immat_horsrnc_fix ; delta parc net {net:+d} lgts).")
+        f"_bdnb_match=immat_horsrnc_fix ; delta parc ESTIME {net:+d} lgts "
+        f"-- estimation approximative, valider le reel via "
+        f"node scripts/test_render_secteur.js).")
     LIGHT.write_text(json.dumps(light, ensure_ascii=False, indent=2),
                      encoding="utf-8")
     print(f"Sauvegarde : {BAK.name}")
