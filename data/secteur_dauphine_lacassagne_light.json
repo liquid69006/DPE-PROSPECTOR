@@ -6355,31 +6355,6 @@
       "classement_rotation": "Actif"
     },
     {
-      "numero_immatriculation": "AB8106718",
-      "nom_copropriete": "LE GREEN CASCADE",
-      "syndic": "non connu",
-      "_syndic_src": "rnc",
-      "adresse": "128 r antoine charial | 128 r antoine charial 69003 Lyon | 69003 | Lyon",
-      "longitude": 4.873463,
-      "latitude": 45.757171,
-      "code_iris": "693830502",
-      "cle_adresse": "128|RUE|ANTOINE CHARIAL",
-      "nb_lots_total": 201,
-      "nb_lots_habitation": 100,
-      "nb_lots_habitation_rnc": 100,
-      "nb_log_bdnb": 30,
-      "nb_ventes_2021_2025": 18,
-      "ventes_par_an": {
-        "2024": 8,
-        "2023": 5,
-        "2025": 1,
-        "2022": 2,
-        "2021": 2
-      },
-      "taux_rotation_5ans": 18.0,
-      "classement_rotation": "Actif"
-    },
-    {
       "numero_immatriculation": "AB8301665",
       "nom_copropriete": "1 RUE DE LA METALLURGIE",
       "syndic": "non connu",
@@ -6685,25 +6660,6 @@
       "classement_rotation": "Tres actif"
     },
     {
-      "numero_immatriculation": "AB8819468",
-      "nom_copropriete": "PAUL BERT (252 BIS, RUE)",
-      "syndic": "REGIE DE VENDIN",
-      "_syndic_src": "rnic_live",
-      "adresse": "252B r paul bert | 252B r paul bert 69003 LYON | 69003 | LYON",
-      "longitude": 4.867908,
-      "latitude": 45.756626,
-      "code_iris": "693830502",
-      "cle_adresse": "252B|RUE|PAUL BERT",
-      "nb_lots_total": 7,
-      "nb_lots_habitation": 7,
-      "nb_lots_habitation_rnc": 7,
-      "nb_log_bdnb": null,
-      "nb_ventes_2021_2025": 0,
-      "ventes_par_an": {},
-      "taux_rotation_5ans": 0.0,
-      "classement_rotation": "Fige"
-    },
-    {
       "numero_immatriculation": "AB8822587",
       "nom_copropriete": "LA SCALA",
       "syndic": "CILEAD",
@@ -6973,25 +6929,6 @@
       },
       "taux_rotation_5ans": 20.0,
       "classement_rotation": "Tres actif"
-    },
-    {
-      "numero_immatriculation": "AB9349846",
-      "nom_copropriete": "SDC 39-43  RUE GUILLOUD",
-      "syndic": "non connu",
-      "_syndic_src": "rnc",
-      "adresse": "39-43 r guilloud | 39-43 r guilloud 69003 LYON | 69003 | LYON",
-      "longitude": 4.871325,
-      "latitude": 45.747067,
-      "code_iris": "693830604",
-      "cle_adresse": "39|RUE|GUILLOUD",
-      "nb_lots_total": 75,
-      "nb_lots_habitation": 30,
-      "nb_lots_habitation_rnc": 30,
-      "nb_log_bdnb": 30,
-      "nb_ventes_2021_2025": 0,
-      "ventes_par_an": {},
-      "taux_rotation_5ans": 0.0,
-      "classement_rotation": "Fige"
     },
     {
       "numero_immatriculation": "AB9368150",
@@ -7715,30 +7652,6 @@
       "classement_rotation": "Actif"
     },
     {
-      "numero_immatriculation": "AC3180148",
-      "nom_copropriete": "SDC 183 AVENUE FELIX FAURE",
-      "syndic": "FONCIA SAINT LOUIS",
-      "_syndic_src": "rnc",
-      "adresse": "183 av felix faure | 183 av felix faure 69003 LYON | 69003 | LYON",
-      "longitude": 4.86905,
-      "latitude": 45.754929,
-      "code_iris": "693830502",
-      "cle_adresse": "183|AVENUE|FELIX FAURE",
-      "nb_lots_total": 42,
-      "nb_lots_habitation": 15,
-      "nb_lots_habitation_rnc": 15,
-      "nb_log_bdnb": 15,
-      "nb_ventes_2021_2025": 7,
-      "ventes_par_an": {
-        "2022": 1,
-        "2021": 4,
-        "2025": 1,
-        "2023": 1
-      },
-      "taux_rotation_5ans": 46.7,
-      "classement_rotation": "Tres actif"
-    },
-    {
       "numero_immatriculation": "AC3212578",
       "nom_copropriete": "'LA COUR LAFAYETTE'",
       "syndic": "SOC ADMIN & GESTION IMMEUB ROLIN BAINSON",
@@ -7849,27 +7762,6 @@
       },
       "taux_rotation_5ans": 20.8,
       "classement_rotation": "Tres actif"
-    },
-    {
-      "numero_immatriculation": "AC3643723",
-      "nom_copropriete": "SDC 254 RUE PAUL BERT",
-      "syndic": "non connu",
-      "_syndic_src": "rnc",
-      "adresse": "254 Rue Paul Bert | 254 Rue Paul Bert 69003 Lyon | 69003 | Lyon",
-      "longitude": 4.868042,
-      "latitude": 45.756616,
-      "code_iris": "693830502",
-      "cle_adresse": "254|RUE|PAUL BERT",
-      "nb_lots_total": 13,
-      "nb_lots_habitation": 11,
-      "nb_lots_habitation_rnc": 11,
-      "nb_log_bdnb": 18,
-      "nb_ventes_2021_2025": 1,
-      "ventes_par_an": {
-        "2023": 1
-      },
-      "taux_rotation_5ans": 9.1,
-      "classement_rotation": "Modere"
     },
     {
       "numero_immatriculation": "AC3758810",
@@ -9455,28 +9347,6 @@
       "classement_rotation": "Actif"
     },
     {
-      "numero_immatriculation": "AD1534866",
-      "nom_copropriete": "202 AVENUE FELIX FAURE",
-      "syndic": "non connu",
-      "_syndic_src": "rnc",
-      "adresse": "202 av felix faure | 202 av felix faure 69003 LYON | 69003 | LYON",
-      "longitude": 4.871415,
-      "latitude": 45.755035,
-      "code_iris": "693830601",
-      "cle_adresse": "202|AVENUE|FELIX FAURE",
-      "nb_lots_total": 18,
-      "nb_lots_habitation": 18,
-      "nb_lots_habitation_rnc": 18,
-      "nb_log_bdnb": 17,
-      "nb_ventes_2021_2025": 5,
-      "ventes_par_an": {
-        "2021": 4,
-        "2022": 1
-      },
-      "taux_rotation_5ans": 27.8,
-      "classement_rotation": "Tres actif"
-    },
-    {
       "numero_immatriculation": "AD1600287",
       "nom_copropriete": "VALMONT 1",
       "syndic": "REGIE GENERALE DE LYON",
@@ -10263,30 +10133,6 @@
       "classement_rotation": "Fige"
     },
     {
-      "numero_immatriculation": "AD5165261",
-      "nom_copropriete": "314/316 RUE PAUL BERT LYON 3",
-      "syndic": "non connu",
-      "_syndic_src": "rnc",
-      "adresse": "314 r paul bert | 314 r paul bert 69003 LYON | 69003 | LYON",
-      "longitude": 4.873622,
-      "latitude": 45.755996,
-      "code_iris": "693830502",
-      "cle_adresse": "314|RUE|PAUL BERT",
-      "nb_lots_total": 115,
-      "nb_lots_habitation": 36,
-      "nb_lots_habitation_rnc": 36,
-      "nb_log_bdnb": 39,
-      "nb_ventes_2021_2025": 7,
-      "ventes_par_an": {
-        "2025": 2,
-        "2024": 2,
-        "2023": 2,
-        "2021": 1
-      },
-      "taux_rotation_5ans": 19.4,
-      "classement_rotation": "Actif"
-    },
-    {
       "numero_immatriculation": "AD5178470",
       "nom_copropriete": "PAUL BERT 326",
       "syndic": "CHOMETTE",
@@ -11034,31 +10880,6 @@
       "classement_rotation": "Actif"
     },
     {
-      "numero_immatriculation": "AE3505468",
-      "nom_copropriete": "43 LACASSAGNE",
-      "syndic": "non connu",
-      "_syndic_src": "rnc",
-      "adresse": "43 av lacassagne | 43 av lacassagne 69003 Lyon | 69003 | Lyon",
-      "longitude": 4.868313,
-      "latitude": 45.753622,
-      "code_iris": "693830601",
-      "cle_adresse": "43|AVENUE|LACASSAGNE",
-      "nb_lots_total": 8,
-      "nb_lots_habitation": 2,
-      "nb_lots_habitation_rnc": 2,
-      "nb_log_bdnb": null,
-      "nb_ventes_2021_2025": 14,
-      "ventes_par_an": {
-        "2025": 4,
-        "2021": 2,
-        "2022": 5,
-        "2023": 1,
-        "2024": 2
-      },
-      "taux_rotation_5ans": 700.0,
-      "classement_rotation": "Tres actif"
-    },
-    {
       "numero_immatriculation": "AE3717733",
       "nom_copropriete": "VILLA FLEURY",
       "syndic": "GESTION ET PATRIMOINE LESCUYER",
@@ -11507,29 +11328,6 @@
         "2023": 2
       },
       "taux_rotation_5ans": 36.4,
-      "classement_rotation": "Tres actif"
-    },
-    {
-      "numero_immatriculation": "AF4379624",
-      "nom_copropriete": "ESPRIT JARDIN B",
-      "syndic": "IMMOTHENTIC",
-      "_syndic_src": "rnc",
-      "adresse": "28 r de la cite | 28 r de la cite 69003 Lyon | 69003 | Lyon",
-      "longitude": 4.872393,
-      "latitude": 45.760393,
-      "code_iris": "693830404",
-      "cle_adresse": "28|RUE|CITE",
-      "nb_lots_total": 26,
-      "nb_lots_habitation": 14,
-      "nb_lots_habitation_rnc": 14,
-      "nb_log_bdnb": null,
-      "nb_ventes_2021_2025": 8,
-      "ventes_par_an": {
-        "2022": 3,
-        "2024": 3,
-        "2023": 2
-      },
-      "taux_rotation_5ans": 57.1,
       "classement_rotation": "Tres actif"
     },
     {
@@ -12050,29 +11848,6 @@
       "ventes_par_an": {},
       "taux_rotation_5ans": 0.0,
       "classement_rotation": "Fige"
-    },
-    {
-      "numero_immatriculation": "AG9566076",
-      "nom_copropriete": "COPROPRIETE 128-130 RUE BARABAN",
-      "syndic": "non connu",
-      "_syndic_src": "rnc",
-      "adresse": "128 r baraban | 128 r baraban 69003 Lyon | 69003 | Lyon",
-      "longitude": 4.867343,
-      "latitude": 45.757157,
-      "code_iris": "693830501",
-      "cle_adresse": "128|RUE|BARABAN",
-      "nb_lots_total": 40,
-      "nb_lots_habitation": 24,
-      "nb_lots_habitation_rnc": 24,
-      "nb_log_bdnb": 18,
-      "nb_ventes_2021_2025": 28,
-      "ventes_par_an": {
-        "2022": 15,
-        "2023": 2,
-        "2021": 11
-      },
-      "taux_rotation_5ans": 116.7,
-      "classement_rotation": "Tres actif"
     },
     {
       "numero_immatriculation": "AG9619537",
@@ -12657,30 +12432,6 @@
       "classement_rotation": "Actif"
     },
     {
-      "numero_immatriculation": "AJ0572164",
-      "nom_copropriete": "BARABAN 1",
-      "syndic": "SOC ADMIN & GESTION IMMEUB ROLIN BAINSON",
-      "_syndic_src": "rnc",
-      "adresse": "61 Rue Baraban | 61 Rue Baraban 69003 Lyon | 69003 | Lyon",
-      "longitude": 4.869195,
-      "latitude": 45.760863,
-      "code_iris": "693830404",
-      "cle_adresse": "61|RUE|BARABAN",
-      "nb_lots_total": 466,
-      "nb_lots_habitation": 156,
-      "nb_lots_habitation_rnc": 156,
-      "nb_log_bdnb": null,
-      "nb_ventes_2021_2025": 9,
-      "ventes_par_an": {
-        "2024": 2,
-        "2025": 2,
-        "2023": 3,
-        "2021": 2
-      },
-      "taux_rotation_5ans": 5.8,
-      "classement_rotation": "Modere"
-    },
-    {
       "numero_immatriculation": "AJ1340496",
       "nom_copropriete": "BALLY",
       "syndic": "non connu",
@@ -12808,10 +12559,8 @@
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-47D6-WCMM-3V8Y",
       "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "228/230 AVENUE FELIX FAURE",
-      "_fusion_auto_sources": [
-        "228|AVENUE|FELIX FAURE"
-      ]
+      "_fusion_auto": true,
+      "_fusion_cible": "228|AVENUE|FELIX FAURE"
     },
     {
       "cle": "13|RUE|ST VICTORIEN",
@@ -13427,7 +13176,7 @@
       "batiment_groupe_id": "bdnb-bg-G2ZQ-H667-PH4K",
       "_bdnb_match": "num_voie",
       "_fusion_auto": true,
-      "_fusion_cible": "52|RUE|DAUPHINE"
+      "_fusion_cible": "50|RUE|DAUPHINE"
     },
     {
       "cle": "84|RUE|DAUPHINE",
@@ -13861,11 +13610,8 @@
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-HQEA-L5JU-AGCT",
       "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "11/13/15 AVENUE GEORGES POMPIDOU",
-      "_fusion_auto_sources": [
-        "11|AVENUE|GEORGES POMPIDOU",
-        "13|AVENUE|GEORGES POMPIDOU"
-      ]
+      "_fusion_auto": true,
+      "_fusion_cible": "11|AVENUE|GEORGES POMPIDOU"
     },
     {
       "cle": "177|AVENUE|FELIX FAURE",
@@ -15127,11 +14873,8 @@
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-XEH3-TX1E-4BGK",
       "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "49/51/53 RUE ST MAXIMIN",
-      "_fusion_auto_sources": [
-        "51|RUE|ST MAXIMIN",
-        "49|RUE|ST MAXIMIN"
-      ]
+      "_fusion_auto": true,
+      "_fusion_cible": "51|RUE|ST MAXIMIN"
     },
     {
       "cle": "1|RUE|GUILLOUD",
@@ -15485,11 +15228,8 @@
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-NFZ9-7T8C-747Y",
       "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "13/15/17 RUE PROFESSEUR PAUL SISLEY",
-      "_fusion_auto_sources": [
-        "13|RUE|PROFESSEUR PAUL SISLEY",
-        "17|RUE|PROFESSEUR PAUL SISLEY"
-      ]
+      "_fusion_auto": true,
+      "_fusion_cible": "13|RUE|PROFESSEUR PAUL SISLEY"
     },
     {
       "cle": "156|RUE|BARABAN",
@@ -15805,10 +15545,8 @@
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-X6ZY-RMTC-GPEA",
       "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "197/201 AVENUE FELIX FAURE",
-      "_fusion_auto_sources": [
-        "197|AVENUE|FELIX FAURE"
-      ]
+      "_fusion_auto": true,
+      "_fusion_cible": "197|AVENUE|FELIX FAURE"
     },
     {
       "cle": "21|RUE|ROGER BRECHAN",
@@ -16070,10 +15808,8 @@
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-ZVZ9-29TM-7AF3",
       "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "27/29 RUE ST MAXIMIN",
-      "_fusion_auto_sources": [
-        "27|RUE|ST MAXIMIN"
-      ]
+      "_fusion_auto": true,
+      "_fusion_cible": "27|RUE|ST MAXIMIN"
     },
     {
       "cle": "3|RUE|VILLON",
@@ -16475,7 +16211,7 @@
       "sci_proprietaire": "oui",
       "sci_nom": "FLACHER",
       "sci_siren": "308709237",
-      "syndic": "SOC ADMIN & GESTION IMMEUB ROLIN BAINSON",
+      "syndic": "non connu",
       "_syndic_src": "rnc",
       "ventes_par_an": {
         "2021": 2,
@@ -16484,13 +16220,13 @@
         "2025": 2
       },
       "nb_ventes_total": 9,
-      "nb_log_bdnb": null,
-      "annee_construction": null,
-      "classe_dpe": null,
-      "type_batiment": null,
-      "type_chauffage": null,
-      "batiment_groupe_id": "bdnb-bg-W624-4P36-PURP",
-      "_bdnb_match": "num_voie",
+      "nb_log_bdnb": 154,
+      "annee_construction": 1972,
+      "classe_dpe": "D",
+      "type_batiment": "appartement",
+      "type_chauffage": "reseau de chaleur",
+      "batiment_groupe_id": "bdnb-bg-9B3F-ZKT4-JZ9V",
+      "_bdnb_match": "immat",
       "_fusion_auto_label": "61/63/65/67 RUE BARABAN",
       "_fusion_auto_sources": [
         "67|RUE|BARABAN",
@@ -16674,10 +16410,8 @@
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-KZM4-PUEX-3ZAG",
       "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "6/8 RUE TURBIL",
-      "_fusion_auto_sources": [
-        "6|RUE|TURBIL"
-      ]
+      "_fusion_auto": true,
+      "_fusion_cible": "6|RUE|TURBIL"
     },
     {
       "cle": "9|AVENUE|LACASSAGNE",
@@ -17853,8 +17587,10 @@
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-2225-DNH3-6ZLD",
       "_bdnb_match": "immat",
-      "_fusion_auto": true,
-      "_fusion_cible": "29|RUE|ST MAXIMIN"
+      "_fusion_auto_label": "27/29 RUE ST MAXIMIN",
+      "_fusion_auto_sources": [
+        "29|RUE|ST MAXIMIN"
+      ]
     },
     {
       "cle": "27|RUE|TURBIL",
@@ -18638,8 +18374,11 @@
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-KRLR-7PLQ-B17V",
       "_bdnb_match": "immat",
-      "_fusion_auto": true,
-      "_fusion_cible": "52|RUE|DAUPHINE"
+      "_fusion_auto_label": "50/52/54 RUE DAUPHINE",
+      "_fusion_auto_sources": [
+        "52|RUE|DAUPHINE",
+        "54|RUE|DAUPHINE"
+      ]
     },
     {
       "cle": "50|RUE|ST ANTOINE",
@@ -19543,8 +19282,11 @@
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-4F6G-4P2Q-RRZK",
       "_bdnb_match": "immat",
-      "_fusion_auto": true,
-      "_fusion_cible": "53|RUE|ST MAXIMIN"
+      "_fusion_auto_label": "49/51/53 RUE ST MAXIMIN",
+      "_fusion_auto_sources": [
+        "53|RUE|ST MAXIMIN",
+        "49|RUE|ST MAXIMIN"
+      ]
     },
     {
       "cle": "1|RUE|TUILIERS",
@@ -19687,8 +19429,11 @@
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-BENR-J4R2-X2NB",
       "_bdnb_match": "immat",
-      "_fusion_auto": true,
-      "_fusion_cible": "15|AVENUE|GEORGES POMPIDOU"
+      "_fusion_auto_label": "11/13/15 AVENUE GEORGES POMPIDOU",
+      "_fusion_auto_sources": [
+        "15|AVENUE|GEORGES POMPIDOU",
+        "13|AVENUE|GEORGES POMPIDOU"
+      ]
     },
     {
       "cle": "114|RUE|ANTOINE CHARIAL",
@@ -19827,8 +19572,10 @@
       "type_chauffage": "reseau de chaleur",
       "batiment_groupe_id": "bdnb-bg-4BCZ-EFDZ-724F",
       "_bdnb_match": "immat",
-      "_fusion_auto": true,
-      "_fusion_cible": "20|RUE|ST SIDOINE"
+      "_fusion_auto_label": "12/20 RUE ST SIDOINE",
+      "_fusion_auto_sources": [
+        "20|RUE|ST SIDOINE"
+      ]
     },
     {
       "cle": "13|AVENUE|GEORGES POMPIDOU",
@@ -19857,7 +19604,7 @@
       "batiment_groupe_id": "bdnb-bg-HQEA-L5JU-AGCT",
       "_bdnb_match": "num_voie",
       "_fusion_auto": true,
-      "_fusion_cible": "15|AVENUE|GEORGES POMPIDOU"
+      "_fusion_cible": "11|AVENUE|GEORGES POMPIDOU"
     },
     {
       "cle": "13|PLACE|FERRANDIERE",
@@ -20262,10 +20009,8 @@
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-YFY8-XRG7-16PK",
       "_bdnb_match": "immat",
-      "_fusion_auto_label": "13/15 RUE ST ANTOINE",
-      "_fusion_auto_sources": [
-        "13|RUE|ST ANTOINE"
-      ]
+      "_fusion_auto": true,
+      "_fusion_cible": "13|RUE|ST ANTOINE"
     },
     {
       "cle": "15|RUE|ST EUSEBE",
@@ -20521,8 +20266,10 @@
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-X6ZY-RMTC-GPEA",
       "_bdnb_match": "immat",
-      "_fusion_auto": true,
-      "_fusion_cible": "201|AVENUE|FELIX FAURE"
+      "_fusion_auto_label": "197/201 AVENUE FELIX FAURE",
+      "_fusion_auto_sources": [
+        "201|AVENUE|FELIX FAURE"
+      ]
     },
     {
       "cle": "2|RUE|DAVID",
@@ -20848,8 +20595,8 @@
       "sci_proprietaire": "oui",
       "sci_nom": "CHRIV MEDICAL",
       "sci_siren": "814564357",
-      "syndic": "YSYS IMMO",
-      "_syndic_src": "cadastre_grp",
+      "syndic": "non connu",
+      "_syndic_src": "rnc",
       "ventes_par_an": {
         "2021": 1,
         "2024": 2
@@ -20862,8 +20609,10 @@
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-PJUP-MU33-65VW",
       "_bdnb_match": "immat",
-      "_fusion_auto": true,
-      "_fusion_cible": "240|AVENUE|FELIX FAURE"
+      "_fusion_auto_label": "238/240 AVENUE FELIX FAURE",
+      "_fusion_auto_sources": [
+        "240|AVENUE|FELIX FAURE"
+      ]
     },
     {
       "cle": "24|AVENUE|LACASSAGNE",
@@ -21570,10 +21319,8 @@
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-HRU7-Q3L9-HXJT",
       "_bdnb_match": "immat",
-      "_fusion_auto_label": "35/37 AVENUE LACASSAGNE",
-      "_fusion_auto_sources": [
-        "35|AVENUE|LACASSAGNE"
-      ]
+      "_fusion_auto": true,
+      "_fusion_cible": "35|AVENUE|LACASSAGNE"
     },
     {
       "cle": "37|RUE|BARABAN",
@@ -21628,10 +21375,8 @@
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-J3X7-528N-6TTX",
       "_bdnb_match": "immat",
-      "_fusion_auto_label": "35/37 RUE ST MAXIMIN",
-      "_fusion_auto_sources": [
-        "35|RUE|ST MAXIMIN"
-      ]
+      "_fusion_auto": true,
+      "_fusion_cible": "35|RUE|ST MAXIMIN"
     },
     {
       "cle": "39|RUE|GUILLOUD",
@@ -22079,8 +21824,8 @@
       "sci_proprietaire": "non",
       "sci_nom": "",
       "sci_siren": "",
-      "syndic": "SOC ADMIN & GESTION IMMEUB ROLIN BAINSON",
-      "_syndic_src": "rnc_grp",
+      "syndic": null,
+      "_syndic_src": null,
       "ventes_par_an": {
         "2022": 1,
         "2025": 2
@@ -22134,8 +21879,8 @@
       "sci_proprietaire": "oui",
       "sci_nom": "NAUTAN",
       "sci_siren": "435031737",
-      "syndic": "SOC ADMIN & GESTION IMMEUB ROLIN BAINSON",
-      "_syndic_src": "rnc_grp",
+      "syndic": null,
+      "_syndic_src": null,
       "ventes_par_an": {
         "2021": 1,
         "2022": 1,
@@ -22437,8 +22182,10 @@
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-8ZRV-FM7X-XP77",
       "_bdnb_match": "immat",
-      "_fusion_auto": true,
-      "_fusion_cible": "11|RUE|ROGER BRECHAN"
+      "_fusion_auto_label": "9/11 RUE ROGER BRECHAN",
+      "_fusion_auto_sources": [
+        "11|RUE|ROGER BRECHAN"
+      ]
     },
     {
       "cle": "90|RUE|ANTOINE CHARIAL",
@@ -22464,8 +22211,10 @@
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-3WFJ-G1YT-XLZF",
       "_bdnb_match": "immat",
-      "_fusion_auto": true,
-      "_fusion_cible": "92|RUE|ANTOINE CHARIAL"
+      "_fusion_auto_label": "90/92 RUE ANTOINE CHARIAL",
+      "_fusion_auto_sources": [
+        "92|RUE|ANTOINE CHARIAL"
+      ]
     },
     {
       "cle": "93|RUE|BELLECOMBE",
@@ -22716,10 +22465,8 @@
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-A7ZQ-2FYK-N2Z2",
       "_bdnb_match": "immat",
-      "_fusion_auto_label": "23/25 RUE MONTBRILLANT",
-      "_fusion_auto_sources": [
-        "23|RUE|MONTBRILLANT"
-      ]
+      "_fusion_auto": true,
+      "_fusion_cible": "23|RUE|MONTBRILLANT"
     },
     {
       "cle": "22|RUE|DAVID",
@@ -22830,8 +22577,10 @@
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-KZM4-PUEX-3ZAG",
       "_bdnb_match": "immat",
-      "_fusion_auto": true,
-      "_fusion_cible": "8|RUE|TURBIL"
+      "_fusion_auto_label": "6/8 RUE TURBIL",
+      "_fusion_auto_sources": [
+        "8|RUE|TURBIL"
+      ]
     },
     {
       "cle": "33|AVENUE|LACASSAGNE",
@@ -23220,8 +22969,11 @@
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-NFZ9-7T8C-747Y",
       "_bdnb_match": "immat",
-      "_fusion_auto": true,
-      "_fusion_cible": "15|RUE|PROFESSEUR PAUL SISLEY"
+      "_fusion_auto_label": "13/15/17 RUE PROFESSEUR PAUL SISLEY",
+      "_fusion_auto_sources": [
+        "15|RUE|PROFESSEUR PAUL SISLEY",
+        "17|RUE|PROFESSEUR PAUL SISLEY"
+      ]
     },
     {
       "cle": "23|RUE|RIBOUD",
@@ -24168,10 +23920,8 @@
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-8ZRV-FM7X-XP77",
       "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "9/11 RUE ROGER BRECHAN",
-      "_fusion_auto_sources": [
-        "9|RUE|ROGER BRECHAN"
-      ]
+      "_fusion_auto": true,
+      "_fusion_cible": "9|RUE|ROGER BRECHAN"
     },
     {
       "cle": "112|AVENUE|FELIX FAURE",
@@ -24852,7 +24602,7 @@
       "batiment_groupe_id": "bdnb-bg-F53L-NRUL-61CZ",
       "_bdnb_match": "num_voie",
       "_fusion_auto": true,
-      "_fusion_cible": "15|RUE|PROFESSEUR PAUL SISLEY"
+      "_fusion_cible": "13|RUE|PROFESSEUR PAUL SISLEY"
     },
     {
       "cle": "17|RUE|ROGER BRECHAN",
@@ -25338,10 +25088,8 @@
       "type_chauffage": "reseau de chaleur",
       "batiment_groupe_id": "bdnb-bg-4BCZ-EFDZ-724F",
       "_bdnb_match": "immat",
-      "_fusion_auto_label": "12/20 RUE ST SIDOINE",
-      "_fusion_auto_sources": [
-        "12|RUE|ST SIDOINE"
-      ]
+      "_fusion_auto": true,
+      "_fusion_cible": "12|RUE|ST SIDOINE"
     },
     {
       "cle": "20|RUE|ST VICTORIEN",
@@ -25636,8 +25384,10 @@
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-47D6-WCMM-3V8Y",
       "_bdnb_match": "immat",
-      "_fusion_auto": true,
-      "_fusion_cible": "230|AVENUE|FELIX FAURE"
+      "_fusion_auto_label": "228/230 AVENUE FELIX FAURE",
+      "_fusion_auto_sources": [
+        "230|AVENUE|FELIX FAURE"
+      ]
     },
     {
       "cle": "23|AVENUE|LACASSAGNE",
@@ -25717,8 +25467,10 @@
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-A7ZQ-2FYK-N2Z2",
       "_bdnb_match": "immat",
-      "_fusion_auto": true,
-      "_fusion_cible": "25|RUE|MONTBRILLANT"
+      "_fusion_auto_label": "23/25 RUE MONTBRILLANT",
+      "_fusion_auto_sources": [
+        "25|RUE|MONTBRILLANT"
+      ]
     },
     {
       "cle": "23|RUE|ETIENNE RICHERAND",
@@ -26894,8 +26646,10 @@
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-HRU7-Q3L9-HXJT",
       "_bdnb_match": "immat",
-      "_fusion_auto": true,
-      "_fusion_cible": "37|AVENUE|LACASSAGNE"
+      "_fusion_auto_label": "35/37 AVENUE LACASSAGNE",
+      "_fusion_auto_sources": [
+        "37|AVENUE|LACASSAGNE"
+      ]
     },
     {
       "cle": "35|RUE|GUILLOUD",
@@ -27636,11 +27390,8 @@
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-TD3K-MD6A-6F6R",
       "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "50/52/54 RUE DAUPHINE",
-      "_fusion_auto_sources": [
-        "50|RUE|DAUPHINE",
-        "54|RUE|DAUPHINE"
-      ]
+      "_fusion_auto": true,
+      "_fusion_cible": "50|RUE|DAUPHINE"
     },
     {
       "cle": "52|RUE|ST MAXIMIN",
@@ -27909,8 +27660,8 @@
       "sci_proprietaire": "oui",
       "sci_nom": "VECADOMAX",
       "sci_siren": "428962534",
-      "syndic": "SOC ADMIN & GESTION IMMEUB ROLIN BAINSON",
-      "_syndic_src": "rnc_grp",
+      "syndic": null,
+      "_syndic_src": null,
       "ventes_par_an": {
         "2022": 1,
         "2024": 1
@@ -30149,8 +29900,10 @@
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-YFY8-XRG7-16PK",
       "_bdnb_match": "immat",
-      "_fusion_auto": true,
-      "_fusion_cible": "15|RUE|ST ANTOINE"
+      "_fusion_auto_label": "13/15 RUE ST ANTOINE",
+      "_fusion_auto_sources": [
+        "15|RUE|ST ANTOINE"
+      ]
     },
     {
       "cle": "13|RUE|ST SIDOINE",
@@ -35333,10 +35086,8 @@
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-9P8K-R96Z-PWH2",
       "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "238/240 AVENUE FELIX FAURE",
-      "_fusion_auto_sources": [
-        "238|AVENUE|FELIX FAURE"
-      ]
+      "_fusion_auto": true,
+      "_fusion_cible": "238|AVENUE|FELIX FAURE"
     },
     {
       "cle": "240|COURS|LAFAYETTE",
@@ -36080,8 +35831,10 @@
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-SCQS-HYN4-PPDQ",
       "_bdnb_match": "immat",
-      "_fusion_auto": true,
-      "_fusion_cible": "29|RUE|METALLURGIE"
+      "_fusion_auto_label": "27/29 RUE METALLURGIE",
+      "_fusion_auto_sources": [
+        "29|RUE|METALLURGIE"
+      ]
     },
     {
       "cle": "27|RUE|VILLETTE",
@@ -36692,10 +36445,8 @@
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-SCQS-HYN4-PPDQ",
       "_bdnb_match": "immat",
-      "_fusion_auto_label": "27/29 RUE METALLURGIE",
-      "_fusion_auto_sources": [
-        "27|RUE|METALLURGIE"
-      ]
+      "_fusion_auto": true,
+      "_fusion_cible": "27|RUE|METALLURGIE"
     },
     {
       "cle": "29|RUE|DAUPHINE",
@@ -38350,8 +38101,10 @@
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-J3X7-528N-6TTX",
       "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "37|RUE|ST MAXIMIN"
+      "_fusion_auto_label": "35/37 RUE ST MAXIMIN",
+      "_fusion_auto_sources": [
+        "37|RUE|ST MAXIMIN"
+      ]
     },
     {
       "cle": "353|RUE|PAUL BERT",
@@ -40192,8 +39945,8 @@
       "sci_proprietaire": "oui",
       "sci_nom": "COMMANDANT CORP",
       "sci_siren": "848013439",
-      "syndic": "CITYA BARIOZ IMMOBILIER",
-      "_syndic_src": "cadastre_grp",
+      "syndic": "REGIE PEDRINI",
+      "_syndic_src": "rnc_grp",
       "ventes_par_an": {
         "2021": 1,
         "2022": 1
@@ -40207,7 +39960,7 @@
       "batiment_groupe_id": "bdnb-bg-4F6G-4P2Q-RRZK",
       "_bdnb_match": "num_voie",
       "_fusion_auto": true,
-      "_fusion_cible": "53|RUE|ST MAXIMIN"
+      "_fusion_cible": "51|RUE|ST MAXIMIN"
     },
     {
       "cle": "49|RUE|STE ANNE DE BARABAN",
@@ -43498,10 +43251,8 @@
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-3WFJ-G1YT-XLZF",
       "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "90/92 RUE ANTOINE CHARIAL",
-      "_fusion_auto_sources": [
-        "90|RUE|ANTOINE CHARIAL"
-      ]
+      "_fusion_auto": true,
+      "_fusion_cible": "90|RUE|ANTOINE CHARIAL"
     },
     {
       "cle": "93|RUE|BARABAN",
