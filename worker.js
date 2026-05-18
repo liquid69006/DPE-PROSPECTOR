@@ -70,6 +70,7 @@ const AGENCES_CONFIG = {
     conseillers_defaut: ["À attribuer", "Mathis", "Julien", "Philippe", "Fahd", "Maxime", "Cyril", "Melchior"],
     zones: ["Pernéty"],
     sci_enabled: false,
+    secteur_enabled: false,
   },
   "houlgate": {
     nom: "Century 21 Bagot — Houlgate",
@@ -80,6 +81,7 @@ const AGENCES_CONFIG = {
     conseillers_defaut: ["À attribuer"],
     zones: ["14510", "14160", "14430"],
     sci_enabled: false,
+    secteur_enabled: false,
   },
   "villers": {
     nom: "Century 21 Bagot — Villers-sur-Mer",
@@ -90,6 +92,7 @@ const AGENCES_CONFIG = {
     conseillers_defaut: ["À attribuer"],
     zones: ["14910", "14640"],
     sci_enabled: false,
+    secteur_enabled: false,
   },
   "lopez": {
     nom: "Century 21 Lopez",
@@ -101,7 +104,7 @@ const AGENCES_CONFIG = {
     conseillers_defaut: ["À attribuer", "Jean-Marie", "Bérénice", "Joël", "Mathis", "Julien", "Philippe", "Fahd", "Maxime", "Cyril", "Melchior"],
     zones: ["La Motte Picquet", "Pernéty"],
     sci_enabled: true,
-    secteur_enabled: true,   // secteur = motte-picquet (composite via dpe_agences)
+    secteur_enabled: false,  // PAS d'accès Secteur motte (restreint à la session motte-picquet)
     // Agences DPE dont lopez agrège les assignments
     dpe_agences: ["motte-picquet", "pernety"],
     // Agences SCI dont lopez agrège les données

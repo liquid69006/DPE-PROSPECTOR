@@ -25,11 +25,11 @@ const slice = (a, b) => HTML.slice(a - 1, b).join("\n"); // lignes 1-based inclu
 // apres toute edition d'index.html : ces plages sont codees en dur et un
 // decalage decoupe renderSecteur au mauvais endroit -> SyntaxError).
 const SRC = [
-  slice(2017, 2021),   // ROT_COLOR + TYPE_OPTS
-  slice(2043, 2045),   // esc
-  slice(2047, 2051),   // secteurNorm
-  slice(2065, 2105),   // sctTauxAnnuel..sctBadge (helpers de rendu)
-  slice(2107, 2415),   // renderSecteur (vpaOf / toggle strict / filtre sctQ)
+  slice(2019, 2023),   // ROT_COLOR + TYPE_OPTS
+  slice(2045, 2047),   // esc
+  slice(2049, 2053),   // secteurNorm
+  slice(2067, 2107),   // sctTauxAnnuel..sctBadge (helpers de rendu)
+  slice(2109, 2417),   // renderSecteur (vpaOf / toggle strict / filtre sctQ)
 ].join("\n\n");
 
 function mkEl() {

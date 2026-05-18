@@ -1968,10 +1968,12 @@ let sctFusSrc = null, sctFusPick = null;   // etat de la modale de rapprochement
 // -> meme KV secteur_assignments:motte-picquet (requireAuth autorise
 // lopez via dpe_agences). Dauphine inchange (id secteur == agence).
 function secteurResolve() {
+  // secteur_motte_picquet_light.json conditionne a l'agence
+  // motte-picquet UNIQUEMENT (pas lopez : secteur_enabled=false cote
+  // worker -> onglet masque ; defense en profondeur ici aussi).
   const M = {
     'dauphine-lacassagne': ['secteur_dauphine_lacassagne_light.json', 'dauphine-lacassagne'],
     'motte-picquet':       ['secteur_motte_picquet_light.json',        'motte-picquet'],
-    'lopez':               ['secteur_motte_picquet_light.json',        'motte-picquet'],
   };
   return M[agenceId] || M['dauphine-lacassagne'];
 }
