@@ -21,13 +21,15 @@ const ROOT = path.resolve(__dirname, "..");
 const HTML = fs.readFileSync(path.join(ROOT, "index.html"), "utf8").split(/\r?\n/);
 const slice = (a, b) => HTML.slice(a - 1, b).join("\n"); // lignes 1-based inclusives
 
-// Blocs sources de index.html (cf. numeros de ligne verifies)
+// Blocs sources de index.html (numeros de ligne verifies — A REVERIFIER
+// apres toute edition d'index.html : ces plages sont codees en dur et un
+// decalage decoupe renderSecteur au mauvais endroit -> SyntaxError).
 const SRC = [
-  slice(1983, 1987),   // ROT_COLOR + TYPE_OPTS
-  slice(2009, 2011),   // esc
-  slice(2013, 2017),   // secteurNorm
-  slice(2058, 2096),   // sctTauxAnnuel..sctBadge (helpers de rendu)
-  slice(2098, 2383),   // renderSecteur
+  slice(2000, 2004),   // ROT_COLOR + TYPE_OPTS
+  slice(2026, 2028),   // esc
+  slice(2030, 2034),   // secteurNorm
+  slice(2075, 2113),   // sctTauxAnnuel..sctBadge (helpers de rendu)
+  slice(2115, 2405),   // renderSecteur (inclut vpaOf / toggle strict)
 ].join("\n\n");
 
 function mkEl() {
@@ -39,7 +41,7 @@ function mkEl() {
   };
 }
 
-function runRender(jsonPath) {
+function runRender(jsonPath, strict) {
   const secteurData = JSON.parse(fs.readFileSync(jsonPath, "utf8"));
   const els = {
     "secteur-tree": mkEl(),
@@ -49,6 +51,7 @@ function runRender(jsonPath) {
   const sandbox = {
     secteurData,
     secteurFusions: {}, secteurNoms: {}, secteurAssign: {}, secteurNoLog: false,
+    secteurStrict: !!strict,
     document: { getElementById: (id) => els[id] || mkEl() },
     console,
   };
@@ -139,5 +142,24 @@ const dAdr = adr(curResume) - adr(bakResume);
 check(`lgts patche >= lgts .bak (${lgt(bakResume)} -> ${lgt(curResume)})`,
   lgt(curResume) >= lgt(bakResume));
 check(`adresses patche >= adresses .bak (delta ${dAdr})`, dAdr >= 0);
+
+// Toggle "Ventes strictes" : meme fichier, secteurStrict=true.
+// Invariants : pas d'exception ; ventes/an strict <= brut (depend. exclues) ;
+// logements/adresses INCHANGES (le toggle ne touche que les ventes).
+const ven = s => { const m = /· ([\d   ,]+) ventes\/an/.exec(s); return m ? parseFloat(m[1].replace(/[^\d,]/g, "").replace(",", ".")) : -1; };
+console.log("\n=== Toggle Ventes strictes (secteurStrict=true) ===");
+const strict = runRender(CUR, true);
+const sR = strict.els["secteur-resume"]._text || "";
+console.log("  brut  :", curResume);
+console.log("  strict:", sR);
+check("renderSecteur() ne leve pas (strict)", !strict.error);
+if (strict.error) console.log("  THROW:", strict.error.message);
+check(`ventes/an strict <= brut (${ven(curResume)} -> ${ven(sR)})`,
+  ven(sR) >= 0 && ven(sR) <= ven(curResume));
+check(`ventes/an strict < brut (effet depend. exclues)`, ven(sR) < ven(curResume));
+check(`lgts INCHANGES par le toggle (${lgt(curResume)} == ${lgt(sR)})`,
+  lgt(sR) === lgt(curResume));
+check(`adresses INCHANGEES par le toggle (${adr(curResume)} == ${adr(sR)})`,
+  adr(sR) === adr(curResume));
 
 console.log(process.exitCode ? "\nRESULTAT : ECHEC" : "\nRESULTAT : OK");

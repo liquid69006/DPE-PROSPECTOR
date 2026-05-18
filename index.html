@@ -743,6 +743,11 @@ td{padding:11px 14px;vertical-align:middle;}
         style="padding:7px 14px;border:1px solid var(--border);border-radius:6px;
                background:var(--surface2);color:var(--text);font-size:13px;
                cursor:pointer;white-space:nowrap;">🏠 Sans logements</button>
+      <button id="secteur-strict-btn" onclick="secteurToggleStrict()"
+        title="Ventes &quot;logement strict&quot; : exclut les mutations DVF dépendance/commerce seule (parkings, caves). Met à jour ventes/an, taux et classement de rotation."
+        style="padding:7px 14px;border:1px solid var(--border);border-radius:6px;
+               background:var(--surface2);color:var(--text);font-size:13px;
+               cursor:pointer;white-space:nowrap;">📊 Ventes strictes</button>
     </div>
     <div id="secteur-colhead" style="display:none;position:sticky;top:0;z-index:5;
          background:var(--surface);border-bottom:2px solid var(--border);
@@ -1942,6 +1947,18 @@ function secteurToggleNoLog() {
   renderSecteur();
 }
 window.secteurToggleNoLog = secteurToggleNoLog;
+let secteurStrict = false;          // toggle brut / "logement strict" (dépendances exclues)
+function secteurToggleStrict() {
+  secteurStrict = !secteurStrict;
+  const b = document.getElementById('secteur-strict-btn');
+  if (b) {
+    b.style.background = secteurStrict ? 'var(--orange)' : 'var(--surface2)';
+    b.style.color = secteurStrict ? '#fff' : 'var(--text)';
+    b.style.borderColor = secteurStrict ? 'var(--orange)' : 'var(--border)';
+  }
+  renderSecteur();
+}
+window.secteurToggleStrict = secteurToggleStrict;
 let sctFusSrc = null, sctFusPick = null;   // etat de la modale de rapprochement
 
 async function loadSecteurData() {
@@ -2104,6 +2121,11 @@ function renderSecteur() {
   const irisById = {};
   (d.iris || []).forEach(i => irisById[i.code_iris] = i);
   const ANS = ['2021', '2022', '2023', '2024', '2025'];
+  // Source des ventes selon le toggle brut/strict. Strict = champ additif
+  // ventes_par_an_logement (mutations dépendance/commerce seule exclues) ;
+  // fallback sur ventes_par_an si absent. Pilote effV/taux/classe/header.
+  const vpaOf = a => (secteurStrict && a && a.ventes_par_an_logement)
+    ? a.ventes_par_an_logement : (a ? a.ventes_par_an : null);
 
   // ── Fusions : adresse DVF source rattachée à une copro RNC cible ──
   const adrByCle = {};
@@ -2116,7 +2138,7 @@ function renderSecteur() {
     fusedSrc[src] = true;
     const m = mergedInto[dst] = mergedInto[dst] || { count: 0, ventes: {}, srcs: [] };
     m.count++; m.srcs.push(src);
-    ANS.forEach(y => { m.ventes[y] = (m.ventes[y] || 0) + ((sa.ventes_par_an || {})[y] || 0); });
+    ANS.forEach(y => { m.ventes[y] = (m.ventes[y] || 0) + ((vpaOf(sa) || {})[y] || 0); });
   });
 
   // ── Fusion AUTOMATIQUE BDNB (meme batiment_groupe_id) ──
@@ -2127,7 +2149,7 @@ function renderSecteur() {
       const am = autoMerged[a._fusion_cible] = autoMerged[a._fusion_cible]
         || { count: 0, ventes: {}, srcs: [] };
       am.count++; am.srcs.push(a.cle);
-      ANS.forEach(y => { am.ventes[y] = (am.ventes[y] || 0) + ((a.ventes_par_an || {})[y] || 0); });
+      ANS.forEach(y => { am.ventes[y] = (am.ventes[y] || 0) + ((vpaOf(a) || {})[y] || 0); });
     }
   });
 
@@ -2215,7 +2237,7 @@ function renderSecteur() {
         const mi = (cp && mergedInto[a.cle]) ? mergedInto[a.cle] : null;
         const am = autoMerged[a.cle] || null;             // fusion auto BDNB
         const effV = {};
-        ANS.forEach(y => { effV[y] = ((a.ventes_par_an || {})[y] || 0)
+        ANS.forEach(y => { effV[y] = ((vpaOf(a) || {})[y] || 0)
           + (mi ? (mi.ventes[y] || 0) : 0) + (am ? (am.ventes[y] || 0) : 0); });
         const effTot = ANS.reduce((s, y) => s + effV[y], 0);
         const lots = (rnc && cp.nb_lots_habitation != null) ? cp.nb_lots_habitation : null;
