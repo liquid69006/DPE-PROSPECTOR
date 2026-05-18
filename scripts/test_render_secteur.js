@@ -28,8 +28,8 @@ const SRC = [
   slice(2000, 2004),   // ROT_COLOR + TYPE_OPTS
   slice(2026, 2028),   // esc
   slice(2030, 2034),   // secteurNorm
-  slice(2075, 2113),   // sctTauxAnnuel..sctBadge (helpers de rendu)
-  slice(2115, 2405),   // renderSecteur (inclut vpaOf / toggle strict)
+  slice(2048, 2088),   // sctTauxAnnuel..sctBadge (helpers de rendu)
+  slice(2090, 2398),   // renderSecteur (vpaOf / toggle strict / filtre sctQ)
 ].join("\n\n");
 
 function mkEl() {
@@ -41,12 +41,14 @@ function mkEl() {
   };
 }
 
-function runRender(jsonPath, strict) {
+function runRender(jsonPath, strict, search) {
   const secteurData = JSON.parse(fs.readFileSync(jsonPath, "utf8"));
+  const searchEl = mkEl(); searchEl.value = search || "";
   const els = {
     "secteur-tree": mkEl(),
     "secteur-resume": mkEl(),
     "secteur-colhead": mkEl(),
+    "secteur-search": searchEl,
   };
   const sandbox = {
     secteurData,
@@ -62,6 +64,7 @@ function runRender(jsonPath, strict) {
   } catch (e) {
     error = e;
   }
+  runRender._lastSandbox = sandbox;
   return { error, els, n: secteurData.adresses.length };
 }
 
@@ -161,5 +164,35 @@ check(`lgts INCHANGES par le toggle (${lgt(curResume)} == ${lgt(sR)})`,
   lgt(sR) === lgt(curResume));
 check(`adresses INCHANGEES par le toggle (${adr(curResume)} == ${adr(sR)})`,
   adr(sR) === adr(curResume));
+
+// Nouveaux seuils de classement : 0–1 Figé · 1–2 Modéré · 2–3 Actif · >3 Très actif
+console.log("\n=== Seuils sctClassAnnuel (nouveaux) ===");
+const sb = runRender._lastSandbox;
+const cl = t => vm.runInContext(`sctClassAnnuel(${t})`, sb);
+[[0.5, "Figé"], [1, "Modéré"], [1.9, "Modéré"], [2, "Actif"], [2.5, "Actif"],
+ [3, "Actif"], [3.01, "Très actif"], [6, "Très actif"]].forEach(([t, exp]) => {
+  const got = cl(t);
+  check(`sctClassAnnuel(${t}) == ${exp} (got ${got})`, got === exp);
+});
+// Vérif #3 : taux secteur strict (2,5%) -> "Actif"
+const tStrict = parseFloat((/taux secteur ([\d.,]+)%/.exec(sR) || [])[1] || "NaN");
+console.log(`  taux secteur strict = ${tStrict}% -> ${cl(tStrict)}`);
+check(`taux secteur strict ${tStrict}% classé "Actif"`, cl(tStrict) === "Actif");
+
+// Recherche = filtre de DONNÉES : header/IRIS recalculés (non figés).
+console.log("\n=== Filtre recherche (sctQ, header recalculé) ===");
+const f = runRender(CUR, false, "lacassagne");
+const fR = f.els["secteur-resume"]._text || "";
+console.log("  sans recherche :", curResume);
+console.log("  'lacassagne'   :", fR);
+check("renderSecteur() ne leve pas (recherche)", !f.error);
+if (f.error) console.log("  THROW:", f.error.message);
+check(`adresses filtrées < total (${adr(fR)} < ${adr(curResume)})`,
+  adr(fR) > 0 && adr(fR) < adr(curResume));
+check(`lgts recalculés sous recherche (${lgt(fR)} < ${lgt(curResume)})`,
+  lgt(fR) > 0 && lgt(fR) < lgt(curResume));
+const f0 = runRender(CUR, false, "zzzznomatchzzzz");
+check("recherche sans résultat -> 0 adresse (header cohérent)",
+  adr(f0.els["secteur-resume"]._text || "") <= 0 && !f0.error);
 
 console.log(process.exitCode ? "\nRESULTAT : ECHEC" : "\nRESULTAT : OK");
