@@ -25,11 +25,11 @@ const slice = (a, b) => HTML.slice(a - 1, b).join("\n"); // lignes 1-based inclu
 // apres toute edition d'index.html : ces plages sont codees en dur et un
 // decalage decoupe renderSecteur au mauvais endroit -> SyntaxError).
 const SRC = [
-  slice(2029, 2033),   // ROT_COLOR + TYPE_OPTS
-  slice(2055, 2057),   // esc
-  slice(2059, 2063),   // secteurNorm
-  slice(2077, 2117),   // sctTauxAnnuel..sctBadge (helpers de rendu)
-  slice(2119, 2427),   // renderSecteur (vpaOf / toggle strict / filtre sctQ)
+  slice(2046, 2050),   // ROT_COLOR + TYPE_OPTS
+  slice(2072, 2074),   // esc
+  slice(2076, 2080),   // secteurNorm
+  slice(2094, 2134),   // sctTauxAnnuel..sctBadge (helpers de rendu)
+  slice(2136, 2445),   // renderSecteur (parc RNC pur / toggle strict / hr-actif / sctQ)
 ].join("\n\n");
 
 function mkEl() {
@@ -41,7 +41,7 @@ function mkEl() {
   };
 }
 
-function runRender(jsonPath, strict, search) {
+function runRender(jsonPath, strict, search, hrActif) {
   const secteurData = JSON.parse(fs.readFileSync(jsonPath, "utf8"));
   const searchEl = mkEl(); searchEl.value = search || "";
   const els = {
@@ -54,6 +54,7 @@ function runRender(jsonPath, strict, search) {
     secteurData,
     secteurFusions: {}, secteurNoms: {}, secteurAssign: {}, secteurNoLog: false,
     secteurStrict: !!strict,
+    secteurHrActif: !!hrActif,        // filtre "Hors-RNC actifs"
     secteurVille: process.env.SECTEUR === "motte_picquet" ? "Paris 15" : "Lyon 3",
     document: { getElementById: (id) => els[id] || mkEl() },
     console,
@@ -184,13 +185,17 @@ const cl = t => vm.runInContext(`sctClassAnnuel(${t})`, sb);
   check(`sctClassAnnuel(${t}) == ${exp} (got ${got})`, got === exp);
 });
 // Taux secteur strict : classe self-consistante avec sctClassAnnuel
-// (generique). Valeur exacte attendue gated Dauphine (2,5% -> Actif).
+// (generique). Baseline Dauphine REBASÉE : depuis le passage à un parc
+// RNC PUR (header/IRIS = Σ lots_habitation, sans fallback nb_log_bdnb),
+// le dénominateur baisse (~22,6k -> ~17,4k) -> taux strict ~3,2% ->
+// "Très actif" (avant : 2,5% "Actif" sur parc gonflé BDNB).
 const tStrict = parseFloat((/taux secteur ([\d.,]+)%/.exec(sR) || [])[1] || "NaN");
 const clS = cl(tStrict);
 console.log(`  taux secteur strict = ${tStrict}% -> ${clS}`);
 check(`classe strict bien definie (${clS})`,
   ["Figé", "Modéré", "Actif", "Très actif"].includes(clS));
-if (DAUPH) check(`Dauphine: strict ${tStrict}% classé "Actif"`, clS === "Actif");
+if (DAUPH) check(`Dauphine: strict ${tStrict}% classé "Très actif" (parc RNC pur)`,
+  clS === "Très actif");
 
 // Recherche = filtre de DONNÉES : header/IRIS recalculés (non figés).
 // Terme de recherche derive des donnees (secteur-agnostique) : nom de
@@ -247,5 +252,66 @@ if (mfn) {
   check("Google Maps query utilise secteurVille (non code en dur)",
     /adrTxt \+ ' ' \+ secteurVille/.test(idx) && !/adrTxt \+ ' Lyon 3'/.test(idx));
 }
+
+// ── Change 1 : parc = base RNC PURE (header/IRIS) ────────────────
+// secL doit = Σ nb_lots_habitation des copros LIÉES (cle_adresse ∈
+// adresses rendues), dédupliquées par immat (bg:bgid regroupe sans
+// double-compter). Aucune contribution nb_log_bdnb hors-RNC.
+console.log("\n=== Change 1 : parc RNC pur (header) ===");
+const cur2 = runRender(CUR);            // brut, sans filtre
+const secL = lgt(cur2.els["secteur-resume"]._text || "");
+const adrShown = new Set();
+(sd.adresses || []).forEach(a => {
+  if (a._fusion_auto && a._fusion_cible) return;     // source fusionnée auto
+  adrShown.add(a.cle);
+});
+const seenIm = new Set(); let sumLinkedRnc = 0;
+(sd.adresses || []).forEach(a => {
+  if (!adrShown.has(a.cle)) return;
+  const c = cbc[a.cle];
+  if (!c || !(c.nb_lots_habitation > 0)) return;
+  const im = c.numero_immatriculation || c.cle_adresse || a.cle;
+  if (seenIm.has(im)) return;
+  seenIm.add(im); sumLinkedRnc += c.nb_lots_habitation;
+});
+const ecart = sumLinkedRnc ? Math.abs(secL - sumLinkedRnc) / sumLinkedRnc : 1;
+console.log(`  secL=${secL}  Σ lots copros liées (dédup immat)=${sumLinkedRnc}`
+  + `  écart=${(ecart * 100).toFixed(2)}%`);
+check(`secL > 0 (parc RNC non vide)`, secL > 0);
+check(`secL cohérent avec Σ lots RNC liés (écart ${(ecart * 100).toFixed(2)}% < 2%)`,
+  ecart < 0.02);
+check(`secL <= Σ lots RNC liés (dédup, jamais de gonflement)`,
+  secL <= sumLinkedRnc + 1);
+
+// ── Change 2 : filtre "Hors-RNC actifs" ─────────────────────────
+// hors-RNC = pas de copro liée ET pas d'immat dénormalisé ; actif =
+// nb_ventes_logement > 0. Doit retourner des adresses pertinentes
+// (>0, < total, 0 RNC) et matcher le prédicat sur les 2 secteurs.
+console.log(`\n=== Change 2 : filtre Hors-RNC actifs (secteur=${SECTEUR}) ===`);
+const hr = runRender(CUR, false, "", true);
+const hrR = hr.els["secteur-resume"]._text || "";
+console.log("  resume hr-actif :", hrR);
+const rncN = s => { const m = /· (\d+) RNC ·/.exec(s); return m ? +m[1] : -1; };
+let predN = 0;
+(sd.adresses || []).forEach(a => {
+  if (a._fusion_auto && a._fusion_cible) return;
+  const horsRnc = !cbc[a.cle] && !a.numero_immatriculation;
+  if (horsRnc && a.nb_ventes_logement > 0) predN++;
+});
+console.log(`  adresses filtrées=${adr(hrR)}  prédicat data=${predN}`
+  + `  RNC affichées=${rncN(hrR)}`);
+check("hr-actif : >0 adresse pertinente", adr(hrR) > 0);
+check(`hr-actif : < total (${adr(hrR)} < ${adr(curResume)})`,
+  adr(hrR) < adr(curResume));
+check("hr-actif : 0 RNC affichée (toutes hors-RNC)", rncN(hrR) === 0);
+check(`hr-actif : adresses == prédicat data (${adr(hrR)} == ${predN})`,
+  adr(hrR) === predN && predN > 0);
+// Cumul avec strict + sans-logements (pas d'exception, sous-ensemble)
+const hrCombo = runRender(CUR, true, "", true);
+const hrCR = hrCombo.els["secteur-resume"]._text || "";
+console.log("  cumul strict+hr :", hrCR);
+check("hr-actif cumulable strict (pas d'exception)", !hrCombo.error);
+check(`cumul strict+hr <= hr seul (${adr(hrCR)} <= ${adr(hrR)})`,
+  !hrCombo.error && adr(hrCR) >= 0 && adr(hrCR) <= adr(hrR));
 
 console.log(process.exitCode ? "\nRESULTAT : ECHEC" : "\nRESULTAT : OK");

@@ -750,6 +750,11 @@ td{padding:11px 14px;vertical-align:middle;}
         style="padding:7px 14px;border:1px solid var(--border);border-radius:6px;
                background:var(--surface2);color:var(--text);font-size:13px;
                cursor:pointer;white-space:nowrap;">📊 Ventes strictes</button>
+      <button id="secteur-hractif-btn" onclick="secteurToggleHrActif()"
+        title="N'afficher que les adresses HORS-RNC (non rattachées à une copropriété) ayant au moins 1 vente logement sur 5 ans — cibles de prospection prioritaires. Cumulable avec les autres filtres."
+        style="padding:7px 14px;border:1px solid var(--border);border-radius:6px;
+               background:var(--surface2);color:var(--text);font-size:13px;
+               cursor:pointer;white-space:nowrap;">🔍 Hors-RNC actifs</button>
     </div>
     <div id="secteur-colhead" style="display:none;position:sticky;top:0;z-index:5;
          background:var(--surface);border-bottom:2px solid var(--border);
@@ -1965,6 +1970,18 @@ function secteurToggleStrict() {
   renderSecteur();
 }
 window.secteurToggleStrict = secteurToggleStrict;
+let secteurHrActif = false;         // filtre "Hors-RNC actifs" (toggle)
+function secteurToggleHrActif() {
+  secteurHrActif = !secteurHrActif;
+  const b = document.getElementById('secteur-hractif-btn');
+  if (b) {
+    b.style.background = secteurHrActif ? 'var(--orange)' : 'var(--surface2)';
+    b.style.color = secteurHrActif ? '#fff' : 'var(--text)';
+    b.style.borderColor = secteurHrActif ? 'var(--orange)' : 'var(--border)';
+  }
+  renderSecteur();
+}
+window.secteurToggleHrActif = secteurToggleHrActif;
 let sctFusSrc = null, sctFusPick = null;   // etat de la modale de rapprochement
 
 // Agence -> [fichier light secteur, id secteur pour les assignments KV].
@@ -2172,6 +2189,12 @@ function renderSecteur() {
         || (cpx && cpx.nb_lots_habitation > 0);
       if (hasLog) return;
     }
+    if (secteurHrActif) {            // filtre "Hors-RNC actifs" (cumulable)
+      // hors-RNC = non rattachée à une copro RNC (def. canonique de
+      // renderSecteur, robuste sur les 2 secteurs) ET sans immat dénormalisé.
+      const horsRnc = !coproByCle[a.cle] && !a.numero_immatriculation;
+      if (!(horsRnc && (a.nb_ventes_logement > 0))) return;
+    }
     const ci = a.code_iris || '_nd';
     (parIris[ci] = parIris[ci] || []).push(a);
   });
@@ -2179,34 +2202,28 @@ function renderSecteur() {
   let nbRnc = 0, nbEst = 0, nbBdnb = 0, nbShown = 0;
   let secAllV = 0, secL = 0;        // header = somme des IRIS = somme des adresses
   // Dédoublonnage du parc : unité = le BÂTIMENT (batiment_groupe_id) si
-  // dispo, sinon la copro (immat), sinon l'adresse. Une copro est
-  // rattachée au 1er bâtiment où elle apparaît -> un bâtiment compté UNE
-  // seule fois quelle que soit la source (corrige le double comptage
-  // rnc:immat + bg:bgid, ~8,4%). Valeur retenue : lots RNC cumulés des
-  // copros du bâtiment (prioritaire), sinon nb_log_bdnb.
+  // dispo, sinon la copro (immat). Une copro est rattachée au 1er bâtiment
+  // où elle apparaît -> un bâtiment compté UNE seule fois (corrige le
+  // double comptage rnc:immat + bg:bgid, ~8,4%). BASE RNC PURE : valeur =
+  // Σ lots RNC (nb_lots_habitation) des copros du bâtiment ; AUCUN fallback
+  // nb_log_bdnb -> les adresses hors-RNC ne pèsent pas dans le parc.
   const seenLgts = new Set();
   const immatBg = {};                 // immat -> bgid (rattachement copro->bâti)
-  const bgRncLots = {};               // bgid -> { immat: lots }
-  const bgBdnb = {};                  // bgid -> nb_log_bdnb (hors-RNC)
+  const bgRncLots = {};               // bgid -> { immat: lots RNC }
   (d.adresses || []).forEach(a => {
     if (fusedSrc[a.cle]) return;
     const bg = a.batiment_groupe_id || null;
     const cp = coproByCle[a.cle];
     const im = cp ? (cp.numero_immatriculation || cp.cle_adresse || a.cle) : null;
     const lots = (cp && cp.nb_lots_habitation > 0) ? cp.nb_lots_habitation : 0;
-    if (bg) {
-      if (im && lots > 0) {
-        if (immatBg[im] == null) immatBg[im] = bg;
-        (bgRncLots[immatBg[im]] = bgRncLots[immatBg[im]] || {})[im] = lots;
-      }
-      if (a.nb_log_bdnb > 0 && bgBdnb[bg] == null) bgBdnb[bg] = a.nb_log_bdnb;
+    if (bg && im && lots > 0) {
+      if (immatBg[im] == null) immatBg[im] = bg;
+      (bgRncLots[immatBg[im]] = bgRncLots[immatBg[im]] || {})[im] = lots;
     }
   });
-  const bgValue = {};                 // bgid -> logements (RNC prioritaire)
-  new Set(Object.keys(bgBdnb).concat(Object.keys(bgRncLots))).forEach(bg => {
-    bgValue[bg] = bgRncLots[bg]
-      ? Object.values(bgRncLots[bg]).reduce((s, v) => s + v, 0)
-      : (bgBdnb[bg] || 0);
+  const bgValue = {};                 // bgid -> Σ lots RNC (aucun fallback BDNB)
+  Object.keys(bgRncLots).forEach(bg => {
+    bgValue[bg] = Object.values(bgRncLots[bg]).reduce((s, v) => s + v, 0);
   });
   const ordre = Object.keys(parIris).sort((x, y) =>
     (parIris[y].length) - (parIris[x].length));
@@ -2268,22 +2285,23 @@ function renderSecteur() {
         const cls = sctClassAnnuel(taux);
 
         // agrégats : numérateur = toutes les ventes (effTot, sommables car
-        // distinctes) ; dénominateur = denomAff compté UNE seule fois par
-        // bâtiment BDNB / copro RNC -> parc réel sans double-comptage.
+        // distinctes) ; dénominateur = parc RNC PUR (lots copro) dédupliqué
+        // par bâtiment (bg:bgid) -> une copro/bâti comptée une seule fois.
+        // Les adresses hors-RNC ne pèsent PAS sur le parc (aucun nb_log_bdnb).
         // Même base à tous les niveaux -> header = Σ IRIS = Σ adresses.
         iloAllV += effTot;
-        // Clé unifiée par bâtiment : un bâti compté une seule fois (RNC
-        // ou BDNB). RNC sans bâti -> clé copro ; sinon -> clé adresse.
+        // Clé unifiée par bâtiment : un bâti compté une seule fois. Une
+        // adresse hors-RNC sans copro -> aucune contribution au parc ; si
+        // elle partage un bâti avec une copro RNC, les lots RNC du bâti
+        // sont comptés UNE fois via la clé bg:bgid (dédup conservée).
         let lgtKey = null, lgtVal = 0;
-        if (a.batiment_groupe_id) {
+        if (a.batiment_groupe_id && bgValue[a.batiment_groupe_id] > 0) {
           lgtKey = 'bg:' + a.batiment_groupe_id;
           lgtVal = bgValue[a.batiment_groupe_id] || 0;
         } else if (rnc) {
           const im = cp.numero_immatriculation || cp.cle_adresse || a.cle;
           if (immatBg[im]) { lgtKey = 'bg:' + immatBg[im]; lgtVal = bgValue[immatBg[im]] || 0; }
           else { lgtKey = 'rnc:' + im; lgtVal = (cp.nb_lots_habitation > 0 ? cp.nb_lots_habitation : 0); }
-        } else if (denomAff && denomAff > 0) {
-          lgtKey = 'adr:' + a.cle; lgtVal = denomAff;
         }
         if (lgtKey && lgtVal > 0 && !seenLgts.has(lgtKey)) {
           seenLgts.add(lgtKey); iloL += lgtVal;
