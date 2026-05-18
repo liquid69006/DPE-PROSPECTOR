@@ -25,11 +25,11 @@ const slice = (a, b) => HTML.slice(a - 1, b).join("\n"); // lignes 1-based inclu
 // apres toute edition d'index.html : ces plages sont codees en dur et un
 // decalage decoupe renderSecteur au mauvais endroit -> SyntaxError).
 const SRC = [
-  slice(2019, 2023),   // ROT_COLOR + TYPE_OPTS
-  slice(2045, 2047),   // esc
-  slice(2049, 2053),   // secteurNorm
-  slice(2067, 2107),   // sctTauxAnnuel..sctBadge (helpers de rendu)
-  slice(2109, 2417),   // renderSecteur (vpaOf / toggle strict / filtre sctQ)
+  slice(2026, 2030),   // ROT_COLOR + TYPE_OPTS
+  slice(2052, 2054),   // esc
+  slice(2056, 2060),   // secteurNorm
+  slice(2074, 2114),   // sctTauxAnnuel..sctBadge (helpers de rendu)
+  slice(2116, 2424),   // renderSecteur (vpaOf / toggle strict / filtre sctQ)
 ].join("\n\n");
 
 function mkEl() {
@@ -215,5 +215,31 @@ check(`lgts recalculés sous recherche (${lgt(fR)} <= ${lgt(curResume)})`,
 const f0 = runRender(CUR, false, "zzzznomatchzzzz");
 check("recherche sans résultat -> 0 adresse (header cohérent)",
   adr(f0.els["secteur-resume"]._text || "") <= 0 && !f0.error);
+
+// ── Corrections : mode strict par defaut + nom secteur dynamique ──
+console.log("\n=== Mode strict par defaut + nom secteur (index.html) ===");
+const idx = fs.readFileSync(path.join(ROOT, "index.html"), "utf8");
+check("secteurStrict = true par defaut (toggle ON au chargement)",
+  /let\s+secteurStrict\s*=\s*true\s*;/.test(idx));
+check("h2 #secteur-titre present (titre dynamique)",
+  /id="secteur-titre"/.test(idx));
+check("loadSecteurData applique le nom (secteur-titre.textContent)",
+  /secteur-titre'\)[\s\S]{0,80}textContent\s*=\s*'.*Secteur Prospector/.test(idx));
+// secteurResolve : nom correct pour les 2 agences
+const mfn = idx.match(/function secteurResolve\(\)\s*\{[\s\S]*?\n\}/);
+check("secteurResolve() extractible", !!mfn);
+if (mfn) {
+  for (const [ag, exp] of [
+    ["dauphine-lacassagne", "Dauphiné-Lacassagne (Lyon 3e)"],
+    ["motte-picquet", "Motte-Picquet (Paris 15e - 7e)"]]) {
+    let got;
+    try {
+      got = new Function("agenceId",
+        mfn[0] + "\nreturn secteurResolve();")(ag);
+    } catch (e) { got = ["ERR:" + e.message]; }
+    const nom = Array.isArray(got) ? got[2] : undefined;
+    check(`secteurResolve('${ag}')[2] == "${exp}" (got ${nom})`, nom === exp);
+  }
+}
 
 console.log(process.exitCode ? "\nRESULTAT : ECHEC" : "\nRESULTAT : OK");

@@ -719,7 +719,7 @@ td{padding:11px 14px;vertical-align:middle;}
 
   <div id="section-secteur" style="display:none;padding:14px 18px;">
     <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:12px;">
-      <h2 style="font-size:16px;margin:0;color:#BEAF87;">🗺 Secteur Prospector — Dauphiné-Lacassagne</h2>
+      <h2 id="secteur-titre" style="font-size:16px;margin:0;color:#BEAF87;">🗺 Secteur Prospector — Dauphiné-Lacassagne (Lyon 3e)</h2>
       <span id="secteur-resume" style="font-size:12px;color:var(--text2);"></span>
       <span class="spacer" style="flex:1;"></span>
       <span style="font-size:11px;color:var(--text2);">Rotation :
@@ -1949,15 +1949,18 @@ function secteurToggleNoLog() {
   renderSecteur();
 }
 window.secteurToggleNoLog = secteurToggleNoLog;
-let secteurStrict = false;          // toggle brut / "logement strict" (dépendances exclues)
-function secteurToggleStrict() {
-  secteurStrict = !secteurStrict;
+let secteurStrict = true;           // mode "logement strict" par DEFAUT (toggle ON au chargement)
+function secteurStrictBtnSync() {   // reflète l'état du toggle sur le bouton
   const b = document.getElementById('secteur-strict-btn');
   if (b) {
     b.style.background = secteurStrict ? 'var(--orange)' : 'var(--surface2)';
     b.style.color = secteurStrict ? '#fff' : 'var(--text)';
     b.style.borderColor = secteurStrict ? 'var(--orange)' : 'var(--border)';
   }
+}
+function secteurToggleStrict() {
+  secteurStrict = !secteurStrict;
+  secteurStrictBtnSync();
   renderSecteur();
 }
 window.secteurToggleStrict = secteurToggleStrict;
@@ -1971,16 +1974,20 @@ function secteurResolve() {
   // secteur_motte_picquet_light.json conditionne a l'agence
   // motte-picquet UNIQUEMENT (pas lopez : secteur_enabled=false cote
   // worker -> onglet masque ; defense en profondeur ici aussi).
+  // [fichier light, id secteur (KV), nom affiché dans le header]
   const M = {
-    'dauphine-lacassagne': ['secteur_dauphine_lacassagne_light.json', 'dauphine-lacassagne'],
-    'motte-picquet':       ['secteur_motte_picquet_light.json',        'motte-picquet'],
+    'dauphine-lacassagne': ['secteur_dauphine_lacassagne_light.json', 'dauphine-lacassagne', 'Dauphiné-Lacassagne (Lyon 3e)'],
+    'motte-picquet':       ['secteur_motte_picquet_light.json',        'motte-picquet',        'Motte-Picquet (Paris 15e - 7e)'],
   };
   return M[agenceId] || M['dauphine-lacassagne'];
 }
 
 async function loadSecteurData() {
   const tree = document.getElementById('secteur-tree');
-  const [secFile, secId] = secteurResolve();
+  const [secFile, secId, secName] = secteurResolve();
+  const tt = document.getElementById('secteur-titre');
+  if (tt) tt.textContent = '🗺 Secteur Prospector — ' + secName;
+  secteurStrictBtnSync();           // bouton "Ventes strictes" ON par défaut
   try {
     const r = await fetch(`${GITHUB_RAW}/data/${secFile}?t=${Date.now()}`);
     if (!r.ok) throw new Error('json');
