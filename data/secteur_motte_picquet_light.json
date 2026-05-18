@@ -56,7 +56,8 @@
     "_correctif_rnc_immat": "46 adresses injectees via numero_immat_principal (_bdnb_match=immat_fix) dont 13 B3 a cle desambiguisee (cle_adresse copro suffixee #immat).",
     "_correctif_horsrnc": "58 adresses injectees (copros invisibles cat. A/B2 detectees par passe inverse hors-RNC ; lien live many-to-many ; _bdnb_match=immat_horsrnc_fix ; delta parc ESTIME +107 lgts -- estimation approximative, valider le reel via node scripts/test_render_secteur.js).",
     "_correctif_taux_logement": "Champs ADDITIFS ventes_par_an_logement / nb_ventes_logement / taux_rotation_logement / classement_rotation_logement / _taux_logement_src ajoutes (351 adr avec delta dependance, 97 adr jointure incertaine = copie intacte+flag). `ventes_par_an`/`nb_ventes_total` NON modifies (autoritatifs). Ventes strictes 2840 vs 3781 (-24.9%). Dashboard inchange (lit toujours ventes_par_an) ; bascule = modif index.html separee.",
-    "_correctif_usage_bdnb": "Champs ADDITIFS usage_principal_bdnb (valeur snapshot bdnb_motte_picquet.json:usage_principal_bdnb_open, jointure batiment_groupe_id) + _usage_bdnb_src ajoutes ; 1305 adr renseignees, 0 sans bgid/snapshot (null). Aucun champ existant modifie. Dashboard inchange (index.html ne lit pas encore usage_principal_bdnb) ; regle d'affichage logements residentiel/tertiaire = modif index.html separee."
+    "_correctif_usage_bdnb": "Champs ADDITIFS usage_principal_bdnb (valeur snapshot bdnb_motte_picquet.json:usage_principal_bdnb_open, jointure batiment_groupe_id) + _usage_bdnb_src ajoutes ; 1305 adr renseignees, 0 sans bgid/snapshot (null). Aucun champ existant modifie. Dashboard inchange (index.html ne lit pas encore usage_principal_bdnb) ; regle d'affichage logements residentiel/tertiaire = modif index.html separee.",
+    "_correctif_dupleix": "Adresse DVF fantome 28 RUE DUPLEIX (BAN '35 rue Dupleix', parcelle DH0005, bati tertiaire) rattachee chirurgicalement a la copro AA9462284 '28 PLACE ET RUE DUPLEIX' @ 28 PLACE DUPLEIX (parcelle DJ0018, bgid XRWJ-DP78-FV1D) : _fusion_auto -> 28|PLACE|DUPLEIX, ses 4 ventes DVF (4 strictes) relocalisees au rendu (28 PLACE : 3 propres + 4 = 7). Source-of-truth = ALIAS_RNC + critere copro_by_cle du tri fusion dans make_light.py. Parc inchange. 2 enregistrements touches."
   },
   "iris": [
     {
@@ -32822,16 +32823,18 @@
       "classement_rotation": "Tres actif",
       "taux_rotation_logement": 80.0,
       "classement_rotation_logement": "Très actif",
-      "nb_log_bdnb": 1,
-      "annee_construction": 2010,
-      "classe_dpe": null,
-      "type_batiment": null,
-      "type_chauffage": null,
-      "batiment_groupe_id": "bdnb-bg-ZW4Z-VEGN-9VF8",
-      "_bdnb_match": "num_voie",
+      "nb_log_bdnb": 37,
+      "annee_construction": 1952,
+      "classe_dpe": "D",
+      "type_batiment": "appartement",
+      "type_chauffage": "gaz",
+      "batiment_groupe_id": "bdnb-bg-XRWJ-DP78-FV1D",
+      "_bdnb_match": "immat",
       "_taux_logement_src": "copie_jointure_incertaine",
-      "usage_principal_bdnb": "Tertiaire",
-      "_usage_bdnb_src": "snapshot"
+      "usage_principal_bdnb": "Résidentiel collectif",
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "28|PLACE|DUPLEIX"
     },
     {
       "cle": "3|RUE|ALBERT DE LAPPARENT",
@@ -37129,7 +37132,11 @@
       "_bdnb_match": "immat",
       "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": [
+        "28|RUE|DUPLEIX"
+      ],
+      "_fusion_auto_label": null
     },
     {
       "cle": "28|RUE|COMMERCE",
