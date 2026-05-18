@@ -1,2 +1,13 @@
 /*
   Content-Security-Policy: default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; style-src-attr 'unsafe-inline'; worker-src 'self'
+
+# HTML jamais servi obsolète : revalidation à chaque chargement, sinon
+# un déploiement Cloudflare Pages (toggle, correctifs…) n'arrive jamais
+# au navigateur tant que l'index.html mis en cache n'a pas expiré —
+# cause racine du "le toggle ne met pas à jour le header".
+/
+  Cache-Control: no-cache
+/index.html
+  Cache-Control: no-cache
+/sw.js
+  Cache-Control: no-cache
