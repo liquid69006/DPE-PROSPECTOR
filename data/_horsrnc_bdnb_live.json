@@ -1,0 +1,3550 @@
+{
+ "bdnb-bg-17BU-14B8-YAN9": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-1AUZ-K2PB-YB1Q": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-1AVL-LMTT-G7Z9": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-1BKA-72TZ-GEDL": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-1CJ6-C4FR-4YGH": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-1DBJ-3PC2-EVUG": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-1R8S-PG6T-JXF4": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-1UQA-1EER-YN4L": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-2165-Y7A3-JA4B": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-22ZZ-QDW3-WFXP": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-24YS-YRES-2443": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-27E6-B9R7-15AK": {
+  "immats": [
+   "AG0590141"
+  ],
+  "meta": {
+   "nom": [
+    "LE 125"
+   ],
+   "nb_log": 7.0,
+   "nb_lot_tot": 8.0,
+   "immat_principal": "AG0590141"
+  }
+ },
+ "bdnb-bg-29R7-3GSE-U5WB": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-2B7H-71PL-YRRN": {
+  "immats": [
+   "AA3708823"
+  ],
+  "meta": {
+   "nom": [
+    "SDC LE BOUTON D'OR"
+   ],
+   "nb_log": 5.0,
+   "nb_lot_tot": 39.0,
+   "immat_principal": "AA3708823"
+  }
+ },
+ "bdnb-bg-2MVY-DXZE-E5TL": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-2NDH-AZ8S-SP5Y": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-2NUJ-1MR8-BM8W": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-2Q6B-A22Y-PRGD": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-2UGA-DSEH-TAL4": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-2ZP4-TAU6-UC13": {
+  "immats": [
+   "AE8227266"
+  ],
+  "meta": {
+   "nom": [
+    "HORIZON MONPLAISIR"
+   ],
+   "nb_log": 51.0,
+   "nb_lot_tot": 115.0,
+   "immat_principal": "AE8227266"
+  }
+ },
+ "bdnb-bg-324Y-G9R6-B2ZS": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-342F-4SYF-US1H": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-3489-YWPJ-BBCH": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-35LR-QLNW-D2P9": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-35NH-CNYH-DY2X": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-36F5-BHL7-ME1G": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-3P31-XRLH-QVVV": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-3QGJ-3J39-NB4K": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-3QVX-HABP-S1NP": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-3S5M-GLK2-GFBZ": {
+  "immats": [
+   "AB4648424"
+  ],
+  "meta": {
+   "nom": [
+    "COTE PARC SISLEY-LYN"
+   ],
+   "nb_log": 17.0,
+   "nb_lot_tot": 38.0,
+   "immat_principal": "AB4648424"
+  }
+ },
+ "bdnb-bg-3T3A-VTAP-UHBF": {
+  "immats": [
+   "AA7875230"
+  ],
+  "meta": {
+   "nom": [
+    "MAYFLOWER"
+   ],
+   "nb_log": 61.0,
+   "nb_lot_tot": 159.0,
+   "immat_principal": "AA7875230"
+  }
+ },
+ "bdnb-bg-3WFJ-G1YT-XLZF": {
+  "immats": [
+   "AA9271602"
+  ],
+  "meta": {
+   "nom": [
+    "90-92 RUE ANTOINE CHARIAL"
+   ],
+   "nb_log": 25.0,
+   "nb_lot_tot": 97.0,
+   "immat_principal": "AA9271602"
+  }
+ },
+ "bdnb-bg-47D6-WCMM-3V8Y": {
+  "immats": [
+   "AB5933841"
+  ],
+  "meta": {
+   "nom": [
+    "LE THESEE-THETIS"
+   ],
+   "nb_log": 47.0,
+   "nb_lot_tot": 114.0,
+   "immat_principal": "AB5933841"
+  }
+ },
+ "bdnb-bg-49ZA-VCG7-NKFM": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-4AP3-MLCF-HZGV": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-4AYF-KK89-LRHJ": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-4BCZ-EFDZ-724F": {
+  "immats": [
+   "AB2206571"
+  ],
+  "meta": {
+   "nom": [
+    "LA VICTORIENNE"
+   ],
+   "nb_log": 165.0,
+   "nb_lot_tot": 498.0,
+   "immat_principal": "AB2206571"
+  }
+ },
+ "bdnb-bg-4DUC-A62Z-LN35": {
+  "immats": [
+   "AA7487564",
+   "AC6278774"
+  ],
+  "meta": {
+   "nom": [
+    "L'ENEIDE 1 - MS15805",
+    "L ENEIDE II - MS15806"
+   ],
+   "nb_log": 46.0,
+   "nb_lot_tot": 88.0,
+   "immat_principal": "AA7487564"
+  }
+ },
+ "bdnb-bg-4F6G-4P2Q-RRZK": {
+  "immats": [
+   "AB2784080"
+  ],
+  "meta": {
+   "nom": [
+    "RESIDENCE MANET"
+   ],
+   "nb_log": 50.0,
+   "nb_lot_tot": 170.0,
+   "immat_principal": "AB2784080"
+  }
+ },
+ "bdnb-bg-4GW9-BEMF-5VA7": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-4T85-AS55-QZN8": {
+  "immats": [
+   "AE7963598"
+  ],
+  "meta": {
+   "nom": [
+    "39 cours albert thomas"
+   ],
+   "nb_log": 35.0,
+   "nb_lot_tot": 35.0,
+   "immat_principal": "AE7963598"
+  }
+ },
+ "bdnb-bg-4URE-JQSG-6MGS": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-4V6N-5ABF-Q89H": {
+  "immats": [
+   "AB8983389"
+  ],
+  "meta": {
+   "nom": [
+    "LE PASTEL"
+   ],
+   "nb_log": 17.0,
+   "nb_lot_tot": 32.0,
+   "immat_principal": "AB8983389"
+  }
+ },
+ "bdnb-bg-51HE-8CSW-Q4A6": {
+  "immats": [
+   "AB8301665"
+  ],
+  "meta": {
+   "nom": [
+    "1 RUE DE LA METALLURGIE"
+   ],
+   "nb_log": 21.0,
+   "nb_lot_tot": 34.0,
+   "immat_principal": "AB8301665"
+  }
+ },
+ "bdnb-bg-51HT-VGGW-7VQ9": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-554B-NN4D-3A1Q": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-558F-914A-J3ZK": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-576W-T8B7-57ET": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-59CL-1K4J-99RX": {
+  "immats": [
+   "AA4841961"
+  ],
+  "meta": {
+   "nom": [
+    "Les Jardins"
+   ],
+   "nb_log": 86.0,
+   "nb_lot_tot": 246.0,
+   "immat_principal": "AA4841961"
+  }
+ },
+ "bdnb-bg-5BHD-HKD1-4JEA": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-5BKM-AXLT-FC77": {
+  "immats": [
+   "AA7209463"
+  ],
+  "meta": {
+   "nom": [
+    "LE CLOS DE LA ROSERAIE - MS32960"
+   ],
+   "nb_log": 38.0,
+   "nb_lot_tot": 105.0,
+   "immat_principal": "AA7209463"
+  }
+ },
+ "bdnb-bg-5EDR-T7V7-UKA3": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-5J4T-8NMC-HH17": {
+  "immats": [
+   "AA1456987"
+  ],
+  "meta": {
+   "nom": [
+    "LE FLANDIN SAINT ANTOINE"
+   ],
+   "nb_log": 70.0,
+   "nb_lot_tot": 110.0,
+   "immat_principal": "AA1456987"
+  }
+ },
+ "bdnb-bg-5M8E-44MJ-9PJ8": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-5NH2-EJ2E-JZXH": {
+  "immats": [
+   "AC7467194"
+  ],
+  "meta": {
+   "nom": [
+    "SDC SDC 93 RUE BARABAN"
+   ],
+   "nb_log": 17.0,
+   "nb_lot_tot": 21.0,
+   "immat_principal": "AC7467194"
+  }
+ },
+ "bdnb-bg-5RMC-KXL7-E97N": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-5U6V-4AN8-UK5E": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-5W9P-RL7A-RWW7": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-5WXU-Q9TZ-YY31": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-624A-1A2Z-ZRRD": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-63VT-M954-D44T": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-68CY-P7TQ-TZ2P": {
+  "immats": [
+   "AA0012898"
+  ],
+  "meta": {
+   "nom": [
+    "ATRIUM SISLEY"
+   ],
+   "nb_log": 225.0,
+   "nb_lot_tot": 452.0,
+   "immat_principal": "AA0012898"
+  }
+ },
+ "bdnb-bg-6BRM-AZZY-6Q8H": {
+  "immats": [
+   "AB5878327"
+  ],
+  "meta": {
+   "nom": [
+    "SDC LE CASSIOPEE"
+   ],
+   "nb_log": 33.0,
+   "nb_lot_tot": 107.0,
+   "immat_principal": "AB5878327"
+  }
+ },
+ "bdnb-bg-6D6N-M1N7-38NB": {
+  "immats": [
+   "AA1827336",
+   "AA4868378"
+  ],
+  "meta": {
+   "nom": [
+    "LA CLOSERIE DES TILLEULS",
+    "La Closerie des Tilleuls II"
+   ],
+   "nb_log": 50.98,
+   "nb_lot_tot": 229.44,
+   "immat_principal": "AA1827336"
+  }
+ },
+ "bdnb-bg-6DC7-JW62-C9GD": {
+  "immats": [
+   "AC3078680"
+  ],
+  "meta": {
+   "nom": [
+    "SDC 11, cours Albert Thomas"
+   ],
+   "nb_log": 16.0,
+   "nb_lot_tot": 27.0,
+   "immat_principal": "AC3078680"
+  }
+ },
+ "bdnb-bg-6DEF-7VK7-7VNF": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-6J3V-PN4E-7QWG": {
+  "immats": [
+   "AB2460335"
+  ],
+  "meta": {
+   "nom": [
+    "TERRASSES ET VILLAS ST MAXIMIN"
+   ],
+   "nb_log": 53.0,
+   "nb_lot_tot": 138.0,
+   "immat_principal": "AB2460335"
+  }
+ },
+ "bdnb-bg-6J53-GM13-2GRL": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-6NNX-7JPU-91VJ": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-6PR8-HQ5A-SU4G": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-6RYY-NUCS-XLRZ": {
+  "immats": [
+   "AB1493691"
+  ],
+  "meta": {
+   "nom": [
+    "LE PRIVILÈGE LAFAYETTE"
+   ],
+   "nb_log": 18.0,
+   "nb_lot_tot": 34.0,
+   "immat_principal": "AB1493691"
+  }
+ },
+ "bdnb-bg-6UE1-UT3G-U7D2": {
+  "immats": [
+   "AC3226362"
+  ],
+  "meta": {
+   "nom": [
+    "LA COUR SAINT ANTOINE"
+   ],
+   "nb_log": 27.39,
+   "nb_lot_tot": 103.04,
+   "immat_principal": "AC3226362"
+  }
+ },
+ "bdnb-bg-6V9A-9C6P-NQFG": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-6W45-9CXU-KG51": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-6XJF-4K8W-EWBV": {
+  "immats": [
+   "AB3357373"
+  ],
+  "meta": {
+   "nom": [
+    "L'ORANGERIE"
+   ],
+   "nb_log": 73.0,
+   "nb_lot_tot": 227.0,
+   "immat_principal": "AB3357373"
+  }
+ },
+ "bdnb-bg-719P-6B85-TS3C": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-71B2-4HSV-Y9VP": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-7525-8F2E-EPH8": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-77CU-S4U4-AGR1": {
+  "immats": [
+   "AC9726381"
+  ],
+  "meta": {
+   "nom": [
+    "L'OLEANDRE"
+   ],
+   "nb_log": 29.0,
+   "nb_lot_tot": 59.0,
+   "immat_principal": "AC9726381"
+  }
+ },
+ "bdnb-bg-7A21-PPNH-TLQM": {
+  "immats": [
+   "AA7236011"
+  ],
+  "meta": {
+   "nom": [
+    "LES DAHLIAS - MS130778"
+   ],
+   "nb_log": 32.0,
+   "nb_lot_tot": 68.0,
+   "immat_principal": "AA7236011"
+  }
+ },
+ "bdnb-bg-7E2X-558L-F9RE": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-7GTT-FNQ4-QWTJ": {
+  "immats": [
+   "AC9808700"
+  ],
+  "meta": {
+   "nom": [
+    "52 RUE ETIENNE RICHERAND"
+   ],
+   "nb_log": 4.0,
+   "nb_lot_tot": 45.0,
+   "immat_principal": "AC9808700"
+  }
+ },
+ "bdnb-bg-7LYT-S1HN-R4SH": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-7PCU-HESB-FCZS": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-7PX7-EGXC-YLCW": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-7VAY-EQKF-F2LF": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-7VPW-6YPJ-XASZ": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-7XDR-GYAZ-FWFR": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-81HL-8BC6-UPG6": {
+  "immats": [
+   "AB0287870"
+  ],
+  "meta": {
+   "nom": [
+    "LE SAINT EUSEBE"
+   ],
+   "nb_log": 14.0,
+   "nb_lot_tot": 28.0,
+   "immat_principal": "AB0287870"
+  }
+ },
+ "bdnb-bg-87ZF-KX65-FHAW": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-8CZP-2E2X-NCUJ": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-8D3R-D17T-92ST": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-8D8R-F4XU-45KG": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-8DAZ-BNGP-DB8X": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-8EEJ-E3MV-96M7": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-8GJT-5P9J-4EK3": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-8H19-JKSN-GKCB": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-8MGS-ZVKY-9ZYR": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-8NJL-4XAJ-TVQA": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-8PQL-Q28S-J197": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-8QJQ-RSVG-7N2D": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-8S47-R5PB-QQTY": {
+  "immats": [
+   "AB2230084"
+  ],
+  "meta": {
+   "nom": [
+    "VILLA AURORE"
+   ],
+   "nb_log": 10.0,
+   "nb_lot_tot": 36.0,
+   "immat_principal": "AB2230084"
+  }
+ },
+ "bdnb-bg-8U51-96UR-3947": {
+  "immats": [
+   "AA0358655"
+  ],
+  "meta": {
+   "nom": [
+    "Antoine Charial"
+   ],
+   "nb_log": 211.0,
+   "nb_lot_tot": 306.0,
+   "immat_principal": "AA0358655"
+  }
+ },
+ "bdnb-bg-8WK9-A5TB-955B": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-8ZRV-FM7X-XP77": {
+  "immats": [
+   "AB8349037"
+  ],
+  "meta": {
+   "nom": [
+    "LES JARDINS D'ELYANDE"
+   ],
+   "nb_log": 43.0,
+   "nb_lot_tot": 90.0,
+   "immat_principal": "AB8349037"
+  }
+ },
+ "bdnb-bg-9232-L81K-JDC3": {
+  "immats": [
+   "AB1734763"
+  ],
+  "meta": {
+   "nom": [
+    "LES TERRASSES DU SACRE COEUR"
+   ],
+   "nb_log": 33.0,
+   "nb_lot_tot": 67.0,
+   "immat_principal": "AB1734763"
+  }
+ },
+ "bdnb-bg-95AH-FSBN-6WJ1": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-95RE-NAQE-VLTC": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-98MA-75GZ-5CFT": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-99CM-2JFH-ZZLB": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-9B3F-ZKT4-JZ9V": {
+  "immats": [
+   "AB2515468",
+   "AJ0572164"
+  ],
+  "meta": {
+   "nom": [
+    "BARABAN 1",
+    "LE BARABAN 1"
+   ],
+   "nb_log": 305.0,
+   "nb_lot_tot": 932.0,
+   "immat_principal": "AB2515468"
+  }
+ },
+ "bdnb-bg-9DFR-GCRL-WUGG": {
+  "immats": [
+   "AD1424555"
+  ],
+  "meta": {
+   "nom": [
+    "SDC 0050 21-23 AVENUE LACASSAGNE"
+   ],
+   "nb_log": 38.0,
+   "nb_lot_tot": 136.0,
+   "immat_principal": "AD1424555"
+  }
+ },
+ "bdnb-bg-9M8H-GBKD-7X86": {
+  "immats": [
+   "AE1057009"
+  ],
+  "meta": {
+   "nom": [
+    "DAUPHINE 24"
+   ],
+   "nb_log": 7.0,
+   "nb_lot_tot": 14.0,
+   "immat_principal": "AE1057009"
+  }
+ },
+ "bdnb-bg-9N4A-HZY2-XF3V": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-9P8K-R96Z-PWH2": {
+  "immats": [
+   "AA8508269"
+  ],
+  "meta": {
+   "nom": [
+    "239 avenue Felix faure"
+   ],
+   "nb_log": 18.0,
+   "nb_lot_tot": 41.0,
+   "immat_principal": "AA8508269"
+  }
+ },
+ "bdnb-bg-9Q8J-7KPH-2P9U": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-9QRD-SMSX-T5SC": {
+  "immats": [
+   "AB2398063"
+  ],
+  "meta": {
+   "nom": [
+    "32 dauphine"
+   ],
+   "nb_log": 27.0,
+   "nb_lot_tot": 28.0,
+   "immat_principal": "AB2398063"
+  }
+ },
+ "bdnb-bg-9SJM-2V31-SHKZ": {
+  "immats": [
+   "AC3805199"
+  ],
+  "meta": {
+   "nom": [
+    "'LES VICTORINES'"
+   ],
+   "nb_log": 60.0,
+   "nb_lot_tot": 188.0,
+   "immat_principal": "AC3805199"
+  }
+ },
+ "bdnb-bg-9TQ2-3NZF-3HY8": {
+  "immats": [
+   "AB3360401"
+  ],
+  "meta": {
+   "nom": [
+    "L'HERMITAGE"
+   ],
+   "nb_log": 87.0,
+   "nb_lot_tot": 245.0,
+   "immat_principal": "AB3360401"
+  }
+ },
+ "bdnb-bg-9TVB-3KRG-H7YH": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-9V7F-64PQ-UJ5S": {
+  "immats": [
+   "AH8741316"
+  ],
+  "meta": {
+   "nom": [
+    "PAUL BERT MANUFACTURE"
+   ],
+   "nb_log": 31.0,
+   "nb_lot_tot": 33.0,
+   "immat_principal": "AH8741316"
+  }
+ },
+ "bdnb-bg-9XAL-HGYG-S8P7": {
+  "immats": [
+   "AA8848095"
+  ],
+  "meta": {
+   "nom": [
+    "LE SISLEY PARK"
+   ],
+   "nb_log": 46.0,
+   "nb_lot_tot": 147.0,
+   "immat_principal": "AA8848095"
+  }
+ },
+ "bdnb-bg-AB8G-7WU5-JJEN": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-AHXA-TMQQ-QT6N": {
+  "immats": [
+   "AA7891641"
+  ],
+  "meta": {
+   "nom": [
+    "RESIDENCE LE PARC VILLON"
+   ],
+   "nb_log": 34.0,
+   "nb_lot_tot": 114.0,
+   "immat_principal": "AA7891641"
+  }
+ },
+ "bdnb-bg-ALA1-7UY8-ULUG": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-AM81-DZPJ-QXMN": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-ASMY-1BJU-2LUB": {
+  "immats": [
+   "AC6493506"
+  ],
+  "meta": {
+   "nom": [
+    "LE CARRE SAINT ANTOINE"
+   ],
+   "nb_log": 48.0,
+   "nb_lot_tot": 80.0,
+   "immat_principal": "AC6493506"
+  }
+ },
+ "bdnb-bg-AUY1-RMZ8-PAUT": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-AVBW-59S6-3RB7": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-AX5E-DBFL-VSF4": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-AX8P-5ZM6-3A3B": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-B3PH-VN6W-QP8X": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-B5L6-JH1E-S1WB": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-B6UR-A6DL-WSRW": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-B7HF-HN4M-TSLU": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-B7XN-JTJZ-HPB4": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-B819-EARQ-9D7B": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-B8FV-76BN-BDJJ": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-BALG-5MRC-2XQ6": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-BBN3-M27P-3ANA": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-BE7L-B8RS-K8RG": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-BEA1-5LV5-5PRV": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-BENR-J4R2-X2NB": {
+  "immats": [
+   "AA0787333"
+  ],
+  "meta": {
+   "nom": [
+    "LES TERRASSES DE LA GARE"
+   ],
+   "nb_log": 80.0,
+   "nb_lot_tot": 261.0,
+   "immat_principal": "AA0787333"
+  }
+ },
+ "bdnb-bg-BJ9A-936T-G73D": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-BJP6-W4Q2-72UZ": {
+  "immats": [
+   "AA4651618"
+  ],
+  "meta": {
+   "nom": [
+    "34 RUE DU DAUPHINE"
+   ],
+   "nb_log": 19.0,
+   "nb_lot_tot": 53.0,
+   "immat_principal": "AA4651618"
+  }
+ },
+ "bdnb-bg-BNEE-5E7U-33X2": {
+  "immats": [
+   "AA3614930"
+  ],
+  "meta": {
+   "nom": [
+    "SDC L'ALLEE DES TOURNELLES"
+   ],
+   "nb_log": 39.0,
+   "nb_lot_tot": 144.0,
+   "immat_principal": "AA3614930"
+  }
+ },
+ "bdnb-bg-BQD8-MQ8F-H3HN": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-BQNM-T5XQ-77LY": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-BSN1-2H3L-NSVW": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-BUYB-CYKZ-EWXT": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-BVP7-EESB-58L7": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-BWM4-1HRQ-MAX4": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-BWWC-K9DN-A2DF": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-BXEH-4Z8G-SH57": {
+  "immats": [
+   "AB1080928",
+   "AB1081009"
+  ],
+  "meta": {
+   "nom": [
+    "SDC 29 RUE CLAUDIUS PIONCHON",
+    "SDC 31 RUE CLAUDIUS PIONCHON"
+   ],
+   "nb_log": 42.0,
+   "nb_lot_tot": 87.0,
+   "immat_principal": "AB1080928"
+  }
+ },
+ "bdnb-bg-BXLP-QJHG-4M7Z": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-BXRP-2CT9-61EP": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-C4V9-11U5-4EZ8": {
+  "immats": [
+   "AD3458353"
+  ],
+  "meta": {
+   "nom": [
+    "7 RUE MOISSONNIER"
+   ],
+   "nb_log": 13.0,
+   "nb_lot_tot": 47.0,
+   "immat_principal": "AD3458353"
+  }
+ },
+ "bdnb-bg-CD87-UNB7-7N3J": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-CEJM-HEJT-UUUC": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-CEZ1-BL62-MVHS": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-CFFP-14RF-1SN5": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-CLB7-D86Z-9U7E": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-CS7S-ZSUP-29YF": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-CSCV-CK1X-T4EZ": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-CTWY-Y9WZ-MX22": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-CU5B-W5ZK-THBQ": {
+  "immats": [
+   "AC1757376"
+  ],
+  "meta": {
+   "nom": [
+    "LE N1 RUE GUILLOUD"
+   ],
+   "nb_log": 70.0,
+   "nb_lot_tot": 217.0,
+   "immat_principal": "AC1757376"
+  }
+ },
+ "bdnb-bg-CXP2-X59F-KFA2": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-D1FS-8QT9-MCVX": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-D1GT-LP1Y-TEDX": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-D4T9-4NNA-CTV4": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-D67J-UNYF-TAGM": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-D9LP-CBCP-F74E": {
+  "immats": [
+   "AE1699040"
+  ],
+  "meta": {
+   "nom": [
+    "LE CLOS ROUGET DE L'ISLE"
+   ],
+   "nb_log": 0.32,
+   "nb_lot_tot": 1.71,
+   "immat_principal": "AE1699040"
+  }
+ },
+ "bdnb-bg-DAZ8-N3AL-EF91": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-DE7V-CLDE-WHQD": {
+  "immats": [
+   "AA1694256"
+  ],
+  "meta": {
+   "nom": [
+    "RESIDENCE JEAN SORNAY"
+   ],
+   "nb_log": 111.0,
+   "nb_lot_tot": 349.0,
+   "immat_principal": "AA1694256"
+  }
+ },
+ "bdnb-bg-DGQE-EZPF-8JC4": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-DGWW-GKPC-Z3DE": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-DN5L-ZKBD-MJ4G": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-DPD7-7ZP1-GHVU": {
+  "immats": [
+   "AB8780330"
+  ],
+  "meta": {
+   "nom": [
+    "SAINTE ANNE"
+   ],
+   "nb_log": 47.0,
+   "nb_lot_tot": 141.0,
+   "immat_principal": "AB8780330"
+  }
+ },
+ "bdnb-bg-DQUT-3VHT-CEX3": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-DRJZ-H8ZZ-VD1W": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-DUWL-V4G5-KYKL": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-DYK1-A4VL-D7EG": {
+  "immats": [
+   "AA2124725"
+  ],
+  "meta": {
+   "nom": [
+    "SDC LE SQUARE"
+   ],
+   "nb_log": 21.0,
+   "nb_lot_tot": 42.0,
+   "immat_principal": "AA2124725"
+  }
+ },
+ "bdnb-bg-DYMW-KBXU-716T": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-DZ9A-B3PC-VXA9": {
+  "immats": [
+   "AA8736043"
+  ],
+  "meta": {
+   "nom": [
+    "PRT DIEU SQUARE CARRE PRT DIEU"
+   ],
+   "nb_log": 83.0,
+   "nb_lot_tot": 174.0,
+   "immat_principal": "AA8736043"
+  }
+ },
+ "bdnb-bg-E6PA-PJZ6-C3S1": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-EC36-CQJW-PMK3": {
+  "immats": [
+   "AA2730372"
+  ],
+  "meta": {
+   "nom": [
+    "SDC LE PRESIDENT"
+   ],
+   "nb_log": 40.0,
+   "nb_lot_tot": 87.0,
+   "immat_principal": "AA2730372"
+  }
+ },
+ "bdnb-bg-ED7P-8YCZ-L6UX": {
+  "immats": [
+   "AA7362809"
+  ],
+  "meta": {
+   "nom": [
+    "LE JARDIN BARA"
+   ],
+   "nb_log": 36.0,
+   "nb_lot_tot": 80.0,
+   "immat_principal": "AA7362809"
+  }
+ },
+ "bdnb-bg-EGPZ-2RSB-829Y": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-ENLN-1W4S-BPXX": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-EPB2-XL4C-CHH1": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-EPSF-HRHZ-RS8J": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-EYMB-3EJW-NLWH": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-F53L-NRUL-61CZ": {
+  "immats": [
+   "AA6836647"
+  ],
+  "meta": {
+   "nom": [
+    "ESPACE SISLEY"
+   ],
+   "nb_log": 30.0,
+   "nb_lot_tot": 56.0,
+   "immat_principal": "AA6836647"
+  }
+ },
+ "bdnb-bg-F9BQ-9GJJ-D4AD": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-FBLV-MDEK-PE5T": {
+  "immats": [
+   "AG4913810"
+  ],
+  "meta": {
+   "nom": [
+    "LE  SAINT EUSEBE"
+   ],
+   "nb_log": 15.0,
+   "nb_lot_tot": 35.0,
+   "immat_principal": "AG4913810"
+  }
+ },
+ "bdnb-bg-FBM3-ZJRZ-K47C": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-FCLN-D7V1-1RVN": {
+  "immats": [
+   "AG6298160"
+  ],
+  "meta": {
+   "nom": [
+    "LE SPHINX"
+   ],
+   "nb_log": 34.0,
+   "nb_lot_tot": 75.0,
+   "immat_principal": "AG6298160"
+  }
+ },
+ "bdnb-bg-FF7P-S5GV-E96W": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-FFBR-PB1L-5YFY": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-FMLN-8TV6-GQRY": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-FNGY-JGU6-6J4U": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-FPXP-Q1BZ-UB85": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-FQGG-7NT8-K7E4": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-FR1V-1HV3-KKUP": {
+  "immats": [
+   "AB7330897"
+  ],
+  "meta": {
+   "nom": [
+    "SDC LE MANET"
+   ],
+   "nb_log": 76.0,
+   "nb_lot_tot": 235.0,
+   "immat_principal": "AB7330897"
+  }
+ },
+ "bdnb-bg-FRLH-S9QU-9A6T": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-FRYM-XEVY-K4QF": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-FS5T-27SZ-1D73": {
+  "immats": [
+   "AB9345703"
+  ],
+  "meta": {
+   "nom": [
+    "SDC BARABAN VI"
+   ],
+   "nb_log": 74.0,
+   "nb_lot_tot": 230.0,
+   "immat_principal": "AB9345703"
+  }
+ },
+ "bdnb-bg-FSS5-TB5T-HU7V": {
+  "immats": [
+   "AH4035929"
+  ],
+  "meta": {
+   "nom": [
+    "29-33 Avenue Georges Pompidou"
+   ],
+   "nb_log": 4.0,
+   "nb_lot_tot": 30.0,
+   "immat_principal": "AH4035929"
+  }
+ },
+ "bdnb-bg-FW4B-YECQ-FPCT": {
+  "immats": [
+   "AC1825504"
+  ],
+  "meta": {
+   "nom": [
+    "6/8, rue Carry"
+   ],
+   "nb_log": 12.0,
+   "nb_lot_tot": 16.0,
+   "immat_principal": "AC1825504"
+  }
+ },
+ "bdnb-bg-FW5A-APPK-3EJH": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-FWNQ-PFMY-A36E": {
+  "immats": [
+   "AC3598851"
+  ],
+  "meta": {
+   "nom": [
+    "LE BEAUBOURG"
+   ],
+   "nb_log": 64.0,
+   "nb_lot_tot": 122.0,
+   "immat_principal": "AC3598851"
+  }
+ },
+ "bdnb-bg-FY5V-RU9S-BEUY": {
+  "immats": [
+   "AB0837906"
+  ],
+  "meta": {
+   "nom": [
+    "PARK LACASSAGNE - MS15908"
+   ],
+   "nb_log": 124.0,
+   "nb_lot_tot": 376.0,
+   "immat_principal": "AB0837906"
+  }
+ },
+ "bdnb-bg-FZ78-E8K8-8JQA": {
+  "immats": [
+   "AB8800625"
+  ],
+  "meta": {
+   "nom": [
+    "300 cours Lafayette"
+   ],
+   "nb_log": 71.0,
+   "nb_lot_tot": 148.0,
+   "immat_principal": "AB8800625"
+  }
+ },
+ "bdnb-bg-G15W-CLD7-6WBT": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-G2ZQ-H667-PH4K": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-G42R-WCCY-9KFD": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-G6ZB-A3PE-27QQ": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-GB65-26FA-H5KS": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-GFKS-DC3T-CRB1": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-GFQX-E9BD-25LA": {
+  "immats": [
+   "AB8779696"
+  ],
+  "meta": {
+   "nom": [
+    "CLOS DE L'ISLE"
+   ],
+   "nb_log": 33.0,
+   "nb_lot_tot": 93.0,
+   "immat_principal": "AB8779696"
+  }
+ },
+ "bdnb-bg-GMWN-9ZYS-LQGQ": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-GSNQ-MCQ7-88DU": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-GXGN-3H97-F4RU": {
+  "immats": [
+   "AD2504157"
+  ],
+  "meta": {
+   "nom": [
+    "11 RUE DES PETITES SOEURS"
+   ],
+   "nb_log": 10.0,
+   "nb_lot_tot": 11.0,
+   "immat_principal": "AD2504157"
+  }
+ },
+ "bdnb-bg-GZNK-V5UZ-5VKZ": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-H22L-8Z1E-D61Z": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-H56H-S1A8-M34J": {
+  "immats": [
+   "AC0037077"
+  ],
+  "meta": {
+   "nom": [
+    "Jardin David"
+   ],
+   "nb_log": 12.0,
+   "nb_lot_tot": 46.0,
+   "immat_principal": "AC0037077"
+  }
+ },
+ "bdnb-bg-H67H-7BN1-T9KQ": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-H6H4-644T-6NRG": {
+  "immats": [
+   "AA9260977"
+  ],
+  "meta": {
+   "nom": [
+    "LE SAINT VICTORIEN"
+   ],
+   "nb_log": 69.0,
+   "nb_lot_tot": 127.0,
+   "immat_principal": "AA9260977"
+  }
+ },
+ "bdnb-bg-H7YV-VH5E-JFY8": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-H99E-WX5C-HX2Z": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-H9T9-DYCH-XSSS": {
+  "immats": [
+   "AA2028389"
+  ],
+  "meta": {
+   "nom": [
+    "SDC ESPACE EMERAUDE BAT B"
+   ],
+   "nb_log": 33.0,
+   "nb_lot_tot": 96.0,
+   "immat_principal": "AA2028389"
+  }
+ },
+ "bdnb-bg-HE83-8SVJ-XDMR": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-HG7J-CA18-P3VG": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-HH7N-UFJY-YY5U": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-HKJD-3Q2F-4AHV": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-HLUA-SDHE-R7ZT": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-HQEA-L5JU-AGCT": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-HQWX-SRVS-WAVH": {
+  "immats": [
+   "AD9391244"
+  ],
+  "meta": {
+   "nom": [
+    "LE PATIO SAINT-ANTOINE - MS167298"
+   ],
+   "nb_log": 22.12,
+   "nb_lot_tot": 42.59,
+   "immat_principal": "AD9391244"
+  }
+ },
+ "bdnb-bg-HV4Y-ENCA-KLHP": {
+  "immats": [
+   "AB8822587"
+  ],
+  "meta": {
+   "nom": [
+    "LA SCALA"
+   ],
+   "nb_log": 53.0,
+   "nb_lot_tot": 150.0,
+   "immat_principal": "AB8822587"
+  }
+ },
+ "bdnb-bg-HVXJ-LKT4-XT6P": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-HZC9-7X1P-6N6J": {
+  "immats": [
+   "AD1969237"
+  ],
+  "meta": {
+   "nom": [
+    "LA SALAMANDRE"
+   ],
+   "nb_log": 0.0,
+   "nb_lot_tot": 1.93,
+   "immat_principal": "AD1969237"
+  }
+ },
+ "bdnb-bg-HZW7-ZHQA-SC56": {
+  "immats": [
+   "AC9718610"
+  ],
+  "meta": {
+   "nom": [
+    "SDC SQUARE REBATEL"
+   ],
+   "nb_log": 52.0,
+   "nb_lot_tot": 140.0,
+   "immat_principal": "AC9718610"
+  }
+ },
+ "bdnb-bg-J5M8-8PYA-ALEX": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-J721-E2CA-NU6V": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-J7R2-Q51U-5DKE": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-J8M8-Q9XE-YYT1": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-JA5M-F8KK-JHHH": {
+  "immats": [
+   "AB9929746"
+  ],
+  "meta": {
+   "nom": [
+    "SDC LE PASCAL"
+   ],
+   "nb_log": 42.0,
+   "nb_lot_tot": 137.0,
+   "immat_principal": "AB9929746"
+  }
+ },
+ "bdnb-bg-JAVT-QG97-XWEW": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-JC6A-SZUS-8UAJ": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-JD8P-REXG-R7S4": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-JD9X-LS8L-R7A9": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-JFRZ-XJTQ-L9ZQ": {
+  "immats": [
+   "AC6168629"
+  ],
+  "meta": {
+   "nom": [
+    "RESIDENCE 318 RUE PAUL BERT"
+   ],
+   "nb_log": 6.0,
+   "nb_lot_tot": 14.0,
+   "immat_principal": "AC6168629"
+  }
+ },
+ "bdnb-bg-JKCK-GEVL-89MW": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-JMUE-VX7J-RR9W": {
+  "immats": [
+   "AA4814810"
+  ],
+  "meta": {
+   "nom": [
+    "LES PINS"
+   ],
+   "nb_log": 50.0,
+   "nb_lot_tot": 150.0,
+   "immat_principal": "AA4814810"
+  }
+ },
+ "bdnb-bg-JTAL-3RN1-KX5T": {
+  "immats": [
+   "AH7871353"
+  ],
+  "meta": {
+   "nom": [
+    "RESIDENCE CLAUDIUS PIONCHON"
+   ],
+   "nb_log": 60.0,
+   "nb_lot_tot": 106.0,
+   "immat_principal": "AH7871353"
+  }
+ },
+ "bdnb-bg-JTUX-9ZZ3-U6H3": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-JVUN-HP4H-NYP1": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-JY2H-VK9H-UM4D": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-K1BT-FS4J-HZAJ": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-K2WQ-1L5V-QXEJ": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-K58L-DSRV-8Q35": {
+  "immats": [
+   "AA1991660"
+  ],
+  "meta": {
+   "nom": [
+    "LA VILLANELLE"
+   ],
+   "nb_log": 37.0,
+   "nb_lot_tot": 95.0,
+   "immat_principal": "AA1991660"
+  }
+ },
+ "bdnb-bg-K5KX-NEHV-8KAS": {
+  "immats": [
+   "AA5973367"
+  ],
+  "meta": {
+   "nom": [
+    "Le VIRGILE"
+   ],
+   "nb_log": 52.0,
+   "nb_lot_tot": 112.0,
+   "immat_principal": "AA5973367"
+  }
+ },
+ "bdnb-bg-K6MG-1NKK-3RPG": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-KAVM-EN3B-35TA": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-KBXD-6B4U-ECGL": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-KCEY-7VH1-78S5": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-KKDW-HL1C-GESF": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-KKR4-ST1S-LSG2": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-KLP4-PFBH-ZZUQ": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-KLT7-6KAC-4JYW": {
+  "immats": [
+   "AB6718670"
+  ],
+  "meta": {
+   "nom": [
+    "LE PRATER"
+   ],
+   "nb_log": 29.0,
+   "nb_lot_tot": 70.0,
+   "immat_principal": "AB6718670"
+  }
+ },
+ "bdnb-bg-KM3Q-XAC3-34D1": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-KMB9-JBR4-NCPK": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-KMCZ-5SAK-P1FU": {
+  "immats": [
+   "AB9930975"
+  ],
+  "meta": {
+   "nom": [
+    "SDC 66/68 RUE STE ANNE DE BARABAN"
+   ],
+   "nb_log": 26.0,
+   "nb_lot_tot": 38.0,
+   "immat_principal": "AB9930975"
+  }
+ },
+ "bdnb-bg-KNSA-5BWZ-A2XZ": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-KVDR-XPSM-PDB5": {
+  "immats": [
+   "AB5869177"
+  ],
+  "meta": {
+   "nom": [
+    "SDC LE BELLECOMBE"
+   ],
+   "nb_log": 21.0,
+   "nb_lot_tot": 77.0,
+   "immat_principal": "AB5869177"
+  }
+ },
+ "bdnb-bg-KY6U-AHNX-6BKG": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-KZM4-PUEX-3ZAG": {
+  "immats": [
+   "AA4904827"
+  ],
+  "meta": {
+   "nom": [
+    "KEY WEST"
+   ],
+   "nb_log": 41.0,
+   "nb_lot_tot": 97.0,
+   "immat_principal": "AA4904827"
+  }
+ },
+ "bdnb-bg-L2AS-75JZ-QX89": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-L2CK-SQ4L-G991": {
+  "immats": [
+   "AH0715979"
+  ],
+  "meta": {
+   "nom": [
+    "4 rue Etienne RICHERAND"
+   ],
+   "nb_log": 3.16,
+   "nb_lot_tot": 4.43,
+   "immat_principal": "AH0715979"
+  }
+ },
+ "bdnb-bg-L5QL-8Y76-N9CC": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-L6YT-TE7D-H68A": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-L8K2-A1Q4-S44X": {
+  "immats": [
+   "AA0771238"
+  ],
+  "meta": {
+   "nom": [
+    "14 rue roposte"
+   ],
+   "nb_log": 15.0,
+   "nb_lot_tot": 33.0,
+   "immat_principal": "AA0771238"
+  }
+ },
+ "bdnb-bg-LD4C-VJY6-N5SJ": {
+  "immats": [
+   "AD9012642"
+  ],
+  "meta": {
+   "nom": [
+    "23 Métallurgie & 194 F. Faure"
+   ],
+   "nb_log": 36.0,
+   "nb_lot_tot": 86.0,
+   "immat_principal": "AD9012642"
+  }
+ },
+ "bdnb-bg-LE6X-UMGS-VDM1": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-LEDB-JRC5-PQG2": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-LEWC-F8QD-PCM7": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-LK7X-LXHQ-XLJ9": {
+  "immats": [
+   "AA4605846"
+  ],
+  "meta": {
+   "nom": [
+    "ESPACE EMERAUDE BAT.K ET L"
+   ],
+   "nb_log": 45.0,
+   "nb_lot_tot": 132.0,
+   "immat_principal": "AA4605846"
+  }
+ },
+ "bdnb-bg-LPW9-YCD1-7GFB": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-LQU8-MYBM-2AMK": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-LS26-PDJ2-S81A": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-LSZN-NNHS-ZCQE": {
+  "immats": [
+   "AA7233794"
+  ],
+  "meta": {
+   "nom": [
+    "LE MEYNIPOLIS - MS32820"
+   ],
+   "nb_log": 34.0,
+   "nb_lot_tot": 79.0,
+   "immat_principal": "AA7233794"
+  }
+ },
+ "bdnb-bg-LZTF-7J8D-8FYE": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-M8MK-BKDM-ZLDL": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-MCU5-7CPV-JE1Z": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-ME8U-UNJZ-8JBU": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-MNMB-7F9F-2TDS": {
+  "immats": [
+   "AB4364022"
+  ],
+  "meta": {
+   "nom": [
+    "3eme AVENUE - MS34651"
+   ],
+   "nb_log": 31.0,
+   "nb_lot_tot": 79.0,
+   "immat_principal": "AB4364022"
+  }
+ },
+ "bdnb-bg-MQ1N-U2RC-MUXA": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-MW83-SX3P-D16B": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-MYUH-YTYU-45YJ": {
+  "immats": [
+   "AA2505634"
+  ],
+  "meta": {
+   "nom": [
+    "SAINT MARC I"
+   ],
+   "nb_log": 63.0,
+   "nb_lot_tot": 190.0,
+   "immat_principal": "AA2505634"
+  }
+ },
+ "bdnb-bg-N1FW-GV93-Z5D3": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-N5A3-868G-AP34": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-NC2K-KYA9-6289": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-NE4P-HGDU-RZ36": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-NFZ9-7T8C-747Y": {
+  "immats": [
+   "AB1393370"
+  ],
+  "meta": {
+   "nom": [
+    "LE SAINT HUBERT - MS15808"
+   ],
+   "nb_log": 74.0,
+   "nb_lot_tot": 156.0,
+   "immat_principal": "AB1393370"
+  }
+ },
+ "bdnb-bg-NG1L-HCUZ-8DRJ": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-NHQQ-8MZ7-KS1W": {
+  "immats": [
+   "AD5268305"
+  ],
+  "meta": {
+   "nom": [
+    "BRICKS 1"
+   ],
+   "nb_log": 98.0,
+   "nb_lot_tot": 188.0,
+   "immat_principal": "AD5268305"
+  }
+ },
+ "bdnb-bg-NP5T-JZFB-UVR7": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-NWNV-GU7Z-XPMJ": {
+  "immats": [
+   "AG2447720"
+  ],
+  "meta": {
+   "nom": [
+    "SDC 19 RUE ETIENNE RICHERAND"
+   ],
+   "nb_log": 8.0,
+   "nb_lot_tot": 24.0,
+   "immat_principal": "AG2447720"
+  }
+ },
+ "bdnb-bg-NZ67-8FQ2-8L1E": {
+  "immats": [
+   "AA8145336",
+   "AA8146995"
+  ],
+  "meta": {
+   "nom": [
+    "ESPACE EMERAUDE",
+    "ESPERANCE 12 - ESPACE EMERAUDE"
+   ],
+   "nb_log": 95.0,
+   "nb_lot_tot": 312.0,
+   "immat_principal": "AA8145336"
+  }
+ },
+ "bdnb-bg-P139-Q7R6-NKWW": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-P2DG-Q47U-658U": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-P4KS-E2SZ-C9BN": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-P6SW-C8ML-QMSG": {
+  "immats": [
+   "AB1098359"
+  ],
+  "meta": {
+   "nom": [
+    "SDC 18 RUE DE LA METALLURGIE"
+   ],
+   "nb_log": 6.0,
+   "nb_lot_tot": 16.0,
+   "immat_principal": "AB1098359"
+  }
+ },
+ "bdnb-bg-P8CS-S9BX-SR2R": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-P8PR-P99U-EBPQ": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-PBWB-GL39-PCD5": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-PCP8-X614-VC67": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-PDAY-83DV-XNGN": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-PFFK-6Z9V-TUP1": {
+  "immats": [
+   "AE9439365"
+  ],
+  "meta": {
+   "nom": [
+    "LE SAINT ANTOINE"
+   ],
+   "nb_log": 45.0,
+   "nb_lot_tot": 90.0,
+   "immat_principal": "AE9439365"
+  }
+ },
+ "bdnb-bg-PM1U-PYK6-UUL8": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-PNCB-MYC1-JB4Q": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-PNLK-D7S5-UCGW": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-PP5G-4B1F-PAJ7": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-PP7G-YWLB-1ZEC": {
+  "immats": [
+   "AF5264262"
+  ],
+  "meta": {
+   "nom": [
+    "LES BALCONS DE LA PART DIEU"
+   ],
+   "nb_log": 25.0,
+   "nb_lot_tot": 51.0,
+   "immat_principal": "AF5264262"
+  }
+ },
+ "bdnb-bg-PQ7B-SZQ8-13LS": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-PQCP-R4TX-GMC9": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-PQR4-97S4-XPXU": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-PTBZ-QHYH-Y2WN": {
+  "immats": [
+   "AC7505134"
+  ],
+  "meta": {
+   "nom": [
+    "SDC SDC LE SISLEY"
+   ],
+   "nb_log": 43.0,
+   "nb_lot_tot": 87.0,
+   "immat_principal": "AC7505134"
+  }
+ },
+ "bdnb-bg-PVH9-9KG9-SEG2": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-PWDK-M71Z-3JJQ": {
+  "immats": [
+   "AB1744747"
+  ],
+  "meta": {
+   "nom": [
+    "LES JARDINS D'HELIOS"
+   ],
+   "nb_log": 22.0,
+   "nb_lot_tot": 61.0,
+   "immat_principal": "AB1744747"
+  }
+ },
+ "bdnb-bg-Q2M9-ECBB-3GVY": {
+  "immats": [
+   "AA5556311"
+  ],
+  "meta": {
+   "nom": [
+    "L'Orée du Parc"
+   ],
+   "nb_log": 17.0,
+   "nb_lot_tot": 49.0,
+   "immat_principal": "AA5556311"
+  }
+ },
+ "bdnb-bg-Q34G-RRJN-UAGN": {
+  "immats": [
+   "AB3947009"
+  ],
+  "meta": {
+   "nom": [
+    "VUE SUR PARC"
+   ],
+   "nb_log": 89.0,
+   "nb_lot_tot": 216.0,
+   "immat_principal": "AB3947009"
+  }
+ },
+ "bdnb-bg-Q36H-C7L9-MH5P": {
+  "immats": [
+   "AB9368150"
+  ],
+  "meta": {
+   "nom": [
+    "SDC 12 RUE FREDERIC MISTRAL"
+   ],
+   "nb_log": 7.0,
+   "nb_lot_tot": 24.0,
+   "immat_principal": "AB9368150"
+  }
+ },
+ "bdnb-bg-Q4M4-7RMM-H4XQ": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-Q7LS-WV66-NMGE": {
+  "immats": [
+   "AF5210398"
+  ],
+  "meta": {
+   "nom": [
+    "WAKE UP"
+   ],
+   "nb_log": 43.0,
+   "nb_lot_tot": 90.0,
+   "immat_principal": "AF5210398"
+  }
+ },
+ "bdnb-bg-QAXA-3HGU-PR74": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-QBH3-9SNM-YK1V": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-QGFJ-1RLT-6ZEN": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-QKMQ-SVXL-98NF": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-QKYV-KCMH-DN37": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-QN57-TWQK-FEX6": {
+  "immats": [
+   "AA2629319"
+  ],
+  "meta": {
+   "nom": [
+    "LE BARABAN - ROPOSTE"
+   ],
+   "nb_log": 47.0,
+   "nb_lot_tot": 145.0,
+   "immat_principal": "AA2629319"
+  }
+ },
+ "bdnb-bg-QNAY-M8CE-9AMV": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-QNDY-JKBL-KRG6": {
+  "immats": [
+   "AB2812469"
+  ],
+  "meta": {
+   "nom": [
+    "138 FELIX FAURE"
+   ],
+   "nb_log": 19.0,
+   "nb_lot_tot": 40.0,
+   "immat_principal": "AB2812469"
+  }
+ },
+ "bdnb-bg-QP8Z-VMM2-M7MW": {
+  "immats": [
+   "AC1055698"
+  ],
+  "meta": {
+   "nom": [
+    "77 A.Thomas/49-51 Paul Sisley"
+   ],
+   "nb_log": 48.0,
+   "nb_lot_tot": 49.0,
+   "immat_principal": "AC1055698"
+  }
+ },
+ "bdnb-bg-QVCH-AAV6-QRFH": {
+  "immats": [
+   "AB4572186"
+  ],
+  "meta": {
+   "nom": [
+    "LE CARIBOU"
+   ],
+   "nb_log": 36.0,
+   "nb_lot_tot": 74.0,
+   "immat_principal": "AB4572186"
+  }
+ },
+ "bdnb-bg-QXAH-Y7QM-A3JB": {
+  "immats": [
+   "AB5752332"
+  ],
+  "meta": {
+   "nom": [
+    "36 R DU DAUPHINE"
+   ],
+   "nb_log": 19.0,
+   "nb_lot_tot": 43.0,
+   "immat_principal": "AB5752332"
+  }
+ },
+ "bdnb-bg-QZLT-2EQK-1JUG": {
+  "immats": [
+   "AA9025511"
+  ],
+  "meta": {
+   "nom": [
+    "LE VICTORIAN"
+   ],
+   "nb_log": 85.0,
+   "nb_lot_tot": 193.0,
+   "immat_principal": "AA9025511"
+  }
+ },
+ "bdnb-bg-R4LN-QEZ1-8YT5": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-R6MK-82WC-ZK2Q": {
+  "immats": [
+   "AB1570571"
+  ],
+  "meta": {
+   "nom": [
+    "BARABAN 2 - MS133639"
+   ],
+   "nb_log": 110.0,
+   "nb_lot_tot": 374.0,
+   "immat_principal": "AB1570571"
+  }
+ },
+ "bdnb-bg-R9ZW-728B-LGJZ": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-RA1N-UJ1L-CQPN": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-RA9K-1B11-8L1V": {
+  "immats": [
+   "AC8791634"
+  ],
+  "meta": {
+   "nom": [
+    "34/36 Rue Saint Philippe"
+   ],
+   "nb_log": 28.0,
+   "nb_lot_tot": 38.0,
+   "immat_principal": "AC8791634"
+  }
+ },
+ "bdnb-bg-RD68-16FV-HRL3": {
+  "immats": [
+   "AA7052442"
+  ],
+  "meta": {
+   "nom": [
+    "236 COURS LAFAYETTE"
+   ],
+   "nb_log": 2.0,
+   "nb_lot_tot": 2.0,
+   "immat_principal": "AA7052442"
+  }
+ },
+ "bdnb-bg-RE61-FR7E-6PX3": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-RG9V-8L1Q-97UN": {
+  "immats": [
+   "AF6417042"
+  ],
+  "meta": {
+   "nom": [
+    "SDC LE CASTELLANNE"
+   ],
+   "nb_log": 55.0,
+   "nb_lot_tot": 177.0,
+   "immat_principal": "AF6417042"
+  }
+ },
+ "bdnb-bg-RGB8-62ZK-4XU6": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-RM26-Z61Q-HVQE": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-RTNL-L1N7-K12Y": {
+  "immats": [
+   "AF0858860"
+  ],
+  "meta": {
+   "nom": [
+    "1 R SAINT MAXIMIN"
+   ],
+   "nb_log": 14.0,
+   "nb_lot_tot": 52.0,
+   "immat_principal": "AF0858860"
+  }
+ },
+ "bdnb-bg-S11S-Q6QJ-KLRK": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-S26C-7M8T-K12Q": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-SAR3-A4XV-LE8B": {
+  "immats": [
+   "AC9350984"
+  ],
+  "meta": {
+   "nom": [
+    "LE PAVILLON DU DAUPHIN"
+   ],
+   "nb_log": 57.0,
+   "nb_lot_tot": 122.0,
+   "immat_principal": "AC9350984"
+  }
+ },
+ "bdnb-bg-SBHG-VQWK-FCA9": {
+  "immats": [
+   "AB0141341"
+  ],
+  "meta": {
+   "nom": [
+    "SDC 21 RUE ETIENNE RICHERAND"
+   ],
+   "nb_log": 14.0,
+   "nb_lot_tot": 49.0,
+   "immat_principal": "AB0141341"
+  }
+ },
+ "bdnb-bg-SCQS-HYN4-PPDQ": {
+  "immats": [
+   "AA8096810"
+  ],
+  "meta": {
+   "nom": [
+    "27-29 rue de la metallurgie"
+   ],
+   "nb_log": 20.0,
+   "nb_lot_tot": 40.0,
+   "immat_principal": "AA8096810"
+  }
+ },
+ "bdnb-bg-SDMB-7CKJ-3Q9D": {
+  "immats": [
+   "AF4080479"
+  ],
+  "meta": {
+   "nom": [
+    "SDC LE GALAXIE VOLUME 30"
+   ],
+   "nb_log": 2.0,
+   "nb_lot_tot": 143.0,
+   "immat_principal": "AF4080479"
+  }
+ },
+ "bdnb-bg-SFXP-S6L3-A693": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-SQC2-49E9-C6J1": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-SR2C-QRF3-15LG": {
+  "immats": [
+   "AE4069597"
+  ],
+  "meta": {
+   "nom": [
+    "LE NIVOLET"
+   ],
+   "nb_log": 27.0,
+   "nb_lot_tot": 92.0,
+   "immat_principal": "AE4069597"
+  }
+ },
+ "bdnb-bg-SUW6-GBH5-11VB": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-T125-SHNC-BAM6": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-T2BY-MXN2-79WY": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-T91B-RBSU-PGE7": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-TD3K-MD6A-6F6R": {
+  "immats": [
+   "AE5562418"
+  ],
+  "meta": {
+   "nom": [
+    "SDC 51 RUE DU DAUPHINE"
+   ],
+   "nb_log": 7.11,
+   "nb_lot_tot": 17.81,
+   "immat_principal": "AE5562418"
+  }
+ },
+ "bdnb-bg-TDEB-2BBZ-49NY": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-TGAE-D25P-FSER": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-TJV3-S5W4-Q4KZ": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-TLY3-3GD6-NUNJ": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-TMHU-J6YL-UVAU": {
+  "immats": [
+   "AA8932717"
+  ],
+  "meta": {
+   "nom": [
+    "PARC SISLEY"
+   ],
+   "nb_log": 21.0,
+   "nb_lot_tot": 67.0,
+   "immat_principal": "AA8932717"
+  }
+ },
+ "bdnb-bg-TU71-K74H-4YQ3": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-TXH9-22TP-BWYS": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-TXNA-UR75-J51Y": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-TYEL-NYRS-F6BJ": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-U297-N64A-4SXK": {
+  "immats": [
+   "AA3284353",
+   "AB2944882"
+  ],
+  "meta": {
+   "nom": [
+    "L'HELIODORE"
+   ],
+   "nb_log": 32.0,
+   "nb_lot_tot": 79.0,
+   "immat_principal": "AB2944882"
+  }
+ },
+ "bdnb-bg-U3Q7-1AD8-Z67B": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-UD36-AJ94-ZSUK": {
+  "immats": [
+   "AA8440844",
+   "AB2000974"
+  ],
+  "meta": {
+   "nom": [
+    "ESPACE EMERAUDE",
+    "ESPACE EMERAUDE BAT H"
+   ],
+   "nb_log": 45.0,
+   "nb_lot_tot": 144.0,
+   "immat_principal": "AB2000974"
+  }
+ },
+ "bdnb-bg-UHG2-HSMN-CBPP": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-ULHW-P9KF-JSGH": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-UN53-G1LZ-2P34": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-USVM-984W-VRFJ": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-UW9S-AYKV-6TAV": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-UWK7-TY35-KUDK": {
+  "immats": [
+   "AD3386570"
+  ],
+  "meta": {
+   "nom": [
+    "SDC VILLA SYRACUSE"
+   ],
+   "nb_log": 34.0,
+   "nb_lot_tot": 75.0,
+   "immat_principal": "AD3386570"
+  }
+ },
+ "bdnb-bg-UYY7-K2CY-5VZ6": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-V431-EBHY-Y74D": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-V4JK-AHTA-BJP3": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-V534-1UNM-GYM8": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-V6UT-P9RP-BV8C": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-V8FX-J3U6-VGKN": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-V8P7-U3SX-2ENC": {
+  "immats": [
+   "AB3379567"
+  ],
+  "meta": {
+   "nom": [
+    "LAFAYETTE BARABAN"
+   ],
+   "nb_log": 95.0,
+   "nb_lot_tot": 293.0,
+   "immat_principal": "AB3379567"
+  }
+ },
+ "bdnb-bg-VBQ7-8S4W-KZVY": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-VCHQ-W16E-P1V4": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-VFZ4-JA9T-HBRK": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-VGNW-N4HU-YD2U": {
+  "immats": [
+   "AG9619537"
+  ],
+  "meta": {
+   "nom": [
+    "GUY ARNOUD"
+   ],
+   "nb_log": 65.0,
+   "nb_lot_tot": 124.0,
+   "immat_principal": "AG9619537"
+  }
+ },
+ "bdnb-bg-VM76-DC2D-8ZBM": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-VNCL-DWLL-H5X5": {
+  "immats": [
+   "AA7379084"
+  ],
+  "meta": {
+   "nom": [
+    "ALLEES DU CHATEAU/ CHATEAU LACASSAGNE - MS15893"
+   ],
+   "nb_log": 84.0,
+   "nb_lot_tot": 258.0,
+   "immat_principal": "AA7379084"
+  }
+ },
+ "bdnb-bg-VPLJ-N3JJ-SW4G": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-VQUJ-JMTX-BB2C": {
+  "immats": [
+   "AC0225904"
+  ],
+  "meta": {
+   "nom": [
+    "PAUL BERT - FELIX FAURE"
+   ],
+   "nb_log": 16.0,
+   "nb_lot_tot": 69.0,
+   "immat_principal": "AC0225904"
+  }
+ },
+ "bdnb-bg-VRHU-LHNX-3PHB": {
+  "immats": [
+   "AA7407463"
+  ],
+  "meta": {
+   "nom": [
+    "LE SISLEY - MS32872"
+   ],
+   "nb_log": 50.0,
+   "nb_lot_tot": 155.0,
+   "immat_principal": "AA7407463"
+  }
+ },
+ "bdnb-bg-VRQ2-82K8-7HRF": {
+  "immats": [
+   "AI7701238"
+  ],
+  "meta": {
+   "nom": [
+    "22 rue Dauphine"
+   ],
+   "nb_log": 22.0,
+   "nb_lot_tot": 25.0,
+   "immat_principal": "AI7701238"
+  }
+ },
+ "bdnb-bg-VZUU-VWYA-7RHV": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-W2RS-K6JM-Z1H3": {
+  "immats": [
+   "AB2505550"
+  ],
+  "meta": {
+   "nom": [
+    "3-5-7 RUE MAURICE FLANDIN"
+   ],
+   "nb_log": 56.0,
+   "nb_lot_tot": 126.0,
+   "immat_principal": "AB2505550"
+  }
+ },
+ "bdnb-bg-W3VL-6KCU-S5RQ": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-W5E1-2VY3-48EC": {
+  "immats": [
+   "AC6271829"
+  ],
+  "meta": {
+   "nom": [
+    "RESIDENCE 133 RUE BARABAN"
+   ],
+   "nb_log": 16.0,
+   "nb_lot_tot": 43.0,
+   "immat_principal": "AC6271829"
+  }
+ },
+ "bdnb-bg-W624-4P36-PURP": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-W73Q-C3QW-9BAH": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-W742-DTM2-KC86": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-WF2W-21FC-LN83": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-WKES-2MH7-TGEP": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-WLXU-6YKR-D8DU": {
+  "immats": [
+   "AG1556893"
+  ],
+  "meta": {
+   "nom": [
+    "BRICKS 2"
+   ],
+   "nb_log": 64.0,
+   "nb_lot_tot": 122.0,
+   "immat_principal": "AG1556893"
+  }
+ },
+ "bdnb-bg-WM3M-F4BX-8Z7T": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-WPSJ-ZJGX-8JY7": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-WPVN-TN1Z-KE2S": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-WQZA-TNRT-44JS": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-WSTK-SKSS-P2M2": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-WUX4-4RNF-PX9U": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-X1PH-39VM-4738": {
+  "immats": [
+   "AB6005698"
+  ],
+  "meta": {
+   "nom": [
+    "SAINTE ANNE LUMIERE Volume 2"
+   ],
+   "nb_log": 48.0,
+   "nb_lot_tot": 54.0,
+   "immat_principal": "AB6005698"
+  }
+ },
+ "bdnb-bg-X64H-A123-1W5J": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-X6FL-16NZ-F4UB": {
+  "immats": [
+   "AB9240508"
+  ],
+  "meta": {
+   "nom": [
+    "LE CLOS DU PARC - MS15807"
+   ],
+   "nb_log": 59.0,
+   "nb_lot_tot": 120.0,
+   "immat_principal": "AB9240508"
+  }
+ },
+ "bdnb-bg-X6UQ-9RMD-36Y5": {
+  "immats": [
+   "AD7354640"
+  ],
+  "meta": {
+   "nom": [
+    "SDC 99 RUE BARABAN"
+   ],
+   "nb_log": 7.0,
+   "nb_lot_tot": 19.0,
+   "immat_principal": "AD7354640"
+  }
+ },
+ "bdnb-bg-X6ZY-RMTC-GPEA": {
+  "immats": [
+   "AB2682847"
+  ],
+  "meta": {
+   "nom": [
+    "LE STREET GARDEN"
+   ],
+   "nb_log": 52.0,
+   "nb_lot_tot": 138.0,
+   "immat_principal": "AB2682847"
+  }
+ },
+ "bdnb-bg-X9K1-FRKD-EGP4": {
+  "immats": [
+   "AA5818190"
+  ],
+  "meta": {
+   "nom": [
+    "COURS LUMIERE - MS189281"
+   ],
+   "nb_log": 72.0,
+   "nb_lot_tot": 140.0,
+   "immat_principal": "AA5818190"
+  }
+ },
+ "bdnb-bg-XA8Z-JVL1-7SR6": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-XCBR-3UJG-85UB": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-XD3V-294Z-6AAC": {
+  "immats": [
+   "AD5178470"
+  ],
+  "meta": {
+   "nom": [
+    "PAUL BERT 326"
+   ],
+   "nb_log": 5.0,
+   "nb_lot_tot": 10.0,
+   "immat_principal": "AD5178470"
+  }
+ },
+ "bdnb-bg-XEEK-6E83-3BX4": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-XEH3-TX1E-4BGK": {
+  "immats": [
+   "AA6646640"
+  ],
+  "meta": {
+   "nom": [
+    "LE SAINT MARC II"
+   ],
+   "nb_log": 36.0,
+   "nb_lot_tot": 113.0,
+   "immat_principal": "AA6646640"
+  }
+ },
+ "bdnb-bg-XFKY-T8HF-YZ6R": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-XG68-JJEU-L7V2": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-XK3Z-EJHT-UR4E": {
+  "immats": [
+   "AD5705983"
+  ],
+  "meta": {
+   "nom": [
+    "ESPERANCE 3"
+   ],
+   "nb_log": 10.0,
+   "nb_lot_tot": 20.0,
+   "immat_principal": "AD5705983"
+  }
+ },
+ "bdnb-bg-XPV4-36LA-Y1E9": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-XQNU-BKNQ-MM2L": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-XSHA-32DF-VYVR": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-XT9X-WZU3-QUFP": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-XWGV-M1EY-SXFT": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-XXU3-L2LW-69P8": {
+  "immats": [
+   "AF5613245"
+  ],
+  "meta": {
+   "nom": [
+    "CAP AFFAIRES LA PART DIEU"
+   ],
+   "nb_log": 142.0,
+   "nb_lot_tot": 203.0,
+   "immat_principal": "AF5613245"
+  }
+ },
+ "bdnb-bg-XYVS-E9SG-4UP1": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-Y1BN-MPP6-46DX": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-Y295-3RNY-3GEF": {
+  "immats": [
+   "AD4372280"
+  ],
+  "meta": {
+   "nom": [
+    "LA VILLETTE PAUL BERT"
+   ],
+   "nb_log": 37.0,
+   "nb_lot_tot": 125.0,
+   "immat_principal": "AD4372280"
+  }
+ },
+ "bdnb-bg-Y5EX-GMVD-YTXQ": {
+  "immats": [
+   "AA2610087"
+  ],
+  "meta": {
+   "nom": [
+    "SDC LE BARABAN"
+   ],
+   "nb_log": 48.0,
+   "nb_lot_tot": 114.0,
+   "immat_principal": "AA2610087"
+  }
+ },
+ "bdnb-bg-YAUB-Z7P7-2XQ1": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-YBEL-Q4MX-AZC3": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-YBQ5-DZK6-AMBC": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-YCWV-JJUU-CHZE": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-YDFY-LUZZ-PM2C": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-YFY8-XRG7-16PK": {
+  "immats": [
+   "AB2463065"
+  ],
+  "meta": {
+   "nom": [
+    "LE BELLECOMBE SAINT ANTOINE"
+   ],
+   "nb_log": 72.0,
+   "nb_lot_tot": 263.0,
+   "immat_principal": "AB2463065"
+  }
+ },
+ "bdnb-bg-YPGH-7VAG-YL5C": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-YQDT-7VMV-E5S5": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-YTGZ-FUN1-1XWM": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-YTPF-DAGN-K1LQ": {
+  "immats": [
+   "AC2489979"
+  ],
+  "meta": {
+   "nom": [
+    "LE FELIX FAURE"
+   ],
+   "nb_log": 52.0,
+   "nb_lot_tot": 160.0,
+   "immat_principal": "AC2489979"
+  }
+ },
+ "bdnb-bg-YTPJ-Q2XB-2DEF": {
+  "immats": [
+   "AB9349846",
+   "AJ0217901"
+  ],
+  "meta": {
+   "nom": [
+    "LE GUILLOUD",
+    "SDC 39-43  RUE GUILLOUD"
+   ],
+   "nb_log": 60.0,
+   "nb_lot_tot": 150.0,
+   "immat_principal": "AB9349846"
+  }
+ },
+ "bdnb-bg-YVGR-P2M6-VRZX": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-YWPZ-839V-UUP2": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-YYMX-BWJ9-KVGV": {
+  "immats": [
+   "AC8759631"
+  ],
+  "meta": {
+   "nom": [
+    "RESIDENCE HELIA"
+   ],
+   "nb_log": 25.0,
+   "nb_lot_tot": 77.0,
+   "immat_principal": "AC8759631"
+  }
+ },
+ "bdnb-bg-Z5HW-KGU3-695C": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-Z5KX-EH2V-1YVC": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-Z5KY-TX3N-8L23": {
+  "immats": [
+   "AA5976667"
+  ],
+  "meta": {
+   "nom": [
+    "24 R SAINT PILLIPPE"
+   ],
+   "nb_log": 6.0,
+   "nb_lot_tot": 14.0,
+   "immat_principal": "AA5976667"
+  }
+ },
+ "bdnb-bg-Z75R-1SB6-5E3F": {
+  "immats": [
+   "AA2213171"
+  ],
+  "meta": {
+   "nom": [
+    "LE CEDRE LUMIERE"
+   ],
+   "nb_log": 43.0,
+   "nb_lot_tot": 127.0,
+   "immat_principal": "AA2213171"
+  }
+ },
+ "bdnb-bg-Z7Z8-1XS9-ME8G": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-Z99U-LJD2-7LN5": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-ZCWQ-6JAH-1AH5": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-ZME8-XZ6A-ANC9": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-ZMXP-843Z-XPJZ": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-ZNN2-SAMJ-S68B": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-ZP7Q-5AYC-N9M1": {
+  "immats": [
+   "AA6248330"
+  ],
+  "meta": {
+   "nom": [
+    "47-49 RUE DU DAUPHINE"
+   ],
+   "nb_log": 57.0,
+   "nb_lot_tot": 102.0,
+   "immat_principal": "AA6248330"
+  }
+ },
+ "bdnb-bg-ZRJZ-GNPH-8KBH": {
+  "immats": [
+   "AA4868378"
+  ],
+  "meta": {
+   "nom": [
+    "La Closerie des Tilleuls II"
+   ],
+   "nb_log": 38.02,
+   "nb_lot_tot": 122.56,
+   "immat_principal": "AA4868378"
+  }
+ },
+ "bdnb-bg-ZS47-TD9J-M4FB": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-ZTQ2-TQY1-5MFV": {
+  "immats": [
+   "AJ3763760"
+  ],
+  "meta": {
+   "nom": [
+    "1 RUE DE LA VILLETTE LYON"
+   ],
+   "nb_log": 12.0,
+   "nb_lot_tot": 31.0,
+   "immat_principal": "AJ3763760"
+  }
+ },
+ "bdnb-bg-ZVZ9-29TM-7AF3": {
+  "immats": [
+   "AB9633892"
+  ],
+  "meta": {
+   "nom": [
+    "LES BALCONS SISLEY - MS15884"
+   ],
+   "nb_log": 29.0,
+   "nb_lot_tot": 89.11,
+   "immat_principal": "AB9633892"
+  }
+ },
+ "bdnb-bg-ZW8U-D1HH-GQUS": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-ZZFF-WRFZ-EU8C": {
+  "immats": [],
+  "meta": {}
+ },
+ "bdnb-bg-1LHG-5G1W-QJ9J": {
+  "immats": [
+   "AA2695633"
+  ],
+  "meta": {
+   "nom": [
+    "3 BIS RUE BARA"
+   ],
+   "nb_log": 12.0,
+   "nb_lot_tot": 12.0,
+   "immat_principal": "AA2695633"
+  }
+ },
+ "bdnb-bg-212B-J3A4-DL3G": {
+  "immats": [
+   "AB1910728"
+  ],
+  "meta": {
+   "nom": [
+    "20 TER RUE GUILLOUD"
+   ],
+   "nb_log": 32.0,
+   "nb_lot_tot": 34.61,
+   "immat_principal": "AB1910728"
+  }
+ },
+ "bdnb-bg-4NPE-6GZX-QJ7R": {
+  "immats": [
+   "AB5872536"
+  ],
+  "meta": {
+   "nom": [
+    "SDC LA FERRANDIERE"
+   ],
+   "nb_log": 49.0,
+   "nb_lot_tot": 161.0,
+   "immat_principal": "AB5872536"
+  }
+ },
+ "bdnb-bg-4UPX-Y7FC-4PM3": {
+  "immats": [
+   "AD3875713"
+  ],
+  "meta": {
+   "nom": [
+    "LE GREEN CASCADE"
+   ],
+   "nb_log": 100.0,
+   "nb_lot_tot": 201.0,
+   "immat_principal": "AD3875713"
+  }
+ },
+ "bdnb-bg-9MYW-M2VT-GSQE": {
+  "immats": [
+   "AB6211445"
+  ],
+  "meta": {
+   "nom": [
+    "LE PRIVILEGE MONTBRILLANT A"
+   ],
+   "nb_log": 59.0,
+   "nb_lot_tot": 190.0,
+   "immat_principal": "AB6211445"
+  }
+ },
+ "bdnb-bg-A7ZQ-2FYK-N2Z2": {
+  "immats": [
+   "AA2791176"
+  ],
+  "meta": {
+   "nom": [
+    "SDC CARINAE"
+   ],
+   "nb_log": 26.0,
+   "nb_lot_tot": 76.0,
+   "immat_principal": "AA2791176"
+  }
+ },
+ "bdnb-bg-BRNB-KK97-9XY7": {
+  "immats": [
+   "AB8324360"
+  ],
+  "meta": {
+   "nom": [
+    "5 BIS RUE MEYNIS"
+   ],
+   "nb_log": 9.0,
+   "nb_lot_tot": 9.0,
+   "immat_principal": "AB8324360"
+  }
+ },
+ "bdnb-bg-E3ZW-PDHN-JM11": {
+  "immats": [
+   "AD5288691"
+  ],
+  "meta": {
+   "nom": [
+    "SDC 51BIS AVENUE LACASSAGNE"
+   ],
+   "nb_log": 16.0,
+   "nb_lot_tot": 18.0,
+   "immat_principal": "AD5288691"
+  }
+ },
+ "bdnb-bg-EDS8-9W4U-U4UB": {
+  "immats": [
+   "AA9253212"
+  ],
+  "meta": {
+   "nom": [
+    "5 BIS RUE DE MONTBRILLANT"
+   ],
+   "nb_log": 6.0,
+   "nb_lot_tot": 18.0,
+   "immat_principal": "AA9253212"
+  }
+ },
+ "bdnb-bg-HRU7-Q3L9-HXJT": {
+  "immats": [
+   "AC5819917"
+  ],
+  "meta": {
+   "nom": [
+    "LE ROUGET DE L'ISLE"
+   ],
+   "nb_log": 60.0,
+   "nb_lot_tot": 244.0,
+   "immat_principal": "AC5819917"
+  }
+ },
+ "bdnb-bg-K4P3-8SNY-YGD3": {
+  "immats": [
+   "AC4480687"
+  ],
+  "meta": {
+   "nom": [
+    "FELIX FAURE.165/167."
+   ],
+   "nb_log": 43.0,
+   "nb_lot_tot": 142.0,
+   "immat_principal": "AC4480687"
+  }
+ },
+ "bdnb-bg-M1J3-4PX2-GLHX": {
+  "immats": [
+   "AB7361579"
+  ],
+  "meta": {
+   "nom": [
+    "22-24 RUE MAURICE FLANDIN"
+   ],
+   "nb_log": 45.0,
+   "nb_lot_tot": 104.0,
+   "immat_principal": "AB7361579"
+  }
+ },
+ "bdnb-bg-MXAK-H6X5-46X1": {
+  "immats": [
+   "AC5748488"
+  ],
+  "meta": {
+   "nom": [
+    "SDC LE MILLENIUM"
+   ],
+   "nb_log": 59.0,
+   "nb_lot_tot": 179.0,
+   "immat_principal": "AC5748488"
+  }
+ },
+ "bdnb-bg-U7C2-SHCF-D72B": {
+  "immats": [
+   "AE1699040"
+  ],
+  "meta": {
+   "nom": [
+    "LE CLOS ROUGET DE L'ISLE"
+   ],
+   "nb_log": 5.12,
+   "nb_lot_tot": 27.43,
+   "immat_principal": "AE1699040"
+  }
+ },
+ "bdnb-bg-XFV3-8SMG-PGQD": {
+  "immats": [
+   "AC8951105"
+  ],
+  "meta": {
+   "nom": [
+    "SDC 21 RUE SAINTE ANNE DE BARABAN"
+   ],
+   "nb_log": 26.0,
+   "nb_lot_tot": 78.0,
+   "immat_principal": "AC8951105"
+  }
+ },
+ "bdnb-bg-YAR9-LWKG-N28H": {
+  "immats": [
+   "AB0217901"
+  ],
+  "meta": {
+   "nom": [
+    "2 BIS RUE RIBOUD - MS32814"
+   ],
+   "nb_log": 30.0,
+   "nb_lot_tot": 69.0,
+   "immat_principal": "AB0217901"
+  }
+ }
+}
