@@ -54,11 +54,11 @@
       "part_locataires_moyenne_methode": "ponderee par RP 2022",
       "revenu_median_secteur": 25390,
       "revenu_median_secteur_methode": "mediane des medians IRIS Filosofi 2020 (approx., n=14)",
-      "nb_adresses_croisement": 1239,
+      "nb_adresses_croisement": 1238,
       "_resume_calcule": {
         "_note": "Résumé DÉRIVÉ de renderSecteur() (index.html) — header secteur = Σ IRIS = Σ adresses affichées, parc dédupliqué par batiment_groupe_id. Hors fusions manuelles (localStorage, propres à l'utilisateur). Champs INSEE du tableau iris NON dérivés et NON modifiés.",
         "_source": "node scripts/test_render_secteur.js (vraie renderSecteur)",
-        "_maj": "2026-05-18 — correctif hors-RNC (+30 copros invisibles rattachées)",
+        "_maj": "2026-05-18 — correctif hors-RNC (+30 copros invisibles rattachées) ; + dedup 20|RUE|ST VICTORIEN (hygiene, agregats inchanges, light 1239->1238)",
         "nb_adresses_affichees": 979,
         "nb_adresses_rnc": 527,
         "nb_adresses_bdnb_estime": 353,
@@ -83,7 +83,8 @@
     "_light": "Version allegee : metadata + iris (sans geometrie) + coproprietes/adresses slim. Cles canoniques bis-safe. Adresses completees depuis copro RNC puis BAN. BDNB joint (immat RNC + GPS<50m) : nb_log_bdnb / annee_construction / classe_dpe / type_batiment / type_chauffage. Denominateur du taux = lots RNC prioritaire (BDNB seulement si pas de lots RNC), nb_lots_habitation_rnc conserve. Fusion auto par copro RNC multi-numeros puis par batiment_groupe_id BDNB (parite homogene). Ventes adresse 2021-2025.",
     "_correctif_rnc_immat": "42 adresses injectees via numero_immat_principal (_bdnb_match=immat_fix) dont 4 B3 a cle desambiguisee (cle_adresse copro suffixee #immat).",
     "_correctif_invisible_insecteur": "1 adresses injectées (bgid in-secteur présent au snapshot sous immat jumelle, _bdnb_match=immat_live_fix).",
-    "_correctif_horsrnc": "30 adresses injectees (copros invisibles cat. A/B2 detectees par passe inverse hors-RNC ; lien live many-to-many ; _bdnb_match=immat_horsrnc_fix). Delta parc REEL +149 lgts (22479->22628, verifie via renderSecteur : 0 double-rendu, dedup cle bg: ; l'estimation dry-run +35 sous-evaluait)."
+    "_correctif_horsrnc": "30 adresses injectees (copros invisibles cat. A/B2 detectees par passe inverse hors-RNC ; lien live many-to-many ; _bdnb_match=immat_horsrnc_fix). Delta parc REEL +149 lgts (22479->22628, verifie via renderSecteur : 0 double-rendu, dedup cle bg: ; l'estimation dry-run +35 sous-evaluait).",
+    "_correctif_doublon": "1 ligne adresse a cle exacte dupliquee supprimee (20|RUE|ST VICTORIEN : squelette BAN redondant, adresse=None, sans syndic, meme bgid bdnb-bg-H6H4-644T-6NRG que la ligne riche conservee). HYGIENE DE DONNEE PURE : 0 impact sur les agregats rendus (verifie renderSecteur : fusedSrc est keye par cle, donc le cle duplique etait deja entierement absorbe par la ligne _fusion_auto->16 ; aucun double-comptage n'existait reellement). light 1239->1238 adresses, agregats header inchanges (979 adr / 527 RNC / 22628 lgts / 813,4 v/an)."
   },
   "iris": [
     {
@@ -22550,34 +22551,6 @@
       "_bdnb_match": "num_voie",
       "_fusion_auto": true,
       "_fusion_cible": "38|RUE|BARABAN"
-    },
-    {
-      "cle": "20|RUE|ST VICTORIEN",
-      "adresse": null,
-      "longitude": 4.870514,
-      "latitude": 45.761489,
-      "code_iris": "693830404",
-      "_coord_source": "ban",
-      "dans_majic": false,
-      "sci_proprietaire": "inconnu",
-      "sci_nom": "",
-      "sci_siren": "",
-      "syndic": null,
-      "_syndic_src": null,
-      "ventes_par_an": {
-        "2021": 2,
-        "2022": 2,
-        "2024": 1,
-        "2025": 1
-      },
-      "nb_ventes_total": 6,
-      "nb_log_bdnb": 69,
-      "annee_construction": 1987,
-      "classe_dpe": "C",
-      "type_batiment": "immeuble",
-      "type_chauffage": "electricite",
-      "batiment_groupe_id": "bdnb-bg-H6H4-644T-6NRG",
-      "_bdnb_match": "num_voie"
     },
     {
       "cle": "6|RUE|TURBIL",
