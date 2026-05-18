@@ -1,0 +1,32 @@
+# Déploiement automatique du Worker API (dpe-prospector-api) sur push main,
+# miroir de deploy-pages.yml (qui ne déploie QUE le site statique).
+# Cause racine corrigée : sans ce workflow, worker.js n'était jamais
+# redéployé (config secteur_enabled / sci_enabled jamais effective en prod).
+#
+# Sûreté KV (vérifiée en lecture seule, diagnostic 2026-05-18) :
+#  - `wrangler deploy` déploie le CODE uniquement, ne vide JAMAIS le KV.
+#  - wrangler.toml binde DPE_KV -> 87089aeabed3429a92aa9845c0e1c838,
+#    UNIQUE namespace du compte et celui déjà utilisé par le Worker prod
+#    -> aucun changement de binding, aucune perte de données.
+#  - Mots de passe = secrets Wrangler (PWD_*, JWT_SECRET) : persistent
+#    à travers les deploys (un deploy ne supprime pas les secrets).
+name: 🛠 Deploy Worker API
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    name: Deploy Worker
+    steps:
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
+
+      - name: 🛠 Deploy Cloudflare Worker
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          command: deploy
