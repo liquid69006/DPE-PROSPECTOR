@@ -60,7 +60,8 @@
     "_correctif_dupleix": "Adresse DVF fantome 28 RUE DUPLEIX (BAN '35 rue Dupleix', parcelle DH0005, bati tertiaire) rattachee chirurgicalement a la copro AA9462284 '28 PLACE ET RUE DUPLEIX' @ 28 PLACE DUPLEIX (parcelle DJ0018, bgid XRWJ-DP78-FV1D) : _fusion_auto -> 28|PLACE|DUPLEIX, ses 4 ventes DVF (4 strictes) relocalisees au rendu (28 PLACE : 3 propres + 4 = 7). Source-of-truth = ALIAS_RNC + critere copro_by_cle du tri fusion dans make_light.py. Parc inchange. 2 enregistrements touches.",
     "_correctif_horsperimetre": "Adresses HORS-PERIMETRE retirees par scripts/fix_horsperimetre_mp.py. Critere : voie reellement hors sous-secteur (SEVRES 6e/7e, EGLISE 15e ouest, MAINE 14e/15e -- DVF mal geocode, effondrement BAN sur point intra-polygone) OU No voie >= 9000 (code voie DVF fictif : metro / placeholder). 0 copro RNC impactee (jamais de RNC supprime). Source-of-truth = garde amont VOIES_HORS_SECTEUR + NO_VOIE_FICTIF_MIN dans make_light_motte_picquet.py. [passe] 6 adresses retirees ; ventes hors-secteur 0 brut / 0 strict ; fusion reparee (0 de-fusion, 3 purge sources).",
     "_correctif_acollas": "Copro RNC AB1301613 '4-10, AVENUE EMILE ACOLLAS' (160 lots, ANDRE GRIFFATON) : adresses_complementaires RNC tronquees a '8-10' (open-data 3 slots) -> make_light ne deduisait que {8,10}. 4 & 6 AVENUE EMILE ACOLLAS rattachees chirurgicalement comme secondaires auto de 10 (miroir exact du frere 8) : champs autoritatifs (bgid/nb_log_bdnb/_bdnb_match/usage/ventes) INCHANGES dans la donnee. Au rendu : ventes (4: 8 brut/6 strict ; 6: 4/4) CONSERVEES, relocalisees sous AB1301613, 4/6 sorties des 'hors-RNC actifs'. Parc secteur -34 lgts (29094->29060) : les 16+18 logements BDNB de 4/6 (approx. emprise) etaient un double-comptage des 160 lots RNC de la MEME copro -> subsumes (RNC-prioritaire, PIPELINE 6 ; identique au frere 8 deja subsume). Ventes secteur inchangees (729,0 brut / 549,8 strict). 10._fusion_auto_sources -> ['4','6','8'], label '4/6/8/10 AVENUE EMILE ACOLLAS'. Cote Suffren (67/69/71 -> AD6326128, copro DISTINCTE) deja correct, NON touche. Source-of-truth = FUSION_RNC_EXTRA_NUMS dans make_light_motte_picquet.py. 3 enregistrements touches.",
-    "_correctif_mp_ranges": "4 copros RNC MP dont l'entree mediane/borne n'est pas enumeree au RNC (nom plage / compl. tronquees) mais partage DEJA le bgid de la copro : rattachees chirurgicalement comme secondaires auto (miroir fusion RNC, comme 41 GUILLOUD). PARC STRICTEMENT INCHANGE (bgid deja commun -> deja dedupe aux lots RNC, PIPELINE 6) ; ventes relocalisees au rendu sous l'immat copro ; sortie des hors-RNC actifs ; ventes secteur conservees. Champs autoritatifs (bgid/nb_log_bdnb/_bdnb_match/usage/ventes) INCHANGES, syndic propage _grp. Cas : AC6299499 61|AVENUE|SEGUR->63|AVENUE|SEGUR (v_log 7) ; AF9892365 43|RUE|FONDARY->45|RUE|FONDARY (v_log 7) ; AA1834670 63|RUE|COMMERCE->65|RUE|COMMERCE (v_log 3) ; AF2096014 16|RUE|FREMICOURT->18|RUE|FREMICOURT (v_log 2). Source-of-truth = FUSION_RNC_EXTRA_NUMS dans make_light_motte_picquet.py. 8 enregistrements touches."
+    "_correctif_mp_ranges": "4 copros RNC MP dont l'entree mediane/borne n'est pas enumeree au RNC (nom plage / compl. tronquees) mais partage DEJA le bgid de la copro : rattachees chirurgicalement comme secondaires auto (miroir fusion RNC, comme 41 GUILLOUD). PARC STRICTEMENT INCHANGE (bgid deja commun -> deja dedupe aux lots RNC, PIPELINE 6) ; ventes relocalisees au rendu sous l'immat copro ; sortie des hors-RNC actifs ; ventes secteur conservees. Champs autoritatifs (bgid/nb_log_bdnb/_bdnb_match/usage/ventes) INCHANGES, syndic propage _grp. Cas : AC6299499 61|AVENUE|SEGUR->63|AVENUE|SEGUR (v_log 7) ; AF9892365 43|RUE|FONDARY->45|RUE|FONDARY (v_log 7) ; AA1834670 63|RUE|COMMERCE->65|RUE|COMMERCE (v_log 3) ; AF2096014 16|RUE|FREMICOURT->18|RUE|FREMICOURT (v_log 2). Source-of-truth = FUSION_RNC_EXTRA_NUMS dans make_light_motte_picquet.py. 8 enregistrements touches.",
+    "_correctif_mp_ranges_b": "2 copros RNC MP (plage explicite) dont une entree non enumeree au RNC : rattachees chirurgicalement comme secondaires auto (miroir fusion RNC). PARC MESURE INCHANGE (29060->29060) : bgid du src distinct du principal mais CO-OCCUPE par une autre copro RNC non fusionnee (38->bgid co-occupe par 37/AD0544940 ; 135->co-occupe par 134/AD5373162) qui maintient le bucket parc bg:bgid -> effet strictement neutre (ni dedup ni perte). Champs autoritatifs (bgid/nb_log_bdnb/_bdnb_match/usage/ventes) INCHANGES, syndic aligne _grp (135 THEATRE : syndic divergent = artefact BDNB). Ventes relocalisees au rendu sous l'immat copro, sortie des hors-RNC actifs, ventes secteur conservees. B1 AD5922125 '26/28 GARIBALDI' VOLONTAIREMENT EXCLU (copro 3 lots, bgid 26 sans co-occupant -> fix lossy). Cas : AB0577296 38|RUE|FEDERATION->32|RUE|FEDERATION (parc-neutre via 37|RUE|FEDERATION, v_log 3) ; AA3511300 135|RUE|THEATRE->133|RUE|THEATRE (parc-neutre via 134|RUE|THEATRE, v_log 1). Source-of-truth = FUSION_RNC_EXTRA_NUMS dans make_light_motte_picquet.py. 4 enregistrements touches."
   },
   "iris": [
     {
@@ -25037,10 +25038,11 @@
       "type_chauffage": "reseau de chaleur",
       "batiment_groupe_id": "bdnb-bg-H7TH-3T93-SPXK",
       "_bdnb_match": "immat",
-      "_fusion_auto_label": "26/32/34 RUE FEDERATION",
+      "_fusion_auto_label": "26/32/34/38 RUE FEDERATION",
       "_fusion_auto_sources": [
         "26|RUE|FEDERATION",
-        "34|RUE|FEDERATION"
+        "34|RUE|FEDERATION",
+        "38|RUE|FEDERATION"
       ],
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Tertiaire",
@@ -25747,7 +25749,11 @@
       "_bdnb_match": "immat",
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": [
+        "135|RUE|THEATRE"
+      ],
+      "_fusion_auto_label": "133/135 RUE THEATRE"
     },
     {
       "cle": "14|RUE|ROSA BONHEUR",
@@ -31100,8 +31106,8 @@
       "sci_proprietaire": "oui",
       "sci_nom": "SCI KABUKI",
       "sci_siren": "823929286",
-      "syndic": "GESTION ET TRANSACTIONS DE FRANCE",
-      "_syndic_src": "cadastre",
+      "syndic": "CABINET PIERRE BONNEFOI SA",
+      "_syndic_src": "rnic_live_grp",
       "numero_immatriculation": null,
       "nb_lots_habitation": null,
       "ventes_par_an": {
@@ -31129,7 +31135,9 @@
       "_bdnb_match": "num_voie",
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "133|RUE|THEATRE"
     },
     {
       "cle": "137|BOULEVARD|GRENELLE",
@@ -37052,8 +37060,8 @@
       "sci_proprietaire": "oui",
       "sci_nom": "SCI FOCH EIFFEL",
       "sci_siren": "752611350",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "L'IMMOBILIERE PARISIENNE",
+      "_syndic_src": "rnic_live_grp",
       "numero_immatriculation": null,
       "nb_lots_habitation": null,
       "ventes_par_an": {
@@ -37079,7 +37087,9 @@
       "_bdnb_match": "num_voie",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "32|RUE|FEDERATION"
     },
     {
       "cle": "4|RUE|GRAMME",
