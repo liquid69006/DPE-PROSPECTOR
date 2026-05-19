@@ -194,13 +194,43 @@ function conseillerLoginFor(agenceId, prenom) {
   return slug ? `${slug}.${shortName}` : null;
 }
 
+// Suffixe d'un login conseiller → agence réelle (même résolution que /login).
+//  "marie.motte"   → "motte-picquet"
+//  "joel.pernety"  → "pernety"
+//  "robin.dauphine"→ "dauphine-lacassagne"
+function agenceFromLogin(login) {
+  if (!login || !login.includes(".")) return null;
+  const suffix = login.slice(login.lastIndexOf(".") + 1);
+  return IDENTIFIANTS[suffix] || (AGENCES_CONFIG[suffix] ? suffix : null);
+}
+
+// Pour un compte composite (lopez/bagot), déterminer la sous-agence réelle
+// d'un conseiller. Pour un compte simple, renvoie agenceId tel quel.
+//  1) hint explicite (body.agence) s'il appartient aux sous-agences
+//  2) sinon : scan des listes conseillers:<sous-agence> par prénom
+//  3) sinon : null → l'appelant renvoie une erreur 400 propre
+async function resolveConseillerAgence(env, agenceId, cfg, prenom, hint) {
+  const subs = Array.isArray(cfg.dpe_agences) ? cfg.dpe_agences : null;
+  if (!subs) return agenceId;                       // compte simple
+  if (hint && subs.includes(hint)) return hint;     // agence explicite
+  const norm = s => (s || "").trim().toLowerCase();
+  for (const ag of subs) {
+    const raw = await env.DPE_KV.get(`conseillers:${ag}`);
+    let liste;
+    try { liste = raw ? JSON.parse(raw) : (AGENCES_CONFIG[ag]?.conseillers_defaut || []); }
+    catch { liste = AGENCES_CONFIG[ag]?.conseillers_defaut || []; }
+    if (Array.isArray(liste) && liste.some(c => norm(c) === norm(prenom))) return ag;
+  }
+  return null;
+}
+
 // ══════════════════════════════════════════════════════
 //  HELPERS RÉPONSE
 // ══════════════════════════════════════════════════════
 
 const CORS = {
   "Access-Control-Allow-Origin":  "*",
-  "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+  "Access-Control-Allow-Methods": "GET, POST, DELETE, OPTIONS",
   "Access-Control-Allow-Headers": "Content-Type, Authorization",
 };
 
@@ -593,7 +623,15 @@ async function handleRequest(request, env) {
       const prenom = (body.prenom || "").trim();
       if (!prenom) return err("prenom requis", 400);
 
-      const login = conseillerLoginFor(agenceId, prenom);
+      // Compte composite (lopez/bagot) : le conseiller appartient à une
+      // sous-agence réelle (motte-picquet/pernety, houlgate/villers), JAMAIS
+      // au compte composite lui-même. C'est cette agence qui forme le login.
+      const realAgence = await resolveConseillerAgence(env, agenceId, cfg, prenom, body.agence);
+      if (!realAgence) {
+        return err("Agence du conseiller introuvable — ajoutez-le à la liste avant de créer la session", 400);
+      }
+
+      const login = conseillerLoginFor(realAgence, prenom);
       if (!login) return err("prenom invalide", 400);
 
       // Mot de passe : 8 caractères alphanumériques (alphabet sans ambiguïté)
@@ -602,14 +640,22 @@ async function handleRequest(request, env) {
       let password = "";
       for (let i = 0; i < 8; i++) password += ALPHA[rnd[i] % ALPHA.length];
 
-      await env.DPE_KV.put(`pwd:${login}`, await hashPassword(password));
-      await env.DPE_KV.put(`role:${agenceId}:${login}`, "conseiller");
+      try {
+        await env.DPE_KV.put(`pwd:${login}`, await hashPassword(password));
+        await env.DPE_KV.put(`role:${realAgence}:${login}`, "conseiller");
+      } catch (e) {
+        return err("Erreur création session (KV) : " + e.message, 500);
+      }
 
-      const htmlMail = `<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"></head>
+      // L'email est best-effort : un échec Brevo ne doit pas faire perdre
+      // les identifiants (le dashboard les affiche depuis la réponse JSON).
+      try {
+        const realCfg  = AGENCES_CONFIG[realAgence] || cfg;
+        const htmlMail = `<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"></head>
 <body style="font-family:sans-serif;background:#f1f5f9;padding:32px;">
 <div style="max-width:480px;margin:0 auto;background:#fff;border-radius:12px;padding:40px;box-shadow:0 4px 24px rgba(0,0,0,0.08);">
   <div style="font-size:24px;font-weight:700;margin-bottom:16px;">Nouveau conseiller — ${prenom}</div>
-  <p style="color:#374151;line-height:1.6;">Une session a été créée pour <strong>${prenom}</strong> (${cfg.nom}).</p>
+  <p style="color:#374151;line-height:1.6;">Une session a été créée pour <strong>${prenom}</strong> (${realCfg.nom}).</p>
   <p style="color:#374151;line-height:1.6;">
     Identifiant : <strong>${login}</strong><br>
     Mot de passe : <strong>${password}</strong>
@@ -619,9 +665,10 @@ async function handleRequest(request, env) {
     après la première connexion.
   </p>
 </div></body></html>`;
-      await sendEmail(env, cfg.email, `Nouveau conseiller — ${prenom}`, htmlMail);
+        await sendEmail(env, realCfg.email || cfg.email, `Nouveau conseiller — ${prenom}`, htmlMail);
+      } catch (e) { /* email non critique */ }
 
-      return ok({ ok: true, login, password });
+      return ok({ ok: true, login, password, agence: realAgence });
     }
 
     // ── GET /conseillers/:agence/sessions ── état des sessions conseillers ──
@@ -635,35 +682,37 @@ async function handleRequest(request, env) {
       const cfg = AGENCES_CONFIG[agenceId];
       if (!cfg) return err("Agence inconnue", 404);
 
-      // Liste des prénoms de conseillers (même source que GET /conseillers/:agence)
-      let noms;
-      if (agenceId === "lopez") {
-        const merged = new Set();
-        for (const ag of (AGENCES_CONFIG["lopez"].dpe_agences || [])) {
+      // Liste {nom, agence} des conseillers. Pour un compte composite, chaque
+      // conseiller porte sa sous-agence réelle (motte-picquet/pernety…) ;
+      // c'est elle qui forme le login, pas le compte composite.
+      const subs = Array.isArray(cfg.dpe_agences) ? cfg.dpe_agences : null;
+      const entries = [];
+      if (subs) {
+        const seen = new Set();
+        for (const ag of subs) {
           const raw = await env.DPE_KV.get(`conseillers:${ag}`);
-          const liste = raw ? JSON.parse(raw) : (AGENCES_CONFIG[ag]?.conseillers_defaut || []);
-          liste.filter(c => c && c !== "À attribuer").forEach(c => merged.add(c));
+          let liste;
+          try { liste = raw ? JSON.parse(raw) : (AGENCES_CONFIG[ag]?.conseillers_defaut || []); }
+          catch { liste = AGENCES_CONFIG[ag]?.conseillers_defaut || []; }
+          (Array.isArray(liste) ? liste : [])
+            .filter(c => c && c !== "À attribuer")
+            .forEach(c => { if (!seen.has(c)) { seen.add(c); entries.push({ nom: c, agence: ag }); } });
         }
-        noms = [...merged];
-      } else if (agenceId === "bagot") {
-        const merged = new Set();
-        for (const ag of (AGENCES_CONFIG["bagot"].dpe_agences || [])) {
-          const raw = await env.DPE_KV.get(`conseillers:${ag}`);
-          const liste = raw ? JSON.parse(raw) : (AGENCES_CONFIG[ag]?.conseillers_defaut || []);
-          liste.filter(c => c && c !== "À attribuer").forEach(c => merged.add(c));
-        }
-        noms = [...merged];
       } else {
         const raw = await env.DPE_KV.get(`conseillers:${agenceId}`);
-        const liste = raw ? JSON.parse(raw) : (cfg.conseillers_defaut || []);
-        noms = liste.filter(c => c && c !== "À attribuer");
+        let liste;
+        try { liste = raw ? JSON.parse(raw) : (cfg.conseillers_defaut || []); }
+        catch { liste = cfg.conseillers_defaut || []; }
+        (Array.isArray(liste) ? liste : [])
+          .filter(c => c && c !== "À attribuer")
+          .forEach(c => entries.push({ nom: c, agence: agenceId }));
       }
 
       const sessions = {};
-      for (const nom of noms) {
-        const login = conseillerLoginFor(agenceId, nom);
+      for (const { nom, agence } of entries) {
+        const login = conseillerLoginFor(agence, nom);
         if (!login) continue;
-        const v = await env.DPE_KV.get(`role:${agenceId}:${login}`);
+        const v = await env.DPE_KV.get(`role:${agence}:${login}`);
         sessions[login] = v === "conseiller";
       }
       return ok({ sessions });
@@ -681,19 +730,37 @@ async function handleRequest(request, env) {
       const cfg = AGENCES_CONFIG[agenceId];
       if (!cfg) return err("Agence inconnue", 404);
 
-      await env.DPE_KV.delete(`pwd:${login}`);
-      await env.DPE_KV.delete(`role:${agenceId}:${login}`);
+      // L'agence réelle du conseiller est portée par le suffixe du login
+      // (ex. "marie.motte" → motte-picquet). Pour un compte composite, ce
+      // n'est PAS agenceId (= "lopez") : viser la bonne clé role:.
+      const roleAgence = agenceFromLogin(login) || agenceId;
+      const realCfg    = AGENCES_CONFIG[roleAgence] || cfg;
 
-      const htmlMail = `<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"></head>
+      try {
+        await env.DPE_KV.delete(`pwd:${login}`);
+        await env.DPE_KV.delete(`role:${roleAgence}:${login}`);
+        // Compat : purge aussi une éventuelle ancienne clé mal formée
+        // (role:lopez:nom.lopez créée avant le correctif).
+        if (roleAgence !== agenceId) {
+          await env.DPE_KV.delete(`role:${agenceId}:${login}`);
+        }
+      } catch (e) {
+        return err("Erreur suppression session (KV) : " + e.message, 500);
+      }
+
+      // Email best-effort : son échec ne doit pas faire échouer la suppression.
+      try {
+        const htmlMail = `<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"></head>
 <body style="font-family:sans-serif;background:#f1f5f9;padding:32px;">
 <div style="max-width:480px;margin:0 auto;background:#fff;border-radius:12px;padding:40px;box-shadow:0 4px 24px rgba(0,0,0,0.08);">
   <div style="font-size:24px;font-weight:700;margin-bottom:16px;">Session supprimée — ${login}</div>
   <p style="color:#374151;line-height:1.6;">
-    La session conseiller <strong>${login}</strong> (${cfg.nom}) a été supprimée.
+    La session conseiller <strong>${login}</strong> (${realCfg.nom}) a été supprimée.
     Cet identifiant ne permet plus de se connecter.
   </p>
 </div></body></html>`;
-      await sendEmail(env, cfg.email, `Session supprimée — ${login}`, htmlMail);
+        await sendEmail(env, realCfg.email || cfg.email, `Session supprimée — ${login}`, htmlMail);
+      } catch (e) { /* email non critique */ }
 
       return ok({ ok: true });
     }

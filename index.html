@@ -1336,7 +1336,7 @@ function renderConseillerList() {
     }
     let sessionBtn = '';
     if (userRole === 'patron' && !fixed) {
-      const login = conseillerLogin(c.nom);
+      const login = conseillerLogin(c.nom, c.agence);
       sessionBtn = conseillerSessions[login]
         ? `<button onclick="supprimerSessionConseiller(${i})" title="Supprimer la session de connexion (${login})" style="background:none;border:1px solid var(--border);color:var(--text2);border-radius:6px;padding:4px 9px;font-size:11px;cursor:pointer;">✖ Supprimer</button>`
         : `<button onclick="creerSessionConseiller(${i})" title="Créer une session de connexion" style="background:#16a34a;color:#fff;border:none;border-radius:6px;padding:4px 9px;font-size:11px;font-weight:600;cursor:pointer;">🔑 Créer session</button>`;
@@ -1428,11 +1428,22 @@ function conseillerNomByIndex(i) {
   return (isLopez || isBagot) ? (item && item.nom) : item;
 }
 // Doit produire EXACTEMENT le même login que le Worker (slug sans accents).
-function conseillerLogin(nom) {
-  const short = (agenceId || '').split('-')[0];
+// Pour un compte composite (lopez/bagot), le login dérive de la sous-agence
+// réelle du conseiller (motte-picquet/pernety…), pas du compte composite.
+function conseillerLogin(nom, agence) {
+  const base  = agence || agenceId || '';
+  const short = base.split('-')[0];
   const slug = (nom || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'')
     .replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
   return slug + '.' + short;
+}
+// Renvoie la sous-agence d'un conseiller par index (null si compte simple).
+function conseillerAgenceByIndex(i) {
+  const isLopez = agenceId === 'lopez';
+  const isBagot = agenceId === 'bagot';
+  if (!(isLopez || isBagot)) return null;
+  const item = conseillersDraftDetail[i];
+  return (item && item.agence) || null;
 }
 
 // Récupère l'état des sessions (login → bool) puis re-render la liste.
@@ -1455,12 +1466,13 @@ async function loadConseillerSessions() {
 async function creerSessionConseiller(i) {
   const nom = conseillerNomByIndex(i);
   if (!nom || nom === 'À attribuer') return;
+  const agence = conseillerAgenceByIndex(i);
   if (!confirm(`Créer une session de connexion pour « ${nom} » ?`)) return;
   try {
     const resp = await fetch(`${API_URL}/conseillers/${agenceId}/create`, {
       method: 'POST',
       headers: { 'Authorization': `Bearer ${authToken}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ prenom: nom }),
+      body: JSON.stringify(agence ? { prenom: nom, agence } : { prenom: nom }),
     });
     const data = await resp.json().catch(() => ({}));
     if (!resp.ok) { showToast('⚠️ ' + (data.error || 'Erreur création session'), true); return; }
@@ -1474,7 +1486,7 @@ async function creerSessionConseiller(i) {
 async function supprimerSessionConseiller(i) {
   const nom = conseillerNomByIndex(i);
   if (!nom || nom === 'À attribuer') return;
-  const login = conseillerLogin(nom);
+  const login = conseillerLogin(nom, conseillerAgenceByIndex(i));
   if (!confirm(`Supprimer la session « ${login} » ?\nLe conseiller ne pourra plus se connecter.`)) return;
   try {
     const resp = await fetch(`${API_URL}/conseillers/${agenceId}/${encodeURIComponent(login)}`, {
