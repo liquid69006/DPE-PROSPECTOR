@@ -69,7 +69,14 @@ Tables curées (style projet, documentées en commentaire) :
 
 - `ALIAS_RNC = {cle_DVF: cle_adresse_copro}` — adresse DVF fantôme
   → copro réelle (ex. `10|RUE|MEYNIS`→`10|PASSAGE|MEYNIS`,
-  `28|RUE|DUPLEIX`→`28|PLACE|DUPLEIX`).
+  `28|RUE|DUPLEIX`→`28|PLACE|DUPLEIX`). Aussi **multi-voie** :
+  rattache un grand ensemble RNC éclaté sur plusieurs voies à son
+  anchor copro quand bgid multiples (pas de bgid commun → ni
+  fusion-bgid ni `FUSION_RNC_EXTRA_NUMS`). Ex. **ARMONIAL I**
+  `AA0646265` (592 lots, ancre `16|BOULEVARD|GARIBALDI`, `nb_compl=14`
+  tronqué) : 15 cles Carrier-Belleuse/Cèpre/Miollis → l'anchor
+  (`fix_armonial`). Parc : co-occupés neutres, bgid intégralement
+  absorbés subsumés par les lots RNC (dédup §6, comme Acollas).
 - `COPRO_FORCE = {cle: immat}` — désambiguïse 2 copros même clé.
 - (DL+MP) `FUSION_RNC_EXTRA_NUMS = {immat: {nums}}` — copros dont le
   RNC **tronque l'énumération des entrées** : nom portant une plage
@@ -125,14 +132,15 @@ Tables curées (style projet, documentées en commentaire) :
 `fix_horsperimetre_mp` (_correctif_horsperimetre) →
 `fix_acollas_range` (_correctif_acollas) →
 `fix_mp_ranges_pn` (_correctif_mp_ranges) →
-`fix_mp_ranges_b` (_correctif_mp_ranges_b)
+`fix_mp_ranges_b` (_correctif_mp_ranges_b) →
+`fix_armonial` (_correctif_armonial)
 
 Backups `.bak` correspondants : `.bak` (pré-1er correctif),
 `.pretauxlog.bak`, `.prehorsrnc.bak`, `.predoublon.bak`,
 `.preusage.bak`, `.premeynis.bak`, `.predupleix.bak`,
 `.prehorsperim.bak`, `.preacollas.bak`, `.preguilloud.bak`,
-`.prempranges.bak`, `.prempb.bak` (gitignorés, locaux).
-`SECTEUR=<sec>` pilote les scripts génériques.
+`.prempranges.bak`, `.prempb.bak`, `.prearmonial.bak` (gitignorés,
+locaux). `SECTEUR=<sec>` pilote les scripts génériques.
 
 ## 6. Règles de calcul (renderSecteur, index.html)
 
