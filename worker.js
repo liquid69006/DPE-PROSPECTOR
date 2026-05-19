@@ -132,6 +132,24 @@ const TOKEN_TTL_MS   = 24 * 60 * 60 * 1000;      // 24h
 const RESET_TTL_MS   =      60 * 60 * 1000;       // 1h
 
 // ══════════════════════════════════════════════════════
+//  DESTINATAIRES NOTIF. IDENTIFIANTS CONSEILLERS
+//  Clé = agence RÉELLE du conseiller créé (résolue côté serveur),
+//  PAS la session connectée. Composite lopez → motte-picquet|pernety.
+//  Hors liste → CONSEILLER_NOTIFY_FALLBACK.
+// ══════════════════════════════════════════════════════
+
+const CONSEILLER_NOTIFY_EMAIL = {
+  "dauphine-lacassagne": "ybufferne@century21.fr",
+  "bufferne":            "ybufferne@century21.fr",
+  "motte-picquet":       "laurent.lopez@century21.fr",
+  "lopez":               "laurent.lopez@century21.fr",
+  "pernety":             "laurent.lopez@century21.fr",
+  "houlgate":            "marine-bagot@century21.fr",
+  "villers":             "marine-bagot@century21.fr",
+};
+const CONSEILLER_NOTIFY_FALLBACK = "ybufferne@century21.fr";
+
+// ══════════════════════════════════════════════════════
 //  JWT (HMAC-SHA256 Web Crypto)
 // ══════════════════════════════════════════════════════
 
@@ -647,11 +665,14 @@ async function handleRequest(request, env) {
         return err("Erreur création session (KV) : " + e.message, 500);
       }
 
-      // L'email est best-effort : un échec Brevo ne doit pas faire perdre
-      // les identifiants (le dashboard les affiche depuis la réponse JSON).
-      try {
-        const realCfg  = AGENCES_CONFIG[realAgence] || cfg;
-        const htmlMail = `<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"></head>
+      // ── Notification e-mail (login + password) ───────────────────────
+      //  Destinataire = agence RÉELLE du conseiller (realAgence), JAMAIS la
+      //  session connectée — important pour lopez (→ motte-picquet/pernety).
+      //  Fiable : tout échec Brevo est loggé, jamais ignoré en silence ;
+      //  les identifiants restent renvoyés en JSON (pas de perte d'accès).
+      const realCfg  = AGENCES_CONFIG[realAgence] || cfg;
+      const notifyTo = CONSEILLER_NOTIFY_EMAIL[realAgence] || CONSEILLER_NOTIFY_FALLBACK;
+      const htmlMail = `<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"></head>
 <body style="font-family:sans-serif;background:#f1f5f9;padding:32px;">
 <div style="max-width:480px;margin:0 auto;background:#fff;border-radius:12px;padding:40px;box-shadow:0 4px 24px rgba(0,0,0,0.08);">
   <div style="font-size:24px;font-weight:700;margin-bottom:16px;">Nouveau conseiller — ${prenom}</div>
@@ -665,10 +686,18 @@ async function handleRequest(request, env) {
     après la première connexion.
   </p>
 </div></body></html>`;
-        await sendEmail(env, realCfg.email || cfg.email, `Nouveau conseiller — ${prenom}`, htmlMail);
-      } catch (e) { /* email non critique */ }
 
-      return ok({ ok: true, login, password, agence: realAgence });
+      let emailSent = false;
+      try {
+        emailSent = await sendEmail(env, notifyTo, `Nouveau conseiller — ${prenom}`, htmlMail);
+        if (!emailSent) {
+          console.error(`[create] Échec Brevo identifiants conseiller ${login} → ${notifyTo} (agence ${realAgence})`);
+        }
+      } catch (e) {
+        console.error(`[create] Exception Brevo identifiants conseiller ${login} → ${notifyTo} : ${e.message}`);
+      }
+
+      return ok({ ok: true, login, password, agence: realAgence, emailSent, notifyTo });
     }
 
     // ── GET /conseillers/:agence/sessions ── état des sessions conseillers ──
