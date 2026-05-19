@@ -201,6 +201,80 @@ modif comportementale de `renderSecteur()` ⇒ resync des plages SRC
   compté résidentiel (approx. documentée, volume marginal ;
   alternative = référentiel RPLS externe).
 
+## 9. Workflow d'affinage post-génération
+
+Boucle itérative d'**amélioration de la couverture RNC** appliquée
+*par-dessus* le light généré (jamais de regen, cf. §3). Chaque passe
+réduit le résiduel hors-RNC à ventes DVF en relocalisant des
+adresses fantômes vers leur copropriété réelle. Ordre invariant :
+
+1. **Cibler.** Extraire les adresses *Hors-RNC actives* = prédicat
+   exact de `renderSecteur` (`!fusedSrc` & clé ∉ `cle_adresse`
+   copro & `!numero_immatriculation` & `nb_ventes_logement>0`).
+   C'est le seul périmètre pertinent (le filtre brut `!immat &
+   vlog>0` sur-compte les adresses déjà appariées/fusionnées).
+
+2. **Résoudre la copro** par preuve, dans l'ordre de fiabilité
+   décroissante (`scripts/audit_horsrnc_dvf.py`) :
+   a) BDNB `rel_batiment_groupe_rnc` (cache `_horsrnc_bdnb_live*`)
+      → immat ∈ `coproprietes[]` ;
+   b) variante orthographique **exacte** de `cle_adresse`
+      (AIRES↔AYRES, GAL↔GENERAL, ST↔SAINT, particules) ;
+   c) proximité GPS < 30 m + même voie ;
+   d) RNC open data live (tabular-api RNIC `3ea8e2c3…`,
+      `code_postal_adresse` + `adresse_reference`/compl.).
+
+3. **Stratifier par sûreté-parc (RÈGLE CARDINALE).** Une cible
+   n'est rattachable **en sécurité** que si l'identité est *forte* :
+   immat BDNB-rel, OU ortho exacte, OU **même `batiment_groupe_id`**
+   que l'ancre (= même bâti → parc-neutre). La **proximité GPS
+   seule est destructrice** : elle apparie des bâtiments DISTINCTS
+   voisins → on retire leur `nb_log_bdnb` réel sans que la copro le
+   gagne (mesuré : −514 DL / −423 MP en lot complet). Toujours
+   **modéliser le parc par strate** (`parc_model` répliquant §6)
+   *avant* de conclure. `strong` = a/b/`same_bgid` ; `weak` =
+   GPS/fuzzy/live → **piste prospection manuelle, jamais en masse**.
+
+4. **Dry-run + validation.** Script `fix_*` dédié, dry-run par
+   défaut (contrat §2), table complète (cible→ancre+immat+syndic+
+   lots+ventes), **gardes anti-collision** (ancre présente & non
+   fusionnée & ≠ cible ; aucune adresse fusionnée *dans* la cible ;
+   ABORT si modèle parc ≠ attendu). Présenter le bilan, attendre le
+   feu vert utilisateur (jamais d'`--apply` non validé).
+
+5. **Mécanismes** (cf. §4) : `ALIAS_RNC même bgid` (parc-neutre,
+   lot bulk-sûr) ; `ALIAS_RNC miroir bgid` (dédup BDNB, ≈ retrait
+   d'un double-comptage) ; `RE-POINT` (ancre copro enterrée dans un
+   fantôme principal-de-fusion → on inverse ; cas par cas) ;
+   `FUSION_RNC_EXTRA_NUMS` (énumération RNC tronquée). Les `weak`
+   et `RE-POINT` s'instruisent **individuellement**, pas en lot.
+
+6. **Appliquer (additif) + prouver.** `--apply` (backup `.bak`
+   dédié, note `_correctif_*`, source-of-truth dans `make_light*`
+   §4) puis **non-régression obligatoire** `test_render_secteur.js`
+   (2 secteurs, exit 0). Vérifs fortes attendues : parc == attendu
+   (souvent strictement neutre), Σ`nb_ventes_total`/`_logement`
+   **inchangées** (relocalisation, pas création), 0 double-rendu,
+   `secL == réplique exacte`.
+
+7. **Rebaser le harnais si besoin (§7).** Un correctif de
+   **fusion** casse les baselines qui supposent que les correctifs
+   n'*ajoutent* que des lignes : il **réduit** le nombre de lignes
+   rendues (relocalisation). Rebaser les assertions hardcodées
+   obsolètes (ex. « ligne origine X rendue » → « rendue **ou**
+   fusionnée » ; « adresses monotones » → « parc monotone ») **en
+   conservant les invariants réels** (parc/ventes conservés,
+   `secL` exact) et **en documentant le pourquoi** (date + cause).
+
+8. **Tracer.** PIPELINE §5 (chaîne + `.bak`), `metadata.
+   _correctif_*`, mémoire projet (faits durables + gotchas, pas ce
+   que le dépôt enregistre déjà). Commit (et push si demandé).
+
+> Résiduel assumé après une passe : `weak` = leads manuels ;
+> `RE-POINT` non instruits ; **B** = monopropriétés / copros non
+> immatriculées confirmées (BDNB ∅, ortho ∅, GPS ∅, RNC live ∅) —
+> structurellement hors-RNC, **rien à faire**.
+
 ---
 *Doc de référence — tenir à jour à chaque nouveau correctif
 (ajouter à §5, créer le `.bak`, la note `_correctif_*`, vérifier
