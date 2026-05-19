@@ -24,12 +24,16 @@ const slice = (a, b) => HTML.slice(a - 1, b).join("\n"); // lignes 1-based inclu
 // Blocs sources de index.html (numeros de ligne verifies — A REVERIFIER
 // apres toute edition d'index.html : ces plages sont codees en dur et un
 // decalage decoupe renderSecteur au mauvais endroit -> SyntaxError).
+// RESYNC 2026-05-19 : index.html avait ete edite (ajout sctClassAnnuel,
+// decalage ~+12 lignes) -> les anciennes plages (2046.. .) decoupaient
+// mid-statement (Unexpected token '.' sur window.secteurSetAssign).
+// Plages recalees sur la structure courante (3808 lignes).
 const SRC = [
-  slice(2046, 2050),   // ROT_COLOR + TYPE_OPTS
-  slice(2072, 2074),   // esc
-  slice(2076, 2080),   // secteurNorm
-  slice(2094, 2134),   // sctTauxAnnuel..sctBadge (helpers de rendu)
-  slice(2136, 2469),   // renderSecteur (parc RNC + hors-RNC résid. BDNB / strict / hr-actif / sctQ)
+  slice(2058, 2062),   // ROT_COLOR + TYPE_OPTS
+  slice(2084, 2086),   // esc
+  slice(2088, 2092),   // secteurNorm
+  slice(2105, 2146),   // sctTauxAnnuel..sctBadge (helpers de rendu, incl. sctClassAnnuel)
+  slice(2148, 2481),   // renderSecteur (parc RNC + hors-RNC résid. BDNB / strict / hr-actif / sctQ)
 ].join("\n\n");
 
 function mkEl() {

@@ -133,14 +133,16 @@ Tables curées (style projet, documentées en commentaire) :
 `fix_acollas_range` (_correctif_acollas) →
 `fix_mp_ranges_pn` (_correctif_mp_ranges) →
 `fix_mp_ranges_b` (_correctif_mp_ranges_b) →
-`fix_armonial` (_correctif_armonial)
+`fix_armonial` (_correctif_armonial) →
+`fix_mp_cibles_horsrnc` (_correctif_cibles_horsrnc)
 
 Backups `.bak` correspondants : `.bak` (pré-1er correctif),
 `.pretauxlog.bak`, `.prehorsrnc.bak`, `.predoublon.bak`,
 `.preusage.bak`, `.premeynis.bak`, `.predupleix.bak`,
 `.prehorsperim.bak`, `.preacollas.bak`, `.preguilloud.bak`,
-`.prempranges.bak`, `.prempb.bak`, `.prearmonial.bak` (gitignorés,
-locaux). `SECTEUR=<sec>` pilote les scripts génériques.
+`.prempranges.bak`, `.prempb.bak`, `.prearmonial.bak`,
+`.precibleshr.bak` (gitignorés, locaux). `SECTEUR=<sec>` pilote
+les scripts génériques.
 
 ## 6. Règles de calcul (renderSecteur, index.html)
 
