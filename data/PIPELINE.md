@@ -136,14 +136,16 @@ Tables curées (style projet, documentées en commentaire) :
 `fix_mp_ranges_b` (_correctif_mp_ranges_b) →
 `fix_armonial` (_correctif_armonial) →
 `fix_mp_cibles_horsrnc` (_correctif_cibles_horsrnc) →
-`fix_alias_rnc_meme_bgid` (_correctif_alias_bgid)
+`fix_alias_rnc_meme_bgid` (_correctif_alias_bgid) →
+`fix_mp_voie_abrev` (_correctif_voie_abrev)
 
 Backups `.bak` correspondants : `.bak` (pré-1er correctif),
 `.pretauxlog.bak`, `.prehorsrnc.bak`, `.predoublon.bak`,
 `.preusage.bak`, `.premeynis.bak`, `.predupleix.bak`,
 `.prehorsperim.bak`, `.preacollas.bak`, `.preguilloud.bak`,
 `.prempranges.bak`, `.prempb.bak`, `.prearmonial.bak`,
-`.precibleshr.bak`, `.prealiasbg.bak` (gitignorés, locaux).
+`.precibleshr.bak`, `.prealiasbg.bak`, `.prevoieabrev.bak`
+(gitignorés, locaux).
 `SECTEUR=<sec>` pilote les scripts génériques.
 
 `fix_alias_rnc_meme_bgid` (lot ALIAS_RNC même-bgid, parc-neutre) :
@@ -159,6 +161,24 @@ l'origine *rendue OU fusionnée*) ; l'invariant « adresses rendues
 monotones » devient « parc monotone » car une fusion ALIAS
 **réduit** le nombre de lignes rendues (relocalisation, parc/ventes
 conservés).
+
+`fix_mp_voie_abrev` (_correctif_voie_abrev, MP, 2026-05-19) : 5
+adresses DVF dont la **clé abrège la voie** (`CAPT`→`CAPITAINE`,
+`GAL`→`GENERAL`) — make_light apparie la copro par `cle_adresse`
+exacte / ALIAS_RNC **sans normalisation**, d'où échec d'immat et
+chute au palier GPS aveugle. Copro prouvée immatriculée & présente
+au snapshot → ALIAS_RNC **miroir bgid** (chemin immat, cf.
+`fix_dupleix`/A2). **+4 dépendances** : un fantôme auto-fusionné
+*dans* 4 des 5 cibles est re-pointé **individuellement** vers SA
+copro (PIPELINE §9.5 ; `1|RUE|CAPT SCOTT`, 8 v_log → copro propre
+`AF6894638`, **pas** `3 CAPITAINE`). Parc modèle `29004→28973`
+(**−31** = retrait de 2 doublons BDNB `2C94` 15 / `8J73` 16, la
+copro reste comptée via ses lots RNC à l'ancre — **aucune perte**).
+Source : `scripts/diag_orphelines_bdnb.py` +
+`scripts/fix_mp_voie_abrev.py` (`data/audit_orphelines_bdnb_motte.md`,
+`data/dryrun_mp_voie_abrev.md`). `test_render_secteur.js` : **pas de
+rebase** (baselines déjà tolérantes à la réduction de lignes par
+fusion ALIAS — exit 0 les 2 secteurs, `secL == réplique exacte`).
 
 ## 6. Règles de calcul (renderSecteur, index.html)
 

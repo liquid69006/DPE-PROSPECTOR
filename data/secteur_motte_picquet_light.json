@@ -64,7 +64,8 @@
     "_correctif_mp_ranges_b": "2 copros RNC MP (plage explicite) dont une entree non enumeree au RNC : rattachees chirurgicalement comme secondaires auto (miroir fusion RNC). PARC MESURE INCHANGE (29060->29060) : bgid du src distinct du principal mais CO-OCCUPE par une autre copro RNC non fusionnee (38->bgid co-occupe par 37/AD0544940 ; 135->co-occupe par 134/AD5373162) qui maintient le bucket parc bg:bgid -> effet strictement neutre (ni dedup ni perte). Champs autoritatifs (bgid/nb_log_bdnb/_bdnb_match/usage/ventes) INCHANGES, syndic aligne _grp (135 THEATRE : syndic divergent = artefact BDNB). Ventes relocalisees au rendu sous l'immat copro, sortie des hors-RNC actifs, ventes secteur conservees. B1 AD5922125 '26/28 GARIBALDI' VOLONTAIREMENT EXCLU (copro 3 lots, bgid 26 sans co-occupant -> fix lossy). Cas : AB0577296 38|RUE|FEDERATION->32|RUE|FEDERATION (parc-neutre via 37|RUE|FEDERATION, v_log 3) ; AA3511300 135|RUE|THEATRE->133|RUE|THEATRE (parc-neutre via 134|RUE|THEATRE, v_log 1). Source-of-truth = FUSION_RNC_EXTRA_NUMS dans make_light_motte_picquet.py. 4 enregistrements touches.",
     "_correctif_armonial": "Ensemble social RNC 'ARMONIAL I' (AA0646265, 592 lots hab / 1726 tot, ancre 16 BD GARIBALDI bgid LJRN, nb_compl=14 tronque open-data) eclate sur 4 voies (Garibaldi/Carrier-Belleuse/Cepre/Miollis). 15 adresses existantes (re)fusionnees comme secondaires auto de 16|BOULEVARD|GARIBALDI via ALIAS_RNC multi-voie (sous-fusions bgid locales 30/36/17 re-pointees, sources locales videes) : CB 7/9/11 ; Cepre 13/15/17/19 ; Miollis 20/24/26/28/30/34/36/40 (+32 deja fusionne). Champs autoritatifs (bgid/nb_log_bdnb/_bdnb_match/usage/ventes) INCHANGES ; syndic NON propage (copro 'non connu'). Au rendu : ventes des 15 (+32) relocalisees sous AA0646265, sorties des hors-RNC actifs ; parc : co-occupes neutres, bgid integralement absorbes (LJD4/XDM8/KKXK/XUWV) subsumes par les 592 lots RNC (dedup §6, comme Acollas) ; ventes secteur conservees. 13 adresses demandees ABSENTES du light (non geocodees) hors portee. Source-of-truth = ALIAS_RNC dans make_light_motte_picquet.py. 17 enregistrements touches.",
     "_correctif_cibles_horsrnc": "7 adresses cibles MP hors-RNC a ventes DVF rattachees a leur copro RNC : A1 x5 ALIAS_RNC meme bgid parc-neutre (6 Champfleury/1+Allee Bourgeois Buenos Ayres/5 Gal Lambert/3 Buenos Ayres), A2 4 Octave Greard miroir bgid (-11 dedup BDNB), A3 re-point fusion inversee 38 Ch Floquet<=6 Gal Detrie (+20 sous-comptage). Net parc +9 ; ventes relocalisees. 5 autres cibles = categorie B (aucune copro RNC) laissees hors-RNC.",
-    "_correctif_alias_bgid": "Lot ALIAS_RNC meme bgid (parc-neutre) : 14 adresses hors-RNC a ventes DVF rattachees a leur copro RNC (preuve forte BDNB-rel/ortho exacte, meme batiment_groupe_id). Ventes relocalisees, parc STRICTEMENT inchange."
+    "_correctif_alias_bgid": "Lot ALIAS_RNC meme bgid (parc-neutre) : 14 adresses hors-RNC a ventes DVF rattachees a leur copro RNC (preuve forte BDNB-rel/ortho exacte, meme batiment_groupe_id). Ventes relocalisees, parc STRICTEMENT inchange.",
+    "_correctif_voie_abrev": "9 adresses DVF MP a cle de voie abregee (CAPT->CAPITAINE, GAL->GENERAL) rattachees a leur copro RNC reelle (immatriculee, presente snapshot) via ALIAS_RNC miroir bgid : 5 cibles (3 Capt Scott->AA8895435, 4 Gal Castelnau->AI7024987, 7 Gal Castelnau->AA4713186, 8 Gal Larminat->AA9446949, 11 Gal Larminat->AC8648685) + 4 dependances chaine re-pointees vers LEUR copro (1 Capt Scott->AF6894638, 5 Gal Castelnau->AC0121202, 6 Gal Castelnau->AI7024987, 12 Alasseur->AA9446949). Ventes relocalisees au rendu (champs INCHANGES), parc modele 29004->28973 (-31 : retrait de doublons BDNB, pas une perte). Source-of-truth = ALIAS_RNC make_light_motte_picquet.py."
   },
   "iris": [
     {
@@ -21035,8 +21036,8 @@
       "sci_proprietaire": "oui",
       "sci_nom": "SCI MERMOZED",
       "sci_siren": "490388923",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "CABINET MICHAU",
+      "_syndic_src": "rnc_grp",
       "numero_immatriculation": null,
       "nb_lots_habitation": null,
       "ventes_par_an": {
@@ -21057,20 +21058,20 @@
       "classement_rotation": "Tres actif",
       "taux_rotation_logement": 8.0,
       "classement_rotation_logement": "Très actif",
-      "nb_log_bdnb": 20,
-      "annee_construction": 1913,
-      "classe_dpe": "D",
+      "nb_log_bdnb": 23,
+      "annee_construction": 1968,
+      "classe_dpe": "E",
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
-      "batiment_groupe_id": "bdnb-bg-MRB7-NV5V-XQPL",
-      "_bdnb_match": "gps",
+      "batiment_groupe_id": "bdnb-bg-WGEL-XEFS-SHSJ",
+      "_bdnb_match": "immat",
       "_fusion_auto_label": "1/3 RUE CAPT SCOTT",
-      "_fusion_auto_sources": [
-        "1|RUE|CAPT SCOTT"
-      ],
+      "_fusion_auto_sources": null,
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "3|RUE|CAPITAINE SCOTT"
     },
     {
       "cle": "5|RUE|ALASSEUR",
@@ -21798,8 +21799,8 @@
       "sci_proprietaire": "oui",
       "sci_nom": "AUROFRANCE",
       "sci_siren": "387458094",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "CABINET IFNOR",
+      "_syndic_src": "rnc_grp",
       "numero_immatriculation": null,
       "nb_lots_habitation": null,
       "ventes_par_an": {
@@ -21828,12 +21829,13 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-MRB7-NV5V-XQPL",
-      "_bdnb_match": "gps",
+      "_bdnb_match": "immat",
       "_fusion_auto": true,
-      "_fusion_cible": "3|RUE|CAPT SCOTT",
+      "_fusion_cible": "1|RUE|CAPITAINE SCOTT",
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": null
     },
     {
       "cle": "11|RUE|COMMERCE",
@@ -30045,8 +30047,8 @@
       "sci_proprietaire": "non",
       "sci_nom": "",
       "sci_siren": "",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "GERASCO",
+      "_syndic_src": "rnc_grp",
       "numero_immatriculation": null,
       "nb_lots_habitation": null,
       "ventes_par_an": {
@@ -30065,20 +30067,20 @@
       "classement_rotation": "Tres actif",
       "taux_rotation_logement": 1.2,
       "classement_rotation_logement": "Modéré",
-      "nb_log_bdnb": 16,
-      "annee_construction": 1929,
+      "nb_log_bdnb": 14,
+      "annee_construction": 1912,
       "classe_dpe": "E",
-      "type_batiment": "immeuble",
-      "type_chauffage": "reseau de chaleur",
-      "batiment_groupe_id": "bdnb-bg-8J73-8U9C-J8RF",
-      "_bdnb_match": "gps",
+      "type_batiment": "appartement",
+      "type_chauffage": "electricite",
+      "batiment_groupe_id": "bdnb-bg-QS63-LZ8W-HJ1G",
+      "_bdnb_match": "immat",
       "_fusion_auto_label": null,
-      "_fusion_auto_sources": [
-        "12|RUE|ALASSEUR"
-      ],
+      "_fusion_auto_sources": null,
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "8|RUE|GENERAL DE LARMINAT"
     },
     {
       "cle": "80|RUE|FONDARY",
@@ -30732,8 +30734,8 @@
       "sci_proprietaire": "oui",
       "sci_nom": "SCI MADER OUESSANT",
       "sci_siren": "827851833",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "CABINET LOISELET PERE FILS ET DAIGREMONT",
+      "_syndic_src": "rnc_grp",
       "numero_immatriculation": null,
       "nb_lots_habitation": null,
       "ventes_par_an": {
@@ -30752,16 +30754,19 @@
       "classement_rotation": "Tres actif",
       "taux_rotation_logement": 4.0,
       "classement_rotation_logement": "Actif",
-      "nb_log_bdnb": 15,
-      "annee_construction": 1900,
-      "classe_dpe": "E",
+      "nb_log_bdnb": 28,
+      "annee_construction": 1974,
+      "classe_dpe": "F",
       "type_batiment": "appartement",
-      "type_chauffage": "reseau de chaleur",
-      "batiment_groupe_id": "bdnb-bg-2C94-UQ57-XTEP",
-      "_bdnb_match": "gps",
+      "type_chauffage": "gaz",
+      "batiment_groupe_id": "bdnb-bg-37WL-T87E-MY2F",
+      "_bdnb_match": "immat",
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "11|RUE|GENERAL DE LARMINAT",
+      "_fusion_auto_sources": null
     },
     {
       "cle": "11|RUE|DUPLEIX",
@@ -32901,8 +32906,8 @@
       "sci_proprietaire": "oui",
       "sci_nom": "VENDOME SAINT HONORE",
       "sci_siren": "380628107",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "JEAN CHARPENTIER-SOPAGI SA",
+      "_syndic_src": "rnc_grp",
       "numero_immatriculation": null,
       "nb_lots_habitation": null,
       "ventes_par_an": {
@@ -32919,20 +32924,20 @@
       "classement_rotation": "Tres actif",
       "taux_rotation_logement": 3.6,
       "classement_rotation_logement": "Actif",
-      "nb_log_bdnb": 22,
-      "annee_construction": 1948,
-      "classe_dpe": "F",
+      "nb_log_bdnb": 16,
+      "annee_construction": 1912,
+      "classe_dpe": "G",
       "type_batiment": "appartement",
-      "type_chauffage": "gaz",
-      "batiment_groupe_id": "bdnb-bg-AT1J-MWX1-DFMU",
-      "_bdnb_match": "gps",
+      "type_chauffage": "electricite",
+      "batiment_groupe_id": "bdnb-bg-WHG8-Q9AN-QR6C",
+      "_bdnb_match": "immat",
       "_fusion_auto_label": "4/6 RUE GAL DE CASTELNAU",
-      "_fusion_auto_sources": [
-        "6|RUE|GAL DE CASTELNAU"
-      ],
+      "_fusion_auto_sources": null,
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "4|RUE|GENERAL DE CASTELNAU"
     },
     {
       "cle": "4||VILLA DE GRENELLE",
@@ -51088,20 +51093,20 @@
       "classement_rotation": "Actif",
       "taux_rotation_logement": 2.5,
       "classement_rotation_logement": "Actif",
-      "nb_log_bdnb": 8,
-      "annee_construction": 2003,
-      "classe_dpe": null,
-      "type_batiment": "immeuble",
-      "type_chauffage": "gaz",
-      "batiment_groupe_id": "bdnb-bg-Y4MM-76QV-HLQU",
-      "_bdnb_match": "gps",
+      "nb_log_bdnb": 11,
+      "annee_construction": 1920,
+      "classe_dpe": "F",
+      "type_batiment": "appartement",
+      "type_chauffage": "electricite",
+      "batiment_groupe_id": "bdnb-bg-NE11-BJ4T-E95N",
+      "_bdnb_match": "immat",
       "_fusion_auto_label": "5/7 RUE GAL DE CASTELNAU",
-      "_fusion_auto_sources": [
-        "5|RUE|GAL DE CASTELNAU"
-      ],
+      "_fusion_auto_sources": null,
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "7|RUE|GENERAL DE CASTELNAU"
     },
     {
       "cle": "71|QUAI|JACQUES CHIRAC",
@@ -52987,8 +52992,8 @@
       "sci_proprietaire": "non",
       "sci_nom": "",
       "sci_siren": "",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "GERASCO",
+      "_syndic_src": "rnc_grp",
       "numero_immatriculation": null,
       "nb_lots_habitation": null,
       "ventes_par_an": {},
@@ -52999,18 +53004,19 @@
       "classement_rotation": "Fige",
       "taux_rotation_logement": 0.0,
       "classement_rotation_logement": "Figé",
-      "nb_log_bdnb": 16,
-      "annee_construction": 1929,
+      "nb_log_bdnb": 14,
+      "annee_construction": 1912,
       "classe_dpe": "E",
-      "type_batiment": "immeuble",
-      "type_chauffage": "reseau de chaleur",
-      "batiment_groupe_id": "bdnb-bg-8J73-8U9C-J8RF",
-      "_bdnb_match": "num_voie",
+      "type_batiment": "appartement",
+      "type_chauffage": "electricite",
+      "batiment_groupe_id": "bdnb-bg-QS63-LZ8W-HJ1G",
+      "_bdnb_match": "immat",
       "_fusion_auto": true,
-      "_fusion_cible": "8|RUE|GAL DE LARMINAT",
+      "_fusion_cible": "8|RUE|GENERAL DE LARMINAT",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": null
     },
     {
       "cle": "12|RUE|BOUCHUT",
@@ -60459,12 +60465,13 @@
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-Y4MM-76QV-HLQU",
-      "_bdnb_match": "gps",
+      "_bdnb_match": "immat",
       "_fusion_auto": true,
-      "_fusion_cible": "7|RUE|GAL DE CASTELNAU",
+      "_fusion_cible": "5|RUE|GENERAL DE CASTELNAU",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": null
     },
     {
       "cle": "5|RUE|JEAN CARRIES",
@@ -61447,8 +61454,8 @@
       "sci_proprietaire": "non",
       "sci_nom": "",
       "sci_siren": "",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "JEAN CHARPENTIER-SOPAGI SA",
+      "_syndic_src": "rnc_grp",
       "numero_immatriculation": null,
       "nb_lots_habitation": null,
       "ventes_par_an": {},
@@ -61459,18 +61466,19 @@
       "classement_rotation": "Fige",
       "taux_rotation_logement": 0.0,
       "classement_rotation_logement": "Figé",
-      "nb_log_bdnb": 22,
-      "annee_construction": 1948,
-      "classe_dpe": "F",
+      "nb_log_bdnb": 16,
+      "annee_construction": 1912,
+      "classe_dpe": "G",
       "type_batiment": "appartement",
-      "type_chauffage": "gaz",
-      "batiment_groupe_id": "bdnb-bg-AT1J-MWX1-DFMU",
-      "_bdnb_match": "gps",
+      "type_chauffage": "electricite",
+      "batiment_groupe_id": "bdnb-bg-WHG8-Q9AN-QR6C",
+      "_bdnb_match": "immat",
       "_fusion_auto": true,
-      "_fusion_cible": "4|RUE|GAL DE CASTELNAU",
+      "_fusion_cible": "4|RUE|GENERAL DE CASTELNAU",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": null
     },
     {
       "cle": "6|RUE|GAL LAMBERT",
@@ -64196,7 +64204,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": [
+        "7|RUE|GAL DE CASTELNAU"
+      ],
+      "_fusion_auto_label": null
     },
     {
       "cle": "2T|RUE|ALASSEUR",
@@ -64286,7 +64298,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": [
+        "3|RUE|CAPT SCOTT"
+      ],
+      "_fusion_auto_label": null
     },
     {
       "cle": "25|RUE|VIOLET",
@@ -64346,7 +64362,12 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": [
+        "12|RUE|ALASSEUR",
+        "8|RUE|GAL DE LARMINAT"
+      ],
+      "_fusion_auto_label": null
     },
     {
       "cle": "9|RUE|LAKANAL #AB1483791",
@@ -65174,7 +65195,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": [
+        "11|RUE|GAL DE LARMINAT"
+      ],
+      "_fusion_auto_label": null
     },
     {
       "cle": "9|RUE|PERIGNON #AC9870650",
@@ -66558,7 +66583,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": [
+        "5|RUE|GAL DE CASTELNAU"
+      ],
+      "_fusion_auto_label": null
     },
     {
       "cle": "156B|AVENUE|SUFFREN",
@@ -67205,7 +67234,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": [
+        "1|RUE|CAPT SCOTT"
+      ],
+      "_fusion_auto_label": null
     },
     {
       "cle": "70B|AVENUE|SUFFREN",
@@ -67399,7 +67432,9 @@
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "_fusion_auto_sources": [
-        "3|RUE|GAL DE CASTELNAU"
+        "3|RUE|GAL DE CASTELNAU",
+        "4|RUE|GAL DE CASTELNAU",
+        "6|RUE|GAL DE CASTELNAU"
       ],
       "_fusion_auto_label": null
     },
