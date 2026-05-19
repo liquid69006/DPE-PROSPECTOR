@@ -71,16 +71,22 @@ Tables curées (style projet, documentées en commentaire) :
   → copro réelle (ex. `10|RUE|MEYNIS`→`10|PASSAGE|MEYNIS`,
   `28|RUE|DUPLEIX`→`28|PLACE|DUPLEIX`).
 - `COPRO_FORCE = {cle: immat}` — désambiguïse 2 copros même clé.
-- (MP) `FUSION_RNC_EXTRA_NUMS = {immat: {nums}}` — copros dont le RNC
-  **tronque** les adresses complémentaires (open-data : 3 slots max ;
-  le nom porte une plage « 4-10 » mais `adresse_complementaire_1/2/3`
-  ne listent qu'un sous-ensemble « 8-10 »). Réinjecte les numéros
-  manquants dans le **groupe de fusion RNC multi-numéros** (même
-  chemin que le frère déjà fusionné — PAS `ALIAS_RNC`, qui passerait
-  par le chemin immat). Effet parc conforme §6 RNC-prioritaire (les
-  buckets BDNB des entrées sont subsumés par les lots RNC de la
-  copro = retrait du double-comptage). Ex. `AB1301613` « 4-10 AV
-  EMILE ACOLLAS » : `{4,6}` (8/10 déjà déduits des compl.).
+- (DL+MP) `FUSION_RNC_EXTRA_NUMS = {immat: {nums}}` — copros dont le
+  RNC **tronque l'énumération des entrées** : nom portant une plage
+  (« 4-10 », « 39-43 ») et/ou `adresse_complementaire_1/2/3` (3 slots
+  open-data) ne listant qu'un sous-ensemble → la fusion RNC
+  multi-numéros n'agrège qu'une partie **et consomme les bornes**, si
+  bien que l'entrée médiane non listée reste isolée (même quand elle
+  partage le bgid de la copro, la fusion-bgid l'ignore : déjà
+  consommée / seule dans son groupe). Réinjecte les numéros manquants
+  dans le **groupe de fusion RNC** (même chemin que le frère fusionné
+  — PAS `ALIAS_RNC`, qui passerait par le chemin immat). Effet parc
+  conforme §6 RNC-prioritaire : si bgid distinct, le bucket BDNB est
+  subsumé par les lots RNC (retrait d'un double-comptage) ; si bgid
+  déjà commun, **strictement parc-neutre** (déjà dédupé). Ex. :
+  `AB1301613` « 4-10 AV EMILE ACOLLAS » `{4,6}` (MP, −34 lgts dédup) ;
+  `AJ0217901`/`AB9349846` « 39-43 RUE GUILLOUD » `{41}` (DL,
+  parc-neutre — double immatriculation, bgid commun).
 - (MP) `VOIES_HORS_SECTEUR = {SEVRES, EGLISE, MAINE}` +
   `NO_VOIE_FICTIF_MIN = 9000` — garde en tête de boucle d'adresses :
   rejet **à la source** des artefacts hors-périmètre (voies réelles
@@ -101,7 +107,8 @@ Tables curées (style projet, documentées en commentaire) :
 `fix_doublon_adresse` (_correctif_doublon) →
 `fix_taux_logement` (_correctif_taux_logement) →
 `propage_usage_bdnb` (_correctif_usage_bdnb) →
-`fix_meynis_phantom` (_correctif_meynis)
+`fix_meynis_phantom` (_correctif_meynis) →
+`fix_guilloud_range` (_correctif_guilloud)
 
 **Motte-Picquet**
 `make_light_motte_picquet.py` → `fix_rnc_bdnb_attribution`
@@ -115,8 +122,8 @@ Tables curées (style projet, documentées en commentaire) :
 Backups `.bak` correspondants : `.bak` (pré-1er correctif),
 `.pretauxlog.bak`, `.prehorsrnc.bak`, `.predoublon.bak`,
 `.preusage.bak`, `.premeynis.bak`, `.predupleix.bak`,
-`.prehorsperim.bak`, `.preacollas.bak` (gitignorés, locaux).
-`SECTEUR=<sec>` pilote les scripts génériques.
+`.prehorsperim.bak`, `.preacollas.bak`, `.preguilloud.bak`
+(gitignorés, locaux). `SECTEUR=<sec>` pilote les scripts génériques.
 
 ## 6. Règles de calcul (renderSecteur, index.html)
 

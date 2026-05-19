@@ -87,7 +87,8 @@
     "_correctif_doublon": "1 ligne adresse a cle exacte dupliquee supprimee (20|RUE|ST VICTORIEN : squelette BAN redondant, adresse=None, sans syndic, meme bgid bdnb-bg-H6H4-644T-6NRG que la ligne riche conservee). HYGIENE DE DONNEE PURE : 0 impact sur les agregats rendus (verifie renderSecteur : fusedSrc est keye par cle, donc le cle duplique etait deja entierement absorbe par la ligne _fusion_auto->16 ; aucun double-comptage n'existait reellement). light 1239->1238 adresses, agregats header inchanges (979 adr / 527 RNC / 22628 lgts / 813,4 v/an).",
     "_correctif_taux_logement": "Champs ADDITIFS ventes_par_an_logement / nb_ventes_logement / taux_rotation_logement / classement_rotation_logement / _taux_logement_src ajoutes (340 adr avec delta dependance, 56 adr jointure incertaine = copie intacte+flag). `ventes_par_an`/`nb_ventes_total` NON modifies (autoritatifs). Ventes strictes 2780 vs 4067 (-31.6%). Dashboard inchange (lit toujours ventes_par_an) ; bascule = modif index.html separee.",
     "_correctif_usage_bdnb": "Champs ADDITIFS usage_principal_bdnb (valeur snapshot bdnb_dauphine_lacassagne.json:usage_principal_bdnb_open, jointure batiment_groupe_id) + _usage_bdnb_src ajoutes ; 1238 adr renseignees, 0 sans bgid/snapshot (null). Aucun champ existant modifie. Dashboard inchange (index.html ne lit pas encore usage_principal_bdnb) ; regle d'affichage logements residentiel/tertiaire = modif index.html separee.",
-    "_correctif_meynis": "Adresse DVF fantome 10 RUE MEYNIS (parcelle DN0005, bati tertiaire) rattachee chirurgicalement a la copro RESIDENCE PAULINE AA8066532 @ 10 PASSAGE MEYNIS (parcelle DT0052, bgid WDLN-W7EH-5BGA) : _fusion_auto -> 10|PASSAGE|MEYNIS, ses 10 ventes DVF (7 strictes) relocalisees au rendu. Source-of-truth = ALIAS_RNC dans make_light.py. Parc inchange (src etait Tertiaire->0 ; copro deja comptee 27 lots). 2 enregistrements touches, aucun autre champ modifie."
+    "_correctif_meynis": "Adresse DVF fantome 10 RUE MEYNIS (parcelle DN0005, bati tertiaire) rattachee chirurgicalement a la copro RESIDENCE PAULINE AA8066532 @ 10 PASSAGE MEYNIS (parcelle DT0052, bgid WDLN-W7EH-5BGA) : _fusion_auto -> 10|PASSAGE|MEYNIS, ses 10 ventes DVF (7 strictes) relocalisees au rendu. Source-of-truth = ALIAS_RNC dans make_light.py. Parc inchange (src etait Tertiaire->0 ; copro deja comptee 27 lots). 2 enregistrements touches, aucun autre champ modifie.",
+    "_correctif_guilloud": "Copro RNC '39-43 RUE GUILLOUD' (30 lots), doublement immatriculee AB9349846 (2018) / AJ0217901 'LE GUILLOUD' (re-immat 2025, REGIE DU LYONNAIS ; light retient AJ0217901 @ cle 39). 39/41/43 partagent le bgid YTPJ-Q2XB-2DEF ; la fusion RNC agrege {39,43} (nom/compl) et consomme les bornes, laissant 41 (entree mediane jamais listee au RNC) isole. 41 RUE GUILLOUD rattachee chirurgicalement comme secondaire auto de 39 (miroir exact du frere 43) : champs autoritatifs (bgid/nb_log_bdnb/_bdnb_match/usage/ventes) INCHANGES. Au rendu : 2 ventes (2 strictes) relocalisees sous AJ0217901, 41 sort des 'hors-RNC actifs'. PARC STRICTEMENT INCHANGE (41 partage deja le bgid de la copro -> deja dedupe aux 30 lots RNC, PIPELINE 6). 39._fusion_auto_sources -> ['41','43'], label '39/41/43 RUE GUILLOUD'. Source-of-truth = FUSION_RNC_EXTRA_NUMS dans make_light.py. 2 enregistrements touches."
   },
   "iris": [
     {
@@ -25016,8 +25017,9 @@
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-YTPJ-Q2XB-2DEF",
       "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "39/43 RUE GUILLOUD",
+      "_fusion_auto_label": "39/41/43 RUE GUILLOUD",
       "_fusion_auto_sources": [
+        "41|RUE|GUILLOUD",
         "43|RUE|GUILLOUD"
       ],
       "ventes_par_an_logement": {
@@ -48560,8 +48562,8 @@
       "sci_proprietaire": "oui",
       "sci_nom": "BMGY",
       "sci_siren": "498860816",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "REGIE DU LYONNAIS",
+      "_syndic_src": "rnc_grp",
       "ventes_par_an": {
         "2022": 2
       },
@@ -48581,7 +48583,9 @@
       "classement_rotation_logement": "Modéré",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "39|RUE|GUILLOUD"
     },
     {
       "cle": "41|RUE|ST MAXIMIN",
