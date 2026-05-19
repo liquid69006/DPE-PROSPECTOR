@@ -124,8 +124,17 @@ if (DAUPH) {
   console.log("  lignes:", monrows.map(a =>
     a.cle + (a._bdnb_match === "immat_fix" ? " [fix]" : "")).join("  ;  "));
   check("2 lignes distinctes pour 5 rue Montbrillant", monrows.length === 2);
-  check('row origine rendu (data-cle="5|RUE|MONTBRILLANT")',
-    curHtml.includes('data-cle="5|RUE|MONTBRILLANT"'));
+  // REBASE 2026-05-19 (cf. fix_alias_rnc_meme_bgid) : la ligne ORIGINE
+  // non suffixee `5|RUE|MONTBRILLANT` n'est PLUS rendue car le lot
+  // ALIAS_RNC meme-bgid l'a (legitimement) fusionnee dans sa vraie
+  // copro `5B|RUE|MONTBRILLANT` (AA9253212, BDNB-rel + meme bgid,
+  // parc-neutre). L'invariant B3 = la copro INJECTEE suffixee #immat
+  // se rend distinctement ; l'origine peut etre rendue OU fusionnee
+  // (relocalisee) sans casser la desambiguisation.
+  const moOrig = sd.adresses.find(a => a.cle === "5|RUE|MONTBRILLANT");
+  check('origine 5|RUE|MONTBRILLANT rendue OU fusionnee (relocalisee)',
+    curHtml.includes('data-cle="5|RUE|MONTBRILLANT"')
+    || !!(moOrig && moOrig._fusion_auto && moOrig._fusion_cible));
   check('row B3 injectee rendu (data-cle="5|RUE|MONTBRILLANT #AA9380684")',
     curHtml.includes('data-cle="5|RUE|MONTBRILLANT #AA9380684"'));
 } else {
@@ -153,12 +162,22 @@ const adr = s => { const m = /^(\d+) adresses/.exec(s); return m ? parseInt(m[1]
 console.log("\n=== Coherence agregats ===");
 console.log(`  lgts .bak=${lgt(bakResume)}  ->  patche=${lgt(curResume)}`);
 console.log(`  adresses .bak=${adr(bakResume)}  ->  patche=${adr(curResume)}`);
-// .bak = etat precedent (roule a chaque apply) : on exige une evolution
-// monotone (jamais de regression du parc / des adresses), pas un delta fige.
+// .bak = etat precedent (roule a chaque apply). Invariant REEL =
+// le PARC ne regresse jamais (lgts monotone). REBASE 2026-05-19
+// (cf. fix_alias_rnc_meme_bgid) : le NOMBRE de lignes rendues peut
+// DECROITRE — un correctif de fusion (ALIAS_RNC) relocalise des
+// adresses orphelines hors-RNC sous leur copro (moins de lignes,
+// parc & ventes conserves, c'est le but). Le delta adresses devient
+// informatif (borne de sanite : reste > 0), la conservation forte
+// (parc +0, Sigma ventes identiques) est verifiee par le Change 1
+// (secL == replique exacte) et l'audit applicatif.
 const dAdr = adr(curResume) - adr(bakResume);
+console.log(`  adresses delta vs .bak = ${dAdr} `
+  + `(decroissance possible : fusions ALIAS relocalisees)`);
 check(`lgts patche >= lgts .bak (${lgt(bakResume)} -> ${lgt(curResume)})`,
   lgt(curResume) >= lgt(bakResume));
-check(`adresses patche >= adresses .bak (delta ${dAdr})`, dAdr >= 0);
+check(`adresses rendues > 0 (sanite, delta ${dAdr})`,
+  adr(curResume) > 0);
 
 // Toggle "Ventes strictes" : meme fichier, secteurStrict=true.
 // Invariants : pas d'exception ; ventes/an strict <= brut (depend. exclues) ;

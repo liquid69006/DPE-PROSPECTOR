@@ -121,7 +121,8 @@ Tables curées (style projet, documentées en commentaire) :
 `fix_taux_logement` (_correctif_taux_logement) →
 `propage_usage_bdnb` (_correctif_usage_bdnb) →
 `fix_meynis_phantom` (_correctif_meynis) →
-`fix_guilloud_range` (_correctif_guilloud)
+`fix_guilloud_range` (_correctif_guilloud) →
+`fix_alias_rnc_meme_bgid` (_correctif_alias_bgid)
 
 **Motte-Picquet**
 `make_light_motte_picquet.py` → `fix_rnc_bdnb_attribution`
@@ -134,15 +135,30 @@ Tables curées (style projet, documentées en commentaire) :
 `fix_mp_ranges_pn` (_correctif_mp_ranges) →
 `fix_mp_ranges_b` (_correctif_mp_ranges_b) →
 `fix_armonial` (_correctif_armonial) →
-`fix_mp_cibles_horsrnc` (_correctif_cibles_horsrnc)
+`fix_mp_cibles_horsrnc` (_correctif_cibles_horsrnc) →
+`fix_alias_rnc_meme_bgid` (_correctif_alias_bgid)
 
 Backups `.bak` correspondants : `.bak` (pré-1er correctif),
 `.pretauxlog.bak`, `.prehorsrnc.bak`, `.predoublon.bak`,
 `.preusage.bak`, `.premeynis.bak`, `.predupleix.bak`,
 `.prehorsperim.bak`, `.preacollas.bak`, `.preguilloud.bak`,
 `.prempranges.bak`, `.prempb.bak`, `.prearmonial.bak`,
-`.precibleshr.bak` (gitignorés, locaux). `SECTEUR=<sec>` pilote
-les scripts génériques.
+`.precibleshr.bak`, `.prealiasbg.bak` (gitignorés, locaux).
+`SECTEUR=<sec>` pilote les scripts génériques.
+
+`fix_alias_rnc_meme_bgid` (lot ALIAS_RNC même-bgid, parc-neutre) :
+DL 36 + MP 14 adresses hors-RNC à ventes DVF, copro prouvée BDNB
+`rel_batiment_groupe_rnc` ET **même `batiment_groupe_id`** que
+l'ancre → relocalisation ventes, **parc strictement inchangé**
+(le script ABORT si le modèle parc ≠ 0). Source : audit exhaustif
+`scripts/audit_horsrnc_dvf.py` (rapports `data/audit_horsrnc_dvf_*`).
+`test_render_secteur.js` : 2 baselines hardcodées **rebasées**
+(2026-05-19, §7) — la ligne origine `5|RUE|MONTBRILLANT` est
+désormais légitimement fusionnée par ce lot (B3 : on vérifie
+l'origine *rendue OU fusionnée*) ; l'invariant « adresses rendues
+monotones » devient « parc monotone » car une fusion ALIAS
+**réduit** le nombre de lignes rendues (relocalisation, parc/ventes
+conservés).
 
 ## 6. Règles de calcul (renderSecteur, index.html)
 
