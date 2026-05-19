@@ -23,9 +23,11 @@ Reparation du graphe de fusion (bgid partages avec du LEGIT) :
 Ex. 5 RUE MARIO NIKIS (legit, _bdnb_match=num_voie, in-secteur)
 etait auto-fusionnee dans l'artefact 5 AVENUE MAINE -> de-fusionnee.
 
-NB : metros 9001/9005/9007 + 9001 ALLEE/RUE suivent le meme pattern
-mais sont HORS scope demande -> listes en ADVISORY, non supprimes
-(decision utilisateur).
+Scope etendu : tout No voie >= 9000 (code voie DVF fictif : metro,
+placeholder ; ex. 9001/9005/9007 METRO, 9001 ALLEE/RUE, 9021 STA)
+est aussi retire -- jamais une adresse reelle, 0 vente, 0 RNC.
+Script idempotent / incremental (backup pristine .prehorsperim.bak
+ecrit une seule fois ; recalcul de l'ensemble a chaque passage).
 
 Cible : data/secteur_motte_picquet_light.json. Backup
 .prehorsperim.bak (abort si present). Dry-run par defaut.
@@ -62,6 +64,17 @@ def _nomvoie(cle):
     return p[2] if len(p) > 2 else ""
 
 
+def _numvoie(cle):
+    m = re.match(r"\d+", (cle or "").split("|")[0])
+    return int(m.group()) if m else None
+
+
+# No voie DVF >= 9000 = code voie FICTIF (metro / placeholder),
+# jamais une adresse reelle -> artefact a exclure (idem garde
+# make_light_motte_picquet.py).
+NO_VOIE_FICTIF_MIN = 9000
+
+
 def main():
     apply = "--apply" in sys.argv
     light = json.loads(LIGHT.read_text(encoding="utf-8"))
@@ -71,7 +84,8 @@ def main():
 
     excl = [a for a in A
             if _norm(_nomvoie(a["cle"])) in STREETS_HORS
-            or a["cle"] in PHANTOM_CLES]
+            or a["cle"] in PHANTOM_CLES
+            or (_numvoie(a["cle"]) or 0) >= NO_VOIE_FICTIF_MIN]
     exclset = {a["cle"] for a in excl}
 
     # Securite : aucune adresse exclue ne doit porter une copro RNC
@@ -138,18 +152,22 @@ def main():
         print("ABORT : une adresse exclue porte une copro RNC "
               "(verifier d'abord).")
         return
+    if not excl:
+        print("Rien a exclure (idempotent : deja entierement applique).")
+        return
     if not apply:
         print("DRY-RUN : aucun fichier modifie. --apply pour ecrire.")
         return
-    if BAK.exists():
-        print(f"ABORT : backup {BAK.name} existe deja.")
-        return
-    if not excl:
-        print("Rien a exclure (idempotent : deja applique ?).")
-        return
 
-    BAK.write_text(json.dumps(light, ensure_ascii=False, indent=2),
-                   encoding="utf-8")
+    # Backup PRISTINE conserve : .bak ecrit UNE seule fois (etat
+    # pre-1er-passage) ; passages incrementaux ulterieurs ne l'ecrasent
+    # pas (git versionne deja les etats intermediaires committes).
+    if not BAK.exists():
+        BAK.write_text(json.dumps(light, ensure_ascii=False, indent=2),
+                       encoding="utf-8")
+        print(f"Sauvegarde pristine : {BAK.name}")
+    else:
+        print(f"Backup pristine {BAK.name} conserve (passage incremental).")
 
     # Reparation graphe de fusion AVANT suppression
     for k in defus:
@@ -175,20 +193,24 @@ def main():
                          f"(backup retire, aucune ecriture).")
 
     meta = light.setdefault("metadata", {})
+    prev = meta.get("_correctif_horsperimetre", "")
+    note = (
+        f"[passe] {len(excl)} adresses retirees ; ventes hors-secteur "
+        f"{vt} brut / {vl} strict ; fusion reparee ({len(defus)} "
+        f"de-fusion, {len(srcclean)} purge sources).")
     meta["_correctif_horsperimetre"] = (
-        f"{len(excl)} adresses HORS-PERIMETRE retirees : RUE DE SEVRES "
-        f"(6e/7e), RUE DE L EGLISE (15e ouest), AVENUE DU MAINE "
-        f"(14e/15e) -- voies reelles hors sous-secteur, DVF mal "
-        f"geocode (effondrement BAN sur point intra-polygone) -- + "
-        f"9002 METRO DUPLEIX (code voie DVF fictif). 0 copro RNC "
-        f"impactee. Ventes hors-secteur retirees : {vt} brut / {vl} "
-        f"strict. Graphe fusion repare ({len(defus)} de-fusion, "
-        f"{len(srcclean)} purge sources). Metros 9001/9005/9007 + "
-        f"9001 ALLEE/RUE meme pattern NON retires (hors scope).")
+        "Adresses HORS-PERIMETRE retirees par scripts/fix_horsperimetre_"
+        "mp.py. Critere : voie reellement hors sous-secteur "
+        "(SEVRES 6e/7e, EGLISE 15e ouest, MAINE 14e/15e -- DVF mal "
+        "geocode, effondrement BAN sur point intra-polygone) OU No voie "
+        ">= 9000 (code voie DVF fictif : metro / placeholder). 0 copro "
+        "RNC impactee (jamais de RNC supprime). Source-of-truth = garde "
+        "amont VOIES_HORS_SECTEUR + NO_VOIE_FICTIF_MIN dans "
+        "make_light_motte_picquet.py. "
+        + (prev + " " if prev and "[passe]" in prev else "") + note)
 
     LIGHT.write_text(json.dumps(light, ensure_ascii=False, indent=2),
                      encoding="utf-8")
-    print(f"Sauvegarde : {BAK.name}")
     print(f"Ecrit : {LIGHT.name} ({len(excl)} adresses retirees, "
           f"graphe fusion repare)")
 
