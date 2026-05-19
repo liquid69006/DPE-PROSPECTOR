@@ -86,7 +86,9 @@ Tables curées (style projet, documentées en commentaire) :
   déjà commun, **strictement parc-neutre** (déjà dédupé). Ex. :
   `AB1301613` « 4-10 AV EMILE ACOLLAS » `{4,6}` (MP, −34 lgts dédup) ;
   `AJ0217901`/`AB9349846` « 39-43 RUE GUILLOUD » `{41}` (DL,
-  parc-neutre — double immatriculation, bgid commun).
+  parc-neutre — double immatriculation, bgid commun) ;
+  `AC6299499`{61}/`AF9892365`{43}/`AA1834670`{63}/`AF2096014`{16}
+  (MP, lot parc-neutre — bgid déjà commun, instruits cas par cas).
 - (MP) `VOIES_HORS_SECTEUR = {SEVRES, EGLISE, MAINE}` +
   `NO_VOIE_FICTIF_MIN = 9000` — garde en tête de boucle d'adresses :
   rejet **à la source** des artefacts hors-périmètre (voies réelles
@@ -117,13 +119,15 @@ Tables curées (style projet, documentées en commentaire) :
 → `propage_usage_bdnb` (_correctif_usage_bdnb) →
 `fix_dupleix_phantom` (_correctif_dupleix) →
 `fix_horsperimetre_mp` (_correctif_horsperimetre) →
-`fix_acollas_range` (_correctif_acollas)
+`fix_acollas_range` (_correctif_acollas) →
+`fix_mp_ranges_pn` (_correctif_mp_ranges)
 
 Backups `.bak` correspondants : `.bak` (pré-1er correctif),
 `.pretauxlog.bak`, `.prehorsrnc.bak`, `.predoublon.bak`,
 `.preusage.bak`, `.premeynis.bak`, `.predupleix.bak`,
-`.prehorsperim.bak`, `.preacollas.bak`, `.preguilloud.bak`
-(gitignorés, locaux). `SECTEUR=<sec>` pilote les scripts génériques.
+`.prehorsperim.bak`, `.preacollas.bak`, `.preguilloud.bak`,
+`.prempranges.bak` (gitignorés, locaux). `SECTEUR=<sec>` pilote
+les scripts génériques.
 
 ## 6. Règles de calcul (renderSecteur, index.html)
 

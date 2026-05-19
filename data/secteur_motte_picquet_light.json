@@ -59,7 +59,8 @@
     "_correctif_usage_bdnb": "Champs ADDITIFS usage_principal_bdnb (valeur snapshot bdnb_motte_picquet.json:usage_principal_bdnb_open, jointure batiment_groupe_id) + _usage_bdnb_src ajoutes ; 1305 adr renseignees, 0 sans bgid/snapshot (null). Aucun champ existant modifie. Dashboard inchange (index.html ne lit pas encore usage_principal_bdnb) ; regle d'affichage logements residentiel/tertiaire = modif index.html separee.",
     "_correctif_dupleix": "Adresse DVF fantome 28 RUE DUPLEIX (BAN '35 rue Dupleix', parcelle DH0005, bati tertiaire) rattachee chirurgicalement a la copro AA9462284 '28 PLACE ET RUE DUPLEIX' @ 28 PLACE DUPLEIX (parcelle DJ0018, bgid XRWJ-DP78-FV1D) : _fusion_auto -> 28|PLACE|DUPLEIX, ses 4 ventes DVF (4 strictes) relocalisees au rendu (28 PLACE : 3 propres + 4 = 7). Source-of-truth = ALIAS_RNC + critere copro_by_cle du tri fusion dans make_light.py. Parc inchange. 2 enregistrements touches.",
     "_correctif_horsperimetre": "Adresses HORS-PERIMETRE retirees par scripts/fix_horsperimetre_mp.py. Critere : voie reellement hors sous-secteur (SEVRES 6e/7e, EGLISE 15e ouest, MAINE 14e/15e -- DVF mal geocode, effondrement BAN sur point intra-polygone) OU No voie >= 9000 (code voie DVF fictif : metro / placeholder). 0 copro RNC impactee (jamais de RNC supprime). Source-of-truth = garde amont VOIES_HORS_SECTEUR + NO_VOIE_FICTIF_MIN dans make_light_motte_picquet.py. [passe] 6 adresses retirees ; ventes hors-secteur 0 brut / 0 strict ; fusion reparee (0 de-fusion, 3 purge sources).",
-    "_correctif_acollas": "Copro RNC AB1301613 '4-10, AVENUE EMILE ACOLLAS' (160 lots, ANDRE GRIFFATON) : adresses_complementaires RNC tronquees a '8-10' (open-data 3 slots) -> make_light ne deduisait que {8,10}. 4 & 6 AVENUE EMILE ACOLLAS rattachees chirurgicalement comme secondaires auto de 10 (miroir exact du frere 8) : champs autoritatifs (bgid/nb_log_bdnb/_bdnb_match/usage/ventes) INCHANGES dans la donnee. Au rendu : ventes (4: 8 brut/6 strict ; 6: 4/4) CONSERVEES, relocalisees sous AB1301613, 4/6 sorties des 'hors-RNC actifs'. Parc secteur -34 lgts (29094->29060) : les 16+18 logements BDNB de 4/6 (approx. emprise) etaient un double-comptage des 160 lots RNC de la MEME copro -> subsumes (RNC-prioritaire, PIPELINE 6 ; identique au frere 8 deja subsume). Ventes secteur inchangees (729,0 brut / 549,8 strict). 10._fusion_auto_sources -> ['4','6','8'], label '4/6/8/10 AVENUE EMILE ACOLLAS'. Cote Suffren (67/69/71 -> AD6326128, copro DISTINCTE) deja correct, NON touche. Source-of-truth = FUSION_RNC_EXTRA_NUMS dans make_light_motte_picquet.py. 3 enregistrements touches."
+    "_correctif_acollas": "Copro RNC AB1301613 '4-10, AVENUE EMILE ACOLLAS' (160 lots, ANDRE GRIFFATON) : adresses_complementaires RNC tronquees a '8-10' (open-data 3 slots) -> make_light ne deduisait que {8,10}. 4 & 6 AVENUE EMILE ACOLLAS rattachees chirurgicalement comme secondaires auto de 10 (miroir exact du frere 8) : champs autoritatifs (bgid/nb_log_bdnb/_bdnb_match/usage/ventes) INCHANGES dans la donnee. Au rendu : ventes (4: 8 brut/6 strict ; 6: 4/4) CONSERVEES, relocalisees sous AB1301613, 4/6 sorties des 'hors-RNC actifs'. Parc secteur -34 lgts (29094->29060) : les 16+18 logements BDNB de 4/6 (approx. emprise) etaient un double-comptage des 160 lots RNC de la MEME copro -> subsumes (RNC-prioritaire, PIPELINE 6 ; identique au frere 8 deja subsume). Ventes secteur inchangees (729,0 brut / 549,8 strict). 10._fusion_auto_sources -> ['4','6','8'], label '4/6/8/10 AVENUE EMILE ACOLLAS'. Cote Suffren (67/69/71 -> AD6326128, copro DISTINCTE) deja correct, NON touche. Source-of-truth = FUSION_RNC_EXTRA_NUMS dans make_light_motte_picquet.py. 3 enregistrements touches.",
+    "_correctif_mp_ranges": "4 copros RNC MP dont l'entree mediane/borne n'est pas enumeree au RNC (nom plage / compl. tronquees) mais partage DEJA le bgid de la copro : rattachees chirurgicalement comme secondaires auto (miroir fusion RNC, comme 41 GUILLOUD). PARC STRICTEMENT INCHANGE (bgid deja commun -> deja dedupe aux lots RNC, PIPELINE 6) ; ventes relocalisees au rendu sous l'immat copro ; sortie des hors-RNC actifs ; ventes secteur conservees. Champs autoritatifs (bgid/nb_log_bdnb/_bdnb_match/usage/ventes) INCHANGES, syndic propage _grp. Cas : AC6299499 61|AVENUE|SEGUR->63|AVENUE|SEGUR (v_log 7) ; AF9892365 43|RUE|FONDARY->45|RUE|FONDARY (v_log 7) ; AA1834670 63|RUE|COMMERCE->65|RUE|COMMERCE (v_log 3) ; AF2096014 16|RUE|FREMICOURT->18|RUE|FREMICOURT (v_log 2). Source-of-truth = FUSION_RNC_EXTRA_NUMS dans make_light_motte_picquet.py. 8 enregistrements touches."
   },
   "iris": [
     {
@@ -19178,8 +19179,8 @@
       "sci_proprietaire": "oui",
       "sci_nom": "CMAC",
       "sci_siren": "529947095",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "ELIMMO GESTION",
+      "_syndic_src": "rnc_grp",
       "numero_immatriculation": null,
       "nb_lots_habitation": null,
       "ventes_par_an": {
@@ -19211,7 +19212,9 @@
       "_bdnb_match": "num_voie",
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "63|AVENUE|SEGUR"
     },
     {
       "cle": "61|RUE|LETELLIER",
@@ -25238,8 +25241,8 @@
       "sci_proprietaire": "oui",
       "sci_nom": "SCI RIQUIER DEPOILLY",
       "sci_siren": "353620917",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "CABINET GELIS",
+      "_syndic_src": "rnc_grp",
       "numero_immatriculation": null,
       "nb_lots_habitation": null,
       "ventes_par_an": {
@@ -25269,7 +25272,9 @@
       "_bdnb_match": "num_voie",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "45|RUE|FONDARY"
     },
     {
       "cle": "47|RUE|COMMERCE",
@@ -33711,7 +33716,9 @@
       "_bdnb_match": "num_voie",
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "65|RUE|COMMERCE"
     },
     {
       "cle": "66|RUE|CROIX NIVERT",
@@ -40638,8 +40645,8 @@
       "sci_proprietaire": "oui",
       "sci_nom": "SCI RESIDENCE FREMICOURT LETELLIER",
       "sci_siren": "443958228",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "DM GESTION",
+      "_syndic_src": "rnc_grp",
       "numero_immatriculation": null,
       "nb_lots_habitation": null,
       "ventes_par_an": {
@@ -40665,7 +40672,9 @@
       "_bdnb_match": "num_voie",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "18|RUE|FREMICOURT"
     },
     {
       "cle": "16|RUE|VALENTIN HAUY",
@@ -65636,7 +65645,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": [
+        "63|RUE|COMMERCE"
+      ],
+      "_fusion_auto_label": "63/65 RUE COMMERCE"
     },
     {
       "cle": "9B|RUE|PERIGNON",
@@ -66658,7 +66671,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": [
+        "61|AVENUE|SEGUR"
+      ],
+      "_fusion_auto_label": "61/63 AVENUE SEGUR"
     },
     {
       "cle": "11B|RUE|TIPHAINE",
@@ -66988,7 +67005,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": [
+        "16|RUE|FREMICOURT"
+      ],
+      "_fusion_auto_label": "16/18 RUE FREMICOURT"
     },
     {
       "cle": "56|AVENUE|MOTTE PICQUET",
@@ -67108,7 +67129,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": [
+        "43|RUE|FONDARY"
+      ],
+      "_fusion_auto_label": "43/45 RUE FONDARY"
     },
     {
       "cle": "2|RUE|GENERAL DE LARMINAT",
