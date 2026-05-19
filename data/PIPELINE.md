@@ -71,6 +71,16 @@ Tables curées (style projet, documentées en commentaire) :
   → copro réelle (ex. `10|RUE|MEYNIS`→`10|PASSAGE|MEYNIS`,
   `28|RUE|DUPLEIX`→`28|PLACE|DUPLEIX`).
 - `COPRO_FORCE = {cle: immat}` — désambiguïse 2 copros même clé.
+- (MP) `FUSION_RNC_EXTRA_NUMS = {immat: {nums}}` — copros dont le RNC
+  **tronque** les adresses complémentaires (open-data : 3 slots max ;
+  le nom porte une plage « 4-10 » mais `adresse_complementaire_1/2/3`
+  ne listent qu'un sous-ensemble « 8-10 »). Réinjecte les numéros
+  manquants dans le **groupe de fusion RNC multi-numéros** (même
+  chemin que le frère déjà fusionné — PAS `ALIAS_RNC`, qui passerait
+  par le chemin immat). Effet parc conforme §6 RNC-prioritaire (les
+  buckets BDNB des entrées sont subsumés par les lots RNC de la
+  copro = retrait du double-comptage). Ex. `AB1301613` « 4-10 AV
+  EMILE ACOLLAS » : `{4,6}` (8/10 déjà déduits des compl.).
 - (MP) `VOIES_HORS_SECTEUR = {SEVRES, EGLISE, MAINE}` +
   `NO_VOIE_FICTIF_MIN = 9000` — garde en tête de boucle d'adresses :
   rejet **à la source** des artefacts hors-périmètre (voies réelles
@@ -99,13 +109,14 @@ Tables curées (style projet, documentées en commentaire) :
 (_correctif_horsrnc) → `fix_taux_logement` (_correctif_taux_logement)
 → `propage_usage_bdnb` (_correctif_usage_bdnb) →
 `fix_dupleix_phantom` (_correctif_dupleix) →
-`fix_horsperimetre_mp` (_correctif_horsperimetre)
+`fix_horsperimetre_mp` (_correctif_horsperimetre) →
+`fix_acollas_range` (_correctif_acollas)
 
 Backups `.bak` correspondants : `.bak` (pré-1er correctif),
 `.pretauxlog.bak`, `.prehorsrnc.bak`, `.predoublon.bak`,
 `.preusage.bak`, `.premeynis.bak`, `.predupleix.bak`,
-`.prehorsperim.bak` (gitignorés, locaux). `SECTEUR=<sec>` pilote
-les scripts génériques.
+`.prehorsperim.bak`, `.preacollas.bak` (gitignorés, locaux).
+`SECTEUR=<sec>` pilote les scripts génériques.
 
 ## 6. Règles de calcul (renderSecteur, index.html)
 

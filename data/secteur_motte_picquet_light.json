@@ -58,7 +58,8 @@
     "_correctif_taux_logement": "Champs ADDITIFS ventes_par_an_logement / nb_ventes_logement / taux_rotation_logement / classement_rotation_logement / _taux_logement_src ajoutes (351 adr avec delta dependance, 97 adr jointure incertaine = copie intacte+flag). `ventes_par_an`/`nb_ventes_total` NON modifies (autoritatifs). Ventes strictes 2840 vs 3781 (-24.9%). Dashboard inchange (lit toujours ventes_par_an) ; bascule = modif index.html separee.",
     "_correctif_usage_bdnb": "Champs ADDITIFS usage_principal_bdnb (valeur snapshot bdnb_motte_picquet.json:usage_principal_bdnb_open, jointure batiment_groupe_id) + _usage_bdnb_src ajoutes ; 1305 adr renseignees, 0 sans bgid/snapshot (null). Aucun champ existant modifie. Dashboard inchange (index.html ne lit pas encore usage_principal_bdnb) ; regle d'affichage logements residentiel/tertiaire = modif index.html separee.",
     "_correctif_dupleix": "Adresse DVF fantome 28 RUE DUPLEIX (BAN '35 rue Dupleix', parcelle DH0005, bati tertiaire) rattachee chirurgicalement a la copro AA9462284 '28 PLACE ET RUE DUPLEIX' @ 28 PLACE DUPLEIX (parcelle DJ0018, bgid XRWJ-DP78-FV1D) : _fusion_auto -> 28|PLACE|DUPLEIX, ses 4 ventes DVF (4 strictes) relocalisees au rendu (28 PLACE : 3 propres + 4 = 7). Source-of-truth = ALIAS_RNC + critere copro_by_cle du tri fusion dans make_light.py. Parc inchange. 2 enregistrements touches.",
-    "_correctif_horsperimetre": "Adresses HORS-PERIMETRE retirees par scripts/fix_horsperimetre_mp.py. Critere : voie reellement hors sous-secteur (SEVRES 6e/7e, EGLISE 15e ouest, MAINE 14e/15e -- DVF mal geocode, effondrement BAN sur point intra-polygone) OU No voie >= 9000 (code voie DVF fictif : metro / placeholder). 0 copro RNC impactee (jamais de RNC supprime). Source-of-truth = garde amont VOIES_HORS_SECTEUR + NO_VOIE_FICTIF_MIN dans make_light_motte_picquet.py. [passe] 6 adresses retirees ; ventes hors-secteur 0 brut / 0 strict ; fusion reparee (0 de-fusion, 3 purge sources)."
+    "_correctif_horsperimetre": "Adresses HORS-PERIMETRE retirees par scripts/fix_horsperimetre_mp.py. Critere : voie reellement hors sous-secteur (SEVRES 6e/7e, EGLISE 15e ouest, MAINE 14e/15e -- DVF mal geocode, effondrement BAN sur point intra-polygone) OU No voie >= 9000 (code voie DVF fictif : metro / placeholder). 0 copro RNC impactee (jamais de RNC supprime). Source-of-truth = garde amont VOIES_HORS_SECTEUR + NO_VOIE_FICTIF_MIN dans make_light_motte_picquet.py. [passe] 6 adresses retirees ; ventes hors-secteur 0 brut / 0 strict ; fusion reparee (0 de-fusion, 3 purge sources).",
+    "_correctif_acollas": "Copro RNC AB1301613 '4-10, AVENUE EMILE ACOLLAS' (160 lots, ANDRE GRIFFATON) : adresses_complementaires RNC tronquees a '8-10' (open-data 3 slots) -> make_light ne deduisait que {8,10}. 4 & 6 AVENUE EMILE ACOLLAS rattachees chirurgicalement comme secondaires auto de 10 (miroir exact du frere 8) : champs autoritatifs (bgid/nb_log_bdnb/_bdnb_match/usage/ventes) INCHANGES dans la donnee. Au rendu : ventes (4: 8 brut/6 strict ; 6: 4/4) CONSERVEES, relocalisees sous AB1301613, 4/6 sorties des 'hors-RNC actifs'. Parc secteur -34 lgts (29094->29060) : les 16+18 logements BDNB de 4/6 (approx. emprise) etaient un double-comptage des 160 lots RNC de la MEME copro -> subsumes (RNC-prioritaire, PIPELINE 6 ; identique au frere 8 deja subsume). Ventes secteur inchangees (729,0 brut / 549,8 strict). 10._fusion_auto_sources -> ['4','6','8'], label '4/6/8/10 AVENUE EMILE ACOLLAS'. Cote Suffren (67/69/71 -> AD6326128, copro DISTINCTE) deja correct, NON touche. Source-of-truth = FUSION_RNC_EXTRA_NUMS dans make_light_motte_picquet.py. 3 enregistrements touches."
   },
   "iris": [
     {
@@ -23724,8 +23725,8 @@
       "sci_proprietaire": "oui",
       "sci_nom": "SCI AREVALO-BOTERO",
       "sci_siren": "509498259",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "ANDRE GRIFFATON S A",
+      "_syndic_src": "rnc_grp",
       "numero_immatriculation": null,
       "nb_lots_habitation": null,
       "ventes_par_an": {
@@ -23757,7 +23758,9 @@
       "_bdnb_match": "num_voie",
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "10|AVENUE|EMILE ACOLLAS"
     },
     {
       "cle": "47|RUE|FONDARY",
@@ -30404,8 +30407,10 @@
       "type_chauffage": "reseau de chaleur",
       "batiment_groupe_id": "bdnb-bg-B3H9-8292-52G9",
       "_bdnb_match": "immat",
-      "_fusion_auto_label": "8/10 AVENUE EMILE ACOLLAS",
+      "_fusion_auto_label": "4/6/8/10 AVENUE EMILE ACOLLAS",
       "_fusion_auto_sources": [
+        "4|AVENUE|EMILE ACOLLAS",
+        "6|AVENUE|EMILE ACOLLAS",
         "8|AVENUE|EMILE ACOLLAS"
       ],
       "_taux_logement_src": "copie_sans_dependance",
@@ -33421,8 +33426,8 @@
       "sci_proprietaire": "oui",
       "sci_nom": "SCI COLISEE RESIDENTIEL",
       "sci_siren": "431981257",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "ANDRE GRIFFATON S A",
+      "_syndic_src": "rnc_grp",
       "numero_immatriculation": null,
       "nb_lots_habitation": null,
       "ventes_par_an": {
@@ -33450,7 +33455,9 @@
       "_bdnb_match": "num_voie",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "10|AVENUE|EMILE ACOLLAS"
     },
     {
       "cle": "6|RUE|CESAR FRANCK",
