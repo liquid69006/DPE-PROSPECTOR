@@ -139,7 +139,8 @@ Tables curées (style projet, documentées en commentaire) :
 `fix_mp_cibles_horsrnc` (_correctif_cibles_horsrnc) →
 `fix_alias_rnc_meme_bgid` (_correctif_alias_bgid) →
 `fix_mp_voie_abrev` (_correctif_voie_abrev) →
-`fix_repoint_p2a` (_correctif_repoint_p2a)
+`fix_repoint_p2a` (_correctif_repoint_p2a) →
+`fix_detrie_repoint` (_correctif_detrie)
 
 Backups `.bak` correspondants : `.bak` (pré-1er correctif),
 `.pretauxlog.bak`, `.prehorsrnc.bak`, `.predoublon.bak`,
@@ -147,7 +148,7 @@ Backups `.bak` correspondants : `.bak` (pré-1er correctif),
 `.prehorsperim.bak`, `.preacollas.bak`, `.preguilloud.bak`,
 `.prempranges.bak`, `.prempb.bak`, `.prearmonial.bak`,
 `.precibleshr.bak`, `.prealiasbg.bak`, `.prevoieabrev.bak`,
-`.prerepointp2a.bak` (gitignorés, locaux).
+`.prerepointp2a.bak`, `.predetrie.bak` (gitignorés, locaux).
 `SECTEUR=<sec>` pilote les scripts génériques.
 
 `fix_alias_rnc_meme_bgid` (lot ALIAS_RNC même-bgid, parc-neutre) :
