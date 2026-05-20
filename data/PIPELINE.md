@@ -143,7 +143,8 @@ Tables curées (style projet, documentées en commentaire) :
 `fix_repoint_p2a` (_correctif_repoint_p2a) →
 `fix_detrie_repoint` (_correctif_detrie) →
 `fix_pivot_bdnb_lot` (_correctif_pivot_bdnb) →
-`fix_grenelle_repoint` (_correctif_grenelle)
+`fix_grenelle_repoint` (_correctif_grenelle) →
+`fix_armonial_pair_cepre` (_correctif_armonial_pair)
 
 Backups `.bak` correspondants : `.bak` (pré-1er correctif),
 `.pretauxlog.bak`, `.prehorsrnc.bak`, `.predoublon.bak`,
@@ -152,7 +153,7 @@ Backups `.bak` correspondants : `.bak` (pré-1er correctif),
 `.prempranges.bak`, `.prempb.bak`, `.prearmonial.bak`,
 `.precibleshr.bak`, `.prealiasbg.bak`, `.prevoieabrev.bak`,
 `.prerepointp2a.bak`, `.predetrie.bak`, `.prepivot.bak`,
-`.pregrenelle.bak` (gitignorés, locaux).
+`.pregrenelle.bak`, `.prearmonial2.bak` (gitignorés, locaux).
 `SECTEUR=<sec>` pilote les scripts génériques.
 
 `fix_alias_rnc_meme_bgid` (lot ALIAS_RNC même-bgid, parc-neutre) :
@@ -243,6 +244,24 @@ complexe. **Parc MP `28980→28926` (−54)** = **correction structurelle
 identifiant RPLS, foncières institutionnelles, ou non encore
 immatriculés). 6 v_log relocalisées sous AB1105360. `test_render`
 exit 0 les 2 secteurs (`secL == réplique exacte` 28926).
+
+`fix_armonial_pair_cepre` (_correctif_armonial_pair, MP, 2026-05-20) :
+**Extension ARMONIAL I (AA0646265, 592 lots) au côté pair de la rue
+Cèpre** (`2/4/6/8 RUE CEPRE → 16 BD GARIBALDI`). Confirmation terrain
+user 2026-05-20 : `2/4/6/8 CEPRE + 20 MIOLLIS = même copro = ARMONIAL
+I` (déjà rattachée pour Cèpre **odd** 13/15/17/19 + Miollis pair
+20-40 + Carrier-Belleuse 7/9/11). Le RNC déclare
+`nombre_adresses_complementaires=14` mais l'open-data tronque à 3
+slots → **11 adresses complémentaires cachées**, make_light en déduit
+via le nom copro + secteur. BDNB : bgid `XDM8` (1965) liste BAN `2+4
+CEPRE + 20 MIOLLIS`, bgid `Z2Z2` (1972) liste `6+8 CEPRE` — ARMONIAL
+I = grand ensemble multi-bâti (19 sources finales sur 7 bgids
+distincts). 3 adresses re-pointées dans le light (2/4/6 CEPRE ; 8
+CEPRE absent DVF → porté préventivement à la source-of-truth pour
+future regen). **Parc MP `28926 → 28915` (−11)** = retrait du BDNB
+phantom Z2Z2 (que ARMONIAL I couvre conceptuellement via ses 592
+lots, sans immat propre — conforme PIPELINE §6). 2 v_log relocalisées
+sous AA0646265. `test_render` exit 0 les 2 secteurs.
 
 ## 6. Règles de calcul (renderSecteur, index.html)
 
