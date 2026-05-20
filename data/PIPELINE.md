@@ -142,7 +142,8 @@ Tables curées (style projet, documentées en commentaire) :
 `fix_mp_voie_abrev` (_correctif_voie_abrev) →
 `fix_repoint_p2a` (_correctif_repoint_p2a) →
 `fix_detrie_repoint` (_correctif_detrie) →
-`fix_pivot_bdnb_lot` (_correctif_pivot_bdnb)
+`fix_pivot_bdnb_lot` (_correctif_pivot_bdnb) →
+`fix_grenelle_repoint` (_correctif_grenelle)
 
 Backups `.bak` correspondants : `.bak` (pré-1er correctif),
 `.pretauxlog.bak`, `.prehorsrnc.bak`, `.predoublon.bak`,
@@ -150,8 +151,8 @@ Backups `.bak` correspondants : `.bak` (pré-1er correctif),
 `.prehorsperim.bak`, `.preacollas.bak`, `.preguilloud.bak`,
 `.prempranges.bak`, `.prempb.bak`, `.prearmonial.bak`,
 `.precibleshr.bak`, `.prealiasbg.bak`, `.prevoieabrev.bak`,
-`.prerepointp2a.bak`, `.predetrie.bak`, `.prepivot.bak`
-(gitignorés, locaux).
+`.prerepointp2a.bak`, `.predetrie.bak`, `.prepivot.bak`,
+`.pregrenelle.bak` (gitignorés, locaux).
 `SECTEUR=<sec>` pilote les scripts génériques.
 
 `fix_alias_rnc_meme_bgid` (lot ALIAS_RNC même-bgid, parc-neutre) :
@@ -224,6 +225,24 @@ lot (instruction individuelle) : `12 LOUIS JASSERON→17` (duplicate),
 `18 ST ANTOINE→17` (17 fusé vers 19 sur bgid distinct), `156 GRENELLE
 →154` (P2a déjà écarté RPLS suspect). `test_render` exit 0 les 2
 secteurs (`secL == réplique exacte`).
+
+`fix_grenelle_repoint` (_correctif_grenelle, MP, 2026-05-20) : 5e cas
+P2a précédemment écarté, **ré-instruit avec contexte BDNB complet** et
+appliqué. `156|BD|GRENELLE → 154|BD|GRENELLE` (AB1105360 "PARIS MOTTE
+PICQUET GRENELLE - MS103738", 35 lots syndiqués). API BDNB
+`batiment_groupe_complet` sur bgid `F3HZ-H1TK-FPME` révèle un
+**complexe immobilier 2011** : 12 adresses BAN (`152/154/156/158 BD
+GRENELLE` + `35/37/37b/39/39b/39t Rue Frémicourt` + `1/3 ruelle au
+père fragile`), **10 niveaux**, **1 228 m² au sol**, **89 logements
+BDNB**. Probe RNC live exhaustive (Frémicourt + Père Fragile 75015) =
+**0 copro additionnelle** → AB1105360 est l'unique copro syndicale du
+complexe. **Parc MP `28980→28926` (−54)** = **correction structurelle
+§6** : RNC syndiqué (35) prime sur estimation BDNB du bâti entier
+(89) ; les 54 logements manquants sont réels mais hors-syndicat
+(RPLS/HLM probable — préfixe `MS103738` dans le nom copro suggère
+identifiant RPLS, foncières institutionnelles, ou non encore
+immatriculés). 6 v_log relocalisées sous AB1105360. `test_render`
+exit 0 les 2 secteurs (`secL == réplique exacte` 28926).
 
 ## 6. Règles de calcul (renderSecteur, index.html)
 
