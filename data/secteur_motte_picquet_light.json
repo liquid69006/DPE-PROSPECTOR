@@ -78,7 +78,8 @@
     "_correctif_clouet_garibaldi_label": "26 BOULEVARD GARIBALDI : ajout label multi-voies '26 BD GARIBALDI / 1 RUE CLOUET' (rendu dispNom). Facade BAN '1 RUE CLOUET' documentee comme appartenant au MEME bati BDNB (bgid bdnb-bg-PNXA-8DRE-F4GM, parcelle 75115000CX0067, annee 1850, 15 lgts). Aucune copro RNC pour ce bati (verifie snapshot + RNC live exhaustif Rue Clouet/Bd Garibaldi 75015 - SCI CROCO 490030913 en sortie progressive, copro de fait non immatriculee). Parc STRICTEMENT NEUTRE. Source-of-truth a porter dans make_light_motte_picquet.py : ALIAS_RNC += {'1|RUE|CLOUET': '26|BOULEVARD|GARIBALDI'} pour re-router toute future vente DVF a '1 r clouet'.",
     "_correctif_violet_grenelle_label": "16 RUE VIOLET : ajout label multi-voies '16 RUE VIOLET / 1 VILLA DE GRENELLE' (rendu dispNom). Facade BAN '1 VILLA DE GRENELLE' documentee comme appartenant au MEME bati BDNB (bgid bdnb-bg-9PX4-LE3D-RT3Q, parcelle 75115000DJ0089, annee 1920, 7 lgts). Aucune copro RNC pour ce bati (verifie snapshot + RNC live exhaustif Rue Violet/Villa de Grenelle 75015 - SCI VIOLET 913995643 mono-propriete vendue en bloc 04/10/2022 1 M EUR collective). Pattern IDENTIQUE a Clouet/Garibaldi (commit 148089d). Parc STRICTEMENT NEUTRE. Source-of-truth a porter dans make_light_motte_picquet.py : ALIAS_RNC += {'1|VILLA|DE GRENELLE': '16|RUE|VIOLET'} pour re-router future vente DVF a '1 vla de grenelle'.",
     "_correctif_fondary_croixnivert": "91 RUE FONDARY -> 40 RUE DE LA CROIX NIVERT (AB9273434 SDC 40/42 RUE DE LA CROIX NIVERT, 17 lots hab / 28 tot, FOREST GESTION, mandat -> 2026-06-30). Triple confirmation : RNC compl_1='91 r fondary 75015 Paris', ref_cadastrale_1=DF0112 (bgid DN3P=91 FONDARY+42 CN) + ref_cadastrale_2=DF0111 (bgid STYB=40 CN), BDNB pivot DN3P=['42 Croix Nivert', '91 Fondary'] sur parcelle DF0112, nb_log_rnc=17 sur STYB matche AB9273434. Pattern ALIAS_RNC multi-voies (Fremicourt/Cambronne). 91|FONDARY (bgid DN3P, 4 nb_log_bdnb, 1 vlog 2024) re-pointe vers 40|CROIX NIVERT avec adoption MIRROR bgid STYB. Parc 28880->28876 (-4) = dedup multi-bgid (les 4 BDNB de DN3P etaient deja compris dans les 17 lots RNC qui couvrent STYB+DN3P, PIPELINE Sec 6). 42 CROIX NIVERT absente du light - ALIAS_RNC a porter dans make_light_motte_picquet.py.",
-    "_correctif_perignon_saxe": "10 RUE PERIGNON -> 42 AVENUE DE SAXE #AB8151755 (AB8151755 '42, AV. SAXE/10 RUE PERIGNON', 147 lots hab, ANDRE GRIFFATON S A, date_immat 2018-01-11). Triple confirmation : RNC compl_1/_2='42 Avenue de Saxe - 10 Rue Perignon' + nom RNC declaratif des 2 voies, BDNB bgids QPWJ (42 SAXE, immat AB8151755) et 6RE2 (10 PERIGNON, sans rel RNC) sur MEME parcelle 75107000BO0050 et MEME annee BDNB 1958 (la parcelle voisine BO0051 bgid TWU6 herberge la copro DISTINCTE AB7693641 'Saxe-Perignon' CONSORTIUM 75 lots 1890, aucun conflit). Pattern ALIAS_RNC multi-voies (Cambronne/Fremicourt) : 10|RUE|PERIGNON (bgid 6RE2 errone, 27 nb_log_bdnb, 5 ventes) re-pointe vers 42|AVENUE|SAXE #AB8151755 avec adoption MIRROR bgid QPWJ. Parc 28876->28849 (-27) = dedup multi-bgid (les 27 BDNB de 6RE2 etaient deja compris dans les 147 lots RNC qui couvrent QPWJ+6RE2, PIPELINE Sec 6 lots RNC prioritaires). ALIAS_RNC a porter dans make_light_motte_picquet.py."
+    "_correctif_perignon_saxe": "10 RUE PERIGNON -> 42 AVENUE DE SAXE #AB8151755 (AB8151755 '42, AV. SAXE/10 RUE PERIGNON', 147 lots hab, ANDRE GRIFFATON S A, date_immat 2018-01-11). Triple confirmation : RNC compl_1/_2='42 Avenue de Saxe - 10 Rue Perignon' + nom RNC declaratif des 2 voies, BDNB bgids QPWJ (42 SAXE, immat AB8151755) et 6RE2 (10 PERIGNON, sans rel RNC) sur MEME parcelle 75107000BO0050 et MEME annee BDNB 1958 (la parcelle voisine BO0051 bgid TWU6 herberge la copro DISTINCTE AB7693641 'Saxe-Perignon' CONSORTIUM 75 lots 1890, aucun conflit). Pattern ALIAS_RNC multi-voies (Cambronne/Fremicourt) : 10|RUE|PERIGNON (bgid 6RE2 errone, 27 nb_log_bdnb, 5 ventes) re-pointe vers 42|AVENUE|SAXE #AB8151755 avec adoption MIRROR bgid QPWJ. Parc 28876->28849 (-27) = dedup multi-bgid (les 27 BDNB de 6RE2 etaient deja compris dans les 147 lots RNC qui couvrent QPWJ+6RE2, PIPELINE Sec 6 lots RNC prioritaires). ALIAS_RNC a porter dans make_light_motte_picquet.py.",
+    "_correctif_chasseloup_suffren": "Cas hybride : injection ancre 126|AVENUE|SUFFREN (pattern Suffren - absente d'adresses[] alors que copro AF9030966 SDC '126-128 Avenue de Suffren' existait dans coproprietes[] sur cle 126|AVENUE|SUFFREN) + re-point 128 SUFFREN + 2 CHASSELOUP LAUBAT (pattern Cambronne, adoption MIRROR). Bgid choisi WAEU-1XSX-V5GP (BDNB pivot dit l_libelle_adr=['128 Suffren','4 Chasseloup','2 Chasseloup'], annee 1972, 18 log < 33 lots RNC -> RNC autoritaire). Parcelle BDNB CZ0041 = MATCH ref_cad_1 RNC '75056115CZ0041'. CORRECTION bgid 2 CHASSELOUP LAUBAT : passe de 1GJW (= bati TERTIAIRE 3 CHASSELOUP sur parcelle CZ0047 DIFFERENTE) vers WAEU (vrai bati AF9030966 parcelle CZ0041) + usage Tertiaire -> Resid collectif - faux matching make_light. 4 CHASSELOUP LAUBAT absente du snapshot (pas de MAJIC ni DVF), documentee via _fusion_auto_label='126-128 AV. SUFFREN / 2-4 RUE CHASSELOUP LAUBAT' sur l'ancre. 3 CHASSELOUP intouche (bati Tertiaire distinct, parcelle CZ0047, INCHANGE). Parc 28849->28864 (+15) = switch BDNB->RNC sur WAEU (18 BDNB -> 33 RNC AF9030966). 1 v_log + 2 v_tot relocalises sous AF9030966 (FIDUCIAIRE DU DISTRICT DE PARIS, date_immat 2020-02-03)."
   },
   "iris": [
     {
@@ -40334,10 +40335,13 @@
       "type_batiment": "appartement",
       "type_chauffage": "reseau de chaleur",
       "batiment_groupe_id": "bdnb-bg-WAEU-1XSX-V5GP",
-      "_bdnb_match": "num_voie",
+      "_bdnb_match": "immat",
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "126|AVENUE|SUFFREN",
+      "_fusion_auto_sources": null
     },
     {
       "cle": "129|RUE|THEATRE",
@@ -56154,8 +56158,8 @@
       "sci_proprietaire": "non",
       "sci_nom": "",
       "sci_siren": "",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "FIDUCIAIRE DU DISTRICT DE PARIS",
+      "_syndic_src": "rnc_grp",
       "numero_immatriculation": null,
       "nb_lots_habitation": null,
       "ventes_par_an": {},
@@ -56166,16 +56170,19 @@
       "classement_rotation": null,
       "taux_rotation_logement": null,
       "classement_rotation_logement": "",
-      "nb_log_bdnb": null,
-      "annee_construction": null,
+      "nb_log_bdnb": 18,
+      "annee_construction": 1972,
       "classe_dpe": null,
-      "type_batiment": null,
-      "type_chauffage": null,
-      "batiment_groupe_id": "bdnb-bg-1GJW-7MDQ-9RGA",
-      "_bdnb_match": "num_voie",
+      "type_batiment": "appartement",
+      "type_chauffage": "reseau de chaleur",
+      "batiment_groupe_id": "bdnb-bg-WAEU-1XSX-V5GP",
+      "_bdnb_match": "immat",
       "_taux_logement_src": "copie_sans_dependance",
-      "usage_principal_bdnb": "Tertiaire",
-      "_usage_bdnb_src": "snapshot"
+      "usage_principal_bdnb": "Résidentiel collectif",
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "126|AVENUE|SUFFREN",
+      "_fusion_auto_sources": null
     },
     {
       "cle": "2|RUE|CAVALERIE",
@@ -67602,6 +67609,45 @@
         "1||CITE THURE"
       ],
       "_fusion_auto_label": null
+    },
+    {
+      "cle": "126|AVENUE|SUFFREN",
+      "adresse": "126 AVENUE DE SUFFREN",
+      "longitude": 2.305372,
+      "latitude": 48.848135,
+      "code_iris": "751155812",
+      "_coord_source": "rnc_inject_pattern_suffren",
+      "dans_majic": false,
+      "sci_proprietaire": "inconnu",
+      "sci_nom": "",
+      "sci_siren": "",
+      "syndic": "FIDUCIAIRE DU DISTRICT DE PARIS",
+      "_syndic_src": "rnc",
+      "numero_immatriculation": "AF9030966",
+      "nb_lots_habitation": 33,
+      "ventes_par_an": {},
+      "nb_ventes_total": 0,
+      "ventes_par_an_logement": {},
+      "nb_ventes_logement": 0,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé",
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Figé",
+      "nb_log_bdnb": 18,
+      "annee_construction": 1972,
+      "classe_dpe": null,
+      "type_batiment": "appartement",
+      "type_chauffage": "reseau de chaleur",
+      "batiment_groupe_id": "bdnb-bg-WAEU-1XSX-V5GP",
+      "_bdnb_match": "immat_inject_pattern_suffren",
+      "_taux_logement_src": "filtre_habitation",
+      "usage_principal_bdnb": "Résidentiel collectif",
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": [
+        "128|AVENUE|SUFFREN",
+        "2|RUE|CHASSELOUP LAUBAT"
+      ],
+      "_fusion_auto_label": "126-128 AV. SUFFREN / 2-4 RUE CHASSELOUP LAUBAT"
     }
   ]
 }
