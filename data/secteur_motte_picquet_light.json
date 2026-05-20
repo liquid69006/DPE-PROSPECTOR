@@ -80,7 +80,8 @@
     "_correctif_fondary_croixnivert": "91 RUE FONDARY -> 40 RUE DE LA CROIX NIVERT (AB9273434 SDC 40/42 RUE DE LA CROIX NIVERT, 17 lots hab / 28 tot, FOREST GESTION, mandat -> 2026-06-30). Triple confirmation : RNC compl_1='91 r fondary 75015 Paris', ref_cadastrale_1=DF0112 (bgid DN3P=91 FONDARY+42 CN) + ref_cadastrale_2=DF0111 (bgid STYB=40 CN), BDNB pivot DN3P=['42 Croix Nivert', '91 Fondary'] sur parcelle DF0112, nb_log_rnc=17 sur STYB matche AB9273434. Pattern ALIAS_RNC multi-voies (Fremicourt/Cambronne). 91|FONDARY (bgid DN3P, 4 nb_log_bdnb, 1 vlog 2024) re-pointe vers 40|CROIX NIVERT avec adoption MIRROR bgid STYB. Parc 28880->28876 (-4) = dedup multi-bgid (les 4 BDNB de DN3P etaient deja compris dans les 17 lots RNC qui couvrent STYB+DN3P, PIPELINE Sec 6). 42 CROIX NIVERT absente du light - ALIAS_RNC a porter dans make_light_motte_picquet.py.",
     "_correctif_perignon_saxe": "10 RUE PERIGNON -> 42 AVENUE DE SAXE #AB8151755 (AB8151755 '42, AV. SAXE/10 RUE PERIGNON', 147 lots hab, ANDRE GRIFFATON S A, date_immat 2018-01-11). Triple confirmation : RNC compl_1/_2='42 Avenue de Saxe - 10 Rue Perignon' + nom RNC declaratif des 2 voies, BDNB bgids QPWJ (42 SAXE, immat AB8151755) et 6RE2 (10 PERIGNON, sans rel RNC) sur MEME parcelle 75107000BO0050 et MEME annee BDNB 1958 (la parcelle voisine BO0051 bgid TWU6 herberge la copro DISTINCTE AB7693641 'Saxe-Perignon' CONSORTIUM 75 lots 1890, aucun conflit). Pattern ALIAS_RNC multi-voies (Cambronne/Fremicourt) : 10|RUE|PERIGNON (bgid 6RE2 errone, 27 nb_log_bdnb, 5 ventes) re-pointe vers 42|AVENUE|SAXE #AB8151755 avec adoption MIRROR bgid QPWJ. Parc 28876->28849 (-27) = dedup multi-bgid (les 27 BDNB de 6RE2 etaient deja compris dans les 147 lots RNC qui couvrent QPWJ+6RE2, PIPELINE Sec 6 lots RNC prioritaires). ALIAS_RNC a porter dans make_light_motte_picquet.py.",
     "_correctif_chasseloup_suffren": "Cas hybride : injection ancre 126|AVENUE|SUFFREN (pattern Suffren - absente d'adresses[] alors que copro AF9030966 SDC '126-128 Avenue de Suffren' existait dans coproprietes[] sur cle 126|AVENUE|SUFFREN) + re-point 128 SUFFREN + 2 CHASSELOUP LAUBAT (pattern Cambronne, adoption MIRROR). Bgid choisi WAEU-1XSX-V5GP (BDNB pivot dit l_libelle_adr=['128 Suffren','4 Chasseloup','2 Chasseloup'], annee 1972, 18 log < 33 lots RNC -> RNC autoritaire). Parcelle BDNB CZ0041 = MATCH ref_cad_1 RNC '75056115CZ0041'. CORRECTION bgid 2 CHASSELOUP LAUBAT : passe de 1GJW (= bati TERTIAIRE 3 CHASSELOUP sur parcelle CZ0047 DIFFERENTE) vers WAEU (vrai bati AF9030966 parcelle CZ0041) + usage Tertiaire -> Resid collectif - faux matching make_light. 4 CHASSELOUP LAUBAT absente du snapshot (pas de MAJIC ni DVF), documentee via _fusion_auto_label='126-128 AV. SUFFREN / 2-4 RUE CHASSELOUP LAUBAT' sur l'ancre. 3 CHASSELOUP intouche (bati Tertiaire distinct, parcelle CZ0047, INCHANGE). Parc 28849->28864 (+15) = switch BDNB->RNC sur WAEU (18 BDNB -> 33 RNC AF9030966). 1 v_log + 2 v_tot relocalises sous AF9030966 (FIDUCIAIRE DU DISTRICT DE PARIS, date_immat 2020-02-03).",
-    "_correctif_armonial_8cepre": "Complement ARMONIAL I (AA0646265, 592 lots) : injection 8|RUE|CEPRE comme entry adresses[] minimaliste, fused -> 16|BOULEVARD|GARIBALDI, adoption MIRROR depuis l'ancre (bgid LJRN, Tertiaire 1976). Pattern INJECT_LABEL_ONLY (variante Suffren label-only). 8 CEPRE etait explicitement laisse de cote par fix_armonial_pair_cepre.py (commit anterieur) comme 'absent light, traite source-of-truth' ; cette injection donne visibilite terrain immediate sans attendre la prochaine regen. BAN confirme 75115_1646_00008. Aucune DVF au 8 CEPRE -> 0 vente relocalisee. Parc 28864->28864 (STRICTEMENT NEUTRE) car bgid LJRN deja attribue a ARMONIAL via immat (PIPELINE Sec 6 RNC prioritaire). Source-of-truth a porter : ALIAS_RNC += {'8|RUE|CEPRE': '16|BOULEVARD|GARIBALDI'} dans make_light_motte_picquet.py (idempotent avec fix_armonial_pair)."
+    "_correctif_armonial_8cepre": "Complement ARMONIAL I (AA0646265, 592 lots) : injection 8|RUE|CEPRE comme entry adresses[] minimaliste, fused -> 16|BOULEVARD|GARIBALDI, adoption MIRROR depuis l'ancre (bgid LJRN, Tertiaire 1976). Pattern INJECT_LABEL_ONLY (variante Suffren label-only). 8 CEPRE etait explicitement laisse de cote par fix_armonial_pair_cepre.py (commit anterieur) comme 'absent light, traite source-of-truth' ; cette injection donne visibilite terrain immediate sans attendre la prochaine regen. BAN confirme 75115_1646_00008. Aucune DVF au 8 CEPRE -> 0 vente relocalisee. Parc 28864->28864 (STRICTEMENT NEUTRE) car bgid LJRN deja attribue a ARMONIAL via immat (PIPELINE Sec 6 RNC prioritaire). Source-of-truth a porter : ALIAS_RNC += {'8|RUE|CEPRE': '16|BOULEVARD|GARIBALDI'} dans make_light_motte_picquet.py (idempotent avec fix_armonial_pair).",
+    "_correctif_lowendal_suffren": "Copro RNC AB8146169 ('16-18, AVENUE LOWENDAL', 76 lots hab / 80 tot, syndic CONSEIL RICHOU IMMOBILIER, mandat -> 2026-06-30, derniere maj 2025-11-22) injectee dans coproprietes[] et attribuee a 16|AVENUE|LOWENDAL (bgid bdnb-bg-R41C-48RR-9DHU, parcelle 75115000DE0070). Copro ABSENTE du snapshot RNC mais confirmee par RNC live + BDNB pivot (l_libelle_adr=['18 Lowendal', '108 Suffren', '16 Lowendal'] + nb_log_rnc=76 matche exactement) + BDNB rel_RNC R41C ('16 18 Avenue De Lowendal'). 108 AVENUE DE SUFFREN : facade non-postale (0 vente DVF, hors light) - ALIAS_RNC a porter dans make_light_motte_picquet.py. Distinction copro voisine AA0600619 SQUARE LOWENDAL (parcelle CZ0015) = copro DIFFERENTE. Pattern INJECTION+ATTRIBUTION (clone fix_suffren_barthelemy_garibaldi). Parc 28864->28913 (+49 = switch BDNB(27)->RNC(76) sur bgid R41C, PIPELINE Sec 6 lots RNC prioritaires). Label '16/18 AVENUE LOWENDAL' -> '16/18 AVENUE LOWENDAL / 108 AVENUE DE SUFFREN'. 5 vlog DVF (2 sur 16 + 3 sur 18 fused) relocalises sous AB8146169 (taux 1.32% Modere)."
   },
   "iris": [
     {
@@ -18453,6 +18454,29 @@
       },
       "taux_rotation_5ans": 2.4,
       "classement_rotation": "Actif"
+    },
+    {
+      "numero_immatriculation": "AB8146169",
+      "nom_copropriete": "16-18, AVENUE LOWENDAL",
+      "syndic": "CONSEIL RICHOU IMMOBILIER",
+      "_syndic_src": "rnc_live",
+      "adresse": "16 Avenue de Lowendal | 18 Avenue de Lowendal | 108 Avenue de Suffren | 75015 | Paris",
+      "longitude": 2.303323,
+      "latitude": 48.849383,
+      "code_iris": "751155913",
+      "cle_adresse": "16|AVENUE|LOWENDAL",
+      "nb_lots_total": 80,
+      "nb_lots_habitation": 76,
+      "nb_lots_habitation_rnc": 76,
+      "nb_log_bdnb": 27,
+      "nb_ventes_2021_2025": 3,
+      "ventes_par_an": {
+        "2022": 1,
+        "2023": 1,
+        "2024": 1
+      },
+      "taux_rotation_5ans": 0.8,
+      "classement_rotation": "Figé"
     }
   ],
   "adresses": [
@@ -35858,10 +35882,10 @@
       "sci_proprietaire": "oui",
       "sci_nom": "SCI BIDU",
       "sci_siren": "412240558",
-      "syndic": null,
-      "_syndic_src": null,
-      "numero_immatriculation": null,
-      "nb_lots_habitation": null,
+      "syndic": "CONSEIL RICHOU IMMOBILIER",
+      "_syndic_src": "rnc_live",
+      "numero_immatriculation": "AB8146169",
+      "nb_lots_habitation": 76,
       "ventes_par_an": {
         "2022": 1,
         "2023": 1,
@@ -35884,8 +35908,8 @@
       "type_batiment": "immeuble",
       "type_chauffage": "reseau de chaleur",
       "batiment_groupe_id": "bdnb-bg-R41C-48RR-9DHU",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "16/18 AVENUE LOWENDAL",
+      "_bdnb_match": "immat",
+      "_fusion_auto_label": "16/18 AVENUE LOWENDAL / 108 AVENUE DE SUFFREN",
       "_fusion_auto_sources": [
         "18|AVENUE|LOWENDAL"
       ],
