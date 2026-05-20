@@ -33,7 +33,7 @@ const SRC = [
   slice(2084, 2086),   // esc
   slice(2088, 2092),   // secteurNorm
   slice(2105, 2146),   // sctTauxAnnuel..sctBadge (helpers de rendu, incl. sctClassAnnuel)
-  slice(2148, 2481),   // renderSecteur (parc RNC + hors-RNC résid. BDNB / strict / hr-actif / sctQ)
+  slice(2148, 2484),   // renderSecteur (parc RNC + hors-RNC résid. BDNB / strict / hr-actif / sctQ)
 ].join("\n\n");
 
 function mkEl() {
@@ -341,7 +341,7 @@ let predN = 0;
 (sd.adresses || []).forEach(a => {
   if (a._fusion_auto && a._fusion_cible) return;
   const horsRnc = !cbc[a.cle] && !a.numero_immatriculation;
-  if (horsRnc && a.nb_ventes_logement > 0) predN++;
+  if (horsRnc && a.nb_ventes_logement > 0 && a.nb_log_bdnb > 1) predN++;
 });
 console.log(`  adresses filtrées=${adr(hrR)}  prédicat data=${predN}`
   + `  RNC affichées=${rncN(hrR)}`);

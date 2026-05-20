@@ -2212,8 +2212,11 @@ function renderSecteur() {
     if (secteurHrActif) {            // filtre "Hors-RNC actifs" (cumulable)
       // hors-RNC = non rattachée à une copro RNC (def. canonique de
       // renderSecteur, robuste sur les 2 secteurs) ET sans immat dénormalisé.
+      // Restriction nb_log_bdnb > 1 : exclut les monopropriétés / vraies
+      // résidences individuelles isolées (cf. 21 Floquet hôtel particulier,
+      // 71 Paul Bert, etc.) — ne garde que les ensembles plurilots BDNB.
       const horsRnc = !coproByCle[a.cle] && !a.numero_immatriculation;
-      if (!(horsRnc && (a.nb_ventes_logement > 0))) return;
+      if (!(horsRnc && (a.nb_ventes_logement > 0) && (a.nb_log_bdnb > 1))) return;
     }
     const ci = a.code_iris || '_nd';
     (parIris[ci] = parIris[ci] || []).push(a);
