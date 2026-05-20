@@ -9,9 +9,9 @@ Passe INVERSE du pivot : pour chaque copro RNC visible dans le snapshot (cle_adr
 
 | secteur | hr-actives | copros scannees | matches | skip-list | appels BDNB |
 |---|--:|--:|--:|--:|--:|
-| dauphine_lacassagne | 45 | 530 | **0** | 0 | 0 |
-| motte_picquet | 27 | 798 | **0** | 0 | 0 |
-| **total** | 72 | 1328 | **0** | 0 | 0 |
+| dauphine_lacassagne | 42 | 531 | **0** | 0 | 0 |
+| motte_picquet | 24 | 799 | **0** | 0 | 0 |
+| **total** | 66 | 1330 | **0** | 0 | 0 |
 
 ## Matches par adresse
 

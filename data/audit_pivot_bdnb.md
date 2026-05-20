@@ -9,9 +9,9 @@ Pour chaque adresse **hors-RNC active** (predicat exact renderSecteur : `!fused 
 
 | secteur | hr-actives | matches pivot | skip-list | appels BDNB |
 |---|--:|--:|--:|--:|
-| dauphine_lacassagne | 69 | **0** | 1 | 0 |
-| motte_picquet | 30 | **0** | 0 | 0 |
-| **total** | **99** | **0** | **1** | 0 |
+| dauphine_lacassagne | 42 | **0** | 1 | 0 |
+| motte_picquet | 24 | **0** | 0 | 0 |
+| **total** | **66** | **0** | **1** | 0 |
 
 ## Matches par adresse
 
