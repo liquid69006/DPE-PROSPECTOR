@@ -92,7 +92,8 @@
     "_correctif_alias_bgid": "Lot ALIAS_RNC meme bgid (parc-neutre) : 36 adresses hors-RNC a ventes DVF rattachees a leur copro RNC (preuve forte BDNB-rel/ortho exacte, meme batiment_groupe_id). Ventes relocalisees, parc STRICTEMENT inchange.",
     "_correctif_repoint_p2a": "3 re-points P2a (copro RNC enterree sous fantome DVF principal) : 53|RUE|ETIENNE RICHERAND<-51|RUE|ETIENNE RICHERAND(AC3598851), 56|AVENUE|LACASSAGNE<-54|AVENUE|LACASSAGNE(AA4814810), 316|RUE|PAUL BERT<-318|RUE|PAUL BERT(AC6168629). Parc 22268->22267 (-1) = switch BDNB->RNC autoritaire (PIPELINE §6).",
     "_correctif_pivot_bdnb": "11 re-points pivot BDNB (dauphine_lacassagne) - copros RNC ancrees sur une AUTRE adresse BAN du meme bgid, revelees par API BDNB batiment_groupe_complet.l_libelle_adr (cf. scripts/pipeline_bdnb_pivot.py + data/audit_pivot_bdnb.md). Fusion forward avec absorption de chaine (orph + sources -> ancre). Parc 22267->22267 (strictement neutre, meme bgid). Cas appliques: 9|RUE|PROFESSEUR PAUL SISLEY->7B|RUE|PROFESSEUR PAUL SISLEY(AA0012898); 12|RUE|LOUIS JASSERON->13|RUE|LOUIS JASSERON(AC6278774); 14|RUE|ST MAXIMIN->1|RUE|ROSSAN(AB2460335); 38|RUE|BARABAN->37|RUE|BARABAN(AC9726381); 260|RUE|PAUL BERT->264B|RUE|PAUL BERT(AE1699040); 12|RUE|CARRY->6|RUE|CARRY(AC1825504); 48|RUE|ST MAXIMIN->51|RUE|ST MAXIMIN(AB2784080); 18|RUE|ETIENNE RICHERAND->19|RUE|ETIENNE RICHERAND(AG2447720); 10|RUE|DAUPHINE->1|RUE|ST MAXIMIN(AF0858860); 14|RUE|ST SIDOINE->12|RUE|ST SIDOINE(AB2206571); 46|RUE|ST MAXIMIN->43|RUE|ST MAXIMIN(AB1744747)",
-    "_correctif_pivot_reverse": "24 re-points pivot BDNB reverse (dauphine_lacassagne) - copros RNC dont le bgid (via cle_adresse) reclame des adresses BAN qui sont des orphelines DVF hors-RNC. Forward ratait ces cas (bgids light divergents). Pattern miroir-bgid (adoption MIRROR + fusion + absorption chaine). Parc 22267->22200 (-67) = retrait BDNB phantoms des orphs conforme PIPELINE Sec 6. Cas: 30|RUE|ETIENNE RICHERAND->28|RUE|ETIENNE RICHERAND(AA0358655); 8|RUE|CLAUDIUS PIONCHON->12|RUE|ST SIDOINE(AB2206571); 29|RUE|STE ANNE DE BARABAN->27|RUE|STE ANNE DE BARABAN(AA1700848); 11|RUE|RIBOUD->11|RUE|MAURICE FLANDIN(AA1456987); 16|RUE|ETIENNE RICHERAND->22|RUE|ST ANTOINE(AA1601434); 31|RUE|STE ANNE DE BARABAN->27|RUE|STE ANNE DE BARABAN(AA1700848); 47|RUE|PROFESSEUR PAUL SISLEY->16|RUE|GUILLOUD(AA7407463); 22|RUE|LOUIS JASSERON->18|RUE|LOUIS JASSERON(AB1570571); 4|RUE|JEAN RENOIR->38|RUE|JEANNE HACHETTE(AB6374961); 4|RUE|MARCEL PEHU->28|RUE|ST PHILIPPE(AC2574101); 51|AVENUE|GEORGES POMPIDOU->18|RUE|LOUIS JASSERON(AB1570571); 5|RUE|JEAN PIERRE LEVY->1|RUE|JEAN PIERRE LEVY(AB3947009); 6|RUE|METALLURGIE->9|RUE|DAVID(AB3954260); 10|RUE|TERNOIS->23|RUE|RIBOUD(AA1991660); 325|RUE|PAUL BERT->2|RUE|ST EUSEBE(AB0287870); 124|RUE|ANTOINE CHARIAL->11|RUE|ST EUSEBE(AB1809680); 11|RUE|DAVID->9|RUE|DAVID(AB3954260); 10|RUE|METALLURGIE->9|RUE|DAVID(AB3954260); 10|RUE|TEINTURIERS->104|RUE|BARABAN(AC1218890); 4|RUE|MAURICE FLANDIN->234|COURS|LAFAYETTE(AC8608747); 277|RUE|PAUL BERT->76|RUE|ANTOINE CHARIAL(AA1694256); 279|RUE|PAUL BERT->76|RUE|ANTOINE CHARIAL(AA1694256); 69|RUE|BARABAN->61|RUE|BARABAN(AB2515468); 24|AVENUE|LACASSAGNE->24||ET 24 BIS AVENUE LACASSAGNE(AG1556893)"
+    "_correctif_pivot_reverse": "24 re-points pivot BDNB reverse (dauphine_lacassagne) - copros RNC dont le bgid (via cle_adresse) reclame des adresses BAN qui sont des orphelines DVF hors-RNC. Forward ratait ces cas (bgids light divergents). Pattern miroir-bgid (adoption MIRROR + fusion + absorption chaine). Parc 22267->22200 (-67) = retrait BDNB phantoms des orphs conforme PIPELINE Sec 6. Cas: 30|RUE|ETIENNE RICHERAND->28|RUE|ETIENNE RICHERAND(AA0358655); 8|RUE|CLAUDIUS PIONCHON->12|RUE|ST SIDOINE(AB2206571); 29|RUE|STE ANNE DE BARABAN->27|RUE|STE ANNE DE BARABAN(AA1700848); 11|RUE|RIBOUD->11|RUE|MAURICE FLANDIN(AA1456987); 16|RUE|ETIENNE RICHERAND->22|RUE|ST ANTOINE(AA1601434); 31|RUE|STE ANNE DE BARABAN->27|RUE|STE ANNE DE BARABAN(AA1700848); 47|RUE|PROFESSEUR PAUL SISLEY->16|RUE|GUILLOUD(AA7407463); 22|RUE|LOUIS JASSERON->18|RUE|LOUIS JASSERON(AB1570571); 4|RUE|JEAN RENOIR->38|RUE|JEANNE HACHETTE(AB6374961); 4|RUE|MARCEL PEHU->28|RUE|ST PHILIPPE(AC2574101); 51|AVENUE|GEORGES POMPIDOU->18|RUE|LOUIS JASSERON(AB1570571); 5|RUE|JEAN PIERRE LEVY->1|RUE|JEAN PIERRE LEVY(AB3947009); 6|RUE|METALLURGIE->9|RUE|DAVID(AB3954260); 10|RUE|TERNOIS->23|RUE|RIBOUD(AA1991660); 325|RUE|PAUL BERT->2|RUE|ST EUSEBE(AB0287870); 124|RUE|ANTOINE CHARIAL->11|RUE|ST EUSEBE(AB1809680); 11|RUE|DAVID->9|RUE|DAVID(AB3954260); 10|RUE|METALLURGIE->9|RUE|DAVID(AB3954260); 10|RUE|TEINTURIERS->104|RUE|BARABAN(AC1218890); 4|RUE|MAURICE FLANDIN->234|COURS|LAFAYETTE(AC8608747); 277|RUE|PAUL BERT->76|RUE|ANTOINE CHARIAL(AA1694256); 279|RUE|PAUL BERT->76|RUE|ANTOINE CHARIAL(AA1694256); 69|RUE|BARABAN->61|RUE|BARABAN(AB2515468); 24|AVENUE|LACASSAGNE->24||ET 24 BIS AVENUE LACASSAGNE(AG1556893)",
+    "_correctif_multiparcelles_dl_lot2": "Lot 2 multi-parcelles DL : 2 cas re-points + 2 chains absorbees (orphelins -> ancre RNC declaree par ref_cadastrale_2/3, cf. audit_copros_multiparcelles.md v2). Pattern Fremicourt/Cambronne + propagation chaine (pattern fix_pivot_bdnb_lot). Skip AB4859047 (ancre 74 DAUPHINE absente) + AB2926236 (suspect commercial). Cas : AB4738928(1+chain=1); AD5268305(1+chain=1). Parc 22200->22168 (-32)."
   },
   "iris": [
     {
@@ -15108,7 +15109,9 @@
       "_bdnb_match": "immat",
       "_fusion_auto_label": "23/25 RUE ST MAXIMIN",
       "_fusion_auto_sources": [
-        "25|RUE|ST MAXIMIN"
+        "25|RUE|ST MAXIMIN",
+        "3|RUE|MARCEL PEHU",
+        "5|RUE|MARCEL PEHU"
       ],
       "ventes_par_an_logement": {
         "2021": 2,
@@ -16767,11 +16770,9 @@
       "type_batiment": "appartement",
       "type_chauffage": "reseau de chaleur",
       "batiment_groupe_id": "bdnb-bg-NHQQ-8MZ7-KS1W",
-      "_bdnb_match": "num_voie",
+      "_bdnb_match": "immat",
       "_fusion_auto_label": "20/22 AVENUE LACASSAGNE",
-      "_fusion_auto_sources": [
-        "22|AVENUE|LACASSAGNE"
-      ],
+      "_fusion_auto_sources": null,
       "ventes_par_an_logement": {
         "2021": 0,
         "2022": 0,
@@ -16784,7 +16785,9 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "20B|AVENUE|LACASSAGNE 22 AVENUE LACASSAGNE"
     },
     {
       "cle": "20|RUE|LOUIS JASSERON",
@@ -25551,17 +25554,15 @@
         "2025": 1
       },
       "nb_ventes_total": 4,
-      "nb_log_bdnb": 32,
+      "nb_log_bdnb": 41,
       "annee_construction": 2002,
-      "classe_dpe": "D",
+      "classe_dpe": "C",
       "type_batiment": "appartement",
-      "type_chauffage": "electricite",
-      "batiment_groupe_id": "bdnb-bg-GMWN-9ZYS-LQGQ",
-      "_bdnb_match": "num_voie",
+      "type_chauffage": "gaz",
+      "batiment_groupe_id": "bdnb-bg-RBD4-VFY6-RGM1",
+      "_bdnb_match": "immat",
       "_fusion_auto_label": "3/5 RUE MARCEL PEHU",
-      "_fusion_auto_sources": [
-        "3|RUE|MARCEL PEHU"
-      ],
+      "_fusion_auto_sources": null,
       "ventes_par_an_logement": {
         "2022": 1,
         "2023": 1,
@@ -25573,7 +25574,9 @@
       "classement_rotation_logement": "Actif",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "23|RUE|ST MAXIMIN"
     },
     {
       "cle": "5|RUE|ST PHILIPPE",
@@ -26560,7 +26563,7 @@
       "batiment_groupe_id": "bdnb-bg-GMWN-9ZYS-LQGQ",
       "_bdnb_match": "num_voie",
       "_fusion_auto": true,
-      "_fusion_cible": "5|RUE|MARCEL PEHU",
+      "_fusion_cible": "23|RUE|ST MAXIMIN",
       "ventes_par_an_logement": {
         "2021": 3,
         "2024": 1
@@ -26570,7 +26573,8 @@
       "classement_rotation_logement": "Actif",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": null
     },
     {
       "cle": "21|RUE|GUILLOUD",
@@ -30444,7 +30448,7 @@
       "batiment_groupe_id": "bdnb-bg-9DFR-GCRL-WUGG",
       "_bdnb_match": "num_voie",
       "_fusion_auto": true,
-      "_fusion_cible": "20|AVENUE|LACASSAGNE",
+      "_fusion_cible": "20B|AVENUE|LACASSAGNE 22 AVENUE LACASSAGNE",
       "ventes_par_an_logement": {
         "2023": 1,
         "2024": 1
@@ -30454,7 +30458,8 @@
       "classement_rotation_logement": "Modéré",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": null
     },
     {
       "cle": "22|RUE|DAUPHINE",
@@ -56705,7 +56710,12 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": [
+        "20|AVENUE|LACASSAGNE",
+        "22|AVENUE|LACASSAGNE"
+      ],
+      "_fusion_auto_label": null
     },
     {
       "cle": "51B|AVENUE|LACASSAGNE",
