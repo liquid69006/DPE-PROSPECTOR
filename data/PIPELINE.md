@@ -123,7 +123,8 @@ Tables curées (style projet, documentées en commentaire) :
 `fix_meynis_phantom` (_correctif_meynis) →
 `fix_guilloud_range` (_correctif_guilloud) →
 `fix_alias_rnc_meme_bgid` (_correctif_alias_bgid) →
-`fix_repoint_p2a` (_correctif_repoint_p2a)
+`fix_repoint_p2a` (_correctif_repoint_p2a) →
+`fix_pivot_bdnb_lot` (_correctif_pivot_bdnb)
 
 **Motte-Picquet**
 `make_light_motte_picquet.py` → `fix_rnc_bdnb_attribution`
@@ -140,7 +141,8 @@ Tables curées (style projet, documentées en commentaire) :
 `fix_alias_rnc_meme_bgid` (_correctif_alias_bgid) →
 `fix_mp_voie_abrev` (_correctif_voie_abrev) →
 `fix_repoint_p2a` (_correctif_repoint_p2a) →
-`fix_detrie_repoint` (_correctif_detrie)
+`fix_detrie_repoint` (_correctif_detrie) →
+`fix_pivot_bdnb_lot` (_correctif_pivot_bdnb)
 
 Backups `.bak` correspondants : `.bak` (pré-1er correctif),
 `.pretauxlog.bak`, `.prehorsrnc.bak`, `.predoublon.bak`,
@@ -148,7 +150,8 @@ Backups `.bak` correspondants : `.bak` (pré-1er correctif),
 `.prehorsperim.bak`, `.preacollas.bak`, `.preguilloud.bak`,
 `.prempranges.bak`, `.prempb.bak`, `.prearmonial.bak`,
 `.precibleshr.bak`, `.prealiasbg.bak`, `.prevoieabrev.bak`,
-`.prerepointp2a.bak`, `.predetrie.bak` (gitignorés, locaux).
+`.prerepointp2a.bak`, `.predetrie.bak`, `.prepivot.bak`
+(gitignorés, locaux).
 `SECTEUR=<sec>` pilote les scripts génériques.
 
 `fix_alias_rnc_meme_bgid` (lot ALIAS_RNC même-bgid, parc-neutre) :
@@ -200,6 +203,27 @@ place (critère `copro_by_cle` du tri principal-bgid de make_light,
 introduit pour Dupleix) — une regen résoudrait naturellement ces cas
 pour autant qu'elles soient dans le bgid group à temps (cas P2b
 exclus = ajout post-make_light). `test_render` exit 0 les 2 secteurs.
+
+`fix_pivot_bdnb_lot` (_correctif_pivot_bdnb, DL+MP, 2026-05-20) :
+**12 RE-POINT parc-neutre** (11 DL + 1 MP) issus du nouveau pipeline
+**pivot BDNB** (`scripts/pipeline_bdnb_pivot.py`, source-of-truth
+externe : API `api.bdnb.io batiment_groupe_complet.l_libelle_adr`).
+Pour chaque orpheline hr-active, on liste toutes les adresses BAN du
+même `batiment_groupe_id` ; un match `cle_adresse` copro révèle une
+copre RNC ancrée sur une AUTRE adresse du même bâti, que `make_light`
+n'avait pas fusionnée (parité-mixte d'angle OU adresse ajoutée
+post-make_light par un correctif). **Fusion forward + absorption de
+chaîne** : l'orphelin et ses sources de fusion (voisins même bgid)
+deviennent simultanément secondaires de l'ancre. Parc strictement
+neutre (le bucket `bgRncLots` de l'ancre dominait déjà le bgid par
+PIPELINE §6, l'orphelin était BDNB-residentiel sur même bgid donc
+bucket `bgBdnb` déjà ignoré). 12 copros aujourd'hui invisibles
+redeviennent visibles. Top : `9|RUE|PROFESSEUR PAUL SISLEY` (16 v_log)
+→ `AA0012898` 225 lots GAGNEUX SERVICES IMMOBILIERS. 3 cas exclus du
+lot (instruction individuelle) : `12 LOUIS JASSERON→17` (duplicate),
+`18 ST ANTOINE→17` (17 fusé vers 19 sur bgid distinct), `156 GRENELLE
+→154` (P2a déjà écarté RPLS suspect). `test_render` exit 0 les 2
+secteurs (`secL == réplique exacte`).
 
 ## 6. Règles de calcul (renderSecteur, index.html)
 

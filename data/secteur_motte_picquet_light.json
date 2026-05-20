@@ -67,7 +67,8 @@
     "_correctif_alias_bgid": "Lot ALIAS_RNC meme bgid (parc-neutre) : 14 adresses hors-RNC a ventes DVF rattachees a leur copro RNC (preuve forte BDNB-rel/ortho exacte, meme batiment_groupe_id). Ventes relocalisees, parc STRICTEMENT inchange.",
     "_correctif_voie_abrev": "9 adresses DVF MP a cle de voie abregee (CAPT->CAPITAINE, GAL->GENERAL) rattachees a leur copro RNC reelle (immatriculee, presente snapshot) via ALIAS_RNC miroir bgid : 5 cibles (3 Capt Scott->AA8895435, 4 Gal Castelnau->AI7024987, 7 Gal Castelnau->AA4713186, 8 Gal Larminat->AA9446949, 11 Gal Larminat->AC8648685) + 4 dependances chaine re-pointees vers LEUR copro (1 Capt Scott->AF6894638, 5 Gal Castelnau->AC0121202, 6 Gal Castelnau->AI7024987, 12 Alasseur->AA9446949). Ventes relocalisees au rendu (champs INCHANGES), parc modele 29004->28973 (-31 : retrait de doublons BDNB, pas une perte). Source-of-truth = ALIAS_RNC make_light_motte_picquet.py.",
     "_correctif_repoint_p2a": "1 re-points P2a (copro RNC enterree sous fantome DVF principal) : 9|RUE|GUESCLIN<-3|PASSAGE|GUESCLIN(AB1748391). Parc 28973->28980 (+7) = switch BDNB->RNC autoritaire (PIPELINE §6).",
-    "_correctif_detrie": "Re-point 5|AVENUE|GAL DETRIE (DVF phantom, bgid GQAG partagé avec 55|AVENUE|SUFFREN) -> 5|AVENUE|GENERAL DETRIE (copro AD5265665 AD5265665 11 lots PICHET IMMOBILIER, bgid Y2Q8). ALIAS_RNC miroir bgid (pattern A2 / fix_mp_voie_abrev), confirmation terrain user 2026-05-20 (5 Détrie distinct de 55 Suffren). 55 SUFFREN perd la fsrc erronée. Parc 28980->28980 (strictement neutre). Aucune vente relocalisée (src vlog=0). Source-of-truth = ALIAS_RNC make_light_motte_picquet.py."
+    "_correctif_detrie": "Re-point 5|AVENUE|GAL DETRIE (DVF phantom, bgid GQAG partagé avec 55|AVENUE|SUFFREN) -> 5|AVENUE|GENERAL DETRIE (copro AD5265665 AD5265665 11 lots PICHET IMMOBILIER, bgid Y2Q8). ALIAS_RNC miroir bgid (pattern A2 / fix_mp_voie_abrev), confirmation terrain user 2026-05-20 (5 Détrie distinct de 55 Suffren). 55 SUFFREN perd la fsrc erronée. Parc 28980->28980 (strictement neutre). Aucune vente relocalisée (src vlog=0). Source-of-truth = ALIAS_RNC make_light_motte_picquet.py.",
+    "_correctif_pivot_bdnb": "1 re-points pivot BDNB (motte_picquet) - copros RNC ancrees sur une AUTRE adresse BAN du meme bgid, revelees par API BDNB batiment_groupe_complet.l_libelle_adr (cf. scripts/pipeline_bdnb_pivot.py + data/audit_pivot_bdnb.md). Fusion forward avec absorption de chaine (orph + sources -> ancre). Parc 28980->28980 (strictement neutre, meme bgid). Cas appliques: 3|PLACE|CAMBRONNE->6|PLACE|CAMBRONNE(AB5809108)"
   },
   "iris": [
     {
@@ -41928,8 +41929,8 @@
       "sci_proprietaire": "non",
       "sci_nom": "",
       "sci_siren": "",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "DAUCHEZ PROPERTY MANAGEMENT",
+      "_syndic_src": "rnc_grp",
       "numero_immatriculation": null,
       "nb_lots_habitation": null,
       "ventes_par_an": {
@@ -41952,12 +41953,12 @@
       "batiment_groupe_id": "bdnb-bg-5EJY-P43A-W2JX",
       "_bdnb_match": "num_voie",
       "_fusion_auto_label": "3/5 PLACE CAMBRONNE",
-      "_fusion_auto_sources": [
-        "5|PLACE|CAMBRONNE"
-      ],
+      "_fusion_auto_sources": null,
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "6|PLACE|CAMBRONNE"
     },
     {
       "cle": "3|RUE|CESAR FRANCK",
@@ -50506,7 +50507,12 @@
       "_bdnb_match": "immat",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": [
+        "3|PLACE|CAMBRONNE",
+        "5|PLACE|CAMBRONNE"
+      ],
+      "_fusion_auto_label": null
     },
     {
       "cle": "6|RUE|ALASSEUR",
@@ -60330,10 +60336,11 @@
       "batiment_groupe_id": "bdnb-bg-5EJY-P43A-W2JX",
       "_bdnb_match": "num_voie",
       "_fusion_auto": true,
-      "_fusion_cible": "3|PLACE|CAMBRONNE",
+      "_fusion_cible": "6|PLACE|CAMBRONNE",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": null
     },
     {
       "cle": "5|RUE|ALEXANDRE CABANEL",

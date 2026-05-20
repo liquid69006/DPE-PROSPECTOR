@@ -90,7 +90,8 @@
     "_correctif_meynis": "Adresse DVF fantome 10 RUE MEYNIS (parcelle DN0005, bati tertiaire) rattachee chirurgicalement a la copro RESIDENCE PAULINE AA8066532 @ 10 PASSAGE MEYNIS (parcelle DT0052, bgid WDLN-W7EH-5BGA) : _fusion_auto -> 10|PASSAGE|MEYNIS, ses 10 ventes DVF (7 strictes) relocalisees au rendu. Source-of-truth = ALIAS_RNC dans make_light.py. Parc inchange (src etait Tertiaire->0 ; copro deja comptee 27 lots). 2 enregistrements touches, aucun autre champ modifie.",
     "_correctif_guilloud": "Copro RNC '39-43 RUE GUILLOUD' (30 lots), doublement immatriculee AB9349846 (2018) / AJ0217901 'LE GUILLOUD' (re-immat 2025, REGIE DU LYONNAIS ; light retient AJ0217901 @ cle 39). 39/41/43 partagent le bgid YTPJ-Q2XB-2DEF ; la fusion RNC agrege {39,43} (nom/compl) et consomme les bornes, laissant 41 (entree mediane jamais listee au RNC) isole. 41 RUE GUILLOUD rattachee chirurgicalement comme secondaire auto de 39 (miroir exact du frere 43) : champs autoritatifs (bgid/nb_log_bdnb/_bdnb_match/usage/ventes) INCHANGES. Au rendu : 2 ventes (2 strictes) relocalisees sous AJ0217901, 41 sort des 'hors-RNC actifs'. PARC STRICTEMENT INCHANGE (41 partage deja le bgid de la copro -> deja dedupe aux 30 lots RNC, PIPELINE 6). 39._fusion_auto_sources -> ['41','43'], label '39/41/43 RUE GUILLOUD'. Source-of-truth = FUSION_RNC_EXTRA_NUMS dans make_light.py. 2 enregistrements touches.",
     "_correctif_alias_bgid": "Lot ALIAS_RNC meme bgid (parc-neutre) : 36 adresses hors-RNC a ventes DVF rattachees a leur copro RNC (preuve forte BDNB-rel/ortho exacte, meme batiment_groupe_id). Ventes relocalisees, parc STRICTEMENT inchange.",
-    "_correctif_repoint_p2a": "3 re-points P2a (copro RNC enterree sous fantome DVF principal) : 53|RUE|ETIENNE RICHERAND<-51|RUE|ETIENNE RICHERAND(AC3598851), 56|AVENUE|LACASSAGNE<-54|AVENUE|LACASSAGNE(AA4814810), 316|RUE|PAUL BERT<-318|RUE|PAUL BERT(AC6168629). Parc 22268->22267 (-1) = switch BDNB->RNC autoritaire (PIPELINE §6)."
+    "_correctif_repoint_p2a": "3 re-points P2a (copro RNC enterree sous fantome DVF principal) : 53|RUE|ETIENNE RICHERAND<-51|RUE|ETIENNE RICHERAND(AC3598851), 56|AVENUE|LACASSAGNE<-54|AVENUE|LACASSAGNE(AA4814810), 316|RUE|PAUL BERT<-318|RUE|PAUL BERT(AC6168629). Parc 22268->22267 (-1) = switch BDNB->RNC autoritaire (PIPELINE §6).",
+    "_correctif_pivot_bdnb": "11 re-points pivot BDNB (dauphine_lacassagne) - copros RNC ancrees sur une AUTRE adresse BAN du meme bgid, revelees par API BDNB batiment_groupe_complet.l_libelle_adr (cf. scripts/pipeline_bdnb_pivot.py + data/audit_pivot_bdnb.md). Fusion forward avec absorption de chaine (orph + sources -> ancre). Parc 22267->22267 (strictement neutre, meme bgid). Cas appliques: 9|RUE|PROFESSEUR PAUL SISLEY->7B|RUE|PROFESSEUR PAUL SISLEY(AA0012898); 12|RUE|LOUIS JASSERON->13|RUE|LOUIS JASSERON(AC6278774); 14|RUE|ST MAXIMIN->1|RUE|ROSSAN(AB2460335); 38|RUE|BARABAN->37|RUE|BARABAN(AC9726381); 260|RUE|PAUL BERT->264B|RUE|PAUL BERT(AE1699040); 12|RUE|CARRY->6|RUE|CARRY(AC1825504); 48|RUE|ST MAXIMIN->51|RUE|ST MAXIMIN(AB2784080); 18|RUE|ETIENNE RICHERAND->19|RUE|ETIENNE RICHERAND(AG2447720); 10|RUE|DAUPHINE->1|RUE|ST MAXIMIN(AF0858860); 14|RUE|ST SIDOINE->12|RUE|ST SIDOINE(AB2206571); 46|RUE|ST MAXIMIN->43|RUE|ST MAXIMIN(AB1744747)"
   },
   "iris": [
     {
@@ -13059,7 +13060,7 @@
       "batiment_groupe_id": "bdnb-bg-68CY-P7TQ-TZ2P",
       "_bdnb_match": "num_voie",
       "_fusion_auto": true,
-      "_fusion_cible": "9|RUE|PROFESSEUR PAUL SISLEY",
+      "_fusion_cible": "7B|RUE|PROFESSEUR PAUL SISLEY",
       "ventes_par_an_logement": {
         "2022": 2,
         "2025": 2
@@ -13069,7 +13070,8 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": null
     },
     {
       "cle": "128|RUE|ANTOINE CHARIAL",
@@ -13584,10 +13586,7 @@
       "batiment_groupe_id": "bdnb-bg-68CY-P7TQ-TZ2P",
       "_bdnb_match": "num_voie",
       "_fusion_auto_label": "7/9/11 RUE PROFESSEUR PAUL SISLEY",
-      "_fusion_auto_sources": [
-        "11|RUE|PROFESSEUR PAUL SISLEY",
-        "7|RUE|PROFESSEUR PAUL SISLEY"
-      ],
+      "_fusion_auto_sources": null,
       "ventes_par_an_logement": {
         "2021": 2,
         "2022": 1,
@@ -13600,7 +13599,9 @@
       "classement_rotation_logement": "Modéré",
       "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "7B|RUE|PROFESSEUR PAUL SISLEY"
     },
     {
       "cle": "38|RUE|STE ANNE DE BARABAN",
@@ -15380,8 +15381,8 @@
       "sci_proprietaire": "non",
       "sci_nom": "",
       "sci_siren": "",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "REGIE PEDRINI",
+      "_syndic_src": "rnc_grp",
       "ventes_par_an": {
         "2021": 1,
         "2022": 1,
@@ -15397,9 +15398,7 @@
       "batiment_groupe_id": "bdnb-bg-4F6G-4P2Q-RRZK",
       "_bdnb_match": "num_voie",
       "_fusion_auto_label": "48/50 RUE ST MAXIMIN",
-      "_fusion_auto_sources": [
-        "50|RUE|ST MAXIMIN"
-      ],
+      "_fusion_auto_sources": null,
       "ventes_par_an_logement": {
         "2021": 0,
         "2022": 0,
@@ -15411,7 +15410,9 @@
       "classement_rotation_logement": "Modéré",
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "51|RUE|ST MAXIMIN"
     },
     {
       "cle": "49|RUE|DAUPHINE",
@@ -18985,9 +18986,7 @@
       "batiment_groupe_id": "bdnb-bg-NWNV-GU7Z-XPMJ",
       "_bdnb_match": "num_voie",
       "_fusion_auto_label": "18/20 RUE ETIENNE RICHERAND",
-      "_fusion_auto_sources": [
-        "20|RUE|ETIENNE RICHERAND"
-      ],
+      "_fusion_auto_sources": null,
       "ventes_par_an_logement": {
         "2022": 1,
         "2024": 1,
@@ -18998,7 +18997,9 @@
       "classement_rotation_logement": "Très actif",
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "19|RUE|ETIENNE RICHERAND"
     },
     {
       "cle": "182|AVENUE|FELIX FAURE",
@@ -21708,9 +21709,7 @@
       "batiment_groupe_id": "bdnb-bg-77CU-S4U4-AGR1",
       "_bdnb_match": "num_voie",
       "_fusion_auto_label": "36/38 RUE BARABAN",
-      "_fusion_auto_sources": [
-        "36|RUE|BARABAN"
-      ],
+      "_fusion_auto_sources": null,
       "ventes_par_an_logement": {
         "2022": 1,
         "2023": 2,
@@ -21722,7 +21721,9 @@
       "classement_rotation_logement": "Actif",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "37|RUE|BARABAN"
     },
     {
       "cle": "330|RUE|PAUL BERT",
@@ -21902,6 +21903,8 @@
       "_bdnb_match": "immat",
       "_fusion_auto_label": "6/8 RUE CARRY",
       "_fusion_auto_sources": [
+        "12|RUE|CARRY",
+        "14|RUE|CARRY",
         "8|RUE|CARRY"
       ],
       "ventes_par_an_logement": {
@@ -21965,8 +21968,8 @@
       "sci_proprietaire": "inconnu",
       "sci_nom": "",
       "sci_siren": "",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "REGIE DU LYONNAIS",
+      "_syndic_src": "rnc_grp",
       "ventes_par_an": {
         "2021": 2,
         "2022": 1,
@@ -21982,9 +21985,7 @@
       "batiment_groupe_id": "bdnb-bg-D9LP-CBCP-F74E",
       "_bdnb_match": "num_voie",
       "_fusion_auto_label": "260/262 RUE PAUL BERT",
-      "_fusion_auto_sources": [
-        "262|RUE|PAUL BERT"
-      ],
+      "_fusion_auto_sources": null,
       "ventes_par_an_logement": {
         "2021": 2,
         "2022": 1,
@@ -21996,7 +21997,9 @@
       "classement_rotation_logement": "Très actif",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel individuel",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "264B|RUE|PAUL BERT"
     },
     {
       "cle": "18|RUE|ST MAXIMIN",
@@ -22098,8 +22101,10 @@
       "_bdnb_match": "immat",
       "_fusion_auto_label": "49/51/53 RUE ST MAXIMIN",
       "_fusion_auto_sources": [
-        "53|RUE|ST MAXIMIN",
-        "49|RUE|ST MAXIMIN"
+        "48|RUE|ST MAXIMIN",
+        "49|RUE|ST MAXIMIN",
+        "50|RUE|ST MAXIMIN",
+        "53|RUE|ST MAXIMIN"
       ],
       "ventes_par_an_logement": {
         "2021": 1,
@@ -22437,8 +22442,8 @@
       "sci_proprietaire": "non",
       "sci_nom": "",
       "sci_siren": "",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "LAMY",
+      "_syndic_src": "rnc_grp",
       "ventes_par_an": {
         "2021": 1,
         "2022": 3,
@@ -22453,10 +22458,7 @@
       "batiment_groupe_id": "bdnb-bg-4DUC-A62Z-LN35",
       "_bdnb_match": "num_voie",
       "_fusion_auto_label": "10/12/14 RUE LOUIS JASSERON",
-      "_fusion_auto_sources": [
-        "14|RUE|LOUIS JASSERON",
-        "10|RUE|LOUIS JASSERON"
-      ],
+      "_fusion_auto_sources": null,
       "ventes_par_an_logement": {
         "2021": 1,
         "2022": 3,
@@ -22467,7 +22469,9 @@
       "classement_rotation_logement": "Actif",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "13|RUE|LOUIS JASSERON"
     },
     {
       "cle": "12|RUE|ST SIDOINE",
@@ -22497,6 +22501,9 @@
       "_bdnb_match": "immat",
       "_fusion_auto_label": "12/20 RUE ST SIDOINE",
       "_fusion_auto_sources": [
+        "14|RUE|ST SIDOINE",
+        "16|RUE|ST SIDOINE",
+        "18|RUE|ST SIDOINE",
         "20|RUE|ST SIDOINE"
       ],
       "ventes_par_an_logement": {
@@ -22739,6 +22746,9 @@
       "_bdnb_match": "num_voie",
       "_fusion_auto_label": "9/13/17 RUE LOUIS JASSERON",
       "_fusion_auto_sources": [
+        "10|RUE|LOUIS JASSERON",
+        "12|RUE|LOUIS JASSERON",
+        "14|RUE|LOUIS JASSERON",
         "17|RUE|LOUIS JASSERON",
         "9|RUE|LOUIS JASSERON"
       ],
@@ -25003,7 +25013,12 @@
       "classement_rotation_logement": "Modéré",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": [
+        "36|RUE|BARABAN",
+        "38|RUE|BARABAN"
+      ],
+      "_fusion_auto_label": null
     },
     {
       "cle": "37|RUE|ST MAXIMIN",
@@ -26362,7 +26377,7 @@
       "batiment_groupe_id": "bdnb-bg-6J3V-PN4E-7QWG",
       "_bdnb_match": "num_voie",
       "_fusion_auto": true,
-      "_fusion_cible": "14|RUE|ST MAXIMIN",
+      "_fusion_cible": "1|RUE|ROSSAN",
       "ventes_par_an_logement": {
         "2024": 1
       },
@@ -26371,7 +26386,8 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": null
     },
     {
       "cle": "16|RUE|ST VICTORIEN",
@@ -26627,7 +26643,7 @@
       "batiment_groupe_id": "bdnb-bg-77CU-S4U4-AGR1",
       "_bdnb_match": "num_voie",
       "_fusion_auto": true,
-      "_fusion_cible": "38|RUE|BARABAN",
+      "_fusion_cible": "37|RUE|BARABAN",
       "ventes_par_an_logement": {
         "2021": 2,
         "2022": 1,
@@ -26638,7 +26654,8 @@
       "classement_rotation_logement": "Actif",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": null
     },
     {
       "cle": "6|RUE|TURBIL",
@@ -27163,7 +27180,7 @@
       "batiment_groupe_id": "bdnb-bg-D9LP-CBCP-F74E",
       "_bdnb_match": "num_voie",
       "_fusion_auto": true,
-      "_fusion_cible": "260|RUE|PAUL BERT",
+      "_fusion_cible": "264B|RUE|PAUL BERT",
       "ventes_par_an_logement": {
         "2024": 1
       },
@@ -27172,7 +27189,8 @@
       "classement_rotation_logement": "Très actif",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel individuel",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": null
     },
     {
       "cle": "13|RUE|PROFESSEUR PAUL SISLEY",
@@ -28202,9 +28220,7 @@
       "batiment_groupe_id": "bdnb-bg-RTNL-L1N7-K12Y",
       "_bdnb_match": "num_voie",
       "_fusion_auto_label": "8/10 RUE DAUPHINE",
-      "_fusion_auto_sources": [
-        "8|RUE|DAUPHINE"
-      ],
+      "_fusion_auto_sources": null,
       "ventes_par_an_logement": {
         "2021": 0,
         "2022": 2,
@@ -28215,7 +28231,9 @@
       "classement_rotation_logement": "Actif",
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "1|RUE|ST MAXIMIN"
     },
     {
       "cle": "10|RUE|FRANCOIS GILLET",
@@ -28284,7 +28302,7 @@
       "batiment_groupe_id": "bdnb-bg-4DUC-A62Z-LN35",
       "_bdnb_match": "num_voie",
       "_fusion_auto": true,
-      "_fusion_cible": "12|RUE|LOUIS JASSERON",
+      "_fusion_cible": "13|RUE|LOUIS JASSERON",
       "ventes_par_an_logement": {
         "2025": 1
       },
@@ -28293,7 +28311,8 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": null
     },
     {
       "cle": "10|RUE|STE ANNE DE BARABAN",
@@ -28613,8 +28632,8 @@
       "sci_proprietaire": "non",
       "sci_nom": "",
       "sci_siren": "",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "C2L",
+      "_syndic_src": "rnc_grp",
       "ventes_par_an": {
         "2021": 1,
         "2022": 1,
@@ -28630,9 +28649,7 @@
       "batiment_groupe_id": "bdnb-bg-FW4B-YECQ-FPCT",
       "_bdnb_match": "num_voie",
       "_fusion_auto_label": "12/14 RUE CARRY",
-      "_fusion_auto_sources": [
-        "14|RUE|CARRY"
-      ],
+      "_fusion_auto_sources": null,
       "ventes_par_an_logement": {
         "2021": 1,
         "2022": 1,
@@ -28644,7 +28661,9 @@
       "classement_rotation_logement": "Très actif",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "6|RUE|CARRY"
     },
     {
       "cle": "12|RUE|DOCTEUR REBATEL",
@@ -28982,7 +29001,7 @@
       "batiment_groupe_id": "bdnb-bg-4DUC-A62Z-LN35",
       "_bdnb_match": "num_voie",
       "_fusion_auto": true,
-      "_fusion_cible": "12|RUE|LOUIS JASSERON",
+      "_fusion_cible": "13|RUE|LOUIS JASSERON",
       "ventes_par_an_logement": {
         "2023": 1,
         "2025": 1
@@ -28992,7 +29011,8 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": null
     },
     {
       "cle": "14|RUE|ST MAXIMIN",
@@ -29005,8 +29025,8 @@
       "sci_proprietaire": "non",
       "sci_nom": "",
       "sci_siren": "",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "REGIE PEDRINI",
+      "_syndic_src": "rnc_grp",
       "ventes_par_an": {
         "2021": 1,
         "2022": 3,
@@ -29022,9 +29042,7 @@
       "batiment_groupe_id": "bdnb-bg-6J3V-PN4E-7QWG",
       "_bdnb_match": "num_voie",
       "_fusion_auto_label": "12/14 RUE ST MAXIMIN",
-      "_fusion_auto_sources": [
-        "12|RUE|ST MAXIMIN"
-      ],
+      "_fusion_auto_sources": null,
       "ventes_par_an_logement": {
         "2021": 1,
         "2022": 3,
@@ -29036,7 +29054,9 @@
       "classement_rotation_logement": "Actif",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "1|RUE|ROSSAN"
     },
     {
       "cle": "14|RUE|ST SIDOINE",
@@ -29049,8 +29069,8 @@
       "sci_proprietaire": "non",
       "sci_nom": "",
       "sci_siren": "",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "FONCIA LYON",
+      "_syndic_src": "rnc_grp",
       "ventes_par_an": {
         "2021": 1,
         "2023": 1,
@@ -29065,10 +29085,7 @@
       "batiment_groupe_id": "bdnb-bg-4BCZ-EFDZ-724F",
       "_bdnb_match": "num_voie",
       "_fusion_auto_label": "14/16/18 RUE ST SIDOINE",
-      "_fusion_auto_sources": [
-        "18|RUE|ST SIDOINE",
-        "16|RUE|ST SIDOINE"
-      ],
+      "_fusion_auto_sources": null,
       "ventes_par_an_logement": {
         "2021": 1,
         "2023": 1,
@@ -29079,7 +29096,9 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Tertiaire",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "12|RUE|ST SIDOINE"
     },
     {
       "cle": "147|RUE|BARABAN",
@@ -30086,7 +30105,7 @@
       "batiment_groupe_id": "bdnb-bg-NWNV-GU7Z-XPMJ",
       "_bdnb_match": "num_voie",
       "_fusion_auto": true,
-      "_fusion_cible": "18|RUE|ETIENNE RICHERAND",
+      "_fusion_cible": "19|RUE|ETIENNE RICHERAND",
       "ventes_par_an_logement": {
         "2021": 0,
         "2022": 1,
@@ -30097,7 +30116,8 @@
       "classement_rotation_logement": "Très actif",
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": null
     },
     {
       "cle": "20|RUE|ST SIDOINE",
@@ -32986,9 +33006,7 @@
       "batiment_groupe_id": "bdnb-bg-PWDK-M71Z-3JJQ",
       "_bdnb_match": "num_voie",
       "_fusion_auto_label": "44/46 RUE ST MAXIMIN",
-      "_fusion_auto_sources": [
-        "44|RUE|ST MAXIMIN"
-      ],
+      "_fusion_auto_sources": null,
       "ventes_par_an_logement": {
         "2023": 1,
         "2025": 1
@@ -32998,7 +33016,9 @@
       "classement_rotation_logement": "Modéré",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "43|RUE|ST MAXIMIN"
     },
     {
       "cle": "47|RUE|ANTOINE CHARIAL",
@@ -33249,7 +33269,7 @@
       "batiment_groupe_id": "bdnb-bg-4F6G-4P2Q-RRZK",
       "_bdnb_match": "num_voie",
       "_fusion_auto": true,
-      "_fusion_cible": "48|RUE|ST MAXIMIN",
+      "_fusion_cible": "51|RUE|ST MAXIMIN",
       "ventes_par_an_logement": {
         "2022": 0,
         "2023": 1,
@@ -33260,7 +33280,8 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": null
     },
     {
       "cle": "51|RUE|PROFESSEUR PAUL SISLEY",
@@ -34300,7 +34321,7 @@
       "batiment_groupe_id": "bdnb-bg-RTNL-L1N7-K12Y",
       "_bdnb_match": "num_voie",
       "_fusion_auto": true,
-      "_fusion_cible": "10|RUE|DAUPHINE",
+      "_fusion_cible": "1|RUE|ST MAXIMIN",
       "ventes_par_an_logement": {
         "2024": 0
       },
@@ -34309,7 +34330,8 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": null
     },
     {
       "cle": "84|RUE|ANTOINE CHARIAL",
@@ -37214,7 +37236,7 @@
       "batiment_groupe_id": "bdnb-bg-FW4B-YECQ-FPCT",
       "_bdnb_match": "num_voie",
       "_fusion_auto": true,
-      "_fusion_cible": "12|RUE|CARRY",
+      "_fusion_cible": "6|RUE|CARRY",
       "ventes_par_an_logement": {
         "2021": 1
       },
@@ -37223,7 +37245,8 @@
       "classement_rotation_logement": "Modéré",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": null
     },
     {
       "cle": "14|RUE|FRANCOIS GILLET",
@@ -39009,14 +39032,15 @@
       "batiment_groupe_id": "bdnb-bg-4BCZ-EFDZ-724F",
       "_bdnb_match": "num_voie",
       "_fusion_auto": true,
-      "_fusion_cible": "14|RUE|ST SIDOINE",
+      "_fusion_cible": "12|RUE|ST SIDOINE",
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Tertiaire",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": null
     },
     {
       "cle": "16|RUE|STE ANNE DE BARABAN",
@@ -39880,7 +39904,7 @@
       "batiment_groupe_id": "bdnb-bg-4BCZ-EFDZ-724F",
       "_bdnb_match": "num_voie",
       "_fusion_auto": true,
-      "_fusion_cible": "14|RUE|ST SIDOINE",
+      "_fusion_cible": "12|RUE|ST SIDOINE",
       "ventes_par_an_logement": {
         "2022": 1
       },
@@ -39889,7 +39913,8 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Tertiaire",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": null
     },
     {
       "cle": "18|RUE|TURBIL",
@@ -40115,7 +40140,12 @@
       "classement_rotation_logement": "Très actif",
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": [
+        "18|RUE|ETIENNE RICHERAND",
+        "20|RUE|ETIENNE RICHERAND"
+      ],
+      "_fusion_auto_label": null
     },
     {
       "cle": "192|AVENUE|FELIX FAURE",
@@ -49127,7 +49157,12 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": [
+        "44|RUE|ST MAXIMIN",
+        "46|RUE|ST MAXIMIN"
+      ],
+      "_fusion_auto_label": null
     },
     {
       "cle": "44|RUE|VILLETTE",
@@ -49250,14 +49285,15 @@
       "batiment_groupe_id": "bdnb-bg-PWDK-M71Z-3JJQ",
       "_bdnb_match": "num_voie",
       "_fusion_auto": true,
-      "_fusion_cible": "46|RUE|ST MAXIMIN",
+      "_fusion_cible": "43|RUE|ST MAXIMIN",
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": null
     },
     {
       "cle": "45|AVENUE|LACASSAGNE",
@@ -52669,7 +52705,7 @@
       "batiment_groupe_id": "bdnb-bg-68CY-P7TQ-TZ2P",
       "_bdnb_match": "immat",
       "_fusion_auto": true,
-      "_fusion_cible": "9|RUE|PROFESSEUR PAUL SISLEY",
+      "_fusion_cible": "7B|RUE|PROFESSEUR PAUL SISLEY",
       "ventes_par_an_logement": {
         "2021": 1,
         "2023": 1
@@ -52679,7 +52715,8 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": null
     },
     {
       "cle": "7|RUE|ST VICTORIEN",
@@ -55863,7 +55900,13 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": [
+        "11|RUE|PROFESSEUR PAUL SISLEY",
+        "7|RUE|PROFESSEUR PAUL SISLEY",
+        "9|RUE|PROFESSEUR PAUL SISLEY"
+      ],
+      "_fusion_auto_label": null
     },
     {
       "cle": "42A||50 RUE ST MAXIMIN",
@@ -56157,7 +56200,12 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": [
+        "12|RUE|ST MAXIMIN",
+        "14|RUE|ST MAXIMIN"
+      ],
+      "_fusion_auto_label": null
     },
     {
       "cle": "296|RUE|PAUL BERT",
@@ -56673,7 +56721,12 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Résidentiel individuel",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": [
+        "260|RUE|PAUL BERT",
+        "262|RUE|PAUL BERT"
+      ],
+      "_fusion_auto_label": null
     },
     {
       "cle": "1|RUE|ST MAXIMIN",
@@ -56703,7 +56756,12 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": [
+        "10|RUE|DAUPHINE",
+        "8|RUE|DAUPHINE"
+      ],
+      "_fusion_auto_label": null
     },
     {
       "cle": "24||ET 24 BIS AVENUE LACASSAGNE",
