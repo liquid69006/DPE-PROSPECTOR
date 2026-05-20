@@ -755,6 +755,11 @@ td{padding:11px 14px;vertical-align:middle;}
         style="padding:7px 14px;border:1px solid var(--border);border-radius:6px;
                background:var(--surface2);color:var(--text);font-size:13px;
                cursor:pointer;white-space:nowrap;">🔍 Hors-RNC actifs</button>
+      <button id="secteur-mono-btn" onclick="secteurToggleMono()"
+        title="N'afficher que les adresses HORS-RNC qualifiées 'Monopropriété' (qualification posée manuellement)."
+        style="padding:7px 14px;border:1px solid var(--border);border-radius:6px;
+               background:var(--surface2);color:var(--text);font-size:13px;
+               cursor:pointer;white-space:nowrap;">🏢 Mono</button>
     </div>
     <div id="secteur-colhead" style="display:none;position:sticky;top:0;z-index:5;
          background:var(--surface);border-bottom:2px solid var(--border);
@@ -1994,6 +1999,18 @@ function secteurToggleHrActif() {
   renderSecteur();
 }
 window.secteurToggleHrActif = secteurToggleHrActif;
+let secteurMono = false;            // filtre "Monopropriété" (toggle, qualif manuelle)
+function secteurToggleMono() {
+  secteurMono = !secteurMono;
+  const b = document.getElementById('secteur-mono-btn');
+  if (b) {
+    b.style.background = secteurMono ? 'var(--orange)' : 'var(--surface2)';
+    b.style.color = secteurMono ? '#fff' : 'var(--text)';
+    b.style.borderColor = secteurMono ? 'var(--orange)' : 'var(--border)';
+  }
+  renderSecteur();
+}
+window.secteurToggleMono = secteurToggleMono;
 let sctFusSrc = null, sctFusPick = null;   // etat de la modale de rapprochement
 
 // Agence -> [fichier light secteur, id secteur pour les assignments KV].
@@ -2060,6 +2077,9 @@ const ROT_COLOR = { 'Tres actif': '#16a34a', 'Très actif': '#16a34a',
 const TYPE_OPTS = [['', '— type —'], ['copro_non_immat', 'Copropriété non immatriculée'],
   ['mono', 'Mono-propriété'], ['social', 'Logements sociaux'],
   ['bureaux', 'Bureaux'], ['non_qualifie', 'Non qualifié']];
+// Etiquettes courtes pour badge (rendu compact apres qualification posee)
+const TYPE_LABELS = { copro_non_immat: 'Copro non immat.', mono: 'Monopropriété',
+  social: 'Logements sociaux', bureaux: 'Bureaux', non_qualifie: 'Non qualifié' };
 
 function secteurSetAssign(key, field, val) {
   if (!secteurAssign[key]) secteurAssign[key] = {};
@@ -2067,7 +2087,9 @@ function secteurSetAssign(key, field, val) {
   else secteurAssign[key][field] = field === 'ilot' ? parseInt(val) : val;
   if (!Object.keys(secteurAssign[key]).length) delete secteurAssign[key];
   secteurSave();
-  if (field === 'ilot') renderSecteur();   // ré-grouper par îlot
+  // Re-render quand la qualif change (passe du select au badge ou inversement)
+  // ou quand l'ilot change (re-grouper la grille).
+  if (field === 'ilot' || field === 'type') renderSecteur();
 }
 window.secteurSetAssign = secteurSetAssign;
 
@@ -2218,6 +2240,13 @@ function renderSecteur() {
       const horsRnc = !coproByCle[a.cle] && !a.numero_immatriculation;
       if (!(horsRnc && (a.nb_ventes_logement > 0) && (a.nb_log_bdnb > 1))) return;
     }
+    if (secteurMono) {               // filtre "Monopropriété" (qualif manuelle)
+      // N'affiche que les adresses HORS-RNC qualifiées 'mono' via le menu
+      // de qualification (secteurAssign[cle].type === 'mono'). Cumulable.
+      const horsRnc = !coproByCle[a.cle] && !a.numero_immatriculation;
+      const as = secteurAssign[a.cle] || {};
+      if (!(horsRnc && as.type === 'mono')) return;
+    }
     const ci = a.code_iris || '_nd';
     (parIris[ci] = parIris[ci] || []).push(a);
   });
@@ -2362,16 +2391,33 @@ function renderSecteur() {
           + Array.from({ length: 81 }, (_, n) => n + 1).map(n =>
               `<option value="${n}"${as.ilot === n ? ' selected' : ''}>${n}</option>`).join('')
           + `</select>`;
-        // Type masqué si données BDNB (déjà qualifié) — visible seulement
-        // pour les vraies inconnues (ni RNC ni BDNB)
-        const hasBdnb = (a.nb_log_bdnb != null && a.nb_log_bdnb > 0)
-          || (a.classe_dpe != null && a.classe_dpe !== '');
-        const typeSel = (!rnc && !hasBdnb)
-          ? `<select onchange="secteurSetAssign('${esc(a.cle)}','type',this.value)" `
-            + `style="background:#1f2937;color:#fff;border:1px solid #4b5563;border-radius:4px;font-size:11px;padding:1px 3px;width:104px;flex:none;">`
-            + TYPE_OPTS.map(([v, l]) =>
-                `<option value="${v}"${as.type === v ? ' selected' : ''}>${esc(l)}</option>`).join('')
-            + `</select>` : '';
+        // Qualification : visible pour TOUTES les adresses hors-RNC (BDNB ou non).
+        // Si une qualification est posee -> badge statique + crayon (re-edition).
+        // Sinon -> menu deroulant "— type —".
+        let typeSel = '';
+        if (!rnc) {
+          if (as.type && TYPE_LABELS[as.type]) {
+            const lbl = TYPE_LABELS[as.type];
+            typeSel = `<span class="sct-typecell" data-cle="${esc(a.cle)}" `
+              + `style="display:inline-flex;align-items:center;gap:3px;flex:none;">`
+              + `<span title="Qualification : ${esc(lbl)}" `
+              + `  style="background:#1f2937;color:#cbd5e1;border:1px solid #4b5563;`
+              + `border-radius:9px;font-size:10px;font-weight:600;padding:1px 7px;`
+              + `white-space:nowrap;">${esc(lbl)}</span>`
+              + `<button onclick="secteurEditType(this)" title="Modifier la qualification" `
+              + `  style="background:transparent;border:none;color:var(--text2);`
+              + `cursor:pointer;font-size:11px;padding:0;">✏️</button>`
+              + `</span>`;
+          } else {
+            typeSel = `<span class="sct-typecell" data-cle="${esc(a.cle)}" `
+              + `style="display:inline-flex;flex:none;">`
+              + `<select onchange="secteurSetAssign('${esc(a.cle)}','type',this.value)" `
+              + `style="background:#1f2937;color:#fff;border:1px solid #4b5563;border-radius:4px;font-size:11px;padding:1px 3px;width:130px;flex:none;">`
+              + TYPE_OPTS.map(([v, l]) =>
+                  `<option value="${v}"${as.type === v ? ' selected' : ''}>${esc(l)}</option>`).join('')
+              + `</select></span>`;
+          }
+        }
 
         // Adresse cliquable -> Google Maps "ADRESSE <ville>" (ville
         // dynamique selon le secteur, cf. secteurVille). On garde
@@ -2402,8 +2448,6 @@ function renderSecteur() {
         const actions = `<button onclick="secteurRapprocher('${esc(a.cle)}')" title="Rapprocher d'une copropriété RNC" `
           + `style="background:transparent;border:1px solid #4b5563;color:#0ea5e9;border-radius:4px;`
           + `font-size:11px;padding:1px 5px;cursor:pointer;">🔗</button>`
-          + `<button onclick="secteurRename(this)" title="Renommer" `
-          + `style="background:transparent;border:none;color:var(--text2);cursor:pointer;font-size:11px;padding:0;">✏️</button>`
           + `${fusBadge}${autoBadge}${ilotSel}${typeSel}`;
         // Syndic (RNC : raison sociale du représentant légal) ; "non connu" -> —
         const synNm = (a.syndic && !/^\s*non connu\s*$/i.test(a.syndic))
@@ -2619,6 +2663,25 @@ function secteurRename(btn) {
   inp.focus(); inp.select();
 }
 window.secteurRename = secteurRename;
+
+// ── Edition de la qualification "type" (clic crayon a cote du badge) ──
+// Reconstruit le <select> dans la cellule, pre-selectionne sur la valeur
+// courante. A la validation (onchange) -> secteurSetAssign repasse en
+// badge via renderSecteur (field 'type' inclus dans le re-render).
+function secteurEditType(btn) {
+  const cell = btn.closest('.sct-typecell'); if (!cell) return;
+  const cle = cell.getAttribute('data-cle'); if (!cle) return;
+  const cur = (secteurAssign[cle] || {}).type || '';
+  const opts = TYPE_OPTS.map(([v, l]) =>
+    `<option value="${v}"${cur === v ? ' selected' : ''}>${esc(l)}</option>`).join('');
+  cell.innerHTML = `<select onchange="secteurSetAssign('${esc(cle)}','type',this.value)" `
+    + `style="background:#1f2937;color:#fff;border:1px solid #0ea5e9;`
+    + `border-radius:4px;font-size:11px;padding:1px 3px;width:160px;flex:none;">`
+    + opts + `</select>`;
+  const sel = cell.querySelector('select');
+  if (sel) sel.focus();
+}
+window.secteurEditType = secteurEditType;
 
 // ════════════════════════════════════════
 //  DONNÉES SCI
