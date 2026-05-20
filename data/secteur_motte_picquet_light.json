@@ -76,7 +76,8 @@
     "_correctif_suffren_barthelemy_garibaldi": "Copro RNC AD2301695 (163 AVENUE DE SUFFREN, 17 lots hab / 20 tot, syndic GESTION ET TRANSACTIONS DE FRANCE) injectee dans coproprietes[] et attribuee a 163|AVENUE|SUFFREN (bgid bdnb-bg-QTC9-KFAU-5TPU). Copro ABSENTE du snapshot RNC mais confirmee par RNC live (tabular-api 3ea8e2c3-0038...) + BDNB pivot (l_libelle_adr = 9 BARTH + 163 SUFFREN + 59 GAR sur QTC9-KFAU-5TPU, parcelle 75115000CW0053). 9 RUE BARTHELEMY et 59 BD GARIBALDI : facades non-postales, 0 vente DVF, hors light - ALIAS_RNC a porter dans make_light_motte_picquet.py. Parc 28910->28913 (+3 logements : switch BDNB(14)->RNC(17) autoritatif sur bgid QTC9, PIPELINE Sec 6). 2 ventes DVF (12/07/2023 + 23/07/2025) relocalisees sous AD2301695, classement Actif.",
     "_correctif_cambronne_belleuse": "13 RUE CARRIER BELLEUSE -> 19 RUE CAMBRONNE (AA8571440 IMMEUBLE 19 CAMBRON-13CBELLEUS, 62 lots hab / 201 tot, GERARD SAFAR SAS, mandat -> 2026-09-30). Triple confirmation : RNC compl_2='13-13 r carrier-belleuse' + nom RNC declaratif des 2 voies, BDNB bgids 2UC3 (19+21 Cambronne) et 4CUT (13+13B Carrier Belleuse) sur MEME parcelle 75115000CY0067 et MEME annee 1977, nb_log_rnc BDNB=62 sur 2UC3 matche AA8571440. Pattern ALIAS_RNC multi-voies (Fremicourt/ARMONIAL) : 13|CARRIER|BELLEUSE (bgid 4CUT errone, 33 nb_log_bdnb, 4 ventes) re-pointe vers 19|CAMBRONNE avec adoption MIRROR bgid 2UC3. Parc 28913->28880 (-33) = dedup multi-bgid (les 33 BDNB de 4CUT etaient deja compris dans les 62 lots RNC qui couvrent 2UC3+4CUT, PIPELINE Sec 6 lots RNC prioritaires). 13B Carrier Belleuse et 21 Cambronne absentes du light - ALIAS_RNC a porter dans make_light_motte_picquet.py.",
     "_correctif_clouet_garibaldi_label": "26 BOULEVARD GARIBALDI : ajout label multi-voies '26 BD GARIBALDI / 1 RUE CLOUET' (rendu dispNom). Facade BAN '1 RUE CLOUET' documentee comme appartenant au MEME bati BDNB (bgid bdnb-bg-PNXA-8DRE-F4GM, parcelle 75115000CX0067, annee 1850, 15 lgts). Aucune copro RNC pour ce bati (verifie snapshot + RNC live exhaustif Rue Clouet/Bd Garibaldi 75015 - SCI CROCO 490030913 en sortie progressive, copro de fait non immatriculee). Parc STRICTEMENT NEUTRE. Source-of-truth a porter dans make_light_motte_picquet.py : ALIAS_RNC += {'1|RUE|CLOUET': '26|BOULEVARD|GARIBALDI'} pour re-router toute future vente DVF a '1 r clouet'.",
-    "_correctif_violet_grenelle_label": "16 RUE VIOLET : ajout label multi-voies '16 RUE VIOLET / 1 VILLA DE GRENELLE' (rendu dispNom). Facade BAN '1 VILLA DE GRENELLE' documentee comme appartenant au MEME bati BDNB (bgid bdnb-bg-9PX4-LE3D-RT3Q, parcelle 75115000DJ0089, annee 1920, 7 lgts). Aucune copro RNC pour ce bati (verifie snapshot + RNC live exhaustif Rue Violet/Villa de Grenelle 75015 - SCI VIOLET 913995643 mono-propriete vendue en bloc 04/10/2022 1 M EUR collective). Pattern IDENTIQUE a Clouet/Garibaldi (commit 148089d). Parc STRICTEMENT NEUTRE. Source-of-truth a porter dans make_light_motte_picquet.py : ALIAS_RNC += {'1|VILLA|DE GRENELLE': '16|RUE|VIOLET'} pour re-router future vente DVF a '1 vla de grenelle'."
+    "_correctif_violet_grenelle_label": "16 RUE VIOLET : ajout label multi-voies '16 RUE VIOLET / 1 VILLA DE GRENELLE' (rendu dispNom). Facade BAN '1 VILLA DE GRENELLE' documentee comme appartenant au MEME bati BDNB (bgid bdnb-bg-9PX4-LE3D-RT3Q, parcelle 75115000DJ0089, annee 1920, 7 lgts). Aucune copro RNC pour ce bati (verifie snapshot + RNC live exhaustif Rue Violet/Villa de Grenelle 75015 - SCI VIOLET 913995643 mono-propriete vendue en bloc 04/10/2022 1 M EUR collective). Pattern IDENTIQUE a Clouet/Garibaldi (commit 148089d). Parc STRICTEMENT NEUTRE. Source-of-truth a porter dans make_light_motte_picquet.py : ALIAS_RNC += {'1|VILLA|DE GRENELLE': '16|RUE|VIOLET'} pour re-router future vente DVF a '1 vla de grenelle'.",
+    "_correctif_fondary_croixnivert": "91 RUE FONDARY -> 40 RUE DE LA CROIX NIVERT (AB9273434 SDC 40/42 RUE DE LA CROIX NIVERT, 17 lots hab / 28 tot, FOREST GESTION, mandat -> 2026-06-30). Triple confirmation : RNC compl_1='91 r fondary 75015 Paris', ref_cadastrale_1=DF0112 (bgid DN3P=91 FONDARY+42 CN) + ref_cadastrale_2=DF0111 (bgid STYB=40 CN), BDNB pivot DN3P=['42 Croix Nivert', '91 Fondary'] sur parcelle DF0112, nb_log_rnc=17 sur STYB matche AB9273434. Pattern ALIAS_RNC multi-voies (Fremicourt/Cambronne). 91|FONDARY (bgid DN3P, 4 nb_log_bdnb, 1 vlog 2024) re-pointe vers 40|CROIX NIVERT avec adoption MIRROR bgid STYB. Parc 28880->28876 (-4) = dedup multi-bgid (les 4 BDNB de DN3P etaient deja compris dans les 17 lots RNC qui couvrent STYB+DN3P, PIPELINE Sec 6). 42 CROIX NIVERT absente du light - ALIAS_RNC a porter dans make_light_motte_picquet.py."
   },
   "iris": [
     {
@@ -43059,7 +43060,11 @@
       "_bdnb_match": "immat",
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": [
+        "91|RUE|FONDARY"
+      ],
+      "_fusion_auto_label": null
     },
     {
       "cle": "41|AVENUE|SUFFREN",
@@ -45884,8 +45889,8 @@
       "sci_proprietaire": "inconnu",
       "sci_nom": "",
       "sci_siren": "",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "FOREST GESTION",
+      "_syndic_src": "rnic_live_grp",
       "numero_immatriculation": null,
       "nb_lots_habitation": null,
       "ventes_par_an": {
@@ -45900,16 +45905,19 @@
       "classement_rotation": "Tres actif",
       "taux_rotation_logement": 5.0,
       "classement_rotation_logement": "Très actif",
-      "nb_log_bdnb": 4,
-      "annee_construction": 1900,
-      "classe_dpe": "E",
+      "nb_log_bdnb": 8,
+      "annee_construction": 1880,
+      "classe_dpe": "F",
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
-      "batiment_groupe_id": "bdnb-bg-DN3P-4R65-2XG2",
-      "_bdnb_match": "num_voie",
+      "batiment_groupe_id": "bdnb-bg-STYB-453N-Y18X",
+      "_bdnb_match": "immat",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "40|RUE|CROIX NIVERT",
+      "_fusion_auto_sources": null
     },
     {
       "cle": "5|RUE|GAL DE LARMINAT",
