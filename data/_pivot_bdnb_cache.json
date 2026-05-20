@@ -1,0 +1,1226 @@
+{
+ "bdnb-bg-4F6G-4P2Q-RRZK": {
+  "l_libelle_adr": [
+   "51 Rue Saint Maximin, 69003, Lyon 3e Arrondissement",
+   "49 Rue Saint Maximin, 69003, Lyon 3e Arrondissement",
+   "53 Rue Saint Maximin, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_6470_00051",
+   "69383_6470_00049",
+   "69383_6470_00053"
+  ],
+  "principal": "49 RUE SAINT MAXIMIN 69003 Lyon 3e Arrondissement",
+  "nb_valid": 3
+ },
+ "bdnb-bg-5W9P-RL7A-RWW7": {
+  "l_libelle_adr": [
+   "69 Rue Baraban, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_0645_00069"
+  ],
+  "principal": "69 Rue Baraban 69003 Lyon 3e Arrondissement",
+  "nb_valid": 1
+ },
+ "bdnb-bg-68CY-P7TQ-TZ2P": {
+  "l_libelle_adr": [
+   "9 Rue Professeur Paul Sisley, 69003, Lyon 3e Arrondissement",
+   "11 B Rue Professeur Paul Sisley, 69003, Lyon 3e Arrondissement",
+   "9 B Rue Professeur Paul Sisley, 69003, Lyon 3e Arrondissement",
+   "7 B Rue Professeur Paul Sisley, 69003, Lyon 3e Arrondissement",
+   "11 Rue Professeur Paul Sisley, 69003, Lyon 3e Arrondissement",
+   "57 avenue lacassagne, 69003, Lyon"
+  ],
+  "l_cle_interop_adr": [
+   "69383_5790_00009",
+   "69383_5790_00011_bis",
+   "69383_5790_00009_bis",
+   "69383_5790_00007_bis",
+   "69383_5790_00011",
+   "69383_4080_00057"
+  ],
+  "principal": "9 Rue Professeur Paul Sisley 69003 Lyon 3e Arrondissement",
+  "nb_valid": 6
+ },
+ "bdnb-bg-8NJL-4XAJ-TVQA": {
+  "l_libelle_adr": [
+   "106 Rue Baraban, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_0645_00106"
+  ],
+  "principal": "106 Rue Baraban 69003 Lyon 3e Arrondissement",
+  "nb_valid": 1
+ },
+ "bdnb-bg-CFFP-14RF-1SN5": {
+  "l_libelle_adr": [
+   "28 Rue Professeur Paul Sisley, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_5790_00028"
+  ],
+  "principal": "28 Rue Professeur Paul Sisley 69003 Lyon 3e Arrondissement",
+  "nb_valid": 1
+ },
+ "bdnb-bg-Q4M4-7RMM-H4XQ": {
+  "l_libelle_adr": [
+   "22 Avenue Georges Pompidou, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_3190_00022"
+  ],
+  "principal": "22 AVENUE GEORGES POMPIDOU 69003 Lyon 3e Arrondissement",
+  "nb_valid": 1
+ },
+ "bdnb-bg-UN53-G1LZ-2P34": {
+  "l_libelle_adr": [
+   "44 Rue Turbil, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_7205_00044"
+  ],
+  "principal": "44.0 RUE TURBIL 69003 Lyon 3e Arrondissement",
+  "nb_valid": 1
+ },
+ "bdnb-bg-WM3M-F4BX-8Z7T": {
+  "l_libelle_adr": [
+   "6 Rue Jean Renoir, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_3830_00006"
+  ],
+  "principal": "6 RUE JEAN RENOIR 69003 Lyon 3e Arrondissement",
+  "nb_valid": 1
+ },
+ "bdnb-bg-WQZA-TNRT-44JS": {
+  "l_libelle_adr": [
+   "11 Rue Des Teinturiers, 69003, Lyon 3e Arrondissement",
+   "9 rue des teinturiers, 69003, Lyon"
+  ],
+  "l_cle_interop_adr": [
+   "69383_6910_00011",
+   "69383_6910_00009"
+  ],
+  "principal": "9 Rue des Teinturiers 69003 Lyon",
+  "nb_valid": 2
+ },
+ "bdnb-bg-YAUB-Z7P7-2XQ1": {
+  "l_libelle_adr": [
+   "7 Rue Jean-Pierre LéVy, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_3798_00007"
+  ],
+  "principal": "7 Rue Jean-Pierre Lévy 69003 Lyon 3e Arrondissement",
+  "nb_valid": 1
+ },
+ "bdnb-bg-6PR8-HQ5A-SU4G": {
+  "l_libelle_adr": [
+   "139 Rue Du Dauphine, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_2090_00139"
+  ],
+  "principal": "139.0 RUE DU DAUPHINE 69003 Lyon 3e Arrondissement",
+  "nb_valid": 1
+ },
+ "bdnb-bg-B7XN-JTJZ-HPB4": {
+  "l_libelle_adr": [
+   "11 Rue Claudius Pionchon, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_1740_00011"
+  ],
+  "principal": "11 Rue Claudius Pionchon 69003 Lyon 3e Arrondissement",
+  "nb_valid": 1
+ },
+ "bdnb-bg-JD9X-LS8L-R7A9": {
+  "l_libelle_adr": [
+   "12 Rue Moissonnier, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_4805_00012"
+  ],
+  "principal": "12 Rue Moissonnier 69003 Lyon 3e Arrondissement",
+  "nb_valid": 1
+ },
+ "bdnb-bg-NP5T-JZFB-UVR7": {
+  "l_libelle_adr": [
+   "123 Rue Du Dauphiné, 69003, Lyon 3e Arrondissement",
+   "125 Rue Du Dauphiné, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_2090_00123",
+   "69383_2090_00125"
+  ],
+  "principal": "123 Rue du Dauphiné 69003 Lyon 3e Arrondissement",
+  "nb_valid": 2
+ },
+ "bdnb-bg-NWNV-GU7Z-XPMJ": {
+  "l_libelle_adr": [
+   "19 Rue Etienne Richerand, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_2595_00019"
+  ],
+  "principal": "19 Rue Etienne Richerand 69003 Lyon 3e Arrondissement",
+  "nb_valid": 1
+ },
+ "bdnb-bg-P2DG-Q47U-658U": {
+  "l_libelle_adr": [
+   "8 Rue Docteur Rebatel, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_2245_00008"
+  ],
+  "principal": "8 Rue Docteur Rebatel 69003 Lyon 3e Arrondissement",
+  "nb_valid": 1
+ },
+ "bdnb-bg-W2RS-K6JM-Z1H3": {
+  "l_libelle_adr": [
+   "5 Rue Maurice Flandin, 69003, Lyon 3e Arrondissement",
+   "3 Rue Maurice Flandin, 69003, Lyon 3e Arrondissement",
+   "7 Rue Maurice Flandin, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_4680_00005",
+   "69383_4680_00003",
+   "69383_4680_00007"
+  ],
+  "principal": "5 Rue Maurice Flandin 69003 Lyon 3e Arrondissement",
+  "nb_valid": 3
+ },
+ "bdnb-bg-WSTK-SKSS-P2M2": {
+  "l_libelle_adr": [
+   "7 Rue De La Metallurgie, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_4745_00007"
+  ],
+  "principal": "7.0 RUE DE LA METALLURGIE 69003 Lyon 3e Arrondissement",
+  "nb_valid": 1
+ },
+ "bdnb-bg-YBEL-Q4MX-AZC3": {
+  "l_libelle_adr": [
+   "30 Rue Sainte-Anne De Baraban, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_6605_00030"
+  ],
+  "principal": "30 Rue Sainte-Anne de Baraban 69003 Lyon 3e Arrondissement",
+  "nb_valid": 1
+ },
+ "bdnb-bg-YQDT-7VMV-E5S5": {
+  "l_libelle_adr": [
+   "15 Rue Etienne Richerand, 69003, Lyon 3e Arrondissement",
+   "13 Rue Etienne Richerand, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_2595_00015",
+   "69383_2595_00013"
+  ],
+  "principal": "15 Rue Etienne Richerand 69003 Lyon 3e Arrondissement",
+  "nb_valid": 2
+ },
+ "bdnb-bg-4DUC-A62Z-LN35": {
+  "l_libelle_adr": [
+   "13 Rue Louis Jasseron, 69003, Lyon 3e Arrondissement",
+   "17 Rue Louis Jasseron, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_4377_00013",
+   "69383_4377_00017"
+  ],
+  "principal": "17 Rue Louis Jasseron 69003 Lyon 3e Arrondissement",
+  "nb_valid": 2
+ },
+ "bdnb-bg-77CU-S4U4-AGR1": {
+  "l_libelle_adr": [
+   "37 Rue Baraban, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_0645_00037"
+  ],
+  "principal": "37 Rue Baraban 69003 Lyon 3e Arrondissement",
+  "nb_valid": 1
+ },
+ "bdnb-bg-CS7S-ZSUP-29YF": {
+  "l_libelle_adr": [
+   "32 Rue Sainte-Anne De Baraban, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_6605_00032"
+  ],
+  "principal": "32 Rue Sainte-Anne de Baraban 69003 Lyon 3e Arrondissement",
+  "nb_valid": 1
+ },
+ "bdnb-bg-D9LP-CBCP-F74E": {
+  "l_libelle_adr": [
+   "264 B Rue Paul Bert, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_5245_00264_bis"
+  ],
+  "principal": "264B Rue Paul Bert 69003 Lyon 3e Arrondissement",
+  "nb_valid": 1
+ },
+ "bdnb-bg-DAZ8-N3AL-EF91": {
+  "l_libelle_adr": [
+   "27 Rue Etienne Richerand, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_2595_00027"
+  ],
+  "principal": "27 Rue Etienne Richerand 69003 Lyon 3e Arrondissement",
+  "nb_valid": 1
+ },
+ "bdnb-bg-G15W-CLD7-6WBT": {
+  "l_libelle_adr": [
+   "17 A Rue Etienne Richerand, 69003, Lyon 3e Arrondissement",
+   "17 B Rue Etienne Richerand, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_2595_00017",
+   "69383_2595_00017_bis"
+  ],
+  "principal": "17A Rue Etienne Richerand 69003 Lyon 3e Arrondissement",
+  "nb_valid": 2
+ },
+ "bdnb-bg-LPW9-YCD1-7GFB": {
+  "l_libelle_adr": [
+   "143 rue du dauphine, 69003, Lyon"
+  ],
+  "l_cle_interop_adr": [
+   "69383_2090_00143"
+  ],
+  "principal": "143 Rue du Dauphiné 69003 Lyon",
+  "nb_valid": 1
+ },
+ "bdnb-bg-LQU8-MYBM-2AMK": {
+  "l_libelle_adr": [
+   "234 Rue Paul Bert, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_5245_00234"
+  ],
+  "principal": "234 Rue Paul Bert 69003 Lyon 3e Arrondissement",
+  "nb_valid": 1
+ },
+ "bdnb-bg-WLXU-6YKR-D8DU": {
+  "l_libelle_adr": [
+   "24 Avenue Lacassagne, 69003, Lyon 3e Arrondissement",
+   "24 B Avenue Lacassagne, 69003, Lyon 3e Arrondissement",
+   "20 Avenue Lacassagne, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_4080_00024",
+   "69383_4080_00024_bis",
+   "69383_4080_00020"
+  ],
+  "principal": "24B Avenue Lacassagne 69003 Lyon 3e Arrondissement",
+  "nb_valid": 3
+ },
+ "bdnb-bg-ZNN2-SAMJ-S68B": {
+  "l_libelle_adr": [
+   "48 Avenue Georges Pompidou, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_3190_00048"
+  ],
+  "principal": "48 Avenue Georges Pompidou 69003 Lyon 3e Arrondissement",
+  "nb_valid": 1
+ },
+ "bdnb-bg-324Y-G9R6-B2ZS": {
+  "l_libelle_adr": [
+   "13 Rue De La MéTallurgie, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_4745_00013"
+  ],
+  "principal": "13 Rue de la Métallurgie 69003 Lyon 3e Arrondissement",
+  "nb_valid": 1
+ },
+ "bdnb-bg-3QGJ-3J39-NB4K": {
+  "l_libelle_adr": [
+   "157 Rue Antoine Charial, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_0312_00157"
+  ],
+  "principal": "157 Rue Antoine Charial 69003 Lyon 3e Arrondissement",
+  "nb_valid": 1
+ },
+ "bdnb-bg-B8FV-76BN-BDJJ": {
+  "l_libelle_adr": [
+   "6 Rue Des PréVoyants De L'Avenir, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_5730_00006"
+  ],
+  "principal": "6 Rue des Prévoyants de l'Avenir 69003 Lyon 3e Arrondissement",
+  "nb_valid": 1
+ },
+ "bdnb-bg-BALG-5MRC-2XQ6": {
+  "l_libelle_adr": [
+   "20 Rue Guilloud, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_3395_00020"
+  ],
+  "principal": "20 Rue Guilloud 69003 Lyon 3e Arrondissement",
+  "nb_valid": 1
+ },
+ "bdnb-bg-ENLN-1W4S-BPXX": {
+  "l_libelle_adr": [
+   "14 Rue Des PréVoyants De L'Avenir, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_5730_00014"
+  ],
+  "principal": "14 Rue des Prévoyants de l'Avenir 69003 Lyon 3e Arrondissement",
+  "nb_valid": 1
+ },
+ "bdnb-bg-FBLV-MDEK-PE5T": {
+  "l_libelle_adr": [
+   "8 Rue Saint-EusèBe, 69003, Lyon 3e Arrondissement",
+   "6 Rue Saint-EusèBe, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_6330_00008",
+   "69383_6330_00006"
+  ],
+  "principal": "6 Rue Saint-Eusèbe 69003 Lyon 3e Arrondissement",
+  "nb_valid": 2
+ },
+ "bdnb-bg-GMWN-9ZYS-LQGQ": {
+  "l_libelle_adr": [
+   "5 Rue Marcel Pehu, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_4502_00005"
+  ],
+  "principal": "5 Rue Marcel Pehu 69003 Lyon 3e Arrondissement",
+  "nb_valid": 1
+ },
+ "bdnb-bg-MCU5-7CPV-JE1Z": {
+  "l_libelle_adr": [
+   "33 Avenue Lacassagne, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_4080_00033"
+  ],
+  "principal": "33 Avenue Lacassagne 69003 Lyon 3e Arrondissement",
+  "nb_valid": 1
+ },
+ "bdnb-bg-PNCB-MYC1-JB4Q": {
+  "l_libelle_adr": [
+   "310 Cours Lafayette, 69003, Lyon 3e Arrondissement",
+   "51 Rue Saint-Antoine, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_4095_00310",
+   "69383_6250_00051"
+  ],
+  "principal": "310 Cours Lafayette 69003 Lyon 3e Arrondissement",
+  "nb_valid": 2
+ },
+ "bdnb-bg-Y1BN-MPP6-46DX": {
+  "l_libelle_adr": [
+   "225 Avenue FéLix Faure, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_2685_00225"
+  ],
+  "principal": "225 Avenue Félix Faure 69003 Lyon 3e Arrondissement",
+  "nb_valid": 1
+ },
+ "bdnb-bg-4BCZ-EFDZ-724F": {
+  "l_libelle_adr": [
+   "8 Rue Claudius Pionchon, 69003, Lyon 3e Arrondissement",
+   "20 Rue Saint-Sidoine, 69003, Lyon 3e Arrondissement",
+   "18 Rue Saint-Sidoine, 69003, Lyon 3e Arrondissement",
+   "16 Rue Saint-Sidoine, 69003, Lyon 3e Arrondissement",
+   "14 Rue Saint-Sidoine, 69003, Lyon 3e Arrondissement",
+   "12 Rue Saint-Sidoine, 69003, Lyon 3e Arrondissement",
+   "6 Rue Claudius Pionchon, 69003, Lyon 3e Arrondissement",
+   "4 Rue Claudius Pionchon, 69003, Lyon 3e Arrondissement",
+   "17 Rue Saint-Victorien, 69003, Lyon 3e Arrondissement",
+   "15 Rue Saint-Victorien, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_1740_00008",
+   "69383_6650_00020",
+   "69383_6650_00018",
+   "69383_6650_00016",
+   "69383_6650_00014",
+   "69383_6650_00012",
+   "69383_1740_00006",
+   "69383_1740_00004",
+   "69383_6580_00017",
+   "69383_6580_00015"
+  ],
+  "principal": "12 Rue Saint-Sidoine 69003 Lyon 3e Arrondissement",
+  "nb_valid": 10
+ },
+ "bdnb-bg-5RMC-KXL7-E97N": {
+  "l_libelle_adr": [
+   "4 Rue Ternois, 69003, Lyon 3e Arrondissement",
+   "6 Rue Ternois, 69003, Lyon 3e Arrondissement",
+   "93 Rue Bellecombe, 69003, Lyon 3e Arrondissement",
+   "18 Rue Saint-Antoine, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_6930_00004",
+   "69383_6930_00006",
+   "69383_0795_00093",
+   "69383_6250_00018"
+  ],
+  "principal": "4 Rue Ternois 69003 Lyon 3e Arrondissement",
+  "nb_valid": 4
+ },
+ "bdnb-bg-6J3V-PN4E-7QWG": {
+  "l_libelle_adr": [
+   "12 Rue Saint-Maximin, 69003, Lyon 3e Arrondissement",
+   "10 Rue Saint-Maximin, 69003, Lyon 3e Arrondissement",
+   "1 Rue Rossan, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_6470_00012",
+   "69383_6470_00010",
+   "69383_6145_00001"
+  ],
+  "principal": "12 Rue Saint-Maximin 69003 Lyon 3e Arrondissement",
+  "nb_valid": 3
+ },
+ "bdnb-bg-6J53-GM13-2GRL": {
+  "l_libelle_adr": [
+   "8 Rue Saint-Philippe, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_6520_00008"
+  ],
+  "principal": "8 Rue Saint-Philippe 69003 Lyon 3e Arrondissement",
+  "nb_valid": 1
+ },
+ "bdnb-bg-71B2-4HSV-Y9VP": {
+  "l_libelle_adr": [
+   "52 Avenue Georges Pompidou, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_3190_00052"
+  ],
+  "principal": "52 Avenue Georges Pompidou 69003 Lyon 3e Arrondissement",
+  "nb_valid": 1
+ },
+ "bdnb-bg-AX8P-5ZM6-3A3B": {
+  "l_libelle_adr": [
+   "120 Rue Antoine Charial, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_0312_00120"
+  ],
+  "principal": "120 Rue Antoine Charial 69003 Lyon 3e Arrondissement",
+  "nb_valid": 1
+ },
+ "bdnb-bg-FW4B-YECQ-FPCT": {
+  "l_libelle_adr": [
+   "6 Rue Carry, 69003, Lyon 3e Arrondissement",
+   "8 Rue Carry, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_1285_00006",
+   "69383_1285_00008"
+  ],
+  "principal": "8 Rue Carry 69003 Lyon 3e Arrondissement",
+  "nb_valid": 2
+ },
+ "bdnb-bg-PFFK-6Z9V-TUP1": {
+  "l_libelle_adr": [
+   "17 Rue Saint-Antoine, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_6250_00017"
+  ],
+  "principal": "17 Rue Saint-Antoine 69003 Lyon 3e Arrondissement",
+  "nb_valid": 1
+ },
+ "bdnb-bg-RTNL-L1N7-K12Y": {
+  "l_libelle_adr": [
+   "10 Rue Du Dauphine, 69003, Lyon 3e Arrondissement",
+   "1 Rue Saint Maximin, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_2090_00010",
+   "69383_6470_00001"
+  ],
+  "principal": "10 Rue du Dauphine 69003 Lyon 3e Arrondissement",
+  "nb_valid": 2
+ },
+ "bdnb-bg-ZS47-TD9J-M4FB": {
+  "l_libelle_adr": [
+   "10 Rue Riboud, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_6025_00010"
+  ],
+  "principal": "10 Rue Riboud 69003 Lyon 3e Arrondissement",
+  "nb_valid": 1
+ },
+ "bdnb-bg-1R8S-PG6T-JXF4": {
+  "l_libelle_adr": [
+   "9 Rue Saint-EusèBe, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_6330_00009"
+  ],
+  "principal": "9 Rue Saint-Eusèbe 69003 Lyon 3e Arrondissement",
+  "nb_valid": 1
+ },
+ "bdnb-bg-35NH-CNYH-DY2X": {
+  "l_libelle_adr": [
+   "272 Rue Paul Bert, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_5245_00272"
+  ],
+  "principal": "272 Rue Paul Bert 69003 Lyon 3e Arrondissement",
+  "nb_valid": 1
+ },
+ "bdnb-bg-7VPW-6YPJ-XASZ": {
+  "l_libelle_adr": [
+   "12 Rue David, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_2095_00012"
+  ],
+  "principal": "12 Rue David 69003 Lyon 3e Arrondissement",
+  "nb_valid": 1
+ },
+ "bdnb-bg-B819-EARQ-9D7B": {
+  "l_libelle_adr": [
+   "21 rue guilloud, 69003, Lyon",
+   "41 Rue Professeur Paul Sisley, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_3395_00021",
+   "69383_5790_00041"
+  ],
+  "principal": "41 Rue Professeur Paul Sisley 69003 Lyon 3e Arrondissement",
+  "nb_valid": 2
+ },
+ "bdnb-bg-CD87-UNB7-7N3J": {
+  "l_libelle_adr": [
+   "3 Rue Rossan, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_6145_00003"
+  ],
+  "principal": "3 Rue Rossan 69003 Lyon 3e Arrondissement",
+  "nb_valid": 1
+ },
+ "bdnb-bg-JAVT-QG97-XWEW": {
+  "l_libelle_adr": [
+   "21 B Rue Claudius Pionchon, 69003, Lyon 3e Arrondissement",
+   "21 Rue Claudius Pionchon, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_1740_00021_bis",
+   "69383_1740_00021"
+  ],
+  "principal": "21B Rue Claudius Pionchon 69003 Lyon 3e Arrondissement",
+  "nb_valid": 2
+ },
+ "bdnb-bg-KM3Q-XAC3-34D1": {
+  "l_libelle_adr": [
+   "83 rue baraban, 69003, Lyon",
+   "49 Avenue Georges Pompidou, 69003, Lyon 3e Arrondissement",
+   "45 Avenue Georges Pompidou, 69003, Lyon 3e Arrondissement",
+   "47 Avenue Georges Pompidou, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_0645_00083",
+   "69383_3190_00049",
+   "69383_3190_00045",
+   "69383_3190_00047"
+  ],
+  "principal": "45 Avenue Georges Pompidou 69003 Lyon 3e Arrondissement",
+  "nb_valid": 4
+ },
+ "bdnb-bg-PWDK-M71Z-3JJQ": {
+  "l_libelle_adr": [
+   "43 Rue Saint-Maximin, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_6470_00043"
+  ],
+  "principal": "43 Rue Saint-Maximin 69003 Lyon 3e Arrondissement",
+  "nb_valid": 1
+ },
+ "bdnb-bg-VPLJ-N3JJ-SW4G": {
+  "l_libelle_adr": [
+   "23 Rue Louis Jasseron, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_4377_00023"
+  ],
+  "principal": "23 Rue Louis Jasseron 69003 Lyon 3e Arrondissement",
+  "nb_valid": 1
+ },
+ "bdnb-bg-WPVN-TN1Z-KE2S": {
+  "l_libelle_adr": [
+   "112 rue maurice flandin, 69003, Lyon",
+   "118 rue maurice flandin, 69003, Lyon",
+   "114 rue maurice flandin, 69003, Lyon"
+  ],
+  "l_cle_interop_adr": [
+   "69383_4680_00112",
+   "69383_4680_00118",
+   "69383_4680_00114"
+  ],
+  "principal": "112 Rue Maurice Flandin 69003 Lyon",
+  "nb_valid": 3
+ },
+ "bdnb-bg-2Q6B-A22Y-PRGD": {
+  "l_libelle_adr": [
+   "254 Cours Lafayette, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_4095_00254"
+  ],
+  "principal": "254 Cours Lafayette 69003 Lyon 3e Arrondissement",
+  "nb_valid": 1
+ },
+ "bdnb-bg-2UGA-DSEH-TAL4": {
+  "l_libelle_adr": [
+   "5 Rue Saint-Maximin, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_6470_00005"
+  ],
+  "principal": "5 Rue Saint-Maximin 69003 Lyon 3e Arrondissement",
+  "nb_valid": 1
+ },
+ "bdnb-bg-ALA1-7UY8-ULUG": {
+  "l_libelle_adr": [
+   "21 Rue Saint Antoine, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_6250_00021"
+  ],
+  "principal": "21.0 RUE SAINT ANTOINE 69003 Lyon 3e Arrondissement",
+  "nb_valid": 1
+ },
+ "bdnb-bg-AM81-DZPJ-QXMN": {
+  "l_libelle_adr": [
+   "5 Rue Professeur Paul Sisley, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_5790_00005"
+  ],
+  "principal": "5 Rue Professeur Paul Sisley 69003 Lyon 3e Arrondissement",
+  "nb_valid": 1
+ },
+ "bdnb-bg-H7YV-VH5E-JFY8": {
+  "l_libelle_adr": [
+   "15 Rue David, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_2095_00015"
+  ],
+  "principal": "15 Rue David 69003 Lyon 3e Arrondissement",
+  "nb_valid": 1
+ },
+ "bdnb-bg-J5M8-8PYA-ALEX": {
+  "l_libelle_adr": [
+   "65 Rue Etienne Richerand, 69003, Lyon 3e Arrondissement",
+   "2 rue des teinturiers, 69003, Lyon"
+  ],
+  "l_cle_interop_adr": [
+   "69383_2595_00065",
+   "69383_6910_00002"
+  ],
+  "principal": "65 Rue Etienne Richerand 69003 Lyon 3e Arrondissement",
+  "nb_valid": 2
+ },
+ "bdnb-bg-PQR4-97S4-XPXU": {
+  "l_libelle_adr": [
+   "122 Rue Baraban, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_0645_00122"
+  ],
+  "principal": "122 Rue Baraban 69003 Lyon 3e Arrondissement",
+  "nb_valid": 1
+ },
+ "bdnb-bg-U3Q7-1AD8-Z67B": {
+  "l_libelle_adr": [
+   "280 Rue Paul Bert, 69003, Lyon 3e Arrondissement",
+   "278 Rue Paul Bert, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_5245_00280",
+   "69383_5245_00278"
+  ],
+  "principal": "278 Rue Paul Bert 69003 Lyon 3e Arrondissement",
+  "nb_valid": 2
+ },
+ "bdnb-bg-W624-4P36-PURP": {
+  "l_libelle_adr": [
+   "59 Rue Baraban, 69003, Lyon 3e Arrondissement",
+   "10 rue saint victorien, 69003, Lyon"
+  ],
+  "l_cle_interop_adr": [
+   "69383_0645_00059",
+   "69383_6580_00010"
+  ],
+  "principal": "59 Rue Baraban 69003 Lyon 3e Arrondissement",
+  "nb_valid": 2
+ },
+ "bdnb-bg-YTGZ-FUN1-1XWM": {
+  "l_libelle_adr": [
+   "327 Rue Paul Bert, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_5245_00327"
+  ],
+  "principal": "327 Rue Paul Bert 69003 Lyon 3e Arrondissement",
+  "nb_valid": 1
+ },
+ "bdnb-bg-QGFJ-1RLT-6ZEN": {
+  "l_libelle_adr": [
+   "9 Rue Gabillot, 69003, Lyon 3e Arrondissement",
+   "9 B Rue Gabillot, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_2930_00009",
+   "69383_2930_00009_bis"
+  ],
+  "principal": "9 Rue Gabillot 69003 Lyon 3e Arrondissement",
+  "nb_valid": 2
+ },
+ "bdnb-bg-ULHW-P9KF-JSGH": {
+  "l_libelle_adr": [
+   "76 Rue Du Dauphine, 69003, Lyon 3e Arrondissement",
+   "6 Rue Professeur Paul Sisley, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_2090_00076",
+   "69383_5790_00006"
+  ],
+  "principal": "76.0 RUE DU DAUPHINE 69003 Lyon 3e Arrondissement",
+  "nb_valid": 2
+ },
+ "bdnb-bg-XEEK-6E83-3BX4": {
+  "l_libelle_adr": [
+   "75 Rue Du Dauphiné, 69003, Lyon 3e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "69383_2090_00075"
+  ],
+  "principal": "75 Rue du Dauphiné 69003 Lyon 3e Arrondissement",
+  "nb_valid": 1
+ },
+ "bdnb-bg-4CUT-Z57B-XDTM": {
+  "l_libelle_adr": [
+   "13 Rue Carrier Belleuse, 75015, Paris 15e Arrondissement",
+   "13 B Rue Carrier Belleuse, 75015, Paris 15e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "75115_1569_00013",
+   "75115_1569_00013_b"
+  ],
+  "principal": "13 Rue Carrier Belleuse 75015 Paris 15e Arrondissement",
+  "nb_valid": 2
+ },
+ "bdnb-bg-6RE2-LG3N-FXCZ": {
+  "l_libelle_adr": [
+   "10 Rue PéRignon, 75007, Paris 7e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "75107_7267_00010"
+  ],
+  "principal": "10 Rue Pérignon 75007 Paris 7e Arrondissement",
+  "nb_valid": 1
+ },
+ "bdnb-bg-A4CU-YC17-6HN1": {
+  "l_libelle_adr": [
+   "18 Rue De La FéDéRation, 75015, Paris 15e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "75115_3541_00018"
+  ],
+  "principal": "18 Rue de la Fédération 75015 Paris 15e Arrondissement",
+  "nb_valid": 1
+ },
+ "bdnb-bg-F3HZ-H1TK-FPME": {
+  "l_libelle_adr": [
+   "1 ruelle au pere fragile, 75015, Paris",
+   "37 B rue fremicourt, 75015, Paris",
+   "152 boulevard de grenelle, 75015, Paris",
+   "37 Rue Fremicourt, 75015, Paris 15e Arrondissement",
+   "3 ruelle au pere fragile, 75015, Paris",
+   "35 Rue Fremicourt, 75015, Paris 15e Arrondissement",
+   "39 Rue Fremicourt, 75015, Paris 15e Arrondissement",
+   "39 B rue fremicourt, 75015, Paris",
+   "158 Boulevard De Grenelle, 75015, Paris 15e Arrondissement",
+   "39 T rue fremicourt, 75015, Paris",
+   "154 Boulevard De Grenelle, 75015, Paris 15e Arrondissement",
+   "156 Boulevard De Grenelle, 75015, Paris 15e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "75115_0601_00001",
+   "75115_3854_00037_b",
+   "75115_4310_00152",
+   "75115_3854_00037",
+   "75115_0601_00003",
+   "75115_3854_00035",
+   "75115_3854_00039",
+   "75115_3854_00039_b",
+   "75115_4310_00158",
+   "75115_3854_00039_t",
+   "75115_4310_00154",
+   "75115_4310_00156"
+  ],
+  "principal": "156 Boulevard de Grenelle 75015 Paris 15e Arrondissement",
+  "nb_valid": 12
+ },
+ "bdnb-bg-HNSV-XK55-A3WG": {
+  "l_libelle_adr": [
+   "9 Cite Thure, 75015, Paris 15e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "75115_9305_00009"
+  ],
+  "principal": "9 Cité Thure 75015 Paris 15e Arrondissement",
+  "nb_valid": 1
+ },
+ "bdnb-bg-JHPF-31PS-7UD1": {
+  "l_libelle_adr": [
+   "8 Rue De La Croix Nivert, 75015, Paris 15e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "75115_2459_00008"
+  ],
+  "principal": "8 Rue de la Croix Nivert 75015 Paris 15e Arrondissement",
+  "nb_valid": 1
+ },
+ "bdnb-bg-PNXA-8DRE-F4GM": {
+  "l_libelle_adr": [
+   "26 Boulevard Garibaldi, 75015, Paris 15e Arrondissement",
+   "1 rue clouet, 75015, Paris"
+  ],
+  "l_cle_interop_adr": [
+   "75115_3957_00026",
+   "75115_2149_00001"
+  ],
+  "principal": "26 BOULEVARD GARIBALDI 75015 Paris 15e Arrondissement",
+  "nb_valid": 2
+ },
+ "bdnb-bg-R41C-48RR-9DHU": {
+  "l_libelle_adr": [
+   "18 Avenue De Lowendal, 75015, Paris 15e Arrondissement",
+   "108 avenue de suffren, 75015, Paris",
+   "16 Avenue De Lowendal, 75015, Paris 15e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "75115_5827_00018",
+   "75115_9114_00108",
+   "75115_5827_00016"
+  ],
+  "principal": "16 Avenue de Lowendal 75015 Paris 15e Arrondissement",
+  "nb_valid": 3
+ },
+ "bdnb-bg-UAGM-46Q3-SUTU": {
+  "l_libelle_adr": [
+   "7 Rue Humblot, 75015, Paris 15e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "75115_4682_00007"
+  ],
+  "principal": "7 RUE HUMBLOT 75015 Paris 15e Arrondissement",
+  "nb_valid": 1
+ },
+ "bdnb-bg-ZC1A-K8AP-RZ1P": {
+  "l_libelle_adr": [
+   "55 Rue Du Commerce, 75015, Paris 15e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "75115_2245_00055"
+  ],
+  "principal": "55 RUE DU COMMERCE 75015 Paris 15e Arrondissement",
+  "nb_valid": 1
+ },
+ "bdnb-bg-28QF-MUJA-UL8K": {
+  "l_libelle_adr": [
+   "28 Rue FréMicourt, 75015, Paris 15e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "75115_3854_00028"
+  ],
+  "principal": "28 Rue Frémicourt 75015 Paris 15e Arrondissement",
+  "nb_valid": 1
+ },
+ "bdnb-bg-5EJY-P43A-W2JX": {
+  "l_libelle_adr": [
+   "6 Place Cambronne, 75015, Paris 15e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "75115_1453_00006"
+  ],
+  "principal": "6 Place Cambronne 75015 Paris 15e Arrondissement",
+  "nb_valid": 1
+ },
+ "bdnb-bg-DFH3-VK2Z-9CEE": {
+  "l_libelle_adr": [
+   "11 Rue Fallempin, 75015, Paris 15e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "75115_3500_00011"
+  ],
+  "principal": "11 Rue Fallempin 75015 Paris 15e Arrondissement",
+  "nb_valid": 1
+ },
+ "bdnb-bg-DN3P-4R65-2XG2": {
+  "l_libelle_adr": [
+   "42 Rue De La Croix Nivert, 75015, Paris 15e Arrondissement",
+   "91 Rue Fondary, 75015, Paris 15e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "75115_2459_00042",
+   "75115_3705_00091"
+  ],
+  "principal": "91 Rue Fondary 75015 Paris 15e Arrondissement",
+  "nb_valid": 2
+ },
+ "bdnb-bg-GQAG-T52L-7376": {
+  "l_libelle_adr": [
+   "7 avenue du general detrie, 75007, Paris",
+   "55 avenue de suffren, 75007, Paris"
+  ],
+  "l_cle_interop_adr": [
+   "75107_4033_00007",
+   "75107_9114_00055"
+  ],
+  "principal": "55 Avenue de Suffren 75007 Paris",
+  "nb_valid": 2
+ },
+ "bdnb-bg-GZ79-JFXC-74CF": {
+  "l_libelle_adr": [
+   "21 Avenue Charles Floquet, 75007, Paris 7e Arrondissement",
+   "2 B rue champfleury, 75007, Paris"
+  ],
+  "l_cle_interop_adr": [
+   "75107_1832_00021",
+   "75107_1720_00002_b"
+  ],
+  "principal": "21 Avenue Charles Floquet 75007 Paris 7e Arrondissement",
+  "nb_valid": 2
+ },
+ "bdnb-bg-L59B-AGAK-AP75": {
+  "l_libelle_adr": [
+   "14 Rue Tiphaine, 75015, Paris 15e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "75115_9316_00014"
+  ],
+  "principal": "14.0 RUE TIPHAINE 75015 Paris 15e Arrondissement",
+  "nb_valid": 1
+ },
+ "bdnb-bg-QTC9-KFAU-5TPU": {
+  "l_libelle_adr": [
+   "9 rue barthelemy, 75015, Paris",
+   "163 Avenue De Suffren, 75015, Paris 15e Arrondissement",
+   "59 Boulevard Garibaldi, 75015, Paris 15e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "75115_0694_00009",
+   "75115_9114_00163",
+   "75115_3957_00059"
+  ],
+  "principal": "163 Avenue de Suffren 75015 Paris 15e Arrondissement",
+  "nb_valid": 3
+ },
+ "bdnb-bg-ULGL-GMJY-1YAS": {
+  "l_libelle_adr": [
+   "9 Rue De Lourmel, 75015, Paris 15e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "75115_5814_00009"
+  ],
+  "principal": "9 Rue de Lourmel 75015 Paris 15e Arrondissement",
+  "nb_valid": 1
+ },
+ "bdnb-bg-WAEU-1XSX-V5GP": {
+  "l_libelle_adr": [
+   "128 Avenue De Suffren, 75015, Paris 15e Arrondissement",
+   "4 rue chasseloup laubat, 75015, Paris",
+   "2 rue chasseloup laubat, 75015, Paris"
+  ],
+  "l_cle_interop_adr": [
+   "75115_9114_00128",
+   "75115_1908_00004",
+   "75115_1908_00002"
+  ],
+  "principal": "128 Avenue de Suffren 75015 Paris 15e Arrondissement",
+  "nb_valid": 3
+ },
+ "bdnb-bg-8SVW-VJ5N-H9XW": {
+  "l_libelle_adr": [
+   "19 Rue Fallempin, 75015, Paris 15e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "75115_3500_00019"
+  ],
+  "principal": "19 Rue Fallempin 75015 Paris 15e Arrondissement",
+  "nb_valid": 1
+ },
+ "bdnb-bg-9DSY-ZPJ1-Y95N": {
+  "l_libelle_adr": [
+   "6 Rue Alasseur, 75015, Paris 15e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "75115_0110_00006"
+  ],
+  "principal": "6 Rue Alasseur 75015 Paris 15e Arrondissement",
+  "nb_valid": 1
+ },
+ "bdnb-bg-9PX4-LE3D-RT3Q": {
+  "l_libelle_adr": [
+   "1 villa de grenelle, 75015, Paris",
+   "16 Rue Violet, 75015, Paris 15e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "75115_4315_00001",
+   "75115_9869_00016"
+  ],
+  "principal": "16 Rue Violet 75015 Paris 15e Arrondissement",
+  "nb_valid": 2
+ },
+ "bdnb-bg-9TTE-EQAG-Z8LH": {
+  "l_libelle_adr": [
+   "147 Avenue De Suffren, 75015, Paris 15e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "75115_9114_00147"
+  ],
+  "principal": "147 Avenue de Suffren 75015 Paris 15e Arrondissement",
+  "nb_valid": 1
+ },
+ "bdnb-bg-B5MQ-AZTT-5PV6": {
+  "l_libelle_adr": [
+   "15 rue letellier, 75015, Paris"
+  ],
+  "l_cle_interop_adr": [
+   "75115_5626_00015"
+  ],
+  "principal": "15 Rue Letellier 75015 Paris",
+  "nb_valid": 1
+ },
+ "bdnb-bg-BBRR-9P88-BTJ5": {
+  "l_libelle_adr": [
+   "4 Rue De Buenos Aires, 75007, Paris 7e Arrondissement",
+   "3 Avenue De Suffren, 75007, Paris 7e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "75107_1367_00004",
+   "75107_9114_00003"
+  ],
+  "principal": "4 Rue de Buenos Aires 75007 Paris 7e Arrondissement",
+  "nb_valid": 2
+ },
+ "bdnb-bg-FB3W-4B4K-PYEL": {
+  "l_libelle_adr": [
+   "6 allee leon bourgeois, 75007, Paris",
+   "8 allee leon bourgeois, 75007, Paris",
+   "2 Rue De Buenos Aires, 75007, Paris 7e Arrondissement",
+   "2 A rue de buenos aires, 75007, Paris"
+  ],
+  "l_cle_interop_adr": [
+   "75107_5532_00006",
+   "75107_5532_00008",
+   "75107_1367_00002",
+   "75107_1367_00002_a"
+  ],
+  "principal": "2.0 RUE DE BUENOS AIRES 75007 Paris 7e Arrondissement",
+  "nb_valid": 4
+ },
+ "bdnb-bg-KK61-2FJK-3SDH": {
+  "l_libelle_adr": [
+   "6 rue jean pierre bloch, 75015, Paris",
+   "55 Rue De La FéDéRation, 75015, Paris 15e Arrondissement",
+   "4 rue jean pierre bloch, 75015, Paris"
+  ],
+  "l_cle_interop_adr": [
+   "75115_4952_00006",
+   "75115_3541_00055",
+   "75115_4952_00004"
+  ],
+  "principal": "55 Rue de la Fédération 75015 Paris 15e Arrondissement",
+  "nb_valid": 3
+ },
+ "bdnb-bg-TGBY-G4B7-X44K": {
+  "l_libelle_adr": [
+   "49 Rue De La FéDéRation, 75015, Paris 15e Arrondissement",
+   "51 Rue De La FéDéRation, 75015, Paris 15e Arrondissement",
+   "53 Rue De La FéDéRation, 75015, Paris 15e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "75115_3541_00049",
+   "75115_3541_00051",
+   "75115_3541_00053"
+  ],
+  "principal": "51 Rue de la Fédération 75015 Paris 15e Arrondissement",
+  "nb_valid": 3
+ },
+ "bdnb-bg-Z2Z2-65KJ-U324": {
+  "l_libelle_adr": [
+   "6 Rue Cepre, 75015, Paris 15e Arrondissement",
+   "8 Rue Cepre, 75015, Paris 15e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "75115_1646_00006",
+   "75115_1646_00008"
+  ],
+  "principal": "6 Rue Cepre 75015 Paris 15e Arrondissement",
+  "nb_valid": 2
+ },
+ "bdnb-bg-5KST-PABL-LAUP": {
+  "l_libelle_adr": [
+   "34 Rue Dupleix, 75015, Paris 15e Arrondissement",
+   "32 Rue Dupleix, 75015, Paris 15e Arrondissement",
+   "83 Boulevard De Grenelle, 75015, Paris 15e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "75115_3006_00034",
+   "75115_3006_00032",
+   "75115_4310_00083"
+  ],
+  "principal": "83 Boulevard de Grenelle 75015 Paris 15e Arrondissement",
+  "nb_valid": 3
+ },
+ "bdnb-bg-6SBC-228Y-4AEN": {
+  "l_libelle_adr": [
+   "71 Quai Branly, 75007, Paris 7e Arrondissement",
+   "1 Avenue De Suffren, 75007, Paris 7e Arrondissement",
+   "69 A quai jacques chirac, 75007, Paris"
+  ],
+  "l_cle_interop_adr": [
+   "75107_4834_00071",
+   "75107_9114_00001",
+   "75107_4834_00069_a"
+  ],
+  "principal": "71 Quai Branly 75007 Paris 7e Arrondissement",
+  "nb_valid": 3
+ },
+ "bdnb-bg-MALT-7HZW-3SXQ": {
+  "l_libelle_adr": [
+   "6 Rue Barthelemy, 75015, Paris 15e Arrondissement"
+  ],
+  "l_cle_interop_adr": [
+   "75115_0694_00006"
+  ],
+  "principal": "6.0 RUE BARTHELEMY 75015 Paris 15e Arrondissement",
+  "nb_valid": 1
+ }
+}
