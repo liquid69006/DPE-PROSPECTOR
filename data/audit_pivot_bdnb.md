@@ -7,59 +7,35 @@ Pour chaque adresse **hors-RNC active** (predicat exact renderSecteur : `!fused 
 
 ## Bilan
 
-| secteur | hr-actives | matches pivot | appels BDNB |
-|---|--:|--:|--:|
-| dauphine_lacassagne | 80 | **12** | 8 |
-| motte_picquet | 33 | **2** | 4 |
-| **total** | **113** | **14** | 12 |
-
-**Classification** : parc-neutre (meme bgid)=14.
-
-**Apport** : 0 match(es) trouve(s) GRACE A SUBS (auraient ete rates sans). 12 ancre(s) deja visible(s) en pipe (collision potentielle a verifier).
+| secteur | hr-actives | matches pivot | skip-list | appels BDNB |
+|---|--:|--:|--:|--:|
+| dauphine_lacassagne | 69 | **0** | 1 | 0 |
+| motte_picquet | 31 | **0** | 0 | 0 |
+| **total** | **100** | **0** | **1** | 0 |
 
 ## Matches par adresse
 
-| secteur | cle hors-RNC | v_log | bgid | adresse pivot BDNB | -> copro ancre | immat | lots | syndic | type | collision |
-|---|---|--:|---|---|---|---|--:|---|---|---|
-| dauph | `9\|RUE\|PROFESSEUR PAUL SISLEY` | 16 | `...CY-P7TQ-TZ2P` | 7 B Rue Professeur Paul Sisley, 69003, Lyon 3e | `7B\|RUE\|PROFESSEUR PAUL SISLEY` | AA0012898 | 225 | GAGNEUX SERVICES I | parc-neutre | DEJA VISIBLE |
-| dauph | `12\|RUE\|LOUIS JASSERON` | 6 | `...UC-A62Z-LN35` | 13 Rue Louis Jasseron, 69003, Lyon 3e Arrondis | `13\|RUE\|LOUIS JASSERON` | AC6278774 | 17 | LAMY | parc-neutre | DEJA VISIBLE |
-| dauph | `12\|RUE\|LOUIS JASSERON` | 6 | `...UC-A62Z-LN35` | 17 Rue Louis Jasseron, 69003, Lyon 3e Arrondis | `17\|RUE\|LOUIS JASSERON` | AA7487564 | 29 | LAMY | parc-neutre | - |
-| dauph | `14\|RUE\|ST MAXIMIN` | 6 | `...3V-PN4E-7QWG` | 1 Rue Rossan, 69003, Lyon 3e Arrondissement | `1\|RUE\|ROSSAN` | AB2460335 | 53 | REGIE PEDRINI | parc-neutre | DEJA VISIBLE |
-| dauph | `38\|RUE\|BARABAN` | 5 | `...CU-S4U4-AGR1` | 37 Rue Baraban, 69003, Lyon 3e Arrondissement | `37\|RUE\|BARABAN` | AC9726381 | 29 | non connu | parc-neutre | DEJA VISIBLE |
-| dauph | `260\|RUE\|PAUL BERT` | 5 | `...LP-CBCP-F74E` | 264 B Rue Paul Bert, 69003, Lyon 3e Arrondisse | `264B\|RUE\|PAUL BERT` | AE1699040 | 8 | REGIE DU LYONNAIS | parc-neutre | DEJA VISIBLE |
-| dauph | `12\|RUE\|CARRY` | 4 | `...4B-YECQ-FPCT` | 6 Rue Carry, 69003, Lyon 3e Arrondissement | `6\|RUE\|CARRY` | AC1825504 | 12 | C2L | parc-neutre | DEJA VISIBLE |
-| dauph | `48\|RUE\|ST MAXIMIN` | 3 | `...6G-4P2Q-RRZK` | 51 Rue Saint Maximin, 69003, Lyon 3e Arrondiss | `51\|RUE\|ST MAXIMIN` | AB2784080 | 50 | REGIE PEDRINI | parc-neutre | DEJA VISIBLE |
-| dauph | `18\|RUE\|ETIENNE RICHERAND` | 3 | `...NV-GU7Z-XPMJ` | 19 Rue Etienne Richerand, 69003, Lyon 3e Arron | `19\|RUE\|ETIENNE RICHERAND` | AG2447720 | 8 | non connu | parc-neutre | DEJA VISIBLE |
-| dauph | `10\|RUE\|DAUPHINE` | 3 | `...NL-L1N7-K12Y` | 1 Rue Saint Maximin, 69003, Lyon 3e Arrondisse | `1\|RUE\|ST MAXIMIN` | AF0858860 | 14 | GESTION ET PATRIMO | parc-neutre | DEJA VISIBLE |
-| dauph | `14\|RUE\|ST SIDOINE` | 3 | `...CZ-EFDZ-724F` | 12 Rue Saint-Sidoine, 69003, Lyon 3e Arrondiss | `12\|RUE\|ST SIDOINE` | AB2206571 | 165 | FONCIA LYON | parc-neutre | DEJA VISIBLE |
-| dauph | `18\|RUE\|ST ANTOINE` | 3 | `...FK-6Z9V-TUP1` | 17 Rue Saint-Antoine, 69003, Lyon 3e Arrondiss | `17\|RUE\|ST ANTOINE` | AE9439365 | 45 | CONFLUENCE ROLIN B | parc-neutre | - |
-| dauph | `46\|RUE\|ST MAXIMIN` | 2 | `...DK-M71Z-3JJQ` | 43 Rue Saint-Maximin, 69003, Lyon 3e Arrondiss | `43\|RUE\|ST MAXIMIN` | AB1744747 | 22 | non connu | parc-neutre | DEJA VISIBLE |
-| motte | `156\|BOULEVARD\|GRENELLE` | 6 | `...HZ-H1TK-FPME` | 154 Boulevard De Grenelle, 75015, Paris 15e Ar | `154\|BOULEVARD\|GRENELLE` | AB1105360 | 35 | non connu | parc-neutre | - |
-| motte | `3\|PLACE\|CAMBRONNE` | 2 | `...JY-P43A-W2JX` | 6 Place Cambronne, 75015, Paris 15e Arrondisse | `6\|PLACE\|CAMBRONNE` | AB5809108 | 19 | DAUCHEZ PROPERTY M | parc-neutre | DEJA VISIBLE |
+_Aucun match pivot trouve._
+
+
+## Cas skippes (skip-list documentee)
+
+Paires (orph, ancre) instruites individuellement et exclues du flux actionnable. Le pivot continue de les detecter (le bgid light n'a pas change) mais ne les remonte plus comme "matches".
+
+| secteur | orph | -> ancre | immat | v_log | instruit le | commit | raison |
+|---|---|---|---|--:|---|---|---|
+| dauph | `18\|RUE\|ST ANTOINE` | `17\|RUE\|ST ANTOINE` | AE9439365 | 3 | 2026-05-20 | `cd74576` | FAUX POSITIF : bgid light PFFK (assigne par defaut par make_light num_voie BDNB) ne corres... |
 
 ## Top 10 par ventes-logement relocalisables
 
-| secteur | cle hors-RNC | v_log | v_tot | -> copro candidate | immat | lots |
-|---|---|--:|--:|---|---|--:|
-| dauph | `9\|RUE\|PROFESSEUR PAUL SISLEY` | 16 | 16 | 7 B Rue Professeur Paul Sisley -> `7B\|RUE\|PROFESSEUR PAUL SISLEY` | AA0012898 | 225 |
-| dauph | `12\|RUE\|LOUIS JASSERON` | 6 | 6 | 13 Rue Louis Jasseron, 69003,  -> `13\|RUE\|LOUIS JASSERON` | AC6278774 | 17 |
-| dauph | `14\|RUE\|ST MAXIMIN` | 6 | 6 | 1 Rue Rossan, 69003, Lyon 3e A -> `1\|RUE\|ROSSAN` | AB2460335 | 53 |
-| motte | `156\|BOULEVARD\|GRENELLE` | 6 | 6 | 154 Boulevard De Grenelle, 750 -> `154\|BOULEVARD\|GRENELLE` | AB1105360 | 35 |
-| dauph | `38\|RUE\|BARABAN` | 5 | 5 | 37 Rue Baraban, 69003, Lyon 3e -> `37\|RUE\|BARABAN` | AC9726381 | 29 |
-| dauph | `260\|RUE\|PAUL BERT` | 5 | 5 | 264 B Rue Paul Bert, 69003, Ly -> `264B\|RUE\|PAUL BERT` | AE1699040 | 8 |
-| dauph | `12\|RUE\|CARRY` | 4 | 4 | 6 Rue Carry, 69003, Lyon 3e Ar -> `6\|RUE\|CARRY` | AC1825504 | 12 |
-| dauph | `48\|RUE\|ST MAXIMIN` | 3 | 7 | 51 Rue Saint Maximin, 69003, L -> `51\|RUE\|ST MAXIMIN` | AB2784080 | 50 |
-| dauph | `18\|RUE\|ETIENNE RICHERAND` | 3 | 5 | 19 Rue Etienne Richerand, 6900 -> `19\|RUE\|ETIENNE RICHERAND` | AG2447720 | 8 |
-| dauph | `10\|RUE\|DAUPHINE` | 3 | 4 | 1 Rue Saint Maximin, 69003, Ly -> `1\|RUE\|ST MAXIMIN` | AF0858860 | 14 |
+_(aucun)_
+
 
 ## Cas qui auraient ete rates sans pivot BDNB
 
 Pipeline existant `make_light` : (1) jointure RNC->copro `copro_by_cle` exacte / ALIAS_RNC manuel ; (2) BDNB num+voie ; (3) GPS<50m (palier faible). Puis fusion-bgid stricte (parite homogene). **Aucun de ces paliers n'expose les autres adresses BAN du meme batiment** : si la copro RNC est ancree sur une voie/numero qui ne figure pas dans la cle DVF d'origine, le pipeline ne peut pas la trouver (c'est exactement la classe de cas A2/A3 et Acollas documentee dans `fix_mp_cibles_horsrnc.py`, instruite individuellement jusqu'a present).
 
-Le pivot BDNB ouvre un NOUVEAU vecteur systematique : il revele **14 orpheline(s) DVF** rattachable(s) sans intervention manuelle au-dela de l'API. Sans ce pipeline, ces cas seraient laisses en categorie B faute de pouvoir etre detectes par cle/bgid stricte.
-
-
-**Attention** : 12 ancre(s) sont **deja visibles** dans le rendu actuel (ont une cle_adresse non fusee). Verifier avant tout fix : une fusion supplementaire pourrait creer un double-rendu ou un changement de principal indesirable (cf. PIPELINE Sec 6).
+Le pivot BDNB ouvre un NOUVEAU vecteur systematique : il revele **0 orpheline(s) DVF** rattachable(s) sans intervention manuelle au-dela de l'API. Sans ce pipeline, ces cas seraient laisses en categorie B faute de pouvoir etre detectes par cle/bgid stricte.
 
 
 ## Methodologie + limites

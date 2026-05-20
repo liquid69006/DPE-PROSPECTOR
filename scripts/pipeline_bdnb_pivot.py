@@ -70,6 +70,28 @@ for a, b in SUBS_PAIRS:
     SUBS.setdefault(b, a)
 ACCENTS = str.maketrans("ÉÈÊÀÂÔÎÏÇÛÙ", "EEEAAOIICUU")
 
+# Skip-list : faux positifs / cas instruits manuellement non-actionnables.
+# Cle = (secteur, orph_cle, anchor_cle). Valeur = (date_instruction,
+# commit, raison_metier). Le pipeline n'emet pas de match pour ces
+# paires (mais re-detecte si une AUTRE ancre apparait pour le meme
+# orph, ce qui resterait pertinent). Mettre a jour quand un cas est
+# definitivement instruit.
+SKIP_PAIRS = {
+    ("dauphine_lacassagne",
+     "18|RUE|ST ANTOINE",
+     "17|RUE|ST ANTOINE"): (
+        "2026-05-20", "cd74576",
+        "FAUX POSITIF : bgid light PFFK (assigne par defaut "
+        "par make_light num_voie BDNB) ne correspond pas au bgid "
+        "BDNB authoritative reel 5RMC-KXL7-E97N (complexe 4/6 Ternois "
+        "+ 93 Bellecombe + 18 St Antoine, 80 lgts). Aucune copro RNC "
+        "propre sur 5RMC. Le pivot match est base sur le bgid light "
+        "errone, pas sur l'identite reelle du bati. Resoudre demande "
+        "soit (a) corriger le bgid de 18 ST ANTOINE dans le light, "
+        "soit (b) fournir une preuve terrain rattachant 18 a une "
+        "copro existante (AB5869177 via 94 Bellecombe ?)."),
+}
+
 
 def _txt(s):
     s = str(s or "").translate(ACCENTS).upper()
@@ -230,6 +252,7 @@ def analyze(light, secteur, cache):
              if a.get("batiment_groupe_id")]
     n_calls = bdnb_addresses(bgids, cache)
     results = []
+    skipped = []                              # (orph, anchor, raison)
     for a in targets:
         cle = a["cle"]
         bg = a.get("batiment_groupe_id")
@@ -255,6 +278,16 @@ def analyze(light, secteur, cache):
                     if (cle_anc, immat) in seen_anchors:
                         continue
                     seen_anchors.add((cle_anc, immat))
+                    # skip-list : (secteur, orph, ancre) instruites
+                    sk = SKIP_PAIRS.get((secteur, cle, cle_anc))
+                    if sk:
+                        skipped.append({
+                            "orph": cle, "anchor": cle_anc,
+                            "immat": immat,
+                            "vlog": a.get("nb_ventes_logement") or 0,
+                            "date": sk[0], "commit": sk[1],
+                            "raison": sk[2]})
+                        continue
                     anc_obj = by_cle.get(cle_anc)
                     same_bg = (anc_obj
                                and anc_obj.get("batiment_groupe_id")
@@ -287,7 +320,7 @@ def analyze(light, secteur, cache):
                 "nb_valid_ban": nb_valid,
                 "matches": matches,
             })
-    return results, len(targets), n_calls
+    return results, len(targets), n_calls, skipped
 
 
 def main():
@@ -295,9 +328,12 @@ def main():
              if CACHE.exists() else {})
     light_dl = json.loads(LIGHT_DL.read_text(encoding="utf-8"))
     light_mp = json.loads(LIGHT_MP.read_text(encoding="utf-8"))
-    res_dl, nt_dl, nc_dl = analyze(light_dl,
-                                   "dauphine_lacassagne", cache)
-    res_mp, nt_mp, nc_mp = analyze(light_mp, "motte_picquet", cache)
+    res_dl, nt_dl, nc_dl, sk_dl = analyze(
+        light_dl, "dauphine_lacassagne", cache)
+    res_mp, nt_mp, nc_mp, sk_mp = analyze(
+        light_mp, "motte_picquet", cache)
+    skipped = [("dauphine_lacassagne", s) for s in sk_dl] \
+        + [("motte_picquet", s) for s in sk_mp]
     CACHE.write_text(json.dumps(cache, ensure_ascii=False, indent=1),
                      encoding="utf-8")
 
@@ -337,13 +373,14 @@ def main():
              "du snapshot secteur. Si match -> candidat rattachement.\n")
     L.append("## Bilan\n")
     L.append("| secteur | hr-actives | matches pivot | "
-             "appels BDNB |\n|---|--:|--:|--:|")
+             "skip-list | appels BDNB |\n|---|--:|--:|--:|--:|")
     L.append(f"| dauphine_lacassagne | {nt_dl} | "
-             f"**{len(res_dl)}** | {nc_dl} |")
+             f"**{len(res_dl)}** | {len(sk_dl)} | {nc_dl} |")
     L.append(f"| motte_picquet | {nt_mp} | **{len(res_mp)}** | "
-             f"{nc_mp} |")
+             f"{len(sk_mp)} | {nc_mp} |")
     L.append(f"| **total** | **{nt_dl+nt_mp}** | "
-             f"**{len(rows)}** | {nc_dl+nc_mp} |\n")
+             f"**{len(rows)}** | **{len(skipped)}** | "
+             f"{nc_dl+nc_mp} |\n")
     if rows:
         L.append("**Classification** : " + ", ".join(
             f"{k}={v}" for k, v in sorted(by_class.items())) + ".\n")
@@ -376,6 +413,22 @@ def main():
                     f"`{esc(m['anchor_cle'])}` | {m['immat']} | "
                     f"{m['lots']} | "
                     f"{(m['syndic'] or '-')[:18]} | {t} | {coll} |")
+
+    if skipped:
+        L.append("\n## Cas skippes (skip-list documentee)\n")
+        L.append("Paires (orph, ancre) instruites individuellement et "
+                 "exclues du flux actionnable. Le pivot continue de "
+                 "les detecter (le bgid light n'a pas change) mais ne "
+                 "les remonte plus comme \"matches\".\n")
+        L.append("| secteur | orph | -> ancre | immat | v_log | "
+                 "instruit le | commit | raison |")
+        L.append("|---|---|---|---|--:|---|---|---|")
+        for sec, s in skipped:
+            L.append(
+                f"| {sec[:5]} | `{esc(s['orph'])}` | "
+                f"`{esc(s['anchor'])}` | {s['immat']} | "
+                f"{s['vlog']} | {s['date']} | `{s['commit']}` | "
+                f"{s['raison'][:90]}... |")
 
     L.append("\n## Top 10 par ventes-logement relocalisables\n")
     if rows:
@@ -448,11 +501,12 @@ def main():
 
     REPORT.write_text("\n".join(L), encoding="utf-8")
     print(f"DL: {nt_dl} hr-actives -> {len(res_dl)} matches pivot "
-          f"({nc_dl} appels BDNB)")
+          f"({len(sk_dl)} skipped, {nc_dl} appels BDNB)")
     print(f"MP: {nt_mp} hr-actives -> {len(res_mp)} matches pivot "
-          f"({nc_mp} appels BDNB)")
-    print(f"total: {len(rows)} matches "
-          f"({n_via_subs} via SUBS, {n_anc_visible} ancres visibles)")
+          f"({len(sk_mp)} skipped, {nc_mp} appels BDNB)")
+    print(f"total: {len(rows)} matches actionnables "
+          f"({n_via_subs} via SUBS, {n_anc_visible} ancres visibles, "
+          f"{len(skipped)} skipped)")
     print(f"cache: {CACHE.name} ({len(cache)} bgids)")
     print(f"rapport: {REPORT.name}")
 
