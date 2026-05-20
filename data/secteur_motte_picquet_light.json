@@ -72,7 +72,8 @@
     "_correctif_grenelle": "Re-point 156|BD|GRENELLE -> 154|BD|GRENELLE (AB1105360 35 lots syndiques, MS103738). 5e cas P2a (precedemment ecarte 2026-05-20, re-instruit avec contexte BDNB complet) : bgid F3HZ-H1TK-FPME = complexe 2011 12 adresses BAN, 89 BDNB-log dont seulement 35 syndiques RNC. 156 (6 v_log) relocalisees sous AB1105360. Parc 28980->28926 (-54) = correction structurelle PIPELINE Sec 6 (lots RNC prioritaire sur estimation BDNB du complexe entier). Les 54 unites manquantes sont structurellement hors-syndicat (RPLS/HLM probable, foncieres institutionnelles, non-imm), aucune copro RNC additionnelle trouvee sur Fremicourt/Pere Fragile 75015.",
     "_correctif_armonial_pair": "Extension ARMONIAL I (AA0646265) avec 2/4/6 RUE CEPRE (8 absent light, traite source-of-truth). Confirmation terrain 2026-05-20 : pair-CEPRE + 20 MIOLLIS = ARMONIAL I (multi-bati, deja 16 sources sur 6 bgids distincts). RNC declare 14 adr_complementaires (open data tronque a 3 slots, 11 cachees). Pattern ALIAS_RNC multi-voies. 2 v_log relocalisees sous AA0646265. Parc MP 28926->28915 (-11 = retrait BDNB phantom Z2Z2 dedoublonne).",
     "_correctif_pivot_reverse": "2 re-points pivot BDNB reverse (motte_picquet) - copros RNC dont le bgid (via cle_adresse) reclame des adresses BAN qui sont des orphelines DVF hors-RNC. Forward ratait ces cas (bgids light divergents). Pattern miroir-bgid (adoption MIRROR + fusion + absorption chaine). Parc 28915->28910 (-5) = retrait BDNB phantoms des orphs conforme PIPELINE Sec 6. Cas: 22|RUE|FEDERATION->20|RUE|FEDERATION(AA0398420); 11||CITE THURE->15|RUE|GRAMME(AJ1220698)",
-    "_correctif_grenelle_fremicourt": "23/25/27 RUE FREMICOURT -> 146 BD GRENELLE (AA0469049 RESIDENCE GRENELLE FREMICOURT, 316 lots, ATRIUM). Confirmation triple : RNC compl_1/2/3 = 27/25/23 FREMICOURT, BDNB bgid 1TM4 liste les 7 adr BAN, syndic ATRIUM identique. Bgids light errones (TPGT/1C2P/28QF = voisins 22/24/28 qui sont d'autres copros) corriges par adoption MIRROR vers 1TM4. Parc 28910->28910 strictement neutre. 2 v_log + 2 v_tot relocalises sous AA0469049."
+    "_correctif_grenelle_fremicourt": "23/25/27 RUE FREMICOURT -> 146 BD GRENELLE (AA0469049 RESIDENCE GRENELLE FREMICOURT, 316 lots, ATRIUM). Confirmation triple : RNC compl_1/2/3 = 27/25/23 FREMICOURT, BDNB bgid 1TM4 liste les 7 adr BAN, syndic ATRIUM identique. Bgids light errones (TPGT/1C2P/28QF = voisins 22/24/28 qui sont d'autres copros) corriges par adoption MIRROR vers 1TM4. Parc 28910->28910 strictement neutre. 2 v_log + 2 v_tot relocalises sous AA0469049.",
+    "_correctif_suffren_barthelemy_garibaldi": "Copro RNC AD2301695 (163 AVENUE DE SUFFREN, 17 lots hab / 20 tot, syndic GESTION ET TRANSACTIONS DE FRANCE) injectee dans coproprietes[] et attribuee a 163|AVENUE|SUFFREN (bgid bdnb-bg-QTC9-KFAU-5TPU). Copro ABSENTE du snapshot RNC mais confirmee par RNC live (tabular-api 3ea8e2c3-0038...) + BDNB pivot (l_libelle_adr = 9 BARTH + 163 SUFFREN + 59 GAR sur QTC9-KFAU-5TPU, parcelle 75115000CW0053). 9 RUE BARTHELEMY et 59 BD GARIBALDI : facades non-postales, 0 vente DVF, hors light - ALIAS_RNC a porter dans make_light_motte_picquet.py. Parc 28910->28913 (+3 logements : switch BDNB(14)->RNC(17) autoritatif sur bgid QTC9, PIPELINE Sec 6). 2 ventes DVF (12/07/2023 + 23/07/2025) relocalisees sous AD2301695, classement Actif."
   },
   "iris": [
     {
@@ -18422,6 +18423,28 @@
         "2025": 3
       },
       "taux_rotation_5ans": 2.0,
+      "classement_rotation": "Actif"
+    },
+    {
+      "numero_immatriculation": "AD2301695",
+      "nom_copropriete": "163 AVENUE DE SUFFREN",
+      "syndic": "GESTION ET TRANSACTIONS DE FRANCE",
+      "_syndic_src": "rnc_live",
+      "adresse": "163 Avenue de Suffren | 9 Rue Barthelemy | 59 Boulevard Garibaldi | 75015 | Paris",
+      "longitude": 2.30991,
+      "latitude": 48.845751,
+      "code_iris": "751155813",
+      "cle_adresse": "163|AVENUE|SUFFREN",
+      "nb_lots_total": 20,
+      "nb_lots_habitation": 17,
+      "nb_lots_habitation_rnc": 17,
+      "nb_log_bdnb": 14,
+      "nb_ventes_2021_2025": 2,
+      "ventes_par_an": {
+        "2023": 1,
+        "2025": 1
+      },
+      "taux_rotation_5ans": 2.4,
       "classement_rotation": "Actif"
     }
   ],
@@ -40903,10 +40926,10 @@
       "sci_proprietaire": "oui",
       "sci_nom": "MAS DE LINE",
       "sci_siren": "434735882",
-      "syndic": null,
-      "_syndic_src": null,
-      "numero_immatriculation": null,
-      "nb_lots_habitation": null,
+      "syndic": "GESTION ET TRANSACTIONS DE FRANCE",
+      "_syndic_src": "rnc_live",
+      "numero_immatriculation": "AD2301695",
+      "nb_lots_habitation": 17,
       "ventes_par_an": {
         "2023": 1,
         "2025": 1
