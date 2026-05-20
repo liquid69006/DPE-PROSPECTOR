@@ -2196,6 +2196,18 @@ function renderSecteur() {
   const USAGE_RESID = { 'Résidentiel collectif': 1, 'Résidentiel individuel': 1 };
   const usageResid = a => !!(a && USAGE_RESID[a.usage_principal_bdnb]);
 
+  // Parc EFFECTIF d'une adresse hors-RNC : 1 si qualifiee 'mono'
+  // (monopropriete via menu qualif, persiste KV), sinon nb_log_bdnb.
+  // S'applique UNIQUEMENT au calcul parc/taux des hors-RNC ; les
+  // copros RNC tirent leur parc de nb_lots_habitation (non touche).
+  // Couche d'affichage/calcul uniquement - nb_log_bdnb data inchange.
+  // L'affichage de la cellule logements montre "1 (X)" pour les mono.
+  const getEffectiveLog = a => {
+    const as = secteurAssign[a.cle] || {};
+    if (as.type === 'mono') return 1;
+    return a.nb_log_bdnb;
+  };
+
   // ── Fusions : adresse DVF source rattachée à une copro RNC cible ──
   const adrByCle = {};
   (d.adresses || []).forEach(a => { adrByCle[a.cle] = a; });
@@ -2275,9 +2287,11 @@ function renderSecteur() {
       (bgRncLots[immatBg[im]] = bgRncLots[immatBg[im]] || {})[im] = lots;
     }
     // bâti hors-RNC résidentiel : retenir 1 valeur nb_log_bdnb par bgid
+    // (1ere adresse résidentielle qui touche le bgid, first-wins). Si
+    // cette adresse est qualifiée 'mono' -> valeur effective = 1.
     if (bg && !cp && usageResid(a) && a.nb_log_bdnb > 0
         && bgBdnbResid[bg] == null) {
-      bgBdnbResid[bg] = a.nb_log_bdnb;
+      bgBdnbResid[bg] = getEffectiveLog(a);
     }
   });
   // RNC prioritaire ; fallback nb_log_bdnb UNIQUEMENT si bâti résidentiel
@@ -2344,9 +2358,10 @@ function renderSecteur() {
         // Taux/colonne affichés : RNC -> lots copro ; hors-RNC -> nb_log_bdnb
         // UNIQUEMENT si bâti résidentiel (tertiaire/inconnu -> —, cohérent
         // avec la base parc du header/IRIS).
+        // Mono qualifié -> denomAff=1 (taux calculé sur 1 logement)
         const denomAff = (lots != null) ? lots
           : (usageResid(a) && a.nb_log_bdnb != null && a.nb_log_bdnb > 0
-              ? a.nb_log_bdnb : null);
+              ? getEffectiveLog(a) : null);
         const taux = sctTauxAnnuel(effTot, denomAff);   // taux ANNUEL de l'adresse
         const cls = sctClassAnnuel(taux);
 
@@ -2369,7 +2384,8 @@ function renderSecteur() {
           else { lgtKey = 'rnc:' + im; lgtVal = (cp.nb_lots_habitation > 0 ? cp.nb_lots_habitation : 0); }
         } else if (usageResid(a) && a.nb_log_bdnb > 0) {
           // hors-RNC résidentiel SANS bgid -> clé adresse
-          lgtKey = 'adr:' + a.cle; lgtVal = a.nb_log_bdnb;
+          // mono qualifié -> lgtVal=1 (au lieu de nb_log_bdnb)
+          lgtKey = 'adr:' + a.cle; lgtVal = getEffectiveLog(a);
         }
         if (lgtKey && lgtVal > 0 && !seenLgts.has(lgtKey)) {
           seenLgts.add(lgtKey); iloL += lgtVal;
@@ -2459,6 +2475,23 @@ function renderSecteur() {
             + `${esc(synNm)}</a>`
           : '<span style="color:var(--text2);">—</span>';
 
+        // Cellule logements : RNC -> lots ; mono qualifie -> "1 (X)"
+        // (X = nb_log_bdnb original BDNB) ; hors-RNC residentiel -> X ;
+        // tertiaire/inconnu -> tiret.
+        let logCell;
+        if (lots != null) {
+          logCell = String(lots);
+        } else if (as.type === 'mono'
+            && a.nb_log_bdnb != null && a.nb_log_bdnb > 0) {
+          logCell = `<span title="Monopropriete qualifiee (BDNB ${a.nb_log_bdnb} log)" `
+            + `style="color:var(--text2);">1 `
+            + `<small style="opacity:.7;">(${a.nb_log_bdnb})</small></span>`;
+        } else if (denomAff != null) {
+          logCell = `<span title="logements BDNB (hors RNC)" style="color:var(--text2);">${denomAff}</span>`;
+        } else {
+          logCell = '<span style="color:var(--text2);">—</span>';
+        }
+
         rows += `<div class="sct-row" data-sct-addr="${esc(secteurNorm(dispNom + ' ' + adrTxt))}" `
           + `title="${esc(adrTxt)}" `
           + `style="display:flex;align-items:center;border-bottom:1px solid var(--border);`
@@ -2467,10 +2500,7 @@ function renderSecteur() {
           + sctCell(syndicCell, SCTW.syndic, 'left')
           + sctCell(sctDpe(a.classe_dpe), SCTW.dpe, 'center')
           + sctCell(sciCell, SCTW.sci, 'left')
-          + sctCell(lots != null ? lots
-              : (denomAff != null
-                  ? `<span title="logements BDNB (hors RNC)" style="color:var(--text2);">${denomAff}</span>`
-                  : '<span style="color:var(--text2);">—</span>'), SCTW.lots, 'center')
+          + sctCell(logCell, SCTW.lots, 'center')
           + ANS.map(y => sctCell(String(effV[y] || 0), SCTW.an, 'center')).join('')
           + sctCell(`<b>${effTot}</b>`, SCTW.tot, 'center')
           + sctCell(taux != null ? taux + '%' : '<span style="color:var(--text2);">—</span>', SCTW.taux, 'center')
