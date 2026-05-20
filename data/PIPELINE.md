@@ -146,7 +146,8 @@ Tables curées (style projet, documentées en commentaire) :
 `fix_pivot_bdnb_lot` (_correctif_pivot_bdnb) →
 `fix_grenelle_repoint` (_correctif_grenelle) →
 `fix_armonial_pair_cepre` (_correctif_armonial_pair) →
-`fix_pivot_bdnb_reverse_lot` (_correctif_pivot_reverse)
+`fix_pivot_bdnb_reverse_lot` (_correctif_pivot_reverse) →
+`fix_grenelle_fremicourt` (_correctif_grenelle_fremicourt)
 
 Backups `.bak` correspondants : `.bak` (pré-1er correctif),
 `.pretauxlog.bak`, `.prehorsrnc.bak`, `.predoublon.bak`,
@@ -155,8 +156,8 @@ Backups `.bak` correspondants : `.bak` (pré-1er correctif),
 `.prempranges.bak`, `.prempb.bak`, `.prearmonial.bak`,
 `.precibleshr.bak`, `.prealiasbg.bak`, `.prevoieabrev.bak`,
 `.prerepointp2a.bak`, `.predetrie.bak`, `.prepivot.bak`,
-`.pregrenelle.bak`, `.prearmonial2.bak`, `.prepivotrev.bak`
-(gitignorés, locaux).
+`.pregrenelle.bak`, `.prearmonial2.bak`, `.prepivotrev.bak`,
+`.pregrenellefrem.bak` (gitignorés, locaux).
 `SECTEUR=<sec>` pilote les scripts génériques.
 
 `fix_alias_rnc_meme_bgid` (lot ALIAS_RNC même-bgid, parc-neutre) :
@@ -283,6 +284,22 @@ MIRROR (bgid différent côté orph). **Parc** : DL `22267 → 22200`
 bgid) — conforme §6 (« lots RNC prioritaire » : les copros RNC
 couvraient déjà ces bâtis conceptuellement via leurs lots
 syndicaux). **hr-actif DL 69→45, MP 30→28**. `test_render` exit 0.
+
+`fix_grenelle_fremicourt` (_correctif_grenelle_fremicourt, MP,
+2026-05-20) : **`23/25/27 RUE FREMICOURT → 146 BD GRENELLE`**
+(AA0469049 RESIDENCE GRENELLE FREMICOURT, 316 lots, ATRIUM GESTION
+PARIS 15). Confirmation **triple** : RNC live `compl_1/2/3 =
+27/25/23 FREMICOURT` (`nb_adr_compl=3`, exact) + BDNB bgid `1TM4`
+liste 7 adr BAN (144/146 GRENELLE + 21B/23/25/27/29 FREMICOURT,
+1965, 13 niveaux, 6 258 m², 306 lgts BDNB/316 RNC) + syndic ATRIUM
+identique sur les 4 adresses. Bgids light **erronés** (TPGT/1C2P/28QF
+= bgids des voisins 22/24/28 qui sont d'**autres** copros distinctes
+AC0129718/.../AB3441680, assignés à tort par make_light num_voie
+BDNB) corrigés par adoption MIRROR vers `1TM4`. 3 re-points
+(27+chain 23/25, fusion-cible 27 déjà existante via syndic-propagé).
+**Parc MP `28910 → 28910` (Δ +0, strictement neutre)**. 2 v_log + 4
+v_tot relocalisés sous AA0469049. `test_render` exit 0 les 2
+secteurs.
 
 ## 6. Règles de calcul (renderSecteur, index.html)
 
