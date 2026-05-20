@@ -91,7 +91,8 @@
     "_correctif_guilloud": "Copro RNC '39-43 RUE GUILLOUD' (30 lots), doublement immatriculee AB9349846 (2018) / AJ0217901 'LE GUILLOUD' (re-immat 2025, REGIE DU LYONNAIS ; light retient AJ0217901 @ cle 39). 39/41/43 partagent le bgid YTPJ-Q2XB-2DEF ; la fusion RNC agrege {39,43} (nom/compl) et consomme les bornes, laissant 41 (entree mediane jamais listee au RNC) isole. 41 RUE GUILLOUD rattachee chirurgicalement comme secondaire auto de 39 (miroir exact du frere 43) : champs autoritatifs (bgid/nb_log_bdnb/_bdnb_match/usage/ventes) INCHANGES. Au rendu : 2 ventes (2 strictes) relocalisees sous AJ0217901, 41 sort des 'hors-RNC actifs'. PARC STRICTEMENT INCHANGE (41 partage deja le bgid de la copro -> deja dedupe aux 30 lots RNC, PIPELINE 6). 39._fusion_auto_sources -> ['41','43'], label '39/41/43 RUE GUILLOUD'. Source-of-truth = FUSION_RNC_EXTRA_NUMS dans make_light.py. 2 enregistrements touches.",
     "_correctif_alias_bgid": "Lot ALIAS_RNC meme bgid (parc-neutre) : 36 adresses hors-RNC a ventes DVF rattachees a leur copro RNC (preuve forte BDNB-rel/ortho exacte, meme batiment_groupe_id). Ventes relocalisees, parc STRICTEMENT inchange.",
     "_correctif_repoint_p2a": "3 re-points P2a (copro RNC enterree sous fantome DVF principal) : 53|RUE|ETIENNE RICHERAND<-51|RUE|ETIENNE RICHERAND(AC3598851), 56|AVENUE|LACASSAGNE<-54|AVENUE|LACASSAGNE(AA4814810), 316|RUE|PAUL BERT<-318|RUE|PAUL BERT(AC6168629). Parc 22268->22267 (-1) = switch BDNB->RNC autoritaire (PIPELINE §6).",
-    "_correctif_pivot_bdnb": "11 re-points pivot BDNB (dauphine_lacassagne) - copros RNC ancrees sur une AUTRE adresse BAN du meme bgid, revelees par API BDNB batiment_groupe_complet.l_libelle_adr (cf. scripts/pipeline_bdnb_pivot.py + data/audit_pivot_bdnb.md). Fusion forward avec absorption de chaine (orph + sources -> ancre). Parc 22267->22267 (strictement neutre, meme bgid). Cas appliques: 9|RUE|PROFESSEUR PAUL SISLEY->7B|RUE|PROFESSEUR PAUL SISLEY(AA0012898); 12|RUE|LOUIS JASSERON->13|RUE|LOUIS JASSERON(AC6278774); 14|RUE|ST MAXIMIN->1|RUE|ROSSAN(AB2460335); 38|RUE|BARABAN->37|RUE|BARABAN(AC9726381); 260|RUE|PAUL BERT->264B|RUE|PAUL BERT(AE1699040); 12|RUE|CARRY->6|RUE|CARRY(AC1825504); 48|RUE|ST MAXIMIN->51|RUE|ST MAXIMIN(AB2784080); 18|RUE|ETIENNE RICHERAND->19|RUE|ETIENNE RICHERAND(AG2447720); 10|RUE|DAUPHINE->1|RUE|ST MAXIMIN(AF0858860); 14|RUE|ST SIDOINE->12|RUE|ST SIDOINE(AB2206571); 46|RUE|ST MAXIMIN->43|RUE|ST MAXIMIN(AB1744747)"
+    "_correctif_pivot_bdnb": "11 re-points pivot BDNB (dauphine_lacassagne) - copros RNC ancrees sur une AUTRE adresse BAN du meme bgid, revelees par API BDNB batiment_groupe_complet.l_libelle_adr (cf. scripts/pipeline_bdnb_pivot.py + data/audit_pivot_bdnb.md). Fusion forward avec absorption de chaine (orph + sources -> ancre). Parc 22267->22267 (strictement neutre, meme bgid). Cas appliques: 9|RUE|PROFESSEUR PAUL SISLEY->7B|RUE|PROFESSEUR PAUL SISLEY(AA0012898); 12|RUE|LOUIS JASSERON->13|RUE|LOUIS JASSERON(AC6278774); 14|RUE|ST MAXIMIN->1|RUE|ROSSAN(AB2460335); 38|RUE|BARABAN->37|RUE|BARABAN(AC9726381); 260|RUE|PAUL BERT->264B|RUE|PAUL BERT(AE1699040); 12|RUE|CARRY->6|RUE|CARRY(AC1825504); 48|RUE|ST MAXIMIN->51|RUE|ST MAXIMIN(AB2784080); 18|RUE|ETIENNE RICHERAND->19|RUE|ETIENNE RICHERAND(AG2447720); 10|RUE|DAUPHINE->1|RUE|ST MAXIMIN(AF0858860); 14|RUE|ST SIDOINE->12|RUE|ST SIDOINE(AB2206571); 46|RUE|ST MAXIMIN->43|RUE|ST MAXIMIN(AB1744747)",
+    "_correctif_pivot_reverse": "24 re-points pivot BDNB reverse (dauphine_lacassagne) - copros RNC dont le bgid (via cle_adresse) reclame des adresses BAN qui sont des orphelines DVF hors-RNC. Forward ratait ces cas (bgids light divergents). Pattern miroir-bgid (adoption MIRROR + fusion + absorption chaine). Parc 22267->22200 (-67) = retrait BDNB phantoms des orphs conforme PIPELINE Sec 6. Cas: 30|RUE|ETIENNE RICHERAND->28|RUE|ETIENNE RICHERAND(AA0358655); 8|RUE|CLAUDIUS PIONCHON->12|RUE|ST SIDOINE(AB2206571); 29|RUE|STE ANNE DE BARABAN->27|RUE|STE ANNE DE BARABAN(AA1700848); 11|RUE|RIBOUD->11|RUE|MAURICE FLANDIN(AA1456987); 16|RUE|ETIENNE RICHERAND->22|RUE|ST ANTOINE(AA1601434); 31|RUE|STE ANNE DE BARABAN->27|RUE|STE ANNE DE BARABAN(AA1700848); 47|RUE|PROFESSEUR PAUL SISLEY->16|RUE|GUILLOUD(AA7407463); 22|RUE|LOUIS JASSERON->18|RUE|LOUIS JASSERON(AB1570571); 4|RUE|JEAN RENOIR->38|RUE|JEANNE HACHETTE(AB6374961); 4|RUE|MARCEL PEHU->28|RUE|ST PHILIPPE(AC2574101); 51|AVENUE|GEORGES POMPIDOU->18|RUE|LOUIS JASSERON(AB1570571); 5|RUE|JEAN PIERRE LEVY->1|RUE|JEAN PIERRE LEVY(AB3947009); 6|RUE|METALLURGIE->9|RUE|DAVID(AB3954260); 10|RUE|TERNOIS->23|RUE|RIBOUD(AA1991660); 325|RUE|PAUL BERT->2|RUE|ST EUSEBE(AB0287870); 124|RUE|ANTOINE CHARIAL->11|RUE|ST EUSEBE(AB1809680); 11|RUE|DAVID->9|RUE|DAVID(AB3954260); 10|RUE|METALLURGIE->9|RUE|DAVID(AB3954260); 10|RUE|TEINTURIERS->104|RUE|BARABAN(AC1218890); 4|RUE|MAURICE FLANDIN->234|COURS|LAFAYETTE(AC8608747); 277|RUE|PAUL BERT->76|RUE|ANTOINE CHARIAL(AA1694256); 279|RUE|PAUL BERT->76|RUE|ANTOINE CHARIAL(AA1694256); 69|RUE|BARABAN->61|RUE|BARABAN(AB2515468); 24|AVENUE|LACASSAGNE->24||ET 24 BIS AVENUE LACASSAGNE(AG1556893)"
   },
   "iris": [
     {
@@ -12571,13 +12572,13 @@
         "2025": 15
       },
       "nb_ventes_total": 42,
-      "nb_log_bdnb": null,
-      "annee_construction": 1986,
-      "classe_dpe": null,
-      "type_batiment": null,
-      "type_chauffage": null,
-      "batiment_groupe_id": "bdnb-bg-5W9P-RL7A-RWW7",
-      "_bdnb_match": "num_voie",
+      "nb_log_bdnb": 154,
+      "annee_construction": 1972,
+      "classe_dpe": "D",
+      "type_batiment": "appartement",
+      "type_chauffage": "reseau de chaleur",
+      "batiment_groupe_id": "bdnb-bg-9B3F-ZKT4-JZ9V",
+      "_bdnb_match": "immat",
       "ventes_par_an_logement": {
         "2021": 0,
         "2022": 0,
@@ -12589,8 +12590,11 @@
       "taux_rotation_logement": null,
       "classement_rotation_logement": "",
       "_taux_logement_src": "filtre_habitation",
-      "usage_principal_bdnb": "Dépendance",
-      "_usage_bdnb_src": "snapshot"
+      "usage_principal_bdnb": "Résidentiel collectif",
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "61|RUE|BARABAN",
+      "_fusion_auto_sources": null
     },
     {
       "cle": "230|AVENUE|FELIX FAURE",
@@ -12930,7 +12934,8 @@
       "_bdnb_match": "immat",
       "_fusion_auto_label": "24/28 RUE ETIENNE RICHERAND",
       "_fusion_auto_sources": [
-        "24|RUE|ETIENNE RICHERAND"
+        "24|RUE|ETIENNE RICHERAND",
+        "30|RUE|ETIENNE RICHERAND"
       ],
       "ventes_par_an_logement": {
         "2021": 2,
@@ -12957,8 +12962,8 @@
       "sci_proprietaire": "oui",
       "sci_nom": "PP IMMO",
       "sci_siren": "832955819",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "VSA IMMOBILIER",
+      "_syndic_src": "rnc_grp",
       "ventes_par_an": {
         "2021": 2,
         "2022": 8,
@@ -12967,17 +12972,15 @@
         "2025": 7
       },
       "nb_ventes_total": 24,
-      "nb_log_bdnb": 36,
-      "annee_construction": 1999,
+      "nb_log_bdnb": 84,
+      "annee_construction": 2002,
       "classe_dpe": "C",
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
-      "batiment_groupe_id": "bdnb-bg-YAUB-Z7P7-2XQ1",
-      "_bdnb_match": "num_voie",
+      "batiment_groupe_id": "bdnb-bg-Q34G-RRJN-UAGN",
+      "_bdnb_match": "immat",
       "_fusion_auto_label": "5/7 RUE JEAN PIERRE LEVY",
-      "_fusion_auto_sources": [
-        "7|RUE|JEAN PIERRE LEVY"
-      ],
+      "_fusion_auto_sources": null,
       "ventes_par_an_logement": {
         "2021": 0,
         "2022": 1,
@@ -12990,7 +12993,9 @@
       "classement_rotation_logement": "Modéré",
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "1|RUE|JEAN PIERRE LEVY"
     },
     {
       "cle": "16|RUE|LOUIS JASSERON",
@@ -13915,8 +13920,8 @@
       "sci_proprietaire": "oui",
       "sci_nom": "M3 CENTRAL PARC",
       "sci_siren": "441611670",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "LYMMOBILIER",
+      "_syndic_src": "rnc_grp",
       "ventes_par_an": {
         "2021": 4,
         "2022": 5,
@@ -13924,17 +13929,15 @@
         "2025": 5
       },
       "nb_ventes_total": 16,
-      "nb_log_bdnb": 35,
-      "annee_construction": 1995,
+      "nb_log_bdnb": 73,
+      "annee_construction": 2002,
       "classe_dpe": "C",
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
-      "batiment_groupe_id": "bdnb-bg-WM3M-F4BX-8Z7T",
-      "_bdnb_match": "num_voie",
+      "batiment_groupe_id": "bdnb-bg-2PLR-ZN3Z-7QB6",
+      "_bdnb_match": "immat",
       "_fusion_auto_label": "2/4 RUE JEAN RENOIR",
-      "_fusion_auto_sources": [
-        "2|RUE|JEAN RENOIR"
-      ],
+      "_fusion_auto_sources": null,
       "ventes_par_an_logement": {
         "2021": 1,
         "2022": 1,
@@ -13946,7 +13949,9 @@
       "classement_rotation_logement": "Modéré",
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "38|RUE|JEANNE HACHETTE"
     },
     {
       "cle": "81|COURS|ALBERT THOMAS",
@@ -14063,9 +14068,10 @@
       "_bdnb_match": "immat",
       "_fusion_auto_label": "11/13/15/17 RUE MAURICE FLANDIN",
       "_fusion_auto_sources": [
+        "11|RUE|RIBOUD",
+        "13|RUE|MAURICE FLANDIN",
         "15|RUE|MAURICE FLANDIN",
-        "17|RUE|MAURICE FLANDIN",
-        "13|RUE|MAURICE FLANDIN"
+        "17|RUE|MAURICE FLANDIN"
       ],
       "ventes_par_an_logement": {
         "2021": 0,
@@ -14839,7 +14845,9 @@
       "_bdnb_match": "immat",
       "_fusion_auto_label": "18/20 RUE LOUIS JASSERON",
       "_fusion_auto_sources": [
-        "20|RUE|LOUIS JASSERON"
+        "20|RUE|LOUIS JASSERON",
+        "22|RUE|LOUIS JASSERON",
+        "51|AVENUE|GEORGES POMPIDOU"
       ],
       "ventes_par_an_logement": {
         "2021": 2,
@@ -16009,8 +16017,8 @@
       "sci_proprietaire": "oui",
       "sci_nom": "VILLARD OLIPY",
       "sci_siren": "948761432",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "GERIMMO",
+      "_syndic_src": "rnc_grp",
       "ventes_par_an": {
         "2021": 2,
         "2022": 2,
@@ -16019,13 +16027,13 @@
         "2025": 2
       },
       "nb_ventes_total": 9,
-      "nb_log_bdnb": null,
-      "annee_construction": 1990,
-      "classe_dpe": null,
-      "type_batiment": null,
-      "type_chauffage": null,
-      "batiment_groupe_id": "bdnb-bg-WQZA-TNRT-44JS",
-      "_bdnb_match": "num_voie",
+      "nb_log_bdnb": 50,
+      "annee_construction": 1992,
+      "classe_dpe": "D",
+      "type_batiment": "appartement",
+      "type_chauffage": "electricite",
+      "batiment_groupe_id": "bdnb-bg-8ZXE-MR58-88XQ",
+      "_bdnb_match": "immat",
       "ventes_par_an_logement": {
         "2021": 0,
         "2022": 1,
@@ -16037,8 +16045,11 @@
       "taux_rotation_logement": null,
       "classement_rotation_logement": "",
       "_taux_logement_src": "filtre_habitation",
-      "usage_principal_bdnb": "Tertiaire",
-      "_usage_bdnb_src": "snapshot"
+      "usage_principal_bdnb": "Résidentiel collectif",
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "104|RUE|BARABAN",
+      "_fusion_auto_sources": null
     },
     {
       "cle": "104|RUE|BARABAN",
@@ -16080,7 +16091,11 @@
       "classement_rotation_logement": "Actif",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": [
+        "10|RUE|TEINTURIERS"
+      ],
+      "_fusion_auto_label": null
     },
     {
       "cle": "11|RUE|MONTBRILLANT",
@@ -17524,8 +17539,8 @@
       "sci_proprietaire": "non",
       "sci_nom": "",
       "sci_siren": "",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "FONCIA LYON",
+      "_syndic_src": "rnc_grp",
       "ventes_par_an": {
         "2021": 1,
         "2022": 1,
@@ -17534,15 +17549,15 @@
         "2025": 2
       },
       "nb_ventes_total": 7,
-      "nb_log_bdnb": null,
-      "annee_construction": 2022,
-      "classe_dpe": null,
-      "type_batiment": null,
-      "type_chauffage": null,
-      "batiment_groupe_id": "bdnb-bg-B7XN-JTJZ-HPB4",
-      "_bdnb_match": "num_voie",
+      "nb_log_bdnb": 164,
+      "annee_construction": 1980,
+      "classe_dpe": "D",
+      "type_batiment": "appartement",
+      "type_chauffage": "reseau de chaleur",
+      "batiment_groupe_id": "bdnb-bg-4BCZ-EFDZ-724F",
+      "_bdnb_match": "immat",
       "_fusion_auto": true,
-      "_fusion_cible": "8|RUE|CLAUDIUS PIONCHON",
+      "_fusion_cible": "12|RUE|ST SIDOINE",
       "ventes_par_an_logement": {
         "2021": 1,
         "2022": 1,
@@ -17555,7 +17570,8 @@
       "classement_rotation_logement": "",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Tertiaire",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": null
     },
     {
       "cle": "4|RUE|STE ANNE DE BARABAN",
@@ -17800,9 +17816,10 @@
       "_bdnb_match": "immat",
       "_fusion_auto_label": "61/63/65/67 RUE BARABAN",
       "_fusion_auto_sources": [
-        "67|RUE|BARABAN",
         "63|RUE|BARABAN",
-        "65|RUE|BARABAN"
+        "65|RUE|BARABAN",
+        "67|RUE|BARABAN",
+        "69|RUE|BARABAN"
       ],
       "ventes_par_an_logement": {
         "2021": 2,
@@ -18256,7 +18273,9 @@
       "_bdnb_match": "immat",
       "_fusion_auto_label": "1/3 RUE JEAN PIERRE LEVY",
       "_fusion_auto_sources": [
-        "3|RUE|JEAN PIERRE LEVY"
+        "3|RUE|JEAN PIERRE LEVY",
+        "5|RUE|JEAN PIERRE LEVY",
+        "7|RUE|JEAN PIERRE LEVY"
       ],
       "ventes_par_an_logement": {
         "2022": 2,
@@ -18431,7 +18450,12 @@
       "classement_rotation_logement": "Actif",
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": [
+        "120|RUE|ANTOINE CHARIAL",
+        "124|RUE|ANTOINE CHARIAL"
+      ],
+      "_fusion_auto_label": null
     },
     {
       "cle": "117|RUE|DAUPHINE",
@@ -18871,7 +18895,9 @@
       "_bdnb_match": "immat",
       "_fusion_auto_label": "16/18 RUE GUILLOUD",
       "_fusion_auto_sources": [
-        "18|RUE|GUILLOUD"
+        "18|RUE|GUILLOUD",
+        "47|RUE|PROFESSEUR PAUL SISLEY",
+        "49|RUE|PROFESSEUR PAUL SISLEY"
       ],
       "ventes_par_an_logement": {
         "2021": 0,
@@ -19239,6 +19265,8 @@
       "_bdnb_match": "immat",
       "_fusion_auto_label": "2/8 RUE ST EUSEBE",
       "_fusion_auto_sources": [
+        "325|RUE|PAUL BERT",
+        "327|RUE|PAUL BERT",
         "3|RUE|ST EUSEBE",
         "8|RUE|ST EUSEBE"
       ],
@@ -19896,7 +19924,11 @@
       "classement_rotation_logement": "Modéré",
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": [
+        "4|RUE|MARCEL PEHU"
+      ],
+      "_fusion_auto_label": null
     },
     {
       "cle": "29|RUE|STE ANNE DE BARABAN",
@@ -19909,8 +19941,8 @@
       "sci_proprietaire": "oui",
       "sci_nom": "SCI TOJUGAES",
       "sci_siren": "893293860",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "REGIE DERVAULT BY GERALDINE ANDRIEUX",
+      "_syndic_src": "rnc_grp",
       "ventes_par_an": {
         "2021": 1,
         "2022": 1,
@@ -19919,13 +19951,13 @@
         "2025": 1
       },
       "nb_ventes_total": 7,
-      "nb_log_bdnb": 1,
-      "annee_construction": 1870,
-      "classe_dpe": null,
-      "type_batiment": null,
-      "type_chauffage": null,
-      "batiment_groupe_id": "bdnb-bg-YBEL-Q4MX-AZC3",
-      "_bdnb_match": "num_voie",
+      "nb_log_bdnb": 99,
+      "annee_construction": 1993,
+      "classe_dpe": "D",
+      "type_batiment": "appartement",
+      "type_chauffage": "gaz",
+      "batiment_groupe_id": "bdnb-bg-NV72-5NB3-XZT2",
+      "_bdnb_match": "immat",
       "ventes_par_an_logement": {
         "2021": 1,
         "2022": 1,
@@ -19937,8 +19969,11 @@
       "taux_rotation_logement": 120.0,
       "classement_rotation_logement": "Très actif",
       "_taux_logement_src": "filtre_habitation",
-      "usage_principal_bdnb": "Tertiaire",
-      "_usage_bdnb_src": "snapshot"
+      "usage_principal_bdnb": "Résidentiel collectif",
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "27|RUE|STE ANNE DE BARABAN",
+      "_fusion_auto_sources": null
     },
     {
       "cle": "294|RUE|PAUL BERT",
@@ -20360,7 +20395,12 @@
       "classement_rotation_logement": "Modéré",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": [
+        "2|RUE|JEAN RENOIR",
+        "4|RUE|JEAN RENOIR"
+      ],
+      "_fusion_auto_label": null
     },
     {
       "cle": "4|RUE|VILLON",
@@ -21401,8 +21441,8 @@
       "sci_proprietaire": "non",
       "sci_nom": "",
       "sci_siren": "",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "FONCIA LYON",
+      "_syndic_src": "rnc_grp",
       "ventes_par_an": {
         "2021": 3,
         "2022": 2,
@@ -21411,18 +21451,15 @@
         "2025": 2
       },
       "nb_ventes_total": 9,
-      "nb_log_bdnb": null,
-      "annee_construction": 2022,
-      "classe_dpe": null,
-      "type_batiment": null,
-      "type_chauffage": null,
-      "batiment_groupe_id": "bdnb-bg-B7XN-JTJZ-HPB4",
-      "_bdnb_match": "num_voie",
+      "nb_log_bdnb": 164,
+      "annee_construction": 1980,
+      "classe_dpe": "D",
+      "type_batiment": "appartement",
+      "type_chauffage": "reseau de chaleur",
+      "batiment_groupe_id": "bdnb-bg-4BCZ-EFDZ-724F",
+      "_bdnb_match": "immat",
       "_fusion_auto_label": "4/6/8 RUE CLAUDIUS PIONCHON",
-      "_fusion_auto_sources": [
-        "4|RUE|CLAUDIUS PIONCHON",
-        "6|RUE|CLAUDIUS PIONCHON"
-      ],
+      "_fusion_auto_sources": null,
       "ventes_par_an_logement": {
         "2021": 3,
         "2022": 2,
@@ -21435,7 +21472,9 @@
       "classement_rotation_logement": "",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Tertiaire",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "12|RUE|ST SIDOINE"
     },
     {
       "cle": "8|RUE|NAZARETH",
@@ -21551,7 +21590,15 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": [
+        "10|RUE|METALLURGIE",
+        "11|RUE|DAVID",
+        "12|RUE|METALLURGIE",
+        "6|RUE|METALLURGIE",
+        "8|RUE|METALLURGIE"
+      ],
+      "_fusion_auto_label": null
     },
     {
       "cle": "49|RUE|AUBIGNY",
@@ -22372,23 +22419,23 @@
       "sci_proprietaire": "non",
       "sci_nom": "",
       "sci_siren": "",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "REGIE MOLIERE",
+      "_syndic_src": "rnc_grp",
       "ventes_par_an": {
         "2022": 1,
         "2024": 1,
         "2025": 1
       },
       "nb_ventes_total": 3,
-      "nb_log_bdnb": 2,
-      "annee_construction": 1968,
-      "classe_dpe": "E",
-      "type_batiment": "maison",
-      "type_chauffage": "fioul",
-      "batiment_groupe_id": "bdnb-bg-324Y-G9R6-B2ZS",
-      "_bdnb_match": "num_voie",
+      "nb_log_bdnb": 85,
+      "annee_construction": 1971,
+      "classe_dpe": "D",
+      "type_batiment": "immeuble",
+      "type_chauffage": "gaz",
+      "batiment_groupe_id": "bdnb-bg-AJ85-YHNQ-MYVH",
+      "_bdnb_match": "immat",
       "_fusion_auto": true,
-      "_fusion_cible": "10|RUE|METALLURGIE",
+      "_fusion_cible": "9|RUE|DAVID",
       "ventes_par_an_logement": {
         "2022": 0,
         "2024": 1,
@@ -22399,7 +22446,8 @@
       "classement_rotation_logement": "Très actif",
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": null
     },
     {
       "cle": "12|RUE|GUILLOUD",
@@ -22504,7 +22552,10 @@
         "14|RUE|ST SIDOINE",
         "16|RUE|ST SIDOINE",
         "18|RUE|ST SIDOINE",
-        "20|RUE|ST SIDOINE"
+        "20|RUE|ST SIDOINE",
+        "4|RUE|CLAUDIUS PIONCHON",
+        "6|RUE|CLAUDIUS PIONCHON",
+        "8|RUE|CLAUDIUS PIONCHON"
       ],
       "ventes_par_an_logement": {
         "2021": 1,
@@ -23184,8 +23235,8 @@
       "sci_proprietaire": "non",
       "sci_nom": "",
       "sci_siren": "",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "GRANDLYON HABITAT - OFFICE PUBLIC DE L'HABITAT",
+      "_syndic_src": "rnc_grp",
       "ventes_par_an": {
         "2021": 1,
         "2022": 1,
@@ -23193,13 +23244,13 @@
         "2025": 1
       },
       "nb_ventes_total": 4,
-      "nb_log_bdnb": 61,
-      "annee_construction": 1997,
-      "classe_dpe": null,
-      "type_batiment": null,
-      "type_chauffage": null,
-      "batiment_groupe_id": "bdnb-bg-G15W-CLD7-6WBT",
-      "_bdnb_match": "num_voie",
+      "nb_log_bdnb": 115,
+      "annee_construction": null,
+      "classe_dpe": "D",
+      "type_batiment": "appartement",
+      "type_chauffage": "reseau de chaleur",
+      "batiment_groupe_id": "bdnb-bg-TLU8-1B9R-DX25",
+      "_bdnb_match": "immat",
       "ventes_par_an_logement": {
         "2021": 1,
         "2022": 1,
@@ -23211,7 +23262,10 @@
       "classement_rotation_logement": "Modéré",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "22|RUE|ST ANTOINE",
+      "_fusion_auto_sources": null
     },
     {
       "cle": "166|AVENUE|FELIX FAURE",
@@ -23552,8 +23606,8 @@
       "sci_proprietaire": "oui",
       "sci_nom": "VAUTHERIN",
       "sci_siren": "517814810",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "LYMMOBILIER",
+      "_syndic_src": "rnc_grp",
       "ventes_par_an": {
         "2021": 2,
         "2022": 2,
@@ -23561,15 +23615,15 @@
         "2025": 1
       },
       "nb_ventes_total": 6,
-      "nb_log_bdnb": 35,
-      "annee_construction": 1995,
+      "nb_log_bdnb": 73,
+      "annee_construction": 2002,
       "classe_dpe": "C",
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
-      "batiment_groupe_id": "bdnb-bg-WM3M-F4BX-8Z7T",
-      "_bdnb_match": "num_voie",
+      "batiment_groupe_id": "bdnb-bg-2PLR-ZN3Z-7QB6",
+      "_bdnb_match": "immat",
       "_fusion_auto": true,
-      "_fusion_cible": "4|RUE|JEAN RENOIR",
+      "_fusion_cible": "38|RUE|JEANNE HACHETTE",
       "ventes_par_an_logement": {
         "2021": 2,
         "2022": 2,
@@ -23581,7 +23635,8 @@
       "classement_rotation_logement": "Actif",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": null
     },
     {
       "cle": "20|RUE|FREDERIC MISTRAL",
@@ -23991,8 +24046,8 @@
       "sci_proprietaire": "oui",
       "sci_nom": "FLIMMO1",
       "sci_siren": "849239512",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "FONCIA LYON",
+      "_syndic_src": "rnc_grp",
       "ventes_par_an": {
         "2023": 1
       },
@@ -24003,11 +24058,9 @@
       "type_batiment": "appartement",
       "type_chauffage": "reseau de chaleur",
       "batiment_groupe_id": "bdnb-bg-WLXU-6YKR-D8DU",
-      "_bdnb_match": "num_voie",
+      "_bdnb_match": "immat",
       "_fusion_auto_label": "24/26 AVENUE LACASSAGNE",
-      "_fusion_auto_sources": [
-        "26|AVENUE|LACASSAGNE"
-      ],
+      "_fusion_auto_sources": null,
       "ventes_par_an_logement": {
         "2023": 1
       },
@@ -24016,7 +24069,9 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "24||ET 24 BIS AVENUE LACASSAGNE"
     },
     {
       "cle": "25|RUE|GUILLOUD",
@@ -24294,7 +24349,12 @@
       "classement_rotation_logement": "Modéré",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": [
+        "29|RUE|STE ANNE DE BARABAN",
+        "31|RUE|STE ANNE DE BARABAN"
+      ],
+      "_fusion_auto_label": null
     },
     {
       "cle": "270|COURS|LAFAYETTE",
@@ -24478,8 +24538,8 @@
       "sci_proprietaire": "non",
       "sci_nom": "",
       "sci_siren": "",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "GRANDLYON HABITAT - OFFICE PUBLIC DE L'HABITAT",
+      "_syndic_src": "rnc_grp",
       "ventes_par_an": {
         "2021": 4,
         "2022": 2,
@@ -24488,13 +24548,13 @@
         "2025": 1
       },
       "nb_ventes_total": 12,
-      "nb_log_bdnb": 13,
-      "annee_construction": 1914,
-      "classe_dpe": "E",
+      "nb_log_bdnb": 211,
+      "annee_construction": null,
+      "classe_dpe": "D",
       "type_batiment": "appartement",
-      "type_chauffage": "electricite",
-      "batiment_groupe_id": "bdnb-bg-DAZ8-N3AL-EF91",
-      "_bdnb_match": "num_voie",
+      "type_chauffage": "reseau de chaleur",
+      "batiment_groupe_id": "bdnb-bg-8U51-96UR-3947",
+      "_bdnb_match": "immat",
       "ventes_par_an_logement": {
         "2021": 4,
         "2022": 2,
@@ -24507,7 +24567,10 @@
       "classement_rotation_logement": "Très actif",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "28|RUE|ETIENNE RICHERAND",
+      "_fusion_auto_sources": null
     },
     {
       "cle": "30|RUE|ST ANTOINE",
@@ -24638,8 +24701,8 @@
       "sci_proprietaire": "oui",
       "sci_nom": "SCI TOMI",
       "sci_siren": "802354969",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "REGIE DERVAULT BY GERALDINE ANDRIEUX",
+      "_syndic_src": "rnc_grp",
       "ventes_par_an": {
         "2021": 3,
         "2022": 1,
@@ -24647,13 +24710,13 @@
         "2025": 2
       },
       "nb_ventes_total": 9,
-      "nb_log_bdnb": 1,
-      "annee_construction": 1900,
-      "classe_dpe": null,
-      "type_batiment": null,
-      "type_chauffage": null,
-      "batiment_groupe_id": "bdnb-bg-CS7S-ZSUP-29YF",
-      "_bdnb_match": "num_voie",
+      "nb_log_bdnb": 99,
+      "annee_construction": 1993,
+      "classe_dpe": "D",
+      "type_batiment": "appartement",
+      "type_chauffage": "gaz",
+      "batiment_groupe_id": "bdnb-bg-NV72-5NB3-XZT2",
+      "_bdnb_match": "immat",
       "ventes_par_an_logement": {
         "2021": 2,
         "2022": 0,
@@ -24664,8 +24727,11 @@
       "taux_rotation_logement": 80.0,
       "classement_rotation_logement": "Très actif",
       "_taux_logement_src": "filtre_habitation",
-      "usage_principal_bdnb": "Tertiaire",
-      "_usage_bdnb_src": "snapshot"
+      "usage_principal_bdnb": "Résidentiel collectif",
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "27|RUE|STE ANNE DE BARABAN",
+      "_fusion_auto_sources": null
     },
     {
       "cle": "310|COURS|LAFAYETTE",
@@ -27261,6 +27327,7 @@
       "_bdnb_match": "immat",
       "_fusion_auto_label": null,
       "_fusion_auto_sources": [
+        "10|RUE|TERNOIS",
         "9|RUE|TERNOIS"
       ],
       "ventes_par_an_logement": {
@@ -28164,24 +28231,22 @@
       "sci_proprietaire": "non",
       "sci_nom": "",
       "sci_siren": "",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "REGIE MOLIERE",
+      "_syndic_src": "rnc_grp",
       "ventes_par_an": {
         "2022": 2,
         "2025": 1
       },
       "nb_ventes_total": 3,
-      "nb_log_bdnb": 2,
-      "annee_construction": 1968,
-      "classe_dpe": "E",
-      "type_batiment": "maison",
-      "type_chauffage": "fioul",
-      "batiment_groupe_id": "bdnb-bg-324Y-G9R6-B2ZS",
-      "_bdnb_match": "num_voie",
+      "nb_log_bdnb": 85,
+      "annee_construction": 1971,
+      "classe_dpe": "D",
+      "type_batiment": "immeuble",
+      "type_chauffage": "gaz",
+      "batiment_groupe_id": "bdnb-bg-AJ85-YHNQ-MYVH",
+      "_bdnb_match": "immat",
       "_fusion_auto_label": "10/12 RUE METALLURGIE",
-      "_fusion_auto_sources": [
-        "12|RUE|METALLURGIE"
-      ],
+      "_fusion_auto_sources": null,
       "ventes_par_an_logement": {
         "2022": 1,
         "2025": 1
@@ -28191,7 +28256,9 @@
       "classement_rotation_logement": "Très actif",
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "9|RUE|DAVID"
     },
     {
       "cle": "10|RUE|DAUPHINE",
@@ -28365,21 +28432,21 @@
       "sci_proprietaire": "oui",
       "sci_nom": "LPL 6932",
       "sci_siren": "849533682",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "REGIE FRANCOIS GOFFIN",
+      "_syndic_src": "rnc_grp",
       "ventes_par_an": {
         "2021": 1,
         "2022": 2,
         "2025": 1
       },
       "nb_ventes_total": 4,
-      "nb_log_bdnb": 80,
-      "annee_construction": 1990,
-      "classe_dpe": "C",
+      "nb_log_bdnb": 35,
+      "annee_construction": 1988,
+      "classe_dpe": "D",
       "type_batiment": "appartement",
-      "type_chauffage": "gaz",
-      "batiment_groupe_id": "bdnb-bg-5RMC-KXL7-E97N",
-      "_bdnb_match": "num_voie",
+      "type_chauffage": "electricite",
+      "batiment_groupe_id": "bdnb-bg-K58L-DSRV-8Q35",
+      "_bdnb_match": "immat",
       "ventes_par_an_logement": {
         "2021": 1,
         "2022": 1,
@@ -28390,7 +28457,10 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "23|RUE|RIBOUD",
+      "_fusion_auto_sources": null
     },
     {
       "cle": "11|AVENUE|LACASSAGNE",
@@ -28475,21 +28545,21 @@
       "sci_proprietaire": "oui",
       "sci_nom": "SCI AFL BELLECOMBE",
       "sci_siren": "834936338",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "ESPACE IMMOBILIER LYONNAIS",
+      "_syndic_src": "rnc_grp",
       "ventes_par_an": {
         "2022": 1,
         "2023": 3,
         "2025": 1
       },
       "nb_ventes_total": 5,
-      "nb_log_bdnb": 13,
-      "annee_construction": 1977,
+      "nb_log_bdnb": 70,
+      "annee_construction": 1972,
       "classe_dpe": "D",
-      "type_batiment": "immeuble",
+      "type_batiment": "appartement",
       "type_chauffage": "gaz",
-      "batiment_groupe_id": "bdnb-bg-ZS47-TD9J-M4FB",
-      "_bdnb_match": "num_voie",
+      "batiment_groupe_id": "bdnb-bg-5J4T-8NMC-HH17",
+      "_bdnb_match": "immat",
       "ventes_par_an_logement": {
         "2022": 1,
         "2023": 3,
@@ -28500,7 +28570,10 @@
       "classement_rotation_logement": "Très actif",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "11|RUE|MAURICE FLANDIN",
+      "_fusion_auto_sources": null
     },
     {
       "cle": "11|RUE|ROGER BRECHAN",
@@ -28748,8 +28821,8 @@
       "sci_proprietaire": "oui",
       "sci_nom": "SCI AB-IMMO",
       "sci_siren": "752393991",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "REGIE DES GONES",
+      "_syndic_src": "rnc_grp",
       "ventes_par_an": {
         "2021": 1,
         "2022": 1,
@@ -28757,17 +28830,15 @@
         "2024": 1
       },
       "nb_ventes_total": 7,
-      "nb_log_bdnb": null,
-      "annee_construction": null,
-      "classe_dpe": null,
-      "type_batiment": null,
-      "type_chauffage": null,
-      "batiment_groupe_id": "bdnb-bg-AX8P-5ZM6-3A3B",
-      "_bdnb_match": "num_voie",
+      "nb_log_bdnb": 42,
+      "annee_construction": 2001,
+      "classe_dpe": "C",
+      "type_batiment": "appartement",
+      "type_chauffage": "gaz",
+      "batiment_groupe_id": "bdnb-bg-UMXT-U2VY-93SE",
+      "_bdnb_match": "immat",
       "_fusion_auto_label": "120/124 RUE ANTOINE CHARIAL",
-      "_fusion_auto_sources": [
-        "120|RUE|ANTOINE CHARIAL"
-      ],
+      "_fusion_auto_sources": null,
       "ventes_par_an_logement": {
         "2021": 0,
         "2022": 0,
@@ -28778,8 +28849,10 @@
       "taux_rotation_logement": null,
       "classement_rotation_logement": "",
       "_taux_logement_src": "filtre_habitation",
-      "usage_principal_bdnb": "Tertiaire",
-      "_usage_bdnb_src": "snapshot"
+      "usage_principal_bdnb": "Résidentiel collectif",
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "11|RUE|ST EUSEBE"
     },
     {
       "cle": "13|RUE|MAURICE FLANDIN",
@@ -30430,20 +30503,20 @@
       "sci_proprietaire": "oui",
       "sci_nom": "CHAMPAGNE 12",
       "sci_siren": "538852690",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "LAMY",
+      "_syndic_src": "rnc_grp",
       "ventes_par_an": {
         "2021": 3,
         "2024": 1
       },
       "nb_ventes_total": 4,
-      "nb_log_bdnb": 37,
-      "annee_construction": 1987,
+      "nb_log_bdnb": 114,
+      "annee_construction": 1975,
       "classe_dpe": "D",
       "type_batiment": "appartement",
-      "type_chauffage": "electricite",
-      "batiment_groupe_id": "bdnb-bg-VPLJ-N3JJ-SW4G",
-      "_bdnb_match": "num_voie",
+      "type_chauffage": "reseau de chaleur",
+      "batiment_groupe_id": "bdnb-bg-R6MK-82WC-ZK2Q",
+      "_bdnb_match": "immat",
       "ventes_par_an_logement": {
         "2021": 3,
         "2024": 1
@@ -30453,7 +30526,10 @@
       "classement_rotation_logement": "Modéré",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "18|RUE|LOUIS JASSERON",
+      "_fusion_auto_sources": null
     },
     {
       "cle": "22|RUE|ROPOSTE",
@@ -30761,7 +30837,11 @@
       "classement_rotation_logement": "Actif",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": [
+        "4|RUE|MAURICE FLANDIN"
+      ],
+      "_fusion_auto_label": null
     },
     {
       "cle": "239|AVENUE|FELIX FAURE",
@@ -31450,21 +31530,21 @@
       "sci_proprietaire": "oui",
       "sci_nom": "EMMA277",
       "sci_siren": "753550037",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "REGIE CENTRALE IMMOBILIERE",
+      "_syndic_src": "rnc_grp",
       "ventes_par_an": {
         "2021": 1,
         "2023": 2,
         "2025": 1
       },
       "nb_ventes_total": 4,
-      "nb_log_bdnb": 27,
-      "annee_construction": 2016,
+      "nb_log_bdnb": 119,
+      "annee_construction": 1974,
       "classe_dpe": "C",
       "type_batiment": "appartement",
-      "type_chauffage": "gaz",
-      "batiment_groupe_id": "bdnb-bg-35NH-CNYH-DY2X",
-      "_bdnb_match": "num_voie",
+      "type_chauffage": "reseau de chaleur",
+      "batiment_groupe_id": "bdnb-bg-DE7V-CLDE-WHQD",
+      "_bdnb_match": "immat",
       "ventes_par_an_logement": {
         "2021": 0,
         "2023": 1,
@@ -31475,7 +31555,10 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "76|RUE|ANTOINE CHARIAL",
+      "_fusion_auto_sources": null
     },
     {
       "cle": "28|RUE|BARABAN",
@@ -32650,13 +32733,13 @@
         "2025": 1
       },
       "nb_ventes_total": 4,
-      "nb_log_bdnb": 32,
+      "nb_log_bdnb": 33,
       "annee_construction": 2002,
-      "classe_dpe": "D",
+      "classe_dpe": "C",
       "type_batiment": "appartement",
-      "type_chauffage": "electricite",
-      "batiment_groupe_id": "bdnb-bg-GMWN-9ZYS-LQGQ",
-      "_bdnb_match": "num_voie",
+      "type_chauffage": "gaz",
+      "batiment_groupe_id": "bdnb-bg-SA1E-6TZ4-AJGZ",
+      "_bdnb_match": "immat",
       "ventes_par_an_logement": {
         "2021": 3,
         "2025": 1
@@ -32666,7 +32749,10 @@
       "classement_rotation_logement": "Actif",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "28|RUE|ST PHILIPPE",
+      "_fusion_auto_sources": null
     },
     {
       "cle": "4|RUE|MAURICE FLANDIN",
@@ -32679,8 +32765,8 @@
       "sci_proprietaire": "oui",
       "sci_nom": "LAFAYETTE ONLY ONE",
       "sci_siren": "510395551",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "FONCIA LYON",
+      "_syndic_src": "rnc_grp",
       "ventes_par_an": {
         "2021": 3,
         "2022": 2,
@@ -32688,13 +32774,13 @@
         "2025": 1
       },
       "nb_ventes_total": 7,
-      "nb_log_bdnb": 54,
-      "annee_construction": 1961,
-      "classe_dpe": "E",
+      "nb_log_bdnb": 26,
+      "annee_construction": 2010,
+      "classe_dpe": "C",
       "type_batiment": "appartement",
-      "type_chauffage": "gaz",
-      "batiment_groupe_id": "bdnb-bg-W2RS-K6JM-Z1H3",
-      "_bdnb_match": "num_voie",
+      "type_chauffage": "electricite",
+      "batiment_groupe_id": "bdnb-bg-YKDY-DF9W-GKA5",
+      "_bdnb_match": "immat",
       "ventes_par_an_logement": {
         "2021": 1,
         "2022": 0,
@@ -32706,7 +32792,10 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "234|COURS|LAFAYETTE",
+      "_fusion_auto_sources": null
     },
     {
       "cle": "40|RUE|DAUPHINE",
@@ -33065,25 +33154,23 @@
       "sci_proprietaire": "oui",
       "sci_nom": "SCI SABLE",
       "sci_siren": "499789790",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "REGIE GINDRE",
+      "_syndic_src": "rnc_grp",
       "ventes_par_an": {
         "2021": 2,
         "2023": 1,
         "2025": 1
       },
       "nb_ventes_total": 4,
-      "nb_log_bdnb": 2,
-      "annee_construction": 1880,
-      "classe_dpe": null,
-      "type_batiment": null,
-      "type_chauffage": null,
-      "batiment_groupe_id": "bdnb-bg-B819-EARQ-9D7B",
-      "_bdnb_match": "num_voie",
+      "nb_log_bdnb": 48,
+      "annee_construction": 1971,
+      "classe_dpe": "E",
+      "type_batiment": "appartement",
+      "type_chauffage": "gaz",
+      "batiment_groupe_id": "bdnb-bg-VRHU-LHNX-3PHB",
+      "_bdnb_match": "immat",
       "_fusion_auto_label": "47/49 RUE PROFESSEUR PAUL SISLEY",
-      "_fusion_auto_sources": [
-        "49|RUE|PROFESSEUR PAUL SISLEY"
-      ],
+      "_fusion_auto_sources": null,
       "ventes_par_an_logement": {
         "2021": 2,
         "2023": 1,
@@ -33094,7 +33181,9 @@
       "classement_rotation_logement": "Très actif",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "16|RUE|GUILLOUD"
     },
     {
       "cle": "49|AVENUE|LACASSAGNE",
@@ -33613,24 +33702,22 @@
       "sci_proprietaire": "non",
       "sci_nom": "",
       "sci_siren": "",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "REGIE MOLIERE",
+      "_syndic_src": "rnc_grp",
       "ventes_par_an": {
         "2023": 2,
         "2025": 1
       },
       "nb_ventes_total": 3,
-      "nb_log_bdnb": 21,
-      "annee_construction": 2006,
-      "classe_dpe": "C",
-      "type_batiment": "appartement",
+      "nb_log_bdnb": 85,
+      "annee_construction": 1971,
+      "classe_dpe": "D",
+      "type_batiment": "immeuble",
       "type_chauffage": "gaz",
-      "batiment_groupe_id": "bdnb-bg-WSTK-SKSS-P2M2",
-      "_bdnb_match": "num_voie",
+      "batiment_groupe_id": "bdnb-bg-AJ85-YHNQ-MYVH",
+      "_bdnb_match": "immat",
       "_fusion_auto_label": "6/8 RUE METALLURGIE",
-      "_fusion_auto_sources": [
-        "8|RUE|METALLURGIE"
-      ],
+      "_fusion_auto_sources": null,
       "ventes_par_an_logement": {
         "2023": 2,
         "2025": 1
@@ -33640,7 +33727,9 @@
       "classement_rotation_logement": "Actif",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "9|RUE|DAVID"
     },
     {
       "cle": "6|RUE|STE ANNE DE BARABAN",
@@ -35443,19 +35532,19 @@
       "sci_proprietaire": "oui",
       "sci_nom": "CARAVANO BT",
       "sci_siren": "508268067",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "REGIE MOLIERE",
+      "_syndic_src": "rnc_grp",
       "ventes_par_an": {
         "2021": 2
       },
       "nb_ventes_total": 2,
-      "nb_log_bdnb": 3,
-      "annee_construction": 1900,
-      "classe_dpe": "G",
-      "type_batiment": "appartement",
-      "type_chauffage": "electricite",
-      "batiment_groupe_id": "bdnb-bg-7VPW-6YPJ-XASZ",
-      "_bdnb_match": "num_voie",
+      "nb_log_bdnb": 85,
+      "annee_construction": 1971,
+      "classe_dpe": "D",
+      "type_batiment": "immeuble",
+      "type_chauffage": "gaz",
+      "batiment_groupe_id": "bdnb-bg-AJ85-YHNQ-MYVH",
+      "_bdnb_match": "immat",
       "ventes_par_an_logement": {
         "2021": 2
       },
@@ -35464,7 +35553,10 @@
       "classement_rotation_logement": "Très actif",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "9|RUE|DAVID",
+      "_fusion_auto_sources": null
     },
     {
       "cle": "11|RUE|PETITES SOEURS",
@@ -36203,23 +36295,23 @@
       "sci_proprietaire": "non",
       "sci_nom": "",
       "sci_siren": "",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "REGIE DES GONES",
+      "_syndic_src": "rnc_grp",
       "ventes_par_an": {
         "2021": 1,
         "2022": 1,
         "2023": 1
       },
       "nb_ventes_total": 3,
-      "nb_log_bdnb": null,
-      "annee_construction": null,
-      "classe_dpe": null,
-      "type_batiment": null,
-      "type_chauffage": null,
-      "batiment_groupe_id": "bdnb-bg-AX8P-5ZM6-3A3B",
-      "_bdnb_match": "num_voie",
+      "nb_log_bdnb": 42,
+      "annee_construction": 2001,
+      "classe_dpe": "C",
+      "type_batiment": "appartement",
+      "type_chauffage": "gaz",
+      "batiment_groupe_id": "bdnb-bg-UMXT-U2VY-93SE",
+      "_bdnb_match": "immat",
       "_fusion_auto": true,
-      "_fusion_cible": "124|RUE|ANTOINE CHARIAL",
+      "_fusion_cible": "11|RUE|ST EUSEBE",
       "ventes_par_an_logement": {
         "2021": 0,
         "2022": 0,
@@ -36229,8 +36321,9 @@
       "taux_rotation_logement": null,
       "classement_rotation_logement": "",
       "_taux_logement_src": "filtre_habitation",
-      "usage_principal_bdnb": "Tertiaire",
-      "_usage_bdnb_src": "snapshot"
+      "usage_principal_bdnb": "Résidentiel collectif",
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": null
     },
     {
       "cle": "121|RUE|ANTOINE CHARIAL",
@@ -42313,6 +42406,7 @@
       "_bdnb_match": "immat",
       "_fusion_auto_label": "22/24/26/28 RUE ST ANTOINE",
       "_fusion_auto_sources": [
+        "16|RUE|ETIENNE RICHERAND",
         "24|RUE|ST ANTOINE",
         "26|RUE|ST ANTOINE",
         "28|RUE|ST ANTOINE"
@@ -44159,8 +44253,8 @@
       "sci_proprietaire": "non",
       "sci_nom": "",
       "sci_siren": "",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "FONCIA LYON",
+      "_syndic_src": "rnc_grp",
       "ventes_par_an": {},
       "nb_ventes_total": 0,
       "nb_log_bdnb": 64,
@@ -44169,16 +44263,17 @@
       "type_batiment": "appartement",
       "type_chauffage": "reseau de chaleur",
       "batiment_groupe_id": "bdnb-bg-WLXU-6YKR-D8DU",
-      "_bdnb_match": "num_voie",
+      "_bdnb_match": "immat",
       "_fusion_auto": true,
-      "_fusion_cible": "24|AVENUE|LACASSAGNE",
+      "_fusion_cible": "24||ET 24 BIS AVENUE LACASSAGNE",
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": null
     },
     {
       "cle": "26|RUE|METALLURGIE",
@@ -44775,19 +44870,19 @@
       "sci_proprietaire": "non",
       "sci_nom": "",
       "sci_siren": "",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "REGIE CENTRALE IMMOBILIERE",
+      "_syndic_src": "rnc_grp",
       "ventes_par_an": {
         "2023": 1
       },
       "nb_ventes_total": 1,
-      "nb_log_bdnb": 6,
-      "annee_construction": 1900,
-      "classe_dpe": null,
+      "nb_log_bdnb": 119,
+      "annee_construction": 1974,
+      "classe_dpe": "C",
       "type_batiment": "appartement",
-      "type_chauffage": "gaz",
-      "batiment_groupe_id": "bdnb-bg-U3Q7-1AD8-Z67B",
-      "_bdnb_match": "num_voie",
+      "type_chauffage": "reseau de chaleur",
+      "batiment_groupe_id": "bdnb-bg-DE7V-CLDE-WHQD",
+      "_bdnb_match": "immat",
       "ventes_par_an_logement": {
         "2023": 1
       },
@@ -44796,7 +44891,10 @@
       "classement_rotation_logement": "Actif",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "76|RUE|ANTOINE CHARIAL",
+      "_fusion_auto_sources": null
     },
     {
       "cle": "28|RUE|DOCTEUR REBATEL",
@@ -46688,24 +46786,22 @@
       "sci_proprietaire": "oui",
       "sci_nom": "SMH",
       "sci_siren": "382519122",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "GESTION ET PATRIMOINE LESCUYER",
+      "_syndic_src": "rnc_grp",
       "ventes_par_an": {
         "2021": 1,
         "2022": 1
       },
       "nb_ventes_total": 2,
-      "nb_log_bdnb": 16,
-      "annee_construction": 1992,
-      "classe_dpe": null,
-      "type_batiment": null,
-      "type_chauffage": null,
-      "batiment_groupe_id": "bdnb-bg-YTGZ-FUN1-1XWM",
-      "_bdnb_match": "num_voie",
+      "nb_log_bdnb": 14,
+      "annee_construction": 1900,
+      "classe_dpe": "E",
+      "type_batiment": "appartement",
+      "type_chauffage": "electricite",
+      "batiment_groupe_id": "bdnb-bg-81HL-8BC6-UPG6",
+      "_bdnb_match": "immat",
       "_fusion_auto_label": "325/327 RUE PAUL BERT",
-      "_fusion_auto_sources": [
-        "327|RUE|PAUL BERT"
-      ],
+      "_fusion_auto_sources": null,
       "ventes_par_an_logement": {
         "2021": 1,
         "2022": 1
@@ -46715,7 +46811,9 @@
       "classement_rotation_logement": "Actif",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "2|RUE|ST EUSEBE"
     },
     {
       "cle": "327|RUE|PAUL BERT",
@@ -46728,26 +46826,27 @@
       "sci_proprietaire": "non",
       "sci_nom": "",
       "sci_siren": "",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "GESTION ET PATRIMOINE LESCUYER",
+      "_syndic_src": "rnc_grp",
       "ventes_par_an": {},
       "nb_ventes_total": 0,
-      "nb_log_bdnb": 16,
-      "annee_construction": 1992,
-      "classe_dpe": null,
-      "type_batiment": null,
-      "type_chauffage": null,
-      "batiment_groupe_id": "bdnb-bg-YTGZ-FUN1-1XWM",
-      "_bdnb_match": "num_voie",
+      "nb_log_bdnb": 14,
+      "annee_construction": 1900,
+      "classe_dpe": "E",
+      "type_batiment": "appartement",
+      "type_chauffage": "electricite",
+      "batiment_groupe_id": "bdnb-bg-81HL-8BC6-UPG6",
+      "_bdnb_match": "immat",
       "_fusion_auto": true,
-      "_fusion_cible": "325|RUE|PAUL BERT",
+      "_fusion_cible": "2|RUE|ST EUSEBE",
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": null
     },
     {
       "cle": "328|RUE|PAUL BERT",
@@ -49838,22 +49937,22 @@
       "sci_proprietaire": "non",
       "sci_nom": "",
       "sci_siren": "",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "REGIE GINDRE",
+      "_syndic_src": "rnc_grp",
       "ventes_par_an": {
         "2021": 1,
         "2023": 2
       },
       "nb_ventes_total": 3,
-      "nb_log_bdnb": 2,
-      "annee_construction": 1880,
-      "classe_dpe": null,
-      "type_batiment": null,
-      "type_chauffage": null,
-      "batiment_groupe_id": "bdnb-bg-B819-EARQ-9D7B",
-      "_bdnb_match": "num_voie",
+      "nb_log_bdnb": 48,
+      "annee_construction": 1971,
+      "classe_dpe": "E",
+      "type_batiment": "appartement",
+      "type_chauffage": "gaz",
+      "batiment_groupe_id": "bdnb-bg-VRHU-LHNX-3PHB",
+      "_bdnb_match": "immat",
       "_fusion_auto": true,
-      "_fusion_cible": "47|RUE|PROFESSEUR PAUL SISLEY",
+      "_fusion_cible": "16|RUE|GUILLOUD",
       "ventes_par_an_logement": {
         "2021": 1,
         "2023": 2
@@ -49863,7 +49962,8 @@
       "classement_rotation_logement": "Très actif",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": null
     },
     {
       "cle": "49|RUE|ST ANTOINE",
@@ -50488,19 +50588,19 @@
       "sci_proprietaire": "oui",
       "sci_nom": "SOUDNA",
       "sci_siren": "415173046",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "LAMY",
+      "_syndic_src": "rnc_grp",
       "ventes_par_an": {
         "2021": 3
       },
       "nb_ventes_total": 3,
-      "nb_log_bdnb": 18,
-      "annee_construction": 1984,
-      "classe_dpe": "C",
+      "nb_log_bdnb": 114,
+      "annee_construction": 1975,
+      "classe_dpe": "D",
       "type_batiment": "appartement",
       "type_chauffage": "reseau de chaleur",
-      "batiment_groupe_id": "bdnb-bg-71B2-4HSV-Y9VP",
-      "_bdnb_match": "num_voie",
+      "batiment_groupe_id": "bdnb-bg-R6MK-82WC-ZK2Q",
+      "_bdnb_match": "immat",
       "ventes_par_an_logement": {
         "2021": 3
       },
@@ -50509,7 +50609,10 @@
       "classement_rotation_logement": "Actif",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "18|RUE|LOUIS JASSERON",
+      "_fusion_auto_sources": null
     },
     {
       "cle": "51|AVENUE|LACASSAGNE",
@@ -51510,22 +51613,22 @@
       "sci_proprietaire": "non",
       "sci_nom": "",
       "sci_siren": "",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "FONCIA LYON",
+      "_syndic_src": "rnc_grp",
       "ventes_par_an": {
         "2022": 1,
         "2023": 1
       },
       "nb_ventes_total": 2,
-      "nb_log_bdnb": null,
-      "annee_construction": 2022,
-      "classe_dpe": null,
-      "type_batiment": null,
-      "type_chauffage": null,
-      "batiment_groupe_id": "bdnb-bg-B7XN-JTJZ-HPB4",
-      "_bdnb_match": "num_voie",
+      "nb_log_bdnb": 164,
+      "annee_construction": 1980,
+      "classe_dpe": "D",
+      "type_batiment": "appartement",
+      "type_chauffage": "reseau de chaleur",
+      "batiment_groupe_id": "bdnb-bg-4BCZ-EFDZ-724F",
+      "_bdnb_match": "immat",
       "_fusion_auto": true,
-      "_fusion_cible": "8|RUE|CLAUDIUS PIONCHON",
+      "_fusion_cible": "12|RUE|ST SIDOINE",
       "ventes_par_an_logement": {
         "2022": 1,
         "2023": 1
@@ -51535,7 +51638,8 @@
       "classement_rotation_logement": "",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Tertiaire",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": null
     },
     {
       "cle": "6|RUE|COMBET DESCOMBES",
@@ -52522,26 +52626,27 @@
       "sci_proprietaire": "non",
       "sci_nom": "",
       "sci_siren": "",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "VSA IMMOBILIER",
+      "_syndic_src": "rnc_grp",
       "ventes_par_an": {},
       "nb_ventes_total": 0,
-      "nb_log_bdnb": 36,
-      "annee_construction": 1999,
+      "nb_log_bdnb": 84,
+      "annee_construction": 2002,
       "classe_dpe": "C",
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
-      "batiment_groupe_id": "bdnb-bg-YAUB-Z7P7-2XQ1",
-      "_bdnb_match": "num_voie",
+      "batiment_groupe_id": "bdnb-bg-Q34G-RRJN-UAGN",
+      "_bdnb_match": "immat",
       "_fusion_auto": true,
-      "_fusion_cible": "5|RUE|JEAN PIERRE LEVY",
+      "_fusion_cible": "1|RUE|JEAN PIERRE LEVY",
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": null
     },
     {
       "cle": "7|RUE|MAURICE FLANDIN",
@@ -53034,9 +53139,11 @@
       "_bdnb_match": "immat",
       "_fusion_auto_label": "76/78/80/82 RUE ANTOINE CHARIAL",
       "_fusion_auto_sources": [
+        "277|RUE|PAUL BERT",
+        "279|RUE|PAUL BERT",
         "78|RUE|ANTOINE CHARIAL",
-        "82|RUE|ANTOINE CHARIAL",
-        "80|RUE|ANTOINE CHARIAL"
+        "80|RUE|ANTOINE CHARIAL",
+        "82|RUE|ANTOINE CHARIAL"
       ],
       "ventes_par_an_logement": {
         "2021": 3
@@ -53219,22 +53326,22 @@
       "sci_proprietaire": "non",
       "sci_nom": "",
       "sci_siren": "",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "REGIE MOLIERE",
+      "_syndic_src": "rnc_grp",
       "ventes_par_an": {
         "2021": 1,
         "2022": 1
       },
       "nb_ventes_total": 2,
-      "nb_log_bdnb": 21,
-      "annee_construction": 2006,
-      "classe_dpe": "C",
-      "type_batiment": "appartement",
+      "nb_log_bdnb": 85,
+      "annee_construction": 1971,
+      "classe_dpe": "D",
+      "type_batiment": "immeuble",
       "type_chauffage": "gaz",
-      "batiment_groupe_id": "bdnb-bg-WSTK-SKSS-P2M2",
-      "_bdnb_match": "num_voie",
+      "batiment_groupe_id": "bdnb-bg-AJ85-YHNQ-MYVH",
+      "_bdnb_match": "immat",
       "_fusion_auto": true,
-      "_fusion_cible": "6|RUE|METALLURGIE",
+      "_fusion_cible": "9|RUE|DAVID",
       "ventes_par_an_logement": {
         "2021": 1,
         "2022": 1
@@ -53244,7 +53351,8 @@
       "classement_rotation_logement": "Modéré",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": null
     },
     {
       "cle": "8|RUE|MONTBRILLANT",
@@ -56791,7 +56899,12 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": [
+        "24|AVENUE|LACASSAGNE",
+        "26|AVENUE|LACASSAGNE"
+      ],
+      "_fusion_auto_label": null
     },
     {
       "cle": "41|COURS|ALBERT THOMAS 24 RUE DES TUILIERS",

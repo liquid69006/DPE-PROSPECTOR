@@ -124,7 +124,8 @@ Tables curées (style projet, documentées en commentaire) :
 `fix_guilloud_range` (_correctif_guilloud) →
 `fix_alias_rnc_meme_bgid` (_correctif_alias_bgid) →
 `fix_repoint_p2a` (_correctif_repoint_p2a) →
-`fix_pivot_bdnb_lot` (_correctif_pivot_bdnb)
+`fix_pivot_bdnb_lot` (_correctif_pivot_bdnb) →
+`fix_pivot_bdnb_reverse_lot` (_correctif_pivot_reverse)
 
 **Motte-Picquet**
 `make_light_motte_picquet.py` → `fix_rnc_bdnb_attribution`
@@ -144,7 +145,8 @@ Tables curées (style projet, documentées en commentaire) :
 `fix_detrie_repoint` (_correctif_detrie) →
 `fix_pivot_bdnb_lot` (_correctif_pivot_bdnb) →
 `fix_grenelle_repoint` (_correctif_grenelle) →
-`fix_armonial_pair_cepre` (_correctif_armonial_pair)
+`fix_armonial_pair_cepre` (_correctif_armonial_pair) →
+`fix_pivot_bdnb_reverse_lot` (_correctif_pivot_reverse)
 
 Backups `.bak` correspondants : `.bak` (pré-1er correctif),
 `.pretauxlog.bak`, `.prehorsrnc.bak`, `.predoublon.bak`,
@@ -153,7 +155,8 @@ Backups `.bak` correspondants : `.bak` (pré-1er correctif),
 `.prempranges.bak`, `.prempb.bak`, `.prearmonial.bak`,
 `.precibleshr.bak`, `.prealiasbg.bak`, `.prevoieabrev.bak`,
 `.prerepointp2a.bak`, `.predetrie.bak`, `.prepivot.bak`,
-`.pregrenelle.bak`, `.prearmonial2.bak` (gitignorés, locaux).
+`.pregrenelle.bak`, `.prearmonial2.bak`, `.prepivotrev.bak`
+(gitignorés, locaux).
 `SECTEUR=<sec>` pilote les scripts génériques.
 
 `fix_alias_rnc_meme_bgid` (lot ALIAS_RNC même-bgid, parc-neutre) :
@@ -262,6 +265,24 @@ future regen). **Parc MP `28926 → 28915` (−11)** = retrait du BDNB
 phantom Z2Z2 (que ARMONIAL I couvre conceptuellement via ses 592
 lots, sans immat propre — conforme PIPELINE §6). 2 v_log relocalisées
 sous AA0646265. `test_render` exit 0 les 2 secteurs.
+
+`fix_pivot_bdnb_reverse_lot` (_correctif_pivot_reverse, DL+MP,
+2026-05-20) : **26 RE-POINT miroir-bgid** (24 DL + 2 MP) issus de la
+**passe INVERSE** du pivot BDNB (`scripts/pipeline_bdnb_pivot_reverse.py`).
+Direction : copro RNC visible → bgid copro → API BDNB
+`batiment_groupe_complet.l_libelle_adr` → match parmi les hr-actives.
+Couvre les cas P2c / multi-bâti / cross-rue qui échappent à la passe
+forward (orph → bgid orph → copros). 10/26 cas sont des
+rattachements **cross-rue** (Acollas-type : un syndic gère plusieurs
+adresses BAN sous une même immatriculation, BDNB groupe les bâtis
+par bgid). Top gain : `30 ETIENNE RICHERAND` (12 v_log) → AA0358655
+"Antoine Charial" 211 lots GRANDLYON HABITAT. Pattern strictement
+identique à `fix_pivot_bdnb_lot` mais en sens inverse + adoption
+MIRROR (bgid différent côté orph). **Parc** : DL `22267 → 22200`
+(−67, 4 bgids BDNB phantoms retirés) · MP `28915 → 28910` (−5, 1
+bgid) — conforme §6 (« lots RNC prioritaire » : les copros RNC
+couvraient déjà ces bâtis conceptuellement via leurs lots
+syndicaux). **hr-actif DL 69→45, MP 30→28**. `test_render` exit 0.
 
 ## 6. Règles de calcul (renderSecteur, index.html)
 
