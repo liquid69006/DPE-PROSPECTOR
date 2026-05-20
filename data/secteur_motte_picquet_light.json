@@ -83,7 +83,8 @@
     "_correctif_armonial_8cepre": "Complement ARMONIAL I (AA0646265, 592 lots) : injection 8|RUE|CEPRE comme entry adresses[] minimaliste, fused -> 16|BOULEVARD|GARIBALDI, adoption MIRROR depuis l'ancre (bgid LJRN, Tertiaire 1976). Pattern INJECT_LABEL_ONLY (variante Suffren label-only). 8 CEPRE etait explicitement laisse de cote par fix_armonial_pair_cepre.py (commit anterieur) comme 'absent light, traite source-of-truth' ; cette injection donne visibilite terrain immediate sans attendre la prochaine regen. BAN confirme 75115_1646_00008. Aucune DVF au 8 CEPRE -> 0 vente relocalisee. Parc 28864->28864 (STRICTEMENT NEUTRE) car bgid LJRN deja attribue a ARMONIAL via immat (PIPELINE Sec 6 RNC prioritaire). Source-of-truth a porter : ALIAS_RNC += {'8|RUE|CEPRE': '16|BOULEVARD|GARIBALDI'} dans make_light_motte_picquet.py (idempotent avec fix_armonial_pair).",
     "_correctif_lowendal_suffren": "Copro RNC AB8146169 ('16-18, AVENUE LOWENDAL', 76 lots hab / 80 tot, syndic CONSEIL RICHOU IMMOBILIER, mandat -> 2026-06-30, derniere maj 2025-11-22) injectee dans coproprietes[] et attribuee a 16|AVENUE|LOWENDAL (bgid bdnb-bg-R41C-48RR-9DHU, parcelle 75115000DE0070). Copro ABSENTE du snapshot RNC mais confirmee par RNC live + BDNB pivot (l_libelle_adr=['18 Lowendal', '108 Suffren', '16 Lowendal'] + nb_log_rnc=76 matche exactement) + BDNB rel_RNC R41C ('16 18 Avenue De Lowendal'). 108 AVENUE DE SUFFREN : facade non-postale (0 vente DVF, hors light) - ALIAS_RNC a porter dans make_light_motte_picquet.py. Distinction copro voisine AA0600619 SQUARE LOWENDAL (parcelle CZ0015) = copro DIFFERENTE. Pattern INJECTION+ATTRIBUTION (clone fix_suffren_barthelemy_garibaldi). Parc 28864->28913 (+49 = switch BDNB(27)->RNC(76) sur bgid R41C, PIPELINE Sec 6 lots RNC prioritaires). Label '16/18 AVENUE LOWENDAL' -> '16/18 AVENUE LOWENDAL / 108 AVENUE DE SUFFREN'. 5 vlog DVF (2 sur 16 + 3 sur 18 fused) relocalises sous AB8146169 (taux 1.32% Modere).",
     "_correctif_grenelle_dupleix_casA": "CAS A : etiquetage bati 83 GRENELLE + INJECT 32/34 RUE DUPLEIX label-only (BAN 75115_3006_00032 + _00034). Bati BDNB 5KST-PABL-LAUP (parcelle 75115000DJ0019, 1910, 31 nb_log_bdnb, Residentiel collectif) couvre 3 facades BAN (BDNB pivot l_libelle_adr). 0 copro RNC active (vente bloc DVF 30/04/2021 6.2M EUR sur 14 lots = mono-propriete/fonciere). Pattern ETIQUETAGE Clouet/Garibaldi + INJECT label-only. Label '83/85 BOULEVARD GRENELLE' -> '83 BD GRENELLE / 32-34 RUE DUPLEIX'. Parc 28913->28913 STRICTEMENT NEUTRE (32/34 DUPLEIX fused, exclus de bgBdnb). ALIAS_RNC a porter : {'32|RUE|DUPLEIX': '83|BOULEVARD|GRENELLE', '34|RUE|DUPLEIX': '83|BOULEVARD|GRENELLE'} dans make_light_motte_picquet.py. Le 85 GRENELLE sera RETIRE du _fusion_auto_sources par CAS B (re-point bgid 5KST -> S543 Tertiaire).",
-    "_correctif_grenelle_dupleix_casB": "CAS B : re-point 85 BD GRENELLE de bgid 5KST (faux, = bati voisin 83 GRENELLE parcelle DJ/0019 Residentiel) vers bgid bdnb-bg-S543-UM97-SX5D (= vrai bati VOISIN S543 parcelle 75115000DH0001 TERTIAIRE pur, 1900, 0 nb_log_bdnb, syndic FA-G PERENNE par cadastre) + adoption MIRROR (usage Tertiaire, annee 1900) + INJECT 41 RUE DUPLEIX label-only fused vers 85 (BAN 75115_3006_00041 confirme sur bgid S543 via BDNB rel_adresse). 85 sort de la fusion vers 83 (anomalie make_light corrigee : matching num_voie sans validation BAN/parcelle, pattern identique a 2 CHASSELOUP). 87 BD GRENELLE deja sur S543 reste INCHANGE comme entry independante parallele. 0 copro RNC active sur S543 (BDNB rel_RNC=0, RNC live=0). Bati Tertiaire (commerces/bureaux). Parc 28913->28913 STRICTEMENT NEUTRE (85, 87, 41 DUPLEIX tous Tertiaire -> exclus de bgBdnb). Label '85 BD GRENELLE / 41 RUE DUPLEIX' sur ancre 85. ALIAS_RNC a porter dans make_light_motte_picquet.py : RETIRER 85->83 (anomalie corrigee) + AJOUTER {'41|RUE|DUPLEIX': '85|BOULEVARD|GRENELLE'}."
+    "_correctif_grenelle_dupleix_casB": "CAS B : re-point 85 BD GRENELLE de bgid 5KST (faux, = bati voisin 83 GRENELLE parcelle DJ/0019 Residentiel) vers bgid bdnb-bg-S543-UM97-SX5D (= vrai bati VOISIN S543 parcelle 75115000DH0001 TERTIAIRE pur, 1900, 0 nb_log_bdnb, syndic FA-G PERENNE par cadastre) + adoption MIRROR (usage Tertiaire, annee 1900) + INJECT 41 RUE DUPLEIX label-only fused vers 85 (BAN 75115_3006_00041 confirme sur bgid S543 via BDNB rel_adresse). 85 sort de la fusion vers 83 (anomalie make_light corrigee : matching num_voie sans validation BAN/parcelle, pattern identique a 2 CHASSELOUP). 87 BD GRENELLE deja sur S543 reste INCHANGE comme entry independante parallele. 0 copro RNC active sur S543 (BDNB rel_RNC=0, RNC live=0). Bati Tertiaire (commerces/bureaux). Parc 28913->28913 STRICTEMENT NEUTRE (85, 87, 41 DUPLEIX tous Tertiaire -> exclus de bgBdnb). Label '85 BD GRENELLE / 41 RUE DUPLEIX' sur ancre 85. ALIAS_RNC a porter dans make_light_motte_picquet.py : RETIRER 85->83 (anomalie corrigee) + AJOUTER {'41|RUE|DUPLEIX': '85|BOULEVARD|GRENELLE'}.",
+    "_correctif_garibaldi_28_ah": "Copro RNC AH1602424 ('PARIS (75015) – 28 boulevard Garibaldi', 13 lots hab / 27 tot, sans syndic - mandat fini 2024-09-30) injectee dans coproprietes[] + entry adresses[] avec cle disambig '28|BOULEVARD|GARIBALDI #AH1602424'. Pattern DISAMBIG (variante Suffren+INJECTION) : 2 copros coexistent sur bati 6KDV-F45P-6XA2 (parcelle CX0066+CX0054, bati moderne 2021). AD5922125 'SDC 26/28 BD GARIBALDI' = copro historique 1950 RDC commerces (3 lots hab + 15 commerces, parcelle CX0054 seule, '26/28' du nom = heritage historique - le 26 bati PNXA parcelle CX0067 n'est PAS couvert) reste sur cle non-disambig avec ses ventes DVF. AH1602424 'PARIS – 28 boulevard Garibaldi' = vraie copro residentielle moderne VEFA 2021 (date_immat 2021-10-19, reglement 2019-07-09, APRES_2010, 2 parcelles CX0054+CX0066). Triple confirmation : RNC live + BDNB rel_RNC R41C 6KDV 2 rows (AD5922125+AH1602424) + BDNB nb_log_rnc=16 = MATCHE exactement 3+13 post-fix. Parc 28913->28926 (+13 = switch BDNB(13)->RNC complete sur 6KDV, PIPELINE Sec 6). Ventes : 1 vlog 2023 (vente bloc 2 lots VEFA promoteur 1.156M EUR) reste sur AD5922125 (cle non-disambig). Pattern identique a 42|AVENUE|SAXE #AB8151755 (fix_perignon_saxe) et 11|AVENUE|SUFFREN #AD1287697 (snapshot historique)."
   },
   "iris": [
     {
@@ -18478,6 +18479,25 @@
         "2024": 1
       },
       "taux_rotation_5ans": 0.8,
+      "classement_rotation": "Figé"
+    },
+    {
+      "numero_immatriculation": "AH1602424",
+      "nom_copropriete": "PARIS (75015) – 28 boulevard Garibaldi",
+      "syndic": null,
+      "_syndic_src": "rnc_live_mandat_fini",
+      "adresse": "28 Boulevard Garibaldi | 28 Boulevard Garibaldi 75015 Paris | 75015 | Paris",
+      "longitude": 2.304668,
+      "latitude": 48.84684,
+      "code_iris": "751155811",
+      "cle_adresse": "28|BOULEVARD|GARIBALDI #AH1602424",
+      "nb_lots_total": 27,
+      "nb_lots_habitation": 13,
+      "nb_lots_habitation_rnc": 13,
+      "nb_log_bdnb": 13,
+      "nb_ventes_2021_2025": 0,
+      "ventes_par_an": {},
+      "taux_rotation_5ans": 0.0,
       "classement_rotation": "Figé"
     }
   ],
@@ -67829,6 +67849,40 @@
       "_fusion_auto": true,
       "_fusion_cible": "85|BOULEVARD|GRENELLE",
       "_fusion_auto_sources": null
+    },
+    {
+      "cle": "28|BOULEVARD|GARIBALDI #AH1602424",
+      "adresse": "28 BOULEVARD GARIBALDI",
+      "longitude": 2.304668,
+      "latitude": 48.84684,
+      "code_iris": "751155811",
+      "_coord_source": "rnc_inject_pattern_suffren_disambig",
+      "dans_majic": false,
+      "sci_proprietaire": "non",
+      "sci_nom": "",
+      "sci_siren": "",
+      "syndic": null,
+      "_syndic_src": "rnc_live_mandat_fini",
+      "numero_immatriculation": "AH1602424",
+      "nb_lots_habitation": 13,
+      "ventes_par_an": {},
+      "nb_ventes_total": 0,
+      "ventes_par_an_logement": {},
+      "nb_ventes_logement": 0,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Fige",
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Figé",
+      "nb_log_bdnb": 13,
+      "annee_construction": 2021,
+      "classe_dpe": "C",
+      "type_batiment": "appartement",
+      "type_chauffage": "gaz",
+      "batiment_groupe_id": "bdnb-bg-6KDV-F45P-6XA2",
+      "_bdnb_match": "immat_inject_pattern_suffren_disambig",
+      "_taux_logement_src": "filtre_habitation",
+      "usage_principal_bdnb": "Résidentiel collectif",
+      "_usage_bdnb_src": "snapshot"
     }
   ]
 }
