@@ -73,7 +73,8 @@
     "_correctif_armonial_pair": "Extension ARMONIAL I (AA0646265) avec 2/4/6 RUE CEPRE (8 absent light, traite source-of-truth). Confirmation terrain 2026-05-20 : pair-CEPRE + 20 MIOLLIS = ARMONIAL I (multi-bati, deja 16 sources sur 6 bgids distincts). RNC declare 14 adr_complementaires (open data tronque a 3 slots, 11 cachees). Pattern ALIAS_RNC multi-voies. 2 v_log relocalisees sous AA0646265. Parc MP 28926->28915 (-11 = retrait BDNB phantom Z2Z2 dedoublonne).",
     "_correctif_pivot_reverse": "2 re-points pivot BDNB reverse (motte_picquet) - copros RNC dont le bgid (via cle_adresse) reclame des adresses BAN qui sont des orphelines DVF hors-RNC. Forward ratait ces cas (bgids light divergents). Pattern miroir-bgid (adoption MIRROR + fusion + absorption chaine). Parc 28915->28910 (-5) = retrait BDNB phantoms des orphs conforme PIPELINE Sec 6. Cas: 22|RUE|FEDERATION->20|RUE|FEDERATION(AA0398420); 11||CITE THURE->15|RUE|GRAMME(AJ1220698)",
     "_correctif_grenelle_fremicourt": "23/25/27 RUE FREMICOURT -> 146 BD GRENELLE (AA0469049 RESIDENCE GRENELLE FREMICOURT, 316 lots, ATRIUM). Confirmation triple : RNC compl_1/2/3 = 27/25/23 FREMICOURT, BDNB bgid 1TM4 liste les 7 adr BAN, syndic ATRIUM identique. Bgids light errones (TPGT/1C2P/28QF = voisins 22/24/28 qui sont d'autres copros) corriges par adoption MIRROR vers 1TM4. Parc 28910->28910 strictement neutre. 2 v_log + 2 v_tot relocalises sous AA0469049.",
-    "_correctif_suffren_barthelemy_garibaldi": "Copro RNC AD2301695 (163 AVENUE DE SUFFREN, 17 lots hab / 20 tot, syndic GESTION ET TRANSACTIONS DE FRANCE) injectee dans coproprietes[] et attribuee a 163|AVENUE|SUFFREN (bgid bdnb-bg-QTC9-KFAU-5TPU). Copro ABSENTE du snapshot RNC mais confirmee par RNC live (tabular-api 3ea8e2c3-0038...) + BDNB pivot (l_libelle_adr = 9 BARTH + 163 SUFFREN + 59 GAR sur QTC9-KFAU-5TPU, parcelle 75115000CW0053). 9 RUE BARTHELEMY et 59 BD GARIBALDI : facades non-postales, 0 vente DVF, hors light - ALIAS_RNC a porter dans make_light_motte_picquet.py. Parc 28910->28913 (+3 logements : switch BDNB(14)->RNC(17) autoritatif sur bgid QTC9, PIPELINE Sec 6). 2 ventes DVF (12/07/2023 + 23/07/2025) relocalisees sous AD2301695, classement Actif."
+    "_correctif_suffren_barthelemy_garibaldi": "Copro RNC AD2301695 (163 AVENUE DE SUFFREN, 17 lots hab / 20 tot, syndic GESTION ET TRANSACTIONS DE FRANCE) injectee dans coproprietes[] et attribuee a 163|AVENUE|SUFFREN (bgid bdnb-bg-QTC9-KFAU-5TPU). Copro ABSENTE du snapshot RNC mais confirmee par RNC live (tabular-api 3ea8e2c3-0038...) + BDNB pivot (l_libelle_adr = 9 BARTH + 163 SUFFREN + 59 GAR sur QTC9-KFAU-5TPU, parcelle 75115000CW0053). 9 RUE BARTHELEMY et 59 BD GARIBALDI : facades non-postales, 0 vente DVF, hors light - ALIAS_RNC a porter dans make_light_motte_picquet.py. Parc 28910->28913 (+3 logements : switch BDNB(14)->RNC(17) autoritatif sur bgid QTC9, PIPELINE Sec 6). 2 ventes DVF (12/07/2023 + 23/07/2025) relocalisees sous AD2301695, classement Actif.",
+    "_correctif_cambronne_belleuse": "13 RUE CARRIER BELLEUSE -> 19 RUE CAMBRONNE (AA8571440 IMMEUBLE 19 CAMBRON-13CBELLEUS, 62 lots hab / 201 tot, GERARD SAFAR SAS, mandat -> 2026-09-30). Triple confirmation : RNC compl_2='13-13 r carrier-belleuse' + nom RNC declaratif des 2 voies, BDNB bgids 2UC3 (19+21 Cambronne) et 4CUT (13+13B Carrier Belleuse) sur MEME parcelle 75115000CY0067 et MEME annee 1977, nb_log_rnc BDNB=62 sur 2UC3 matche AA8571440. Pattern ALIAS_RNC multi-voies (Fremicourt/ARMONIAL) : 13|CARRIER|BELLEUSE (bgid 4CUT errone, 33 nb_log_bdnb, 4 ventes) re-pointe vers 19|CAMBRONNE avec adoption MIRROR bgid 2UC3. Parc 28913->28880 (-33) = dedup multi-bgid (les 33 BDNB de 4CUT etaient deja compris dans les 62 lots RNC qui couvrent 2UC3+4CUT, PIPELINE Sec 6 lots RNC prioritaires). 13B Carrier Belleuse et 21 Cambronne absentes du light - ALIAS_RNC a porter dans make_light_motte_picquet.py."
   },
   "iris": [
     {
@@ -20899,8 +20900,8 @@
       "sci_proprietaire": "oui",
       "sci_nom": "PARISLIB",
       "sci_siren": "481861037",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "GERARD SAFAR SAS",
+      "_syndic_src": "rnc_grp",
       "numero_immatriculation": null,
       "nb_lots_habitation": null,
       "ventes_par_an": {
@@ -20919,16 +20920,19 @@
       "classement_rotation": "Actif",
       "taux_rotation_logement": 2.4,
       "classement_rotation_logement": "Modéré",
-      "nb_log_bdnb": 33,
+      "nb_log_bdnb": 26,
       "annee_construction": 1977,
       "classe_dpe": "D",
       "type_batiment": "appartement",
-      "type_chauffage": "gaz",
-      "batiment_groupe_id": "bdnb-bg-4CUT-Z57B-XDTM",
-      "_bdnb_match": "num_voie",
+      "type_chauffage": "reseau de chaleur",
+      "batiment_groupe_id": "bdnb-bg-2UC3-3G75-JFPB",
+      "_bdnb_match": "immat",
       "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "19|RUE|CAMBRONNE",
+      "_fusion_auto_sources": null
     },
     {
       "cle": "20|RUE|EDGAR FAURE",
@@ -28212,7 +28216,11 @@
       "_bdnb_match": "immat",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": [
+        "13|RUE|CARRIER BELLEUSE"
+      ],
+      "_fusion_auto_label": null
     },
     {
       "cle": "2|RUE|GAL DE LARMINAT",
