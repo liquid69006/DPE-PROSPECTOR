@@ -294,29 +294,49 @@ def main():
 
             # Cas actionnable : copro visible + au moins une adresse
             # orpheline (immat=None) sur un autre bgid de la copro,
-            # OU une compl_N qui match une adresse hors-RNC du light
+            # OU une compl_N qui match une adresse hors-RNC du light.
+            # On EXCLUT les orphelins deja fusionnes vers l'ancre
+            # visible (_fa=True / _fc=visible_cle) : idempotent, rien
+            # a faire. Cf. fix_multiparcelles_dl_lot.py dry-run du
+            # 2026-05-20 qui a confirme 9/9 idempotents sur 7 cas.
             # On deduplique par cle adresse pour eviter les doublons
             # quand la meme adresse apparait via plusieurs parcelles.
+            def _is_already_fused(cle_adr):
+                a = adr_by_cle.get(cle_adr) or {}
+                return (a.get("_fusion_auto") is True
+                        and a.get("_fusion_cible") == visible_cle)
+
             actionable_bgid_adrs = []
+            already_bgid = []        # orph deja fuse vers la bonne cible
             seen_a = set()
             for rc, k, bgids, adrs in parc_bgids:
                 for (cle_adr, immat_adr) in adrs:
                     if (immat_adr is None and cle_adr != visible_cle
                             and cle_adr not in seen_a):
-                        actionable_bgid_adrs.append((cle_adr, bgids))
                         seen_a.add(cle_adr)
+                        if _is_already_fused(cle_adr):
+                            already_bgid.append((cle_adr, bgids))
+                        else:
+                            actionable_bgid_adrs.append((cle_adr, bgids))
             actionable_compl = []
+            already_compl = []
             seen_b = set()
             for (compl, k_adr, hit) in compl_matches:
                 if hit and hit != visible_cle and hit not in seen_b:
+                    seen_b.add(hit)
                     a = adr_by_cle.get(hit)
                     if a and a.get("numero_immatriculation") is None:
-                        actionable_compl.append((compl, hit))
-                        seen_b.add(hit)
+                        if _is_already_fused(hit):
+                            already_compl.append((compl, hit))
+                        else:
+                            actionable_compl.append((compl, hit))
 
             is_actionable = bool(visible_cle) and (
                 actionable_bgid_adrs or actionable_compl
             )
+            is_already_ok = (bool(visible_cle)
+                             and (already_bgid or already_compl)
+                             and not is_actionable)
             if is_actionable:
                 nb_action += 1
 
@@ -334,21 +354,31 @@ def main():
                 "visible_cle": visible_cle,
                 "actionable_bgid_adrs": actionable_bgid_adrs,
                 "actionable_compl": actionable_compl,
+                "already_bgid": already_bgid,
+                "already_compl": already_compl,
                 "is_actionable": is_actionable,
+                "is_already_ok": is_already_ok,
             })
 
         total_actionable_all += nb_action
+        nb_already_ok = sum(1 for r in rows if r["is_already_ok"])
         out_lines.append(
-            f"\n**Cas actionnables** : {nb_action} / {len(multi)} "
-            "(copro visible + adresse(s) orpheline(s) hors-RNC sur "
-            "une autre parcelle/bgid).\n"
+            f"\n**Cas actionnables (RESTANTS)** : {nb_action} / "
+            f"{len(multi)} (copro visible + orphelin(s) **non encore "
+            "fusionne(s)** vers cette ancre).\n"
+        )
+        out_lines.append(
+            f"**Cas DEJA-FUSE-OK** : {nb_already_ok} (orphelins "
+            "deja `_fa=True / _fc=ancre`, aucun fix requis - "
+            "confirme par `scripts/fix_multiparcelles_dl_lot.py` "
+            "dry-run du 2026-05-20).\n"
         )
 
         # ─── Tableau detaille ───
         out_lines.append(f"\n### Detail des {len(multi)} copros multi-parcelles\n")
         out_lines.append(
             "| # | immat | nom | nlots | parc | rc1 | rc2 | rc3 | "
-            "visible? | actionnable ? | candidats |"
+            "visible? | statut | candidats |"
         )
         out_lines.append(
             "|--:|---|---|--:|--:|---|---|---|---|---|---|"
@@ -359,12 +389,22 @@ def main():
                 cands.append(f"`{cle_adr}` (bgid cadastral)")
             for compl, hit in r["actionable_compl"]:
                 cands.append(f"`{hit}` (compl)")
+            # cas already-fuse-ok : signaler dans candidats avec marker
+            for cle_adr, bgids in r["already_bgid"]:
+                cands.append(f"`{cle_adr}` ✓deja-fuse")
+            for compl, hit in r["already_compl"]:
+                cands.append(f"`{hit}` ✓deja-fuse")
             cands_txt = "<br>".join(sorted(set(cands))) if cands else "—"
             vis = (f"`{r['visible_cle']}`" if r["visible_cle"]
                    else "❌ INVISIBLE")
-            act = ("**✅ OUI**" if r["is_actionable"]
-                   else ("(visible, aucun candidat)"
-                         if r["visible_cle"] else "—"))
+            if r["is_actionable"]:
+                act = "**✅ RESTANT**"
+            elif r["is_already_ok"]:
+                act = "✓ deja-fuse-ok"
+            elif r["visible_cle"]:
+                act = "(aucun candidat)"
+            else:
+                act = "—"
             out_lines.append(
                 f"| {i} | `{r['immat']}` | "
                 f"{(r['nom'] or '')[:36]} | "
