@@ -122,7 +122,8 @@ Tables curées (style projet, documentées en commentaire) :
 `propage_usage_bdnb` (_correctif_usage_bdnb) →
 `fix_meynis_phantom` (_correctif_meynis) →
 `fix_guilloud_range` (_correctif_guilloud) →
-`fix_alias_rnc_meme_bgid` (_correctif_alias_bgid)
+`fix_alias_rnc_meme_bgid` (_correctif_alias_bgid) →
+`fix_repoint_p2a` (_correctif_repoint_p2a)
 
 **Motte-Picquet**
 `make_light_motte_picquet.py` → `fix_rnc_bdnb_attribution`
@@ -137,15 +138,16 @@ Tables curées (style projet, documentées en commentaire) :
 `fix_armonial` (_correctif_armonial) →
 `fix_mp_cibles_horsrnc` (_correctif_cibles_horsrnc) →
 `fix_alias_rnc_meme_bgid` (_correctif_alias_bgid) →
-`fix_mp_voie_abrev` (_correctif_voie_abrev)
+`fix_mp_voie_abrev` (_correctif_voie_abrev) →
+`fix_repoint_p2a` (_correctif_repoint_p2a)
 
 Backups `.bak` correspondants : `.bak` (pré-1er correctif),
 `.pretauxlog.bak`, `.prehorsrnc.bak`, `.predoublon.bak`,
 `.preusage.bak`, `.premeynis.bak`, `.predupleix.bak`,
 `.prehorsperim.bak`, `.preacollas.bak`, `.preguilloud.bak`,
 `.prempranges.bak`, `.prempb.bak`, `.prearmonial.bak`,
-`.precibleshr.bak`, `.prealiasbg.bak`, `.prevoieabrev.bak`
-(gitignorés, locaux).
+`.precibleshr.bak`, `.prealiasbg.bak`, `.prevoieabrev.bak`,
+`.prerepointp2a.bak` (gitignorés, locaux).
 `SECTEUR=<sec>` pilote les scripts génériques.
 
 `fix_alias_rnc_meme_bgid` (lot ALIAS_RNC même-bgid, parc-neutre) :
@@ -179,6 +181,24 @@ Source : `scripts/diag_orphelines_bdnb.py` +
 `data/dryrun_mp_voie_abrev.md`). `test_render_secteur.js` : **pas de
 rebase** (baselines déjà tolérantes à la réduction de lignes par
 fusion ALIAS — exit 0 les 2 secteurs, `secL == réplique exacte`).
+
+`fix_repoint_p2a` (_correctif_repoint_p2a, DL+MP, 2026-05-20) : **4
+RE-POINT A3** (3 DL + 1 MP) — copros RNC ancrées enterrées sous un
+fantôme DVF principal (auto-bgid-fusion a choisi le phantome + ventes
+comme principal au lieu de la copro `cle_adresse`). Pattern A3
+identique à `fix_mp_cibles_horsrnc`. Audit source =
+`scripts/audit_lacunes_pipeline.py` (P2a, 5 cas, **Grenelle écarté
+provisoirement** : switch BDNB 89→RNC 35 = −54 sur bgid F3HZ ; nom
+copro contient « MS103738 » → hypothèse logement social hors-syndic, à
+vérifier RPLS avant intégration). Effet : DL `22268→22267` (−1, neutre
+au lot près), MP `28980` (+7 Guesclin, RNC 104 > BDNB 97). 4 copros
+aujourd'hui invisibles redeviennent visibles (LE BEAUBOURG @ 51
+Richerand, LES PINS @ 54 Lacassagne, RESIDENCE 318 PAUL BERT,
+Résidence Du Guesclin @ 3 Passage Guesclin). Source-of-truth déjà en
+place (critère `copro_by_cle` du tri principal-bgid de make_light,
+introduit pour Dupleix) — une regen résoudrait naturellement ces cas
+pour autant qu'elles soient dans le bgid group à temps (cas P2b
+exclus = ajout post-make_light). `test_render` exit 0 les 2 secteurs.
 
 ## 6. Règles de calcul (renderSecteur, index.html)
 

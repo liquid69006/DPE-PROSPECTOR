@@ -89,7 +89,8 @@
     "_correctif_usage_bdnb": "Champs ADDITIFS usage_principal_bdnb (valeur snapshot bdnb_dauphine_lacassagne.json:usage_principal_bdnb_open, jointure batiment_groupe_id) + _usage_bdnb_src ajoutes ; 1238 adr renseignees, 0 sans bgid/snapshot (null). Aucun champ existant modifie. Dashboard inchange (index.html ne lit pas encore usage_principal_bdnb) ; regle d'affichage logements residentiel/tertiaire = modif index.html separee.",
     "_correctif_meynis": "Adresse DVF fantome 10 RUE MEYNIS (parcelle DN0005, bati tertiaire) rattachee chirurgicalement a la copro RESIDENCE PAULINE AA8066532 @ 10 PASSAGE MEYNIS (parcelle DT0052, bgid WDLN-W7EH-5BGA) : _fusion_auto -> 10|PASSAGE|MEYNIS, ses 10 ventes DVF (7 strictes) relocalisees au rendu. Source-of-truth = ALIAS_RNC dans make_light.py. Parc inchange (src etait Tertiaire->0 ; copro deja comptee 27 lots). 2 enregistrements touches, aucun autre champ modifie.",
     "_correctif_guilloud": "Copro RNC '39-43 RUE GUILLOUD' (30 lots), doublement immatriculee AB9349846 (2018) / AJ0217901 'LE GUILLOUD' (re-immat 2025, REGIE DU LYONNAIS ; light retient AJ0217901 @ cle 39). 39/41/43 partagent le bgid YTPJ-Q2XB-2DEF ; la fusion RNC agrege {39,43} (nom/compl) et consomme les bornes, laissant 41 (entree mediane jamais listee au RNC) isole. 41 RUE GUILLOUD rattachee chirurgicalement comme secondaire auto de 39 (miroir exact du frere 43) : champs autoritatifs (bgid/nb_log_bdnb/_bdnb_match/usage/ventes) INCHANGES. Au rendu : 2 ventes (2 strictes) relocalisees sous AJ0217901, 41 sort des 'hors-RNC actifs'. PARC STRICTEMENT INCHANGE (41 partage deja le bgid de la copro -> deja dedupe aux 30 lots RNC, PIPELINE 6). 39._fusion_auto_sources -> ['41','43'], label '39/41/43 RUE GUILLOUD'. Source-of-truth = FUSION_RNC_EXTRA_NUMS dans make_light.py. 2 enregistrements touches.",
-    "_correctif_alias_bgid": "Lot ALIAS_RNC meme bgid (parc-neutre) : 36 adresses hors-RNC a ventes DVF rattachees a leur copro RNC (preuve forte BDNB-rel/ortho exacte, meme batiment_groupe_id). Ventes relocalisees, parc STRICTEMENT inchange."
+    "_correctif_alias_bgid": "Lot ALIAS_RNC meme bgid (parc-neutre) : 36 adresses hors-RNC a ventes DVF rattachees a leur copro RNC (preuve forte BDNB-rel/ortho exacte, meme batiment_groupe_id). Ventes relocalisees, parc STRICTEMENT inchange.",
+    "_correctif_repoint_p2a": "3 re-points P2a (copro RNC enterree sous fantome DVF principal) : 53|RUE|ETIENNE RICHERAND<-51|RUE|ETIENNE RICHERAND(AC3598851), 56|AVENUE|LACASSAGNE<-54|AVENUE|LACASSAGNE(AA4814810), 316|RUE|PAUL BERT<-318|RUE|PAUL BERT(AC6168629). Parc 22268->22267 (-1) = switch BDNB->RNC autoritaire (PIPELINE §6)."
   },
   "iris": [
     {
@@ -13451,9 +13452,7 @@
       "batiment_groupe_id": "bdnb-bg-FWNQ-PFMY-A36E",
       "_bdnb_match": "num_voie",
       "_fusion_auto_label": "51/53 RUE ETIENNE RICHERAND",
-      "_fusion_auto_sources": [
-        "51|RUE|ETIENNE RICHERAND"
-      ],
+      "_fusion_auto_sources": null,
       "ventes_par_an_logement": {
         "2021": 3,
         "2022": 1,
@@ -13466,7 +13465,9 @@
       "classement_rotation_logement": "Actif",
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "51|RUE|ETIENNE RICHERAND"
     },
     {
       "cle": "54|RUE|DAUPHINE",
@@ -15485,8 +15486,8 @@
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-FWNQ-PFMY-A36E",
       "_bdnb_match": "immat",
-      "_fusion_auto": true,
-      "_fusion_cible": "53|RUE|ETIENNE RICHERAND",
+      "_fusion_auto": null,
+      "_fusion_cible": null,
       "ventes_par_an_logement": {
         "2021": 5,
         "2022": 2,
@@ -15498,7 +15499,11 @@
       "classement_rotation_logement": "Actif",
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": [
+        "53|RUE|ETIENNE RICHERAND"
+      ],
+      "_fusion_auto_label": null
     },
     {
       "cle": "57|RUE|BARABAN",
@@ -24718,9 +24723,7 @@
       "batiment_groupe_id": "bdnb-bg-JFRZ-XJTQ-L9ZQ",
       "_bdnb_match": "num_voie",
       "_fusion_auto_label": "316/318 RUE PAUL BERT",
-      "_fusion_auto_sources": [
-        "318|RUE|PAUL BERT"
-      ],
+      "_fusion_auto_sources": null,
       "ventes_par_an_logement": {
         "2021": 1,
         "2025": 2
@@ -24730,7 +24733,9 @@
       "classement_rotation_logement": "Très actif",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "318|RUE|PAUL BERT"
     },
     {
       "cle": "32|RUE|BARABAN",
@@ -32027,8 +32032,8 @@
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-JFRZ-XJTQ-L9ZQ",
       "_bdnb_match": "immat",
-      "_fusion_auto": true,
-      "_fusion_cible": "316|RUE|PAUL BERT",
+      "_fusion_auto": null,
+      "_fusion_cible": null,
       "ventes_par_an_logement": {
         "2023": 1,
         "2024": 1
@@ -32038,7 +32043,11 @@
       "classement_rotation_logement": "Très actif",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": [
+        "316|RUE|PAUL BERT"
+      ],
+      "_fusion_auto_label": null
     },
     {
       "cle": "32|RUE|PROFESSEUR PAUL SISLEY",
@@ -50934,8 +50943,8 @@
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-JMUE-VX7J-RR9W",
       "_bdnb_match": "immat",
-      "_fusion_auto": true,
-      "_fusion_cible": "56|AVENUE|LACASSAGNE",
+      "_fusion_auto": null,
+      "_fusion_cible": null,
       "ventes_par_an_logement": {
         "2022": 2
       },
@@ -50944,7 +50953,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": [
+        "56|AVENUE|LACASSAGNE"
+      ],
+      "_fusion_auto_label": null
     },
     {
       "cle": "54|RUE|ANTOINE CHARIAL",
@@ -51197,9 +51210,7 @@
       "batiment_groupe_id": "bdnb-bg-JMUE-VX7J-RR9W",
       "_bdnb_match": "num_voie",
       "_fusion_auto_label": "54/56 AVENUE LACASSAGNE",
-      "_fusion_auto_sources": [
-        "54|AVENUE|LACASSAGNE"
-      ],
+      "_fusion_auto_sources": null,
       "ventes_par_an_logement": {
         "2021": 1,
         "2022": 2,
@@ -51210,7 +51221,9 @@
       "classement_rotation_logement": "Modéré",
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "54|AVENUE|LACASSAGNE"
     },
     {
       "cle": "56|RUE|BARABAN",

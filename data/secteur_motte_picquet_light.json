@@ -65,7 +65,8 @@
     "_correctif_armonial": "Ensemble social RNC 'ARMONIAL I' (AA0646265, 592 lots hab / 1726 tot, ancre 16 BD GARIBALDI bgid LJRN, nb_compl=14 tronque open-data) eclate sur 4 voies (Garibaldi/Carrier-Belleuse/Cepre/Miollis). 15 adresses existantes (re)fusionnees comme secondaires auto de 16|BOULEVARD|GARIBALDI via ALIAS_RNC multi-voie (sous-fusions bgid locales 30/36/17 re-pointees, sources locales videes) : CB 7/9/11 ; Cepre 13/15/17/19 ; Miollis 20/24/26/28/30/34/36/40 (+32 deja fusionne). Champs autoritatifs (bgid/nb_log_bdnb/_bdnb_match/usage/ventes) INCHANGES ; syndic NON propage (copro 'non connu'). Au rendu : ventes des 15 (+32) relocalisees sous AA0646265, sorties des hors-RNC actifs ; parc : co-occupes neutres, bgid integralement absorbes (LJD4/XDM8/KKXK/XUWV) subsumes par les 592 lots RNC (dedup §6, comme Acollas) ; ventes secteur conservees. 13 adresses demandees ABSENTES du light (non geocodees) hors portee. Source-of-truth = ALIAS_RNC dans make_light_motte_picquet.py. 17 enregistrements touches.",
     "_correctif_cibles_horsrnc": "7 adresses cibles MP hors-RNC a ventes DVF rattachees a leur copro RNC : A1 x5 ALIAS_RNC meme bgid parc-neutre (6 Champfleury/1+Allee Bourgeois Buenos Ayres/5 Gal Lambert/3 Buenos Ayres), A2 4 Octave Greard miroir bgid (-11 dedup BDNB), A3 re-point fusion inversee 38 Ch Floquet<=6 Gal Detrie (+20 sous-comptage). Net parc +9 ; ventes relocalisees. 5 autres cibles = categorie B (aucune copro RNC) laissees hors-RNC.",
     "_correctif_alias_bgid": "Lot ALIAS_RNC meme bgid (parc-neutre) : 14 adresses hors-RNC a ventes DVF rattachees a leur copro RNC (preuve forte BDNB-rel/ortho exacte, meme batiment_groupe_id). Ventes relocalisees, parc STRICTEMENT inchange.",
-    "_correctif_voie_abrev": "9 adresses DVF MP a cle de voie abregee (CAPT->CAPITAINE, GAL->GENERAL) rattachees a leur copro RNC reelle (immatriculee, presente snapshot) via ALIAS_RNC miroir bgid : 5 cibles (3 Capt Scott->AA8895435, 4 Gal Castelnau->AI7024987, 7 Gal Castelnau->AA4713186, 8 Gal Larminat->AA9446949, 11 Gal Larminat->AC8648685) + 4 dependances chaine re-pointees vers LEUR copro (1 Capt Scott->AF6894638, 5 Gal Castelnau->AC0121202, 6 Gal Castelnau->AI7024987, 12 Alasseur->AA9446949). Ventes relocalisees au rendu (champs INCHANGES), parc modele 29004->28973 (-31 : retrait de doublons BDNB, pas une perte). Source-of-truth = ALIAS_RNC make_light_motte_picquet.py."
+    "_correctif_voie_abrev": "9 adresses DVF MP a cle de voie abregee (CAPT->CAPITAINE, GAL->GENERAL) rattachees a leur copro RNC reelle (immatriculee, presente snapshot) via ALIAS_RNC miroir bgid : 5 cibles (3 Capt Scott->AA8895435, 4 Gal Castelnau->AI7024987, 7 Gal Castelnau->AA4713186, 8 Gal Larminat->AA9446949, 11 Gal Larminat->AC8648685) + 4 dependances chaine re-pointees vers LEUR copro (1 Capt Scott->AF6894638, 5 Gal Castelnau->AC0121202, 6 Gal Castelnau->AI7024987, 12 Alasseur->AA9446949). Ventes relocalisees au rendu (champs INCHANGES), parc modele 29004->28973 (-31 : retrait de doublons BDNB, pas une perte). Source-of-truth = ALIAS_RNC make_light_motte_picquet.py.",
+    "_correctif_repoint_p2a": "1 re-points P2a (copro RNC enterree sous fantome DVF principal) : 9|RUE|GUESCLIN<-3|PASSAGE|GUESCLIN(AB1748391). Parc 28973->28980 (+7) = switch BDNB->RNC autoritaire (PIPELINE §6)."
   },
   "iris": [
     {
@@ -20427,12 +20428,12 @@
       "batiment_groupe_id": "bdnb-bg-74VK-UPM2-JYYD",
       "_bdnb_match": "num_voie",
       "_fusion_auto_label": null,
-      "_fusion_auto_sources": [
-        "3|PASSAGE|GUESCLIN"
-      ],
+      "_fusion_auto_sources": null,
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "3|PASSAGE|GUESCLIN"
     },
     {
       "cle": "11|RUE|LOURMEL",
@@ -57966,11 +57967,15 @@
       "type_chauffage": "reseau de chaleur",
       "batiment_groupe_id": "bdnb-bg-74VK-UPM2-JYYD",
       "_bdnb_match": "immat",
-      "_fusion_auto": true,
-      "_fusion_cible": "9|RUE|GUESCLIN",
+      "_fusion_auto": null,
+      "_fusion_cible": null,
       "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": [
+        "9|RUE|GUESCLIN"
+      ],
+      "_fusion_auto_label": null
     },
     {
       "cle": "3|PLACE|CARDINAL AMETTE",
