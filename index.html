@@ -760,6 +760,11 @@ td{padding:11px 14px;vertical-align:middle;}
         style="padding:7px 14px;border:1px solid var(--border);border-radius:6px;
                background:var(--surface2);color:var(--text);font-size:13px;
                cursor:pointer;white-space:nowrap;">🏢 Mono</button>
+      <button id="secteur-aqualif-btn" onclick="secteurToggleAQualif()"
+        title="N'afficher que les adresses HORS-RNC sans qualification posee (as.type vide). Cumulable avec les autres filtres."
+        style="padding:7px 14px;border:1px solid var(--border);border-radius:6px;
+               background:var(--surface2);color:var(--text);font-size:13px;
+               cursor:pointer;white-space:nowrap;">❓ À qualifier</button>
     </div>
     <div id="secteur-colhead" style="display:none;position:sticky;top:0;z-index:5;
          background:var(--surface);border-bottom:2px solid var(--border);
@@ -1987,15 +1992,18 @@ function secteurToggleStrict() {
   renderSecteur();
 }
 window.secteurToggleStrict = secteurToggleStrict;
-let secteurHrActif = false;         // filtre "Hors-RNC actifs" (toggle)
-function secteurToggleHrActif() {
-  secteurHrActif = !secteurHrActif;
+let secteurHrActif = true;          // filtre "Hors-RNC actifs" ACTIF PAR DEFAUT (toggle)
+function secteurHrActifBtnSync() {  // reflete l'etat sur le bouton (clone secteurStrictBtnSync)
   const b = document.getElementById('secteur-hractif-btn');
   if (b) {
     b.style.background = secteurHrActif ? 'var(--orange)' : 'var(--surface2)';
     b.style.color = secteurHrActif ? '#fff' : 'var(--text)';
     b.style.borderColor = secteurHrActif ? 'var(--orange)' : 'var(--border)';
   }
+}
+function secteurToggleHrActif() {
+  secteurHrActif = !secteurHrActif;
+  secteurHrActifBtnSync();
   renderSecteur();
 }
 window.secteurToggleHrActif = secteurToggleHrActif;
@@ -2011,6 +2019,21 @@ function secteurToggleMono() {
   renderSecteur();
 }
 window.secteurToggleMono = secteurToggleMono;
+let secteurAQualif = false;         // filtre "A qualifier" (toggle, qualif manuelle vide)
+function secteurAQualifBtnSync() {
+  const b = document.getElementById('secteur-aqualif-btn');
+  if (b) {
+    b.style.background = secteurAQualif ? 'var(--orange)' : 'var(--surface2)';
+    b.style.color = secteurAQualif ? '#fff' : 'var(--text)';
+    b.style.borderColor = secteurAQualif ? 'var(--orange)' : 'var(--border)';
+  }
+}
+function secteurToggleAQualif() {
+  secteurAQualif = !secteurAQualif;
+  secteurAQualifBtnSync();
+  renderSecteur();
+}
+window.secteurToggleAQualif = secteurToggleAQualif;
 let sctFusSrc = null, sctFusPick = null;   // etat de la modale de rapprochement
 
 // Agence -> [fichier light secteur, id secteur pour les assignments KV].
@@ -2037,6 +2060,8 @@ async function loadSecteurData() {
   const tt = document.getElementById('secteur-titre');
   if (tt) tt.textContent = '🗺 Secteur Prospector — ' + secName;
   secteurStrictBtnSync();           // bouton "Ventes strictes" ON par défaut
+  secteurHrActifBtnSync();          // bouton "Hors-RNC actifs" ON par defaut
+  secteurAQualifBtnSync();          // bouton "A qualifier" sync (OFF par defaut)
   try {
     const r = await fetch(`${GITHUB_RAW}/data/${secFile}?t=${Date.now()}`);
     if (!r.ok) throw new Error('json');
@@ -2093,6 +2118,25 @@ function secteurSetAssign(key, field, val) {
 }
 window.secteurSetAssign = secteurSetAssign;
 
+// Memoire des IRIS ouverts cross-render. null = comportement par defaut
+// (1er IRIS auto-ouvert). Set vide = aucun IRIS ouvert (preservation user).
+// Cle = code_iris (pas l'id DOM 'sct-iN' qui peut changer avec le tri).
+let secteurOpenIris = null;
+
+function secteurCaptureOpenIris() {
+  // Avant chaque re-render, scanne le DOM et capture les codes IRIS ouverts.
+  const s = new Set();
+  let seen = false;
+  document.querySelectorAll('.sct-iris-body').forEach(body => {
+    seen = true;
+    if (body.style.display !== 'none') {
+      const code = body.getAttribute('data-iris-code');
+      if (code) s.add(code);
+    }
+  });
+  if (seen) secteurOpenIris = s;   // 1ere capture : on switche en mode memo
+}
+
 function secteurToggle(id) {
   const el = document.getElementById(id);
   if (!el) return;
@@ -2100,6 +2144,15 @@ function secteurToggle(id) {
   el.style.display = open ? 'none' : 'block';
   const h = document.getElementById(id + '-h');
   if (h) h.textContent = open ? '▶' : '▼';
+  // Si on toggle un IRIS body (pas un ilot), MAJ le memo cross-render
+  if (el.classList && el.classList.contains('sct-iris-body')) {
+    const code = el.getAttribute('data-iris-code');
+    if (code) {
+      if (secteurOpenIris == null) secteurOpenIris = new Set();
+      if (open) secteurOpenIris.delete(code);   // on referme
+      else secteurOpenIris.add(code);           // on ouvre
+    }
+  }
 }
 window.secteurToggle = secteurToggle;
 
@@ -2170,6 +2223,9 @@ function sctBadge(cls) {
 function renderSecteur() {
   const d = secteurData, tree = document.getElementById('secteur-tree');
   if (!d) return;
+  // Capturer les IRIS actuellement ouverts AVANT le re-render pour les
+  // restaurer apres (evite la fermeture lors d'une qualif/changement filtre).
+  secteurCaptureOpenIris();
   // Recherche traitée comme FILTRE DE DONNÉES (pas masquage DOM) : tous
   // les agrégats (header + IRIS + îlots) se recalculent sur l'ensemble
   // réellement affiché, pour toute combinaison recherche × Sans-logements
@@ -2258,6 +2314,14 @@ function renderSecteur() {
       const horsRnc = !coproByCle[a.cle] && !a.numero_immatriculation;
       const as = secteurAssign[a.cle] || {};
       if (!(horsRnc && as.type === 'mono')) return;
+    }
+    if (secteurAQualif) {            // filtre "A qualifier" (qualif vide/absente)
+      // N'affiche que les adresses HORS-RNC sans qualification posee
+      // (as.type null/undefined/''). Cumulable avec Mono (intersection vide
+      // par definition : Mono => type='mono', A qualifier => type vide).
+      const horsRnc = !coproByCle[a.cle] && !a.numero_immatriculation;
+      const as = secteurAssign[a.cle] || {};
+      if (!(horsRnc && (!as.type || as.type === ''))) return;
     }
     const ci = a.code_iris || '_nd';
     (parIris[ci] = parIris[ci] || []).push(a);
@@ -2537,12 +2601,19 @@ function renderSecteur() {
       + (I && I.part_proprietaires != null ? ` · ${I.part_proprietaires}% propr.` : '')
       + (I && I.part_locataires != null ? ` · ${I.part_locataires}% locat.` : '')
       + `</span> ${irisTaux != null ? sctBadge(sctClassAnnuel(irisTaux)) : ''}`;
+    // Etat ouvert IRIS : memoire cross-render si presente, sinon defaut
+    // (1er IRIS auto-ouvert). On utilise le code_iris (ci) comme cle pour
+    // resister au re-tri de la liste ordre.
+    const isOpen = (secteurOpenIris != null)
+      ? secteurOpenIris.has(ci)
+      : (ii === 0);
     html += `<div class="sct-iris" style="margin-bottom:10px;border-top:2px solid var(--border);">`
       + `<div style="cursor:pointer;font-weight:700;padding:8px 0;background:rgba(190,175,135,.14);`
       + `display:flex;align-items:center;gap:10px;" onclick="secteurToggle('${idI}')">`
-      + `<span><span id="${idI}-h">${ii === 0 ? '▼' : '▶'}</span> ${nomIris}</span>`
+      + `<span><span id="${idI}-h">${isOpen ? '▼' : '▶'}</span> ${nomIris}</span>`
       + `<span style="flex:1;"></span>${irisStats}</div>`
-      + `<div id="${idI}" class="sct-iris-body" style="display:${ii === 0 ? 'block' : 'none'};">${inner}</div></div>`;
+      + `<div id="${idI}" class="sct-iris-body" data-iris-code="${esc(ci)}"`
+      + ` style="display:${isOpen ? 'block' : 'none'};">${inner}</div></div>`;
   });
   // Header = somme des IRIS = somme des adresses visibles (même base :
   // dénominateur denomAff, numérateur toutes ventes effTot).
