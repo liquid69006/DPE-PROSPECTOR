@@ -91,7 +91,8 @@
     "_correctif_village_suffren_efgh_optionC": "VILLAGE SUFFREN EFGH (AB7861529 GERARD SAFAR 115 lots hab, ancre 7 PRESLES, bgid QNW4) - completion Option C terrain user 2026-05-21. A) Re-fuse 2/8/14 PASSAGE GUESCLIN vers 7 PRESLES (3 bgids QX4P/PS7Y/TW35 tous sur parcelle BDNB 75115000DI0016 = ref_cad_1 RNC AB7861529 ; syndic GERARD SAFAR cadastre match ; pattern Fondary/Croix-Nivert copro multi-parcelles avec BDNB mappant 1 seule parcelle). B) 11 PRESLES correction fusion 13 (AB3028107 SOPAGI Tertiaire) -> 7 PRESLES (AB7861529) + correction bgid 4EHZ -> QNW4 (selon BDNB pivot QNW4 l_libelle_adr inclut '11 Rue De Presles') ; retire 11 de chain 13. C) INJECT label-only 5/9 PRESLES + 16/18/20 PASSAGE GUESCLIN (5 facades BAN absentes) MIRROR bgid QNW4. D) Ancre 7 PRESLES _fusion_auto_sources 0->9 + label '5/7/9/11 RUE PRESLES / 2/8/14/16/18/20 PASSAGE GUESCLIN'. Triple confirmation : RNC live AB7861529 nombre_parcelles=3 (DI/0016+DI/0010+DI/0003) + BDNB pivot QNW4 l_libelle_adr=7 facades + BDNB rel_RNC QNW4 = AB7861529 tres fiable. Parc 28886->28844 (-42 = correction phantom TW35 -42 logements, BDNB incluait deja faussement 14 GUESCLIN apparte BDNB hors-RNC alors que AB7861529 RNC autoritaire couvre l'ensemble via ref_cad multi-parcelles). 13 PRESLES AB3028107 (22 lots) garde son ancre propre + ses ventes (5 vlog), juste perd sa source '11|RUE|PRESLES' erronee. Source-of-truth ALIAS_RNC + correction bgid 11 PRESLES (4EHZ->QNW4) a porter make_light_motte_picquet.py.",
     "_correctif_commerce_theatre": "55 RUE DU COMMERCE -> 115 RUE DU THEATRE (AC9381674 'SDC 115 RUE DU THEATRE', 62 lots tot / 26 hab, FONCIA PARIS RIVE DROITE). Detecte par scan parcelle cadastrale 2026-05-21 (scan_horsrnc_parcelle_mp.py). Triple confirmation : BDNB pivot bgids ZC1A (55 Commerce) et NVZ2 (115 Theatre) sur MEME parcelle 75115000EF0065 et MEME annee 1913 ; AC9381674 ref_cad_1=75056115EF0065 UNIQUE ; syndic FONCIA PARIS RIVE DROITE IDENTIQUE des deux cotes. Voies parallles 15e arr (Commerce // Theatre) = pattern Fremicourt classique. Pattern ALIAS_RNC multi-voies (CAMBRONNE/ARMONIAL) : 55|RUE|COMMERCE (bgid ZC1A, 6 nb_log_bdnb, 3 vlog 'Tres actif') re-pointe vers 115|RUE|THEATRE avec adoption MIRROR bgid NVZ2. Label '55 RUE DU COMMERCE / 115 RUE DU THEATRE'. Parc 28844->28838 (-6) = dedup multi-bgid (les 6 BDNB de ZC1A etaient deja compris dans les 26 lots RNC qui couvrent NVZ2+ZC1A). 3 vlog DVF relocalises sous AC9381674. Source-of-truth a porter make_light : ALIAS_RNC += {'55|RUE|COMMERCE': '115|RUE|THEATRE'}.",
     "_correctif_alasseur_inject": "Copro RNC AJ6688972 ('SDC 6 RUE ALASSEUR', 36 lots tot / nb_lots_hab non renseigne RNC -> fallback total 36, syndic non renseigne, date_immat 2026-03-16 POSTERIEURE au snapshot) injectee dans coproprietes[] et attribuee a 6|RUE|ALASSEUR (bgid 9DSY, parcelle 75115000DH0016 unique, 1 bgid unique sur la parcelle). Confirmee par RNC live (ref_cad_1=75056115DH0016 unique, adresse_reference='6 Rue Alasseur 75015 Paris', periode AVANT_1949) + BDNB pivot 9DSY (l_libelle_adr=['6 Rue Alasseur'] unique, annee=1930). La SCI DU 6 RUE ALASSEUR (pre-immat) a probablement scinde en SDC en mars 2026 (1 vlog DVF 2025 = vente bloc preparatoire). Pattern INJECTION+ATTRIBUTION (clone fix_lowendal_suffren). Parc 28838->28858 (+20 = switch BDNB(16)->RNC(36 fallback total) sur bgid 9DSY, Sec 6 lots RNC prioritaires). Investiguer make_light : rafraichissement RNC snapshot a faire pour capter immatriculations post-snapshot (date_immat 2026-03-16).",
-    "_correctif_propag_immat": "104 adresses creees par fix_rnc_bdnb_attribution.py et fix_horsrnc_attribution.py (_bdnb_match in {'immat_fix','immat_horsrnc_fix'}) repare en place : propagation numero_immatriculation + nb_lots_habitation + syndic (si manquant) + recalcul taux_rotation/classement depuis la copro liee par cle_adresse. Parc strictement neutre. Source-of-truth deja portee dans fix_rnc_bdnb_attribution.py et fix_horsrnc_attribution.py (construire_ligne enrichie). 104 cas avant, 0 apres."
+    "_correctif_propag_immat": "104 adresses creees par fix_rnc_bdnb_attribution.py et fix_horsrnc_attribution.py (_bdnb_match in {'immat_fix','immat_horsrnc_fix'}) repare en place : propagation numero_immatriculation + nb_lots_habitation + syndic (si manquant) + recalcul taux_rotation/classement depuis la copro liee par cle_adresse. Parc strictement neutre. Source-of-truth deja portee dans fix_rnc_bdnb_attribution.py et fix_horsrnc_attribution.py (construire_ligne enrichie). 104 cas avant, 0 apres.",
+    "_correctif_jeanrey_doublons": "Lot MP 2 corrections (1 passe) : CORR1 Jean Rey Suffren (16+26 SUFFREN -> 24 SUFFREN AA2459444 JEAN REY HABITATION 346 lots, ATRIUM GESTION, parcelle DM/0044 ; chain transfer 18 SUFFREN deja fused vers 16 re-direct vers 24, label '20/22/24/26 SUFFREN + 16/18 SUFFREN HABITATION'). CORR2 doublons orthographiques : (a) 1||VILLA DE LA CROIX NIVERT -> 1||VILLA CROIX NIVERT (AB7934631, meme bgid CBNA, ALIAS 'DE') ; (b) cle_adresse rebind 4|VILLA|JUGE -> 4||VILLA JUGE (AE8291015, type voie vide -> renseigne) ; (c) cle_adresse rebind 103|QUAI|BRANLY -> 103|QUAI|JACQUES CHIRAC (AD0591701, renommage quai 2017). Parc 28858->28875 (+17). Source-of-truth a porter make_light_motte_picquet.py : ALIAS_RNC + correction cle_adresse snapshot RNC."
   },
   "iris": [
     {
@@ -13809,7 +13810,7 @@
       "longitude": 2.289241,
       "latitude": 48.85473,
       "code_iris": "751155918",
-      "cle_adresse": "103|QUAI|BRANLY",
+      "cle_adresse": "103|QUAI|JACQUES CHIRAC",
       "nb_lots_total": 83,
       "nb_lots_habitation": 51,
       "nb_lots_habitation_rnc": 51,
@@ -17002,7 +17003,7 @@
       "longitude": 2.29331,
       "latitude": 48.849544,
       "code_iris": "751155910",
-      "cle_adresse": "4|VILLA|JUGE",
+      "cle_adresse": "4||VILLA JUGE",
       "nb_lots_total": 89,
       "nb_lots_habitation": 45,
       "nb_lots_habitation_rnc": 45,
@@ -19437,20 +19438,19 @@
       "classement_rotation": "Actif",
       "taux_rotation_logement": 0.0,
       "classement_rotation_logement": "Figé",
-      "nb_log_bdnb": 171,
-      "annee_construction": 1965,
-      "classe_dpe": "D",
-      "type_batiment": "immeuble",
-      "type_chauffage": "reseau de chaleur",
-      "batiment_groupe_id": "bdnb-bg-S2NN-CHNN-RWYU",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "16/18 AVENUE SUFFREN",
-      "_fusion_auto_sources": [
-        "18|AVENUE|SUFFREN"
-      ],
+      "nb_log_bdnb": 13,
+      "annee_construction": 1910,
+      "classe_dpe": "F",
+      "type_batiment": "appartement",
+      "type_chauffage": "electricite",
+      "batiment_groupe_id": "bdnb-bg-FKPP-SS1D-XCHD",
+      "_bdnb_match": "immat",
+      "_fusion_auto_sources": null,
       "_taux_logement_src": "filtre_habitation",
-      "usage_principal_bdnb": "Tertiaire",
-      "_usage_bdnb_src": "snapshot"
+      "usage_principal_bdnb": "Résidentiel collectif",
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "24|AVENUE|SUFFREN"
     },
     {
       "cle": "17|RUE|GRAMME",
@@ -21636,10 +21636,13 @@
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-FKPP-SS1D-XCHD",
       "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "20/22/24 AVENUE SUFFREN",
+      "_fusion_auto_label": "20/22/24/26 SUFFREN + 16/18 SUFFREN (JEAN REY HABITATION)",
       "_fusion_auto_sources": [
+        "16|AVENUE|SUFFREN",
+        "18|AVENUE|SUFFREN",
         "20|AVENUE|SUFFREN",
-        "22|AVENUE|SUFFREN"
+        "22|AVENUE|SUFFREN",
+        "26|AVENUE|SUFFREN"
       ],
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
@@ -34977,10 +34980,13 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-CBNA-GUEP-571G",
-      "_bdnb_match": "gps",
+      "_bdnb_match": "immat",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "1||VILLA CROIX NIVERT",
+      "_fusion_auto_sources": null
     },
     {
       "cle": "10|RUE|CARRIER BELLEUSE",
@@ -47693,7 +47699,7 @@
       "batiment_groupe_id": "bdnb-bg-S2NN-CHNN-RWYU",
       "_bdnb_match": "num_voie",
       "_fusion_auto": true,
-      "_fusion_cible": "16|AVENUE|SUFFREN",
+      "_fusion_cible": "24|AVENUE|SUFFREN",
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Tertiaire",
       "_usage_bdnb_src": "snapshot"
@@ -48482,8 +48488,8 @@
       "sci_proprietaire": "oui",
       "sci_nom": "LES BRETONS",
       "sci_siren": "443877881",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "ATRIUM GESTION PARIS 15",
+      "_syndic_src": "rnc_grp",
       "numero_immatriculation": null,
       "nb_lots_habitation": null,
       "ventes_par_an": {
@@ -48498,16 +48504,19 @@
       "classement_rotation": "Modere",
       "taux_rotation_logement": 0.0,
       "classement_rotation_logement": "Figé",
-      "nb_log_bdnb": 16,
-      "annee_construction": 1920,
-      "classe_dpe": "E",
+      "nb_log_bdnb": 13,
+      "annee_construction": 1910,
+      "classe_dpe": "F",
       "type_batiment": "appartement",
-      "type_chauffage": "gaz",
-      "batiment_groupe_id": "bdnb-bg-KHLY-GJ8T-NJN8",
-      "_bdnb_match": "num_voie",
+      "type_chauffage": "electricite",
+      "batiment_groupe_id": "bdnb-bg-FKPP-SS1D-XCHD",
+      "_bdnb_match": "immat",
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "24|AVENUE|SUFFREN",
+      "_fusion_auto_sources": null
     },
     {
       "cle": "26|RUE|DANIEL STERN",
@@ -49796,10 +49805,10 @@
       "sci_proprietaire": "oui",
       "sci_nom": "SCI VILLA JUGE",
       "sci_siren": "953814779",
-      "syndic": null,
-      "_syndic_src": null,
-      "numero_immatriculation": null,
-      "nb_lots_habitation": null,
+      "syndic": "SOCIETE D ETUDES ET DE REALISATION DE GESTION IMMOBILIERE DE CONSTRUCTION",
+      "_syndic_src": "rnic_live",
+      "numero_immatriculation": "AE8291015",
+      "nb_lots_habitation": 45,
       "ventes_par_an": {},
       "nb_ventes_total": 0,
       "ventes_par_an_logement": {},
@@ -49814,7 +49823,7 @@
       "type_batiment": "immeuble",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-MTHY-2HT6-PAEZ",
-      "_bdnb_match": "num_voie",
+      "_bdnb_match": "immat",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot"
@@ -52672,8 +52681,8 @@
       "sci_siren": "",
       "syndic": "IMODAM",
       "_syndic_src": "cadastre",
-      "numero_immatriculation": null,
-      "nb_lots_habitation": null,
+      "numero_immatriculation": "AD0591701",
+      "nb_lots_habitation": 51,
       "ventes_par_an": {},
       "nb_ventes_total": 0,
       "ventes_par_an_logement": {},
@@ -52688,7 +52697,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "reseau de chaleur",
       "batiment_groupe_id": "bdnb-bg-XMXX-J21Q-MGSS",
-      "_bdnb_match": "num_voie",
+      "_bdnb_match": "immat",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot"
@@ -67038,7 +67047,11 @@
       "numero_immatriculation": "AB7934631",
       "nb_lots_habitation": 21,
       "taux_rotation": 0.0,
-      "classement_rotation": "Figé"
+      "classement_rotation": "Figé",
+      "_fusion_auto_sources": [
+        "1||VILLA DE LA CROIX NIVERT"
+      ],
+      "_fusion_auto_label": "1 VILLA (DE LA) CROIX NIVERT (ALIAS DE)"
     },
     {
       "cle": "20B|AVENUE|LOWENDAL",
