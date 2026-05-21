@@ -42,6 +42,7 @@ uniquement. Pas d'auto-fusion massive.
 | **INJECT_LABEL_ONLY** | adresse BAN absente snapshot, injectée minimaliste fused vers ancre | fix_armonial_8cepre |
 | **HYBRIDE Sisley** (3-en-1) | INJECT ancre + RE-POINT orphs + correction bgid | fix_parc_sisley, fix_chasseloup_suffren |
 | **Détachement** (cleanup) | retrait d'adresses faussement rattachées à un grand ensemble | fix_armonial_pair_detach |
+| **INVERSION_ANCRE_RNC** | inversion ancre/fused quand make_light a choisi par DVF/GPS au lieu de la `cle_adresse` RNC déclarée dans `coproprietes[]` | fix_federation_86_village_suffren |
 
 Chaque correction génère un commit avec script `scripts/fix_*.py`,
 backup `.preX.bak`, métadonnée `_correctif_X` dans le JSON light, et
