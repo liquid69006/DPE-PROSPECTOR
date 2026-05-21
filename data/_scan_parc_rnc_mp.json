@@ -42,5 +42,773 @@
  "75056115CW0058": [],
  "75056115CY0047": [],
  "75056107CS0019": [],
- "75056115DJ0019": []
+ "75056115DJ0019": [],
+ "75056115DM0044": [
+  {
+   "immat": "AA2459444",
+   "nom": "SDC JEAN REY SUFFREN HABITATION",
+   "syndic": "",
+   "adresse": "24 av de suffren 75015 Paris",
+   "nb_lots_total": "346",
+   "nb_lots_habit": null,
+   "ref_match_col": "reference_cadastrale_1"
+  },
+  {
+   "immat": "AA2950632",
+   "nom": "Syndicat Principal Jean Rey Suffren",
+   "syndic": "",
+   "adresse": "20 av de suffren 75015 Paris",
+   "nb_lots_total": "973",
+   "nb_lots_habit": null,
+   "ref_match_col": "reference_cadastrale_1"
+  },
+  {
+   "immat": "AA2952042",
+   "nom": "SDC du 20 avenue de Suffren - Parkings BC",
+   "syndic": "",
+   "adresse": "20 av de suffren 75015 Paris",
+   "nb_lots_total": "146",
+   "nb_lots_habit": null,
+   "ref_match_col": "reference_cadastrale_1"
+  }
+ ],
+ "75056115DL0059": [],
+ "75056115DH0048": [],
+ "75056115DH0047": [],
+ "75056115DF0056": [
+  {
+   "immat": "AF5995063",
+   "nom": "SDC 164 Boulevard de Grenelle 75015 PARIS",
+   "syndic": "",
+   "adresse": "164 bd de grenelle 75015 Paris",
+   "nb_lots_total": "3",
+   "nb_lots_habit": null,
+   "ref_match_col": "reference_cadastrale_1"
+  }
+ ],
+ "75056115DL0058": [],
+ "75056115DL0085": [],
+ "75056115DL0013": [
+  {
+   "immat": "AA3469731",
+   "nom": "SDC 60 FEDERATION",
+   "syndic": "",
+   "adresse": "60 r de la federation 75015 Paris",
+   "nb_lots_total": "5",
+   "nb_lots_habit": null,
+   "ref_match_col": "reference_cadastrale_1"
+  },
+  {
+   "immat": "AD9092834",
+   "nom": "SDC 64-66-68-70 Fédération",
+   "syndic": "",
+   "adresse": "64 r de la federation 75015 Paris",
+   "nb_lots_total": "184",
+   "nb_lots_habit": null,
+   "ref_match_col": "reference_cadastrale_1"
+  },
+  {
+   "immat": "AF4396875",
+   "nom": "SDC Fédération",
+   "syndic": "",
+   "adresse": "62 r de la federation 75015 Paris",
+   "nb_lots_total": "22",
+   "nb_lots_habit": null,
+   "ref_match_col": "reference_cadastrale_1"
+  }
+ ],
+ "75056115CY0010": [
+  {
+   "immat": "AB7934631",
+   "nom": "1 VILLA CROIX NIVERT",
+   "syndic": "",
+   "adresse": "1 vla croix nivert 75015 Paris",
+   "nb_lots_total": "51",
+   "nb_lots_habit": null,
+   "ref_match_col": "reference_cadastrale_1"
+  }
+ ],
+ "75056107BO0007": [],
+ "75056115CZ0047": [],
+ "75056115DJ0087": [],
+ "75056115CX0066": [
+  {
+   "immat": "AH1602424",
+   "nom": "PARIS (75015) – 28 boulevard Garibaldi",
+   "syndic": "",
+   "adresse": "28 bd garibaldi 75015 Paris",
+   "nb_lots_total": "27",
+   "nb_lots_habit": null,
+   "ref_match_col": "reference_cadastrale_2"
+  }
+ ],
+ "75056107CG0020": [],
+ "75056115EF0100": [],
+ "75056115DL0056": [],
+ "75056115DO0050": [],
+ "75056115EF0102": [],
+ "75056115DH0078": [],
+ "75056115DH0049": [],
+ "75056115DH0043": [],
+ "75056115DJ0070": [
+  {
+   "immat": "AE8291015",
+   "nom": "4/6 VILLA JUGE 75015 PARIS",
+   "syndic": "",
+   "adresse": "4/6 vla juge 75015 Paris",
+   "nb_lots_total": "89",
+   "nb_lots_habit": null,
+   "ref_match_col": "reference_cadastrale_1"
+  }
+ ],
+ "75056115DF0042": [],
+ "75056115EG0002": [],
+ "75056115DE0074": [],
+ "75056115DG0106": [],
+ "75056107CG0001": [],
+ "75056115DH0010": [],
+ "75056115CY0024": [],
+ "75056115DH0006": [],
+ "75056115DJ0025": [],
+ "75056115DG0109": [],
+ "75056115DH0082": [],
+ "75056115DG0101": [],
+ "75056115DE0032": [],
+ "75056115CX0050": [
+  {
+   "immat": "AC3292430",
+   "nom": "SDC 11 RUE CLOUET",
+   "syndic": "",
+   "adresse": "11 r clouet 75015 PARIS",
+   "nb_lots_total": "29",
+   "nb_lots_habit": null,
+   "ref_match_col": "reference_cadastrale_1"
+  }
+ ],
+ "75056115DF0023": [],
+ "75056115DG0066": [],
+ "75056115DE0059": [],
+ "75056115DE0050": [],
+ "75056115DL0055": [
+  {
+   "immat": "AB6181168",
+   "nom": "DUPLEIX PARKING 5/11 G. B. SHAW",
+   "syndic": "",
+   "adresse": "5 r george bernard shaw 75015 Paris",
+   "nb_lots_total": "145",
+   "nb_lots_habit": null,
+   "ref_match_col": "reference_cadastrale_1"
+  }
+ ],
+ "75056115EG0038": [],
+ "75056115DN0002": [],
+ "75056115DG0095": [],
+ "75056115DO0022": [
+  {
+   "immat": "AD0591701",
+   "nom": "103 quai Branly 75015 Paris",
+   "syndic": "",
+   "adresse": "103 qu branly 75015 Paris",
+   "nb_lots_total": "83",
+   "nb_lots_habit": null,
+   "ref_match_col": "reference_cadastrale_1"
+  }
+ ],
+ "75056115DE0068": [],
+ "75056107CG0004": [],
+ "75056115DH0005": [],
+ "75056115DF0039": [],
+ "75056115DL0061": [],
+ "75056115DJ0069": [],
+ "75056115DH0074": [],
+ "75056115CY0101": [],
+ "75056115DH0067": [],
+ "75056115DL0050": [],
+ "75056115DL0070": [],
+ "75056115DE0037": [],
+ "75056115DG0059": [],
+ "75056115EF0062": [],
+ "75056107BO0028": [],
+ "75056115DJ0058": [],
+ "75056115DF0015": [],
+ "75056115DF0017": [],
+ "75056115DF0016": [],
+ "75056115DF0018": [],
+ "75056115DF0019": [],
+ "75056115CW0025": [
+  {
+   "immat": "AD4294989",
+   "nom": "15 rue Bouchut",
+   "syndic": "",
+   "adresse": "15 r bouchut 75015 Paris",
+   "nb_lots_total": "72",
+   "nb_lots_habit": null,
+   "ref_match_col": "reference_cadastrale_1"
+  }
+ ],
+ "75056115CZ0031": [],
+ "75056115DF0045": [],
+ "75056107BO0027": [],
+ "75056115DF0046": [],
+ "75056115CX0064": [],
+ "75056107CG0006": [],
+ "75056115DF0151": [
+  {
+   "immat": "AG3379153",
+   "nom": "19/21 rue fremicourt 75015 PARIS",
+   "syndic": "",
+   "adresse": "19 r fremicourt 75015 Paris",
+   "nb_lots_total": "70",
+   "nb_lots_habit": null,
+   "ref_match_col": "reference_cadastrale_1"
+  }
+ ],
+ "75056115DH0084": [],
+ "75056115DH0026": [],
+ "75056115DF0004": [],
+ "75056115DL0054": [],
+ "75056115DH0069": [],
+ "75056115DO0045": [],
+ "75056115DG0061": [],
+ "75056115DF0053": [],
+ "75056115DF0131": [],
+ "75056115CZ0054": [],
+ "75056115DF0026": [
+  {
+   "immat": "AB9945825",
+   "nom": "16 rue de l'Avre",
+   "syndic": "",
+   "adresse": "16 r de l'avre 75015 Paris",
+   "nb_lots_total": "41",
+   "nb_lots_habit": null,
+   "ref_match_col": "reference_cadastrale_1"
+  }
+ ],
+ "75056115DP0010": [
+  {
+   "immat": "AI8302572",
+   "nom": "16 RUE DESAIX 75015 PARIS",
+   "syndic": "",
+   "adresse": "16 Rue Desaix 75015 Paris",
+   "nb_lots_total": "158",
+   "nb_lots_habit": null,
+   "ref_match_col": "reference_cadastrale_1"
+  }
+ ],
+ "75056115DJ0094": [
+  {
+   "immat": "AJ6533038",
+   "nom": "SDC 17 RUE FALLEMPIN PARIS 15",
+   "syndic": "",
+   "adresse": "17 Rue Fallempin 75015 Paris",
+   "nb_lots_total": "10",
+   "nb_lots_habit": null,
+   "ref_match_col": "reference_cadastrale_1"
+  }
+ ],
+ "75056115DL0051": [],
+ "75056115DL0052": [],
+ "75056115DG0062": [],
+ "75056115DL0060": [],
+ "75056107CF0017": [],
+ "75056115CY0027": [],
+ "75056115DL0057": [],
+ "75056115DH0009": [],
+ "75056115DI0007": [],
+ "75056107CF0027": [],
+ "75056115DM0019": [],
+ "75056115DE0045": [],
+ "75056115DO0031": [],
+ "75056115DE0034": [],
+ "75056115DL0069": [],
+ "75056115DO0047": [],
+ "75056115DO0048": [],
+ "75056115DL0092": [],
+ "75056115DH0055": [],
+ "75056115DH0070": [],
+ "75056115EH0063": [],
+ "75056115DE0021": [],
+ "75056115DG0112": [],
+ "75056115DG0076": [],
+ "75056107CF0009": [],
+ "75056115DL0017": [],
+ "75056115DF0143": [],
+ "75056115DJ0079": [],
+ "75056107CF0014": [],
+ "75056115DF0007": [],
+ "75056107CF0008": [],
+ "75056115DG0037": [],
+ "75056115DL0053": [],
+ "75056115DJ0050": [],
+ "75056115DM0003": [],
+ "75056107CG0022": [],
+ "75056115CZ0065": [],
+ "75056115CZ0068": [],
+ "75056115CZ0015": [],
+ "75056115CW0048": [],
+ "75056115DE0041": [],
+ "75056115DH0003": [],
+ "75056107CG0016": [],
+ "75056115DG0105": [],
+ "75056115DM0021": [],
+ "75056115DF0003": [],
+ "75056115DF0156": [],
+ "75056115DP0001": [],
+ "75056115CX0007": [],
+ "75056115DE0030": [],
+ "75056107BU0002": [],
+ "75056115DF0071": [],
+ "75056115CX0059": [],
+ "75056115DP0021": [],
+ "75056115DF0008": [
+  {
+   "immat": "AA5186549",
+   "nom": "sdc 39 rue letellier",
+   "syndic": "",
+   "adresse": "39 r letellier 75015 Paris",
+   "nb_lots_total": "25",
+   "nb_lots_habit": null,
+   "ref_match_col": "reference_cadastrale_1"
+  }
+ ],
+ "75056107CF0002": [],
+ "75056115DF0070": [
+  {
+   "immat": "AE2695062",
+   "nom": "38 RUE FREMICOURT",
+   "syndic": "",
+   "adresse": "38 r fremicourt 75015 Paris",
+   "nb_lots_total": "29",
+   "nb_lots_habit": null,
+   "ref_match_col": "reference_cadastrale_1"
+  }
+ ],
+ "75056107BO0038": [],
+ "75056115CX0053": [],
+ "75056115DI0010": [
+  {
+   "immat": "AB7861529",
+   "nom": "village suffren EFGH - MS192006",
+   "syndic": "",
+   "adresse": "7 r de presles 75015 Paris",
+   "nb_lots_total": "253",
+   "nb_lots_habit": null,
+   "ref_match_col": "reference_cadastrale_2"
+  }
+ ],
+ "75056115DF0135": [],
+ "75056115CX0061": [],
+ "75056107CF0004": [],
+ "75056107BO0053": [],
+ "75056115EF0071": [],
+ "75056115DE0055": [],
+ "75056115DF0031": [],
+ "75056107CF0001": [],
+ "75056115CW0009": [],
+ "75056115CY0029": [],
+ "75056115CZ0013": [
+  {
+   "immat": "AA3558004",
+   "nom": "4 RUE MARIO NIKIS",
+   "syndic": "",
+   "adresse": "4 r mario nikis 75015 Paris",
+   "nb_lots_total": "17",
+   "nb_lots_habit": null,
+   "ref_match_col": "reference_cadastrale_1"
+  }
+ ],
+ "75056115DH0038": [
+  {
+   "immat": "AC1472232",
+   "nom": "50 AVENUE DE LA MOTTE PICQUET",
+   "syndic": "",
+   "adresse": "50 av de la motte-picquet 75015 Paris",
+   "nb_lots_total": "56",
+   "nb_lots_habit": null,
+   "ref_match_col": "reference_cadastrale_1"
+  }
+ ],
+ "75056107CF0021": [],
+ "75056115EF0066": [],
+ "75056115DE0011": [],
+ "75056115DJ0003": [
+  {
+   "immat": "AC0256198",
+   "nom": "69 bd de Grenelle",
+   "syndic": "",
+   "adresse": "69 bd de grenelle 75015 Paris",
+   "nb_lots_total": "31",
+   "nb_lots_habit": null,
+   "ref_match_col": "reference_cadastrale_1"
+  }
+ ],
+ "75056115DL0012": [],
+ "75056107BU0031": [],
+ "75056115CW0013": [],
+ "75056107BO0005": [],
+ "75056115CX0065": [],
+ "75056115CZ0057": [],
+ "75056115DH0059": [],
+ "75056115DF0021": [],
+ "75056115DG0068": [],
+ "75056107CG0018": [],
+ "75056115DJ0075": [],
+ "75056115EG0032": [],
+ "75056107BU0047": [],
+ "75056115DH0052": [],
+ "75056115DJ0109": [],
+ "75056107BO0009": [],
+ "75056115DJ0002": [],
+ "75056115DH0072": [],
+ "75056115DE0001": [],
+ "75056115DF0123": [],
+ "75056115DF0014": [],
+ "75056115DH0029": [],
+ "75056115CW0069": [],
+ "75056115DJ0030": [],
+ "75056115DJ0032": [],
+ "75056115CX0001": [],
+ "75056115CW0019": [],
+ "75056107BO0036": [
+  {
+   "immat": "AA8587461",
+   "nom": "SDC 7 RUE ALBERT DE LAPPARENT",
+   "syndic": "",
+   "adresse": "7 r albert de lapparent 75007 Paris",
+   "nb_lots_total": "22",
+   "nb_lots_habit": null,
+   "ref_match_col": "reference_cadastrale_1"
+  }
+ ],
+ "75056115CX0051": [
+  {
+   "immat": "AA3471208",
+   "nom": "SDC 9 CLOUET",
+   "syndic": "",
+   "adresse": "9 Rue Clouet 75015 Paris",
+   "nb_lots_total": "27",
+   "nb_lots_habit": null,
+   "ref_match_col": "reference_cadastrale_1"
+  }
+ ],
+ "75056115DL0021": [],
+ "75056115DF0022": [],
+ "75056115CZ0033": [],
+ "75056115CW0067": [],
+ "75056115DJ0035": [],
+ "75056115CX0004": [],
+ "75056115CX0006": [],
+ "75056115DH0001": [],
+ "75056115DF0115": [],
+ "75056115DF0114": [],
+ "75056115DF0113": [],
+ "75056107CG0003": [],
+ "75056115DH0018": [],
+ "75056115CZ0044": [],
+ "75056115DJ0099": [],
+ "75056115DL0022": [],
+ "75056115DE0064": [],
+ "75056115DE0051": [
+  {
+   "immat": "AA4713186",
+   "nom": "7 rue de castelnau",
+   "syndic": "",
+   "adresse": "7 r du general de castelnau 75015 Paris",
+   "nb_lots_total": "30",
+   "nb_lots_habit": null,
+   "ref_match_col": "reference_cadastrale_1"
+  }
+ ],
+ "75056115DH0013": [],
+ "75056115DH0012": [],
+ "75056115DH0014": [
+  {
+   "immat": "AA4866968",
+   "nom": "SDC 2 ter rue Alasseur",
+   "syndic": "",
+   "adresse": "2T r alasseur 75015 Paris",
+   "nb_lots_total": "40",
+   "nb_lots_habit": null,
+   "ref_match_col": "reference_cadastrale_1"
+  }
+ ],
+ "75056115DM0020": [],
+ "75056115DM0015": [
+  {
+   "immat": "AA8895435",
+   "nom": "SDC 3/5 RUE DU CAPITAINE SCOTT",
+   "syndic": "",
+   "adresse": "3 r du capitaine scott 75015 Paris",
+   "nb_lots_total": "77",
+   "nb_lots_habit": null,
+   "ref_match_col": "reference_cadastrale_1"
+  }
+ ],
+ "75056115DG0006": [],
+ "75056115DH0020": [],
+ "75056115EG0057": [],
+ "75056115CW0023": [],
+ "75056115DJ0103": [],
+ "75056115DG0054": [],
+ "75056115DH0024": [],
+ "75056115CZ0043": [],
+ "75056115EG0059": [],
+ "75056115EG0054": [],
+ "75056115EG0056": [],
+ "75056115EG0055": [],
+ "75056115DP0028": [
+  {
+   "immat": "AB6094874",
+   "nom": "SDC 3 RUE SAINT SAENS",
+   "syndic": "",
+   "adresse": "3 r saint-saens 75015 Paris",
+   "nb_lots_total": "37",
+   "nb_lots_habit": null,
+   "ref_match_col": "reference_cadastrale_1"
+  }
+ ],
+ "75056115CZ0036": [],
+ "75056115CZ0011": [],
+ "75056115CZ0012": [],
+ "75056115CX0010": [
+  {
+   "immat": "AB7675259",
+   "nom": "32 RUE PERIGNON",
+   "syndic": "",
+   "adresse": "32 r perignon 75015 PARIS",
+   "nb_lots_total": "32",
+   "nb_lots_habit": null,
+   "ref_match_col": "reference_cadastrale_1"
+  }
+ ],
+ "75056107BO0050": [],
+ "75056115DO0010": [],
+ "75056115CW0057": [],
+ "75056115CW0056": [
+  {
+   "immat": "AB8862260",
+   "nom": "SDC 8 BIS RUE BARTHELEMY",
+   "syndic": "",
+   "adresse": "8B r barthelemy 75015 Paris",
+   "nb_lots_total": "34",
+   "nb_lots_habit": null,
+   "ref_match_col": "reference_cadastrale_1"
+  }
+ ],
+ "75056115DM0027": [],
+ "75056115DE0053": [
+  {
+   "immat": "AC0366161",
+   "nom": "3 rue du Gal Castelnau",
+   "syndic": "",
+   "adresse": "3 r du general de castelnau 75015 Paris",
+   "nb_lots_total": "15",
+   "nb_lots_habit": null,
+   "ref_match_col": "reference_cadastrale_1"
+  }
+ ],
+ "75056115DF0136": [],
+ "75056107CF0020": [],
+ "75056115CX0023": [],
+ "75056115CW0071": [],
+ "75056115CY0032": [],
+ "75056115DH0062": [
+  {
+   "immat": "AA8541740",
+   "nom": "SDC 11 PONDICHERY",
+   "syndic": "",
+   "adresse": "11 r de pondichery 75015 Paris",
+   "nb_lots_total": "15",
+   "nb_lots_habit": null,
+   "ref_match_col": "reference_cadastrale_1"
+  }
+ ],
+ "75056115DH0063": [
+  {
+   "immat": "AC8117780",
+   "nom": "11 bis rue de Pondichery",
+   "syndic": "",
+   "adresse": "11B r de pondichery 75015 Paris",
+   "nb_lots_total": "37",
+   "nb_lots_habit": null,
+   "ref_match_col": "reference_cadastrale_1"
+  }
+ ],
+ "75056115DH0086": [],
+ "75056115CW0090": [],
+ "75056115EF0069": [],
+ "75056115EF0070": [],
+ "75056107CS0007": [],
+ "75056115DG0090": [],
+ "75056115DE0043": [],
+ "75056107BU0037": [],
+ "75056115DO0009": [],
+ "75056115DH0045": [],
+ "75056115DG0077": [],
+ "75056107CS0012": [],
+ "75056107CS0011": [],
+ "75056115EG0067": [],
+ "75056107BU0033": [
+  {
+   "immat": "AH7248073",
+   "nom": "SDC 57 SUFFREN",
+   "syndic": "",
+   "adresse": "57 AVENUE DE SUFFREN",
+   "nb_lots_total": "84",
+   "nb_lots_habit": null,
+   "ref_match_col": "reference_cadastrale_1"
+  }
+ ],
+ "75056115EG0033": [
+  {
+   "immat": "AA1834670",
+   "nom": "SDC 63/65 RUE DU COMMERCE 75015 PARIS",
+   "syndic": "",
+   "adresse": "65 r du commerce 75015 Paris",
+   "nb_lots_total": "73",
+   "nb_lots_habit": null,
+   "ref_match_col": "reference_cadastrale_1"
+  }
+ ],
+ "75056115CW0092": [
+  {
+   "immat": "AA1851328",
+   "nom": "9 BIS RUE PERIGNON",
+   "syndic": "",
+   "adresse": "9B r perignon 75015 Paris",
+   "nb_lots_total": "55",
+   "nb_lots_habit": null,
+   "ref_match_col": "reference_cadastrale_1"
+  }
+ ],
+ "75056115DJ0043": [
+  {
+   "immat": "AA2561801",
+   "nom": "SDC 4BIS RUE VIOLET",
+   "syndic": "",
+   "adresse": "4B r violet 75015 Paris",
+   "nb_lots_total": "37",
+   "nb_lots_habit": null,
+   "ref_match_col": "reference_cadastrale_1"
+  }
+ ],
+ "75056115DG0055": [],
+ "75056115DH0057": [],
+ "75056115DH0056": [
+  {
+   "immat": "AA3229176",
+   "nom": "SDC 9 rue Général Larminat",
+   "syndic": "",
+   "adresse": "9 r du general de larminat 75015 Paris",
+   "nb_lots_total": "35",
+   "nb_lots_habit": null,
+   "ref_match_col": "reference_cadastrale_1"
+  }
+ ],
+ "75056115CZ0051": [],
+ "75056115DG0053": [
+  {
+   "immat": "AA4710455",
+   "nom": "15 bis rue Violet",
+   "syndic": "",
+   "adresse": "15B r violet 75015 Paris",
+   "nb_lots_total": "53",
+   "nb_lots_habit": null,
+   "ref_match_col": "reference_cadastrale_1"
+  }
+ ],
+ "75056115CX0030": [],
+ "75056115CW0024": [],
+ "75056115DM0029": [],
+ "75056115DH0021": [],
+ "75056115DJ0108": [],
+ "75056115DE0082": [],
+ "75056115CX0009": [
+  {
+   "immat": "AA9979246",
+   "nom": "SDC 32 BIS RUE PERIGNON",
+   "syndic": "",
+   "adresse": "32B r perignon 75015 Paris",
+   "nb_lots_total": "51",
+   "nb_lots_habit": null,
+   "ref_match_col": "reference_cadastrale_1"
+  }
+ ],
+ "75056115CX0024": [],
+ "75056107CS0013": [],
+ "75056115DG0014": [],
+ "75056115CW0082": [],
+ "75056107BO0051": [],
+ "75056107CG0017": [],
+ "75056115DE0086": [],
+ "75056115DE0052": [
+  {
+   "immat": "AC0121202",
+   "nom": "5 rue du General de Castelnau",
+   "syndic": "",
+   "adresse": "5 r du general de castelnau 75015 Paris",
+   "nb_lots_total": "32",
+   "nb_lots_habit": null,
+   "ref_match_col": "reference_cadastrale_1"
+  }
+ ],
+ "75056115CX0022": [
+  {
+   "immat": "AC0203398",
+   "nom": "156 bis avenue de suffren",
+   "syndic": "",
+   "adresse": "156B av de suffren 75015 Paris",
+   "nb_lots_total": "18",
+   "nb_lots_habit": null,
+   "ref_match_col": "reference_cadastrale_1"
+  }
+ ],
+ "75056115DE0013": [
+  {
+   "immat": "AC0274589",
+   "nom": "53 bis avenue de la Motte Picquet",
+   "syndic": "",
+   "adresse": "53B av de la motte-picquet 75015 Paris",
+   "nb_lots_total": "50",
+   "nb_lots_habit": null,
+   "ref_match_col": "reference_cadastrale_1"
+  }
+ ],
+ "75056115DP0027": [],
+ "75056115DH0008": [],
+ "75056107BO0008": [],
+ "75056115DG0091": [
+  {
+   "immat": "AC6572218",
+   "nom": "Syndicat des Copropriétaires",
+   "syndic": "",
+   "adresse": "11B r tiphaine 75015 Paris",
+   "nb_lots_total": "15",
+   "nb_lots_habit": null,
+   "ref_match_col": "reference_cadastrale_1"
+  }
+ ],
+ "75056107CS0006": [],
+ "75056115DE0042": [],
+ "75056115DH0089": [],
+ "75056115DH0042": [],
+ "75056115CZ0003": [],
+ "75056115DF0073": [],
+ "75056115DF0095": [],
+ "75056115DI0004": [],
+ "75056115DG0015": [],
+ "75056107BO0014": [],
+ "75056115CX0020": [],
+ "75056115DE0046": [],
+ "75056115EG0007": [
+  {
+   "immat": "AI8720518",
+   "nom": "SDC 132 rue du Théâtre et 1 cité Thuré",
+   "syndic": "",
+   "adresse": "132 Rue du Théâtre 75015 Paris",
+   "nb_lots_total": "16",
+   "nb_lots_habit": null,
+   "ref_match_col": "reference_cadastrale_1"
+  }
+ ]
 }
