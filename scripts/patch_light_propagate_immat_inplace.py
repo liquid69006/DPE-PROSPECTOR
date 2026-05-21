@@ -33,7 +33,16 @@ SECTEUR = os.environ.get("SECTEUR", "motte_picquet")
 LIGHT = ROOT / "data" / f"secteur_{SECTEUR}_light.json"
 BAK = ROOT / "data" / f"secteur_{SECTEUR}_light.json.prepropagimmat.bak"
 
-TARGETS = {"immat_fix", "immat_horsrnc_fix"}
+# Markers historiques d'origine des broken adresses :
+#   - 'immat' / 'num_voie' / 'gps'    : pivot make_light de base (DL bug
+#     systemique : non-propagation sur cette branche)
+#   - 'immat_fix'                     : fix_rnc_bdnb_attribution.py
+#   - 'immat_horsrnc_fix'             : fix_horsrnc_attribution.py
+#   - 'immat_live_fix'                : fix_invisible_insecteur_bgids.py
+# Pas de filtre : on traite TOUTES les adresses broken (immat manquant
+# alors qu'une copro est liee via cle_adresse). La logique de step 4
+# protege les adresses deja OK.
+TARGETS = None  # None = pas de filtre marker
 
 
 def syn_ok(s):
@@ -95,13 +104,19 @@ def main():
     cibles, broken_before, broken_after = [], 0, 0
     propag_count = 0
     for a in patched["adresses"]:
-        if a.get("_bdnb_match") not in TARGETS:
+        if TARGETS is not None and a.get("_bdnb_match") not in TARGETS:
+            continue
+        if a.get("_fusion_auto"):
             continue
         cp = cbc_p.get(a["cle"])
         if not cp or not cp.get("numero_immatriculation"):
             continue
-        if not a.get("numero_immatriculation"):
-            broken_before += 1
+        # Cibles = adresses broken UNIQUEMENT (immat manquant cote adresse
+        # alors qu'une copro liee a une immat). Evite recompute taux sur
+        # les adresses OK (qui pourrait changer la valeur par effet bord).
+        if a.get("numero_immatriculation"):
+            continue
+        broken_before += 1
         cibles.append((a, cp))
 
     moves = []
@@ -182,7 +197,7 @@ def main():
     print(f"PATCH IN-PLACE PROPAGATION IMMAT - {SECTEUR} - "
           f"{'APPLY' if apply else 'DRY-RUN'}")
     print("=" * 80)
-    print(f"  Adresses ciblees (immat_fix + immat_horsrnc_fix avec cp lie) : "
+    print(f"  Adresses ciblees (broken : immat absent + cp lie via cle) : "
           f"{len(cibles)}")
     print(f"  Adresses BROKEN avant : {broken_before}")
     print(f"  Adresses modifiees    : {propag_count}")
