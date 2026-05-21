@@ -95,7 +95,8 @@
     "_correctif_pivot_reverse": "24 re-points pivot BDNB reverse (dauphine_lacassagne) - copros RNC dont le bgid (via cle_adresse) reclame des adresses BAN qui sont des orphelines DVF hors-RNC. Forward ratait ces cas (bgids light divergents). Pattern miroir-bgid (adoption MIRROR + fusion + absorption chaine). Parc 22267->22200 (-67) = retrait BDNB phantoms des orphs conforme PIPELINE Sec 6. Cas: 30|RUE|ETIENNE RICHERAND->28|RUE|ETIENNE RICHERAND(AA0358655); 8|RUE|CLAUDIUS PIONCHON->12|RUE|ST SIDOINE(AB2206571); 29|RUE|STE ANNE DE BARABAN->27|RUE|STE ANNE DE BARABAN(AA1700848); 11|RUE|RIBOUD->11|RUE|MAURICE FLANDIN(AA1456987); 16|RUE|ETIENNE RICHERAND->22|RUE|ST ANTOINE(AA1601434); 31|RUE|STE ANNE DE BARABAN->27|RUE|STE ANNE DE BARABAN(AA1700848); 47|RUE|PROFESSEUR PAUL SISLEY->16|RUE|GUILLOUD(AA7407463); 22|RUE|LOUIS JASSERON->18|RUE|LOUIS JASSERON(AB1570571); 4|RUE|JEAN RENOIR->38|RUE|JEANNE HACHETTE(AB6374961); 4|RUE|MARCEL PEHU->28|RUE|ST PHILIPPE(AC2574101); 51|AVENUE|GEORGES POMPIDOU->18|RUE|LOUIS JASSERON(AB1570571); 5|RUE|JEAN PIERRE LEVY->1|RUE|JEAN PIERRE LEVY(AB3947009); 6|RUE|METALLURGIE->9|RUE|DAVID(AB3954260); 10|RUE|TERNOIS->23|RUE|RIBOUD(AA1991660); 325|RUE|PAUL BERT->2|RUE|ST EUSEBE(AB0287870); 124|RUE|ANTOINE CHARIAL->11|RUE|ST EUSEBE(AB1809680); 11|RUE|DAVID->9|RUE|DAVID(AB3954260); 10|RUE|METALLURGIE->9|RUE|DAVID(AB3954260); 10|RUE|TEINTURIERS->104|RUE|BARABAN(AC1218890); 4|RUE|MAURICE FLANDIN->234|COURS|LAFAYETTE(AC8608747); 277|RUE|PAUL BERT->76|RUE|ANTOINE CHARIAL(AA1694256); 279|RUE|PAUL BERT->76|RUE|ANTOINE CHARIAL(AA1694256); 69|RUE|BARABAN->61|RUE|BARABAN(AB2515468); 24|AVENUE|LACASSAGNE->24||ET 24 BIS AVENUE LACASSAGNE(AG1556893)",
     "_correctif_multiparcelles_dl_lot2": "Lot 2 multi-parcelles DL : 2 cas re-points + 2 chains absorbees (orphelins -> ancre RNC declaree par ref_cadastrale_2/3, cf. audit_copros_multiparcelles.md v2). Pattern Fremicourt/Cambronne + propagation chaine (pattern fix_pivot_bdnb_lot). Skip AB4859047 (ancre 74 DAUPHINE absente) + AB2926236 (suspect commercial). Cas : AB4738928(1+chain=1); AD5268305(1+chain=1). Parc 22200->22168 (-32).",
     "_correctif_parc_sisley": "Cas hybride : injection ancre 74|RUE|DAUPHINE (pattern Suffren - absente d'adresses[] alors que copro AB4859047 'LE PARC SISLEY' existait dans coproprietes[]) + re-point 76 DAUPHINE + 6 PROF SISLEY (pattern Cambronne, adoption MIRROR). Bgid choisi ULHW-P9KF-JSGH (BDNB pivot dit l_libelle_adr=['76 DAUPHINE','6 PROF SISLEY'], annee 1988, 39 log matche AB4859047 39 lots). CORRECTION bgid 6 PROF SISLEY : passe de AM81 (= 5 PROF SISLEY autre bati 2010) vers ULHW (vrai bati AB4859047) - faux matching make_light. Parc 22168->22168 strictement neutre (switch BDNB->RNC sur ULHW, AM81 conserve via 5 PROF SISLEY). 4 v_log + 6 v_tot relocalises sous AB4859047 (REGIE FRANCOIS GOFFIN, mandat -> 2026-09-30).",
-    "_correctif_propag_immat": "530 adresses creees par fix_rnc_bdnb_attribution.py et fix_horsrnc_attribution.py (_bdnb_match in {'immat_fix','immat_horsrnc_fix'}) repare en place : propagation numero_immatriculation + nb_lots_habitation + syndic (si manquant) + recalcul taux_rotation/classement depuis la copro liee par cle_adresse. Parc strictement neutre. Source-of-truth deja portee dans fix_rnc_bdnb_attribution.py et fix_horsrnc_attribution.py (construire_ligne enrichie). 104 cas avant, 0 apres."
+    "_correctif_propag_immat": "530 adresses creees par fix_rnc_bdnb_attribution.py et fix_horsrnc_attribution.py (_bdnb_match in {'immat_fix','immat_horsrnc_fix'}) repare en place : propagation numero_immatriculation + nb_lots_habitation + syndic (si manquant) + recalcul taux_rotation/classement depuis la copro liee par cle_adresse. Parc strictement neutre. Source-of-truth deja portee dans fix_rnc_bdnb_attribution.py et fix_horsrnc_attribution.py (construire_ligne enrichie). 104 cas avant, 0 apres.",
+    "_correctif_dl_lot_catA": "Lot DL Cat-A (4/6 cas RE-FUSE Cambronne multi-voies) detecte par scan parcelle cadastrale 2026-05-21. Re-points : 22 GEORGES POMPIDOU -> 19 ANTOINE CHARIAL (AA4896338 IVORY PARK, meme syndic LESCUYER + meme annee 2008) ; 8 DOCTEUR REBATEL -> 14 BARA (AA2213171 LE CEDRE LUMIERE, multi-parcelle BK/0017+BK/0018 match exact 18+25=43 hab RNC) ; 9 GABILLOT -> 76 ETIENNE RICHERAND (AE9610940 LE SAINTE ANNE) ; 157 ANTOINE CHARIAL -> 10 FREDERIC MISTRAL (AA1991173 CLOS MISTRAL, WARN annee/usage divergent a verifier terrain). 2 cas ABORT isoles (106 BARABAN ancre absente, 59 BARABAN conflit cadastral). Parc 22168->22079 (-89). Source-of-truth a porter make_light DL : ALIAS_RNC += {22 POMPIDOU->19 CHARIAL, 8 REBATEL->14 BARA, 9 GABILLOT->76 RICHERAND, 157 CHARIAL->10 MISTRAL}."
   },
   "iris": [
     {
@@ -12783,7 +12784,11 @@
       "numero_immatriculation": "AA4896338",
       "nb_lots_habitation": 113,
       "taux_rotation": 4.4,
-      "classement_rotation": "Très actif"
+      "classement_rotation": "Très actif",
+      "_fusion_auto_sources": [
+        "22|AVENUE|GEORGES POMPIDOU"
+      ],
+      "_fusion_auto_label": "22 POMPIDOU / 19 ANTOINE CHARIAL (IVORY PARK)"
     },
     {
       "cle": "38|AVENUE|LACASSAGNE",
@@ -14326,17 +14331,15 @@
         "2025": 3
       },
       "nb_ventes_total": 11,
-      "nb_log_bdnb": 37,
+      "nb_log_bdnb": 36,
       "annee_construction": 2008,
-      "classe_dpe": "D",
+      "classe_dpe": "C",
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
-      "batiment_groupe_id": "bdnb-bg-Q4M4-7RMM-H4XQ",
-      "_bdnb_match": "num_voie",
+      "batiment_groupe_id": "bdnb-bg-H3HB-LX27-Y9ML",
+      "_bdnb_match": "immat",
       "_fusion_auto_label": "20/22 AVENUE GEORGES POMPIDOU",
-      "_fusion_auto_sources": [
-        "20|AVENUE|GEORGES POMPIDOU"
-      ],
+      "_fusion_auto_sources": null,
       "ventes_par_an_logement": {
         "2021": 2,
         "2022": 2,
@@ -14349,7 +14352,9 @@
       "classement_rotation_logement": "Très actif",
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "19|RUE|ANTOINE CHARIAL"
     },
     {
       "cle": "272|COURS|LAFAYETTE",
@@ -16062,7 +16067,8 @@
       "_bdnb_match": "immat",
       "_fusion_auto_label": "14/16 RUE BARA",
       "_fusion_auto_sources": [
-        "16|RUE|BARA"
+        "16|RUE|BARA",
+        "8|RUE|DOCTEUR REBATEL"
       ],
       "ventes_par_an_logement": {
         "2022": 0,
@@ -18353,17 +18359,15 @@
         "2025": 2
       },
       "nb_ventes_total": 6,
-      "nb_log_bdnb": 25,
-      "annee_construction": 1997,
-      "classe_dpe": "D",
+      "nb_log_bdnb": 18,
+      "annee_construction": 1996,
+      "classe_dpe": "C",
       "type_batiment": "appartement",
-      "type_chauffage": "electricite",
-      "batiment_groupe_id": "bdnb-bg-P2DG-Q47U-658U",
-      "_bdnb_match": "num_voie",
+      "type_chauffage": "gaz",
+      "batiment_groupe_id": "bdnb-bg-Z75R-1SB6-5E3F",
+      "_bdnb_match": "immat",
       "_fusion_auto_label": "2/8 RUE DOCTEUR REBATEL",
-      "_fusion_auto_sources": [
-        "2|RUE|DOCTEUR REBATEL"
-      ],
+      "_fusion_auto_sources": null,
       "ventes_par_an_logement": {
         "2021": 1,
         "2023": 1,
@@ -18375,7 +18379,9 @@
       "classement_rotation_logement": "Actif",
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "14|RUE|BARA"
     },
     {
       "cle": "8|RUE|TURBIL",
@@ -55930,20 +55936,20 @@
       "sci_proprietaire": "oui",
       "sci_nom": "SCI ROWBEN",
       "sci_siren": "838624641",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "LYMMOBILIER",
+      "_syndic_src": "rnc_grp",
       "ventes_par_an": {
         "2021": 3,
         "2023": 1
       },
       "nb_ventes_total": 4,
-      "nb_log_bdnb": 27,
-      "annee_construction": 2003,
+      "nb_log_bdnb": 13,
+      "annee_construction": 2002,
       "classe_dpe": "C",
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
-      "batiment_groupe_id": "bdnb-bg-QGFJ-1RLT-6ZEN",
-      "_bdnb_match": "num_voie",
+      "batiment_groupe_id": "bdnb-bg-N5KH-KNTD-H5XS",
+      "_bdnb_match": "immat",
       "ventes_par_an_logement": {
         "2021": 2,
         "2023": 1
@@ -55953,7 +55959,10 @@
       "classement_rotation_logement": "Modéré",
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "76|RUE|ETIENNE RICHERAND",
+      "_fusion_auto_sources": null
     },
     {
       "cle": "9|RUE|JEAN PIERRE LEVY",
@@ -57631,7 +57640,11 @@
       "numero_immatriculation": "AE9610940",
       "nb_lots_habitation": 41,
       "taux_rotation": 0.5,
-      "classement_rotation": "Figé"
+      "classement_rotation": "Figé",
+      "_fusion_auto_sources": [
+        "9|RUE|GABILLOT"
+      ],
+      "_fusion_auto_label": "9 GABILLOT / 76 ETIENNE RICHERAND (LE SAINTE ANNE)"
     },
     {
       "cle": "50B|RUE|ST ANTOINE",
