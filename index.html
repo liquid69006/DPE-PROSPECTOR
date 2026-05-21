@@ -2252,15 +2252,18 @@ function renderSecteur() {
   const USAGE_RESID = { 'Résidentiel collectif': 1, 'Résidentiel individuel': 1 };
   const usageResid = a => !!(a && USAGE_RESID[a.usage_principal_bdnb]);
 
-  // Parc EFFECTIF d'une adresse hors-RNC : 1 si qualifiee 'mono'
-  // (monopropriete via menu qualif, persiste KV), sinon nb_log_bdnb.
+  // Parc EFFECTIF d'une adresse hors-RNC selon la qualification posee :
+  //   - 'mono'    -> 1   (monopropriete, cellule "1 (X)")
+  //   - 'social'  -> 0   (logements sociaux : hors champ marche, cellule "0 (X)")
+  //   - 'bureaux' -> 0   (tertiaire : non-residentiel, cellule "0 (X)")
+  //   - sinon     -> nb_log_bdnb
   // S'applique UNIQUEMENT au calcul parc/taux des hors-RNC ; les
   // copros RNC tirent leur parc de nb_lots_habitation (non touche).
   // Couche d'affichage/calcul uniquement - nb_log_bdnb data inchange.
-  // L'affichage de la cellule logements montre "1 (X)" pour les mono.
   const getEffectiveLog = a => {
     const as = secteurAssign[a.cle] || {};
     if (as.type === 'mono') return 1;
+    if (as.type === 'social' || as.type === 'bureaux') return 0;
     return a.nb_log_bdnb;
   };
 
@@ -2353,9 +2356,14 @@ function renderSecteur() {
     // bâti hors-RNC résidentiel : retenir 1 valeur nb_log_bdnb par bgid
     // (1ere adresse résidentielle qui touche le bgid, first-wins). Si
     // cette adresse est qualifiée 'mono' -> valeur effective = 1.
+    // Garde eff > 0 : une adresse qualifiée 'social'/'bureaux' (eff=0)
+    // ne doit PAS zerouter le bgid -> on saute, laissant une autre
+    // adresse résidentielle du même bâti renseigner la valeur (sinon
+    // les autres adresses chuteraient sur 'adr:'+cle et double-compteraient).
     if (bg && !cp && usageResid(a) && a.nb_log_bdnb > 0
         && bgBdnbResid[bg] == null) {
-      bgBdnbResid[bg] = getEffectiveLog(a);
+      const eff = getEffectiveLog(a);
+      if (eff > 0) bgBdnbResid[bg] = eff;
     }
   });
   // RNC prioritaire ; fallback nb_log_bdnb UNIQUEMENT si bâti résidentiel
@@ -2539,9 +2547,10 @@ function renderSecteur() {
             + `${esc(synNm)}</a>`
           : '<span style="color:var(--text2);">—</span>';
 
-        // Cellule logements : RNC -> lots ; mono qualifie -> "1 (X)"
-        // (X = nb_log_bdnb original BDNB) ; hors-RNC residentiel -> X ;
-        // tertiaire/inconnu -> tiret.
+        // Cellule logements : RNC -> lots ; mono qualifie -> "1 (X)" ;
+        // social/bureaux qualifie -> "0 (X)" ou "0" (parc effectif nul) ;
+        // hors-RNC residentiel -> X ; tertiaire/inconnu -> tiret.
+        // (X = nb_log_bdnb original BDNB, conserve pour transparence.)
         let logCell;
         if (lots != null) {
           logCell = String(lots);
@@ -2550,6 +2559,16 @@ function renderSecteur() {
           logCell = `<span title="Monopropriete qualifiee (BDNB ${a.nb_log_bdnb} log)" `
             + `style="color:var(--text2);">1 `
             + `<small style="opacity:.7;">(${a.nb_log_bdnb})</small></span>`;
+        } else if (as.type === 'social' || as.type === 'bureaux') {
+          const lbl = TYPE_LABELS[as.type] || as.type;
+          if (a.nb_log_bdnb != null && a.nb_log_bdnb > 0) {
+            logCell = `<span title="${esc(lbl)} qualifie (BDNB ${a.nb_log_bdnb} log)" `
+              + `style="color:var(--text2);">0 `
+              + `<small style="opacity:.7;">(${a.nb_log_bdnb})</small></span>`;
+          } else {
+            logCell = `<span title="${esc(lbl)} qualifie" `
+              + `style="color:var(--text2);">0</span>`;
+          }
         } else if (denomAff != null) {
           logCell = `<span title="logements BDNB (hors RNC)" style="color:var(--text2);">${denomAff}</span>`;
         } else {
