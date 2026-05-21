@@ -89,7 +89,8 @@
     "_correctif_champaubert_6_village_suisse": "6 AVENUE DE CHAMPAUBERT re-fuse vers 78|AVENUE|SUFFREN (ancre VILLAGE SUISSE AA0529289 ATRIUM GESTION, 320 lots hab). Confirmation terrain user 2026-05-21. Pattern Cambronne / re-fusion manquante : 6 CHAMPAUBERT etait orpheline (bgid 2HH6-SVYC-U9D4 correct + nb_log_bdnb=233 match exact + syndic ATRIUM GESTION cadastre match exact) mais sans _fusion_auto. Triple confirmation : BDNB pivot bgid 2HH6 l_libelle_adr inclut '6 Avenue De Champaubert' (13 facades VILLAGE SUISSE) + BDNB rel_RNC 2HH6 = AA0529289 + AB8263709 (lot satellite mandat fini) + nb_log_bdnb 233 = match AA0529289 233. _syndic_src cadastre -> rnc_grp. Ancre 78 SUFFREN _fusion_auto_sources passe ['76 SUFFREN'] -> ['6 CHAMPAUBERT', '76 SUFFREN'] + label '76/78 AVENUE SUFFREN' -> '76/78 AVENUE SUFFREN / 6 AVENUE DE CHAMPAUBERT'. Parc 28957->28957 STRICTEMENT NEUTRE (bgid 2HH6 deja en bgRncLots via 78 SUFFREN + AA0529289, RNC autoritaire prioritaire PIPELINE Sec 6 ; le 6 CHAMPAUBERT avant fix n'apportait deja rien a bgBdnb car bgid 2HH6 deja occupe par RNC). 10 facades absentes (4/8/10/12/14 CHAMPAUBERT + 11/13/15/17 ALASSEUR + 76B SUFFREN) + correction bgid 9 ALASSEUR (ALS2 -> 2HH6) a traiter separement (bonus). ALIAS_RNC a porter : {'6|AVENUE|CHAMPAUBERT': '78|AVENUE|SUFFREN'} dans make_light_motte_picquet.py.",
     "_correctif_federation_86_village_suffren": "INVERSION ANCRE + INJECT label-only 84/90 FEDERATION. AB6092555 'LE VILLAGE SUFFREN D - MS11202' (GERARD SAFAR SAS, 110 lots hab / 208 tot) etait declaree dans coproprietes[] sur cle_adresse 86|RUE|FEDERATION mais l'ancre light etait 88|RUE|FEDERATION (make_light a privilegie le 88 par GPS/DVF : 10 mutations Dependance/commerce). Anomalie : 86 fused -> AB6092555 invisible dans bgRncLots, bgid 69B5 entre dans bgBdnb=181 (estim BDNB) au lieu de RNC=110 -> surevaluation +71. Fix : 86 devient ancre interne (86|RUE|FEDERATION sort de fusion), 88 fused vers 86 (_syndic_src cadastre->rnc_grp), INJECT 84+90 FEDERATION label-only (4 facades BAN bati 69B5 parcelle DI/0003 confirmees pivot BDNB), label '84/86/88/90 RUE FEDERATION' sur 86. Parc 28957->28886 (-71 = correction surevaluation, alignement nb_log_rnc BDNB = 110 = AB6092555). Triple confirmation : RNC live AB6092555 ancre 86 + BDNB pivot 69B5 l_libelle_adr 4 facades + libelle_principal_ban='86' (BAN officiel). VILLAGE SUFFREN ensemble = AB6092555 D (ce fix) + AB7861529 EFGH (7 PRESLES, copro distincte deja ancree non touchee). DVF 88 FEDERATION (10 vtot Dependance/commerce dont cession 8.55M EUR 2024) consolidees sous AB6092555 via fusion. Source-of-truth a porter make_light : force ancre = cle copro RNC + ALIAS_RNC '88/84/90 RUE FEDERATION' -> '86 RUE FEDERATION'.",
     "_correctif_village_suffren_efgh_optionC": "VILLAGE SUFFREN EFGH (AB7861529 GERARD SAFAR 115 lots hab, ancre 7 PRESLES, bgid QNW4) - completion Option C terrain user 2026-05-21. A) Re-fuse 2/8/14 PASSAGE GUESCLIN vers 7 PRESLES (3 bgids QX4P/PS7Y/TW35 tous sur parcelle BDNB 75115000DI0016 = ref_cad_1 RNC AB7861529 ; syndic GERARD SAFAR cadastre match ; pattern Fondary/Croix-Nivert copro multi-parcelles avec BDNB mappant 1 seule parcelle). B) 11 PRESLES correction fusion 13 (AB3028107 SOPAGI Tertiaire) -> 7 PRESLES (AB7861529) + correction bgid 4EHZ -> QNW4 (selon BDNB pivot QNW4 l_libelle_adr inclut '11 Rue De Presles') ; retire 11 de chain 13. C) INJECT label-only 5/9 PRESLES + 16/18/20 PASSAGE GUESCLIN (5 facades BAN absentes) MIRROR bgid QNW4. D) Ancre 7 PRESLES _fusion_auto_sources 0->9 + label '5/7/9/11 RUE PRESLES / 2/8/14/16/18/20 PASSAGE GUESCLIN'. Triple confirmation : RNC live AB7861529 nombre_parcelles=3 (DI/0016+DI/0010+DI/0003) + BDNB pivot QNW4 l_libelle_adr=7 facades + BDNB rel_RNC QNW4 = AB7861529 tres fiable. Parc 28886->28844 (-42 = correction phantom TW35 -42 logements, BDNB incluait deja faussement 14 GUESCLIN apparte BDNB hors-RNC alors que AB7861529 RNC autoritaire couvre l'ensemble via ref_cad multi-parcelles). 13 PRESLES AB3028107 (22 lots) garde son ancre propre + ses ventes (5 vlog), juste perd sa source '11|RUE|PRESLES' erronee. Source-of-truth ALIAS_RNC + correction bgid 11 PRESLES (4EHZ->QNW4) a porter make_light_motte_picquet.py.",
-    "_correctif_commerce_theatre": "55 RUE DU COMMERCE -> 115 RUE DU THEATRE (AC9381674 'SDC 115 RUE DU THEATRE', 62 lots tot / 26 hab, FONCIA PARIS RIVE DROITE). Detecte par scan parcelle cadastrale 2026-05-21 (scan_horsrnc_parcelle_mp.py). Triple confirmation : BDNB pivot bgids ZC1A (55 Commerce) et NVZ2 (115 Theatre) sur MEME parcelle 75115000EF0065 et MEME annee 1913 ; AC9381674 ref_cad_1=75056115EF0065 UNIQUE ; syndic FONCIA PARIS RIVE DROITE IDENTIQUE des deux cotes. Voies parallles 15e arr (Commerce // Theatre) = pattern Fremicourt classique. Pattern ALIAS_RNC multi-voies (CAMBRONNE/ARMONIAL) : 55|RUE|COMMERCE (bgid ZC1A, 6 nb_log_bdnb, 3 vlog 'Tres actif') re-pointe vers 115|RUE|THEATRE avec adoption MIRROR bgid NVZ2. Label '55 RUE DU COMMERCE / 115 RUE DU THEATRE'. Parc 28844->28838 (-6) = dedup multi-bgid (les 6 BDNB de ZC1A etaient deja compris dans les 26 lots RNC qui couvrent NVZ2+ZC1A). 3 vlog DVF relocalises sous AC9381674. Source-of-truth a porter make_light : ALIAS_RNC += {'55|RUE|COMMERCE': '115|RUE|THEATRE'}."
+    "_correctif_commerce_theatre": "55 RUE DU COMMERCE -> 115 RUE DU THEATRE (AC9381674 'SDC 115 RUE DU THEATRE', 62 lots tot / 26 hab, FONCIA PARIS RIVE DROITE). Detecte par scan parcelle cadastrale 2026-05-21 (scan_horsrnc_parcelle_mp.py). Triple confirmation : BDNB pivot bgids ZC1A (55 Commerce) et NVZ2 (115 Theatre) sur MEME parcelle 75115000EF0065 et MEME annee 1913 ; AC9381674 ref_cad_1=75056115EF0065 UNIQUE ; syndic FONCIA PARIS RIVE DROITE IDENTIQUE des deux cotes. Voies parallles 15e arr (Commerce // Theatre) = pattern Fremicourt classique. Pattern ALIAS_RNC multi-voies (CAMBRONNE/ARMONIAL) : 55|RUE|COMMERCE (bgid ZC1A, 6 nb_log_bdnb, 3 vlog 'Tres actif') re-pointe vers 115|RUE|THEATRE avec adoption MIRROR bgid NVZ2. Label '55 RUE DU COMMERCE / 115 RUE DU THEATRE'. Parc 28844->28838 (-6) = dedup multi-bgid (les 6 BDNB de ZC1A etaient deja compris dans les 26 lots RNC qui couvrent NVZ2+ZC1A). 3 vlog DVF relocalises sous AC9381674. Source-of-truth a porter make_light : ALIAS_RNC += {'55|RUE|COMMERCE': '115|RUE|THEATRE'}.",
+    "_correctif_alasseur_inject": "Copro RNC AJ6688972 ('SDC 6 RUE ALASSEUR', 36 lots tot / nb_lots_hab non renseigne RNC -> fallback total 36, syndic non renseigne, date_immat 2026-03-16 POSTERIEURE au snapshot) injectee dans coproprietes[] et attribuee a 6|RUE|ALASSEUR (bgid 9DSY, parcelle 75115000DH0016 unique, 1 bgid unique sur la parcelle). Confirmee par RNC live (ref_cad_1=75056115DH0016 unique, adresse_reference='6 Rue Alasseur 75015 Paris', periode AVANT_1949) + BDNB pivot 9DSY (l_libelle_adr=['6 Rue Alasseur'] unique, annee=1930). La SCI DU 6 RUE ALASSEUR (pre-immat) a probablement scinde en SDC en mars 2026 (1 vlog DVF 2025 = vente bloc preparatoire). Pattern INJECTION+ATTRIBUTION (clone fix_lowendal_suffren). Parc 28838->28858 (+20 = switch BDNB(16)->RNC(36 fallback total) sur bgid 9DSY, Sec 6 lots RNC prioritaires). Investiguer make_light : rafraichissement RNC snapshot a faire pour capter immatriculations post-snapshot (date_immat 2026-03-16)."
   },
   "iris": [
     {
@@ -18503,6 +18504,28 @@
       "nb_ventes_2021_2025": 0,
       "ventes_par_an": {},
       "taux_rotation_5ans": 0.0,
+      "classement_rotation": "Figé"
+    },
+    {
+      "numero_immatriculation": "AJ6688972",
+      "nom_copropriete": "SDC 6 RUE ALASSEUR",
+      "syndic": null,
+      "_syndic_src": null,
+      "adresse": "6 Rue Alasseur | 6 Rue Alasseur 75015 Paris | 75015 | Paris",
+      "longitude": 2.297921,
+      "latitude": 48.851153,
+      "code_iris": "751155914",
+      "cle_adresse": "6|RUE|ALASSEUR",
+      "nb_lots_total": 36,
+      "nb_lots_habitation": 36,
+      "nb_lots_habitation_rnc": null,
+      "_lots_habit_src": "rnc_total_fallback",
+      "nb_log_bdnb": 16,
+      "nb_ventes_2021_2025": 1,
+      "ventes_par_an": {
+        "2025": 1
+      },
+      "taux_rotation_5ans": 0.6,
       "classement_rotation": "Figé"
     }
   ],
@@ -50659,8 +50682,8 @@
       "sci_siren": "413097668",
       "syndic": null,
       "_syndic_src": null,
-      "numero_immatriculation": null,
-      "nb_lots_habitation": null,
+      "numero_immatriculation": "AJ6688972",
+      "nb_lots_habitation": 36,
       "ventes_par_an": {
         "2025": 1
       },
@@ -50679,7 +50702,7 @@
       "type_batiment": "immeuble",
       "type_chauffage": "reseau de chaleur",
       "batiment_groupe_id": "bdnb-bg-9DSY-ZPJ1-Y95N",
-      "_bdnb_match": "num_voie",
+      "_bdnb_match": "immat",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot"
