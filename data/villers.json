@@ -1,6 +1,102 @@
 {
   "dpe": [
     {
+      "numero_dpe": "2614E1329511U",
+      "date_reception_dpe": "2026-05-18",
+      "adresse_ban": "321 Rue des Martrois 14640 Villers-sur-Mer",
+      "code_postal_ban": "14640",
+      "nom_commune_ban": "Villers-sur-Mer",
+      "etiquette_dpe": "D",
+      "type_batiment": "appartement",
+      "surface_habitable_logement": 37.4,
+      "surface_habitable_immeuble": null,
+      "numero_dpe_remplace": null,
+      "zone": "14640",
+      "etage_str": "3e",
+      "digicode_str": "—",
+      "geopoint": "49.32804497360031,0.009280009135709859"
+    },
+    {
+      "numero_dpe": "2614E1331954T",
+      "date_reception_dpe": "2026-05-18",
+      "adresse_ban": "2 Rue du Commerce 14640 Villers-sur-Mer",
+      "code_postal_ban": "14640",
+      "nom_commune_ban": "Villers-sur-Mer",
+      "etiquette_dpe": "E",
+      "type_batiment": "appartement",
+      "surface_habitable_logement": 15.9,
+      "surface_habitable_immeuble": null,
+      "numero_dpe_remplace": null,
+      "zone": "14640",
+      "etage_str": "RDC",
+      "digicode_str": "—",
+      "geopoint": "49.323261031566155,0.0028470203619598436"
+    },
+    {
+      "numero_dpe": "2614E1330962P",
+      "date_reception_dpe": "2026-05-18",
+      "adresse_ban": "Rue des Martrois 14640 Villers-sur-Mer",
+      "code_postal_ban": "14640",
+      "nom_commune_ban": "Villers-sur-Mer",
+      "etiquette_dpe": "D",
+      "type_batiment": "appartement",
+      "surface_habitable_logement": 25.4,
+      "surface_habitable_immeuble": null,
+      "numero_dpe_remplace": null,
+      "zone": "14640",
+      "etage_str": "2e",
+      "digicode_str": "—",
+      "geopoint": "49.32788200997481,0.009572014680344623"
+    },
+    {
+      "numero_dpe": "2614E1313580B",
+      "date_reception_dpe": "2026-05-15",
+      "adresse_ban": "456 Rue des Martrois 14640 Villers-sur-Mer",
+      "code_postal_ban": "14640",
+      "nom_commune_ban": "Villers-sur-Mer",
+      "etiquette_dpe": "C",
+      "type_batiment": "appartement",
+      "surface_habitable_logement": 25.9,
+      "surface_habitable_immeuble": null,
+      "numero_dpe_remplace": null,
+      "zone": "14640",
+      "etage_str": "—",
+      "digicode_str": "—",
+      "geopoint": "49.32857596140622,0.01097597101333037"
+    },
+    {
+      "numero_dpe": "2614E1293399W",
+      "date_reception_dpe": "2026-05-12",
+      "adresse_ban": "2 Allée des Cigognes 14910 Blonville-sur-Mer",
+      "code_postal_ban": "14910",
+      "nom_commune_ban": "Blonville-sur-Mer",
+      "etiquette_dpe": "D",
+      "type_batiment": "maison",
+      "surface_habitable_logement": 182,
+      "surface_habitable_immeuble": null,
+      "numero_dpe_remplace": null,
+      "zone": "14910",
+      "etage_str": "—",
+      "digicode_str": "—",
+      "geopoint": "49.333454042059216,0.018480056902394088"
+    },
+    {
+      "numero_dpe": "2614E1292078B",
+      "date_reception_dpe": "2026-05-12",
+      "adresse_ban": "Avenue du Littoral 14910 Benerville-sur-Mer",
+      "code_postal_ban": "14910",
+      "nom_commune_ban": "Benerville-sur-Mer",
+      "etiquette_dpe": "E",
+      "type_batiment": "appartement",
+      "surface_habitable_logement": 45.5,
+      "surface_habitable_immeuble": null,
+      "numero_dpe_remplace": null,
+      "zone": "14910",
+      "etage_str": "—",
+      "digicode_str": "—",
+      "geopoint": "49.34630402661246,0.044719995138780284"
+    },
+    {
       "numero_dpe": "2614E1268880V",
       "date_reception_dpe": "2026-05-10",
       "adresse_ban": "Avenue des Gabions 14640 Villers-sur-Mer",
@@ -785,5 +881,5 @@
       "geopoint": "49.2939229728362,0.010963993789012359"
     }
   ],
-  "derniere_maj": "2026-05-20T06:50:01.147528"
+  "derniere_maj": "2026-05-21T06:54:33.835693"
 }
