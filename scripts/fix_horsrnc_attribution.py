@@ -57,13 +57,41 @@ def cle_to_adresse(cle):
     return " ".join(p for p in cle.split("|") if p != "").strip()
 
 
+def _classement(taux):
+    """Seuils alignes sur make_light : >3 Tres actif, >=2 Actif, >=1 Modere."""
+    if taux is None:
+        return None
+    if taux > 3:
+        return "Très actif"
+    if taux >= 2:
+        return "Actif"
+    if taux >= 1:
+        return "Modéré"
+    return "Figé"
+
+
 def construire_ligne(copro, bg, cle, adresse):
     """Ligne `adresses` (schema light) : copro RNC portee par le bati BDNB
     deja present dans le jeu via une adresse hors-RNC. Champs SCI/MAJIC
     neutres (meme convention que fix_rnc_bdnb_attribution.py — la ligne
     represente la copro, pas le batiment dont l'adresse hors-RNC porte
-    deja les signaux)."""
+    deja les signaux).
+
+    PROPAGATION (correctif 2026-05-21) : numero_immatriculation,
+    nb_lots_habitation, taux_rotation et classement sont copies depuis
+    la copro. Sans cela, l'adresse injectee apparait comme hors-RNC
+    cote UI alors qu'elle a une copro liee via cle_adresse.
+    """
     vpa = copro.get("ventes_par_an") or {}
+    vpal = copro.get("ventes_par_an_logement") or {}
+    nbt = sum(vpa.values()) if vpa else 0
+    nbl = sum(vpal.values()) if vpal else 0
+    nlog = copro.get("nb_lots_habitation") or 0
+    if nlog > 0:
+        tx = round(nbt / (5 * nlog / 100), 1) if nbt else 0.0
+        txl = round(nbl / (5 * nlog / 100), 1) if nbl else 0.0
+    else:
+        tx = txl = None
     return {
         "cle": cle,
         "adresse": adresse,
@@ -77,8 +105,16 @@ def construire_ligne(copro, bg, cle, adresse):
         "sci_siren": None,
         "syndic": copro.get("syndic"),
         "_syndic_src": copro.get("_syndic_src"),
+        "numero_immatriculation": copro.get("numero_immatriculation"),
+        "nb_lots_habitation": copro.get("nb_lots_habitation"),
         "ventes_par_an": vpa,
-        "nb_ventes_total": sum(vpa.values()) if vpa else 0,
+        "nb_ventes_total": nbt,
+        "ventes_par_an_logement": vpal,
+        "nb_ventes_logement": nbl,
+        "taux_rotation": tx,
+        "classement_rotation": _classement(tx),
+        "taux_rotation_logement": txl,
+        "classement_rotation_logement": _classement(txl),
         "nb_log_bdnb": bg.get("nb_log"),
         "annee_construction": bg.get("annee_construction"),
         "classe_dpe": bg.get("classe_bilan_dpe"),

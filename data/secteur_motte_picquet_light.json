@@ -90,7 +90,8 @@
     "_correctif_federation_86_village_suffren": "INVERSION ANCRE + INJECT label-only 84/90 FEDERATION. AB6092555 'LE VILLAGE SUFFREN D - MS11202' (GERARD SAFAR SAS, 110 lots hab / 208 tot) etait declaree dans coproprietes[] sur cle_adresse 86|RUE|FEDERATION mais l'ancre light etait 88|RUE|FEDERATION (make_light a privilegie le 88 par GPS/DVF : 10 mutations Dependance/commerce). Anomalie : 86 fused -> AB6092555 invisible dans bgRncLots, bgid 69B5 entre dans bgBdnb=181 (estim BDNB) au lieu de RNC=110 -> surevaluation +71. Fix : 86 devient ancre interne (86|RUE|FEDERATION sort de fusion), 88 fused vers 86 (_syndic_src cadastre->rnc_grp), INJECT 84+90 FEDERATION label-only (4 facades BAN bati 69B5 parcelle DI/0003 confirmees pivot BDNB), label '84/86/88/90 RUE FEDERATION' sur 86. Parc 28957->28886 (-71 = correction surevaluation, alignement nb_log_rnc BDNB = 110 = AB6092555). Triple confirmation : RNC live AB6092555 ancre 86 + BDNB pivot 69B5 l_libelle_adr 4 facades + libelle_principal_ban='86' (BAN officiel). VILLAGE SUFFREN ensemble = AB6092555 D (ce fix) + AB7861529 EFGH (7 PRESLES, copro distincte deja ancree non touchee). DVF 88 FEDERATION (10 vtot Dependance/commerce dont cession 8.55M EUR 2024) consolidees sous AB6092555 via fusion. Source-of-truth a porter make_light : force ancre = cle copro RNC + ALIAS_RNC '88/84/90 RUE FEDERATION' -> '86 RUE FEDERATION'.",
     "_correctif_village_suffren_efgh_optionC": "VILLAGE SUFFREN EFGH (AB7861529 GERARD SAFAR 115 lots hab, ancre 7 PRESLES, bgid QNW4) - completion Option C terrain user 2026-05-21. A) Re-fuse 2/8/14 PASSAGE GUESCLIN vers 7 PRESLES (3 bgids QX4P/PS7Y/TW35 tous sur parcelle BDNB 75115000DI0016 = ref_cad_1 RNC AB7861529 ; syndic GERARD SAFAR cadastre match ; pattern Fondary/Croix-Nivert copro multi-parcelles avec BDNB mappant 1 seule parcelle). B) 11 PRESLES correction fusion 13 (AB3028107 SOPAGI Tertiaire) -> 7 PRESLES (AB7861529) + correction bgid 4EHZ -> QNW4 (selon BDNB pivot QNW4 l_libelle_adr inclut '11 Rue De Presles') ; retire 11 de chain 13. C) INJECT label-only 5/9 PRESLES + 16/18/20 PASSAGE GUESCLIN (5 facades BAN absentes) MIRROR bgid QNW4. D) Ancre 7 PRESLES _fusion_auto_sources 0->9 + label '5/7/9/11 RUE PRESLES / 2/8/14/16/18/20 PASSAGE GUESCLIN'. Triple confirmation : RNC live AB7861529 nombre_parcelles=3 (DI/0016+DI/0010+DI/0003) + BDNB pivot QNW4 l_libelle_adr=7 facades + BDNB rel_RNC QNW4 = AB7861529 tres fiable. Parc 28886->28844 (-42 = correction phantom TW35 -42 logements, BDNB incluait deja faussement 14 GUESCLIN apparte BDNB hors-RNC alors que AB7861529 RNC autoritaire couvre l'ensemble via ref_cad multi-parcelles). 13 PRESLES AB3028107 (22 lots) garde son ancre propre + ses ventes (5 vlog), juste perd sa source '11|RUE|PRESLES' erronee. Source-of-truth ALIAS_RNC + correction bgid 11 PRESLES (4EHZ->QNW4) a porter make_light_motte_picquet.py.",
     "_correctif_commerce_theatre": "55 RUE DU COMMERCE -> 115 RUE DU THEATRE (AC9381674 'SDC 115 RUE DU THEATRE', 62 lots tot / 26 hab, FONCIA PARIS RIVE DROITE). Detecte par scan parcelle cadastrale 2026-05-21 (scan_horsrnc_parcelle_mp.py). Triple confirmation : BDNB pivot bgids ZC1A (55 Commerce) et NVZ2 (115 Theatre) sur MEME parcelle 75115000EF0065 et MEME annee 1913 ; AC9381674 ref_cad_1=75056115EF0065 UNIQUE ; syndic FONCIA PARIS RIVE DROITE IDENTIQUE des deux cotes. Voies parallles 15e arr (Commerce // Theatre) = pattern Fremicourt classique. Pattern ALIAS_RNC multi-voies (CAMBRONNE/ARMONIAL) : 55|RUE|COMMERCE (bgid ZC1A, 6 nb_log_bdnb, 3 vlog 'Tres actif') re-pointe vers 115|RUE|THEATRE avec adoption MIRROR bgid NVZ2. Label '55 RUE DU COMMERCE / 115 RUE DU THEATRE'. Parc 28844->28838 (-6) = dedup multi-bgid (les 6 BDNB de ZC1A etaient deja compris dans les 26 lots RNC qui couvrent NVZ2+ZC1A). 3 vlog DVF relocalises sous AC9381674. Source-of-truth a porter make_light : ALIAS_RNC += {'55|RUE|COMMERCE': '115|RUE|THEATRE'}.",
-    "_correctif_alasseur_inject": "Copro RNC AJ6688972 ('SDC 6 RUE ALASSEUR', 36 lots tot / nb_lots_hab non renseigne RNC -> fallback total 36, syndic non renseigne, date_immat 2026-03-16 POSTERIEURE au snapshot) injectee dans coproprietes[] et attribuee a 6|RUE|ALASSEUR (bgid 9DSY, parcelle 75115000DH0016 unique, 1 bgid unique sur la parcelle). Confirmee par RNC live (ref_cad_1=75056115DH0016 unique, adresse_reference='6 Rue Alasseur 75015 Paris', periode AVANT_1949) + BDNB pivot 9DSY (l_libelle_adr=['6 Rue Alasseur'] unique, annee=1930). La SCI DU 6 RUE ALASSEUR (pre-immat) a probablement scinde en SDC en mars 2026 (1 vlog DVF 2025 = vente bloc preparatoire). Pattern INJECTION+ATTRIBUTION (clone fix_lowendal_suffren). Parc 28838->28858 (+20 = switch BDNB(16)->RNC(36 fallback total) sur bgid 9DSY, Sec 6 lots RNC prioritaires). Investiguer make_light : rafraichissement RNC snapshot a faire pour capter immatriculations post-snapshot (date_immat 2026-03-16)."
+    "_correctif_alasseur_inject": "Copro RNC AJ6688972 ('SDC 6 RUE ALASSEUR', 36 lots tot / nb_lots_hab non renseigne RNC -> fallback total 36, syndic non renseigne, date_immat 2026-03-16 POSTERIEURE au snapshot) injectee dans coproprietes[] et attribuee a 6|RUE|ALASSEUR (bgid 9DSY, parcelle 75115000DH0016 unique, 1 bgid unique sur la parcelle). Confirmee par RNC live (ref_cad_1=75056115DH0016 unique, adresse_reference='6 Rue Alasseur 75015 Paris', periode AVANT_1949) + BDNB pivot 9DSY (l_libelle_adr=['6 Rue Alasseur'] unique, annee=1930). La SCI DU 6 RUE ALASSEUR (pre-immat) a probablement scinde en SDC en mars 2026 (1 vlog DVF 2025 = vente bloc preparatoire). Pattern INJECTION+ATTRIBUTION (clone fix_lowendal_suffren). Parc 28838->28858 (+20 = switch BDNB(16)->RNC(36 fallback total) sur bgid 9DSY, Sec 6 lots RNC prioritaires). Investiguer make_light : rafraichissement RNC snapshot a faire pour capter immatriculations post-snapshot (date_immat 2026-03-16).",
+    "_correctif_propag_immat": "104 adresses creees par fix_rnc_bdnb_attribution.py et fix_horsrnc_attribution.py (_bdnb_match in {'immat_fix','immat_horsrnc_fix'}) repare en place : propagation numero_immatriculation + nb_lots_habitation + syndic (si manquant) + recalcul taux_rotation/classement depuis la copro liee par cle_adresse. Parc strictement neutre. Source-of-truth deja portee dans fix_rnc_bdnb_attribution.py et fix_horsrnc_attribution.py (construire_ligne enrichie). 104 cas avant, 0 apres."
   },
   "iris": [
     {
@@ -64422,7 +64423,11 @@
       "_fusion_auto_sources": [
         "7|RUE|GAL DE CASTELNAU"
       ],
-      "_fusion_auto_label": null
+      "_fusion_auto_label": null,
+      "numero_immatriculation": "AA4713186",
+      "nb_lots_habitation": 18,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "2T|RUE|ALASSEUR",
@@ -64452,7 +64457,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AA4866968",
+      "nb_lots_habitation": 18,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "40B|AVENUE|SUFFREN",
@@ -64482,7 +64491,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AA5741111",
+      "nb_lots_habitation": 332,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "3|RUE|CAPITAINE SCOTT",
@@ -64516,7 +64529,11 @@
       "_fusion_auto_sources": [
         "3|RUE|CAPT SCOTT"
       ],
-      "_fusion_auto_label": null
+      "_fusion_auto_label": null,
+      "numero_immatriculation": "AA8895435",
+      "nb_lots_habitation": 30,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "25|RUE|VIOLET",
@@ -64546,7 +64563,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AA9267253",
+      "nb_lots_habitation": 9,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "8|RUE|GENERAL DE LARMINAT",
@@ -64581,7 +64602,11 @@
         "12|RUE|ALASSEUR",
         "8|RUE|GAL DE LARMINAT"
       ],
-      "_fusion_auto_label": null
+      "_fusion_auto_label": null,
+      "numero_immatriculation": "AA9446949",
+      "nb_lots_habitation": 41,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "9|RUE|LAKANAL #AB1483791",
@@ -64623,7 +64648,11 @@
       "classement_rotation_logement": "Très actif",
       "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AB1483791",
+      "nb_lots_habitation": 16,
+      "taux_rotation": 18.8,
+      "classement_rotation": "Très actif"
     },
     {
       "cle": "3|RUE|ROSA BONHEUR #AB2240224",
@@ -64659,7 +64688,11 @@
       "classement_rotation_logement": "Très actif",
       "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AB2240224",
+      "nb_lots_habitation": 8,
+      "taux_rotation": 5.0,
+      "classement_rotation": "Très actif"
     },
     {
       "cle": "3|RUE|FALLEMPIN #AB3027117",
@@ -64695,7 +64728,11 @@
       "classement_rotation_logement": "Actif",
       "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AB3027117",
+      "nb_lots_habitation": 12,
+      "taux_rotation": 3.3,
+      "classement_rotation": "Très actif"
     },
     {
       "cle": "15|RUE|VIOLET #AB3628898",
@@ -64735,7 +64772,11 @@
       "classement_rotation_logement": "Très actif",
       "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AB3628898",
+      "nb_lots_habitation": 19,
+      "taux_rotation": 8.4,
+      "classement_rotation": "Très actif"
     },
     {
       "cle": "3|RUE|ALASSEUR",
@@ -64765,7 +64806,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AB4373353",
+      "nb_lots_habitation": 9,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "11|RUE|CHASSELOUP LAUBAT #AB4394060",
@@ -64799,7 +64844,11 @@
       "classement_rotation_logement": "Modéré",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AB4394060",
+      "nb_lots_habitation": 12,
+      "taux_rotation": 1.7,
+      "classement_rotation": "Modéré"
     },
     {
       "cle": "9D|RUE|LAKANAL",
@@ -64829,7 +64878,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AB5639992",
+      "nb_lots_habitation": 18,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "3|RUE|ST SAENS",
@@ -64859,7 +64912,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AB6094874",
+      "nb_lots_habitation": 15,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "112T|AVENUE|SUFFREN",
@@ -64889,7 +64946,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AB6177950",
+      "nb_lots_habitation": 17,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "32|RUE|PERIGNON #AB7675259",
@@ -64929,7 +64990,11 @@
       "classement_rotation_logement": "Très actif",
       "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AB7675259",
+      "nb_lots_habitation": 32,
+      "taux_rotation": 6.2,
+      "classement_rotation": "Très actif"
     },
     {
       "cle": "42|AVENUE|SAXE #AB8151755",
@@ -64973,7 +65038,11 @@
       "_fusion_auto_sources": [
         "10|RUE|PERIGNON"
       ],
-      "_fusion_auto_label": null
+      "_fusion_auto_label": null,
+      "numero_immatriculation": "AB8151755",
+      "nb_lots_habitation": 147,
+      "taux_rotation": 3.0,
+      "classement_rotation": "Actif"
     },
     {
       "cle": "22|RUE|ST SAENS",
@@ -65003,7 +65072,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AB8458838",
+      "nb_lots_habitation": 26,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "8B|RUE|BARTHELEMY",
@@ -65033,7 +65106,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AB8862260",
+      "nb_lots_habitation": 5,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "112|AVENUE|SUFFREN #AB9281015",
@@ -65071,7 +65148,11 @@
       "classement_rotation_logement": "Très actif",
       "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AB9281015",
+      "nb_lots_habitation": 7,
+      "taux_rotation": 17.1,
+      "classement_rotation": "Très actif"
     },
     {
       "cle": "42|AVENUE|SUFFREN #AC0264010",
@@ -65113,7 +65194,11 @@
       "classement_rotation_logement": "Très actif",
       "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AC0264010",
+      "nb_lots_habitation": 38,
+      "taux_rotation": 7.9,
+      "classement_rotation": "Très actif"
     },
     {
       "cle": "3|RUE|GENERAL DE CASTELNAU",
@@ -65143,7 +65228,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AC0366161",
+      "nb_lots_habitation": 13,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "65|RUE|FONDARY",
@@ -65173,7 +65262,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AC1004126",
+      "nb_lots_habitation": 2,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "6|AVENUE|GENERAL DETRIE",
@@ -65203,7 +65296,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AC2917656",
+      "nb_lots_habitation": 13,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "158|AVENUE|SUFFREN #AC3186186",
@@ -65233,7 +65330,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AC3186186",
+      "nb_lots_habitation": 12,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "7B|RUE|GENERAL DE LARMINAT",
@@ -65263,7 +65364,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AC3796695",
+      "nb_lots_habitation": 13,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "2B|RUE|ALASSEUR",
@@ -65293,7 +65398,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Tertiaire",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AC5420922",
+      "nb_lots_habitation": 24,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "11B|RUE|VALENTIN HAUY",
@@ -65323,7 +65432,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AC5614987",
+      "nb_lots_habitation": 10,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "6|BOULEVARD|GARIBALDI",
@@ -65353,7 +65466,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AC7998412",
+      "nb_lots_habitation": 20,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "11B|RUE|PONDICHERY",
@@ -65383,7 +65500,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AC8117780",
+      "nb_lots_habitation": 20,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "11|RUE|GENERAL DE LARMINAT",
@@ -65417,7 +65538,11 @@
       "_fusion_auto_sources": [
         "11|RUE|GAL DE LARMINAT"
       ],
-      "_fusion_auto_label": null
+      "_fusion_auto_label": null,
+      "numero_immatriculation": "AC8648685",
+      "nb_lots_habitation": 26,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "9|RUE|PERIGNON #AC9870650",
@@ -65455,7 +65580,11 @@
       "classement_rotation_logement": "Très actif",
       "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AC9870650",
+      "nb_lots_habitation": 17,
+      "taux_rotation": 10.6,
+      "classement_rotation": "Très actif"
     },
     {
       "cle": "47B|RUE|COMMERCE",
@@ -65485,7 +65614,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AD0736843",
+      "nb_lots_habitation": 14,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "11|AVENUE|SUFFREN #AD1287697",
@@ -65525,7 +65658,11 @@
       "classement_rotation_logement": "Très actif",
       "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Tertiaire",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AD1287697",
+      "nb_lots_habitation": 39,
+      "taux_rotation": 5.1,
+      "classement_rotation": "Très actif"
     },
     {
       "cle": "13|RUE|TIPHAINE",
@@ -65555,7 +65692,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AD1811801",
+      "nb_lots_habitation": 23,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "53|AVENUE|MOTTE PICQUET #AD2824910",
@@ -65593,7 +65734,11 @@
       "classement_rotation_logement": "Très actif",
       "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AD2824910",
+      "nb_lots_habitation": 9,
+      "taux_rotation": 8.9,
+      "classement_rotation": "Très actif"
     },
     {
       "cle": "5|AVENUE|GENERAL DETRIE",
@@ -65627,7 +65772,11 @@
       "_fusion_auto_sources": [
         "5|AVENUE|GAL DETRIE"
       ],
-      "_fusion_auto_label": null
+      "_fusion_auto_label": null,
+      "numero_immatriculation": "AD5265665",
+      "nb_lots_habitation": 11,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "18|RUE|ST SAENS",
@@ -65657,7 +65806,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AD7454481",
+      "nb_lots_habitation": 22,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "7T|RUE|GENERAL DE LARMINAT",
@@ -65687,7 +65840,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AD9170887",
+      "nb_lots_habitation": 23,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "5|RUE|GENERAL DE LARMINAT",
@@ -65717,7 +65874,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AD9546367",
+      "nb_lots_habitation": 6,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "21|RUE|TIPHAINE",
@@ -65747,7 +65908,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AE0180281",
+      "nb_lots_habitation": 6,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "9||E R LAKANAL",
@@ -65777,7 +65942,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AE2886398",
+      "nb_lots_habitation": 11,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "1B|RUE|BUENOS AYRES",
@@ -65807,7 +65976,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AF1857283",
+      "nb_lots_habitation": 22,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "76A|RUE|CROIX NIVERT",
@@ -65837,7 +66010,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AG5171368",
+      "nb_lots_habitation": 8,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "21|RUE|FALLEMPIN",
@@ -65867,7 +66044,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AG8297707",
+      "nb_lots_habitation": 19,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "57|AVENUE|SUFFREN",
@@ -65897,7 +66078,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AH7248073",
+      "nb_lots_habitation": 81,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "15|AVENUE|SUFFREN",
@@ -65931,7 +66116,11 @@
       "_fusion_auto_sources": [
         "4|AVENUE|OCTAVE GREARD"
       ],
-      "_fusion_auto_label": null
+      "_fusion_auto_label": null,
+      "numero_immatriculation": "AA1378777",
+      "nb_lots_habitation": 11,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "9|RUE|COMMERCE",
@@ -65961,7 +66150,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AA1669340",
+      "nb_lots_habitation": 15,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "65|RUE|COMMERCE",
@@ -65995,7 +66188,11 @@
       "_fusion_auto_sources": [
         "63|RUE|COMMERCE"
       ],
-      "_fusion_auto_label": "63/65 RUE COMMERCE"
+      "_fusion_auto_label": "63/65 RUE COMMERCE",
+      "numero_immatriculation": "AA1834670",
+      "nb_lots_habitation": 33,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "9B|RUE|PERIGNON",
@@ -66025,7 +66222,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AA1851328",
+      "nb_lots_habitation": 26,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "4B|RUE|VIOLET",
@@ -66055,7 +66256,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AA2561801",
+      "nb_lots_habitation": 23,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "3B|RUE|FALLEMPIN",
@@ -66085,7 +66290,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AA2916666",
+      "nb_lots_habitation": 7,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "2B|RUE|TIPHAINE",
@@ -66115,7 +66324,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AA3174380",
+      "nb_lots_habitation": 14,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "9|RUE|GENERAL DE LARMINAT",
@@ -66149,7 +66362,11 @@
       "_fusion_auto_sources": [
         "9|RUE|GAL DE LARMINAT"
       ],
-      "_fusion_auto_label": null
+      "_fusion_auto_label": null,
+      "numero_immatriculation": "AA3229176",
+      "nb_lots_habitation": 16,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "11B|RUE|CHASSELOUP LAUBAT",
@@ -66179,7 +66396,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AA3245172",
+      "nb_lots_habitation": 7,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "112B|AVENUE|SUFFREN",
@@ -66209,7 +66430,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AA4547360",
+      "nb_lots_habitation": 7,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "15B|RUE|VIOLET",
@@ -66239,7 +66464,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AA4710455",
+      "nb_lots_habitation": 27,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "49|BOULEVARD|GARIBALDI",
@@ -66273,7 +66502,11 @@
       "_fusion_auto_sources": [
         "47|BOULEVARD|GARIBALDI"
       ],
-      "_fusion_auto_label": null
+      "_fusion_auto_label": null,
+      "numero_immatriculation": "AA6084305",
+      "nb_lots_habitation": 27,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "3B|RUE|ROSA BONHEUR",
@@ -66303,7 +66536,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AA6689707",
+      "nb_lots_habitation": 18,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "42B|AVENUE|SUFFREN",
@@ -66333,7 +66570,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AA7401755",
+      "nb_lots_habitation": 64,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "6|RUE|GENERAL DE LARMINAT",
@@ -66367,7 +66608,11 @@
       "_fusion_auto_sources": [
         "6|RUE|GAL DE LARMINAT"
       ],
-      "_fusion_auto_label": null
+      "_fusion_auto_label": null,
+      "numero_immatriculation": "AA7531452",
+      "nb_lots_habitation": 9,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "1B|RUE|FALLEMPIN",
@@ -66399,7 +66644,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AA8708737",
+      "nb_lots_habitation": 11,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "21|RUE|LAOS",
@@ -66433,7 +66682,11 @@
       "_fusion_auto_sources": [
         "23|RUE|LAOS"
       ],
-      "_fusion_auto_label": null
+      "_fusion_auto_label": null,
+      "numero_immatriculation": "AA9613753",
+      "nb_lots_habitation": 112,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "32B|RUE|PERIGNON",
@@ -66463,7 +66716,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AA9979246",
+      "nb_lots_habitation": 29,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "6|RUE|GENERAL LAMBERT",
@@ -66493,7 +66750,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AB1591528",
+      "nb_lots_habitation": 31,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "158B|AVENUE|SUFFREN",
@@ -66523,7 +66784,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AB2239416",
+      "nb_lots_habitation": 7,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "3|RUE|BUENOS AYRES",
@@ -66557,7 +66822,11 @@
       "_fusion_auto_sources": [
         "3|RUE|BUENOS AIRES"
       ],
-      "_fusion_auto_label": null
+      "_fusion_auto_label": null,
+      "numero_immatriculation": "AB3659166",
+      "nb_lots_habitation": 30,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "41|RUE|FONDARY",
@@ -66591,7 +66860,11 @@
       "_fusion_auto_sources": [
         "39|RUE|FONDARY"
       ],
-      "_fusion_auto_label": null
+      "_fusion_auto_label": null,
+      "numero_immatriculation": "AB4199527",
+      "nb_lots_habitation": 49,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "11B|RUE|CESAR FRANCK",
@@ -66621,7 +66894,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AB5046966",
+      "nb_lots_habitation": 15,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "3|RUE|GENERAL LAMBERT",
@@ -66651,7 +66928,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AB5450044",
+      "nb_lots_habitation": 32,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "42B|AVENUE|SAXE",
@@ -66681,7 +66962,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AB7693641",
+      "nb_lots_habitation": 75,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "5|RUE|GENERAL LAMBERT",
@@ -66715,7 +67000,11 @@
       "_fusion_auto_sources": [
         "5|RUE|GAL LAMBERT"
       ],
-      "_fusion_auto_label": null
+      "_fusion_auto_label": null,
+      "numero_immatriculation": "AB7917073",
+      "nb_lots_habitation": 39,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "1||VILLA CROIX NIVERT",
@@ -66745,7 +67034,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AB7934631",
+      "nb_lots_habitation": 21,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "20B|AVENUE|LOWENDAL",
@@ -66775,7 +67068,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AB8148553",
+      "nb_lots_habitation": 18,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "5|RUE|GENERAL DE CASTELNAU",
@@ -66809,7 +67106,11 @@
       "_fusion_auto_sources": [
         "5|RUE|GAL DE CASTELNAU"
       ],
-      "_fusion_auto_label": null
+      "_fusion_auto_label": null,
+      "numero_immatriculation": "AC0121202",
+      "nb_lots_habitation": 20,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "156B|AVENUE|SUFFREN",
@@ -66839,7 +67140,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AC0203398",
+      "nb_lots_habitation": 18,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "53B|AVENUE|MOTTE PICQUET",
@@ -66869,7 +67174,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AC0274589",
+      "nb_lots_habitation": 31,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "31|AVENUE|CHARLES FLOQUET",
@@ -66899,7 +67208,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AC0867770",
+      "nb_lots_habitation": 24,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "9B|RUE|GENERAL DE LARMINAT",
@@ -66929,7 +67242,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AC0949958",
+      "nb_lots_habitation": 20,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "44B|RUE|FEDERATION",
@@ -66959,7 +67276,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AC1667443",
+      "nb_lots_habitation": 7,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "18|SQUARE|MOTTE PICQUET",
@@ -66989,7 +67310,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AC2040731",
+      "nb_lots_habitation": 37,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "11|RUE|CLOUET",
@@ -67019,7 +67344,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AC3292430",
+      "nb_lots_habitation": 13,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "63|AVENUE|SEGUR",
@@ -67053,7 +67382,11 @@
       "_fusion_auto_sources": [
         "61|AVENUE|SEGUR"
       ],
-      "_fusion_auto_label": "61/63 AVENUE SEGUR"
+      "_fusion_auto_label": "61/63 AVENUE SEGUR",
+      "numero_immatriculation": "AC6299499",
+      "nb_lots_habitation": 56,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "11B|RUE|TIPHAINE",
@@ -67083,7 +67416,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AC6572218",
+      "nb_lots_habitation": 14,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "4|RUE|GENERAL DE LARMINAT",
@@ -67117,7 +67454,11 @@
       "_fusion_auto_sources": [
         "2|RUE|GAL DE LARMINAT"
       ],
-      "_fusion_auto_label": null
+      "_fusion_auto_label": null,
+      "numero_immatriculation": "AD0541896",
+      "nb_lots_habitation": 15,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "11B|AVENUE|SUFFREN",
@@ -67147,7 +67488,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AD0969667",
+      "nb_lots_habitation": 30,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "1B|RUE|CAVALERIE",
@@ -67177,7 +67522,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AD1800267",
+      "nb_lots_habitation": 10,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "54B|AVENUE|MOTTE PICQUET",
@@ -67207,7 +67556,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AD3659653",
+      "nb_lots_habitation": 20,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "1|RUE|BUENOS AYRES",
@@ -67242,7 +67595,11 @@
         "1|RUE|BUENOS AIRES",
         "|ALLEE|LEON BOURGEOIS"
       ],
-      "_fusion_auto_label": null
+      "_fusion_auto_label": null,
+      "numero_immatriculation": "AD4111738",
+      "nb_lots_habitation": 13,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "3|RUE|GENERAL DE LARMINAT",
@@ -67272,7 +67629,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AD7868714",
+      "nb_lots_habitation": 11,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "8|RUE|FEDERATION",
@@ -67302,7 +67663,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AD8353971",
+      "nb_lots_habitation": 35,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "31|AVENUE|LOWENDAL",
@@ -67332,7 +67697,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AD8832982",
+      "nb_lots_habitation": 28,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "10B|RUE|CROIX NIVERT",
@@ -67362,7 +67731,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AE6875587",
+      "nb_lots_habitation": 9,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "18|RUE|FREMICOURT",
@@ -67396,7 +67769,11 @@
       "_fusion_auto_sources": [
         "16|RUE|FREMICOURT"
       ],
-      "_fusion_auto_label": "16/18 RUE FREMICOURT"
+      "_fusion_auto_label": "16/18 RUE FREMICOURT",
+      "numero_immatriculation": "AF2096014",
+      "nb_lots_habitation": 37,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "56|AVENUE|MOTTE PICQUET",
@@ -67426,7 +67803,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AF2293108",
+      "nb_lots_habitation": 20,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "1|RUE|CAPITAINE SCOTT",
@@ -67460,7 +67841,11 @@
       "_fusion_auto_sources": [
         "1|RUE|CAPT SCOTT"
       ],
-      "_fusion_auto_label": null
+      "_fusion_auto_label": null,
+      "numero_immatriculation": "AF6894638",
+      "nb_lots_habitation": 27,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "70B|AVENUE|SUFFREN",
@@ -67490,7 +67875,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Tertiaire",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AF8933541",
+      "nb_lots_habitation": 1,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "45|RUE|FONDARY",
@@ -67524,7 +67913,11 @@
       "_fusion_auto_sources": [
         "43|RUE|FONDARY"
       ],
-      "_fusion_auto_label": "43/45 RUE FONDARY"
+      "_fusion_auto_label": "43/45 RUE FONDARY",
+      "numero_immatriculation": "AF9892365",
+      "nb_lots_habitation": 43,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "2|RUE|GENERAL DE LARMINAT",
@@ -67554,7 +67947,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AG9833203",
+      "nb_lots_habitation": 13,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "67|AVENUE|SEGUR",
@@ -67588,7 +67985,11 @@
       "_fusion_auto_sources": [
         "1|RUE|JOSE MARIA DE HEREDIA"
       ],
-      "_fusion_auto_label": null
+      "_fusion_auto_label": null,
+      "numero_immatriculation": "AH2463305",
+      "nb_lots_habitation": 15,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "12|RUE|BELLART",
@@ -67622,7 +68023,11 @@
       "_fusion_auto_sources": [
         "155|AVENUE|SUFFREN"
       ],
-      "_fusion_auto_label": null
+      "_fusion_auto_label": null,
+      "numero_immatriculation": "AI4207031",
+      "nb_lots_habitation": 9,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "4|RUE|GENERAL DE CASTELNAU",
@@ -67658,7 +68063,11 @@
         "4|RUE|GAL DE CASTELNAU",
         "6|RUE|GAL DE CASTELNAU"
       ],
-      "_fusion_auto_label": null
+      "_fusion_auto_label": null,
+      "numero_immatriculation": "AI7024987",
+      "nb_lots_habitation": 28,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "16|RUE|DESAIX",
@@ -67688,7 +68097,11 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AI8302572",
+      "nb_lots_habitation": 53,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "132|RUE|THEATRE",
@@ -67722,7 +68135,11 @@
       "_fusion_auto_sources": [
         "1||CITE THURE"
       ],
-      "_fusion_auto_label": null
+      "_fusion_auto_label": null,
+      "numero_immatriculation": "AI8720518",
+      "nb_lots_habitation": 6,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Figé"
     },
     {
       "cle": "126|AVENUE|SUFFREN",
