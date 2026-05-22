@@ -215,6 +215,16 @@
         "nom": "BRICKS",
         "raison": "Collision potentielle BRICKS vs BRICKS 1 (AD5268305) sur meme bati 8MZ7-KS1W via cle composite '20B|AVENUE|LACASSAGNE 22 AVENUE LACASSAGNE'. REBIND creerait double-comptage 97 lots. Enquete terrain requise (BRICKS = re-immat AD5268305 ? phases distinctes ? SDC+ASL ?)."
       }
+    },
+    "_correctif_21_pionchon": {
+      "date": "2026-05-22T08:28:58Z",
+      "pattern": "Fondary RE-FUSE multi-bgid une parcelle (DX0035)",
+      "autorite": "RNC live AA0823708 adresse_complementaire_1='21B r claudius pionchon' + BDNB rel_parcelle DX0035 = JAVT-QG97-XWEW + T5E8-T2X3 + 914A-J3ZK + SCI CAMAC partagee 21 PIONCHON / 24 CITE",
+      "ops": "RE-FUSE 21|RUE|CLAUDIUS PIONCHON vers 24 CITE + extension label ancre",
+      "snapshot_immat": "AA0823708 allee des poetes (372/126 hab, SAGNIMORTE CONSEILS, cle 24 CITE inchangee)",
+      "label": "24/26 RUE CITE / 21B RUE CLAUDIUS PIONCHON",
+      "delta_parc_ui": 0,
+      "terrain_confirme": "Ensemble immobilier 21 PIONCHON + 24/26 CITE, NON mono-propriete (malgre SCI CAMAC detectee)"
     }
   },
   "iris": [
@@ -17408,9 +17418,10 @@
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-1WGV-T5E8-T2X3",
       "_bdnb_match": "immat",
-      "_fusion_auto_label": "24/26 RUE CITE",
+      "_fusion_auto_label": "24/26 RUE CITE / 21B RUE CLAUDIUS PIONCHON",
       "_fusion_auto_sources": [
-        "26|RUE|CITE"
+        "26|RUE|CITE",
+        "21|RUE|CLAUDIUS PIONCHON"
       ],
       "ventes_par_an_logement": {
         "2021": 2,
@@ -31454,7 +31465,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-JAVT-QG97-XWEW",
-      "_bdnb_match": "num_voie",
+      "_bdnb_match": "correctif_21pionchon_re_fuse",
       "ventes_par_an_logement": {
         "2021": 1,
         "2022": 1
@@ -31464,7 +31475,9 @@
       "classement_rotation_logement": "Modéré",
       "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "24/26 RUE CITE / 21B RUE CLAUDIUS PIONCHON"
     },
     {
       "cle": "212|RUE|PAUL BERT",
