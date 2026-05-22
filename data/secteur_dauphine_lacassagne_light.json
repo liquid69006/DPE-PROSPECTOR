@@ -189,6 +189,16 @@
       "parcelle": "69123383DS0005",
       "label": "61 RUE ANTOINE CHARIAL / 106 RUE BARABAN",
       "delta_parc_ui": -1
+    },
+    "_correctif_139_dauphine": {
+      "date": "2026-05-22T06:46:03Z",
+      "pattern": "Fondary RE-FUSE multi-bgid une parcelle (DN0039)",
+      "autorite": "RNC live AJ6692420 + BDNB rel_parcelle DN0039 = HQ5A+MU33",
+      "ops": "RE-FUSE 139|RUE|DAUPHINE vers 238 FF + extension label ancre",
+      "snapshot_immat": "AB1862135 LES TERRASSES DU PRESIDENT (cle 238 FF inchangee)",
+      "re_immat_live": "AJ6692420 TERRASSES DU PRESIDENT (2026-03-16, mandat AB1862135 expire 2026-03-30) - meme entite physique 169 lots, sujet refresh RNC separe",
+      "label": "238/240 AVENUE FELIX FAURE / 139 RUE DAUPHINE",
+      "delta_parc_ui": 0
     }
   },
   "iris": [
@@ -19195,7 +19205,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-6PR8-HQ5A-SU4G",
-      "_bdnb_match": "num_voie",
+      "_bdnb_match": "correctif_139dauph_re_fuse",
       "ventes_par_an_logement": {
         "2021": 1,
         "2022": 1,
@@ -19207,7 +19217,9 @@
       "classement_rotation_logement": "Modéré",
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "238/240 AVENUE FELIX FAURE / 139 RUE DAUPHINE"
     },
     {
       "cle": "15|RUE|MONTBRILLANT",
@@ -24794,9 +24806,10 @@
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-PJUP-MU33-65VW",
       "_bdnb_match": "immat",
-      "_fusion_auto_label": "238/240 AVENUE FELIX FAURE",
+      "_fusion_auto_label": "238/240 AVENUE FELIX FAURE / 139 RUE DAUPHINE",
       "_fusion_auto_sources": [
-        "240|AVENUE|FELIX FAURE"
+        "240|AVENUE|FELIX FAURE",
+        "139|RUE|DAUPHINE"
       ],
       "ventes_par_an_logement": {
         "2021": 0,
