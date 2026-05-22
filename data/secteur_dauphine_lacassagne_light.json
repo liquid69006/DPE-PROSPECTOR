@@ -110,6 +110,26 @@
         "EZPF_orphelin": "sort du perimetre (160 etait faux-match)"
       },
       "intouche": "26 LACASSAGNE (programme 2022 fused 24/26 via copro RNC immat 6YKR-D8DU = autorite legitime)"
+    },
+    "_correctif_doublon_b": {
+      "date": "2026-05-22T04:07:04Z",
+      "scope": "RUE DAUPHINE pair 4/6/8 + impair 13 (DL)",
+      "pattern": "ECLATEMENT faux-matching make_light num_voie",
+      "autorite": "BAN cle_interop -> BDNB rel_batiment_groupe_adresse",
+      "ops_count": 7,
+      "bgids": {
+        "75JZ": "HBM 7/9/11/13 (103 lgts 1949 R-coll, KV 11=social)",
+        "936T": "pair 4/6 + 2/8 ST-THEODORE (81 lgts 1985)",
+        "6G9Q": "8 DAUPH + 3/9 ST-THEODORE (Tertiaire)",
+        "L1N7_retire_8": "10 + 1 ST-MAXIMIN (14 lgts 1975)",
+        "RMZ8_retire_13": "15 DAUPH SEUL (1 lgt Tertiaire 1974)"
+      },
+      "lecon": "pivot l_libelle_adr peut afficher uniquement les variantes BAN principales (ex 7B/9B/11B/13B pour 75JZ) ; autorite reelle multi-adresses = rel_batiment_groupe_adresse requete par cle_interop_adr de chaque numero.",
+      "intouche": [
+        "7, 9, 11 DAUPH (deja sur 75JZ correct)",
+        "2 ST THEODORE (deja ancre 936T-G73D)",
+        "12 DAUPH (copro RNC AC8890550 nom '120 DAUPHINE' = bug RNC, separe)"
+      ]
     }
   },
   "iris": [
@@ -29232,8 +29252,6 @@
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-RTNL-L1N7-K12Y",
       "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "8/10 RUE DAUPHINE",
-      "_fusion_auto_sources": null,
       "ventes_par_an_logement": {
         "2021": 0,
         "2022": 2,
@@ -35689,15 +35707,13 @@
         "2024": 1
       },
       "nb_ventes_total": 1,
-      "nb_log_bdnb": 14,
-      "annee_construction": 1975,
+      "nb_log_bdnb": null,
+      "annee_construction": null,
       "classe_dpe": "E",
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
-      "batiment_groupe_id": "bdnb-bg-RTNL-L1N7-K12Y",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "1|RUE|ST MAXIMIN",
+      "batiment_groupe_id": "bdnb-bg-CPR3-6G9Q-X4H2",
+      "_bdnb_match": "correctif_doublon_b_re_point",
       "ventes_par_an_logement": {
         "2024": 0
       },
@@ -35705,8 +35721,8 @@
       "taux_rotation_logement": 0.0,
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "filtre_habitation",
-      "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot",
+      "usage_principal_bdnb": "Tertiaire",
+      "_usage_bdnb_src": "correctif_doublon_b",
       "_fusion_auto_sources": null
     },
     {
@@ -36945,10 +36961,11 @@
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-L2AS-75JZ-QX89",
       "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "7/9/11 RUE DAUPHINE",
+      "_fusion_auto_label": "7/9/11/13 RUE DAUPHINE",
       "_fusion_auto_sources": [
         "7|RUE|DAUPHINE",
-        "9|RUE|DAUPHINE"
+        "9|RUE|DAUPHINE",
+        "13|RUE|DAUPHINE"
       ],
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
@@ -38113,24 +38130,22 @@
       "_syndic_src": null,
       "ventes_par_an": {},
       "nb_ventes_total": 0,
-      "nb_log_bdnb": 1,
-      "annee_construction": 1974,
+      "nb_log_bdnb": 103,
+      "annee_construction": 1949,
       "classe_dpe": "D",
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
-      "batiment_groupe_id": "bdnb-bg-AUY1-RMZ8-PAUT",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "13/15 RUE DAUPHINE",
-      "_fusion_auto_sources": [
-        "15|RUE|DAUPHINE"
-      ],
+      "batiment_groupe_id": "bdnb-bg-L2AS-75JZ-QX89",
+      "_bdnb_match": "correctif_doublon_b_re_point",
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Tertiaire",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "7/9/11/13 RUE DAUPHINE"
     },
     {
       "cle": "13|RUE|JEAN PIERRE LEVY",
@@ -39597,8 +39612,6 @@
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-AUY1-RMZ8-PAUT",
       "_bdnb_match": "num_voie",
-      "_fusion_auto": true,
-      "_fusion_cible": "13|RUE|DAUPHINE",
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
@@ -50008,13 +50021,13 @@
       "_syndic_src": null,
       "ventes_par_an": {},
       "nb_ventes_total": 0,
-      "nb_log_bdnb": 103,
-      "annee_construction": 1949,
+      "nb_log_bdnb": 81,
+      "annee_construction": 1985,
       "classe_dpe": "E",
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
-      "batiment_groupe_id": "bdnb-bg-L2AS-75JZ-QX89",
-      "_bdnb_match": "num_voie",
+      "batiment_groupe_id": "bdnb-bg-BJ9A-936T-G73D",
+      "_bdnb_match": "correctif_doublon_b_re_point",
       "_fusion_auto_label": "4/6 RUE DAUPHINE",
       "_fusion_auto_sources": [
         "6|RUE|DAUPHINE"
@@ -53671,13 +53684,13 @@
       "_syndic_src": null,
       "ventes_par_an": {},
       "nb_ventes_total": 0,
-      "nb_log_bdnb": 103,
-      "annee_construction": 1949,
+      "nb_log_bdnb": 81,
+      "annee_construction": 1985,
       "classe_dpe": "E",
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
-      "batiment_groupe_id": "bdnb-bg-L2AS-75JZ-QX89",
-      "_bdnb_match": "num_voie",
+      "batiment_groupe_id": "bdnb-bg-BJ9A-936T-G73D",
+      "_bdnb_match": "correctif_doublon_b_re_point",
       "_fusion_auto": true,
       "_fusion_cible": "4|RUE|DAUPHINE",
       "ventes_par_an_logement": {},
