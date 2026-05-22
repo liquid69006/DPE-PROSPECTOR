@@ -130,6 +130,52 @@
         "2 ST THEODORE (deja ancre 936T-G73D)",
         "12 DAUPH (copro RNC AC8890550 nom '120 DAUPHINE' = bug RNC, separe)"
       ]
+    },
+    "_correctif_clemalformee_dl": {
+      "date": "2026-05-22T06:23:09Z",
+      "pattern": "REBIND cle_adresse (bug make_light DL extraction num)",
+      "autorite": "BDNB rel_batiment_groupe_parcelle + RNC live reference_cadastrale_X",
+      "ops_count": 3,
+      "details": [
+        {
+          "immat": "AD9757634",
+          "old_cle": "|RUE|PAUL BERT",
+          "new_cle": "272|RUE|PAUL BERT",
+          "propagations": [
+            "numero_immatriculation",
+            "nb_lots_habitation",
+            "taux_rotation",
+            "classement_rotation",
+            "syndic",
+            "_syndic_src"
+          ]
+        },
+        {
+          "immat": "AD5250634",
+          "old_cle": "|COURS|LAFAYETTE",
+          "new_cle": "310|COURS|LAFAYETTE",
+          "propagations": [
+            "numero_immatriculation",
+            "nb_lots_habitation",
+            "taux_rotation",
+            "classement_rotation",
+            "_syndic_src"
+          ]
+        },
+        {
+          "immat": "AC6769996",
+          "old_cle": "|RUE|DAUPHINE",
+          "new_cle": "75|RUE|DAUPHINE",
+          "propagations": [
+            "numero_immatriculation",
+            "nb_lots_habitation",
+            "taux_rotation",
+            "classement_rotation",
+            "syndic",
+            "_syndic_src"
+          ]
+        }
+      ]
     }
   },
   "iris": [
@@ -8376,7 +8422,7 @@
       "longitude": 4.869971,
       "latitude": 45.753095,
       "code_iris": "693830601",
-      "cle_adresse": "|RUE|DAUPHINE",
+      "cle_adresse": "75|RUE|DAUPHINE",
       "nb_lots_total": 26,
       "nb_lots_habitation": 10,
       "nb_lots_habitation_rnc": 10,
@@ -10261,7 +10307,7 @@
       "longitude": 4.869211,
       "latitude": 45.763446,
       "code_iris": "693830404",
-      "cle_adresse": "|COURS|LAFAYETTE",
+      "cle_adresse": "310|COURS|LAFAYETTE",
       "nb_lots_total": 35,
       "nb_lots_habitation": 11,
       "nb_lots_habitation_rnc": 11,
@@ -10770,7 +10816,7 @@
       "longitude": 4.869613,
       "latitude": 45.756083,
       "code_iris": "693830502",
-      "cle_adresse": "|RUE|PAUL BERT",
+      "cle_adresse": "272|RUE|PAUL BERT",
       "nb_lots_total": 71,
       "nb_lots_habitation": 35,
       "nb_lots_habitation_rnc": 35,
@@ -25498,7 +25544,7 @@
       "sci_nom": "SCI LATIMMO",
       "sci_siren": "484156856",
       "syndic": "GESTION ET PATRIMOINE LESCUYER",
-      "_syndic_src": "cadastre",
+      "_syndic_src": "rnc",
       "ventes_par_an": {
         "2021": 1,
         "2022": 1,
@@ -25512,7 +25558,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-PNCB-MYC1-JB4Q",
-      "_bdnb_match": "num_voie",
+      "_bdnb_match": "immat_rebind_clemalformee",
       "ventes_par_an_logement": {
         "2021": 0,
         "2022": 1,
@@ -25524,7 +25570,11 @@
       "classement_rotation_logement": "Actif",
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AD5250634",
+      "nb_lots_habitation": 11,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Fige"
     },
     {
       "cle": "316|RUE|PAUL BERT",
@@ -32641,8 +32691,8 @@
       "sci_proprietaire": "non",
       "sci_nom": "",
       "sci_siren": "",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "non connu",
+      "_syndic_src": "rnc",
       "ventes_par_an": {
         "2021": 1,
         "2023": 1,
@@ -32655,7 +32705,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-35NH-CNYH-DY2X",
-      "_bdnb_match": "num_voie",
+      "_bdnb_match": "immat_rebind_clemalformee",
       "ventes_par_an_logement": {
         "2021": 1,
         "2023": 1,
@@ -32666,7 +32716,11 @@
       "classement_rotation_logement": "Modéré",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AD9757634",
+      "nb_lots_habitation": 35,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Fige"
     },
     {
       "cle": "277|RUE|PAUL BERT",
@@ -54881,8 +54935,8 @@
       "sci_proprietaire": "oui",
       "sci_nom": "CCEMJB",
       "sci_siren": "823501788",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "GESTION ET PATRIMOINE LESCUYER",
+      "_syndic_src": "rnic_live",
       "ventes_par_an": {
         "2021": 1,
         "2022": 2
@@ -54894,7 +54948,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-XEEK-6E83-3BX4",
-      "_bdnb_match": "num_voie",
+      "_bdnb_match": "immat_rebind_clemalformee",
       "ventes_par_an_logement": {
         "2021": 1,
         "2022": 2
@@ -54904,7 +54958,11 @@
       "classement_rotation_logement": "Très actif",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AC6769996",
+      "nb_lots_habitation": 10,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Fige"
     },
     {
       "cle": "75|RUE|ETIENNE RICHERAND",

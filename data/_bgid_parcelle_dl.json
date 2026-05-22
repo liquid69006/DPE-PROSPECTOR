@@ -1,873 +1,953 @@
 {
- "bdnb-bg-SQC2-49E9-C6J1": [
-  "69383000DO0024"
- ],
- "bdnb-bg-CSCV-CK1X-T4EZ": [
-  "69383000AZ0280"
- ],
- "bdnb-bg-RD68-16FV-HRL3": [
-  "69383000EI0119"
- ],
- "bdnb-bg-WKES-2MH7-TGEP": [
-  "69383000EI0105"
- ],
- "bdnb-bg-FBM3-ZJRZ-K47C": [
-  "69383000DT0015"
- ],
- "bdnb-bg-GXGN-3H97-F4RU": [
-  "69383000EH0029"
- ],
- "bdnb-bg-ZS47-TD9J-M4FB": [
-  "69383000EI0066"
- ],
- "bdnb-bg-7LYT-S1HN-R4SH": [
-  "69383000BD0016",
-  "69383000BD0015"
- ],
- "bdnb-bg-TGAE-D25P-FSER": [
-  "69383000DV0065"
- ],
- "bdnb-bg-FFBR-PB1L-5YFY": [],
- "bdnb-bg-8PQL-Q28S-J197": [
-  "69383000DT0054"
- ],
- "bdnb-bg-ED7P-8YCZ-L6UX": [
-  "69383000BK0020"
- ],
- "bdnb-bg-B7XN-JTJZ-HPB4": [
-  "69383000DY0034"
- ],
- "bdnb-bg-L2AS-75JZ-QX89": [
-  "69383000AZ0071"
- ],
- "bdnb-bg-K1BT-FS4J-HZAJ": [
-  "69383000BC0089",
-  "69383000BC0076"
- ],
- "bdnb-bg-DN5L-ZKBD-MJ4G": [
-  "69383000AZ0208",
-  "69383000AZ0174"
- ],
- "bdnb-bg-24YS-YRES-2443": [
-  "69383000DY0028"
- ],
- "bdnb-bg-8U51-96UR-3947": [
-  "69383000EI0113"
- ],
- "bdnb-bg-4AP3-MLCF-HZGV": [
-  "69383000EK0035"
- ],
- "bdnb-bg-7VPW-6YPJ-XASZ": [
-  "69383000DO0051"
- ],
- "bdnb-bg-FNGY-JGU6-6J4U": [
-  "69383000BE0081"
- ],
- "bdnb-bg-AX8P-5ZM6-3A3B": [
-  "69383000DT0120"
- ],
- "bdnb-bg-D1FS-8QT9-MCVX": [],
- "bdnb-bg-QNDY-JKBL-KRG6": [
-  "69383000AZ0003"
- ],
- "bdnb-bg-W3VL-6KCU-S5RQ": [
-  "69383000DY0035"
- ],
- "bdnb-bg-W742-DTM2-KC86": [
-  "69383000EI0008"
- ],
- "bdnb-bg-AUY1-RMZ8-PAUT": [
-  "69383000AZ0107"
- ],
- "bdnb-bg-XSHA-32DF-VYVR": [
-  "69383000AZ0289",
-  "69383000AZ0176"
- ],
- "bdnb-bg-4BCZ-EFDZ-724F": [
-  "69383000DY0038"
- ],
- "bdnb-bg-W5E1-2VY3-48EC": [
-  "69383000DP0060",
-  "69383000DP0101"
- ],
- "bdnb-bg-FMLN-8TV6-GQRY": [
-  "69383000DP0097",
-  "69383000DP0100"
- ],
- "bdnb-bg-KBXD-6B4U-ECGL": [
-  "69383000DN0041"
- ],
- "bdnb-bg-TYEL-NYRS-F6BJ": [
-  "69383000DV0110"
- ],
- "bdnb-bg-HVXJ-LKT4-XT6P": [
-  "69383000DN0040"
- ],
- "bdnb-bg-TDEB-2BBZ-49NY": [
-  "69383000DR0134",
-  "69383000DR0135"
- ],
- "bdnb-bg-VRHU-LHNX-3PHB": [
-  "69383000BH0019"
- ],
- "bdnb-bg-95RE-NAQE-VLTC": [
-  "69383000DR0189"
- ],
- "bdnb-bg-KY6U-AHNX-6BKG": [
-  "69383000EI0009"
- ],
- "bdnb-bg-Z99U-LJD2-7LN5": [
-  "69383000DV0105"
- ],
- "bdnb-bg-AX5E-DBFL-VSF4": [
-  "69383000AZ0289"
- ],
- "bdnb-bg-FRYM-XEVY-K4QF": [
-  "69383000DR0118"
- ],
- "bdnb-bg-XWGV-M1EY-SXFT": [
-  "69383000DX0037",
-  "69383000DX0024"
- ],
- "bdnb-bg-17BU-14B8-YAN9": [
-  "69383000DV0022"
- ],
- "bdnb-bg-FPXP-Q1BZ-UB85": [
-  "69383000DR0063"
- ],
- "bdnb-bg-V431-EBHY-Y74D": [
-  "69383000DR0074",
-  "69383000DR0038",
-  "69383000DR0036"
- ],
- "bdnb-bg-MQ1N-U2RC-MUXA": [
-  "69383000DP0049"
- ],
- "bdnb-bg-Z5HW-KGU3-695C": [
-  "69383000DP0048"
- ],
- "bdnb-bg-V4JK-AHTA-BJP3": [
-  "69383000EK0065"
- ],
- "bdnb-bg-V8FX-J3U6-VGKN": [
-  "69383000DR0123"
- ],
- "bdnb-bg-S11S-Q6QJ-KLRK": [
-  "69383000BE0047"
- ],
- "bdnb-bg-KKDW-HL1C-GESF": [
-  "69383000BI0020"
- ],
- "bdnb-bg-Q2M9-ECBB-3GVY": [
-  "69383000AZ0050"
- ],
- "bdnb-bg-N1FW-GV93-Z5D3": [
-  "69383000DS0062"
- ],
- "bdnb-bg-DGQE-EZPF-8JC4": [
-  "69383000DR0072"
- ],
- "bdnb-bg-AVBW-59S6-3RB7": [
-  "69383000AZ0163"
- ],
- "bdnb-bg-T2BY-MXN2-79WY": [
-  "69383000DR0067"
- ],
- "bdnb-bg-RE61-FR7E-6PX3": [
-  "69383000EK0065"
- ],
- "bdnb-bg-2NUJ-1MR8-BM8W": [
-  "69383000DX0044",
-  "69383000DX0023"
- ],
- "bdnb-bg-P6SW-C8ML-QMSG": [
-  "69383000DO0034"
- ],
- "bdnb-bg-KKR4-ST1S-LSG2": [
-  "69383000BD0063"
- ],
- "bdnb-bg-G15W-CLD7-6WBT": [
-  "69383000DY0059"
- ],
- "bdnb-bg-PP5G-4B1F-PAJ7": [
-  "69383000EH0016"
- ],
- "bdnb-bg-LK7X-LXHQ-XLJ9": [
-  "69383000DV0086",
-  "69383000DV0089",
-  "69383000DV0076"
- ],
- "bdnb-bg-LEDB-JRC5-PQG2": [
-  "69383000DP0045"
- ],
- "bdnb-bg-QAXA-3HGU-PR74": [
-  "69383000DR0123"
- ],
- "bdnb-bg-5U6V-4AN8-UK5E": [
-  "69383000AZ0106",
-  "69383000AZ0067"
- ],
- "bdnb-bg-FF7P-S5GV-E96W": [
-  "69383000EI0079"
- ],
- "bdnb-bg-VFZ4-JA9T-HBRK": [
-  "69383000BC0097"
- ],
- "bdnb-bg-1BKA-72TZ-GEDL": [
-  "69383000DO0087"
- ],
- "bdnb-bg-HZC9-7X1P-6N6J": [
-  "69383000DN0011",
-  "69383000DN0106"
- ],
- "bdnb-bg-QBH3-9SNM-YK1V": [
-  "69383000DR0171"
- ],
- "bdnb-bg-V6UT-P9RP-BV8C": [
-  "69383000DW0059"
- ],
- "bdnb-bg-J7R2-Q51U-5DKE": [
-  "69383000EK0034"
- ],
- "bdnb-bg-FQGG-7NT8-K7E4": [
-  "69383000EL0110"
- ],
- "bdnb-bg-8WK9-A5TB-955B": [
-  "69383000EI0071",
-  "69383000EI0072"
- ],
- "bdnb-bg-1UQA-1EER-YN4L": [
-  "69383000DW0059"
- ],
- "bdnb-bg-AB8G-7WU5-JJEN": [
-  "69383000EH0070",
-  "69383000EH0125",
-  "69383000EH0127"
- ],
- "bdnb-bg-6D6N-M1N7-38NB": [
-  "69383000DW0029"
- ],
- "bdnb-bg-KMB9-JBR4-NCPK": [
-  "69383000BD0062"
- ],
- "bdnb-bg-BJ9A-936T-G73D": [
-  "69383000AZ0133"
- ],
- "bdnb-bg-HLUA-SDHE-R7ZT": [
-  "69383000EM0325",
-  "69383000EM0329"
- ],
- "bdnb-bg-E6PA-PJZ6-C3S1": [
-  "69383000BE0007",
-  "69383000BE0006"
- ],
- "bdnb-bg-XQNU-BKNQ-MM2L": [
-  "69383000EL0035"
- ],
- "bdnb-bg-M8MK-BKDM-ZLDL": [
-  "69383000DW0012",
-  "69383000DW0013"
- ],
- "bdnb-bg-R4LN-QEZ1-8YT5": [
-  "69383000DN0088"
- ],
- "bdnb-bg-HKJD-3Q2F-4AHV": [
-  "69383000DR0017"
- ],
- "bdnb-bg-1AUZ-K2PB-YB1Q": [
-  "69383000DN0084"
- ],
- "bdnb-bg-4AYF-KK89-LRHJ": [
-  "69383000EL0053"
- ],
- "bdnb-bg-NC2K-KYA9-6289": [
-  "69383000EI0064"
- ],
- "bdnb-bg-PNLK-D7S5-UCGW": [
-  "69383000DO0074",
-  "69383000DO0086"
- ],
- "bdnb-bg-VRQ2-82K8-7HRF": [
-  "69383000BD0006"
- ],
- "bdnb-bg-HE83-8SVJ-XDMR": [
-  "69383000DW0047"
- ],
- "bdnb-bg-3P31-XRLH-QVVV": [
-  "69383000DY0037",
-  "69383000DY0036"
- ],
- "bdnb-bg-B6UR-A6DL-WSRW": [
-  "69383000DR0019"
- ],
- "bdnb-bg-2NDH-AZ8S-SP5Y": [
-  "69383000DN0090"
- ],
- "bdnb-bg-T91B-RBSU-PGE7": [
-  "69383000DN0084"
- ],
- "bdnb-bg-7PX7-EGXC-YLCW": [
-  "69383000EM0370",
-  "69383000EM0394",
-  "69383000EM0375"
- ],
- "bdnb-bg-KCEY-7VH1-78S5": [
-  "69383000EL0024"
- ],
- "bdnb-bg-7PCU-HESB-FCZS": [
-  "69383000DR0087"
- ],
- "bdnb-bg-DQUT-3VHT-CEX3": [
-  "69383000DN0054"
- ],
- "bdnb-bg-WUX4-4RNF-PX9U": [
-  "69383000EL0025"
- ],
- "bdnb-bg-P139-Q7R6-NKWW": [
-  "69383000DO0029"
- ],
- "bdnb-bg-BEA1-5LV5-5PRV": [
-  "69383000EL0034"
- ],
- "bdnb-bg-5WXU-Q9TZ-YY31": [
-  "69383000BD0091"
- ],
- "bdnb-bg-ZZFF-WRFZ-EU8C": [
-  "69383000DT0106",
-  "69383000DT0013",
-  "69383000DT0105"
- ],
- "bdnb-bg-JY2H-VK9H-UM4D": [
-  "69383000DN0050"
- ],
- "bdnb-bg-VZUU-VWYA-7RHV": [
-  "69383000EL0030"
- ],
- "bdnb-bg-TXH9-22TP-BWYS": [
-  "69383000DN0030"
- ],
- "bdnb-bg-35LR-QLNW-D2P9": [
-  "69383000EK0065"
- ],
- "bdnb-bg-6NNX-7JPU-91VJ": [
-  "69383000DV0052"
- ],
- "bdnb-bg-9M8H-GBKD-7X86": [
-  "69383000BD0005"
- ],
- "bdnb-bg-VPLJ-N3JJ-SW4G": [
-  "69383000DZ0088"
- ],
- "bdnb-bg-QKYV-KCMH-DN37": [
-  "69383000EI0066"
- ],
- "bdnb-bg-RGB8-62ZK-4XU6": [
-  "69383000DW0067"
- ],
- "bdnb-bg-Z5KY-TX3N-8L23": [
-  "69383000BD0040"
- ],
- "bdnb-bg-EPSF-HRHZ-RS8J": [
-  "69383000DN0045"
- ],
- "bdnb-bg-8QJQ-RSVG-7N2D": [
-  "69383000DR0055"
- ],
- "bdnb-bg-D1GT-LP1Y-TEDX": [
-  "69383000DR0056"
- ],
- "bdnb-bg-HH7N-UFJY-YY5U": [
-  "69383000DN0043"
- ],
- "bdnb-bg-JD8P-REXG-R7S4": [
-  "69383000DO0071"
- ],
- "bdnb-bg-8CZP-2E2X-NCUJ": [
-  "69383000BC0099"
- ],
- "bdnb-bg-PDAY-83DV-XNGN": [
-  "69383000EL0033"
- ],
- "bdnb-bg-8GJT-5P9J-4EK3": [
-  "69383000BD0026"
- ],
- "bdnb-bg-TJV3-S5W4-Q4KZ": [
-  "69383000BD0091"
- ],
- "bdnb-bg-QN57-TWQK-FEX6": [
-  "69383000EH0014"
- ],
- "bdnb-bg-3QVX-HABP-S1NP": [
-  "69383000DX0037"
- ],
- "bdnb-bg-XT9X-WZU3-QUFP": [
-  "69383000DS0124",
-  "69383000DS0125",
-  "69383000DS0130",
-  "69383000DS0127",
-  "69383000DS0126"
- ],
- "bdnb-bg-2165-Y7A3-JA4B": [
-  "69383000AZ0173"
- ],
- "bdnb-bg-8D8R-F4XU-45KG": [
-  "69383000EL0113"
- ],
- "bdnb-bg-BQD8-MQ8F-H3HN": [
-  "69383000DV0050"
- ],
- "bdnb-bg-QNAY-M8CE-9AMV": [
-  "69383000DW0008",
-  "69383000DW0013"
- ],
- "bdnb-bg-V534-1UNM-GYM8": [
-  "69383000BD0004"
- ],
- "bdnb-bg-8EEJ-E3MV-96M7": [
-  "69383000DY0055"
- ],
- "bdnb-bg-LE6X-UMGS-VDM1": [
-  "69383000DS0046"
- ],
- "bdnb-bg-SCQS-HYN4-PPDQ": [
-  "69383000DO0021"
- ],
- "bdnb-bg-P4KS-E2SZ-C9BN": [
-  "69383000EM0327"
- ],
- "bdnb-bg-5EDR-T7V7-UKA3": [
-  "69383000DR0208"
- ],
- "bdnb-bg-ME8U-UNJZ-8JBU": [
-  "69383000EH0182"
- ],
- "bdnb-bg-8H19-JKSN-GKCB": [
-  "69383000EI0100"
- ],
- "bdnb-bg-99CM-2JFH-ZZLB": [
-  "69383000BD0003"
- ],
- "bdnb-bg-ZW8U-D1HH-GQUS": [
-  "69383000DZ0088"
- ],
- "bdnb-bg-RM26-Z61Q-HVQE": [
-  "69383000EK0067"
- ],
- "bdnb-bg-U3Q7-1AD8-Z67B": [
-  "69383000DP0029"
- ],
- "bdnb-bg-LEWC-F8QD-PCM7": [
-  "69383000DV0029"
- ],
- "bdnb-bg-WPSJ-ZJGX-8JY7": [
-  "69383000DP0027"
- ],
- "bdnb-bg-YWPZ-839V-UUP2": [
-  "69383000EI0055"
- ],
- "bdnb-bg-22ZZ-QDW3-WFXP": [
-  "69383000DT0059",
-  "69383000DT0086"
- ],
- "bdnb-bg-9N4A-HZY2-XF3V": [
-  "69383000DY0077"
- ],
- "bdnb-bg-XCBR-3UJG-85UB": [
-  "69383000DT0058"
- ],
- "bdnb-bg-X64H-A123-1W5J": [
-  "69383000DY0011"
- ],
- "bdnb-bg-PBWB-GL39-PCD5": [
-  "69383000DV0045"
- ],
- "bdnb-bg-CLB7-D86Z-9U7E": [
-  "69383000AZ0109"
- ],
- "bdnb-bg-KAVM-EN3B-35TA": [
-  "69383000EK0067"
- ],
- "bdnb-bg-MNMB-7F9F-2TDS": [
-  "69383000DN0099"
- ],
- "bdnb-bg-NE4P-HGDU-RZ36": [
-  "69383000DS0078"
- ],
- "bdnb-bg-1LHG-5G1W-QJ9J": [
-  "69383000BK0011"
- ],
- "bdnb-bg-UHG2-HSMN-CBPP": [
-  "69383000EH0073"
- ],
- "bdnb-bg-U297-N64A-4SXK": [
-  "69383000DS0076"
- ],
- "bdnb-bg-LZTF-7J8D-8FYE": [
-  "69383000AZ0056"
- ],
- "bdnb-bg-8D3R-D17T-92ST": [
-  "69383000DZ0115"
- ],
- "bdnb-bg-HG7J-CA18-P3VG": [
-  "69383000EI0072"
- ],
- "bdnb-bg-9QRD-SMSX-T5SC": [
-  "69383000BD0001"
- ],
- "bdnb-bg-BSN1-2H3L-NSVW": [
-  "69383000DR0207"
- ],
- "bdnb-bg-BXRP-2CT9-61EP": [
-  "69383000DT0046"
- ],
- "bdnb-bg-XFKY-T8HF-YZ6R": [
-  "69383000DV0061"
- ],
- "bdnb-bg-ZCWQ-6JAH-1AH5": [
-  "69383000BC0052"
- ],
- "bdnb-bg-F9BQ-9GJJ-D4AD": [
-  "69383000DY0048"
- ],
- "bdnb-bg-BJP6-W4Q2-72UZ": [
-  "69383000AZ0057"
- ],
- "bdnb-bg-H22L-8Z1E-D61Z": [
-  "69383000EH0089"
- ],
- "bdnb-bg-FRLH-S9QU-9A6T": [
-  "69383000EK0067"
- ],
- "bdnb-bg-K6MG-1NKK-3RPG": [
-  "69383000DN0033"
- ],
- "bdnb-bg-2MVY-DXZE-E5TL": [
-  "69383000DV0057"
- ],
- "bdnb-bg-J721-E2CA-NU6V": [
-  "69383000AZ0155"
- ],
- "bdnb-bg-6W45-9CXU-KG51": [
-  "69383000DT0076"
- ],
- "bdnb-bg-XPV4-36LA-Y1E9": [
-  "69383000DP0013"
- ],
- "bdnb-bg-ZMXP-843Z-XPJZ": [
-  "69383000DV0056"
- ],
- "bdnb-bg-JTUX-9ZZ3-U6H3": [
-  "69383000DV0044"
- ],
- "bdnb-bg-QXAH-Y7QM-A3JB": [
-  "69383000AZ0058"
- ],
- "bdnb-bg-P8CS-S9BX-SR2R": [
-  "69383000DV0039"
- ],
- "bdnb-bg-7525-8F2E-EPH8": [
-  "69383000DV0037"
- ],
- "bdnb-bg-LS26-PDJ2-S81A": [
-  "69383000AZ0218",
-  "69383000AZ0219"
- ],
- "bdnb-bg-1CJ6-C4FR-4YGH": [
-  "69383000DT0027"
- ],
- "bdnb-bg-YDFY-LUZZ-PM2C": [
-  "69383000AZ0109"
- ],
- "bdnb-bg-JVUN-HP4H-NYP1": [
-  "69383000EH0020"
- ],
- "bdnb-bg-G42R-WCCY-9KFD": [
-  "69383000EM0244"
- ],
- "bdnb-bg-XK3Z-EJHT-UR4E": [
-  "69383000DW0026"
- ],
- "bdnb-bg-DYMW-KBXU-716T": [
-  "69383000DW0045"
- ],
- "bdnb-bg-YCWV-JJUU-CHZE": [
-  "69383000AZ0077"
- ],
- "bdnb-bg-MW83-SX3P-D16B": [
-  "69383000DY0108"
- ],
- "bdnb-bg-VGNW-N4HU-YD2U": [
-  "69383000DY0067"
- ],
- "bdnb-bg-L5QL-8Y76-N9CC": [
-  "69383000DW0027"
- ],
- "bdnb-bg-BBN3-M27P-3ANA": [
-  "69383000DT0112",
-  "69383000DT0030"
- ],
- "bdnb-bg-EPB2-XL4C-CHH1": [
-  "69383000DW0036"
- ],
- "bdnb-bg-B7HF-HN4M-TSLU": [
-  "69383000DW0064"
- ],
- "bdnb-bg-7VAY-EQKF-F2LF": [
-  "69383000AZ0239"
- ],
- "bdnb-bg-576W-T8B7-57ET": [
-  "69383000DY0004"
- ],
- "bdnb-bg-YPGH-7VAG-YL5C": [
-  "69383000DT0032"
- ],
- "bdnb-bg-VCHQ-W16E-P1V4": [
-  "69383000EH0031",
-  "69383000EH0032"
- ],
- "bdnb-bg-L6YT-TE7D-H68A": [
-  "69383000BC0036"
- ],
- "bdnb-bg-9TVB-3KRG-H7YH": [
-  "69383000EH0036"
- ],
- "bdnb-bg-FS5T-27SZ-1D73": [
-  "69383000DZ0092"
- ],
- "bdnb-bg-BUYB-CYKZ-EWXT": [
-  "69383000DO0050",
-  "69383000DO0049"
- ],
- "bdnb-bg-CXP2-X59F-KFA2": [
-  "69383000EK0045"
- ],
- "bdnb-bg-BWM4-1HRQ-MAX4": [
-  "69383000EL0105"
- ],
- "bdnb-bg-SFXP-S6L3-A693": [
-  "69383000DY0012"
- ],
- "bdnb-bg-ZNN2-SAMJ-S68B": [
-  "69383000DZ0092"
- ],
- "bdnb-bg-YBQ5-DZK6-AMBC": [
-  "69383000DW0059"
- ],
- "bdnb-bg-PQCP-R4TX-GMC9": [
-  "69383000DR0117"
- ],
- "bdnb-bg-GZNK-V5UZ-5VKZ": [
-  "69383000DZ0113"
- ],
- "bdnb-bg-USVM-984W-VRFJ": [
-  "69383000DN0060",
-  "69383000DN0075"
- ],
- "bdnb-bg-D4T9-4NNA-CTV4": [
-  "69383000DT0019"
- ],
- "bdnb-bg-EGPZ-2RSB-829Y": [
-  "69383000DO0005"
- ],
- "bdnb-bg-9Q8J-7KPH-2P9U": [
-  "69383000EI0026",
-  "69383000EI0024",
-  "69383000EI0031",
-  "69383000EI0034",
-  "69383000EI0037",
-  "69383000EI0036",
-  "69383000EI0029",
-  "69383000EI0032",
-  "69383000EI0033",
-  "69383000EI0030"
- ],
- "bdnb-bg-T125-SHNC-BAM6": [
-  "69383000BH0012"
- ],
- "bdnb-bg-JC6A-SZUS-8UAJ": [
-  "69383000DY0027"
- ],
- "bdnb-bg-AM81-DZPJ-QXMN": [
-  "69383000BI0065"
- ],
- "bdnb-bg-87ZF-KX65-FHAW": [
-  "69383000AZ0055"
- ],
- "bdnb-bg-SUW6-GBH5-11VB": [
-  "69383000EM0363"
- ],
- "bdnb-bg-E3ZW-PDHN-JM11": [
-  "69383000DO0043"
- ],
- "bdnb-bg-UD36-AJ94-ZSUK": [
-  "69383000DV0085",
-  "69383000DV0083"
- ],
- "bdnb-bg-S26C-7M8T-K12Q": [
-  "69383000DY0052"
- ],
- "bdnb-bg-DRJZ-H8ZZ-VD1W": [
-  "69383000BC0096"
- ],
- "bdnb-bg-GSNQ-MCQ7-88DU": [
-  "69383000DS0009"
- ],
- "bdnb-bg-G2ZQ-H667-PH4K": [
-  "69383000AZ0183",
-  "69383000AZ0145",
-  "69383000AZ0142"
- ],
- "bdnb-bg-YVGR-P2M6-VRZX": [
-  "69383000EK0011",
-  "69383000EK0050"
- ],
- "bdnb-bg-QKMQ-SVXL-98NF": [
-  "69383000AZ0022"
- ],
- "bdnb-bg-51HT-VGGW-7VQ9": [
-  "69383000BK0073"
- ],
- "bdnb-bg-K2WQ-1L5V-QXEJ": [
-  "69383000DT0017"
- ],
- "bdnb-bg-N5A3-868G-AP34": [
-  "69383000DO0060"
- ],
- "bdnb-bg-ZME8-XZ6A-ANC9": [
-  "69383000BE0072",
-  "69383000BE0084"
- ],
- "bdnb-bg-CEZ1-BL62-MVHS": [
-  "69383000EH0038"
- ],
- "bdnb-bg-WM3M-F4BX-8Z7T": [
-  "69383000AZ0155"
- ],
- "bdnb-bg-4URE-JQSG-6MGS": [
-  "69383000DN0003"
- ],
- "bdnb-bg-R9ZW-728B-LGJZ": [
-  "69383000BI0069"
- ],
- "bdnb-bg-TU71-K74H-4YQ3": [
-  "69383000DW0045"
- ],
- "bdnb-bg-XYVS-E9SG-4UP1": [
-  "69383000EL0115"
- ],
- "bdnb-bg-EYMB-3EJW-NLWH": [
-  "69383000DV0018"
- ],
- "bdnb-bg-554B-NN4D-3A1Q": [
-  "69383000EM0319",
-  "69383000EM0302",
-  "69383000EM0317",
-  "69383000EM0321"
- ],
- "bdnb-bg-6DEF-7VK7-7VNF": [
-  "69383000EL0061"
- ],
- "bdnb-bg-CTWY-Y9WZ-MX22": [
-  "69383000AZ0267"
- ],
- "bdnb-bg-Z7Z8-1XS9-ME8G": [
-  "69383000EL0062"
- ],
- "bdnb-bg-XXU3-L2LW-69P8": [
-  "69383000DR0169",
-  "69383000DR0171"
- ],
- "bdnb-bg-FW4B-YECQ-FPCT": [
-  "69383000DO0025"
- ],
- "bdnb-bg-49ZA-VCG7-NKFM": [
-  "69383000EH0022",
-  "69383000EH0021",
-  "69383000EH0032",
-  "69383000EH0033"
- ],
- "bdnb-bg-GFKS-DC3T-CRB1": [
-  "69383000DN0005"
- ],
- "bdnb-bg-1DBJ-3PC2-EVUG": [
-  "69383000DY0039"
- ],
- "bdnb-bg-5RMC-KXL7-E97N": [
-  "69383000EI0094"
- ],
- "bdnb-bg-D67J-UNYF-TAGM": [
-  "69383000DZ0118",
-  "69383000DZ0036"
- ],
- "bdnb-bg-UW9S-AYKV-6TAV": [
-  "69383000DS0072"
- ],
- "bdnb-bg-KLP4-PFBH-ZZUQ": [
-  "69383000DR0165",
-  "69383000DR0168",
-  "69383000DR0163",
-  "69383000DR0169"
- ],
- "bdnb-bg-5NH2-EJ2E-JZXH": [
-  "69383000DT0073"
- ],
- "bdnb-bg-BVP7-EESB-58L7": [
-  "69383000EM0332",
-  "69383000EM0301",
-  "69383000EM0312",
-  "69383000EM0309",
-  "69383000EM0306",
-  "69383000EM0314",
-  "69383000EM0335",
-  "69383000EM0336"
- ],
- "bdnb-bg-XG68-JJEU-L7V2": [
-  "69383000BE0083"
- ],
- "bdnb-bg-NG1L-HCUZ-8DRJ": [
-  "69383000EH0114"
- ],
- "bdnb-bg-KNSA-5BWZ-A2XZ": [
-  "69383000AZ0155"
- ],
- "bdnb-bg-9V7F-64PQ-UJ5S": [
-  "69383000DR0124"
- ],
- "bdnb-bg-DGWW-GKPC-Z3DE": [
-  "69383000AZ0135"
- ],
- "bdnb-bg-98MA-75GZ-5CFT": [
-  "69383000DS0129"
- ],
- "bdnb-bg-8MGS-ZVKY-9ZYR": [
-  "69383000BI0054"
- ],
- "bdnb-bg-4GW9-BEMF-5VA7": [
-  "69383000DT0097"
- ],
- "bdnb-bg-B3PH-VN6W-QP8X": [
-  "69383000DT0024"
- ],
- "bdnb-bg-1AVL-LMTT-G7Z9": [
-  "69383000EH0030"
- ],
- "bdnb-bg-WQZA-TNRT-44JS": [
-  "69383000EH0123"
- ],
- "bdnb-bg-K5KX-NEHV-8KAS": [
-  "69383000DX0034"
- ],
- "bdnb-bg-VBQ7-8S4W-KZVY": [
-  "69383000DT0066",
-  "69383000DT0065"
- ],
- "bdnb-bg-36F5-BHL7-ME1G": [
-  "69383000EL0127",
-  "69383000EL0018",
-  "69383000EL0125",
-  "69383000EL0100"
- ],
- "bdnb-bg-XA8Z-JVL1-7SR6": [
-  "69383000DN0086"
- ]
+  "bdnb-bg-SQC2-49E9-C6J1": [
+    "69383000DO0024"
+  ],
+  "bdnb-bg-CSCV-CK1X-T4EZ": [
+    "69383000AZ0280"
+  ],
+  "bdnb-bg-RD68-16FV-HRL3": [
+    "69383000EI0119"
+  ],
+  "bdnb-bg-WKES-2MH7-TGEP": [
+    "69383000EI0105"
+  ],
+  "bdnb-bg-FBM3-ZJRZ-K47C": [
+    "69383000DT0015"
+  ],
+  "bdnb-bg-GXGN-3H97-F4RU": [
+    "69383000EH0029"
+  ],
+  "bdnb-bg-ZS47-TD9J-M4FB": [
+    "69383000EI0066"
+  ],
+  "bdnb-bg-7LYT-S1HN-R4SH": [
+    "69383000BD0016",
+    "69383000BD0015"
+  ],
+  "bdnb-bg-TGAE-D25P-FSER": [
+    "69383000DV0065"
+  ],
+  "bdnb-bg-FFBR-PB1L-5YFY": [],
+  "bdnb-bg-8PQL-Q28S-J197": [
+    "69383000DT0054"
+  ],
+  "bdnb-bg-ED7P-8YCZ-L6UX": [
+    "69383000BK0020"
+  ],
+  "bdnb-bg-B7XN-JTJZ-HPB4": [
+    "69383000DY0034"
+  ],
+  "bdnb-bg-L2AS-75JZ-QX89": [
+    "69383000AZ0071"
+  ],
+  "bdnb-bg-K1BT-FS4J-HZAJ": [
+    "69383000BC0089",
+    "69383000BC0076"
+  ],
+  "bdnb-bg-DN5L-ZKBD-MJ4G": [
+    "69383000AZ0208",
+    "69383000AZ0174"
+  ],
+  "bdnb-bg-24YS-YRES-2443": [
+    "69383000DY0028"
+  ],
+  "bdnb-bg-8U51-96UR-3947": [
+    "69383000EI0113"
+  ],
+  "bdnb-bg-4AP3-MLCF-HZGV": [
+    "69383000EK0035"
+  ],
+  "bdnb-bg-7VPW-6YPJ-XASZ": [
+    "69383000DO0051"
+  ],
+  "bdnb-bg-FNGY-JGU6-6J4U": [
+    "69383000BE0081"
+  ],
+  "bdnb-bg-AX8P-5ZM6-3A3B": [
+    "69383000DT0120"
+  ],
+  "bdnb-bg-D1FS-8QT9-MCVX": [],
+  "bdnb-bg-QNDY-JKBL-KRG6": [
+    "69383000AZ0003"
+  ],
+  "bdnb-bg-W3VL-6KCU-S5RQ": [
+    "69383000DY0035"
+  ],
+  "bdnb-bg-W742-DTM2-KC86": [
+    "69383000EI0008"
+  ],
+  "bdnb-bg-AUY1-RMZ8-PAUT": [
+    "69383000AZ0107"
+  ],
+  "bdnb-bg-XSHA-32DF-VYVR": [
+    "69383000AZ0289",
+    "69383000AZ0176"
+  ],
+  "bdnb-bg-4BCZ-EFDZ-724F": [
+    "69383000DY0038"
+  ],
+  "bdnb-bg-W5E1-2VY3-48EC": [
+    "69383000DP0060",
+    "69383000DP0101"
+  ],
+  "bdnb-bg-FMLN-8TV6-GQRY": [
+    "69383000DP0097",
+    "69383000DP0100"
+  ],
+  "bdnb-bg-KBXD-6B4U-ECGL": [
+    "69383000DN0041"
+  ],
+  "bdnb-bg-TYEL-NYRS-F6BJ": [
+    "69383000DV0110"
+  ],
+  "bdnb-bg-HVXJ-LKT4-XT6P": [
+    "69383000DN0040"
+  ],
+  "bdnb-bg-TDEB-2BBZ-49NY": [
+    "69383000DR0134",
+    "69383000DR0135"
+  ],
+  "bdnb-bg-VRHU-LHNX-3PHB": [
+    "69383000BH0019"
+  ],
+  "bdnb-bg-95RE-NAQE-VLTC": [
+    "69383000DR0189"
+  ],
+  "bdnb-bg-KY6U-AHNX-6BKG": [
+    "69383000EI0009"
+  ],
+  "bdnb-bg-Z99U-LJD2-7LN5": [
+    "69383000DV0105"
+  ],
+  "bdnb-bg-AX5E-DBFL-VSF4": [
+    "69383000AZ0289"
+  ],
+  "bdnb-bg-FRYM-XEVY-K4QF": [
+    "69383000DR0118"
+  ],
+  "bdnb-bg-XWGV-M1EY-SXFT": [
+    "69383000DX0037",
+    "69383000DX0024"
+  ],
+  "bdnb-bg-17BU-14B8-YAN9": [
+    "69383000DV0022"
+  ],
+  "bdnb-bg-FPXP-Q1BZ-UB85": [
+    "69383000DR0063"
+  ],
+  "bdnb-bg-V431-EBHY-Y74D": [
+    "69383000DR0074",
+    "69383000DR0038",
+    "69383000DR0036"
+  ],
+  "bdnb-bg-MQ1N-U2RC-MUXA": [
+    "69383000DP0049"
+  ],
+  "bdnb-bg-Z5HW-KGU3-695C": [
+    "69383000DP0048"
+  ],
+  "bdnb-bg-V4JK-AHTA-BJP3": [
+    "69383000EK0065"
+  ],
+  "bdnb-bg-V8FX-J3U6-VGKN": [
+    "69383000DR0123"
+  ],
+  "bdnb-bg-S11S-Q6QJ-KLRK": [
+    "69383000BE0047"
+  ],
+  "bdnb-bg-KKDW-HL1C-GESF": [
+    "69383000BI0020"
+  ],
+  "bdnb-bg-Q2M9-ECBB-3GVY": [
+    "69383000AZ0050"
+  ],
+  "bdnb-bg-N1FW-GV93-Z5D3": [
+    "69383000DS0062"
+  ],
+  "bdnb-bg-DGQE-EZPF-8JC4": [
+    "69383000DR0072"
+  ],
+  "bdnb-bg-AVBW-59S6-3RB7": [
+    "69383000AZ0163"
+  ],
+  "bdnb-bg-T2BY-MXN2-79WY": [
+    "69383000DR0067"
+  ],
+  "bdnb-bg-RE61-FR7E-6PX3": [
+    "69383000EK0065"
+  ],
+  "bdnb-bg-2NUJ-1MR8-BM8W": [
+    "69383000DX0044",
+    "69383000DX0023"
+  ],
+  "bdnb-bg-P6SW-C8ML-QMSG": [
+    "69383000DO0034"
+  ],
+  "bdnb-bg-KKR4-ST1S-LSG2": [
+    "69383000BD0063"
+  ],
+  "bdnb-bg-G15W-CLD7-6WBT": [
+    "69383000DY0059"
+  ],
+  "bdnb-bg-PP5G-4B1F-PAJ7": [
+    "69383000EH0016"
+  ],
+  "bdnb-bg-LK7X-LXHQ-XLJ9": [
+    "69383000DV0086",
+    "69383000DV0089",
+    "69383000DV0076"
+  ],
+  "bdnb-bg-LEDB-JRC5-PQG2": [
+    "69383000DP0045"
+  ],
+  "bdnb-bg-QAXA-3HGU-PR74": [
+    "69383000DR0123"
+  ],
+  "bdnb-bg-5U6V-4AN8-UK5E": [
+    "69383000AZ0106",
+    "69383000AZ0067"
+  ],
+  "bdnb-bg-FF7P-S5GV-E96W": [
+    "69383000EI0079"
+  ],
+  "bdnb-bg-VFZ4-JA9T-HBRK": [
+    "69383000BC0097"
+  ],
+  "bdnb-bg-1BKA-72TZ-GEDL": [
+    "69383000DO0087"
+  ],
+  "bdnb-bg-HZC9-7X1P-6N6J": [
+    "69383000DN0011",
+    "69383000DN0106"
+  ],
+  "bdnb-bg-QBH3-9SNM-YK1V": [
+    "69383000DR0171"
+  ],
+  "bdnb-bg-V6UT-P9RP-BV8C": [
+    "69383000DW0059"
+  ],
+  "bdnb-bg-J7R2-Q51U-5DKE": [
+    "69383000EK0034"
+  ],
+  "bdnb-bg-FQGG-7NT8-K7E4": [
+    "69383000EL0110"
+  ],
+  "bdnb-bg-8WK9-A5TB-955B": [
+    "69383000EI0071",
+    "69383000EI0072"
+  ],
+  "bdnb-bg-1UQA-1EER-YN4L": [
+    "69383000DW0059"
+  ],
+  "bdnb-bg-AB8G-7WU5-JJEN": [
+    "69383000EH0070",
+    "69383000EH0125",
+    "69383000EH0127"
+  ],
+  "bdnb-bg-6D6N-M1N7-38NB": [
+    "69383000DW0029"
+  ],
+  "bdnb-bg-KMB9-JBR4-NCPK": [
+    "69383000BD0062"
+  ],
+  "bdnb-bg-BJ9A-936T-G73D": [
+    "69383000AZ0133"
+  ],
+  "bdnb-bg-HLUA-SDHE-R7ZT": [
+    "69383000EM0325",
+    "69383000EM0329"
+  ],
+  "bdnb-bg-E6PA-PJZ6-C3S1": [
+    "69383000BE0007",
+    "69383000BE0006"
+  ],
+  "bdnb-bg-XQNU-BKNQ-MM2L": [
+    "69383000EL0035"
+  ],
+  "bdnb-bg-M8MK-BKDM-ZLDL": [
+    "69383000DW0012",
+    "69383000DW0013"
+  ],
+  "bdnb-bg-R4LN-QEZ1-8YT5": [
+    "69383000DN0088"
+  ],
+  "bdnb-bg-HKJD-3Q2F-4AHV": [
+    "69383000DR0017"
+  ],
+  "bdnb-bg-1AUZ-K2PB-YB1Q": [
+    "69383000DN0084"
+  ],
+  "bdnb-bg-4AYF-KK89-LRHJ": [
+    "69383000EL0053"
+  ],
+  "bdnb-bg-NC2K-KYA9-6289": [
+    "69383000EI0064"
+  ],
+  "bdnb-bg-PNLK-D7S5-UCGW": [
+    "69383000DO0074",
+    "69383000DO0086"
+  ],
+  "bdnb-bg-VRQ2-82K8-7HRF": [
+    "69383000BD0006"
+  ],
+  "bdnb-bg-HE83-8SVJ-XDMR": [
+    "69383000DW0047"
+  ],
+  "bdnb-bg-3P31-XRLH-QVVV": [
+    "69383000DY0037",
+    "69383000DY0036"
+  ],
+  "bdnb-bg-B6UR-A6DL-WSRW": [
+    "69383000DR0019"
+  ],
+  "bdnb-bg-2NDH-AZ8S-SP5Y": [
+    "69383000DN0090"
+  ],
+  "bdnb-bg-T91B-RBSU-PGE7": [
+    "69383000DN0084"
+  ],
+  "bdnb-bg-7PX7-EGXC-YLCW": [
+    "69383000EM0370",
+    "69383000EM0394",
+    "69383000EM0375"
+  ],
+  "bdnb-bg-KCEY-7VH1-78S5": [
+    "69383000EL0024"
+  ],
+  "bdnb-bg-7PCU-HESB-FCZS": [
+    "69383000DR0087"
+  ],
+  "bdnb-bg-DQUT-3VHT-CEX3": [
+    "69383000DN0054"
+  ],
+  "bdnb-bg-WUX4-4RNF-PX9U": [
+    "69383000EL0025"
+  ],
+  "bdnb-bg-P139-Q7R6-NKWW": [
+    "69383000DO0029"
+  ],
+  "bdnb-bg-BEA1-5LV5-5PRV": [
+    "69383000EL0034"
+  ],
+  "bdnb-bg-5WXU-Q9TZ-YY31": [
+    "69383000BD0091"
+  ],
+  "bdnb-bg-ZZFF-WRFZ-EU8C": [
+    "69383000DT0106",
+    "69383000DT0013",
+    "69383000DT0105"
+  ],
+  "bdnb-bg-JY2H-VK9H-UM4D": [
+    "69383000DN0050"
+  ],
+  "bdnb-bg-VZUU-VWYA-7RHV": [
+    "69383000EL0030"
+  ],
+  "bdnb-bg-TXH9-22TP-BWYS": [
+    "69383000DN0030"
+  ],
+  "bdnb-bg-35LR-QLNW-D2P9": [
+    "69383000EK0065"
+  ],
+  "bdnb-bg-6NNX-7JPU-91VJ": [
+    "69383000DV0052"
+  ],
+  "bdnb-bg-9M8H-GBKD-7X86": [
+    "69383000BD0005"
+  ],
+  "bdnb-bg-VPLJ-N3JJ-SW4G": [
+    "69383000DZ0088"
+  ],
+  "bdnb-bg-QKYV-KCMH-DN37": [
+    "69383000EI0066"
+  ],
+  "bdnb-bg-RGB8-62ZK-4XU6": [
+    "69383000DW0067"
+  ],
+  "bdnb-bg-Z5KY-TX3N-8L23": [
+    "69383000BD0040"
+  ],
+  "bdnb-bg-EPSF-HRHZ-RS8J": [
+    "69383000DN0045"
+  ],
+  "bdnb-bg-8QJQ-RSVG-7N2D": [
+    "69383000DR0055"
+  ],
+  "bdnb-bg-D1GT-LP1Y-TEDX": [
+    "69383000DR0056"
+  ],
+  "bdnb-bg-HH7N-UFJY-YY5U": [
+    "69383000DN0043"
+  ],
+  "bdnb-bg-JD8P-REXG-R7S4": [
+    "69383000DO0071"
+  ],
+  "bdnb-bg-8CZP-2E2X-NCUJ": [
+    "69383000BC0099"
+  ],
+  "bdnb-bg-PDAY-83DV-XNGN": [
+    "69383000EL0033"
+  ],
+  "bdnb-bg-8GJT-5P9J-4EK3": [
+    "69383000BD0026"
+  ],
+  "bdnb-bg-TJV3-S5W4-Q4KZ": [
+    "69383000BD0091"
+  ],
+  "bdnb-bg-QN57-TWQK-FEX6": [
+    "69383000EH0014"
+  ],
+  "bdnb-bg-3QVX-HABP-S1NP": [
+    "69383000DX0037"
+  ],
+  "bdnb-bg-XT9X-WZU3-QUFP": [
+    "69383000DS0124",
+    "69383000DS0125",
+    "69383000DS0130",
+    "69383000DS0127",
+    "69383000DS0126"
+  ],
+  "bdnb-bg-2165-Y7A3-JA4B": [
+    "69383000AZ0173"
+  ],
+  "bdnb-bg-8D8R-F4XU-45KG": [
+    "69383000EL0113"
+  ],
+  "bdnb-bg-BQD8-MQ8F-H3HN": [
+    "69383000DV0050"
+  ],
+  "bdnb-bg-QNAY-M8CE-9AMV": [
+    "69383000DW0008",
+    "69383000DW0013"
+  ],
+  "bdnb-bg-V534-1UNM-GYM8": [
+    "69383000BD0004"
+  ],
+  "bdnb-bg-8EEJ-E3MV-96M7": [
+    "69383000DY0055"
+  ],
+  "bdnb-bg-LE6X-UMGS-VDM1": [
+    "69383000DS0046"
+  ],
+  "bdnb-bg-SCQS-HYN4-PPDQ": [
+    "69383000DO0021"
+  ],
+  "bdnb-bg-P4KS-E2SZ-C9BN": [
+    "69383000EM0327"
+  ],
+  "bdnb-bg-5EDR-T7V7-UKA3": [
+    "69383000DR0208"
+  ],
+  "bdnb-bg-ME8U-UNJZ-8JBU": [
+    "69383000EH0182"
+  ],
+  "bdnb-bg-8H19-JKSN-GKCB": [
+    "69383000EI0100"
+  ],
+  "bdnb-bg-99CM-2JFH-ZZLB": [
+    "69383000BD0003"
+  ],
+  "bdnb-bg-ZW8U-D1HH-GQUS": [
+    "69383000DZ0088"
+  ],
+  "bdnb-bg-RM26-Z61Q-HVQE": [
+    "69383000EK0067"
+  ],
+  "bdnb-bg-U3Q7-1AD8-Z67B": [
+    "69383000DP0029"
+  ],
+  "bdnb-bg-LEWC-F8QD-PCM7": [
+    "69383000DV0029"
+  ],
+  "bdnb-bg-WPSJ-ZJGX-8JY7": [
+    "69383000DP0027"
+  ],
+  "bdnb-bg-YWPZ-839V-UUP2": [
+    "69383000EI0055"
+  ],
+  "bdnb-bg-22ZZ-QDW3-WFXP": [
+    "69383000DT0059",
+    "69383000DT0086"
+  ],
+  "bdnb-bg-9N4A-HZY2-XF3V": [
+    "69383000DY0077"
+  ],
+  "bdnb-bg-XCBR-3UJG-85UB": [
+    "69383000DT0058"
+  ],
+  "bdnb-bg-X64H-A123-1W5J": [
+    "69383000DY0011"
+  ],
+  "bdnb-bg-PBWB-GL39-PCD5": [
+    "69383000DV0045"
+  ],
+  "bdnb-bg-CLB7-D86Z-9U7E": [
+    "69383000AZ0109"
+  ],
+  "bdnb-bg-KAVM-EN3B-35TA": [
+    "69383000EK0067"
+  ],
+  "bdnb-bg-MNMB-7F9F-2TDS": [
+    "69383000DN0099"
+  ],
+  "bdnb-bg-NE4P-HGDU-RZ36": [
+    "69383000DS0078"
+  ],
+  "bdnb-bg-1LHG-5G1W-QJ9J": [
+    "69383000BK0011"
+  ],
+  "bdnb-bg-UHG2-HSMN-CBPP": [
+    "69383000EH0073"
+  ],
+  "bdnb-bg-U297-N64A-4SXK": [
+    "69383000DS0076"
+  ],
+  "bdnb-bg-LZTF-7J8D-8FYE": [
+    "69383000AZ0056"
+  ],
+  "bdnb-bg-8D3R-D17T-92ST": [
+    "69383000DZ0115"
+  ],
+  "bdnb-bg-HG7J-CA18-P3VG": [
+    "69383000EI0072"
+  ],
+  "bdnb-bg-9QRD-SMSX-T5SC": [
+    "69383000BD0001"
+  ],
+  "bdnb-bg-BSN1-2H3L-NSVW": [
+    "69383000DR0207"
+  ],
+  "bdnb-bg-BXRP-2CT9-61EP": [
+    "69383000DT0046"
+  ],
+  "bdnb-bg-XFKY-T8HF-YZ6R": [
+    "69383000DV0061"
+  ],
+  "bdnb-bg-ZCWQ-6JAH-1AH5": [
+    "69383000BC0052"
+  ],
+  "bdnb-bg-F9BQ-9GJJ-D4AD": [
+    "69383000DY0048"
+  ],
+  "bdnb-bg-BJP6-W4Q2-72UZ": [
+    "69383000AZ0057"
+  ],
+  "bdnb-bg-H22L-8Z1E-D61Z": [
+    "69383000EH0089"
+  ],
+  "bdnb-bg-FRLH-S9QU-9A6T": [
+    "69383000EK0067"
+  ],
+  "bdnb-bg-K6MG-1NKK-3RPG": [
+    "69383000DN0033"
+  ],
+  "bdnb-bg-2MVY-DXZE-E5TL": [
+    "69383000DV0057"
+  ],
+  "bdnb-bg-J721-E2CA-NU6V": [
+    "69383000AZ0155"
+  ],
+  "bdnb-bg-6W45-9CXU-KG51": [
+    "69383000DT0076"
+  ],
+  "bdnb-bg-XPV4-36LA-Y1E9": [
+    "69383000DP0013"
+  ],
+  "bdnb-bg-ZMXP-843Z-XPJZ": [
+    "69383000DV0056"
+  ],
+  "bdnb-bg-JTUX-9ZZ3-U6H3": [
+    "69383000DV0044"
+  ],
+  "bdnb-bg-QXAH-Y7QM-A3JB": [
+    "69383000AZ0058"
+  ],
+  "bdnb-bg-P8CS-S9BX-SR2R": [
+    "69383000DV0039"
+  ],
+  "bdnb-bg-7525-8F2E-EPH8": [
+    "69383000DV0037"
+  ],
+  "bdnb-bg-LS26-PDJ2-S81A": [
+    "69383000AZ0218",
+    "69383000AZ0219"
+  ],
+  "bdnb-bg-1CJ6-C4FR-4YGH": [
+    "69383000DT0027"
+  ],
+  "bdnb-bg-YDFY-LUZZ-PM2C": [
+    "69383000AZ0109"
+  ],
+  "bdnb-bg-JVUN-HP4H-NYP1": [
+    "69383000EH0020"
+  ],
+  "bdnb-bg-G42R-WCCY-9KFD": [
+    "69383000EM0244"
+  ],
+  "bdnb-bg-XK3Z-EJHT-UR4E": [
+    "69383000DW0026"
+  ],
+  "bdnb-bg-DYMW-KBXU-716T": [
+    "69383000DW0045"
+  ],
+  "bdnb-bg-YCWV-JJUU-CHZE": [
+    "69383000AZ0077"
+  ],
+  "bdnb-bg-MW83-SX3P-D16B": [
+    "69383000DY0108"
+  ],
+  "bdnb-bg-VGNW-N4HU-YD2U": [
+    "69383000DY0067"
+  ],
+  "bdnb-bg-L5QL-8Y76-N9CC": [
+    "69383000DW0027"
+  ],
+  "bdnb-bg-BBN3-M27P-3ANA": [
+    "69383000DT0112",
+    "69383000DT0030"
+  ],
+  "bdnb-bg-EPB2-XL4C-CHH1": [
+    "69383000DW0036"
+  ],
+  "bdnb-bg-B7HF-HN4M-TSLU": [
+    "69383000DW0064"
+  ],
+  "bdnb-bg-7VAY-EQKF-F2LF": [
+    "69383000AZ0239"
+  ],
+  "bdnb-bg-576W-T8B7-57ET": [
+    "69383000DY0004"
+  ],
+  "bdnb-bg-YPGH-7VAG-YL5C": [
+    "69383000DT0032"
+  ],
+  "bdnb-bg-VCHQ-W16E-P1V4": [
+    "69383000EH0031",
+    "69383000EH0032"
+  ],
+  "bdnb-bg-L6YT-TE7D-H68A": [
+    "69383000BC0036"
+  ],
+  "bdnb-bg-9TVB-3KRG-H7YH": [
+    "69383000EH0036"
+  ],
+  "bdnb-bg-FS5T-27SZ-1D73": [
+    "69383000DZ0092"
+  ],
+  "bdnb-bg-BUYB-CYKZ-EWXT": [
+    "69383000DO0050",
+    "69383000DO0049"
+  ],
+  "bdnb-bg-CXP2-X59F-KFA2": [
+    "69383000EK0045"
+  ],
+  "bdnb-bg-BWM4-1HRQ-MAX4": [
+    "69383000EL0105"
+  ],
+  "bdnb-bg-SFXP-S6L3-A693": [
+    "69383000DY0012"
+  ],
+  "bdnb-bg-ZNN2-SAMJ-S68B": [
+    "69383000DZ0092"
+  ],
+  "bdnb-bg-YBQ5-DZK6-AMBC": [
+    "69383000DW0059"
+  ],
+  "bdnb-bg-PQCP-R4TX-GMC9": [
+    "69383000DR0117"
+  ],
+  "bdnb-bg-GZNK-V5UZ-5VKZ": [
+    "69383000DZ0113"
+  ],
+  "bdnb-bg-USVM-984W-VRFJ": [
+    "69383000DN0060",
+    "69383000DN0075"
+  ],
+  "bdnb-bg-D4T9-4NNA-CTV4": [
+    "69383000DT0019"
+  ],
+  "bdnb-bg-EGPZ-2RSB-829Y": [
+    "69383000DO0005"
+  ],
+  "bdnb-bg-9Q8J-7KPH-2P9U": [
+    "69383000EI0026",
+    "69383000EI0024",
+    "69383000EI0031",
+    "69383000EI0034",
+    "69383000EI0037",
+    "69383000EI0036",
+    "69383000EI0029",
+    "69383000EI0032",
+    "69383000EI0033",
+    "69383000EI0030"
+  ],
+  "bdnb-bg-T125-SHNC-BAM6": [
+    "69383000BH0012"
+  ],
+  "bdnb-bg-JC6A-SZUS-8UAJ": [
+    "69383000DY0027"
+  ],
+  "bdnb-bg-AM81-DZPJ-QXMN": [
+    "69383000BI0065"
+  ],
+  "bdnb-bg-87ZF-KX65-FHAW": [
+    "69383000AZ0055"
+  ],
+  "bdnb-bg-SUW6-GBH5-11VB": [
+    "69383000EM0363"
+  ],
+  "bdnb-bg-E3ZW-PDHN-JM11": [
+    "69383000DO0043"
+  ],
+  "bdnb-bg-UD36-AJ94-ZSUK": [
+    "69383000DV0085",
+    "69383000DV0083"
+  ],
+  "bdnb-bg-S26C-7M8T-K12Q": [
+    "69383000DY0052"
+  ],
+  "bdnb-bg-DRJZ-H8ZZ-VD1W": [
+    "69383000BC0096"
+  ],
+  "bdnb-bg-GSNQ-MCQ7-88DU": [
+    "69383000DS0009"
+  ],
+  "bdnb-bg-G2ZQ-H667-PH4K": [
+    "69383000AZ0183",
+    "69383000AZ0145",
+    "69383000AZ0142"
+  ],
+  "bdnb-bg-YVGR-P2M6-VRZX": [
+    "69383000EK0011",
+    "69383000EK0050"
+  ],
+  "bdnb-bg-QKMQ-SVXL-98NF": [
+    "69383000AZ0022"
+  ],
+  "bdnb-bg-51HT-VGGW-7VQ9": [
+    "69383000BK0073"
+  ],
+  "bdnb-bg-K2WQ-1L5V-QXEJ": [
+    "69383000DT0017"
+  ],
+  "bdnb-bg-N5A3-868G-AP34": [
+    "69383000DO0060"
+  ],
+  "bdnb-bg-ZME8-XZ6A-ANC9": [
+    "69383000BE0072",
+    "69383000BE0084"
+  ],
+  "bdnb-bg-CEZ1-BL62-MVHS": [
+    "69383000EH0038"
+  ],
+  "bdnb-bg-WM3M-F4BX-8Z7T": [
+    "69383000AZ0155"
+  ],
+  "bdnb-bg-4URE-JQSG-6MGS": [
+    "69383000DN0003"
+  ],
+  "bdnb-bg-R9ZW-728B-LGJZ": [
+    "69383000BI0069"
+  ],
+  "bdnb-bg-TU71-K74H-4YQ3": [
+    "69383000DW0045"
+  ],
+  "bdnb-bg-XYVS-E9SG-4UP1": [
+    "69383000EL0115"
+  ],
+  "bdnb-bg-EYMB-3EJW-NLWH": [
+    "69383000DV0018"
+  ],
+  "bdnb-bg-554B-NN4D-3A1Q": [
+    "69383000EM0319",
+    "69383000EM0302",
+    "69383000EM0317",
+    "69383000EM0321"
+  ],
+  "bdnb-bg-6DEF-7VK7-7VNF": [
+    "69383000EL0061"
+  ],
+  "bdnb-bg-CTWY-Y9WZ-MX22": [
+    "69383000AZ0267"
+  ],
+  "bdnb-bg-Z7Z8-1XS9-ME8G": [
+    "69383000EL0062"
+  ],
+  "bdnb-bg-XXU3-L2LW-69P8": [
+    "69383000DR0169",
+    "69383000DR0171"
+  ],
+  "bdnb-bg-FW4B-YECQ-FPCT": [
+    "69383000DO0025"
+  ],
+  "bdnb-bg-49ZA-VCG7-NKFM": [
+    "69383000EH0022",
+    "69383000EH0021",
+    "69383000EH0032",
+    "69383000EH0033"
+  ],
+  "bdnb-bg-GFKS-DC3T-CRB1": [
+    "69383000DN0005"
+  ],
+  "bdnb-bg-1DBJ-3PC2-EVUG": [
+    "69383000DY0039"
+  ],
+  "bdnb-bg-5RMC-KXL7-E97N": [
+    "69383000EI0094"
+  ],
+  "bdnb-bg-D67J-UNYF-TAGM": [
+    "69383000DZ0118",
+    "69383000DZ0036"
+  ],
+  "bdnb-bg-UW9S-AYKV-6TAV": [
+    "69383000DS0072"
+  ],
+  "bdnb-bg-KLP4-PFBH-ZZUQ": [
+    "69383000DR0165",
+    "69383000DR0168",
+    "69383000DR0163",
+    "69383000DR0169"
+  ],
+  "bdnb-bg-5NH2-EJ2E-JZXH": [
+    "69383000DT0073"
+  ],
+  "bdnb-bg-BVP7-EESB-58L7": [
+    "69383000EM0332",
+    "69383000EM0301",
+    "69383000EM0312",
+    "69383000EM0309",
+    "69383000EM0306",
+    "69383000EM0314",
+    "69383000EM0335",
+    "69383000EM0336"
+  ],
+  "bdnb-bg-XG68-JJEU-L7V2": [
+    "69383000BE0083"
+  ],
+  "bdnb-bg-NG1L-HCUZ-8DRJ": [
+    "69383000EH0114"
+  ],
+  "bdnb-bg-KNSA-5BWZ-A2XZ": [
+    "69383000AZ0155"
+  ],
+  "bdnb-bg-9V7F-64PQ-UJ5S": [
+    "69383000DR0124"
+  ],
+  "bdnb-bg-DGWW-GKPC-Z3DE": [
+    "69383000AZ0135"
+  ],
+  "bdnb-bg-98MA-75GZ-5CFT": [
+    "69383000DS0129"
+  ],
+  "bdnb-bg-8MGS-ZVKY-9ZYR": [
+    "69383000BI0054"
+  ],
+  "bdnb-bg-4GW9-BEMF-5VA7": [
+    "69383000DT0097"
+  ],
+  "bdnb-bg-B3PH-VN6W-QP8X": [
+    "69383000DT0024"
+  ],
+  "bdnb-bg-1AVL-LMTT-G7Z9": [
+    "69383000EH0030"
+  ],
+  "bdnb-bg-WQZA-TNRT-44JS": [
+    "69383000EH0123"
+  ],
+  "bdnb-bg-K5KX-NEHV-8KAS": [
+    "69383000DX0034"
+  ],
+  "bdnb-bg-VBQ7-8S4W-KZVY": [
+    "69383000DT0066",
+    "69383000DT0065"
+  ],
+  "bdnb-bg-36F5-BHL7-ME1G": [
+    "69383000EL0127",
+    "69383000EL0018",
+    "69383000EL0125",
+    "69383000EL0100"
+  ],
+  "bdnb-bg-XA8Z-JVL1-7SR6": [
+    "69383000DN0086"
+  ],
+  "bdnb-bg-8NJL-4XAJ-TVQA": [
+    "69383000DS0005"
+  ],
+  "bdnb-bg-UN53-G1LZ-2P34": [
+    "69383000DP0051"
+  ],
+  "bdnb-bg-W2RS-K6JM-Z1H3": [
+    "69383000EI0043"
+  ],
+  "bdnb-bg-CFFP-14RF-1SN5": [
+    "69383000BD0031"
+  ],
+  "bdnb-bg-LPW9-YCD1-7GFB": [
+    "69383000DN0037"
+  ],
+  "bdnb-bg-YQDT-7VMV-E5S5": [
+    "69383000DY0080",
+    "69383000DY0060"
+  ],
+  "bdnb-bg-FBLV-MDEK-PE5T": [
+    "69383000DV0064"
+  ],
+  "bdnb-bg-JD9X-LS8L-R7A9": [
+    "69383000DR0098"
+  ],
+  "bdnb-bg-WSTK-SKSS-P2M2": [
+    "69383000DO0010"
+  ],
+  "bdnb-bg-1R8S-PG6T-JXF4": [
+    "69383000DT0096"
+  ],
+  "bdnb-bg-PFFK-6Z9V-TUP1": [
+    "69383000EI0097"
+  ],
+  "bdnb-bg-35NH-CNYH-DY2X": [
+    "69383000DP0026"
+  ],
+  "bdnb-bg-NP5T-JZFB-UVR7": [
+    "69383000DN0064"
+  ],
+  "bdnb-bg-71B2-4HSV-Y9VP": [
+    "69383000DZ0092"
+  ],
+  "bdnb-bg-PNCB-MYC1-JB4Q": [
+    "69383000DY0014"
+  ],
+  "bdnb-bg-XEEK-6E83-3BX4": [
+    "69383000DO0040"
+  ],
+  "bdnb-bg-JAVT-QG97-XWEW": [
+    "69383000DX0035"
+  ],
+  "bdnb-bg-6PR8-HQ5A-SU4G": [
+    "69383000DN0039"
+  ],
+  "bdnb-bg-ALA1-7UY8-ULUG": [
+    "69383000EI0098"
+  ],
+  "bdnb-bg-LQU8-MYBM-2AMK": [
+    "69383000DR0057"
+  ],
+  "bdnb-bg-KM3Q-XAC3-34D1": [
+    "69383000DZ0047"
+  ],
+  "bdnb-bg-CD87-UNB7-7N3J": [
+    "69383000BC0108"
+  ],
+  "bdnb-bg-PQR4-97S4-XPXU": [
+    "69383000DS0067",
+    "69383000DS0066"
+  ],
+  "bdnb-bg-H7YV-VH5E-JFY8": [
+    "69383000DO0036"
+  ],
+  "bdnb-bg-J5M8-8PYA-ALEX": [
+    "69383000DS0001"
+  ],
+  "bdnb-bg-324Y-G9R6-B2ZS": [
+    "69383000DO0013"
+  ]
 }
