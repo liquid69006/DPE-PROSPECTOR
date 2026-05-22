@@ -176,6 +176,19 @@
           ]
         }
       ]
+    },
+    "_correctif_106_baraban": {
+      "date": "2026-05-22T06:34:46Z",
+      "pattern": "Cambronne RE-FUSE classique (cote impair non-postal BAN)",
+      "autorite": "RNC live AE1293612 + BDNB rel_parcelle DS0005 + diag_106_baraban",
+      "ops": "INJECT 61|RUE|ANTOINE CHARIAL clone-based + RE-FUSE 106|RUE|BARABAN",
+      "immat": "AE1293612 SOPHIA",
+      "lots_tot": 73,
+      "lots_habit": 60,
+      "syndic": "REGIE CENTRALE IMMOBILIERE",
+      "parcelle": "69123383DS0005",
+      "label": "61 RUE ANTOINE CHARIAL / 106 RUE BARABAN",
+      "delta_parc_ui": -1
     }
   },
   "iris": [
@@ -14189,7 +14202,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-8NJL-4XAJ-TVQA",
-      "_bdnb_match": "num_voie",
+      "_bdnb_match": "correctif_106baraban_re_fuse",
       "_fusion_auto_label": "106/116 RUE BARABAN",
       "_fusion_auto_sources": [
         "116|RUE|BARABAN"
@@ -14205,7 +14218,9 @@
       "classement_rotation_logement": "Actif",
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "61 RUE ANTOINE CHARIAL / 106 RUE BARABAN"
     },
     {
       "cle": "11|RUE|MAURICE FLANDIN",
@@ -59286,6 +59301,44 @@
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Residentiel collectif",
       "_usage_bdnb_src": "correctif_doublon_c"
+    },
+    {
+      "cle": "61|RUE|ANTOINE CHARIAL",
+      "adresse": "61 RUE ANTOINE CHARIAL",
+      "longitude": 4.867496,
+      "latitude": 45.758211,
+      "code_iris": "693830403",
+      "_coord_source": "clone_106baraban",
+      "dans_majic": false,
+      "sci_proprietaire": "non",
+      "sci_nom": "",
+      "sci_siren": "",
+      "syndic": "REGIE CENTRALE IMMOBILIERE",
+      "_syndic_src": "rnc",
+      "ventes_par_an": {},
+      "nb_ventes_total": 0,
+      "nb_log_bdnb": 61,
+      "annee_construction": 1995,
+      "classe_dpe": "C",
+      "type_batiment": "appartement",
+      "type_chauffage": "electricite",
+      "batiment_groupe_id": "bdnb-bg-8NJL-4XAJ-TVQA",
+      "_bdnb_match": "correctif_106baraban_inject_ancre_rnc",
+      "ventes_par_an_logement": {},
+      "nb_ventes_logement": 0,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Fige",
+      "_taux_logement_src": "copie_sans_dependance",
+      "usage_principal_bdnb": "Résidentiel collectif",
+      "_usage_bdnb_src": "clone_106baraban",
+      "numero_immatriculation": "AE1293612",
+      "nb_lots_habitation": 60,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Fige",
+      "_fusion_auto_label": "61 RUE ANTOINE CHARIAL / 106 RUE BARABAN",
+      "_fusion_auto_sources": [
+        "106|RUE|BARABAN"
+      ]
     }
   ]
 }
