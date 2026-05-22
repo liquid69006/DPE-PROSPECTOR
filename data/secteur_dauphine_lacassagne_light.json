@@ -247,6 +247,23 @@
       "delta_parc_ui": 0,
       "particularite_rnc": "nombre_parcelles=0 cote RNC live (aucune ref_cad declaree) ; snapshot a utilise adresse_reference pour rattacher AB0535203 a cle 153 BARABAN",
       "terrain_confirme": "44 TURBIL et 153 BARABAN = meme ensemble immobilier (annee 2005, 43 hab cumules)"
+    },
+    "_correctif_pompidou_baraban_vi": {
+      "date": "2026-05-22T14:21:03Z",
+      "pattern": "Fondary RE-FUSE multi-bgid une parcelle (DZ0092) - 4e instance DL",
+      "autorite": "BDNB nb_log_rnc=74 sur FS5T-27SZ-1D73 ~= 73 lgts BDNB cumules 4 batis (19+18+18+18) + AB9345703 SDC BARABAN VI ancree cle 46 + terrain confirme",
+      "ops": "RE-FUSE 48/50/52 POMPIDOU vers 46 + creation label ancre",
+      "snapshot_immat": "AB9345703 SDC BARABAN VI (230/76 hab, FONCIA SAINT LOUIS, cle 46 POMPIDOU)",
+      "batis_bdnb": {
+        "46": "FS5T-27SZ-1D73",
+        "48": "ZNN2-SAMJ-S68B",
+        "50": "3489-YWPJ-BBCH",
+        "52": "71B2-4HSV-Y9VP"
+      },
+      "label": "46/48/50/52 AVENUE GEORGES POMPIDOU",
+      "delta_parc_ui": 0,
+      "intouche": "3 RUE DE NAZARETH (DZ0027, SM7M-83DM, AB1702901 SDC BARABAN 3, programme 1976) - copro distincte legitime",
+      "terrain_confirme": "Ensemble immobilier BARABAN VI = 4 batis 1984 sur DZ0092 ; le groupe BARABAN comprend aussi BARABAN 3 (3 NAZARETH, autre SDC)."
     }
   },
   "iris": [
@@ -15659,7 +15676,13 @@
       "numero_immatriculation": "AB9345703",
       "nb_lots_habitation": 74,
       "taux_rotation": 2.2,
-      "classement_rotation": "Actif"
+      "classement_rotation": "Actif",
+      "_fusion_auto_label": "46/48/50/52 AVENUE GEORGES POMPIDOU",
+      "_fusion_auto_sources": [
+        "48|AVENUE|GEORGES POMPIDOU",
+        "50|AVENUE|GEORGES POMPIDOU",
+        "52|AVENUE|GEORGES POMPIDOU"
+      ]
     },
     {
       "cle": "48|RUE|ETIENNE RICHERAND",
@@ -22543,7 +22566,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "reseau de chaleur",
       "batiment_groupe_id": "bdnb-bg-ZNN2-SAMJ-S68B",
-      "_bdnb_match": "num_voie",
+      "_bdnb_match": "correctif_pompidou_baraban_vi_re_fuse",
       "ventes_par_an_logement": {
         "2022": 0,
         "2023": 1,
@@ -22555,7 +22578,9 @@
       "classement_rotation_logement": "Modéré",
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "46/48/50/52 AVENUE GEORGES POMPIDOU"
     },
     {
       "cle": "10|RUE|ST PHILIPPE",
@@ -22837,7 +22862,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "reseau de chaleur",
       "batiment_groupe_id": "bdnb-bg-3489-YWPJ-BBCH",
-      "_bdnb_match": "num_voie",
+      "_bdnb_match": "correctif_pompidou_baraban_vi_re_fuse",
       "ventes_par_an_logement": {
         "2024": 0,
         "2025": 0
@@ -22847,7 +22872,9 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "46/48/50/52 AVENUE GEORGES POMPIDOU"
     },
     {
       "cle": "51|RUE|ST MAXIMIN",
@@ -28894,7 +28921,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "reseau de chaleur",
       "batiment_groupe_id": "bdnb-bg-71B2-4HSV-Y9VP",
-      "_bdnb_match": "num_voie",
+      "_bdnb_match": "correctif_pompidou_baraban_vi_re_fuse",
       "ventes_par_an_logement": {
         "2022": 1,
         "2023": 1,
@@ -28905,7 +28932,9 @@
       "classement_rotation_logement": "Actif",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "46/48/50/52 AVENUE GEORGES POMPIDOU"
     },
     {
       "cle": "24|RUE|DAUPHINE",
