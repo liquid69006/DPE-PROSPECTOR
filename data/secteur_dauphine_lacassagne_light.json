@@ -236,6 +236,17 @@
       "label": "4/6 RUE TERNOIS / 93 RUE BELLECOMBE / 18 RUE ST ANTOINE",
       "delta_parc_ui": 0,
       "source_decouverte": "enrich_majic.py Phase 1 + SKIP_PAIRS pipeline_bdnb_pivot (2026-05-20)"
+    },
+    "_correctif_44_turbil": {
+      "date": "2026-05-22T09:49:43Z",
+      "pattern": "Fondary RE-FUSE multi-bgid une parcelle (DP0051) - 3e instance DL",
+      "autorite": "RNC live AB0535203 adresse_complementaire_1='44 r turbil' + BDNB rel_parcelle DP0051 = UN53-G1LZ-2P34 + HD5Z-A5ZB-RL1N",
+      "ops": "RE-FUSE 44|RUE|TURBIL vers 153 BARABAN + creation label",
+      "snapshot_immat": "AB0535203 LE PATIO DE L'ISLE (120/43 hab, SOC ADMIN & GESTION IMMEUB ROLIN BAINSON, cle 153 BARABAN)",
+      "label": "153 RUE BARABAN / 44 RUE TURBIL",
+      "delta_parc_ui": 0,
+      "particularite_rnc": "nombre_parcelles=0 cote RNC live (aucune ref_cad declaree) ; snapshot a utilise adresse_reference pour rattacher AB0535203 a cle 153 BARABAN",
+      "terrain_confirme": "44 TURBIL et 153 BARABAN = meme ensemble immobilier (annee 2005, 43 hab cumules)"
     }
   },
   "iris": [
@@ -14953,7 +14964,11 @@
       "numero_immatriculation": "AB0535203",
       "nb_lots_habitation": 43,
       "taux_rotation": 4.7,
-      "classement_rotation": "Très actif"
+      "classement_rotation": "Très actif",
+      "_fusion_auto_label": "153 RUE BARABAN / 44 RUE TURBIL",
+      "_fusion_auto_sources": [
+        "44|RUE|TURBIL"
+      ]
     },
     {
       "cle": "10|RUE|FREDERIC MISTRAL",
@@ -15586,7 +15601,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-UN53-G1LZ-2P34",
-      "_bdnb_match": "num_voie",
+      "_bdnb_match": "correctif_44turbil_re_fuse",
       "ventes_par_an_logement": {
         "2021": 1,
         "2023": 2,
@@ -15598,7 +15613,9 @@
       "classement_rotation_logement": "Très actif",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "153 RUE BARABAN / 44 RUE TURBIL"
     },
     {
       "cle": "46|AVENUE|GEORGES POMPIDOU",
