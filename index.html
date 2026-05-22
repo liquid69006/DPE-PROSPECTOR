@@ -2609,7 +2609,7 @@ function renderSecteur() {
               + `style="color:#7c3aed;font-size:10px;text-decoration:underline;text-underline-offset:2px;">`
               + `${label}</a>`;
           } else {
-            sciCell = `<span title="${tt}" style="color:#7c3aed;font-size:10px;cursor:help;">${label}</span>`;
+            sciCell = `<span title="${tt}" style="color:#7c3aed;font-size:10px;">${label}</span>`;
           }
         } else {
           // Fallback : light.sci_nom mono (hors SCI Prospector ou parser-miss)
@@ -2625,7 +2625,7 @@ function renderSecteur() {
               ? `<a href="${url}" target="_blank" rel="noopener" title="${ttFb}" `
                 + `style="color:#7c3aed;font-size:10px;text-decoration:underline;text-underline-offset:2px;">`
                 + `1 SCI</a>`
-              : `<span title="${ttFb}" style="color:#7c3aed;font-size:10px;cursor:help;">1 SCI</span>`;
+              : `<span title="${ttFb}" style="color:#7c3aed;font-size:10px;">1 SCI</span>`;
           } else {
             sciCell = '<span style="color:var(--text2);">—</span>';
           }
