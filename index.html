@@ -434,6 +434,17 @@ td{padding:11px 14px;vertical-align:middle;}
   }
   .mobile-sort-dir.asc{transform:rotate(180deg);}
 
+/* Notes desktop (colonne table) — pendant de .card-note mobile.
+   Compact par defaut (1 ligne), s'agrandit au focus pour saisie confort. */
+.note-input{
+  background:var(--surface2);border:1px solid var(--border);color:var(--text);
+  border-radius:8px;padding:5px 8px;font-size:12px;font-family:inherit;
+  width:160px;min-height:28px;resize:vertical;outline:none;
+  vertical-align:middle;
+}
+.note-input:focus{border-color:var(--orange);min-height:64px;}
+.note-input.has-note{border-color:var(--orange);}
+
 /* Notes mobile */
   .card-note-toggle{
     width:100%;padding:7px 12px;border-radius:8px;border:1px solid var(--border);
@@ -619,6 +630,7 @@ td{padding:11px 14px;vertical-align:middle;}
         <th class="sortable" onclick="sortTable('conseiller')">Conseiller <span class="si"></span></th>
         <th>Pappers</th>
         <th>Attestation</th>
+        <th>Note</th>
       </tr></thead>
       <tbody id="tbody"></tbody>
     </table>
@@ -1769,12 +1781,19 @@ function toggleCardNote(id) {
 }
 
 function saveNote(id, value) {
-  updateAssignment(id, 'note', value.trim());
+  const trimmed = value.trim();
+  const hasNote = !!trimmed;
+  updateAssignment(id, 'note', trimmed);
+  // Mobile : toggle bouton + libelle (les 2 vues coexistent dans le DOM
+  // — #mobile-view est masque par CSS sur desktop mais reste rendu).
   const btn = document.getElementById('note-area-' + id)?.previousElementSibling;
   if (btn) {
-    btn.innerHTML = (value.trim() ? '📝 Note enregistrée' : '📝 Ajouter une note');
-    btn.classList.toggle('has-note', !!value.trim());
+    btn.innerHTML = (hasNote ? '📝 Note enregistrée' : '📝 Ajouter une note');
+    btn.classList.toggle('has-note', hasNote);
   }
+  // Desktop : toggle bordure orange (synchro visuelle avec mobile).
+  const rowNote = document.getElementById('note-row-' + id);
+  if (rowNote) rowNote.classList.toggle('has-note', hasNote);
 }
 
 function renderRow(dpe) {
@@ -1796,6 +1815,8 @@ function renderRow(dpe) {
 
   const statOpts = STATUTS.map(s=>`<option value="${s}"${statut===s?' selected':''}>${s}</option>`).join('');
   const consOpts = conseillers.map(c=>`<option value="${c}"${conseil===c?' selected':''}>${c||'—'}</option>`).join('');
+  // Note libre (pendant desktop du champ .card-note mobile, meme cle KV 'note').
+  const noteVal = (a.note || '').replace(/`/g, "'");
 
   let badgeLog='';
   if (typBat==='immeuble') badgeLog='<span class="badge-log collectif">🏢 Collectif</span>';
@@ -1835,6 +1856,8 @@ function renderRow(dpe) {
       return `<a class="btn-voir" href="https://immobilier.pappers.fr/?q=${encodeURIComponent(dpe.adresse_ban||'')}" target="_blank" rel="noopener" style="background:#6366f1;">🏢</a>`;
     })()}</td>
     <td><a class="btn-voir" href="https://observatoire-dpe-audit.ademe.fr/afficher-dpe/${id}" target="_blank" rel="noopener">Voir →</a></td>
+    <td><textarea id="note-row-${id}" class="note-input${noteVal?' has-note':''}" rows="1"
+      placeholder="Note..." onblur="saveNote('${id}', this.value)">${noteVal}</textarea></td>
   </tr>`;
 }
 
