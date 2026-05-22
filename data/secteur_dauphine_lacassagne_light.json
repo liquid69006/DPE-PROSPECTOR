@@ -199,6 +199,22 @@
       "re_immat_live": "AJ6692420 TERRASSES DU PRESIDENT (2026-03-16, mandat AB1862135 expire 2026-03-30) - meme entite physique 169 lots, sujet refresh RNC separe",
       "label": "238/240 AVENUE FELIX FAURE / 139 RUE DAUPHINE",
       "delta_parc_ui": 0
+    },
+    "_correctif_9eusebe": {
+      "date": "2026-05-22T06:58:26Z",
+      "pattern": "REBIND cle_adresse (variante adresse_complementaire_1)",
+      "autorite": "RNC live AD6934400 nom_copro '9 rue St Eusebe' + adresse_complementaire_1='9 r saint-eusebe'",
+      "ops": "REBIND cle copro + propagation immat/lots/syndic",
+      "immat": "AD6934400",
+      "lots_tot": 61,
+      "lots_habit": 25,
+      "syndic": "GESTION ET PATRIMOINE LESCUYER",
+      "delta_parc_ui": 7,
+      "non_traite": {
+        "immat": "AB9784521",
+        "nom": "BRICKS",
+        "raison": "Collision potentielle BRICKS vs BRICKS 1 (AD5268305) sur meme bati 8MZ7-KS1W via cle composite '20B|AVENUE|LACASSAGNE 22 AVENUE LACASSAGNE'. REBIND creerait double-comptage 97 lots. Enquete terrain requise (BRICKS = re-immat AD5268305 ? phases distinctes ? SDC+ASL ?)."
+      }
     }
   },
   "iris": [
@@ -10603,7 +10619,7 @@
       "longitude": 4.872904,
       "latitude": 45.756921,
       "code_iris": "693830502",
-      "cle_adresse": "|RUE|ST EUSEBE",
+      "cle_adresse": "9|RUE|ST EUSEBE",
       "nb_lots_total": 61,
       "nb_lots_habitation": 25,
       "nb_lots_habitation_rnc": 25,
@@ -36075,8 +36091,8 @@
       "sci_proprietaire": "oui",
       "sci_nom": "SCI OTESS",
       "sci_siren": "843314931",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "GESTION ET PATRIMOINE LESCUYER",
+      "_syndic_src": "rnc",
       "ventes_par_an": {
         "2021": 2,
         "2022": 5,
@@ -36090,7 +36106,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-1R8S-PG6T-JXF4",
-      "_bdnb_match": "num_voie",
+      "_bdnb_match": "immat_rebind_clemalformee",
       "ventes_par_an_logement": {
         "2021": 1,
         "2022": 2,
@@ -36102,7 +36118,11 @@
       "classement_rotation_logement": "Très actif",
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "numero_immatriculation": "AD6934400",
+      "nb_lots_habitation": 25,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Fige"
     },
     {
       "cle": "9|RUE|ST PHILIPPE",
