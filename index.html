@@ -1987,6 +1987,7 @@ function switchMode(mode) {
 let secteurData = null, secteurLoaded = false, secteurAssign = {}, secteurSaveTimer = null;
 let secteurFusions = {};            // { srcCle: dstCleAdresse }  (adresse DVF -> copro RNC)
 let secteurNoms = {};               // { cle: "nom personnalisé" }  (renommage inline)
+let secteurSciByCle = {};           // { cleAdresse: [{sci_nom,sci_siren,sci_active,...}] } via SCI Prospector
 let secteurNoLog = false;           // filtre "Sans logements" (toggle)
 function secteurToggleNoLog() {
   secteurNoLog = !secteurNoLog;
@@ -2059,6 +2060,38 @@ function secteurToggleAQualif() {
 window.secteurToggleAQualif = secteurToggleAQualif;
 let sctFusSrc = null, sctFusPick = null;   // etat de la modale de rapprochement
 
+// Parse adresse_bien SCI Prospector ('163 RUE PAUL BERT 69003') ->
+// cle_adresse light ('163|RUE|PAUL BERT'). Reproduit la normalisation
+// canonique : strip CP, strip ville, abreviations voie, articles enleves,
+// accents flattens, suffixe B/BIS/T/TER preserves.
+const SCI_VOIE = { AV:'AVENUE', AVE:'AVENUE', R:'RUE', BD:'BOULEVARD',
+  BLD:'BOULEVARD', BOUL:'BOULEVARD', PL:'PLACE', IMP:'IMPASSE',
+  CRS:'COURS', QU:'QUAI', SQ:'SQUARE', ALL:'ALLEE', CHE:'CHEMIN',
+  CH:'CHEMIN', MTE:'MONTEE', PAS:'PASSAGE', TSSE:'TERRASSE',
+  VLA:'VILLA', RTE:'ROUTE', GR:'GRANDE RUE' };
+const SCI_ART = new Set(['DE','DES','DU','D','LA','LE','LES','L','AUX']);
+function parseSciAdresseToCle(adresseBien) {
+  if (!adresseBien) return null;
+  let s = String(adresseBien).toUpperCase()
+    .normalize('NFD').replace(/[̀-ͯ]/g, '');
+  s = s.replace(/\s+\d{5}.*$/, '');           // strip "69003 LYON" etc.
+  s = s.replace(/[^\w\s]/g, ' ').replace(/\s+/g, ' ').trim();
+  const toks = s.split(' ');
+  if (!toks.length) return null;
+  const m0 = toks[0].match(/^(\d+)([A-Z]+)?$/);
+  if (!m0) return null;
+  let num = m0[1];
+  const suff = m0[2] || '';
+  if (suff === 'B' || suff === 'BIS' || suff === 'BS') num += 'B';
+  else if (suff === 'T' || suff === 'TER') num += 'T';
+  let rest = toks.slice(1);
+  if (!rest.length) return null;
+  const typV = SCI_VOIE[rest[0]] || rest[0];
+  rest = rest.slice(1);
+  while (rest.length && SCI_ART.has(rest[0])) rest = rest.slice(1);
+  return `${num}|${typV}|${rest.join(' ')}`;
+}
+
 // Agence -> [fichier light secteur, id secteur pour les assignments KV].
 // motte-picquet ET lopez (composite) partagent le secteur motte-picquet
 // -> meme KV secteur_assignments:motte-picquet (requireAuth autorise
@@ -2093,6 +2126,21 @@ async function loadSecteurData() {
     tree.innerHTML = '<div style="color:#dc2626;padding:20px;">⚠️ Données secteur indisponibles.</div>';
     return;
   }
+  // SCI Prospector : enrichissement (graceful fallback si 404 ou parser-miss)
+  secteurSciByCle = {};
+  try {
+    const rs = await fetch(`${GITHUB_RAW}/data/${secId}-sci.json?t=${Date.now()}`);
+    if (rs.ok) {
+      const sciDoc = await rs.json();
+      const sciList = sciDoc.sci || [];
+      for (const s of sciList) {
+        const k = parseSciAdresseToCle(s.adresse_bien);
+        if (!k) continue;
+        if (!secteurSciByCle[k]) secteurSciByCle[k] = [];
+        secteurSciByCle[k].push(s);
+      }
+    }
+  } catch {}
   try {
     const ra = await fetch(`${API_URL}/secteur-assignments/${secId}`, {
       headers: { 'Authorization': `Bearer ${authToken}` } });
@@ -2539,22 +2587,48 @@ function renderSecteur() {
           + `target="_blank" rel="noopener" title="Ouvrir « ${esc(adrTxt)} » dans Google Maps" `
           + `style="color:inherit;text-decoration:none;cursor:pointer;">${esc(dispNom)}</a>`
           + `${flagGeo}`;
-        // Colonne SCI propriétaire (nom + lien Pappers si SIREN)
-        const sciNm = (a.sci_proprietaire === 'oui' && a.sci_nom
-          && String(a.sci_nom).trim()) ? String(a.sci_nom).trim() : '';
+        // Colonne SCI : compteur N SCI via SCI Prospector + tooltip noms.
+        // Format tooltip : "NOM SCI ✅" actif / "NOM SCI ❌" inactif, LF entre.
+        // Fallback light.sci_nom mono si SCI Prospector indispo (0 hit parser).
+        const sciPro = secteurSciByCle[a.cle] || [];
         let sciCell;
-        if (sciNm) {
-          const slug = sciNm.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')
-            .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-          const url = 'https://www.pappers.fr/entreprise/' + slug
-            + (a.sci_siren ? '-' + a.sci_siren : '');
-          sciCell = a.sci_siren
-            ? `<a href="${url}" target="_blank" rel="noopener" title="${esc(sciNm)}" `
+        if (sciPro.length > 0) {
+          const tt = sciPro.map(s => {
+            const nm = String(s.sci_nom || '?').replace(/&/g,'&amp;')
+              .replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+            const ac = (s.sci_active === 'non') ? ' ❌' : ' ✅';
+            return nm + ac;
+          }).join('&#10;');
+          const label = `${sciPro.length} SCI`;
+          if (sciPro.length === 1 && sciPro[0].sci_siren) {
+            const nm1 = String(sciPro[0].sci_nom || '');
+            const slug = nm1.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')
+              .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+            const url = 'https://www.pappers.fr/entreprise/' + slug + '-' + sciPro[0].sci_siren;
+            sciCell = `<a href="${url}" target="_blank" rel="noopener" title="${tt}" `
               + `style="color:#7c3aed;font-size:10px;text-decoration:underline;text-underline-offset:2px;">`
-              + `${esc(sciNm)}</a>`
-            : `<span title="${esc(sciNm)}" style="color:#7c3aed;font-size:10px;">${esc(sciNm)}</span>`;
+              + `${label}</a>`;
+          } else {
+            sciCell = `<span title="${tt}" style="color:#7c3aed;font-size:10px;cursor:help;">${label}</span>`;
+          }
         } else {
-          sciCell = '<span style="color:var(--text2);">—</span>';
+          // Fallback : light.sci_nom mono (hors SCI Prospector ou parser-miss)
+          const sciNm = (a.sci_proprietaire === 'oui' && a.sci_nom
+            && String(a.sci_nom).trim()) ? String(a.sci_nom).trim() : '';
+          if (sciNm) {
+            const slug = sciNm.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')
+              .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+            const url = 'https://www.pappers.fr/entreprise/' + slug
+              + (a.sci_siren ? '-' + a.sci_siren : '');
+            const ttFb = esc(sciNm) + ' ✅';
+            sciCell = a.sci_siren
+              ? `<a href="${url}" target="_blank" rel="noopener" title="${ttFb}" `
+                + `style="color:#7c3aed;font-size:10px;text-decoration:underline;text-underline-offset:2px;">`
+                + `1 SCI</a>`
+              : `<span title="${ttFb}" style="color:#7c3aed;font-size:10px;cursor:help;">1 SCI</span>`;
+          } else {
+            sciCell = '<span style="color:var(--text2);">—</span>';
+          }
         }
         const actions = `<button onclick="secteurRapprocher('${esc(a.cle)}')" title="Rapprocher d'une copropriété RNC" `
           + `style="background:transparent;border:1px solid #4b5563;color:#0ea5e9;border-radius:4px;`
