@@ -1,0 +1,1356 @@
+{
+  "secteur": "dauphine_lacassagne",
+  "mode": "hr_actifs",
+  "generated_at": "2026-05-22T08:39:38Z",
+  "n_cibles": 21,
+  "stats": {
+    "ok": 20,
+    "zero_lot_majic": 1,
+    "hors_cache_parcelle": 0,
+    "mono_detecte": 6,
+    "multi_facades": 9,
+    "cible_absente_majic": 4
+  },
+  "results": [
+    {
+      "cle": "44|RUE|TURBIL",
+      "bgid": "bdnb-bg-UN53-G1LZ-2P34",
+      "vlog": 8,
+      "bdnb": 27,
+      "sci_light": "",
+      "parcelles_bdnb": [
+        "69383000DP0051"
+      ],
+      "majic_query": {
+        "dep": "69",
+        "code_commune": "383",
+        "section": "DP",
+        "numero_parcelle": 51
+      },
+      "lots_total": 1,
+      "adresses": [
+        {
+          "adresse": "44 RUE TURBIL",
+          "lots": 1
+        }
+      ],
+      "sirens": [
+        {
+          "siren": "956502884",
+          "denomination": "GESTRIM GRAND LYON",
+          "forme_juridique": "SAS, société par actions simplifiée",
+          "lots": 1,
+          "pct_lots": 100.0,
+          "droits": {
+            "Syndic de copropriété": 1
+          }
+        }
+      ],
+      "mono": true,
+      "multi_facades": false,
+      "cible_dans_majic": true,
+      "status": "ok"
+    },
+    {
+      "cle": "3|RUE|MAURICE FLANDIN",
+      "bgid": "bdnb-bg-W2RS-K6JM-Z1H3",
+      "vlog": 7,
+      "bdnb": 54,
+      "sci_light": "",
+      "parcelles_bdnb": [
+        "69383000EI0043"
+      ],
+      "majic_query": {
+        "dep": "69",
+        "code_commune": "383",
+        "section": "EI",
+        "numero_parcelle": 43
+      },
+      "lots_total": 17,
+      "adresses": [
+        {
+          "adresse": "5 RUE MAURICE FLANDIN",
+          "lots": 9
+        },
+        {
+          "adresse": "7 RUE MAURICE FLANDIN",
+          "lots": 5
+        },
+        {
+          "adresse": "3 RUE MAURICE FLANDIN",
+          "lots": 3
+        }
+      ],
+      "sirens": [
+        {
+          "siren": "957508054",
+          "denomination": "FONCIA COUPAT",
+          "forme_juridique": "SAS, société par actions simplifiée",
+          "lots": 9,
+          "pct_lots": 52.9,
+          "droits": {
+            "Syndic de copropriété": 9
+          }
+        },
+        {
+          "siren": "444608442",
+          "denomination": "ENEDIS",
+          "forme_juridique": "SA à directoire (s.a.i.)",
+          "lots": 2,
+          "pct_lots": 11.8,
+          "droits": {
+            "Gérant, mandataire, gestionnaire": 1,
+            "Propriétaire": 1
+          }
+        },
+        {
+          "siren": "892354531",
+          "denomination": "AUGARA",
+          "forme_juridique": "SAS, société par actions simplifiée",
+          "lots": 2,
+          "pct_lots": 11.8,
+          "droits": {
+            "Propriétaire": 2
+          }
+        },
+        {
+          "siren": "904975588",
+          "denomination": "LP ONE",
+          "forme_juridique": "Société civile immobilière",
+          "lots": 2,
+          "pct_lots": 11.8,
+          "droits": {
+            "Propriétaire": 2
+          }
+        },
+        {
+          "siren": "914345996",
+          "denomination": "AUKAE",
+          "forme_juridique": "Société civile immobilière",
+          "lots": 2,
+          "pct_lots": 11.8,
+          "droits": {
+            "Propriétaire": 2
+          }
+        }
+      ],
+      "mono": false,
+      "multi_facades": true,
+      "cible_dans_majic": true,
+      "status": "ok"
+    },
+    {
+      "cle": "28|RUE|PROFESSEUR PAUL SISLEY",
+      "bgid": "bdnb-bg-CFFP-14RF-1SN5",
+      "vlog": 6,
+      "bdnb": 18,
+      "sci_light": "CLEMENTAIN",
+      "parcelles_bdnb": [
+        "69383000BD0031"
+      ],
+      "majic_query": {
+        "dep": "69",
+        "code_commune": "383",
+        "section": "BD",
+        "numero_parcelle": 31
+      },
+      "lots_total": 5,
+      "adresses": [
+        {
+          "adresse": "28 RUE PROFESSEUR PAUL SISLEY",
+          "lots": 5
+        }
+      ],
+      "sirens": [
+        {
+          "siren": "443569645",
+          "denomination": "TYLY",
+          "forme_juridique": "Autre société civile",
+          "lots": 2,
+          "pct_lots": 40.0,
+          "droits": {
+            "Propriétaire": 2
+          }
+        },
+        {
+          "siren": "450905344",
+          "denomination": "CLEMENTAIN",
+          "forme_juridique": "Société civile immobilière",
+          "lots": 2,
+          "pct_lots": 40.0,
+          "droits": {
+            "Propriétaire": 2
+          }
+        },
+        {
+          "siren": "385035191",
+          "denomination": "SCI SAM",
+          "forme_juridique": "Société civile immobilière",
+          "lots": 1,
+          "pct_lots": 20.0,
+          "droits": {
+            "Propriétaire": 1
+          }
+        }
+      ],
+      "mono": false,
+      "multi_facades": false,
+      "cible_dans_majic": true,
+      "status": "ok"
+    },
+    {
+      "cle": "143|RUE|DAUPHINE",
+      "bgid": "bdnb-bg-LPW9-YCD1-7GFB",
+      "vlog": 6,
+      "bdnb": 12,
+      "sci_light": "SCI ALROM",
+      "parcelles_bdnb": [
+        "69383000DN0037"
+      ],
+      "majic_query": {
+        "dep": "69",
+        "code_commune": "383",
+        "section": "DN",
+        "numero_parcelle": 37
+      },
+      "lots_total": 8,
+      "adresses": [
+        {
+          "adresse": "143 RUE DU DAUPHINE",
+          "lots": 8
+        }
+      ],
+      "sirens": [
+        {
+          "siren": "422167973",
+          "denomination": "ROJOSTE",
+          "forme_juridique": "Société civile immobilière",
+          "lots": 5,
+          "pct_lots": 62.5,
+          "droits": {
+            "Propriétaire": 5
+          }
+        },
+        {
+          "siren": "450694872",
+          "denomination": "SCI ALROM",
+          "forme_juridique": "Société civile immobilière",
+          "lots": 3,
+          "pct_lots": 37.5,
+          "droits": {
+            "Propriétaire": 3
+          }
+        }
+      ],
+      "mono": false,
+      "multi_facades": false,
+      "cible_dans_majic": true,
+      "status": "ok"
+    },
+    {
+      "cle": "15|RUE|ETIENNE RICHERAND",
+      "bgid": "bdnb-bg-YQDT-7VMV-E5S5",
+      "vlog": 5,
+      "bdnb": 45,
+      "sci_light": "SCI NIMEG",
+      "parcelles_bdnb": [
+        "69383000DY0080",
+        "69383000DY0060"
+      ],
+      "majic_query": {
+        "dep": "69",
+        "code_commune": "383",
+        "section": "DY",
+        "numero_parcelle": 80
+      },
+      "lots_total": 19,
+      "adresses": [
+        {
+          "adresse": "15 RUE ETIENNE RICHERAND",
+          "lots": 6
+        },
+        {
+          "adresse": "13 RUE ETIENNE RICHERAND",
+          "lots": 6
+        },
+        {
+          "adresse": "36B RUE ST-ANTOINE",
+          "lots": 5
+        },
+        {
+          "adresse": "36 RUE ST-ANTOINE",
+          "lots": 2
+        }
+      ],
+      "sirens": [
+        {
+          "siren": "349311621",
+          "denomination": "SCI NIMEG",
+          "forme_juridique": "Société civile immobilière",
+          "lots": 4,
+          "pct_lots": 21.1,
+          "droits": {
+            "Propriétaire": 4
+          }
+        },
+        {
+          "siren": "351088026",
+          "denomination": "LUJE",
+          "forme_juridique": "Société civile immobilière",
+          "lots": 4,
+          "pct_lots": 21.1,
+          "droits": {
+            "Propriétaire": 4
+          }
+        },
+        {
+          "siren": "448805002",
+          "denomination": "SCI SAINT ANTOINE",
+          "forme_juridique": "Société civile immobilière",
+          "lots": 4,
+          "pct_lots": 21.1,
+          "droits": {
+            "Propriétaire": 4
+          }
+        },
+        {
+          "siren": "487847584",
+          "denomination": "T F HOLDING",
+          "forme_juridique": "SAS, société par actions simplifiée",
+          "lots": 2,
+          "pct_lots": 10.5,
+          "droits": {
+            "Propriétaire": 2
+          }
+        },
+        {
+          "siren": "801635103",
+          "denomination": "BALSON",
+          "forme_juridique": "SAS, société par actions simplifiée",
+          "lots": 2,
+          "pct_lots": 10.5,
+          "droits": {
+            "Propriétaire": 2
+          }
+        },
+        {
+          "siren": "352592661",
+          "denomination": "SCI GAMAU",
+          "forme_juridique": "Société civile immobilière",
+          "lots": 1,
+          "pct_lots": 5.3,
+          "droits": {
+            "Propriétaire": 1
+          }
+        },
+        {
+          "siren": "961503844",
+          "denomination": "CITYA BOURGUIGNON PALLUAT",
+          "forme_juridique": "SAS, société par actions simplifiée",
+          "lots": 1,
+          "pct_lots": 5.3,
+          "droits": {
+            "Syndic de copropriété": 1
+          }
+        },
+        {
+          "siren": "U21895335",
+          "denomination": "SCI GAMAUD",
+          "forme_juridique": "Société civile immobilière",
+          "lots": 1,
+          "pct_lots": 5.3,
+          "droits": {
+            "Propriétaire": 1
+          }
+        }
+      ],
+      "mono": false,
+      "multi_facades": true,
+      "cible_dans_majic": true,
+      "status": "ok"
+    },
+    {
+      "cle": "6|RUE|ST EUSEBE",
+      "bgid": "bdnb-bg-FBLV-MDEK-PE5T",
+      "vlog": 5,
+      "bdnb": 32,
+      "sci_light": "SCI 54 GRANDCLEMENT",
+      "parcelles_bdnb": [
+        "69383000DV0064"
+      ],
+      "majic_query": {
+        "dep": "69",
+        "code_commune": "383",
+        "section": "DV",
+        "numero_parcelle": 64
+      },
+      "lots_total": 17,
+      "adresses": [
+        {
+          "adresse": "6 RUE ST EUSEBE",
+          "lots": 14
+        },
+        {
+          "adresse": "8 RUE ST EUSEBE",
+          "lots": 3
+        }
+      ],
+      "sirens": [
+        {
+          "siren": "802105510",
+          "denomination": "APPLECROSS BAY",
+          "forme_juridique": "Société à responsabilité limitée (sans autre indication)",
+          "lots": 4,
+          "pct_lots": 23.5,
+          "droits": {
+            "Propriétaire": 4
+          }
+        },
+        {
+          "siren": "395246770",
+          "denomination": "CLIR",
+          "forme_juridique": "Société civile immobilière",
+          "lots": 2,
+          "pct_lots": 11.8,
+          "droits": {
+            "Propriétaire": 2
+          }
+        },
+        {
+          "siren": "794834861",
+          "denomination": "SCI 54 GRANDCLEMENT",
+          "forme_juridique": "Société civile immobilière",
+          "lots": 2,
+          "pct_lots": 11.8,
+          "droits": {
+            "Propriétaire": 2
+          }
+        },
+        {
+          "siren": "798339198",
+          "denomination": "SCI ST PRIEST-MENIVAL",
+          "forme_juridique": "Société civile immobilière",
+          "lots": 2,
+          "pct_lots": 11.8,
+          "droits": {
+            "Propriétaire": 2
+          }
+        },
+        {
+          "siren": "957521438",
+          "denomination": "L'ELECTRICITE",
+          "forme_juridique": "SA coopérative ouvrière de production et de crédit (SCOP) à conseil d’administration",
+          "lots": 2,
+          "pct_lots": 11.8,
+          "droits": {
+            "Propriétaire": 2
+          }
+        },
+        {
+          "siren": "307666768",
+          "denomination": "REGIE CHOMETTE",
+          "forme_juridique": "SA à conseil d’administration (s.a.i.)",
+          "lots": 1,
+          "pct_lots": 5.9,
+          "droits": {
+            "Syndic de copropriété": 1
+          }
+        },
+        {
+          "siren": "514196484",
+          "denomination": "SCI LM BOULEAUX",
+          "forme_juridique": "Société civile immobilière",
+          "lots": 1,
+          "pct_lots": 5.9,
+          "droits": {
+            "Propriétaire": 1
+          }
+        },
+        {
+          "siren": "530129600",
+          "denomination": "TCHUCK IMMO",
+          "forme_juridique": "Société civile immobilière",
+          "lots": 1,
+          "pct_lots": 5.9,
+          "droits": {
+            "Propriétaire": 1
+          }
+        },
+        {
+          "siren": "841493646",
+          "denomination": "YRD",
+          "forme_juridique": "Autre société civile",
+          "lots": 1,
+          "pct_lots": 5.9,
+          "droits": {
+            "Propriétaire": 1
+          }
+        },
+        {
+          "siren": "927527226",
+          "denomination": "PEDRIMMO",
+          "forme_juridique": "Société civile immobilière",
+          "lots": 1,
+          "pct_lots": 5.9,
+          "droits": {
+            "Propriétaire": 1
+          }
+        }
+      ],
+      "mono": false,
+      "multi_facades": true,
+      "cible_dans_majic": true,
+      "status": "ok"
+    },
+    {
+      "cle": "12|RUE|MOISSONNIER",
+      "bgid": "bdnb-bg-JD9X-LS8L-R7A9",
+      "vlog": 5,
+      "bdnb": 29,
+      "sci_light": "ECHNAVERAL",
+      "parcelles_bdnb": [
+        "69383000DR0098"
+      ],
+      "majic_query": {
+        "dep": "69",
+        "code_commune": "383",
+        "section": "DR",
+        "numero_parcelle": 98
+      },
+      "lots_total": 14,
+      "adresses": [
+        {
+          "adresse": "12 RUE MOISSONNIER",
+          "lots": 10
+        },
+        {
+          "adresse": "11 AV LACASSAGNE",
+          "lots": 4
+        }
+      ],
+      "sirens": [
+        {
+          "siren": "850905605",
+          "denomination": "SCI LENV",
+          "forme_juridique": "Société civile immobilière",
+          "lots": 5,
+          "pct_lots": 35.7,
+          "droits": {
+            "Propriétaire": 5
+          }
+        },
+        {
+          "siren": "813755949",
+          "denomination": "OPH DE LA METROPOLE DE LYON",
+          "forme_juridique": "Établissement public local à caractère industriel ou commercial",
+          "lots": 4,
+          "pct_lots": 28.6,
+          "droits": {
+            "Propriétaire": 4
+          }
+        },
+        {
+          "siren": "502930993",
+          "denomination": "ECHNAVERAL",
+          "forme_juridique": "Société civile immobilière",
+          "lots": 2,
+          "pct_lots": 14.3,
+          "droits": {
+            "Propriétaire": 2
+          }
+        },
+        {
+          "siren": "754064715",
+          "denomination": "MGPA",
+          "forme_juridique": "Société civile immobilière",
+          "lots": 2,
+          "pct_lots": 14.3,
+          "droits": {
+            "Propriétaire": 2
+          }
+        },
+        {
+          "siren": "505011122",
+          "denomination": "SDCB",
+          "forme_juridique": "Société civile immobilière",
+          "lots": 1,
+          "pct_lots": 7.1,
+          "droits": {
+            "Propriétaire": 1
+          }
+        }
+      ],
+      "mono": false,
+      "multi_facades": true,
+      "cible_dans_majic": true,
+      "status": "ok"
+    },
+    {
+      "cle": "7|RUE|METALLURGIE",
+      "bgid": "bdnb-bg-WSTK-SKSS-P2M2",
+      "vlog": 5,
+      "bdnb": 21,
+      "sci_light": "",
+      "parcelles_bdnb": [
+        "69383000DO0010"
+      ],
+      "majic_query": {
+        "dep": "69",
+        "code_commune": "383",
+        "section": "DO",
+        "numero_parcelle": 10
+      },
+      "lots_total": 4,
+      "adresses": [
+        {
+          "adresse": "7 RUE DE LA METALLURGIE",
+          "lots": 4
+        }
+      ],
+      "sirens": [
+        {
+          "siren": "851950360",
+          "denomination": "ABA",
+          "forme_juridique": "SAS, société par actions simplifiée",
+          "lots": 2,
+          "pct_lots": 50.0,
+          "droits": {
+            "Propriétaire": 2
+          }
+        },
+        {
+          "siren": "U11593812",
+          "denomination": "REGIE DES CELESTINS",
+          "forme_juridique": "SAS, société par actions simplifiée",
+          "lots": 2,
+          "pct_lots": 50.0,
+          "droits": {
+            "Gérant, mandataire, gestionnaire": 2
+          }
+        }
+      ],
+      "mono": false,
+      "multi_facades": false,
+      "cible_dans_majic": true,
+      "status": "ok"
+    },
+    {
+      "cle": "18|RUE|ST ANTOINE",
+      "bgid": "bdnb-bg-PFFK-6Z9V-TUP1",
+      "vlog": 3,
+      "bdnb": 42,
+      "sci_light": "",
+      "parcelles_bdnb": [
+        "69383000EI0097"
+      ],
+      "majic_query": {
+        "dep": "69",
+        "code_commune": "383",
+        "section": "EI",
+        "numero_parcelle": 97
+      },
+      "lots_total": 9,
+      "adresses": [
+        {
+          "adresse": "17 RUE ST-ANTOINE",
+          "lots": 9
+        }
+      ],
+      "sirens": [
+        {
+          "siren": "389494360",
+          "denomination": "DU LITTORAL",
+          "forme_juridique": "Société civile immobilière",
+          "lots": 5,
+          "pct_lots": 55.6,
+          "droits": {
+            "Propriétaire": 5
+          }
+        },
+        {
+          "siren": "216901231",
+          "denomination": "COMMUNE DE LYON",
+          "forme_juridique": "Commune et commune nouvelle",
+          "lots": 2,
+          "pct_lots": 22.2,
+          "droits": {
+            "Propriétaire": 2
+          }
+        },
+        {
+          "siren": "513216697",
+          "denomination": "HERMELLIN",
+          "forme_juridique": "Société civile immobilière",
+          "lots": 2,
+          "pct_lots": 22.2,
+          "droits": {
+            "Propriétaire": 2
+          }
+        }
+      ],
+      "mono": false,
+      "multi_facades": false,
+      "cible_dans_majic": false,
+      "status": "ok"
+    },
+    {
+      "cle": "125|RUE|DAUPHINE",
+      "bgid": "bdnb-bg-NP5T-JZFB-UVR7",
+      "vlog": 3,
+      "bdnb": 22,
+      "sci_light": "LES ROCHERS",
+      "parcelles_bdnb": [
+        "69383000DN0064"
+      ],
+      "majic_query": {
+        "dep": "69",
+        "code_commune": "383",
+        "section": "DN",
+        "numero_parcelle": 64
+      },
+      "lots_total": 8,
+      "adresses": [
+        {
+          "adresse": "125 RUE DU DAUPHINE",
+          "lots": 7
+        },
+        {
+          "adresse": "123 RUE DU DAUPHINE",
+          "lots": 1
+        }
+      ],
+      "sirens": [
+        {
+          "siren": "484442678",
+          "denomination": "LES ROCHERS",
+          "forme_juridique": "Société civile immobilière",
+          "lots": 2,
+          "pct_lots": 25.0,
+          "droits": {
+            "Propriétaire": 2
+          }
+        },
+        {
+          "siren": "929220895",
+          "denomination": "BOTIZA",
+          "forme_juridique": "Société à responsabilité limitée (sans autre indication)",
+          "lots": 2,
+          "pct_lots": 25.0,
+          "droits": {
+            "Propriétaire": 2
+          }
+        },
+        {
+          "siren": "930183355",
+          "denomination": "JPK 24",
+          "forme_juridique": "Société civile immobilière",
+          "lots": 2,
+          "pct_lots": 25.0,
+          "droits": {
+            "Propriétaire": 2
+          }
+        },
+        {
+          "siren": "U19086819",
+          "denomination": "CESAR ET BRUTUS SYNDIC",
+          "forme_juridique": "SAS, société par actions simplifiée",
+          "lots": 2,
+          "pct_lots": 25.0,
+          "droits": {
+            "Syndic de copropriété": 2
+          }
+        }
+      ],
+      "mono": false,
+      "multi_facades": true,
+      "cible_dans_majic": true,
+      "status": "ok"
+    },
+    {
+      "cle": "52|AVENUE|GEORGES POMPIDOU",
+      "bgid": "bdnb-bg-71B2-4HSV-Y9VP",
+      "vlog": 3,
+      "bdnb": 18,
+      "sci_light": "",
+      "parcelles_bdnb": [
+        "69383000DZ0092"
+      ],
+      "majic_query": {
+        "dep": "69",
+        "code_commune": "383",
+        "section": "DZ",
+        "numero_parcelle": 92
+      },
+      "lots_total": 7,
+      "adresses": [
+        {
+          "adresse": "46 AV GEORGES POMPIDOU",
+          "lots": 7
+        }
+      ],
+      "sirens": [
+        {
+          "siren": "898741236",
+          "denomination": "MISIJIRI",
+          "forme_juridique": "Société civile immobilière",
+          "lots": 4,
+          "pct_lots": 57.1,
+          "droits": {
+            "Propriétaire": 4
+          }
+        },
+        {
+          "siren": "843871369",
+          "denomination": "ELEUTHERA-DEUTEROS",
+          "forme_juridique": "Société civile immobilière",
+          "lots": 2,
+          "pct_lots": 28.6,
+          "droits": {
+            "Propriétaire": 2
+          }
+        },
+        {
+          "siren": "U23768950",
+          "denomination": "REGIE BOCQUET DES GARETS ET CHASTEL",
+          "forme_juridique": "SA à conseil d’administration (s.a.i.)",
+          "lots": 1,
+          "pct_lots": 14.3,
+          "droits": {
+            "Syndic de copropriété": 1
+          }
+        }
+      ],
+      "mono": false,
+      "multi_facades": false,
+      "cible_dans_majic": false,
+      "status": "ok"
+    },
+    {
+      "cle": "48|AVENUE|GEORGES POMPIDOU",
+      "bgid": "bdnb-bg-ZNN2-SAMJ-S68B",
+      "vlog": 2,
+      "bdnb": 18,
+      "sci_light": "",
+      "parcelles_bdnb": [
+        "69383000DZ0092"
+      ],
+      "majic_query": {
+        "dep": "69",
+        "code_commune": "383",
+        "section": "DZ",
+        "numero_parcelle": 92
+      },
+      "lots_total": 7,
+      "adresses": [
+        {
+          "adresse": "46 AV GEORGES POMPIDOU",
+          "lots": 7
+        }
+      ],
+      "sirens": [
+        {
+          "siren": "898741236",
+          "denomination": "MISIJIRI",
+          "forme_juridique": "Société civile immobilière",
+          "lots": 4,
+          "pct_lots": 57.1,
+          "droits": {
+            "Propriétaire": 4
+          }
+        },
+        {
+          "siren": "843871369",
+          "denomination": "ELEUTHERA-DEUTEROS",
+          "forme_juridique": "Société civile immobilière",
+          "lots": 2,
+          "pct_lots": 28.6,
+          "droits": {
+            "Propriétaire": 2
+          }
+        },
+        {
+          "siren": "U23768950",
+          "denomination": "REGIE BOCQUET DES GARETS ET CHASTEL",
+          "forme_juridique": "SA à conseil d’administration (s.a.i.)",
+          "lots": 1,
+          "pct_lots": 14.3,
+          "droits": {
+            "Syndic de copropriété": 1
+          }
+        }
+      ],
+      "mono": false,
+      "multi_facades": false,
+      "cible_dans_majic": false,
+      "status": "ok"
+    },
+    {
+      "cle": "21|RUE|ST ANTOINE",
+      "bgid": "bdnb-bg-ALA1-7UY8-ULUG",
+      "vlog": 2,
+      "bdnb": 16,
+      "sci_light": "ONZE GESTION",
+      "parcelles_bdnb": [
+        "69383000EI0098"
+      ],
+      "majic_query": {
+        "dep": "69",
+        "code_commune": "383",
+        "section": "EI",
+        "numero_parcelle": 98
+      },
+      "lots_total": 6,
+      "adresses": [
+        {
+          "adresse": "270 CRS LAFAYETTE",
+          "lots": 4
+        },
+        {
+          "adresse": "21 RUE ST-ANTOINE",
+          "lots": 2
+        }
+      ],
+      "sirens": [
+        {
+          "siren": "950395434",
+          "denomination": "ONZE GESTION",
+          "forme_juridique": "Société civile immobilière",
+          "lots": 3,
+          "pct_lots": 50.0,
+          "droits": {
+            "Propriétaire": 3
+          }
+        },
+        {
+          "siren": "828499897",
+          "denomination": "MANDA  EX- HELLO SYNDIC",
+          "forme_juridique": "SAS, société par actions simplifiée",
+          "lots": 2,
+          "pct_lots": 33.3,
+          "droits": {
+            "Syndic de copropriété": 2
+          }
+        },
+        {
+          "siren": "907516124",
+          "denomination": "SCI CABINET MEDICAL DE PANTHOU",
+          "forme_juridique": "Société civile immobilière",
+          "lots": 1,
+          "pct_lots": 16.7,
+          "droits": {
+            "Propriétaire": 1
+          }
+        }
+      ],
+      "mono": false,
+      "multi_facades": true,
+      "cible_dans_majic": false,
+      "status": "ok"
+    },
+    {
+      "cle": "234|RUE|PAUL BERT",
+      "bgid": "bdnb-bg-LQU8-MYBM-2AMK",
+      "vlog": 2,
+      "bdnb": 7,
+      "sci_light": "",
+      "parcelles_bdnb": [
+        "69383000DR0057"
+      ],
+      "majic_query": {
+        "dep": "69",
+        "code_commune": "383",
+        "section": "DR",
+        "numero_parcelle": 57
+      },
+      "lots_total": 14,
+      "adresses": [
+        {
+          "adresse": "234 RUE PAUL BERT",
+          "lots": 14
+        }
+      ],
+      "sirens": [
+        {
+          "siren": "937848927",
+          "denomination": "ZEBRA 2",
+          "forme_juridique": "SAS, société par actions simplifiée",
+          "lots": 14,
+          "pct_lots": 100.0,
+          "droits": {
+            "Propriétaire": 14
+          }
+        }
+      ],
+      "mono": true,
+      "multi_facades": false,
+      "cible_dans_majic": true,
+      "status": "ok"
+    },
+    {
+      "cle": "4|RUE|TERNOIS",
+      "bgid": "bdnb-bg-5RMC-KXL7-E97N",
+      "vlog": 1,
+      "bdnb": 80,
+      "sci_light": "PIETRA",
+      "parcelles_bdnb": [
+        "69383000EI0094"
+      ],
+      "majic_query": {
+        "dep": "69",
+        "code_commune": "383",
+        "section": "EI",
+        "numero_parcelle": 94
+      },
+      "lots_total": 19,
+      "adresses": [
+        {
+          "adresse": "6 RUE TERNOIS",
+          "lots": 7
+        },
+        {
+          "adresse": "93 RUE BELLECOMBE",
+          "lots": 4
+        },
+        {
+          "adresse": "4 RUE TERNOIS",
+          "lots": 4
+        },
+        {
+          "adresse": "18 RUE ST-ANTOINE",
+          "lots": 2
+        },
+        {
+          "adresse": "93B RUE BELLECOMBE",
+          "lots": 2
+        }
+      ],
+      "sirens": [
+        {
+          "siren": "420625410",
+          "denomination": "BELLEFONTAINE",
+          "forme_juridique": "Autre société civile",
+          "lots": 3,
+          "pct_lots": 15.8,
+          "droits": {
+            "Propriétaire": 3
+          }
+        },
+        {
+          "siren": "444156848",
+          "denomination": "GIBAG",
+          "forme_juridique": "SAS, société par actions simplifiée",
+          "lots": 3,
+          "pct_lots": 15.8,
+          "droits": {
+            "Propriétaire": 3
+          }
+        },
+        {
+          "siren": "484336474",
+          "denomination": "PIETRA",
+          "forme_juridique": "Société civile immobilière",
+          "lots": 3,
+          "pct_lots": 15.8,
+          "droits": {
+            "Propriétaire": 3
+          }
+        },
+        {
+          "siren": "900952359",
+          "denomination": "CCDI",
+          "forme_juridique": "Autre société civile",
+          "lots": 3,
+          "pct_lots": 15.8,
+          "droits": {
+            "Propriétaire": 3
+          }
+        },
+        {
+          "siren": "949761050",
+          "denomination": "SCI R O B",
+          "forme_juridique": "Société civile immobilière",
+          "lots": 3,
+          "pct_lots": 15.8,
+          "droits": {
+            "Propriétaire": 3
+          }
+        },
+        {
+          "siren": "308127612",
+          "denomination": "REGIE CENTRALE IMMOBILIERE",
+          "forme_juridique": "SAS, société par actions simplifiée",
+          "lots": 2,
+          "pct_lots": 10.5,
+          "droits": {
+            "Syndic de copropriété": 2
+          }
+        },
+        {
+          "siren": "487497844",
+          "denomination": "MEDIMMO",
+          "forme_juridique": "SAS, société par actions simplifiée",
+          "lots": 2,
+          "pct_lots": 10.5,
+          "droits": {
+            "Propriétaire": 2
+          }
+        }
+      ],
+      "mono": false,
+      "multi_facades": true,
+      "cible_dans_majic": true,
+      "status": "ok"
+    },
+    {
+      "cle": "45|AVENUE|GEORGES POMPIDOU",
+      "bgid": "bdnb-bg-KM3Q-XAC3-34D1",
+      "vlog": 1,
+      "bdnb": 61,
+      "sci_light": "MAESTRIMMO",
+      "parcelles_bdnb": [
+        "69383000DZ0047"
+      ],
+      "majic_query": {
+        "dep": "69",
+        "code_commune": "383",
+        "section": "DZ",
+        "numero_parcelle": 47
+      },
+      "lots_total": 190,
+      "adresses": [
+        {
+          "adresse": "45 AV GEORGES POMPIDOU",
+          "lots": 73
+        },
+        {
+          "adresse": "47 AV GEORGES POMPIDOU",
+          "lots": 60
+        },
+        {
+          "adresse": "49 AV GEORGES POMPIDOU",
+          "lots": 57
+        }
+      ],
+      "sirens": [
+        {
+          "siren": "803910199",
+          "denomination": "MAESTRIMMO",
+          "forme_juridique": "Société civile immobilière",
+          "lots": 190,
+          "pct_lots": 100.0,
+          "droits": {
+            "Propriétaire": 190
+          }
+        }
+      ],
+      "mono": true,
+      "multi_facades": true,
+      "cible_dans_majic": true,
+      "status": "ok"
+    },
+    {
+      "cle": "3|RUE|ROSSAN",
+      "bgid": "bdnb-bg-CD87-UNB7-7N3J",
+      "vlog": 1,
+      "bdnb": 20,
+      "sci_light": "SAINT PHILIPPE",
+      "parcelles_bdnb": [
+        "69383000BC0108"
+      ],
+      "majic_query": {
+        "dep": "69",
+        "code_commune": "383",
+        "section": "BC",
+        "numero_parcelle": 108
+      },
+      "lots_total": 2,
+      "adresses": [
+        {
+          "adresse": "10 RUE ST-MAXIMIN",
+          "lots": 1
+        },
+        {
+          "adresse": "3 RUE ROSSAN",
+          "lots": 1
+        }
+      ],
+      "sirens": [
+        {
+          "siren": "449752369",
+          "denomination": "SAINT PHILIPPE",
+          "forme_juridique": "Société civile immobilière",
+          "lots": 2,
+          "pct_lots": 100.0,
+          "droits": {
+            "Propriétaire": 2
+          }
+        }
+      ],
+      "mono": true,
+      "multi_facades": true,
+      "cible_dans_majic": true,
+      "status": "ok"
+    },
+    {
+      "cle": "122|RUE|BARABAN",
+      "bgid": "bdnb-bg-PQR4-97S4-XPXU",
+      "vlog": 1,
+      "bdnb": 10,
+      "sci_light": "",
+      "parcelles_bdnb": [
+        "69383000DS0067",
+        "69383000DS0066"
+      ],
+      "majic_query": {
+        "dep": "69",
+        "code_commune": "383",
+        "section": "DS",
+        "numero_parcelle": 67
+      },
+      "lots_total": 10,
+      "adresses": [
+        {
+          "adresse": "122 RUE BARABAN",
+          "lots": 10
+        }
+      ],
+      "sirens": [
+        {
+          "siren": "528248305",
+          "denomination": "FINANCIERE FMB",
+          "forme_juridique": "SAS, société par actions simplifiée",
+          "lots": 10,
+          "pct_lots": 100.0,
+          "droits": {
+            "Propriétaire": 10
+          }
+        }
+      ],
+      "mono": true,
+      "multi_facades": false,
+      "cible_dans_majic": true,
+      "status": "ok"
+    },
+    {
+      "cle": "15|RUE|DAVID",
+      "bgid": "bdnb-bg-H7YV-VH5E-JFY8",
+      "vlog": 1,
+      "bdnb": 9,
+      "sci_light": "",
+      "parcelles_bdnb": [
+        "69383000DO0036"
+      ],
+      "majic_query": {
+        "dep": "69",
+        "code_commune": "383",
+        "section": "DO",
+        "numero_parcelle": 36
+      },
+      "lots_total": 35,
+      "adresses": [
+        {
+          "adresse": "15 RUE DAVID",
+          "lots": 35
+        }
+      ],
+      "sirens": [
+        {
+          "siren": "421575820",
+          "denomination": "HABITAT ET HUMANISME SOIN",
+          "forme_juridique": "Association déclarée",
+          "lots": 15,
+          "pct_lots": 42.9,
+          "droits": {
+            "Propriétaire": 15
+          }
+        },
+        {
+          "siren": "339866303",
+          "denomination": "ASSOCIATION DES ETROITS",
+          "forme_juridique": "Association déclarée",
+          "lots": 11,
+          "pct_lots": 31.4,
+          "droits": {
+            "Propriétaire": 11
+          }
+        },
+        {
+          "siren": "450695804",
+          "denomination": "ENTREPRENDRE POUR HUMANISER LA DEPENDANC",
+          "forme_juridique": "Autre SA coopérative à conseil d’administration",
+          "lots": 9,
+          "pct_lots": 25.7,
+          "droits": {
+            "Propriétaire": 9
+          }
+        }
+      ],
+      "mono": false,
+      "multi_facades": false,
+      "cible_dans_majic": true,
+      "status": "ok"
+    },
+    {
+      "cle": "65|RUE|ETIENNE RICHERAND",
+      "bgid": "bdnb-bg-J5M8-8PYA-ALEX",
+      "vlog": 1,
+      "bdnb": 6,
+      "sci_light": "",
+      "parcelles_bdnb": [
+        "69383000DS0001"
+      ],
+      "majic_query": {
+        "dep": "69",
+        "code_commune": "383",
+        "section": "DS",
+        "numero_parcelle": 1
+      },
+      "lots_total": 12,
+      "adresses": [
+        {
+          "adresse": "65 RUE ETIENNE RICHERAND",
+          "lots": 12
+        }
+      ],
+      "sirens": [
+        {
+          "siren": "821485000",
+          "denomination": "HETH DEVELOPPEMENT IMMOBILIER",
+          "forme_juridique": "SAS, société par actions simplifiée",
+          "lots": 12,
+          "pct_lots": 100.0,
+          "droits": {
+            "Propriétaire": 12
+          }
+        }
+      ],
+      "mono": true,
+      "multi_facades": false,
+      "cible_dans_majic": true,
+      "status": "ok"
+    },
+    {
+      "cle": "13|RUE|METALLURGIE",
+      "bgid": "bdnb-bg-324Y-G9R6-B2ZS",
+      "vlog": 1,
+      "bdnb": 2,
+      "sci_light": "",
+      "parcelles_bdnb": [
+        "69383000DO0013"
+      ],
+      "majic_query": {
+        "dep": "69",
+        "code_commune": "383",
+        "section": "DO",
+        "numero_parcelle": 13
+      },
+      "lots_total": 0,
+      "adresses": [],
+      "sirens": [],
+      "mono": false,
+      "multi_facades": false,
+      "cible_dans_majic": false,
+      "status": "0_lot_majic"
+    }
+  ]
+}
