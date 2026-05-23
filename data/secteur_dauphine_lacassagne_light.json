@@ -60077,9 +60077,12 @@
       "classe_dpe": "C",
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
-      "batiment_groupe_id": "bdnb-bg-S3VN-5QYG-KUV9",
+      "batiment_groupe_id": "bdnb-bg-L2AS-75JZ-QX89",
       "_bdnb_match": "num_voie",
-      "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23"
+      "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
+      "_fusion_auto": true,
+      "_fusion_auto_target": "11|RUE|DAUPHINE",
+      "_fusion_auto_source": "manual_2026-05-23_13bdauph_hbm"
     },
     {
       "cle": "14B|RUE|ESPERANCE",
@@ -60105,9 +60108,12 @@
       "classe_dpe": "E",
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
-      "batiment_groupe_id": "bdnb-bg-5JEU-XW3B-67GS",
+      "batiment_groupe_id": "bdnb-bg-NZ67-8FQ2-8L1E",
       "_bdnb_match": "num_voie",
-      "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23"
+      "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
+      "_fusion_auto": true,
+      "_fusion_auto_target": "14|RUE|ESPERANCE",
+      "_fusion_auto_source": "manual_2026-05-23_14besp_emeraude"
     },
     {
       "cle": "15B|RUE|CLAUDIUS PIONCHON",
@@ -60856,7 +60862,10 @@
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-558F-914A-J3ZK",
       "_bdnb_match": "num_voie",
-      "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23"
+      "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
+      "_fusion_auto": true,
+      "_fusion_auto_target": "26|RUE|CITE",
+      "_fusion_auto_source": "manual_2026-05-23_26bcite_cambronne"
     },
     {
       "cle": "27B|RUE|DAUPHINE",
