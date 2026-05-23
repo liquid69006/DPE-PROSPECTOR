@@ -2474,7 +2474,12 @@ function renderSecteur() {
           const _np = secteurNoms[a.cle];
           const _dn = (_np != null && String(_np).trim() !== '')
             ? String(_np) : (a._fusion_auto_label || _adr);
-          if (secteurNorm(_dn + ' ' + _adr).indexOf(sctQ) === -1) return;
+          // Matching token-par-token : chaque mot de la requete doit
+          // apparaitre quelque part dans l'adresse (ordre/contiguite libre).
+          // Ex: "10 gando" matche "10 rue gandoliere".
+          const _haystack = secteurNorm(_dn + ' ' + _adr);
+          const _tokens = sctQ.split(/\s+/).filter(Boolean);
+          if (!_tokens.every(t => _haystack.indexOf(t) !== -1)) return;
         }
         nRow++;
         const cp = coproByCle[a.cle];
