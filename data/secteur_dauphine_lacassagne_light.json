@@ -49039,7 +49039,12 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_label": "31/33 RUE ETIENNE RICHERAND / 40/42 RUE AUBIGNY",
+      "_fusion_auto_sources": [
+        "40|RUE|AUBIGNY",
+        "42|RUE|AUBIGNY"
+      ]
     },
     {
       "cle": "33|RUE|MAURICE FLANDIN",
@@ -50580,19 +50585,17 @@
       "classe_dpe": "C",
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
-      "batiment_groupe_id": "bdnb-bg-VGNW-N4HU-YD2U",
+      "batiment_groupe_id": "bdnb-bg-H22L-8Z1E-D61Z",
       "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "40/42 RUE AUBIGNY",
-      "_fusion_auto_sources": [
-        "42|RUE|AUBIGNY"
-      ],
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto": true,
+      "_fusion_cible": "33|RUE|ETIENNE RICHERAND"
     },
     {
       "cle": "40|RUE|CITE",
@@ -50948,10 +50951,10 @@
       "classe_dpe": "C",
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
-      "batiment_groupe_id": "bdnb-bg-VGNW-N4HU-YD2U",
+      "batiment_groupe_id": "bdnb-bg-H22L-8Z1E-D61Z",
       "_bdnb_match": "num_voie",
       "_fusion_auto": true,
-      "_fusion_cible": "40|RUE|AUBIGNY",
+      "_fusion_cible": "33|RUE|ETIENNE RICHERAND",
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
