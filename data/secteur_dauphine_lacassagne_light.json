@@ -59610,17 +59610,17 @@
       "sci_nom": "SCI BORG",
       "sci_siren": "316693894",
       "syndic": "REGIE DES GONES",
-      "_syndic_src": "cadastre",
-      "numero_immatriculation": null,
-      "nb_lots_habitation": null,
+      "_syndic_src": "rnc",
+      "numero_immatriculation": "AA1991173",
+      "nb_lots_habitation": 37,
       "ventes_par_an": {
         "2022": 2,
         "2024": 1,
         "2025": 1
       },
       "nb_ventes_total": 4,
-      "taux_rotation": 2.8,
-      "classement_rotation": "Actif",
+      "taux_rotation": 35.1,
+      "classement_rotation": "Tres actif",
       "nb_log_bdnb": 29,
       "annee_construction": 1986,
       "classe_dpe": "C",
@@ -59630,7 +59630,8 @@
       "_bdnb_match": "num_voie",
       "_fusion_auto": true,
       "_fusion_cible": "10|RUE|FREDERIC MISTRAL",
-      "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23"
+      "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
+      "_correctif_propagation_indice": "fix_propag_immat_21suff_dl_2026-05-23"
     },
     {
       "cle": "10T|RUE|MONTBRILLANT",
@@ -59716,9 +59717,9 @@
       "sci_nom": "CLAIFRANFLOR",
       "sci_siren": "443333000",
       "syndic": "GAGNEUX SERVICES IMMOBILIER (EN ABREGE G.S.I)",
-      "_syndic_src": "cadastre",
-      "numero_immatriculation": null,
-      "nb_lots_habitation": null,
+      "_syndic_src": "rnc",
+      "numero_immatriculation": "AA0012898",
+      "nb_lots_habitation": 225,
       "ventes_par_an": {
         "2021": 7,
         "2022": 4,
@@ -59727,8 +59728,8 @@
         "2025": 4
       },
       "nb_ventes_total": 35,
-      "taux_rotation": 3.1,
-      "classement_rotation": "Très actif",
+      "taux_rotation": 0.0,
+      "classement_rotation": "Fige",
       "nb_log_bdnb": 229,
       "annee_construction": 1989,
       "classe_dpe": "C",
@@ -59738,7 +59739,8 @@
       "_bdnb_match": "num_voie",
       "_fusion_auto": true,
       "_fusion_cible": "7B|RUE|PROFESSEUR PAUL SISLEY",
-      "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23"
+      "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
+      "_correctif_propagation_indice": "fix_propag_immat_21suff_dl_2026-05-23"
     },
     {
       "cle": "11B|RUE|ST MAXIMIN",
@@ -59752,15 +59754,15 @@
       "sci_nom": "SOCIETE CIVILE IMMOBILIERE GATAR",
       "sci_siren": "797670460",
       "syndic": "FONCIA SAINT LOUIS",
-      "_syndic_src": "cadastre",
-      "numero_immatriculation": null,
-      "nb_lots_habitation": null,
+      "_syndic_src": "rnc",
+      "numero_immatriculation": "AB4738928",
+      "nb_lots_habitation": 76,
       "ventes_par_an": {
         "2021": 2
       },
       "nb_ventes_total": 2,
-      "taux_rotation": 1.0,
-      "classement_rotation": "Modéré",
+      "taux_rotation": 0.0,
+      "classement_rotation": "Fige",
       "nb_log_bdnb": 41,
       "annee_construction": 2002,
       "classe_dpe": "C",
@@ -59768,7 +59770,8 @@
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-RBD4-VFY6-RGM1",
       "_bdnb_match": "num_voie",
-      "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23"
+      "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
+      "_correctif_propagation_indice": "fix_propag_immat_21suff_dl_2026-05-23"
     },
     {
       "cle": "121A|RUE|ANTOINE CHARIAL",
@@ -59782,13 +59785,13 @@
       "sci_nom": "",
       "sci_siren": "",
       "syndic": "REGIE LESTRA",
-      "_syndic_src": "cadastre",
-      "numero_immatriculation": null,
-      "nb_lots_habitation": null,
+      "_syndic_src": "rnc",
+      "numero_immatriculation": "AA9271602",
+      "nb_lots_habitation": 25,
       "ventes_par_an": {},
       "nb_ventes_total": 0,
-      "taux_rotation": 0.0,
-      "classement_rotation": "Figé",
+      "taux_rotation": 8.0,
+      "classement_rotation": "Modere",
       "nb_log_bdnb": 25,
       "annee_construction": 1972,
       "classe_dpe": "D",
@@ -59802,7 +59805,8 @@
         "121C|RUE|ANTOINE CHARIAL",
         "121D|RUE|ANTOINE CHARIAL"
       ],
-      "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23"
+      "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
+      "_correctif_propagation_indice": "fix_propag_immat_21suff_dl_2026-05-23"
     },
     {
       "cle": "121B|RUE|ANTOINE CHARIAL",
@@ -59816,13 +59820,13 @@
       "sci_nom": "",
       "sci_siren": "",
       "syndic": "REGIE LESTRA",
-      "_syndic_src": "cadastre",
-      "numero_immatriculation": null,
-      "nb_lots_habitation": null,
+      "_syndic_src": "rnc",
+      "numero_immatriculation": "AA9271602",
+      "nb_lots_habitation": 25,
       "ventes_par_an": {},
       "nb_ventes_total": 0,
-      "taux_rotation": 0.0,
-      "classement_rotation": "Figé",
+      "taux_rotation": 8.0,
+      "classement_rotation": "Modere",
       "nb_log_bdnb": 25,
       "annee_construction": 1972,
       "classe_dpe": "D",
@@ -59832,7 +59836,8 @@
       "_bdnb_match": "num_voie",
       "_fusion_auto": true,
       "_fusion_cible": "121A|RUE|ANTOINE CHARIAL",
-      "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23"
+      "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
+      "_correctif_propagation_indice": "fix_propag_immat_21suff_dl_2026-05-23"
     },
     {
       "cle": "121C|RUE|ANTOINE CHARIAL",
@@ -59846,13 +59851,13 @@
       "sci_nom": "",
       "sci_siren": "",
       "syndic": "REGIE LESTRA",
-      "_syndic_src": "cadastre",
-      "numero_immatriculation": null,
-      "nb_lots_habitation": null,
+      "_syndic_src": "rnc",
+      "numero_immatriculation": "AA9271602",
+      "nb_lots_habitation": 25,
       "ventes_par_an": {},
       "nb_ventes_total": 0,
-      "taux_rotation": 0.0,
-      "classement_rotation": "Figé",
+      "taux_rotation": 8.0,
+      "classement_rotation": "Modere",
       "nb_log_bdnb": 25,
       "annee_construction": 1972,
       "classe_dpe": "D",
@@ -59862,7 +59867,8 @@
       "_bdnb_match": "num_voie",
       "_fusion_auto": true,
       "_fusion_cible": "121A|RUE|ANTOINE CHARIAL",
-      "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23"
+      "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
+      "_correctif_propagation_indice": "fix_propag_immat_21suff_dl_2026-05-23"
     },
     {
       "cle": "121D|RUE|ANTOINE CHARIAL",
@@ -59876,13 +59882,13 @@
       "sci_nom": "",
       "sci_siren": "",
       "syndic": "REGIE LESTRA",
-      "_syndic_src": "cadastre",
-      "numero_immatriculation": null,
-      "nb_lots_habitation": null,
+      "_syndic_src": "rnc",
+      "numero_immatriculation": "AA9271602",
+      "nb_lots_habitation": 25,
       "ventes_par_an": {},
       "nb_ventes_total": 0,
-      "taux_rotation": 0.0,
-      "classement_rotation": "Figé",
+      "taux_rotation": 8.0,
+      "classement_rotation": "Modere",
       "nb_log_bdnb": 25,
       "annee_construction": 1972,
       "classe_dpe": "D",
@@ -59892,7 +59898,8 @@
       "_bdnb_match": "num_voie",
       "_fusion_auto": true,
       "_fusion_cible": "121A|RUE|ANTOINE CHARIAL",
-      "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23"
+      "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
+      "_correctif_propagation_indice": "fix_propag_immat_21suff_dl_2026-05-23"
     },
     {
       "cle": "12B|RUE|DAVID",
@@ -59962,13 +59969,13 @@
       "sci_nom": "",
       "sci_siren": "",
       "syndic": "REGIE CENTRALE IMMOBILIERE",
-      "_syndic_src": "cadastre",
-      "numero_immatriculation": null,
-      "nb_lots_habitation": null,
+      "_syndic_src": "rnc",
+      "numero_immatriculation": "AE1293612",
+      "nb_lots_habitation": 60,
       "ventes_par_an": {},
       "nb_ventes_total": 0,
       "taux_rotation": 0.0,
-      "classement_rotation": "Figé",
+      "classement_rotation": "Fige",
       "nb_log_bdnb": 61,
       "annee_construction": 1995,
       "classe_dpe": "C",
@@ -59978,7 +59985,8 @@
       "_bdnb_match": "num_voie",
       "_fusion_auto": true,
       "_fusion_cible": "106|RUE|BARABAN",
-      "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23"
+      "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
+      "_correctif_propagation_indice": "fix_propag_immat_21suff_dl_2026-05-23"
     },
     {
       "cle": "13B|RUE|DAUPHINE",
@@ -60439,15 +60447,15 @@
       "sci_nom": "",
       "sci_siren": "",
       "syndic": "LAMY",
-      "_syndic_src": "cadastre",
-      "numero_immatriculation": null,
-      "nb_lots_habitation": null,
+      "_syndic_src": "rnc",
+      "numero_immatriculation": "AI6510671",
+      "nb_lots_habitation": 34,
       "ventes_par_an": {
         "2022": 1
       },
       "nb_ventes_total": 1,
-      "taux_rotation": null,
-      "classement_rotation": null,
+      "taux_rotation": 73.5,
+      "classement_rotation": "Tres actif",
       "nb_log_bdnb": null,
       "annee_construction": null,
       "classe_dpe": null,
@@ -60457,7 +60465,8 @@
       "_bdnb_match": "num_voie",
       "_fusion_auto": true,
       "_fusion_cible": "191|AVENUE|FELIX FAURE",
-      "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23"
+      "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
+      "_correctif_propagation_indice": "fix_propag_immat_21suff_dl_2026-05-23"
     },
     {
       "cle": "198B|AVENUE|FELIX FAURE",
@@ -60501,9 +60510,9 @@
       "sci_nom": "ALAINN TAIGH",
       "sci_siren": "831006564",
       "syndic": "PICHET IMMOBILIER SERVICES",
-      "_syndic_src": "cadastre",
-      "numero_immatriculation": null,
-      "nb_lots_habitation": null,
+      "_syndic_src": "rnc",
+      "numero_immatriculation": "AA3187663",
+      "nb_lots_habitation": 41,
       "ventes_par_an": {
         "2021": 3,
         "2023": 2,
@@ -60511,8 +60520,8 @@
         "2025": 1
       },
       "nb_ventes_total": 7,
-      "taux_rotation": 3.5,
-      "classement_rotation": "Très actif",
+      "taux_rotation": 0.0,
+      "classement_rotation": "Fige",
       "nb_log_bdnb": 40,
       "annee_construction": 1972,
       "classe_dpe": "C",
@@ -60520,7 +60529,8 @@
       "type_chauffage": "reseau de chaleur",
       "batiment_groupe_id": "bdnb-bg-7TYE-FUDZ-T2KQ",
       "_bdnb_match": "num_voie",
-      "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23"
+      "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
+      "_correctif_propagation_indice": "fix_propag_immat_21suff_dl_2026-05-23"
     },
     {
       "cle": "20B|AVENUE|LACASSAGNE",
@@ -60534,13 +60544,13 @@
       "sci_nom": "",
       "sci_siren": "",
       "syndic": "FONCIA LYON",
-      "_syndic_src": "cadastre",
-      "numero_immatriculation": null,
-      "nb_lots_habitation": null,
+      "_syndic_src": "rnc",
+      "numero_immatriculation": "AD5268305",
+      "nb_lots_habitation": 98,
       "ventes_par_an": {},
       "nb_ventes_total": 0,
       "taux_rotation": 0.0,
-      "classement_rotation": "Figé",
+      "classement_rotation": "Fige",
       "nb_log_bdnb": 97,
       "annee_construction": 2018,
       "classe_dpe": "C",
@@ -60548,7 +60558,8 @@
       "type_chauffage": "reseau de chaleur",
       "batiment_groupe_id": "bdnb-bg-NHQQ-8MZ7-KS1W",
       "_bdnb_match": "num_voie",
-      "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23"
+      "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
+      "_correctif_propagation_indice": "fix_propag_immat_21suff_dl_2026-05-23"
     },
     {
       "cle": "21B|RUE|CLAUDIUS PIONCHON",
@@ -60824,9 +60835,9 @@
       "sci_nom": "",
       "sci_siren": "",
       "syndic": "GRANDLYON HABITAT - OFFICE PUBLIC DE L'HABITAT",
-      "_syndic_src": "cadastre",
-      "numero_immatriculation": null,
-      "nb_lots_habitation": null,
+      "_syndic_src": "rnc",
+      "numero_immatriculation": "AH7871353",
+      "nb_lots_habitation": 60,
       "ventes_par_an": {
         "2022": 1,
         "2023": 4,
@@ -60834,7 +60845,7 @@
         "2025": 1
       },
       "nb_ventes_total": 8,
-      "taux_rotation": 2.6,
+      "taux_rotation": 10.0,
       "classement_rotation": "Actif",
       "nb_log_bdnb": 61,
       "annee_construction": 1997,
@@ -60843,7 +60854,8 @@
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-JTAL-3RN1-KX5T",
       "_bdnb_match": "num_voie",
-      "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23"
+      "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
+      "_correctif_propagation_indice": "fix_propag_immat_21suff_dl_2026-05-23"
     },
     {
       "cle": "29B|RUE|DAUPHINE",
@@ -60919,13 +60931,13 @@
       "sci_nom": "",
       "sci_siren": "",
       "syndic": "RHONE SAONE HABITAT",
-      "_syndic_src": "cadastre",
-      "numero_immatriculation": null,
-      "nb_lots_habitation": null,
+      "_syndic_src": "rnc",
+      "numero_immatriculation": "AG8595613",
+      "nb_lots_habitation": 39,
       "ventes_par_an": {},
       "nb_ventes_total": 0,
       "taux_rotation": 0.0,
-      "classement_rotation": "Figé",
+      "classement_rotation": "Fige",
       "nb_log_bdnb": 39,
       "annee_construction": 1990,
       "classe_dpe": "C",
@@ -60935,7 +60947,8 @@
       "_bdnb_match": "num_voie",
       "_fusion_auto": true,
       "_fusion_cible": "2|RUE|DAUPHINE",
-      "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23"
+      "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
+      "_correctif_propagation_indice": "fix_propag_immat_21suff_dl_2026-05-23"
     },
     {
       "cle": "31B|RUE|DAUPHINE",
@@ -61226,9 +61239,9 @@
       "sci_nom": "SCI MARION FONCIER",
       "sci_siren": "834168122",
       "syndic": "REGIE CENTRALE IMMOBILIERE",
-      "_syndic_src": "cadastre",
-      "numero_immatriculation": null,
-      "nb_lots_habitation": null,
+      "_syndic_src": "rnc",
+      "numero_immatriculation": "AB8779696",
+      "nb_lots_habitation": 33,
       "ventes_par_an": {
         "2021": 1,
         "2022": 1,
@@ -61236,8 +61249,8 @@
         "2025": 1
       },
       "nb_ventes_total": 5,
-      "taux_rotation": 3.0,
-      "classement_rotation": "Actif",
+      "taux_rotation": 27.3,
+      "classement_rotation": "Tres actif",
       "nb_log_bdnb": 33,
       "annee_construction": 1991,
       "classe_dpe": "C",
@@ -61247,7 +61260,8 @@
       "_bdnb_match": "num_voie",
       "_fusion_auto": true,
       "_fusion_cible": "8|RUE|DAVID",
-      "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23"
+      "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
+      "_correctif_propagation_indice": "fix_propag_immat_21suff_dl_2026-05-23"
     },
     {
       "cle": "53A|RUE|DAUPHINE",
@@ -61596,17 +61610,17 @@
       "sci_nom": "",
       "sci_siren": "",
       "syndic": "EURL GROS PROXIMITE IMMOBILIER (GPI)",
-      "_syndic_src": "cadastre",
-      "numero_immatriculation": null,
-      "nb_lots_habitation": null,
+      "_syndic_src": "rnc",
+      "numero_immatriculation": "AE4069597",
+      "nb_lots_habitation": 27,
       "ventes_par_an": {
         "2021": 1,
         "2022": 1,
         "2023": 2
       },
       "nb_ventes_total": 4,
-      "taux_rotation": 2.8,
-      "classement_rotation": "Actif",
+      "taux_rotation": 0.0,
+      "classement_rotation": "Fige",
       "nb_log_bdnb": 29,
       "annee_construction": 1976,
       "classe_dpe": "D",
@@ -61614,7 +61628,8 @@
       "type_chauffage": "reseau de chaleur",
       "batiment_groupe_id": "bdnb-bg-SR2C-QRF3-15LG",
       "_bdnb_match": "num_voie",
-      "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23"
+      "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
+      "_correctif_propagation_indice": "fix_propag_immat_21suff_dl_2026-05-23"
     },
     {
       "cle": "74B|RUE|MAURICE FLANDIN",
@@ -61722,9 +61737,9 @@
       "sci_nom": "SCI PAUL SUD",
       "sci_siren": "380029850",
       "syndic": "RHONE SAONE HABITAT",
-      "_syndic_src": "cadastre",
-      "numero_immatriculation": null,
-      "nb_lots_habitation": null,
+      "_syndic_src": "rnc",
+      "numero_immatriculation": "AG8595613",
+      "nb_lots_habitation": 39,
       "ventes_par_an": {
         "2021": 2,
         "2022": 4,
@@ -61732,8 +61747,8 @@
         "2025": 2
       },
       "nb_ventes_total": 9,
-      "taux_rotation": 1.2,
-      "classement_rotation": "Modéré",
+      "taux_rotation": 0.0,
+      "classement_rotation": "Fige",
       "nb_log_bdnb": 151,
       "annee_construction": 1991,
       "classe_dpe": "C",
@@ -61741,7 +61756,8 @@
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-W8VN-TH3A-X19Z",
       "_bdnb_match": "num_voie",
-      "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23"
+      "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
+      "_correctif_propagation_indice": "fix_propag_immat_21suff_dl_2026-05-23"
     },
     {
       "cle": "7B|RUE|MONTBRILLANT",
@@ -61947,9 +61963,9 @@
       "sci_nom": "",
       "sci_siren": "",
       "syndic": "RHONE SAONE HABITAT",
-      "_syndic_src": "cadastre",
-      "numero_immatriculation": null,
-      "nb_lots_habitation": null,
+      "_syndic_src": "rnc",
+      "numero_immatriculation": "AH1784180",
+      "nb_lots_habitation": 60,
       "ventes_par_an": {
         "2022": 3,
         "2023": 7,
@@ -61957,8 +61973,8 @@
         "2025": 4
       },
       "nb_ventes_total": 18,
-      "taux_rotation": 6.0,
-      "classement_rotation": "Très actif",
+      "taux_rotation": 45.0,
+      "classement_rotation": "Tres actif",
       "nb_log_bdnb": 60,
       "annee_construction": 1991,
       "classe_dpe": "D",
@@ -61968,7 +61984,8 @@
       "_bdnb_match": "num_voie",
       "_fusion_auto": true,
       "_fusion_cible": "84|RUE|DAUPHINE",
-      "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23"
+      "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
+      "_correctif_propagation_indice": "fix_propag_immat_21suff_dl_2026-05-23"
     },
     {
       "cle": "8B|RUE|DAVID",
@@ -61982,9 +61999,9 @@
       "sci_nom": "",
       "sci_siren": "",
       "syndic": "REGIE CENTRALE IMMOBILIERE",
-      "_syndic_src": "cadastre",
-      "numero_immatriculation": null,
-      "nb_lots_habitation": null,
+      "_syndic_src": "rnc",
+      "numero_immatriculation": "AB8779696",
+      "nb_lots_habitation": 33,
       "ventes_par_an": {
         "2021": 2,
         "2022": 4,
@@ -61993,8 +62010,8 @@
         "2025": 1
       },
       "nb_ventes_total": 9,
-      "taux_rotation": 5.5,
-      "classement_rotation": "Très actif",
+      "taux_rotation": 27.3,
+      "classement_rotation": "Tres actif",
       "nb_log_bdnb": 33,
       "annee_construction": 1991,
       "classe_dpe": "C",
@@ -62004,7 +62021,8 @@
       "_bdnb_match": "num_voie",
       "_fusion_auto": true,
       "_fusion_cible": "8|RUE|DAVID",
-      "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23"
+      "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
+      "_correctif_propagation_indice": "fix_propag_immat_21suff_dl_2026-05-23"
     },
     {
       "cle": "8B|RUE|NAZARETH",
@@ -62181,17 +62199,17 @@
       "sci_nom": "FONCIERE DISMAS",
       "sci_siren": "898746623",
       "syndic": "GAGNEUX SERVICES IMMOBILIER (EN ABREGE G.S.I)",
-      "_syndic_src": "cadastre",
-      "numero_immatriculation": null,
-      "nb_lots_habitation": null,
+      "_syndic_src": "rnc",
+      "numero_immatriculation": "AA0012898",
+      "nb_lots_habitation": 225,
       "ventes_par_an": {
         "2021": 2,
         "2023": 6,
         "2024": 2
       },
       "nb_ventes_total": 10,
-      "taux_rotation": 0.9,
-      "classement_rotation": "Figé",
+      "taux_rotation": 0.0,
+      "classement_rotation": "Fige",
       "nb_log_bdnb": 229,
       "annee_construction": 1989,
       "classe_dpe": "C",
@@ -62201,7 +62219,8 @@
       "_bdnb_match": "num_voie",
       "_fusion_auto": true,
       "_fusion_cible": "7B|RUE|PROFESSEUR PAUL SISLEY",
-      "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23"
+      "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
+      "_correctif_propagation_indice": "fix_propag_immat_21suff_dl_2026-05-23"
     },
     {
       "cle": "9Q|RUE|MONTBRILLANT",
@@ -62215,9 +62234,9 @@
       "sci_nom": "2SYLS",
       "sci_siren": "495057937",
       "syndic": "FONCIA SAINT LOUIS",
-      "_syndic_src": "cadastre",
-      "numero_immatriculation": null,
-      "nb_lots_habitation": null,
+      "_syndic_src": "rnc",
+      "numero_immatriculation": "AB6211445",
+      "nb_lots_habitation": 59,
       "ventes_par_an": {
         "2021": 4,
         "2022": 2,
@@ -62225,8 +62244,8 @@
         "2025": 2
       },
       "nb_ventes_total": 9,
-      "taux_rotation": 3.1,
-      "classement_rotation": "Très actif",
+      "taux_rotation": 0.0,
+      "classement_rotation": "Fige",
       "nb_log_bdnb": 58,
       "annee_construction": 2003,
       "classe_dpe": "D",
@@ -62236,7 +62255,8 @@
       "_bdnb_match": "num_voie",
       "_fusion_auto": true,
       "_fusion_cible": "9|RUE|MONTBRILLANT",
-      "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23"
+      "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
+      "_correctif_propagation_indice": "fix_propag_immat_21suff_dl_2026-05-23"
     },
     {
       "cle": "9T|RUE|MONTBRILLANT",
@@ -62250,15 +62270,15 @@
       "sci_nom": "",
       "sci_siren": "",
       "syndic": "FONCIA SAINT LOUIS",
-      "_syndic_src": "cadastre",
-      "numero_immatriculation": null,
-      "nb_lots_habitation": null,
+      "_syndic_src": "rnc",
+      "numero_immatriculation": "AB6211445",
+      "nb_lots_habitation": 59,
       "ventes_par_an": {
         "2022": 1
       },
       "nb_ventes_total": 1,
-      "taux_rotation": 0.3,
-      "classement_rotation": "Figé",
+      "taux_rotation": 0.0,
+      "classement_rotation": "Fige",
       "nb_log_bdnb": 58,
       "annee_construction": 2003,
       "classe_dpe": "D",
@@ -62268,7 +62288,8 @@
       "_bdnb_match": "num_voie",
       "_fusion_auto": true,
       "_fusion_cible": "9|RUE|MONTBRILLANT",
-      "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23"
+      "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
+      "_correctif_propagation_indice": "fix_propag_immat_21suff_dl_2026-05-23"
     }
   ]
 }
