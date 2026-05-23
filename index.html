@@ -748,7 +748,7 @@ td{padding:11px 14px;vertical-align:middle;}
           placeholder="🔍 Rechercher une adresse…" oninput="secteurFilter()"
           style="width:100%;box-sizing:border-box;background:#1f2937;color:#fff;
                  border:1px solid #4b5563;border-radius:6px;padding:7px 30px 7px 10px;font-size:13px;">
-        <span onclick="document.getElementById('secteur-search').value='';secteurFilter();"
+        <span onclick="document.getElementById('secteur-search').value='';secteurFilter(true);"
           style="position:absolute;right:8px;top:50%;transform:translateY(-50%);
                  cursor:pointer;color:var(--text2);font-size:14px;" title="Effacer">✕</span>
       </div>
@@ -2240,11 +2240,24 @@ function secteurNorm(s) {
 // Filtre temps reel par adresse : masque les lignes non concordantes et
 // deplie automatiquement l'ilot + l'IRIS parents des adresses trouvees.
 // Recherche vide -> retour a l'affichage normal (re-rendu complet).
-function secteurFilter() {
-  // La recherche est un filtre de DONNÉES dans renderSecteur (sctQ) :
-  // un simple re-rendu recalcule header + IRIS + îlots sur l'ensemble
-  // filtré (cohérent avec Sans-logements / Ventes-strictes).
-  renderSecteur();
+// Debounce 180ms pour eviter un full render a chaque keystroke.
+// Le bouton effacer passe immediate=true pour court-circuiter le delai.
+// La recherche est un filtre de DONNEES dans renderSecteur (sctQ) :
+// re-rendu recalcule header + IRIS + ilots sur l'ensemble filtre
+// (coherent avec Sans-logements / Ventes-strictes).
+let secteurFilterTimer = null;
+function secteurFilter(immediate) {
+  if (immediate === true) {
+    clearTimeout(secteurFilterTimer);
+    secteurFilterTimer = null;
+    renderSecteur();
+    return;
+  }
+  clearTimeout(secteurFilterTimer);
+  secteurFilterTimer = setTimeout(() => {
+    secteurFilterTimer = null;
+    renderSecteur();
+  }, 180);
 }
 window.secteurFilter = secteurFilter;
 
