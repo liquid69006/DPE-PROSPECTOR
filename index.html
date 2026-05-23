@@ -2179,10 +2179,14 @@ async function loadSecteurData() {
       if (!secteurSciByCle[k]) secteurSciByCle[k] = [];
       secteurSciByCle[k].push(s);
     }
-    // [PERF] meme logique que le 1er render : on differe pour ne pas
-    // figer une UI deja interactive (l'utilisateur peut etre en train
-    // de scroller / cliquer / chercher au moment ou SCI arrive).
-    setTimeout(renderSecteur, 0);  // 2eme render avec SCI Prospector
+    // [PERF] requestIdleCallback : le 2e render SCI n'est lance que
+    // lorsque le thread JS est idle. Si l'utilisateur est en train de
+    // cliquer/taper/scroller au moment ou SCI arrive (~500-1200ms apres
+    // load), le render est differe automatiquement -> pas de figeage
+    // perceptible. Fallback setTimeout 200ms pour Safari (rIC non
+    // supporte) : laisse 200ms de marge a une eventuelle interaction
+    // en cours plutot que de jeter le render direct dans la file 0ms.
+    (window.requestIdleCallback || ((cb) => setTimeout(cb, 200)))(renderSecteur);
   });
 }
 
