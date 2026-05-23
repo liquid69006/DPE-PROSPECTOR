@@ -2021,7 +2021,7 @@ function secteurToggleStrict() {
   renderSecteur();
 }
 window.secteurToggleStrict = secteurToggleStrict;
-let secteurHrActif = true;          // filtre "Hors-RNC actifs" ACTIF PAR DEFAUT (toggle)
+let secteurHrActif = false;         // filtre "Hors-RNC actifs" INACTIF par defaut (toggle)
 function secteurHrActifBtnSync() {  // reflete l'etat sur le bouton (clone secteurStrictBtnSync)
   const b = document.getElementById('secteur-hractif-btn');
   if (b) {
@@ -2487,6 +2487,7 @@ function renderSecteur() {
   const immatBg = {};                 // immat -> bgid (rattachement copro->bâti)
   const bgRncLots = {};               // bgid -> { immat: lots RNC }
   const bgBdnbResid = {};             // bgid -> nb_log_bdnb (hors-RNC résid.)
+  // Pass commune : bgRncLots / immatBg (RNC, ordre-stable car somme).
   (d.adresses || []).forEach(a => {
     if (fusedSrc[a.cle]) return;
     const bg = a.batiment_groupe_id || null;
@@ -2497,18 +2498,34 @@ function renderSecteur() {
       if (immatBg[im] == null) immatBg[im] = bg;
       (bgRncLots[immatBg[im]] = bgRncLots[immatBg[im]] || {})[im] = lots;
     }
-    // bâti hors-RNC résidentiel : retenir 1 valeur nb_log_bdnb par bgid
-    // (1ere adresse résidentielle qui touche le bgid, first-wins). Si
-    // cette adresse est qualifiée 'mono' -> valeur effective = 1.
-    // Garde eff > 0 : une adresse qualifiée 'social'/'bureaux' (eff=0)
-    // ne doit PAS zerouter le bgid -> on saute, laissant une autre
-    // adresse résidentielle du même bâti renseigner la valeur (sinon
-    // les autres adresses chuteraient sur 'adr:'+cle et double-compteraient).
-    if (bg && !cp && usageResid(a) && a.nb_log_bdnb > 0
-        && bgBdnbResid[bg] == null) {
-      const eff = getEffectiveLog(a);
-      if (eff > 0) bgBdnbResid[bg] = eff;
+  });
+  // bgBdnbResid en 2 passes pour eviter le plafonnement first-wins par 'mono' :
+  //   Pass A : MAX nb_log_bdnb sur les adresses RES non-qualif et 'copro_non_immat'
+  //            -> reflete le parc brut du bati, robuste a l'ordre d'iteration.
+  //   Pass B : fallback getEffectiveLog (mono=1) si pass A n'a rien capte sur ce bgid
+  //            (e.g. toutes les adresses du bati sont qualifiees mono).
+  // Les adresses social/bureaux (eff=0) sont exclues des 2 passes : leur bgid
+  // recevra 0 et le bati n'apparaitra pas dans bgValue (correct, hors champ marche).
+  (d.adresses || []).forEach(a => {
+    if (fusedSrc[a.cle]) return;
+    const bg = a.batiment_groupe_id || null;
+    const cp = coproByCle[a.cle];
+    if (!bg || cp || !usageResid(a) || !(a.nb_log_bdnb > 0)) return;
+    const as = secteurAssign[a.cle] || {};
+    if (as.type === 'mono' || as.type === 'social' || as.type === 'bureaux') return;
+    // Pass A : non-qualif ou copro_non_immat -> max nb_log_bdnb brut
+    if (bgBdnbResid[bg] == null || a.nb_log_bdnb > bgBdnbResid[bg]) {
+      bgBdnbResid[bg] = a.nb_log_bdnb;
     }
+  });
+  (d.adresses || []).forEach(a => {
+    if (fusedSrc[a.cle]) return;
+    const bg = a.batiment_groupe_id || null;
+    const cp = coproByCle[a.cle];
+    if (!bg || cp || !usageResid(a) || !(a.nb_log_bdnb > 0)) return;
+    if (bgBdnbResid[bg] != null) return;   // pass A a deja contribue
+    const eff = getEffectiveLog(a);
+    if (eff > 0) bgBdnbResid[bg] = eff;     // fallback (mono uniquement)
   });
   // RNC prioritaire ; fallback nb_log_bdnb UNIQUEMENT si bâti résidentiel
   const bgValue = {};                 // bgid -> logements retenus
@@ -2602,8 +2619,17 @@ function renderSecteur() {
         iloAllV += effTot;
         // Clé unifiée par bâtiment : RNC prioritaire, sinon bâti
         // résidentiel hors-RNC (nb_log_bdnb), sinon aucune contribution.
+        // FIX bug #1 : une adresse hors-RNC qualifiee social/bureaux
+        // (getEffectiveLog===0) ne doit PAS reserver 'bg:'+bgid dans
+        // seenLgts -- sinon elle "vole" le parc du bati a son ilot/IRIS
+        // alors que le parc est porte par les adresses residentielles du
+        // meme bgid (qui partagent la cle via seenLgts et seront filtrees
+        // si elles arrivent apres). On exige eff > 0 pour entrer dans le
+        // path bg: ; les adresses social/bureaux non-RNC chutent en bas
+        // (lgtKey=null, 0 contribution iloL, comportement souhaite).
         let lgtKey = null, lgtVal = 0;
-        if (a.batiment_groupe_id && bgValue[a.batiment_groupe_id] > 0) {
+        if (a.batiment_groupe_id && bgValue[a.batiment_groupe_id] > 0
+            && (rnc || getEffectiveLog(a) > 0)) {
           lgtKey = 'bg:' + a.batiment_groupe_id;
           lgtVal = bgValue[a.batiment_groupe_id] || 0;
         } else if (rnc) {
