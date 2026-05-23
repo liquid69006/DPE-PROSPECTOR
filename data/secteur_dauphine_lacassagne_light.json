@@ -62405,7 +62405,7 @@
       "classe_dpe": "C",
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
-      "batiment_groupe_id": "bdnb-bg-VC2S-BT7D-ZQ25",
+      "batiment_groupe_id": "bdnb-bg-H9T9-DYCH-XSSS",
       "_bdnb_match": "bdnb_orphelin",
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
@@ -62415,7 +62415,10 @@
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "bdnb_orphelin_pass",
       "_injection_bdnb_orphelin": "fix_bdnb_orphelin_dl_2026-05-23",
-      "_iris_dist_m": 9.2
+      "_iris_dist_m": 9.2,
+      "_fusion_auto": true,
+      "_fusion_cible": "15|RUE|ST EUSEBE",
+      "_correctif_doublon_eusebe": "fix_doublon_15_st_eusebe_2026-05-23"
     },
     {
       "cle": "9|RUE|VILLETTE",
