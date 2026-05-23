@@ -986,6 +986,11 @@ td{padding:11px 14px;vertical-align:middle;}
 // ⚠️  Remplacer par l'URL de votre Cloudflare Worker après déploiement
 const API_URL = 'https://dpe-prospector-api.yann-bufferne.workers.dev';
 const GITHUB_RAW = 'https://raw.githubusercontent.com/liquid69006/dpe-prospector/main';
+// [PERF] Bumper a chaque deploiement majeur pour invalider le cache
+// JSON cote navigateur (sans cache-buster, les fetch dataset utilisent
+// le cache HTTP du raw.githubusercontent.com). Bump manuel pour
+// l'instant ; pourrait etre injecte par GitHub Actions a terme.
+const CACHE_VERSION = 'v20260523-1685d37';
 
 const COULEURS_DPE = {A:'#009F6B',B:'#51B748',C:'#CADD43',D:'#F5E800',E:'#F0A800',F:'#E4581B',G:'#D7221F'};
 const TEXTE_DPE   = {C:'#111',D:'#111'};
@@ -2118,29 +2123,23 @@ async function loadSecteurData() {
   secteurStrictBtnSync();           // bouton "Ventes strictes" ON par défaut
   secteurHrActifBtnSync();          // bouton "Hors-RNC actifs" ON par defaut
   secteurAQualifBtnSync();          // bouton "A qualifier" sync (OFF par defaut)
+  // [PERF] Lance light + SCI EN PARALLELE. Light bloque le 1er render ;
+  // SCI charge en arriere-plan -> 2eme render leger des qu'index pret.
+  const lightPromise = fetch(`${GITHUB_RAW}/data/${secFile}?v=${CACHE_VERSION}`);
+  const sciPromise = fetch(`${GITHUB_RAW}/data/${secId}-sci.json?v=${CACHE_VERSION}`)
+    .then(r => r.ok ? r.json() : null)
+    .catch(() => null);
+  secteurSciByCle = {};  // vide pour 1er render -> fallback light.sci_nom
+
   try {
-    const r = await fetch(`${GITHUB_RAW}/data/${secFile}?t=${Date.now()}`);
+    const r = await lightPromise;
     if (!r.ok) throw new Error('json');
     secteurData = await r.json();
   } catch {
     tree.innerHTML = '<div style="color:#dc2626;padding:20px;">⚠️ Données secteur indisponibles.</div>';
     return;
   }
-  // SCI Prospector : enrichissement (graceful fallback si 404 ou parser-miss)
-  secteurSciByCle = {};
-  try {
-    const rs = await fetch(`${GITHUB_RAW}/data/${secId}-sci.json?t=${Date.now()}`);
-    if (rs.ok) {
-      const sciDoc = await rs.json();
-      const sciList = sciDoc.sci || [];
-      for (const s of sciList) {
-        const k = parseSciAdresseToCle(s.adresse_bien);
-        if (!k) continue;
-        if (!secteurSciByCle[k]) secteurSciByCle[k] = [];
-        secteurSciByCle[k].push(s);
-      }
-    }
-  } catch {}
+
   try {
     const ra = await fetch(`${API_URL}/secteur-assignments/${secId}`, {
       headers: { 'Authorization': `Bearer ${authToken}` } });
@@ -2151,7 +2150,25 @@ async function loadSecteurData() {
       secteurNoms = j.noms || {};               // noms perso appliques avant rendu
     }
   } catch { secteurAssign = {}; secteurFusions = {}; secteurNoms = {}; }
-  renderSecteur();
+
+  // [PERF] Memoization du haystack de recherche apres chargement des
+  // noms perso (assignments/noms peuvent modifier le displayName _dn).
+  secteurPrecomputeHaystack();
+
+  renderSecteur();  // 1er render (SCI Prospector pas encore charge)
+
+  // [LAZY SCI] indexe en background puis re-render quand pret
+  sciPromise.then(sciDoc => {
+    if (!sciDoc) return;
+    const sciList = sciDoc.sci || [];
+    for (const s of sciList) {
+      const k = parseSciAdresseToCle(s.adresse_bien);
+      if (!k) continue;
+      if (!secteurSciByCle[k]) secteurSciByCle[k] = [];
+      secteurSciByCle[k].push(s);
+    }
+    renderSecteur();  // 2eme render avec SCI Prospector
+  });
 }
 
 function secteurSave() {
@@ -2235,6 +2252,23 @@ function secteurNorm(s) {
   return String(s == null ? '' : s).toLowerCase()
     .normalize('NFD').replace(/[̀-ͯ]/g, '')
     .replace(/\s+/g, ' ').trim();
+}
+
+// [PERF] Pre-calcul du haystack de recherche pour chaque adresse light.
+// Appele une seule fois apres chargement du light (loadSecteurData).
+// Le filtre dans renderSecteur reutilise a._search_haystack au lieu
+// de recalculer secteurNorm(_dn + ' ' + _adr) a chaque keystroke.
+function secteurPrecomputeHaystack() {
+  if (!secteurData || !secteurData.adresses) return;
+  for (const a of secteurData.adresses) {
+    const _ha = a.adresse != null && String(a.adresse).trim() !== '';
+    const _adr = _ha ? a.adresse
+      : (a.cle ? a.cle.replace(/\|/g, ' ') : '(adresse inconnue)');
+    const _np = secteurNoms[a.cle];
+    const _dn = (_np != null && String(_np).trim() !== '')
+      ? String(_np) : (a._fusion_auto_label || _adr);
+    a._search_haystack = secteurNorm(_dn + ' ' + _adr);
+  }
 }
 
 // Filtre temps reel par adresse : masque les lignes non concordantes et
@@ -2481,16 +2515,22 @@ function renderSecteur() {
       let iloL = 0, iloAllV = 0, nRow = 0;
       parIlot[ik].forEach(a => {
         if (sctQ) {                       // filtre recherche niveau donnée
-          const _ha = a.adresse != null && String(a.adresse).trim() !== '';
-          const _adr = _ha ? a.adresse
-            : (a.cle ? a.cle.replace(/\|/g, ' ') : '(adresse inconnue)');
-          const _np = secteurNoms[a.cle];
-          const _dn = (_np != null && String(_np).trim() !== '')
-            ? String(_np) : (a._fusion_auto_label || _adr);
+          // [PERF] Utilise a._search_haystack pre-calcule par
+          // secteurPrecomputeHaystack(). Fallback compute si absent
+          // (robustesse : evite tout risque de regression).
+          let _haystack = a._search_haystack;
+          if (!_haystack) {
+            const _ha = a.adresse != null && String(a.adresse).trim() !== '';
+            const _adr = _ha ? a.adresse
+              : (a.cle ? a.cle.replace(/\|/g, ' ') : '(adresse inconnue)');
+            const _np = secteurNoms[a.cle];
+            const _dn = (_np != null && String(_np).trim() !== '')
+              ? String(_np) : (a._fusion_auto_label || _adr);
+            _haystack = secteurNorm(_dn + ' ' + _adr);
+          }
           // Matching token-par-token : chaque mot de la requete doit
           // apparaitre quelque part dans l'adresse (ordre/contiguite libre).
           // Ex: "10 gando" matche "10 rue gandoliere".
-          const _haystack = secteurNorm(_dn + ' ' + _adr);
           const _tokens = sctQ.split(/\s+/).filter(Boolean);
           if (!_tokens.every(t => _haystack.indexOf(t) !== -1)) return;
         }
