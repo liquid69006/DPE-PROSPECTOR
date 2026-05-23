@@ -2155,7 +2155,19 @@ async function loadSecteurData() {
   // noms perso (assignments/noms peuvent modifier le displayName _dn).
   secteurPrecomputeHaystack();
 
-  renderSecteur();  // 1er render (SCI Prospector pas encore charge)
+  // [PERF] Defer le 1er render via setTimeout(..., 0) pour rendre la
+  // barre de recherche interactive plus tot. renderSecteur() bloque le
+  // thread JS ~200-400ms (~1241 adresses : agregats, IRIS stats, tri).
+  // Le yield laisse le navigateur (a) repeindre le spinner mis a jour
+  // ci-dessous avec un message explicite, et (b) traiter les input
+  // events de la barre de recherche que l'utilisateur a pu deja saisir
+  // pendant le fetch reseau (sinon ses keystrokes restent en file
+  // d'attente jusqu'a la fin du render bloquant).
+  tree.innerHTML = '<div style="color:var(--text2);padding:20px;text-align:center;">' +
+    '🔄 Calcul des statistiques (' +
+    ((secteurData.adresses && secteurData.adresses.length) || 0) +
+    ' adresses)…</div>';
+  setTimeout(renderSecteur, 0);  // 1er render (SCI Prospector pas encore charge)
 
   // [LAZY SCI] indexe en background puis re-render quand pret
   sciPromise.then(sciDoc => {
@@ -2167,7 +2179,10 @@ async function loadSecteurData() {
       if (!secteurSciByCle[k]) secteurSciByCle[k] = [];
       secteurSciByCle[k].push(s);
     }
-    renderSecteur();  // 2eme render avec SCI Prospector
+    // [PERF] meme logique que le 1er render : on differe pour ne pas
+    // figer une UI deja interactive (l'utilisateur peut etre en train
+    // de scroller / cliquer / chercher au moment ou SCI arrive).
+    setTimeout(renderSecteur, 0);  // 2eme render avec SCI Prospector
   });
 }
 
