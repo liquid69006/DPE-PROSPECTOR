@@ -2419,11 +2419,18 @@ function renderSecteur() {
   });
 
   // ── Fusion AUTOMATIQUE BDNB (meme batiment_groupe_id) ──
+  // Tolere les 2 conventions de nommage de la cible : _fusion_cible
+  // (historique dominant, 410 occurrences DL) ET _fusion_auto_target
+  // (introduit par commit 02b56ad le 23/05/2026, 3 occurrences DL :
+  // 13B DAUPH, 26B CITE, 14B ESP). Sans ce tolerage, les 3 FA recents
+  // restent visibles dans le filtre "A qualifier" alors qu'ils sont
+  // de simples facades fusionnees vers leur ancre.
   const autoMerged = {};            // principalCle -> { count, ventes:{}, srcs:[] }
   (d.adresses || []).forEach(a => {
-    if (a._fusion_auto && a._fusion_cible && !fusedSrc[a.cle]) {
+    const cible = a._fusion_cible || a._fusion_auto_target;
+    if (a._fusion_auto && cible && !fusedSrc[a.cle]) {
       fusedSrc[a.cle] = true;
-      const am = autoMerged[a._fusion_cible] = autoMerged[a._fusion_cible]
+      const am = autoMerged[cible] = autoMerged[cible]
         || { count: 0, ventes: {}, srcs: [] };
       am.count++; am.srcs.push(a.cle);
       ANS.forEach(y => { am.ventes[y] = (am.ventes[y] || 0) + ((vpaOf(a) || {})[y] || 0); });
