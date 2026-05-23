@@ -289,6 +289,42 @@
       "delta_parc_ui": 0,
       "note": "Usage BDNB 'Tertiaire' suspect (CDC HABITAT/ALLIADE HABITAT dominent MAJIC = residentiel social) - qualif KV 'social' envisageable terrain.",
       "intouche": "7 ST VICTORIEN reste sur bgid 3PC2-EVUG (vrai bati TELEPERFORMANCE Tertiaire isole, parcelle DY0039)"
+    },
+    "_correctif_57_baraban_AB": {
+      "date": "2026-05-23T11:42:13Z",
+      "pattern": "Correction attribution copro RNC adresse_reference erronee + faux-matching make_light num_voie",
+      "phases": {
+        "A": "AH9240847 LES JARDINS MAA cle 57 -> 59 + propag",
+        "B": "57 BARABAN re-point EJ2E -> 4P36 + FA chaine 59"
+      },
+      "intouches": [
+        "81|RUE|BARABAN",
+        "93|RUE|BARABAN",
+        "10|RUE|ST VICTORIEN"
+      ],
+      "old_bgid_57": "bdnb-bg-5NH2-EJ2E-JZXH",
+      "new_bgid_57": "bdnb-bg-W624-4P36-PURP",
+      "label_neuf": "57/59 RUE BARABAN / 10 RUE ST VICTORIEN",
+      "delta_parc_ui": 0,
+      "redistribution": {
+        "bg_EJ2E_avant": {
+          "57": 61,
+          "93": 17,
+          "total": 78
+        },
+        "bg_EJ2E_apres": {
+          "93": 17,
+          "total": 17
+        },
+        "bg_4P36_avant": {
+          "total": 0
+        },
+        "bg_4P36_apres": {
+          "59": 61,
+          "total": 61
+        }
+      },
+      "decouverte": "distance copro AH9240847 vs 57 BAR light = 291m (prouve faux matching) ; 10 ST VIC = 13m ; 59 BAR = 60m (vrais batis du programme neuf)"
     }
   },
   "iris": [
@@ -12417,7 +12453,7 @@
       "longitude": 4.869007,
       "latitude": 45.761271,
       "code_iris": "693830404",
-      "cle_adresse": "57|RUE|BARABAN",
+      "cle_adresse": "59|RUE|BARABAN",
       "nb_lots_total": 126,
       "nb_lots_habitation": 61,
       "nb_lots_habitation_rnc": 61,
@@ -15914,8 +15950,8 @@
       "sci_proprietaire": "oui",
       "sci_nom": "FONCIERE DU TOREY",
       "sci_siren": "912286283",
-      "syndic": "LAMY",
-      "_syndic_src": "rnic_live",
+      "syndic": null,
+      "_syndic_src": null,
       "ventes_par_an": {
         "2022": 9,
         "2023": 10,
@@ -15928,13 +15964,8 @@
       "classe_dpe": "D",
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
-      "batiment_groupe_id": "bdnb-bg-5NH2-EJ2E-JZXH",
-      "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "57/81/93 RUE BARABAN",
-      "_fusion_auto_sources": [
-        "93|RUE|BARABAN",
-        "81|RUE|BARABAN"
-      ],
+      "batiment_groupe_id": "bdnb-bg-W624-4P36-PURP",
+      "_bdnb_match": "correctif_57baraban_re_point_FA",
       "ventes_par_an_logement": {
         "2022": 9,
         "2023": 10,
@@ -15947,10 +15978,12 @@
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
-      "numero_immatriculation": "AH9240847",
-      "nb_lots_habitation": 61,
-      "taux_rotation": 7.9,
-      "classement_rotation": "Très actif"
+      "numero_immatriculation": null,
+      "nb_lots_habitation": null,
+      "taux_rotation": null,
+      "classement_rotation": null,
+      "_fusion_auto": true,
+      "_fusion_cible": "57/59 RUE BARABAN / 10 RUE ST VICTORIEN"
     },
     {
       "cle": "59|RUE|DAUPHINE",
@@ -53596,8 +53629,8 @@
       "sci_proprietaire": "non",
       "sci_nom": "",
       "sci_siren": "",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "LAMY",
+      "_syndic_src": "rnic_live",
       "ventes_par_an": {
         "2022": 11
       },
@@ -53608,7 +53641,7 @@
       "type_batiment": null,
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-W624-4P36-PURP",
-      "_bdnb_match": "num_voie",
+      "_bdnb_match": "correctif_59_AH9240847_re_attribute",
       "ventes_par_an_logement": {
         "2022": 11
       },
@@ -53618,10 +53651,15 @@
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Tertiaire",
       "_usage_bdnb_src": "snapshot",
-      "_fusion_auto_label": "59 RUE BARABAN / 10 RUE ST VICTORIEN",
+      "_fusion_auto_label": "57/59 RUE BARABAN / 10 RUE ST VICTORIEN",
       "_fusion_auto_sources": [
+        "57|RUE|BARABAN",
         "10|RUE|ST VICTORIEN"
-      ]
+      ],
+      "numero_immatriculation": "AH9240847",
+      "nb_lots_habitation": 61,
+      "taux_rotation": 39.3,
+      "classement_rotation": "Tres actif"
     },
     {
       "cle": "6|RUE|BARA",
