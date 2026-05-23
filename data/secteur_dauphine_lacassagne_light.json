@@ -12987,7 +12987,12 @@
       "numero_immatriculation": "AB0228890",
       "nb_lots_habitation": 117,
       "taux_rotation": 5.0,
-      "classement_rotation": "Très actif"
+      "classement_rotation": "Très actif",
+      "_fusion_auto_sources": [
+        "13B|RUE|DAUPHINE"
+      ],
+      "_fusion_auto_label": "13B/14 RUE DAUPHINE",
+      "_correctif_refuse_indice": "fix_refuse_bgid_20suff_dl_2026-05-23"
     },
     {
       "cle": "19|RUE|ANTOINE CHARIAL",
@@ -13536,10 +13541,11 @@
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-YTPF-DAGN-K1LQ",
       "_bdnb_match": "immat",
-      "_fusion_auto_label": "9/11 RUE METALLURGIE",
+      "_fusion_auto_label": "9/11 RUE METALLURGIE / 182/182B AVENUE FELIX FAURE",
       "_fusion_auto_sources": [
         "11|RUE|METALLURGIE",
-        "182|AVENUE|FELIX FAURE"
+        "182|AVENUE|FELIX FAURE",
+        "182B|AVENUE|FELIX FAURE"
       ],
       "ventes_par_an_logement": {
         "2021": 2,
@@ -13557,7 +13563,8 @@
       "numero_immatriculation": "AC2489979",
       "nb_lots_habitation": 52,
       "taux_rotation": 6.5,
-      "classement_rotation": "Très actif"
+      "classement_rotation": "Très actif",
+      "_correctif_refuse_indice": "fix_refuse_bgid_20suff_dl_2026-05-23"
     },
     {
       "cle": "14|RUE|DOCTEUR REBATEL",
@@ -16196,8 +16203,9 @@
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-K5KX-NEHV-8KAS",
       "_bdnb_match": "immat",
-      "_fusion_auto_label": "8/10 RUE FRANCOIS GILLET",
+      "_fusion_auto_label": "8/8B/10 RUE FRANCOIS GILLET",
       "_fusion_auto_sources": [
+        "8B|RUE|FRANCOIS GILLET",
         "10|RUE|FRANCOIS GILLET"
       ],
       "ventes_par_an_logement": {
@@ -16213,7 +16221,8 @@
       "numero_immatriculation": "AA5973367",
       "nb_lots_habitation": 52,
       "taux_rotation": 1.2,
-      "classement_rotation": "Modéré"
+      "classement_rotation": "Modéré",
+      "_correctif_refuse_indice": "fix_refuse_bgid_20suff_dl_2026-05-23"
     },
     {
       "cle": "11|RUE|ESPERANCE",
@@ -18306,9 +18315,10 @@
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-GB65-26FA-H5KS",
       "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "3/5 COURS ALBERT THOMAS",
+      "_fusion_auto_label": "3/5/5B COURS ALBERT THOMAS",
       "_fusion_auto_sources": [
-        "3|COURS|ALBERT THOMAS"
+        "3|COURS|ALBERT THOMAS",
+        "5B|COURS|ALBERT THOMAS"
       ],
       "ventes_par_an_logement": {
         "2021": 0,
@@ -18325,7 +18335,8 @@
       "numero_immatriculation": "AB0222935",
       "nb_lots_habitation": 61,
       "taux_rotation": 3.6,
-      "classement_rotation": "Très actif"
+      "classement_rotation": "Très actif",
+      "_correctif_refuse_indice": "fix_refuse_bgid_20suff_dl_2026-05-23"
     },
     {
       "cle": "50|RUE|ANTOINE CHARIAL",
@@ -18491,8 +18502,9 @@
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-2ZP4-TAU6-UC13",
       "_bdnb_match": "immat",
-      "_fusion_auto_label": "66/68 AVENUE LACASSAGNE",
+      "_fusion_auto_label": "66/66B/68 AVENUE LACASSAGNE",
       "_fusion_auto_sources": [
+        "66B|AVENUE|LACASSAGNE",
         "68|AVENUE|LACASSAGNE"
       ],
       "ventes_par_an_logement": {
@@ -18508,7 +18520,8 @@
       "numero_immatriculation": "AE8227266",
       "nb_lots_habitation": 51,
       "taux_rotation": 0.8,
-      "classement_rotation": "Figé"
+      "classement_rotation": "Figé",
+      "_correctif_refuse_indice": "fix_refuse_bgid_20suff_dl_2026-05-23"
     },
     {
       "cle": "7|RUE|FRANCOIS GILLET",
@@ -25098,7 +25111,12 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": [
+        "252A|RUE|PAUL BERT"
+      ],
+      "_fusion_auto_label": "252/252A RUE PAUL BERT",
+      "_correctif_refuse_indice": "fix_refuse_bgid_20suff_dl_2026-05-23"
     },
     {
       "cle": "26|RUE|CLAUDIUS PIONCHON",
@@ -27447,9 +27465,10 @@
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-KVDR-XPSM-PDB5",
       "_bdnb_match": "immat",
-      "_fusion_auto_label": "94/96 RUE BELLECOMBE",
+      "_fusion_auto_label": "93/93B/94/96 RUE BELLECOMBE",
       "_fusion_auto_sources": [
         "93|RUE|BELLECOMBE",
+        "93B|RUE|BELLECOMBE",
         "96|RUE|BELLECOMBE"
       ],
       "ventes_par_an_logement": {
@@ -27467,7 +27486,8 @@
       "numero_immatriculation": "AB5869177",
       "nb_lots_habitation": 21,
       "taux_rotation": 6.7,
-      "classement_rotation": "Très actif"
+      "classement_rotation": "Très actif",
+      "_correctif_refuse_indice": "fix_refuse_bgid_20suff_dl_2026-05-23"
     },
     {
       "cle": "19|RUE|TURBIL",
@@ -30496,7 +30516,12 @@
       "numero_immatriculation": "AB9803834",
       "nb_lots_habitation": 11,
       "taux_rotation": 9.1,
-      "classement_rotation": "Très actif"
+      "classement_rotation": "Très actif",
+      "_fusion_auto_sources": [
+        "14B|RUE|ESPERANCE"
+      ],
+      "_fusion_auto_label": "14B/15 RUE ESPERANCE",
+      "_correctif_refuse_indice": "fix_refuse_bgid_20suff_dl_2026-05-23"
     },
     {
       "cle": "15|RUE|ROSSAN",
@@ -37224,10 +37249,13 @@
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-L2AS-75JZ-QX89",
       "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "7/9/11/13 RUE DAUPHINE",
+      "_fusion_auto_label": "7/7B/9/9B/11/11B/13 RUE DAUPHINE",
       "_fusion_auto_sources": [
         "7|RUE|DAUPHINE",
+        "7B|RUE|DAUPHINE",
         "9|RUE|DAUPHINE",
+        "9B|RUE|DAUPHINE",
+        "11B|RUE|DAUPHINE",
         "13|RUE|DAUPHINE"
       ],
       "ventes_par_an_logement": {},
@@ -37236,7 +37264,8 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_correctif_refuse_indice": "fix_refuse_bgid_20suff_dl_2026-05-23"
     },
     {
       "cle": "11|RUE|FRANCOIS GILLET",
@@ -39881,7 +39910,12 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Tertiaire",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": [
+        "15B|RUE|DAUPHINE"
+      ],
+      "_fusion_auto_label": "15/15B RUE DAUPHINE",
+      "_correctif_refuse_indice": "fix_refuse_bgid_20suff_dl_2026-05-23"
     },
     {
       "cle": "15|RUE|ROPOSTE",
@@ -40278,11 +40312,13 @@
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
-      "_fusion_auto_label": "149/151/155 AVENUE FELIX FAURE",
+      "_fusion_auto_label": "149/151/155/198B AVENUE FELIX FAURE",
       "_fusion_auto_sources": [
         "149|AVENUE|FELIX FAURE",
-        "151|AVENUE|FELIX FAURE"
-      ]
+        "151|AVENUE|FELIX FAURE",
+        "198B|AVENUE|FELIX FAURE"
+      ],
+      "_correctif_refuse_indice": "fix_refuse_bgid_20suff_dl_2026-05-23"
     },
     {
       "cle": "155|RUE|BARABAN",
@@ -52224,7 +52260,12 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": [
+        "5B|PLACE|FERRANDIERE"
+      ],
+      "_fusion_auto_label": "5/5B PLACE FERRANDIERE",
+      "_correctif_refuse_indice": "fix_refuse_bgid_20suff_dl_2026-05-23"
     },
     {
       "cle": "5|RUE|CARRY",
@@ -53885,7 +53926,12 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": [
+        "7T|RUE|MONTBRILLANT"
+      ],
+      "_fusion_auto_label": "6/7T RUE MONTBRILLANT",
+      "_correctif_refuse_indice": "fix_refuse_bgid_20suff_dl_2026-05-23"
     },
     {
       "cle": "6|RUE|PETITES SOEURS",
@@ -55290,13 +55336,14 @@
       "type_chauffage": "reseau de chaleur",
       "batiment_groupe_id": "bdnb-bg-DE7V-CLDE-WHQD",
       "_bdnb_match": "immat",
-      "_fusion_auto_label": "76/78/80/82 RUE ANTOINE CHARIAL",
+      "_fusion_auto_label": "76/78/78B/80/82 RUE ANTOINE CHARIAL / 277/279 RUE PAUL BERT",
       "_fusion_auto_sources": [
-        "277|RUE|PAUL BERT",
-        "279|RUE|PAUL BERT",
         "78|RUE|ANTOINE CHARIAL",
+        "78B|RUE|ANTOINE CHARIAL",
         "80|RUE|ANTOINE CHARIAL",
-        "82|RUE|ANTOINE CHARIAL"
+        "82|RUE|ANTOINE CHARIAL",
+        "277|RUE|PAUL BERT",
+        "279|RUE|PAUL BERT"
       ],
       "ventes_par_an_logement": {
         "2021": 3
@@ -55310,7 +55357,8 @@
       "numero_immatriculation": "AA1694256",
       "nb_lots_habitation": 111,
       "taux_rotation": 0.5,
-      "classement_rotation": "Figé"
+      "classement_rotation": "Figé",
+      "_correctif_refuse_indice": "fix_refuse_bgid_20suff_dl_2026-05-23"
     },
     {
       "cle": "76|RUE|BARABAN",
@@ -55546,7 +55594,12 @@
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot"
+      "_usage_bdnb_src": "snapshot",
+      "_fusion_auto_sources": [
+        "7B|RUE|MONTBRILLANT"
+      ],
+      "_fusion_auto_label": "7B/8 RUE MONTBRILLANT",
+      "_correctif_refuse_indice": "fix_refuse_bgid_20suff_dl_2026-05-23"
     },
     {
       "cle": "8|RUE|DAHLIAS",
@@ -58820,7 +58873,12 @@
       "numero_immatriculation": "AB5872536",
       "nb_lots_habitation": 49,
       "taux_rotation": 0.0,
-      "classement_rotation": "Figé"
+      "classement_rotation": "Figé",
+      "_fusion_auto_sources": [
+        "8B|RUE|NAZARETH"
+      ],
+      "_fusion_auto_label": "8B/8T RUE NAZARETH",
+      "_correctif_refuse_indice": "fix_refuse_bgid_20suff_dl_2026-05-23"
     },
     {
       "cle": "9B|RUE|MONTBRILLANT",
