@@ -2509,6 +2509,7 @@ function renderSecteur() {
       (parseInt(x.replace(/\D/g, '')) || 0) - (parseInt(y.replace(/\D/g, '')) || 0));
     let inner = '';
     let irisL = 0, irisAllV = 0;   // agrégats IRIS (denomAff / toutes ventes)
+    let irisNbShown = 0;           // [PERF] compteur lignes filtrees IRIS (auto-open recherche)
     ilotKeys.forEach((ik, ij) => {
       const idJ = idI + '-j' + ij;
       let rows = '';
@@ -2747,7 +2748,7 @@ function renderSecteur() {
           + `</div>`;
       });
       if (!nRow) return;                  // îlot vide (filtre) -> non rendu
-      irisAllV += iloAllV; irisL += iloL;
+      irisAllV += iloAllV; irisL += iloL; irisNbShown += nRow;
 
       const iloTaux = sctTauxAnnuel(iloAllV, iloL);
       const iloStats = `<span style="color:var(--text2);font-size:11px;">`
@@ -2778,9 +2779,14 @@ function renderSecteur() {
     // Etat ouvert IRIS : memoire cross-render si presente, sinon defaut
     // (1er IRIS auto-ouvert). On utilise le code_iris (ci) comme cle pour
     // resister au re-tri de la liste ordre.
-    const isOpen = (secteurOpenIris != null)
-      ? secteurOpenIris.has(ci)
-      : (ii === 0);
+    // [PERF] 1er render : tous IRIS fermes (gain ~14000 noeuds DOM).
+    // Recherche active : auto-ouverture des IRIS contenant des resultats.
+    // Sinon : mode memoire utilisateur (secteurOpenIris) ou ferme.
+    const isOpen = sctQ
+      ? (irisNbShown > 0)
+      : (secteurOpenIris != null
+        ? secteurOpenIris.has(ci)
+        : false);
     html += `<div class="sct-iris" style="margin-bottom:10px;border-top:2px solid var(--border);">`
       + `<div style="cursor:pointer;font-weight:700;padding:8px 0;background:rgba(190,175,135,.14);`
       + `display:flex;align-items:center;gap:10px;" onclick="secteurToggle('${idI}')">`
