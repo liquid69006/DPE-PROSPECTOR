@@ -475,6 +475,9 @@ td{padding:11px 14px;vertical-align:middle;}
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="DPE Prospector">
+  <!-- Leaflet 1.9.4 (sctMap : visualisation cartographique des secteurs) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
 <body>
 
@@ -924,6 +927,10 @@ td{padding:11px 14px;vertical-align:middle;}
             title="Nouvelle répartition aléatoire (ordre des secteurs mélangé Fisher-Yates) — clique plusieurs fois pour explorer différents équilibrages."
             style="background:#1f2937;color:#BEAF87;border:1px solid #BEAF87;
                    border-radius:6px;padding:8px 14px;cursor:pointer;font-size:13px;">↺ Nouvelle répartition</button>
+          <button onclick="sctMapOpen()"
+            title="Visualiser les secteurs sur la carte (Leaflet + KML)."
+            style="background:#1f2937;color:#BEAF87;border:1px solid #BEAF87;
+                   border-radius:6px;padding:8px 14px;cursor:pointer;font-size:13px;">🗺️ Voir la carte</button>
           <button onclick="sctGenSave()"
             style="background:#16a34a;color:#fff;border:none;border-radius:6px;
                    padding:8px 18px;cursor:pointer;font-size:13px;font-weight:700;">✓ Enregistrer</button>
@@ -931,6 +938,21 @@ td{padding:11px 14px;vertical-align:middle;}
       </div>
     </div>
   </div><!-- /section-secteur -->
+</div>
+
+<!-- ════════════════════════════════════════════════════════════════
+     CARTE SECTEURS (Leaflet) — modale plein ecran z-index 10000
+     Affiche les polygones KML colores selon la repartition sctGen.
+════════════════════════════════════════════════════════════════ -->
+<div id="sct-map-overlay" style="display:none;position:fixed;inset:0;
+     background:#000;z-index:10000;">
+  <button onclick="sctMapClose()"
+    style="position:absolute;top:14px;right:14px;z-index:10002;
+           background:rgba(255,255,255,0.95);color:#1f2937;
+           border:1px solid #ccc;border-radius:6px;padding:8px 16px;
+           cursor:pointer;font-size:14px;font-weight:700;
+           box-shadow:0 2px 8px rgba(0,0,0,0.3);">✕ Fermer</button>
+  <div id="sct-map-canvas" style="position:absolute;inset:0;"></div>
 </div>
 
 <!-- ════════════════════════════════════════
@@ -3213,6 +3235,201 @@ window.sctGenDragEnter = sctGenDragEnter;
 window.sctGenDragLeave = sctGenDragLeave;
 window.sctGenDrop = sctGenDrop;
 window.sctGenRenameSecteur = sctGenRenameSecteur;
+
+// ════════════════════════════════════════════════════════════════════
+//  CARTE SECTEURS (sctMap)
+//  Visualisation Leaflet des polygones KML colorisés selon la
+//  repartition sctGenState.
+//  Etapes :
+//   1. Verifier que la repartition existe et que Leaflet est charge.
+//   2. Afficher l'overlay #sct-map-overlay et init L.map.
+//   3. Ajouter la couche OSM.
+//   4. Fetch les 3 KML en parallele.
+//   5. Parser chaque Placemark (DOMParser) -> polygone L.polygon.
+//   6. Remapping nom KML (3A->3, 3B->13) avant lookup dans repartition.
+//   7. Style : couleur secteur, fillOpacity 0.35 (solid) / 0.20 + dashArray
+//      '6,4' (stripe). Ilots non affectes : gris #888 fillOpacity 0.15.
+//   8. Tooltip : 'Îlot X — secteur — Y v/an' (ou 'non affecte').
+//   9. Marker agence + popup.
+//  10. fitBounds sur tous les polygones.
+//  11. Legende overlay bas-droite (Leaflet Control).
+//  12. invalidateSize() apres affichage (sinon tuiles cassees).
+//  Fermeture : map.remove() + hide overlay.
+// ════════════════════════════════════════════════════════════════════
+
+let sctMapInstance = null;
+const SCT_MAP_KML_FILES = [
+  'data/kml/Secteur_DL_-_new.kml',
+  'data/kml/Secteur_DL_-_raye.kml',
+  'data/kml/Secteur_DL_-_non_raye.kml',
+];
+// Remapping : noms KML splits -> numero d'ilot logique dans repartition.
+// 3A et 3B correspondent au split historique de l'ilot 3.
+const SCT_MAP_KML_REMAP = { '3A': '3', '3B': '13' };
+
+async function sctMapOpen() {
+  if (!sctGenState.repartition || !Object.keys(sctGenState.repartition).length) {
+    showToast('⚠️ Génère d\'abord une répartition', true);
+    return;
+  }
+  if (typeof L === 'undefined') {
+    showToast('⚠️ Leaflet pas chargé (recharge la page)', true);
+    return;
+  }
+
+  document.getElementById('sct-map-overlay').style.display = 'block';
+
+  // 1. Init Leaflet (remove prev si reouverture).
+  if (sctMapInstance) { sctMapInstance.remove(); sctMapInstance = null; }
+  sctMapInstance = L.map('sct-map-canvas', { preferCanvas: true });
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+  }).addTo(sctMapInstance);
+
+  // 2. Fetch les 3 KML en parallele.
+  let texts;
+  try {
+    texts = await Promise.all(SCT_MAP_KML_FILES.map(u =>
+      fetch(u).then(r => { if (!r.ok) throw new Error(u + ' : HTTP ' + r.status); return r.text(); })
+    ));
+  } catch (e) {
+    console.error('[sctMapOpen] fetch KML :', e);
+    showToast('⚠️ Erreur chargement KML : ' + (e.message || e), true);
+    sctMapClose();
+    return;
+  }
+
+  // 3. Parser placemarks -> polygones.
+  const parser = new DOMParser();
+  const allPolygons = [];
+  const ilotById = {}; for (const i of sctGenState.ilots || []) ilotById[String(i.ilotId)] = i;
+
+  for (const xml of texts) {
+    const doc = parser.parseFromString(xml, 'text/xml');
+    const placemarks = doc.getElementsByTagName('Placemark');
+    for (const pm of placemarks) {
+      const nameEl = pm.getElementsByTagName('name')[0];
+      if (!nameEl) continue;
+      const rawName = (nameEl.textContent || '').trim();
+      if (!rawName || rawName === 'X') continue;       // hors secteur : ignore
+      const ilotId = SCT_MAP_KML_REMAP[rawName] || rawName;
+
+      const rep = sctGenState.repartition[ilotId];
+      const conseiller = (rep && rep.conseillerId)
+        ? sctGenState.conseillers.find(c => c.id === rep.conseillerId)
+        : null;
+
+      const color = conseiller ? (conseiller.couleur || '#888') : '#888';
+      const isStriped = !!(conseiller && conseiller.kind === 'stripe');
+      const ilot = ilotById[String(ilotId)];
+      const ventesYearLbl = ilot ? sctGenPerYear(ilot.nb_ventes) : '0.0';
+
+      const coordsList = pm.getElementsByTagName('coordinates');
+      for (const cEl of coordsList) {
+        const txt = (cEl.textContent || '').trim();
+        if (!txt) continue;
+        const latlngs = [];
+        for (const triplet of txt.split(/\s+/)) {
+          const parts = triplet.split(',');
+          if (parts.length < 2) continue;
+          const lng = parseFloat(parts[0]);
+          const lat = parseFloat(parts[1]);
+          if (Number.isFinite(lat) && Number.isFinite(lng)) latlngs.push([lat, lng]);
+        }
+        if (latlngs.length < 3) continue;
+
+        const polygon = L.polygon(latlngs, {
+          color: color,
+          weight: conseiller ? 2 : 1,
+          fillColor: color,
+          fillOpacity: conseiller ? (isStriped ? 0.20 : 0.35) : 0.15,
+          dashArray: isStriped ? '6,4' : null,
+        });
+        const tooltip = conseiller
+          ? `Îlot ${ilotId} — ${esc(conseiller.nom)} — ${ventesYearLbl} v/an`
+          : `Îlot ${ilotId} — non affecté`;
+        polygon.bindTooltip(tooltip, { sticky: true, direction: 'top' });
+        polygon.addTo(sctMapInstance);
+        allPolygons.push(polygon);
+      }
+    }
+  }
+
+  // 4. Marker agence (si geocode disponible).
+  if (sctGenState.agence_lat != null && sctGenState.agence_lng != null) {
+    L.marker([sctGenState.agence_lat, sctGenState.agence_lng])
+      .addTo(sctMapInstance)
+      .bindPopup('📍 Agence')
+      .openPopup();
+  }
+
+  // 5. fitBounds sur tous les polygones.
+  if (allPolygons.length) {
+    const group = L.featureGroup(allPolygons);
+    sctMapInstance.fitBounds(group.getBounds(), { padding: [30, 30] });
+  } else if (sctGenState.agence_lat != null) {
+    sctMapInstance.setView([sctGenState.agence_lat, sctGenState.agence_lng], 14);
+  } else {
+    sctMapInstance.setView([45.75, 4.85], 13);          // fallback Lyon
+  }
+
+  // 6. Legende overlay (bas-droite).
+  sctMapAddLegend();
+
+  // 7. invalidateSize (necessaire car overlay etait display:none au init).
+  setTimeout(() => sctMapInstance && sctMapInstance.invalidateSize(), 60);
+}
+
+function sctMapAddLegend() {
+  const Legend = L.Control.extend({
+    options: { position: 'bottomright' },
+    onAdd: function() {
+      const div = L.DomUtil.create('div', 'sct-map-legend');
+      Object.assign(div.style, {
+        background: 'rgba(255,255,255,0.95)', padding: '8px 12px',
+        borderRadius: '6px', boxShadow: '0 2px 8px rgba(0,0,0,0.25)',
+        fontSize: '12px', color: '#1f2937', maxHeight: '320px',
+        overflowY: 'auto', minWidth: '180px',
+      });
+      const scores = sctGenState.conseillers.map(c => sctGenScoreSecteur(c.id));
+      let html = '<div style="font-weight:700;margin-bottom:6px;">Secteurs</div>';
+      for (let i = 0; i < sctGenState.conseillers.length; i++) {
+        const c = sctGenState.conseillers[i];
+        const sc = scores[i] || { total: 0 };
+        const isStriped = c.kind === 'stripe';
+        const swatchBg = isStriped
+          ? `background:repeating-linear-gradient(45deg,${c.couleur} 0 4px,#fff 4px 8px);`
+          : `background:${c.couleur};`;
+        html += `<div style="display:flex;align-items:center;gap:6px;margin:3px 0;">`
+              + `<span style="display:inline-block;width:14px;height:14px;border-radius:3px;border:1px solid #00000033;${swatchBg}"></span>`
+              + `<span style="flex:1;">${esc(c.nom)}</span>`
+              + `<span style="color:#666;margin-left:8px;">${sctGenPerYear(sc.total)}/an</span>`
+              + `</div>`;
+      }
+      html += '<div style="display:flex;align-items:center;gap:6px;margin:6px 0 0;padding-top:6px;border-top:1px solid #ddd;">'
+            + '<span style="display:inline-block;width:14px;height:14px;border-radius:3px;background:#888;"></span>'
+            + '<span>Non affecté</span></div>';
+      div.innerHTML = html;
+      L.DomEvent.disableClickPropagation(div);
+      L.DomEvent.disableScrollPropagation(div);
+      return div;
+    },
+  });
+  new Legend().addTo(sctMapInstance);
+}
+
+function sctMapClose() {
+  if (sctMapInstance) {
+    sctMapInstance.remove();
+    sctMapInstance = null;
+  }
+  const ov = document.getElementById('sct-map-overlay');
+  if (ov) ov.style.display = 'none';
+}
+
+window.sctMapOpen = sctMapOpen;
+window.sctMapClose = sctMapClose;
 
 // Memoire des Ilots ouverts cross-render. null = comportement par defaut
 // (tous Ilots fermes). Set vide = aucun Ilot ouvert (preservation user).
