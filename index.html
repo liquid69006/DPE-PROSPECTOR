@@ -2773,12 +2773,12 @@ function sctGenRenderTable() {
     `<b>Tolérance :</b> ±${sctGenPerYear(tol)} ventes/an · ` +
     `<b>Mode :</b> ${secteurStrict ? 'ventes strictes' : 'ventes brutes'}`;
 
-  // [FIX 2026-05-24] thead sticky en haut du scroll-context modal :
-  // border-collapse:separate + border-spacing:0 (necessaire au sticky
-  // car collapse fusionne les bordures et casse le sticky des th),
-  // thead tr position:sticky top:0 z-index:2 background var(--surface).
+  // [FIX 2026-05-24 r2] Sticky thead retire (causait du chevauchement
+  // dans le scroll-context limite de la modale). Le header defile avec
+  // le contenu. border-collapse:separate conserve pour preserver les
+  // border-top des <td> (collapse les ecraserait avec celui du tr).
   let html = '<table style="width:100%;border-collapse:separate;border-spacing:0;font-size:12px;background:var(--surface);">';
-  html += '<thead><tr style="position:sticky;top:0;z-index:2;background:var(--surface);color:var(--text2);font-weight:700;">'
+  html += '<thead><tr style="color:var(--text2);font-weight:700;">'
        + '<th style="text-align:left;padding:10px 10px;width:170px;background:#1f2937;border-bottom:2px solid var(--border);">Secteur</th>'
        + '<th style="text-align:left;padding:10px 10px;background:#1f2937;border-bottom:2px solid var(--border);">Îlots</th>'
        + '<th style="text-align:center;padding:10px 6px;width:90px;background:#1f2937;border-bottom:2px solid var(--border);" title="Ventes/an des ilots a < 200 m de l\'agence">Proche/an</th>'
@@ -2798,24 +2798,49 @@ function sctGenRenderTable() {
       ? '<span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#16a34a;" title="Dans la tolérance ±10%"></span>'
       : '<span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#e67e22;" title="Hors tolérance"></span>';
 
-    const ilotItems = (bySec[c.id] || []).slice().sort((a,b) => parseInt(a) - parseInt(b)).map(iid => {
+    // [FIX 2026-05-24 r2] Groupement des ilots par zone (3 lignes :
+    // Proche/Moyenne/Lointaine). Tri num croissant a l'interieur de
+    // chaque zone. Une zone vide est masquee (pas de ligne).
+    // Deplacement par fleches <-/-> (wrap-around) au lieu du <select>.
+    const ZONES = [
+      { key:'proche',    icon:'🟢', label:'Proche'    },
+      { key:'moyenne',   icon:'🟡', label:'Moyenne'   },
+      { key:'lointaine', icon:'🔴', label:'Lointaine' },
+    ];
+    const byZone = { proche:[], moyenne:[], lointaine:[] };
+    for (const iid of (bySec[c.id] || [])) {
+      const ilot = ilotMap[iid] || {};
+      const zk = byZone[ilot.zone] ? ilot.zone : 'lointaine';
+      byZone[zk].push(iid);
+    }
+    for (const zk of Object.keys(byZone)) byZone[zk].sort((a,b) => parseInt(a) - parseInt(b));
+
+    const buildPastille = iid => {
       const ilot = ilotMap[iid] || {};
       const v = sctGenState.repartition[iid] || {};
       const lock = v.locked
         ? '<span onclick="sctGenToggleLock(\''+esc(iid)+'\')" title="Déverrouiller" style="cursor:pointer;color:#BEAF87;">🔒</span>'
         : '<span onclick="sctGenToggleLock(\''+esc(iid)+'\')" title="Verrouiller dans ce secteur" style="cursor:pointer;color:var(--text2);opacity:.5;">🔓</span>';
-      const zoneIcon = ilot.zone === 'proche' ? '🟢' : ilot.zone === 'moyenne' ? '🟡' : '🔴';
-      const moveSel = '<select onchange="sctGenMoveIlot(\''+esc(iid)+'\',this.value)" '
-        + 'style="background:#1f2937;color:#fff;border:1px solid #4b5563;border-radius:4px;'
-        + 'padding:1px 3px;font-size:10px;margin-left:4px;">'
-        + sctGenState.conseillers.map(cc =>
-            `<option value="${cc.id}"${cc.id===c.id?' selected':''}>${esc(cc.nom)}</option>`).join('')
-        + '</select>';
+      const arrows = v.locked ? '' :
+          `<span onclick="sctGenMoveIlotDir('${esc(iid)}',-1)" title="Secteur précédent" `
+        + `style="cursor:pointer;color:#BEAF87;margin-left:4px;font-size:11px;">◀</span>`
+        + `<span onclick="sctGenMoveIlotDir('${esc(iid)}',1)" title="Secteur suivant" `
+        + `style="cursor:pointer;color:#BEAF87;margin-left:2px;font-size:11px;">▶</span>`;
       return `<span style="display:inline-flex;align-items:center;gap:3px;background:#1f2937;`
            + `border:1px solid #374151;border-radius:4px;padding:2px 6px;margin:2px 3px 2px 0;`
-           + `font-size:11px;">${lock} ${zoneIcon} <b>${iid}</b> `
-           + `<span style="color:var(--text2);">(${sctGenPerYear(ilot.nb_ventes)}/an)</span>${moveSel}</span>`;
-    }).join('');
+           + `font-size:11px;">${lock} <b>${iid}</b> `
+           + `<span style="color:var(--text2);">(${sctGenPerYear(ilot.nb_ventes)}/an)</span>${arrows}</span>`;
+    };
+
+    let ilotItems = '';
+    for (const z of ZONES) {
+      const list = byZone[z.key];
+      if (!list.length) continue;
+      ilotItems += `<div style="display:flex;align-items:flex-start;gap:6px;margin:3px 0;flex-wrap:wrap;">`
+                + `<span style="font-size:11px;color:var(--text2);white-space:nowrap;min-width:90px;padding-top:4px;">`
+                + `${z.icon} ${z.label}</span>`
+                + `<span style="flex:1;">${list.map(buildPastille).join('')}</span></div>`;
+    }
 
     // [FIX 2026-05-24] border-top sur les <td> (pas sur <tr>) car
     // border-collapse:separate ne dessine pas la bordure du tr lui-meme.
@@ -2852,9 +2877,20 @@ function sctGenToggleLock(ilotId) {
   sctGenRenderTable();
 }
 
-function sctGenMoveIlot(ilotId, conseillerId) {
-  if (!sctGenState.repartition[ilotId]) sctGenState.repartition[ilotId] = { conseillerId, locked:false };
-  sctGenState.repartition[ilotId].conseillerId = conseillerId;
+// [FIX 2026-05-24 r2] Deplacement par fleches uniquement (◀ ▶) avec
+// wrap-around (sec-1 ◀ va vers sec-N, sec-N ▶ vers sec-1). Les ilots
+// verrouillés ne sont pas deplacables (les fleches ne sont meme pas
+// rendues par buildPastille).
+function sctGenMoveIlotDir(ilotId, dir) {
+  const v = sctGenState.repartition[ilotId];
+  if (!v || v.locked) return;
+  const cs = sctGenState.conseillers || [];
+  if (!cs.length) return;
+  const cur = cs.findIndex(c => c.id === v.conseillerId);
+  if (cur < 0) return;
+  const N = cs.length;
+  const next = ((cur + (dir > 0 ? 1 : -1)) % N + N) % N;  // modulo positif
+  v.conseillerId = cs[next].id;
   sctGenRenderTable();
 }
 
@@ -2895,7 +2931,7 @@ window.sctGenStart = sctGenStart;
 window.sctGenRegen = sctGenRegen;
 window.sctGenSave = sctGenSave;
 window.sctGenToggleLock = sctGenToggleLock;
-window.sctGenMoveIlot = sctGenMoveIlot;
+window.sctGenMoveIlotDir = sctGenMoveIlotDir;
 window.sctGenRenameSecteur = sctGenRenameSecteur;
 
 // Memoire des Ilots ouverts cross-render. null = comportement par defaut
