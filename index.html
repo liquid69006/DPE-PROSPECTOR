@@ -2541,10 +2541,22 @@ function renderSecteur() {
     const I = irisById[ci];
     const idI = 'sct-i' + ii;
     // regrouper par îlot (assignations)
+    // Piste 3 : KV manuel (`as.ilot`) prioritaire, sinon fallback sur le
+    // champ `a._ilot` du light (= jointure spatiale KML, cf. commit
+    // cde0736). Ignorer 'X' (hors-secteur explicite) et null/undefined :
+    // ces adresses tombent dans 'Îlot non assigné'. parseInt force la
+    // coherence avec le KV (int) puisque _ilot est stocke en string.
+    // Le menu deroulant ligne ~2662 reste sur `as.ilot` seul -- il ne
+    // reflete que les choix manuels patron, pas le defaut spatial.
     const parIlot = {};
     parIris[ci].forEach(a => {
       const as = secteurAssign[a.cle] || {};
-      const k = (as.ilot != null) ? ('Îlot ' + as.ilot) : 'Îlot non assigné';
+      let ilot = as.ilot;
+      if (ilot == null && a._ilot && a._ilot !== 'X') {
+        const n = parseInt(a._ilot);
+        if (!Number.isNaN(n)) ilot = n;
+      }
+      const k = (ilot != null) ? ('Îlot ' + ilot) : 'Îlot non assigné';
       (parIlot[k] = parIlot[k] || []).push(a);
     });
     const ilotKeys = Object.keys(parIlot).sort((x, y) =>
