@@ -2255,23 +2255,24 @@ function secteurSetAssign(key, field, val) {
 }
 window.secteurSetAssign = secteurSetAssign;
 
-// Memoire des IRIS ouverts cross-render. null = comportement par defaut
-// (1er IRIS auto-ouvert). Set vide = aucun IRIS ouvert (preservation user).
-// Cle = code_iris (pas l'id DOM 'sct-iN' qui peut changer avec le tri).
-let secteurOpenIris = null;
+// Memoire des Ilots ouverts cross-render. null = comportement par defaut
+// (tous Ilots fermes). Set vide = aucun Ilot ouvert (preservation user).
+// Cle = ilot-key ex 'Îlot 12' ou 'Îlot non assigné' ou 'Îlot hors secteur'
+// (pas l'id DOM 'sct-jN' qui peut changer avec le tri).
+let secteurOpenIlot = null;
 
-function secteurCaptureOpenIris() {
-  // Avant chaque re-render, scanne le DOM et capture les codes IRIS ouverts.
+function secteurCaptureOpenIlot() {
+  // Avant chaque re-render, scanne le DOM et capture les cles Ilot ouvertes.
   const s = new Set();
   let seen = false;
-  document.querySelectorAll('.sct-iris-body').forEach(body => {
+  document.querySelectorAll('.sct-ilot-toplvl-body').forEach(body => {
     seen = true;
     if (body.style.display !== 'none') {
-      const code = body.getAttribute('data-iris-code');
-      if (code) s.add(code);
+      const key = body.getAttribute('data-ilot-key');
+      if (key) s.add(key);
     }
   });
-  if (seen) secteurOpenIris = s;   // 1ere capture : on switche en mode memo
+  if (seen) secteurOpenIlot = s;   // 1ere capture : on switche en mode memo
 }
 
 function secteurToggle(id) {
@@ -2281,13 +2282,13 @@ function secteurToggle(id) {
   el.style.display = open ? 'none' : 'block';
   const h = document.getElementById(id + '-h');
   if (h) h.textContent = open ? '▶' : '▼';
-  // Si on toggle un IRIS body (pas un ilot), MAJ le memo cross-render
-  if (el.classList && el.classList.contains('sct-iris-body')) {
-    const code = el.getAttribute('data-iris-code');
-    if (code) {
-      if (secteurOpenIris == null) secteurOpenIris = new Set();
-      if (open) secteurOpenIris.delete(code);   // on referme
-      else secteurOpenIris.add(code);           // on ouvre
+  // Si on toggle un Ilot top-level body, MAJ le memo cross-render
+  if (el.classList && el.classList.contains('sct-ilot-toplvl-body')) {
+    const key = el.getAttribute('data-ilot-key');
+    if (key) {
+      if (secteurOpenIlot == null) secteurOpenIlot = new Set();
+      if (open) secteurOpenIlot.delete(key);   // on referme
+      else secteurOpenIlot.add(key);            // on ouvre
     }
   }
 }
@@ -2390,11 +2391,11 @@ function sctBadge(cls) {
 function renderSecteur() {
   const d = secteurData, tree = document.getElementById('secteur-tree');
   if (!d) return;
-  // Capturer les IRIS actuellement ouverts AVANT le re-render pour les
+  // Capturer les Ilots actuellement ouverts AVANT le re-render pour les
   // restaurer apres (evite la fermeture lors d'une qualif/changement filtre).
-  secteurCaptureOpenIris();
+  secteurCaptureOpenIlot();
   // Recherche traitée comme FILTRE DE DONNÉES (pas masquage DOM) : tous
-  // les agrégats (header + IRIS + îlots) se recalculent sur l'ensemble
+  // les agrégats (header + îlots) se recalculent sur l'ensemble
   // réellement affiché, pour toute combinaison recherche × Sans-logements
   // × Ventes-strictes.
   const _si = document.getElementById('secteur-search');
@@ -2402,8 +2403,8 @@ function renderSecteur() {
   // copro par cle_adresse (jointure RNC) ; adresses par code_iris
   const coproByCle = {};
   (d.coproprietes || []).forEach(c => { if (c.cle_adresse) coproByCle[c.cle_adresse] = c; });
-  const irisById = {};
-  (d.iris || []).forEach(i => irisById[i.code_iris] = i);
+  // irisById retire avec le refactor 2026-05-24 (plus de niveau IRIS).
+  // Le tableau d.iris reste dans le light mais n'est plus consomme cote UI.
   const ANS = ['2021', '2022', '2023', '2024', '2025'];
   // Source des ventes selon le toggle brut/strict. Strict = champ additif
   // ventes_par_an_logement (mutations dépendance/commerce seule exclues) ;
@@ -2468,9 +2469,9 @@ function renderSecteur() {
   });
 
   // Resolution effective de l'ilot : KV manuel prioritaire (secteurAssign),
-  // sinon fallback _ilot light (sauf 'X'/null). Helper unifie utilise a la
-  // fois pour le groupement par ilot (parIlot ci-dessous) ET pour le
-  // sticky IRIS dans le groupement par IRIS (parIris). Retourne int|null.
+  // sinon fallback _ilot light (sauf 'X'/null). Helper unifie utilise pour
+  // le groupement parIlot top-level (refactor 2026-05-24, plus de niveau
+  // IRIS intermediaire). Retourne int|null.
   const ilotEffectif = a => {
     const as = secteurAssign[a.cle] || {};
     if (as.ilot != null) return as.ilot;
@@ -2481,51 +2482,13 @@ function renderSecteur() {
     return null;
   };
 
-  const parIris = {};
-  (d.adresses || []).forEach(a => {
-    if (fusedSrc[a.cle]) return;     // source fusionnée : retirée de l'arbre
-    if (secteurNoLog) {              // filtre "Sans logements"
-      const cpx = coproByCle[a.cle];
-      const hasLog = (a.nb_log_bdnb > 0)
-        || (cpx && cpx.nb_lots_habitation > 0);
-      if (hasLog) return;
-    }
-    if (secteurHrActif) {            // filtre "Hors-RNC actifs" (cumulable)
-      // hors-RNC = non rattachée à une copro RNC (def. canonique de
-      // renderSecteur, robuste sur les 2 secteurs) ET sans immat dénormalisé.
-      // Restriction nb_log_bdnb > 1 : exclut les monopropriétés / vraies
-      // résidences individuelles isolées (cf. 21 Floquet hôtel particulier,
-      // 71 Paul Bert, etc.) — ne garde que les ensembles plurilots BDNB.
-      const horsRnc = !coproByCle[a.cle] && !a.numero_immatriculation;
-      if (!(horsRnc && (a.nb_ventes_logement > 0) && (a.nb_log_bdnb > 1))) return;
-    }
-    if (secteurMono) {               // filtre "Monopropriété" (qualif manuelle)
-      // N'affiche que les adresses HORS-RNC qualifiées 'mono' via le menu
-      // de qualification (secteurAssign[cle].type === 'mono'). Cumulable.
-      const horsRnc = !coproByCle[a.cle] && !a.numero_immatriculation;
-      const as = secteurAssign[a.cle] || {};
-      if (!(horsRnc && as.type === 'mono')) return;
-    }
-    if (secteurAQualif) {            // filtre "A qualifier" (qualif vide/absente)
-      // N'affiche que les adresses HORS-RNC sans qualification posee
-      // (as.type null/undefined/''). Cumulable avec Mono (intersection vide
-      // par definition : Mono => type='mono', A qualifier => type vide).
-      const horsRnc = !coproByCle[a.cle] && !a.numero_immatriculation;
-      const as = secteurAssign[a.cle] || {};
-      if (!(horsRnc && (!as.type || as.type === ''))) return;
-    }
-    // Sticky IRIS : si l'ilot effectif est dans ILOT_IRIS_STICKY,
-    // on force l'IRIS majoritaire pour eviter le split d'un meme ilot
-    // sur 2 sous-blocs IRIS (cf. audit 2026-05-24, 15 ilots concernes).
-    // Pour les autres adresses, on utilise leur code_iris natif.
-    const ilotEff = ilotEffectif(a);
-    const irisSticky = (ilotEff != null) ? ILOT_IRIS_STICKY[String(ilotEff)] : null;
-    const ci = irisSticky || a.code_iris || '_nd';
-    (parIris[ci] = parIris[ci] || []).push(a);
-  });
+  // (refactor 2026-05-24 : suppression du groupement IRIS top-level. Les
+  // filtres secteurNoLog/HrActif/Mono/AQualif sont appliques en bloc dans
+  // la passe parIlot ci-dessous. La constante ILOT_IRIS_STICKY est conservee
+  // mais devient sans effet -- le code peut etre nettoye dans un futur commit.)
   let html = '';
   let nbRnc = 0, nbEst = 0, nbBdnb = 0, nbShown = 0;
-  let secAllV = 0, secL = 0;        // header = somme des IRIS = somme des adresses
+  let secAllV = 0, secL = 0;        // header = somme des Ilots = somme des adresses
   // Dédoublonnage du parc : unité = le BÂTIMENT (batiment_groupe_id) si
   // dispo, sinon la copro (immat). Une copro est rattachée au 1er bâtiment
   // où elle apparaît -> un bâtiment compté UNE seule fois (corrige le
@@ -2585,33 +2548,57 @@ function renderSecteur() {
         ? Object.values(bgRncLots[bg]).reduce((s, v) => s + v, 0)
         : (bgBdnbResid[bg] || 0);
     });
-  const ordre = Object.keys(parIris).sort((x, y) =>
-    (parIris[y].length) - (parIris[x].length));
-  ordre.forEach((ci, ii) => {
-    const I = irisById[ci];
-    const idI = 'sct-i' + ii;
-    // regrouper par îlot (assignations) -- reutilise le helper
-    // ilotEffectif() defini en haut de renderSecteur (cf. ligne ~2441).
-    // KV manuel (`as.ilot`) prioritaire, fallback `a._ilot` du light
-    // (jointure spatiale KML commit cde0736), exclusion 'X' et null.
-    // Le menu deroulant ligne ~2662 reste sur `as.ilot` seul.
-    const parIlot = {};
-    parIris[ci].forEach(a => {
-      const ilot = ilotEffectif(a);
-      const k = (ilot != null) ? ('Îlot ' + ilot) : 'Îlot non assigné';
-      (parIlot[k] = parIlot[k] || []).push(a);
-    });
-    const ilotKeys = Object.keys(parIlot).sort((x, y) =>
-      (x === 'Îlot non assigné') - (y === 'Îlot non assigné') ||
-      (parseInt(x.replace(/\D/g, '')) || 0) - (parseInt(y.replace(/\D/g, '')) || 0));
-    let inner = '';
-    let irisL = 0, irisAllV = 0;   // agrégats IRIS (denomAff / toutes ventes)
-    let irisNbShown = 0;           // [PERF] compteur lignes filtrees IRIS (auto-open recherche)
-    ilotKeys.forEach((ik, ij) => {
-      const idJ = idI + '-j' + ij;
-      let rows = '';
-      let iloL = 0, iloAllV = 0, nRow = 0;
-      parIlot[ik].forEach(a => {
+  // ── Groupement DIRECT par Ilot (suppression niveau IRIS, refactor 2026-05-24) ──
+  // L'ancien arbre IRIS->Ilot rendait illisibles les ilots qui chevauchaient
+  // plusieurs IRIS (cf audit incoherences 22 ilots multi-IRIS). Nouveau modele
+  // hierarchique : Ilot top-level, tri numerique ascendant, 'X' et 'non assigne'
+  // toujours en bas. Helper ilotEffectif() (defini plus haut) gere KV manuel
+  // prioritaire + fallback _ilot light. Adresse avec _ilot='X' -> 'Ilot hors secteur'.
+  const parIlot = {};
+  (d.adresses || []).forEach(a => {
+    if (fusedSrc[a.cle]) return;
+    if (secteurNoLog) {
+      const cpx = coproByCle[a.cle];
+      const hasLog = (a.nb_log_bdnb > 0) || (cpx && cpx.nb_lots_habitation > 0);
+      if (hasLog) return;
+    }
+    if (secteurHrActif) {
+      const horsRnc = !coproByCle[a.cle] && !a.numero_immatriculation;
+      if (!(horsRnc && (a.nb_ventes_logement > 0) && (a.nb_log_bdnb > 1))) return;
+    }
+    if (secteurMono) {
+      const horsRnc = !coproByCle[a.cle] && !a.numero_immatriculation;
+      const as = secteurAssign[a.cle] || {};
+      if (!(horsRnc && as.type === 'mono')) return;
+    }
+    if (secteurAQualif) {
+      const horsRnc = !coproByCle[a.cle] && !a.numero_immatriculation;
+      const as = secteurAssign[a.cle] || {};
+      if (!(horsRnc && (!as.type || as.type === ''))) return;
+    }
+    const ilot = ilotEffectif(a);
+    let k;
+    if (ilot != null) k = 'Îlot ' + ilot;
+    else if (a._ilot === 'X') k = 'Îlot hors secteur';
+    else k = 'Îlot non assigné';
+    (parIlot[k] = parIlot[k] || []).push(a);
+  });
+  // Tri : 'hors secteur' et 'non assigné' toujours en bas, puis numerique asc.
+  const ilotKeys = Object.keys(parIlot).sort((x, y) => {
+    const xSpe = (x === 'Îlot hors secteur') || (x === 'Îlot non assigné');
+    const ySpe = (y === 'Îlot hors secteur') || (y === 'Îlot non assigné');
+    if (xSpe !== ySpe) return xSpe ? 1 : -1;
+    if (xSpe && ySpe) {
+      // 'hors secteur' avant 'non assigné' (alphabetique inverse pour priorite)
+      return x === 'Îlot hors secteur' ? -1 : 1;
+    }
+    return (parseInt(x.replace(/\D/g, '')) || 0) - (parseInt(y.replace(/\D/g, '')) || 0);
+  });
+  ilotKeys.forEach((ik, ij) => {
+    const idJ = 'sct-j' + ij;
+    let rows = '';
+    let iloL = 0, iloAllV = 0, nRow = 0;
+    parIlot[ik].forEach(a => {
         if (sctQ) {                       // filtre recherche niveau donnée
           // [PERF] Utilise a._search_haystack pre-calcule par
           // secteurPrecomputeHaystack(). Fallback compute si absent
@@ -2852,57 +2839,37 @@ function renderSecteur() {
           + sctCell(sctBadge(cls), SCTW.cls, 'center')
           + sctAct(actions)
           + `</div>`;
-      });
-      if (!nRow) return;                  // îlot vide (filtre) -> non rendu
-      irisAllV += iloAllV; irisL += iloL; irisNbShown += nRow;
-
-      const iloTaux = sctTauxAnnuel(iloAllV, iloL);
-      const iloStats = `<span style="color:var(--text2);font-size:11px;">`
-        + `${iloL ? iloL + ' lgts' : 'lgts n.d.'} · ${(iloAllV / 5).toFixed(1)} ventes/an · `
-        + `taux ${iloTaux != null ? iloTaux + '%' : '—'}</span> `
-        + `${iloTaux != null ? sctBadge(sctClassAnnuel(iloTaux)) : ''}`;
-      inner += `<div class="sct-ilot">`
-        + `<div style="cursor:pointer;font-weight:600;padding:6px 0;background:rgba(190,175,135,.06);`
-        + `border-top:1px solid var(--border);display:flex;align-items:center;gap:10px;" `
-        + `onclick="secteurToggle('${idJ}')">`
-        + `<span><span id="${idJ}-h">▼</span> ${esc(ik)} `
-        + `<span style="background:var(--surface2);color:var(--text2);padding:1px 7px;border-radius:10px;font-size:11px;">`
-        + `${nRow}</span></span>`
-        + `<span style="flex:1;"></span>${iloStats}</div>`
-        + `<div id="${idJ}" class="sct-ilot-body" style="display:block;">${rows}</div></div>`;
     });
+    if (!nRow) return;                  // îlot vide (filtre) -> non rendu
+    secAllV += iloAllV; secL += iloL;   // header = Σ Ilots (plus de niveau IRIS)
 
-    if (!inner) return;                  // IRIS vide (filtre) -> non rendu
-    secAllV += irisAllV; secL += irisL;          // header = Σ IRIS
-    const irisTaux = sctTauxAnnuel(irisAllV, irisL);
-    const nomIris = I ? `IRIS — ${esc(I.nom_iris)}` : 'IRIS non déterminé';
-    const irisStats = `<span style="color:var(--text2);font-size:11px;">`
-      + `${irisL ? irisL + ' lgts' : 'lgts n.d.'} · ${(irisAllV / 5).toFixed(1)} ventes/an · `
-      + `taux ${irisTaux != null ? irisTaux + '%' : '—'}`
-      + (I && I.part_proprietaires != null ? ` · ${I.part_proprietaires}% propr.` : '')
-      + (I && I.part_locataires != null ? ` · ${I.part_locataires}% locat.` : '')
-      + `</span> ${irisTaux != null ? sctBadge(sctClassAnnuel(irisTaux)) : ''}`;
-    // Etat ouvert IRIS : memoire cross-render si presente, sinon defaut
-    // (1er IRIS auto-ouvert). On utilise le code_iris (ci) comme cle pour
-    // resister au re-tri de la liste ordre.
-    // [PERF] 1er render : tous IRIS fermes (gain ~14000 noeuds DOM).
-    // Recherche active : auto-ouverture des IRIS contenant des resultats.
-    // Sinon : mode memoire utilisateur (secteurOpenIris) ou ferme.
+    const iloTaux = sctTauxAnnuel(iloAllV, iloL);
+    const iloStats = `<span style="color:var(--text2);font-size:11px;">`
+      + `${iloL ? iloL + ' lgts' : 'lgts n.d.'} · ${(iloAllV / 5).toFixed(1)} ventes/an · `
+      + `taux ${iloTaux != null ? iloTaux + '%' : '—'}</span> `
+      + `${iloTaux != null ? sctBadge(sctClassAnnuel(iloTaux)) : ''}`;
+    // Etat ouvert Ilot : memoire cross-render via secteurOpenIlot (cle = ik).
+    // [PERF] 1er render : tous Ilots fermes (gain noeuds DOM).
+    // Recherche active : auto-ouverture des Ilots contenant des resultats.
+    // Sinon : mode memoire utilisateur ou ferme.
     const isOpen = sctQ
-      ? (irisNbShown > 0)
-      : (secteurOpenIris != null
-        ? secteurOpenIris.has(ci)
+      ? (nRow > 0)
+      : (secteurOpenIlot != null
+        ? secteurOpenIlot.has(ik)
         : false);
-    html += `<div class="sct-iris" style="margin-bottom:10px;border-top:2px solid var(--border);">`
+    html += `<div class="sct-ilot-toplvl" style="margin-bottom:8px;border-top:2px solid var(--border);">`
       + `<div style="cursor:pointer;font-weight:700;padding:8px 0;background:rgba(190,175,135,.14);`
-      + `display:flex;align-items:center;gap:10px;" onclick="secteurToggle('${idI}')">`
-      + `<span><span id="${idI}-h">${isOpen ? '▼' : '▶'}</span> ${nomIris}</span>`
-      + `<span style="flex:1;"></span>${irisStats}</div>`
-      + `<div id="${idI}" class="sct-iris-body" data-iris-code="${esc(ci)}"`
-      + ` style="display:${isOpen ? 'block' : 'none'};">${inner}</div></div>`;
+      + `display:flex;align-items:center;gap:10px;" onclick="secteurToggle('${idJ}')">`
+      + `<span><span id="${idJ}-h">${isOpen ? '▼' : '▶'}</span> ${esc(ik)} `
+      + `<span style="background:var(--surface2);color:var(--text2);padding:1px 7px;border-radius:10px;font-size:11px;">`
+      + `${nRow}</span></span>`
+      + `<span style="flex:1;"></span>${iloStats}</div>`
+      + `<div id="${idJ}" class="sct-ilot-toplvl-body" data-ilot-key="${esc(ik)}"`
+      + ` style="display:${isOpen ? 'block' : 'none'};">${rows}</div></div>`;
   });
-  // Header = somme des IRIS = somme des adresses visibles (même base :
-  // dénominateur denomAff, numérateur toutes ventes effTot).
+  // Header = somme des Ilots = somme des adresses visibles (même base :
+  // dénominateur denomAff, numérateur toutes ventes effTot). Plus de niveau
+  // IRIS intermediaire depuis le refactor 2026-05-24 (Ilot top-level).
   const secVAn = secAllV / 5;
   const secTaux = secL > 0 ? Math.round(secAllV / secL / 5 * 1000) / 10 : null;
   document.getElementById('secteur-resume').textContent =
