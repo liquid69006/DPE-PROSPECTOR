@@ -898,8 +898,10 @@ td{padding:11px 14px;vertical-align:middle;}
         </div>
 
         <!-- Étape 2 — Résultat -->
-        <div id="sct-gen-step2" style="display:none;flex:1;overflow:auto;padding:14px 18px;">
-          <div id="sct-gen-summary" style="margin-bottom:12px;font-size:12px;color:var(--text2);"></div>
+        <!-- [FIX 2026-05-24] padding-top:0 + overflow-y:auto (sticky
+             thead se reference au scrolling ancestor) -->
+        <div id="sct-gen-step2" style="display:none;flex:1;overflow-y:auto;padding:0 18px 14px;">
+          <div id="sct-gen-summary" style="margin:12px 0;font-size:12px;color:var(--text2);"></div>
           <div id="sct-gen-table-wrap" style="overflow:auto;border:1px solid var(--border);
                border-radius:8px;"></div>
         </div>
@@ -2471,9 +2473,16 @@ function sctGenComputeIlots() {
   return list;
 }
 
+// Constante DVF 5 ans (2021-2025) : sert UNIQUEMENT a l'affichage pour
+// passer du total 5-ans aux ventes/an (toujours en interne / algo en brut).
+const SCT_GEN_ANS = 5;
+// Helper formatage ventes/an (1 decimale).
+function sctGenPerYear(v) { return ((v || 0) / SCT_GEN_ANS).toFixed(1); }
+
 // Score d'un secteur : somme ventes 5 ans, -10% si une des 3 zones est
 // absente (aucune vente dans cette zone). zones.proche/moyenne/lointaine
 // = SOMME DES VENTES 5 ans des ilots de cette zone (et non un compte).
+// Valeurs BRUTES (5 ans) -> divisees /5 par sctGenPerYear() a l'affichage.
 function sctGenScoreSecteur(secId) {
   let total = 0; const z = { proche:0, moyenne:0, lointaine:0 };
   for (const ilot of sctGenState.ilots) {
@@ -2507,6 +2516,12 @@ function sctGenRoundRobin() {
 }
 
 // Équilibrage par moves (50 itérations max ; arrêt si ±10 % moyenne).
+// Penalite proximite : si un candidat est a < 300m d'un ilot deja dans
+// minS, son gain est ampute de 20% -> defavorise les paires geographiques
+// trop proches sans les interdire (laisse passer si pas d'alternative).
+const SCT_GEN_PROXIMITY_M = 300;
+const SCT_GEN_PROXIMITY_MALUS = 0.8;
+
 function sctGenBalance() {
   const N = sctGenState.N;
   const ilotMap = {}; for (const i of sctGenState.ilots) ilotMap[i.ilotId] = i;
@@ -2519,6 +2534,15 @@ function sctGenBalance() {
     for (const s of scores) { if (s.total > maxS.total) maxS = s; if (s.total < minS.total) minS = s; }
     if ((maxS.total - mean) <= tol && (mean - minS.total) <= tol) break;
 
+    // Precalcul ilots deja dans minS (pour la verif de proximite).
+    const minSIlots = [];
+    for (const [iid, v] of Object.entries(sctGenState.repartition)) {
+      if (v && v.conseillerId === minS.secId) {
+        const o = ilotMap[iid];
+        if (o && o.centroide_lat != null) minSIlots.push(o);
+      }
+    }
+
     // Cherche le meilleur "move" d'un îlot non-locked de maxS vers minS.
     let bestGain = 0, bestIid = null;
     const curDiff = maxS.total - minS.total;
@@ -2529,7 +2553,20 @@ function sctGenBalance() {
       const newMax = maxS.total - ilot.nb_ventes;
       const newMin = minS.total + ilot.nb_ventes;
       const newDiff = Math.abs(newMax - newMin);
-      const gain = curDiff - newDiff;
+      let gain = curDiff - newDiff;
+
+      // Malus 20% si l'ilot candidat est tres proche (<300m) d'un ilot
+      // deja affecte a minS. N'interdit pas le move, mais le defavorise
+      // face a un candidat plus eloigne avec un gain similaire.
+      if (ilot.centroide_lat != null && minSIlots.length) {
+        let minDist = Infinity;
+        for (const other of minSIlots) {
+          const d = sctGenHaversine(ilot.centroide_lat, ilot.centroide_lng,
+                                    other.centroide_lat, other.centroide_lng);
+          if (d != null && d < minDist) minDist = d;
+        }
+        if (minDist < SCT_GEN_PROXIMITY_M) gain *= SCT_GEN_PROXIMITY_MALUS;
+      }
       if (gain > bestGain) { bestGain = gain; bestIid = iid; }
     }
     if (!bestIid) break;                              // pas d'amélioration possible
@@ -2635,6 +2672,23 @@ async function sctGenStart() {
     `<span style="color:var(--text);">${esc(geo.label)}</span> ` +
     `<span style="color:var(--text2);">(${geo.lat.toFixed(5)}, ${geo.lng.toFixed(5)})</span>`;
 
+  // [FIX 2026-05-24] Auto-save adresse + coords des le geocode (PATCH
+  // partiel, fire-and-forget). Persiste l'adresse meme si l'utilisateur
+  // ferme la modale sans cliquer Enregistrer. Ne touche pas a
+  // conseillers/repartition (qui restent gouvernes par sctGenSave).
+  try {
+    const [, secId] = secteurResolve();
+    fetch(`${API_URL}/secteur-repartition/${secId}`, {
+      method: 'PATCH',
+      headers: { 'Authorization': `Bearer ${authToken}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        adresse_agence: adresse,
+        agence_lat: geo.lat,
+        agence_lng: geo.lng,
+      }),
+    }).catch(() => {/* silencieux : la session courante reste utilisable */});
+  } catch {/* secteurResolve indisponible : on continue */}
+
   btn.textContent = '🔄 Calcul…';
   sctGenState.ilots = sctGenComputeIlots();
   if (!sctGenState.ilots.length) {
@@ -2665,9 +2719,24 @@ async function sctGenStart() {
 
 function sctGenRegen() {
   // Repart de zéro pour les non-locked (les locked restent en place).
-  sctGenRoundRobin();
-  sctGenBalance();
-  sctGenShowResult();
+  // [FIX 2026-05-24] try/catch + toast de confirmation pour rendre
+  // visible l'effet (l'algorithme est deterministe : memes ilots +
+  // memes locked => meme resultat, mais user voit au moins que la
+  // regen a tourne). Re-render direct via sctGenRenderTable (on est
+  // deja en step2, pas besoin du toggle step1->step2).
+  if (!sctGenState.ilots || !sctGenState.ilots.length) {
+    showToast('⚠️ Aucun îlot — lance d\'abord Générer', true);
+    return;
+  }
+  try {
+    sctGenRoundRobin();
+    sctGenBalance();
+    sctGenRenderTable();
+    showToast('↺ Répartition regénérée');
+  } catch (e) {
+    console.error('[sctGenRegen] erreur :', e);
+    showToast('⚠️ Erreur régénération (voir console F12) : ' + (e.message || e), true);
+  }
 }
 
 function sctGenShowResult() {
@@ -2698,26 +2767,25 @@ function sctGenRenderTable() {
   const wrap = document.getElementById('sct-gen-table-wrap');
   const summary = document.getElementById('sct-gen-summary');
   const bilan = document.getElementById('sct-gen-bilan');
-  summary.innerHTML = `<b style="color:var(--text);">Moyenne :</b> ${mean.toFixed(0)} ventes (5 ans) · ` +
-    `<b>Tolérance :</b> ±${tol.toFixed(0)} (5 ans) · ` +
+  // [FIX 2026-05-24] Affichage en ventes/an (mean/5, tol/5). Algo
+  // sctGenBalance() continue de travailler sur les totaux 5 ans bruts.
+  summary.innerHTML = `<b style="color:var(--text);">Moyenne :</b> ${sctGenPerYear(mean)} ventes/an · ` +
+    `<b>Tolérance :</b> ±${sctGenPerYear(tol)} ventes/an · ` +
     `<b>Mode :</b> ${secteurStrict ? 'ventes strictes' : 'ventes brutes'}`;
 
-  const sectOptions = sctGenState.conseillers.map(c =>
-    `<option value="${c.id}">${esc(c.nom)}</option>`).join('');
-
-  // [FIX 2026-05-24] thead avec position:static explicite (annule tout
-  // sticky herite d'une CSS amont) + border-bottom epais sur les <th>
-  // pour separer clairement le header du 1er tbody tr (evite l'effet de
-  // chevauchement visuel signale).
-  let html = '<table style="width:100%;border-collapse:collapse;font-size:12px;background:var(--surface);">';
-  html += '<thead style="position:static;"><tr style="background:#1f2937;color:var(--text2);font-weight:700;">'
-       + '<th style="text-align:left;padding:8px 10px;width:170px;border-bottom:2px solid var(--border);">Secteur</th>'
-       + '<th style="text-align:left;padding:8px 10px;border-bottom:2px solid var(--border);">Îlots</th>'
-       + '<th style="text-align:center;padding:8px 6px;width:90px;border-bottom:2px solid var(--border);" title="Ventes 5 ans des ilots a < 200 m de l\'agence">Proche 5 ans</th>'
-       + '<th style="text-align:center;padding:8px 6px;width:100px;border-bottom:2px solid var(--border);" title="Ventes 5 ans des ilots a 200-500 m de l\'agence">Moyenne 5 ans</th>'
-       + '<th style="text-align:center;padding:8px 6px;width:100px;border-bottom:2px solid var(--border);" title="Ventes 5 ans des ilots a > 500 m de l\'agence">Lointaine 5 ans</th>'
-       + '<th style="text-align:center;padding:8px 6px;width:80px;border-bottom:2px solid var(--border);">Total 5 ans</th>'
-       + '<th style="text-align:center;padding:8px 6px;width:80px;border-bottom:2px solid var(--border);">Équilibre</th>'
+  // [FIX 2026-05-24] thead sticky en haut du scroll-context modal :
+  // border-collapse:separate + border-spacing:0 (necessaire au sticky
+  // car collapse fusionne les bordures et casse le sticky des th),
+  // thead tr position:sticky top:0 z-index:2 background var(--surface).
+  let html = '<table style="width:100%;border-collapse:separate;border-spacing:0;font-size:12px;background:var(--surface);">';
+  html += '<thead><tr style="position:sticky;top:0;z-index:2;background:var(--surface);color:var(--text2);font-weight:700;">'
+       + '<th style="text-align:left;padding:10px 10px;width:170px;background:#1f2937;border-bottom:2px solid var(--border);">Secteur</th>'
+       + '<th style="text-align:left;padding:10px 10px;background:#1f2937;border-bottom:2px solid var(--border);">Îlots</th>'
+       + '<th style="text-align:center;padding:10px 6px;width:90px;background:#1f2937;border-bottom:2px solid var(--border);" title="Ventes/an des ilots a < 200 m de l\'agence">Proche/an</th>'
+       + '<th style="text-align:center;padding:10px 6px;width:100px;background:#1f2937;border-bottom:2px solid var(--border);" title="Ventes/an des ilots a 200-500 m de l\'agence">Moyenne/an</th>'
+       + '<th style="text-align:center;padding:10px 6px;width:100px;background:#1f2937;border-bottom:2px solid var(--border);" title="Ventes/an des ilots a > 500 m de l\'agence">Lointaine/an</th>'
+       + '<th style="text-align:center;padding:10px 6px;width:80px;background:#1f2937;border-bottom:2px solid var(--border);">Ventes/an</th>'
+       + '<th style="text-align:center;padding:10px 6px;width:80px;background:#1f2937;border-bottom:2px solid var(--border);">Équilibre</th>'
        + '</tr></thead><tbody>';
 
   let outOfBalance = 0;
@@ -2746,11 +2814,13 @@ function sctGenRenderTable() {
       return `<span style="display:inline-flex;align-items:center;gap:3px;background:#1f2937;`
            + `border:1px solid #374151;border-radius:4px;padding:2px 6px;margin:2px 3px 2px 0;`
            + `font-size:11px;">${lock} ${zoneIcon} <b>${iid}</b> `
-           + `<span style="color:var(--text2);">(${ilot.nb_ventes||0}v)</span>${moveSel}</span>`;
+           + `<span style="color:var(--text2);">(${sctGenPerYear(ilot.nb_ventes)}/an)</span>${moveSel}</span>`;
     }).join('');
 
-    html += '<tr style="border-top:1px solid var(--border);vertical-align:top;">'
-         + `<td style="padding:8px 10px;">`
+    // [FIX 2026-05-24] border-top sur les <td> (pas sur <tr>) car
+    // border-collapse:separate ne dessine pas la bordure du tr lui-meme.
+    html += '<tr style="vertical-align:top;">'
+         + `<td style="padding:8px 10px;border-top:1px solid var(--border);">`
          + `<div style="display:flex;align-items:center;gap:6px;">${swatch}`
          + `<input value="${esc(c.nom)}" `
          + `style="background:transparent;color:var(--text);border:1px solid transparent;`
@@ -2759,20 +2829,20 @@ function sctGenRenderTable() {
          + `onblur="this.style.border='1px solid transparent';this.style.background='transparent';`
          + `sctGenRenameSecteur('${esc(c.id)}',this.value)">`
          + `</div></td>`
-         + `<td style="padding:6px 10px;">${ilotItems || '<i style="color:var(--text2);">(vide)</i>'}</td>`
-         + `<td style="text-align:center;padding:8px 6px;">${sc.zones.proche || 0}</td>`
-         + `<td style="text-align:center;padding:8px 6px;">${sc.zones.moyenne || 0}</td>`
-         + `<td style="text-align:center;padding:8px 6px;">${sc.zones.lointaine || 0}</td>`
-         + `<td style="text-align:center;padding:8px 6px;font-weight:700;color:var(--text);">${sc.total}</td>`
-         + `<td style="text-align:center;padding:8px 6px;">${balDot}</td>`
+         + `<td style="padding:6px 10px;border-top:1px solid var(--border);">${ilotItems || '<i style="color:var(--text2);">(vide)</i>'}</td>`
+         + `<td style="text-align:center;padding:8px 6px;border-top:1px solid var(--border);">${sctGenPerYear(sc.zones.proche)}</td>`
+         + `<td style="text-align:center;padding:8px 6px;border-top:1px solid var(--border);">${sctGenPerYear(sc.zones.moyenne)}</td>`
+         + `<td style="text-align:center;padding:8px 6px;border-top:1px solid var(--border);">${sctGenPerYear(sc.zones.lointaine)}</td>`
+         + `<td style="text-align:center;padding:8px 6px;font-weight:700;color:var(--text);border-top:1px solid var(--border);">${sctGenPerYear(sc.total)}</td>`
+         + `<td style="text-align:center;padding:8px 6px;border-top:1px solid var(--border);">${balDot}</td>`
          + `</tr>`;
   }
   html += '</tbody></table>';
   wrap.innerHTML = html;
 
   bilan.innerHTML = outOfBalance === 0
-    ? `<span style="color:#16a34a;">✓ Tous les secteurs sont dans la tolérance ±10 % (ventes 5 ans)</span>`
-    : `<span style="color:#e67e22;">⚠️ ${outOfBalance} secteur(s) hors tolérance ±10 % (ventes 5 ans) — relance "Regénérer" ou ajuste manuellement.</span>`;
+    ? `<span style="color:#16a34a;">✓ Tous les secteurs sont dans la tolérance ±10 % (ventes/an)</span>`
+    : `<span style="color:#e67e22;">⚠️ ${outOfBalance} secteur(s) hors tolérance ±10 % (ventes/an) — relance "Regénérer" ou ajuste manuellement.</span>`;
 }
 
 function sctGenToggleLock(ilotId) {

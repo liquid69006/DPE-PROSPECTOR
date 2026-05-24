@@ -656,6 +656,23 @@ async function handleRequest(request, env) {
         return json({ ok: true, ilots: Object.keys(payload.repartition).length,
                       conseillers: payload.conseillers.length });
       }
+      // PATCH partiel : merge des champs envoyes. Sert au front pour
+      // persister l'adresse de l'agence des le geocode (sans toucher
+      // a conseillers/repartition qui restent gouvernes par le Save).
+      if (method === "PATCH") {
+        let body; try { body = await request.json(); } catch { return err("JSON invalide"); }
+        if (typeof body !== "object" || body === null) return err("body doit être un objet");
+        const raw = await env.DPE_KV.get(`secteur_repartition:${agenceId}`);
+        const obj = raw ? JSON.parse(raw) : {};
+        if (typeof body.adresse_agence === "string") obj.adresse_agence = body.adresse_agence;
+        if (typeof body.agence_lat === "number")     obj.agence_lat     = body.agence_lat;
+        if (typeof body.agence_lng === "number")     obj.agence_lng     = body.agence_lng;
+        if (Array.isArray(body.conseillers))         obj.conseillers    = body.conseillers;
+        if (body.repartition && typeof body.repartition === "object") obj.repartition = body.repartition;
+        obj.updated_at = new Date().toISOString();
+        await env.DPE_KV.put(`secteur_repartition:${agenceId}`, JSON.stringify(obj));
+        return json({ ok: true, merged: Object.keys(body).length });
+      }
       return err("Méthode non supportée", 405);
     }
 
