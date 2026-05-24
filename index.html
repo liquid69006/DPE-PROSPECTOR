@@ -2471,14 +2471,17 @@ function sctGenComputeIlots() {
   return list;
 }
 
-// Score d'un secteur : somme ventes -10% si 1 des 3 zones manque.
+// Score d'un secteur : somme ventes 5 ans, -10% si une des 3 zones est
+// absente (aucune vente dans cette zone). zones.proche/moyenne/lointaine
+// = SOMME DES VENTES 5 ans des ilots de cette zone (et non un compte).
 function sctGenScoreSecteur(secId) {
   let total = 0; const z = { proche:0, moyenne:0, lointaine:0 };
   for (const ilot of sctGenState.ilots) {
     const a = sctGenState.repartition[ilot.ilotId];
     if (!a || a.conseillerId !== secId) continue;
-    total += ilot.nb_ventes;
-    z[ilot.zone] = (z[ilot.zone] || 0) + 1;
+    const nv = ilot.nb_ventes || 0;
+    total += nv;
+    z[ilot.zone] = (z[ilot.zone] || 0) + nv;
   }
   const allZones = z.proche && z.moyenne && z.lointaine;
   return { secId, total, zones: z, score: allZones ? total : total * 0.9 };
@@ -2695,22 +2698,26 @@ function sctGenRenderTable() {
   const wrap = document.getElementById('sct-gen-table-wrap');
   const summary = document.getElementById('sct-gen-summary');
   const bilan = document.getElementById('sct-gen-bilan');
-  summary.innerHTML = `<b style="color:var(--text);">Moyenne :</b> ${mean.toFixed(0)} ventes · ` +
-    `<b>Tolérance :</b> ±${tol.toFixed(0)} · ` +
+  summary.innerHTML = `<b style="color:var(--text);">Moyenne :</b> ${mean.toFixed(0)} ventes (5 ans) · ` +
+    `<b>Tolérance :</b> ±${tol.toFixed(0)} (5 ans) · ` +
     `<b>Mode :</b> ${secteurStrict ? 'ventes strictes' : 'ventes brutes'}`;
 
   const sectOptions = sctGenState.conseillers.map(c =>
     `<option value="${c.id}">${esc(c.nom)}</option>`).join('');
 
+  // [FIX 2026-05-24] thead avec position:static explicite (annule tout
+  // sticky herite d'une CSS amont) + border-bottom epais sur les <th>
+  // pour separer clairement le header du 1er tbody tr (evite l'effet de
+  // chevauchement visuel signale).
   let html = '<table style="width:100%;border-collapse:collapse;font-size:12px;background:var(--surface);">';
-  html += '<thead><tr style="background:#1f2937;color:var(--text2);font-weight:700;">'
-       + '<th style="text-align:left;padding:8px 10px;width:170px;">Secteur</th>'
-       + '<th style="text-align:left;padding:8px 10px;">Îlots</th>'
-       + '<th style="text-align:center;padding:8px 6px;width:60px;" title="< 200 m de l\'agence">Proche</th>'
-       + '<th style="text-align:center;padding:8px 6px;width:60px;" title="200-500 m de l\'agence">Moy.</th>'
-       + '<th style="text-align:center;padding:8px 6px;width:60px;" title="> 500 m de l\'agence">Loin</th>'
-       + '<th style="text-align:center;padding:8px 6px;width:60px;">Total</th>'
-       + '<th style="text-align:center;padding:8px 6px;width:80px;">Équilibre</th>'
+  html += '<thead style="position:static;"><tr style="background:#1f2937;color:var(--text2);font-weight:700;">'
+       + '<th style="text-align:left;padding:8px 10px;width:170px;border-bottom:2px solid var(--border);">Secteur</th>'
+       + '<th style="text-align:left;padding:8px 10px;border-bottom:2px solid var(--border);">Îlots</th>'
+       + '<th style="text-align:center;padding:8px 6px;width:90px;border-bottom:2px solid var(--border);" title="Ventes 5 ans des ilots a < 200 m de l\'agence">Proche 5 ans</th>'
+       + '<th style="text-align:center;padding:8px 6px;width:100px;border-bottom:2px solid var(--border);" title="Ventes 5 ans des ilots a 200-500 m de l\'agence">Moyenne 5 ans</th>'
+       + '<th style="text-align:center;padding:8px 6px;width:100px;border-bottom:2px solid var(--border);" title="Ventes 5 ans des ilots a > 500 m de l\'agence">Lointaine 5 ans</th>'
+       + '<th style="text-align:center;padding:8px 6px;width:80px;border-bottom:2px solid var(--border);">Total 5 ans</th>'
+       + '<th style="text-align:center;padding:8px 6px;width:80px;border-bottom:2px solid var(--border);">Équilibre</th>'
        + '</tr></thead><tbody>';
 
   let outOfBalance = 0;
@@ -2764,8 +2771,8 @@ function sctGenRenderTable() {
   wrap.innerHTML = html;
 
   bilan.innerHTML = outOfBalance === 0
-    ? `<span style="color:#16a34a;">✓ Tous les secteurs sont dans la tolérance ±10 %</span>`
-    : `<span style="color:#e67e22;">⚠️ ${outOfBalance} secteur(s) hors tolérance — relance "Regénérer" ou ajuste manuellement.</span>`;
+    ? `<span style="color:#16a34a;">✓ Tous les secteurs sont dans la tolérance ±10 % (ventes 5 ans)</span>`
+    : `<span style="color:#e67e22;">⚠️ ${outOfBalance} secteur(s) hors tolérance ±10 % (ventes 5 ans) — relance "Regénérer" ou ajuste manuellement.</span>`;
 }
 
 function sctGenToggleLock(ilotId) {
