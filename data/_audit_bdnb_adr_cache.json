@@ -1,0 +1,4637 @@
+{
+  "bdnb-bg-112U-BM5U-9SNR": [
+    {
+      "libelle": "7 Rue Gabillot 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2930_00007"
+    },
+    {
+      "libelle": "7B Rue Gabillot 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2930_00007_bis"
+    }
+  ],
+  "bdnb-bg-1LHG-5G1W-QJ9J": [
+    {
+      "libelle": "3B Rue Bara 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0640_00003_bis"
+    }
+  ],
+  "bdnb-bg-1N5W-CA77-85VN": [
+    {
+      "libelle": "158 RUE BARABAN 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0645_00158"
+    }
+  ],
+  "bdnb-bg-1QKE-YQ5G-XFHV": [
+    {
+      "libelle": "49 Avenue Lacassagne 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4080_00049"
+    }
+  ],
+  "bdnb-bg-1QWS-X6PX-1Z6G": [
+    {
+      "libelle": "4.0 RUE FRANCOIS GILLET 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2870_00004"
+    }
+  ],
+  "bdnb-bg-1R75-3NKU-NKWK": [
+    {
+      "libelle": "2 Rue David 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2095_00002"
+    }
+  ],
+  "bdnb-bg-1R8S-PG6T-JXF4": [
+    {
+      "libelle": "9 Rue Saint-Eusèbe 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6330_00009"
+    }
+  ],
+  "bdnb-bg-1S26-6Z44-7FFM": [
+    {
+      "libelle": "79 Rue du Dauphine 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2090_00079"
+    },
+    {
+      "libelle": "19 Rue David 69003 Lyon",
+      "cle_interop": "69383_2095_00019"
+    }
+  ],
+  "bdnb-bg-1SPQ-1RER-B9NE": [
+    {
+      "libelle": "250 COURS LAFAYETTE 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4095_00250"
+    }
+  ],
+  "bdnb-bg-1W6K-XSG2-ZEU3": [
+    {
+      "libelle": "233 Avenue Félix Faure 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2685_00233"
+    },
+    {
+      "libelle": "332 Rue Paul Bert 69003 Lyon",
+      "cle_interop": "69383_5245_00332"
+    }
+  ],
+  "bdnb-bg-1WGV-T5E8-T2X3": [
+    {
+      "libelle": "24 Rue de la Cité 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_1655_00024"
+    }
+  ],
+  "bdnb-bg-1WWE-NUBC-BQVA": [
+    {
+      "libelle": "227 Avenue Félix Faure 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2685_00227"
+    }
+  ],
+  "bdnb-bg-212B-J3A4-DL3G": [
+    {
+      "libelle": "20T Rue Guilloud 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_3395_00020_ter"
+    }
+  ],
+  "bdnb-bg-2225-DNH3-6ZLD": [
+    {
+      "libelle": "27 Rue Saint-Maximin 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6470_00027"
+    }
+  ],
+  "bdnb-bg-23L2-8YW9-55QH": [
+    {
+      "libelle": "13 Rue de Montbrillant 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4873_00013"
+    }
+  ],
+  "bdnb-bg-25R4-KKVM-GYF1": [
+    {
+      "libelle": "347 Rue Paul Bert 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5245_00347"
+    }
+  ],
+  "bdnb-bg-27E6-B9R7-15AK": [
+    {
+      "libelle": "125 Rue Baraban 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0645_00125"
+    }
+  ],
+  "bdnb-bg-28A5-6RLC-SMFB": [
+    {
+      "libelle": "45 Rue Maurice Flandin 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4680_00045"
+    }
+  ],
+  "bdnb-bg-2B7H-71PL-YRRN": [
+    {
+      "libelle": "36 Rue Docteur Rebatel 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2245_00036"
+    }
+  ],
+  "bdnb-bg-2BPP-CP6D-1XXG": [
+    {
+      "libelle": "124 Rue Baraban 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0645_00124"
+    },
+    {
+      "libelle": "126 Rue Baraban 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0645_00126"
+    }
+  ],
+  "bdnb-bg-2E5J-KVSL-C8YZ": [
+    {
+      "libelle": "234 Avenue Félix Faure 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2685_00234"
+    }
+  ],
+  "bdnb-bg-2EAY-YBAH-Z5UY": [
+    {
+      "libelle": "9 AVENUE LACASSAGNE 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4080_00009"
+    }
+  ],
+  "bdnb-bg-2F6H-HNPJ-6XZU": [
+    {
+      "libelle": "2 Rue Villon 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_7485_00002"
+    }
+  ],
+  "bdnb-bg-2FLU-E18L-XWR6": [
+    {
+      "libelle": "2 Rue Sainte-Anne de Baraban 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6605_00002"
+    }
+  ],
+  "bdnb-bg-2HGY-CWA3-3PVQ": [
+    {
+      "libelle": "17 Rue David 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2095_00017"
+    }
+  ],
+  "bdnb-bg-2HSK-GUK5-9NMJ": [
+    {
+      "libelle": "226 Rue Paul Bert 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5245_00226"
+    }
+  ],
+  "bdnb-bg-2JC7-34G2-5CR6": [
+    {
+      "libelle": "282 Cours Lafayette 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4095_00282"
+    }
+  ],
+  "bdnb-bg-2PLR-ZN3Z-7QB6": [
+    {
+      "libelle": "2 Rue Jean Renoir 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_3830_00002"
+    },
+    {
+      "libelle": "4 Rue Jean Renoir 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_3830_00004"
+    },
+    {
+      "libelle": "38 Rue Jeanne Hachette 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_3850_00038"
+    }
+  ],
+  "bdnb-bg-2RKX-T7XT-8Q8V": [
+    {
+      "libelle": "226 Avenue Félix Faure 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2685_00226"
+    }
+  ],
+  "bdnb-bg-2U6C-ECJX-TB83": [
+    {
+      "libelle": "41 Rue Maurice Flandin 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4680_00041"
+    }
+  ],
+  "bdnb-bg-2UJ4-A9RJ-F9NS": [
+    {
+      "libelle": "13 Rue des Tuiliers 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_7195_00013"
+    }
+  ],
+  "bdnb-bg-2X3K-9CX8-ML8Z": [
+    {
+      "libelle": "55 Rue Saint-Antoine 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6250_00055"
+    }
+  ],
+  "bdnb-bg-2ZP4-TAU6-UC13": [
+    {
+      "libelle": "7 Rue Bara 69003 Lyon",
+      "cle_interop": "69383_0640_00007"
+    },
+    {
+      "libelle": "64 Avenue Lacassagne 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4080_00064"
+    },
+    {
+      "libelle": "64B Avenue Lacassagne 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4080_00064_bis"
+    },
+    {
+      "libelle": "66 Avenue Lacassagne 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4080_00066"
+    }
+  ],
+  "bdnb-bg-32K4-P9LB-8DPE": [
+    {
+      "libelle": "60 Avenue Lacassagne 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4080_00060"
+    }
+  ],
+  "bdnb-bg-34PY-A5G2-ZRWU": [
+    {
+      "libelle": "6 Rue Frédéric Mistral 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2900_00006"
+    }
+  ],
+  "bdnb-bg-34YK-HVUW-HKUC": [
+    {
+      "libelle": "12 Rue Docteur Rebatel 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2245_00012"
+    }
+  ],
+  "bdnb-bg-359A-EN2H-9DRX": [
+    {
+      "libelle": "19 Rue Riboud 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6025_00019"
+    }
+  ],
+  "bdnb-bg-35NH-CNYH-DY2X": [
+    {
+      "libelle": "272 Rue Paul Bert 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5245_00272"
+    }
+  ],
+  "bdnb-bg-36G4-KKGS-QA4T": [
+    {
+      "libelle": "18 Rue Saint-Maximin 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6470_00018"
+    }
+  ],
+  "bdnb-bg-37F5-8GAM-MT93": [
+    {
+      "libelle": "82 Rue Maurice Flandin 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4680_00082"
+    }
+  ],
+  "bdnb-bg-37ZL-S88G-NPNJ": [
+    {
+      "libelle": "202 AVENUE FELIX FAURE 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2685_00202"
+    }
+  ],
+  "bdnb-bg-38KK-XRWR-3TVE": [
+    {
+      "libelle": "57 Rue Etienne Richerand 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2595_00057"
+    },
+    {
+      "libelle": "36 Avenue Georges Pompidou 69003 Lyon",
+      "cle_interop": "69383_3190_00036"
+    },
+    {
+      "libelle": "3 Rue des Teinturiers 69003 Lyon",
+      "cle_interop": "69383_6910_00003"
+    }
+  ],
+  "bdnb-bg-3BHU-SM7M-83DM": [
+    {
+      "libelle": "3 Rue De Nazareth 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4995_00003"
+    }
+  ],
+  "bdnb-bg-3N6X-6XL7-PBTM": [
+    {
+      "libelle": "220 Avenue Félix Faure 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2685_00220"
+    }
+  ],
+  "bdnb-bg-3R7G-E954-NUEN": [
+    {
+      "libelle": "246 COURS LAFAYETTE 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4095_00246"
+    }
+  ],
+  "bdnb-bg-3S5M-GLK2-GFBZ": [
+    {
+      "libelle": "23 Rue Roger Brechan 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6090_00023"
+    },
+    {
+      "libelle": "25 Rue Roger Bréchan 69003 Lyon",
+      "cle_interop": "69383_6090_00025"
+    }
+  ],
+  "bdnb-bg-3T3A-VTAP-UHBF": [
+    {
+      "libelle": "35.0 RUE ANTOINE CHARIAL 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0312_00035"
+    },
+    {
+      "libelle": "37.0 RUE ANTOINE CHARIAL 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0312_00037"
+    },
+    {
+      "libelle": "70.0 RUE ETIENNE RICHERAND 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2595_00070"
+    }
+  ],
+  "bdnb-bg-3WFJ-G1YT-XLZF": [
+    {
+      "libelle": "90 Rue Antoine Charial 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0312_00090"
+    },
+    {
+      "libelle": "92 Rue Antoine Charial 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0312_00092"
+    }
+  ],
+  "bdnb-bg-47C8-59YA-CY1U": [
+    {
+      "libelle": "73 Rue Baraban 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0645_00073"
+    }
+  ],
+  "bdnb-bg-47D6-WCMM-3V8Y": [
+    {
+      "libelle": "228 Avenue Félix Faure 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2685_00228"
+    },
+    {
+      "libelle": "230 Avenue Félix Faure 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2685_00230"
+    }
+  ],
+  "bdnb-bg-49VN-WS1C-P37R": [
+    {
+      "libelle": "131 Rue Antoine Charial 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0312_00131"
+    }
+  ],
+  "bdnb-bg-4BCZ-EFDZ-724F": [
+    {
+      "libelle": "4 Rue Claudius Pionchon 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_1740_00004"
+    },
+    {
+      "libelle": "6 Rue Claudius Pionchon 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_1740_00006"
+    },
+    {
+      "libelle": "8 Rue Claudius Pionchon 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_1740_00008"
+    },
+    {
+      "libelle": "15 Rue Saint-Victorien 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6580_00015"
+    },
+    {
+      "libelle": "17 Rue Saint-Victorien 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6580_00017"
+    },
+    {
+      "libelle": "12 Rue Saint-Sidoine 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6650_00012"
+    },
+    {
+      "libelle": "14 Rue Saint-Sidoine 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6650_00014"
+    },
+    {
+      "libelle": "16 Rue Saint-Sidoine 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6650_00016"
+    },
+    {
+      "libelle": "18 Rue Saint-Sidoine 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6650_00018"
+    },
+    {
+      "libelle": "20 Rue Saint-Sidoine 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6650_00020"
+    }
+  ],
+  "bdnb-bg-4BJ1-EQDH-V7QL": [
+    {
+      "libelle": "11 Rue de l'Espérance 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2550_00011"
+    }
+  ],
+  "bdnb-bg-4DUC-A62Z-LN35": [
+    {
+      "libelle": "13 Rue Louis Jasseron 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4377_00013"
+    },
+    {
+      "libelle": "17 Rue Louis Jasseron 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4377_00017"
+    }
+  ],
+  "bdnb-bg-4EZ3-GBS9-XGWY": [
+    {
+      "libelle": "3 Rue Bara 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0640_00003"
+    }
+  ],
+  "bdnb-bg-4F6G-4P2Q-RRZK": [
+    {
+      "libelle": "49 RUE SAINT MAXIMIN 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6470_00049"
+    },
+    {
+      "libelle": "51 RUE SAINT MAXIMIN 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6470_00051"
+    },
+    {
+      "libelle": "53 RUE SAINT MAXIMIN 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6470_00053"
+    }
+  ],
+  "bdnb-bg-4HGT-79NY-BRJS": [
+    {
+      "libelle": "34 Avenue Lacassagne 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4080_00034"
+    }
+  ],
+  "bdnb-bg-4LP6-PV1L-ZB4Z": [
+    {
+      "libelle": "22 RUE ROPOSTE 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6125_00022"
+    }
+  ],
+  "bdnb-bg-4NPE-6GZX-QJ7R": [
+    {
+      "libelle": "8B Rue de Nazareth 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4995_00008_bis"
+    },
+    {
+      "libelle": "8T Rue de Nazareth 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4995_00008_ter"
+    },
+    {
+      "libelle": "23 Rue Sainte-Anne de Baraban 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6605_00023"
+    }
+  ],
+  "bdnb-bg-4QVP-WA8R-HHUX": [
+    {
+      "libelle": "8 Rue Etienne Richerand 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2595_00008"
+    },
+    {
+      "libelle": "8B Rue Etienne Richerand 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2595_00008_bis"
+    },
+    {
+      "libelle": "31 Rue Saint Antoine 69003 Lyon",
+      "cle_interop": "69383_6250_00031"
+    }
+  ],
+  "bdnb-bg-4RED-TC7T-PPNE": [
+    {
+      "libelle": "39B Avenue Lacassagne 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4080_00039_bis"
+    }
+  ],
+  "bdnb-bg-4RMJ-W193-8VZA": [
+    {
+      "libelle": "12 Rue Carry 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_1285_00012"
+    },
+    {
+      "libelle": "24 Rue de la Metallurgie 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4745_00024"
+    },
+    {
+      "libelle": "26 Rue de la Metallurgie 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4745_00026"
+    },
+    {
+      "libelle": "28 Rue de la Metallurgie 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4745_00028"
+    }
+  ],
+  "bdnb-bg-4T85-AS55-QZN8": [
+    {
+      "libelle": "39 Cours Albert Thomas 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0120_00039"
+    }
+  ],
+  "bdnb-bg-4UPX-Y7FC-4PM3": [
+    {
+      "libelle": "130 Rue Antoine Charial 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0312_00130"
+    }
+  ],
+  "bdnb-bg-4V6N-5ABF-Q89H": [
+    {
+      "libelle": "36 Rue Turbil 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_7205_00036"
+    }
+  ],
+  "bdnb-bg-51HE-8CSW-Q4A6": [
+    {
+      "libelle": "1 Rue de la Metallurgie 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4745_00001"
+    }
+  ],
+  "bdnb-bg-5328-1JNK-VLQY": [
+    {
+      "libelle": "10 Rue des Dahlias 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2070_00010"
+    }
+  ],
+  "bdnb-bg-58ME-6Z75-R7GQ": [
+    {
+      "libelle": "32 Avenue Lacassagne 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4080_00032"
+    }
+  ],
+  "bdnb-bg-59CL-1K4J-99RX": [
+    {
+      "libelle": "30 Rue Jeanne Hachette 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_3850_00030"
+    },
+    {
+      "libelle": "32 Rue Jeanne Hachette 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_3850_00032"
+    }
+  ],
+  "bdnb-bg-5BKM-AXLT-FC77": [
+    {
+      "libelle": "86 Rue Antoine Charial 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0312_00086"
+    },
+    {
+      "libelle": "88 Rue Antoine Charial 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0312_00088"
+    }
+  ],
+  "bdnb-bg-5BLZ-C8JX-XB9Q": [
+    {
+      "libelle": "16 Rue Sainte-Anne de Baraban 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6605_00016"
+    }
+  ],
+  "bdnb-bg-5EEG-8K5D-EN9T": [
+    {
+      "libelle": "15 Rue Guilloud 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_3395_00015"
+    }
+  ],
+  "bdnb-bg-5GNZ-NMF5-6F9G": [
+    {
+      "libelle": "200 Avenue Félix Faure 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2685_00200"
+    }
+  ],
+  "bdnb-bg-5J4T-8NMC-HH17": [
+    {
+      "libelle": "11 Rue Maurice Flandin 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4680_00011"
+    },
+    {
+      "libelle": "13 Rue Maurice Flandin 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4680_00013"
+    },
+    {
+      "libelle": "15 Rue Maurice Flandin 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4680_00015"
+    },
+    {
+      "libelle": "17 Rue Maurice Flandin 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4680_00017"
+    },
+    {
+      "libelle": "11 Rue Riboud 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6025_00011"
+    }
+  ],
+  "bdnb-bg-5JEU-XW3B-67GS": [
+    {
+      "libelle": "15 Rue de l'Espérance 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2550_00015"
+    }
+  ],
+  "bdnb-bg-5N1W-CV3S-R6RD": [
+    {
+      "libelle": "16 Rue Claudius Pionchon 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_1740_00016"
+    }
+  ],
+  "bdnb-bg-5NH2-EJ2E-JZXH": [
+    {
+      "libelle": "93 Rue Baraban 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0645_00093"
+    }
+  ],
+  "bdnb-bg-5NMH-T79T-NJJY": [
+    {
+      "libelle": "54 Rue Saint-Antoine 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6250_00054"
+    }
+  ],
+  "bdnb-bg-5PV4-4ZZM-SWV8": [
+    {
+      "libelle": "128 Rue Baraban 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0645_00128"
+    }
+  ],
+  "bdnb-bg-5UNR-MLET-2UUP": [
+    {
+      "libelle": "156 Rue Baraban 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0645_00156"
+    }
+  ],
+  "bdnb-bg-5W1C-UB6A-4GPK": [
+    {
+      "libelle": "131 Rue du Dauphine 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2090_00131"
+    }
+  ],
+  "bdnb-bg-5YJV-45R9-CEFC": [
+    {
+      "libelle": "24 Rue Turbil 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_7205_00024"
+    }
+  ],
+  "bdnb-bg-5ZLP-VALF-5EDP": [
+    {
+      "libelle": "60B Avenue Lacassagne 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4080_00060_bis"
+    }
+  ],
+  "bdnb-bg-62RJ-X344-EHR7": [
+    {
+      "libelle": "7 Rue de l'Espérance 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2550_00007"
+    }
+  ],
+  "bdnb-bg-66EY-XU56-FSY5": [
+    {
+      "libelle": "1 Rue Etienne Richerand 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2595_00001"
+    },
+    {
+      "libelle": "286 Cours Lafayette 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4095_00286"
+    }
+  ],
+  "bdnb-bg-677J-CNPB-7J4K": [
+    {
+      "libelle": "149 Rue Antoine Charial 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0312_00149"
+    }
+  ],
+  "bdnb-bg-68CY-P7TQ-TZ2P": [
+    {
+      "libelle": "57 Avenue Lacassagne 69003 Lyon",
+      "cle_interop": "69383_4080_00057"
+    },
+    {
+      "libelle": "7B Rue Professeur Paul Sisley 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5790_00007_bis"
+    },
+    {
+      "libelle": "9 Rue Professeur Paul Sisley 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5790_00009"
+    },
+    {
+      "libelle": "9B Rue Professeur Paul Sisley 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5790_00009_bis"
+    },
+    {
+      "libelle": "11 Rue Professeur Paul Sisley 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5790_00011"
+    },
+    {
+      "libelle": "11B Rue Professeur Paul Sisley 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5790_00011_bis"
+    }
+  ],
+  "bdnb-bg-69XH-8MVP-68MH": [
+    {
+      "libelle": "181 Avenue Félix Faure 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2685_00181"
+    }
+  ],
+  "bdnb-bg-6BRM-AZZY-6Q8H": [
+    {
+      "libelle": "39 Rue Saint-Maximin 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6470_00039"
+    },
+    {
+      "libelle": "41 Rue Saint-Maximin 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6470_00041"
+    }
+  ],
+  "bdnb-bg-6D6N-M1N7-38NB": [
+    {
+      "libelle": "3B Rue François Gillet 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2870_00003"
+    },
+    {
+      "libelle": "5 Rue François Gillet 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2870_00005"
+    },
+    {
+      "libelle": "7 Rue François Gillet 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2870_00007"
+    }
+  ],
+  "bdnb-bg-6DC7-JW62-C9GD": [
+    {
+      "libelle": "11 Cours Albert Thomas 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0120_00011"
+    }
+  ],
+  "bdnb-bg-6DSC-Z2SU-YZZM": [
+    {
+      "libelle": "32 Rue Docteur Rebatel 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2245_00032"
+    }
+  ],
+  "bdnb-bg-6J3V-PN4E-7QWG": [
+    {
+      "libelle": "1 Rue Rossan 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6145_00001"
+    },
+    {
+      "libelle": "10 Rue Saint-Maximin 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6470_00010"
+    },
+    {
+      "libelle": "12 Rue Saint-Maximin 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6470_00012"
+    }
+  ],
+  "bdnb-bg-6J5B-8JDK-BM5V": [
+    {
+      "libelle": "10B Rue Saint-Philippe 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6520_00010_bis"
+    },
+    {
+      "libelle": "12 Rue Saint-Philippe 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6520_00012"
+    }
+  ],
+  "bdnb-bg-6JZ9-FA72-RT9X": [
+    {
+      "libelle": "64 Rue Antoine Charial 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0312_00064"
+    },
+    {
+      "libelle": "111 Rue Baraban 69003 Lyon",
+      "cle_interop": "69383_0645_00111"
+    },
+    {
+      "libelle": "113 Rue Baraban 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0645_00113"
+    },
+    {
+      "libelle": "115 RUE BARABAN 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0645_00115"
+    }
+  ],
+  "bdnb-bg-6KFN-VXGN-PT2H": [
+    {
+      "libelle": "60 Rue Sainte-Anne de Baraban 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6605_00060"
+    },
+    {
+      "libelle": "62 Rue Sainte-Anne de Baraban 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6605_00062"
+    }
+  ],
+  "bdnb-bg-6RYY-NUCS-XLRZ": [
+    {
+      "libelle": "6 Rue Maurice Flandin 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4680_00006"
+    }
+  ],
+  "bdnb-bg-6UDH-GB31-ZXRW": [
+    {
+      "libelle": "62 Rue Saint-Maximin 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6470_00062"
+    }
+  ],
+  "bdnb-bg-6UE1-UT3G-U7D2": [
+    {
+      "libelle": "25 Rue Saint-Antoine 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6250_00025"
+    }
+  ],
+  "bdnb-bg-6XJF-4K8W-EWBV": [
+    {
+      "libelle": "30 Rue de la Cité 69003 Lyon",
+      "cle_interop": "69383_1655_00030"
+    },
+    {
+      "libelle": "15.0 PLACE DE LA FERRANDIERE 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2730_00015"
+    },
+    {
+      "libelle": "19.0 PLACE DE LA FERRANDIERE 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2730_00019"
+    },
+    {
+      "libelle": "21 Place de la Ferrandière 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2730_00021"
+    }
+  ],
+  "bdnb-bg-75KD-3XJ8-T3CL": [
+    {
+      "libelle": "337 RUE PAUL BERT 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5245_00337"
+    }
+  ],
+  "bdnb-bg-77C7-HQRJ-ALB3": [
+    {
+      "libelle": "176 Avenue Félix Faure 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2685_00176"
+    }
+  ],
+  "bdnb-bg-77CU-S4U4-AGR1": [
+    {
+      "libelle": "37 Rue Baraban 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0645_00037"
+    }
+  ],
+  "bdnb-bg-7A21-PPNH-TLQM": [
+    {
+      "libelle": "31 Rue Professeur Paul Sisley 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5790_00031"
+    }
+  ],
+  "bdnb-bg-7GTT-FNQ4-QWTJ": [
+    {
+      "libelle": "52 Rue Etienne Richerand 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2595_00052"
+    }
+  ],
+  "bdnb-bg-7JT3-V9UB-3X24": [
+    {
+      "libelle": "6 Rue de Nazareth 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4995_00006"
+    },
+    {
+      "libelle": "8 Rue de Nazareth 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4995_00008"
+    }
+  ],
+  "bdnb-bg-7R6B-ZBKX-MFX5": [
+    {
+      "libelle": "18 Rue des Tuiliers 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_7195_00018"
+    },
+    {
+      "libelle": "20 Rue des Tuiliers 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_7195_00020"
+    }
+  ],
+  "bdnb-bg-7TYE-FUDZ-T2KQ": [
+    {
+      "libelle": "19 Rue Saint-Antoine 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6250_00019"
+    },
+    {
+      "libelle": "19B Rue Saint-Antoine 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6250_00019_bis"
+    }
+  ],
+  "bdnb-bg-7XNB-3B42-XYUX": [
+    {
+      "libelle": "50 Rue Antoine Charial 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0312_00050"
+    }
+  ],
+  "bdnb-bg-7ZMH-2EVJ-6VPC": [
+    {
+      "libelle": "14 Rue Gabillot 69003 Lyon",
+      "cle_interop": "69383_2930_00014"
+    },
+    {
+      "libelle": "18 Rue Gabillot 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2930_00018"
+    }
+  ],
+  "bdnb-bg-81HL-8BC6-UPG6": [
+    {
+      "libelle": "325 Rue Paul Bert 69003 Lyon",
+      "cle_interop": "69383_5245_00325"
+    },
+    {
+      "libelle": "2 Rue Saint-Eusèbe 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6330_00002"
+    }
+  ],
+  "bdnb-bg-838K-753F-TSRX": [
+    {
+      "libelle": "8 RUE ANTOINE CHARIAL 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0312_00008"
+    }
+  ],
+  "bdnb-bg-83NP-VV9J-54TD": [
+    {
+      "libelle": "23 Rue Guilloud 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_3395_00023"
+    }
+  ],
+  "bdnb-bg-87TE-XUHZ-13MQ": [
+    {
+      "libelle": "183B AVENUE FELIX FAURE 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2685_00183_bis"
+    }
+  ],
+  "bdnb-bg-8A2F-SRFG-ZL6Y": [
+    {
+      "libelle": "175 Avenue Félix Faure 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2685_00175"
+    }
+  ],
+  "bdnb-bg-8ANM-9Z2T-95GA": [
+    {
+      "libelle": "38 Rue Sainte-Anne de Baraban 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6605_00038"
+    }
+  ],
+  "bdnb-bg-8B4G-CNCN-QCZE": [
+    {
+      "libelle": "43 Avenue Lacassagne 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4080_00043"
+    }
+  ],
+  "bdnb-bg-8G5U-FLYZ-YD99": [
+    {
+      "libelle": "308 Cours Lafayette 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4095_00308"
+    }
+  ],
+  "bdnb-bg-8MY4-5N79-X3HK": [
+    {
+      "libelle": "71 Rue du Dauphiné 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2090_00071"
+    }
+  ],
+  "bdnb-bg-8NJL-4XAJ-TVQA": [
+    {
+      "libelle": "106 Rue Baraban 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0645_00106"
+    }
+  ],
+  "bdnb-bg-8Q7R-3DGL-ER5W": [
+    {
+      "libelle": "156 Rue Antoine Charial 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0312_00156"
+    }
+  ],
+  "bdnb-bg-8S47-R5PB-QQTY": [
+    {
+      "libelle": "35 Rue Guilloud 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_3395_00035"
+    }
+  ],
+  "bdnb-bg-8U51-96UR-3947": [
+    {
+      "libelle": "27 Rue d'Aubigny 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0515_00027"
+    },
+    {
+      "libelle": "29 Rue d'Aubigny 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0515_00029"
+    },
+    {
+      "libelle": "28 Rue Etienne Richerand 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2595_00028"
+    },
+    {
+      "libelle": "30 Rue Etienne Richerand 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2595_00030"
+    },
+    {
+      "libelle": "7 Rue Ternois 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6930_00007"
+    },
+    {
+      "libelle": "9 Rue Ternois 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6930_00009"
+    },
+    {
+      "libelle": "11 Rue Ternois 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6930_00011"
+    },
+    {
+      "libelle": "13 Rue Ternois 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6930_00013"
+    },
+    {
+      "libelle": "15 Rue Ternois 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6930_00015"
+    },
+    {
+      "libelle": "17 Rue Ternois 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6930_00017"
+    }
+  ],
+  "bdnb-bg-8ZQR-9QDH-RNL1": [
+    {
+      "libelle": "61 Rue Sainte-Anne de Baraban 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6605_00061"
+    }
+  ],
+  "bdnb-bg-8ZRV-FM7X-XP77": [
+    {
+      "libelle": "9 Rue Roger Brechan 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6090_00009"
+    },
+    {
+      "libelle": "11 Rue Roger Brechan 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6090_00011"
+    }
+  ],
+  "bdnb-bg-8ZXE-MR58-88XQ": [
+    {
+      "libelle": "104 Rue Baraban 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0645_00104"
+    },
+    {
+      "libelle": "105 Rue Baraban 69003 Lyon",
+      "cle_interop": "69383_0645_00105"
+    },
+    {
+      "libelle": "10 Rue des Teinturiers 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6910_00010"
+    }
+  ],
+  "bdnb-bg-9232-L81K-JDC3": [
+    {
+      "libelle": "54 Rue Antoine Charial 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0312_00054"
+    },
+    {
+      "libelle": "112 Rue Baraban 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0645_00112"
+    },
+    {
+      "libelle": "130 Rue Baraban  Lyon 3e Arrondissement",
+      "cle_interop": "IMB/69383/C/1626"
+    }
+  ],
+  "bdnb-bg-92MR-SZBC-CDNB": [
+    {
+      "libelle": "9 Rue Saint-Sidoine 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6650_00009"
+    }
+  ],
+  "bdnb-bg-93HE-L5TK-1T1J": [
+    {
+      "libelle": "14 Rue Docteur Rebatel 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2245_00014"
+    },
+    {
+      "libelle": "14B Rue Docteur Rebatel 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2245_00014_bis"
+    }
+  ],
+  "bdnb-bg-98F1-PF95-4B2M": [
+    {
+      "libelle": "16 Rue Saint-Philippe 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6520_00016"
+    }
+  ],
+  "bdnb-bg-99S1-H1PL-159F": [
+    {
+      "libelle": "246 RUE PAUL BERT 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5245_00246"
+    }
+  ],
+  "bdnb-bg-9B3F-ZKT4-JZ9V": [
+    {
+      "libelle": "61 Rue Baraban 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0645_00061"
+    },
+    {
+      "libelle": "63 Rue Baraban 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0645_00063"
+    },
+    {
+      "libelle": "65 Rue Baraban 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0645_00065"
+    },
+    {
+      "libelle": "67 Rue Baraban 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0645_00067"
+    },
+    {
+      "libelle": "69 Rue Baraban 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0645_00069"
+    },
+    {
+      "libelle": "10 Rue Louis Jasseron 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4377_00010"
+    },
+    {
+      "libelle": "12 Rue Louis Jasseron 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4377_00012"
+    },
+    {
+      "libelle": "14 Rue Louis Jasseron 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4377_00014"
+    }
+  ],
+  "bdnb-bg-9CTY-ETAH-5TCW": [
+    {
+      "libelle": "196 Avenue Félix Faure 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2685_00196"
+    }
+  ],
+  "bdnb-bg-9DFR-GCRL-WUGG": [
+    {
+      "libelle": "21 Avenue Lacassagne 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4080_00021"
+    },
+    {
+      "libelle": "23 Avenue Lacassagne 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4080_00023"
+    }
+  ],
+  "bdnb-bg-9H28-HW79-VRJS": [
+    {
+      "libelle": "121 Rue Baraban 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0645_00121"
+    }
+  ],
+  "bdnb-bg-9M8H-GBKD-7X86": [
+    {
+      "libelle": "24 RUE DU DAUPHINE 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2090_00024"
+    }
+  ],
+  "bdnb-bg-9MYW-M2VT-GSQE": [
+    {
+      "libelle": "9B Rue de Montbrillant 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4873_00009_bis"
+    },
+    {
+      "libelle": "9Q Rue de Montbrillant 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4873_00009_qua"
+    },
+    {
+      "libelle": "9T Rue de Montbrillant 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4873_00009_ter"
+    }
+  ],
+  "bdnb-bg-9N2Z-PRPU-11ZF": [
+    {
+      "libelle": "57 Cours Albert Thomas 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0120_00057"
+    }
+  ],
+  "bdnb-bg-9N9T-AKFV-3K7Q": [
+    {
+      "libelle": "3 Rue Meynis 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4755_00003"
+    }
+  ],
+  "bdnb-bg-9P8K-R96Z-PWH2": [
+    {
+      "libelle": "239 Avenue Félix Faure 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2685_00239"
+    },
+    {
+      "libelle": "338 Rue Paul Bert 69003 Lyon",
+      "cle_interop": "69383_5245_00338"
+    }
+  ],
+  "bdnb-bg-9QFV-3C9R-KNK5": [
+    {
+      "libelle": "74 Rue Antoine Charial 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0312_00074"
+    },
+    {
+      "libelle": "1 Rue Turbil 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_7205_00001"
+    }
+  ],
+  "bdnb-bg-9QRD-SMSX-T5SC": [
+    {
+      "libelle": "32 Rue du Dauphiné 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2090_00032"
+    }
+  ],
+  "bdnb-bg-9SJM-2V31-SHKZ": [
+    {
+      "libelle": "2 Rue Louis Jasseron 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4377_00002"
+    },
+    {
+      "libelle": "14 Rue Saint-Victorien 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6580_00014"
+    }
+  ],
+  "bdnb-bg-9TQ2-3NZF-3HY8": [
+    {
+      "libelle": "25 RUE GUILLOUD 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_3395_00025"
+    },
+    {
+      "libelle": "27 RUE GUILLOUD 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_3395_00027"
+    },
+    {
+      "libelle": "29 RUE GUILLOUD 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_3395_00029"
+    },
+    {
+      "libelle": "31 RUE GUILLOUD 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_3395_00031"
+    }
+  ],
+  "bdnb-bg-9V7F-64PQ-UJ5S": [
+    {
+      "libelle": "8 Rue Moissonnier 69003 Lyon",
+      "cle_interop": "69383_4805_00008"
+    },
+    {
+      "libelle": "220 Rue Paul Bert 69003 Lyon",
+      "cle_interop": "69383_5245_00220"
+    }
+  ],
+  "bdnb-bg-9XAL-HGYG-S8P7": [
+    {
+      "libelle": "68 Rue du Dauphiné 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2090_00068"
+    },
+    {
+      "libelle": "72 Rue du Dauphiné 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2090_00072"
+    }
+  ],
+  "bdnb-bg-A1CV-Z5RT-CH56": [
+    {
+      "libelle": "9 Rue Saint-Philippe 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6520_00009"
+    }
+  ],
+  "bdnb-bg-A6SY-HE1T-62SR": [
+    {
+      "libelle": "2 RUE TURBIL 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_7205_00002"
+    }
+  ],
+  "bdnb-bg-A7ZQ-2FYK-N2Z2": [
+    {
+      "libelle": "23 Rue de Montbrillant 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4873_00023"
+    },
+    {
+      "libelle": "25 Rue de Montbrillant 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4873_00025"
+    }
+  ],
+  "bdnb-bg-A83M-3CFY-N648": [
+    {
+      "libelle": "3 Rue Marcel Pehu 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4502_00003"
+    },
+    {
+      "libelle": "30 Rue Saint-Philippe 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6520_00030"
+    }
+  ],
+  "bdnb-bg-A9CE-TGBM-5ZTM": [
+    {
+      "libelle": "115 Rue du Dauphiné 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2090_00115"
+    }
+  ],
+  "bdnb-bg-AARK-Q6XC-LTMR": [
+    {
+      "libelle": "1 Rue Gabillot 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2930_00001"
+    },
+    {
+      "libelle": "3 Rue Gabillot 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2930_00003"
+    }
+  ],
+  "bdnb-bg-AD8P-JNP9-J14Q": [
+    {
+      "libelle": "15.0 RUE DE LA VILLETTE 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_7480_00015"
+    }
+  ],
+  "bdnb-bg-AE6C-KJ9U-LKG9": [
+    {
+      "libelle": "15 Rue des Tuiliers 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_7195_00015"
+    }
+  ],
+  "bdnb-bg-AELF-D6KA-CCVA": [
+    {
+      "libelle": "154 RUE ANTOINE CHARIAL 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0312_00154"
+    }
+  ],
+  "bdnb-bg-AEYW-M4AF-AUC5": [
+    {
+      "libelle": "11 Rue des Dahlias 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2070_00011"
+    }
+  ],
+  "bdnb-bg-AGDC-W8DF-4GCQ": [
+    {
+      "libelle": "118 Rue Baraban 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0645_00118"
+    }
+  ],
+  "bdnb-bg-AGSR-DVCJ-1MVE": [
+    {
+      "libelle": "77 Rue du Dauphiné 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2090_00077"
+    }
+  ],
+  "bdnb-bg-AHXA-TMQQ-QT6N": [
+    {
+      "libelle": "10 Rue Villon 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_7485_00010"
+    },
+    {
+      "libelle": "12 Rue Villon 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_7485_00012"
+    }
+  ],
+  "bdnb-bg-AJ85-YHNQ-MYVH": [
+    {
+      "libelle": "9 Rue David 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2095_00009"
+    },
+    {
+      "libelle": "11 Rue David 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2095_00011"
+    },
+    {
+      "libelle": "2 Rue de la Metallurgie 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4745_00002"
+    },
+    {
+      "libelle": "6 Rue de la Metallurgie 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4745_00006"
+    },
+    {
+      "libelle": "8 Rue de la Metallurgie 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4745_00008"
+    },
+    {
+      "libelle": "10 Rue de la Metallurgie 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4745_00010"
+    },
+    {
+      "libelle": "12 Rue de la Metallurgie 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4745_00012"
+    }
+  ],
+  "bdnb-bg-AKCE-9SWU-3PTM": [
+    {
+      "libelle": "35 RUE ETIENNE RICHERAND 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2595_00035"
+    }
+  ],
+  "bdnb-bg-ANF4-EUK7-A6CJ": [
+    {
+      "libelle": "22 Rue de la Cité 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_1655_00022"
+    }
+  ],
+  "bdnb-bg-AQ4Y-7UPC-Z4PN": [
+    {
+      "libelle": "231 Rue Paul Bert 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5245_00231"
+    }
+  ],
+  "bdnb-bg-ASMY-1BJU-2LUB": [
+    {
+      "libelle": "3 Rue Etienne Richerand 69003 Lyon",
+      "cle_interop": "69383_2595_00003"
+    },
+    {
+      "libelle": "5 Rue Etienne Richerand 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2595_00005"
+    },
+    {
+      "libelle": "35 Rue Saint-Antoine 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6250_00035"
+    }
+  ],
+  "bdnb-bg-ASUK-VSRP-TFTA": [
+    {
+      "libelle": "258 Rue Paul Bert 69003 Lyon",
+      "cle_interop": "69383_5245_00258"
+    },
+    {
+      "libelle": "260 Rue Paul Bert 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5245_00260"
+    },
+    {
+      "libelle": "262 Rue Paul Bert 69003 Lyon",
+      "cle_interop": "69383_5245_00262"
+    },
+    {
+      "libelle": "23 Rue Turbil 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_7205_00023"
+    }
+  ],
+  "bdnb-bg-B43R-2573-DV83": [
+    {
+      "libelle": "28 Rue Docteur Rebatel 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2245_00028"
+    },
+    {
+      "libelle": "30 Rue Docteur Rebatel 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2245_00030"
+    },
+    {
+      "libelle": "57 Rue Saint Maximin 69003 Lyon",
+      "cle_interop": "69383_6470_00057"
+    }
+  ],
+  "bdnb-bg-B4BP-LEYM-JRFE": [
+    {
+      "libelle": "16 RUE DU DAUPHINE 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2090_00016"
+    }
+  ],
+  "bdnb-bg-B9J5-CT3F-AFNM": [
+    {
+      "libelle": "17 Rue Guilloud 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_3395_00017"
+    }
+  ],
+  "bdnb-bg-BADY-7CBW-4P8G": [
+    {
+      "libelle": "191 Avenue Félix Faure 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2685_00191"
+    },
+    {
+      "libelle": "9 Rue Meynis 69003 Lyon",
+      "cle_interop": "69383_4755_00009"
+    }
+  ],
+  "bdnb-bg-BB2G-W3VB-TFRL": [
+    {
+      "libelle": "148.0 RUE BARABAN 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0645_00148"
+    }
+  ],
+  "bdnb-bg-BCYT-P2SQ-WFWU": [
+    {
+      "libelle": "142 Rue Antoine Charial 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0312_00142"
+    }
+  ],
+  "bdnb-bg-BENR-J4R2-X2NB": [
+    {
+      "libelle": "11 Avenue Georges Pompidou 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_3190_00011"
+    },
+    {
+      "libelle": "13 Avenue Georges Pompidou 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_3190_00013"
+    },
+    {
+      "libelle": "63 Rue de la Villette 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_7480_00063"
+    }
+  ],
+  "bdnb-bg-BH76-L4BC-JFMH": [
+    {
+      "libelle": "271.0 RUE PAUL BERT 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5245_00271"
+    },
+    {
+      "libelle": "271.0B RUE PAUL BERT 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5245_00271_bis"
+    },
+    {
+      "libelle": "273 Rue Paul Bert 69003 Lyon",
+      "cle_interop": "69383_5245_00273"
+    },
+    {
+      "libelle": "275 Rue Paul Bert 69003 Lyon",
+      "cle_interop": "69383_5245_00275"
+    }
+  ],
+  "bdnb-bg-BHPV-98FZ-NW67": [
+    {
+      "libelle": "45 Rue Turbil 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_7205_00045"
+    }
+  ],
+  "bdnb-bg-BJP6-W4Q2-72UZ": [
+    {
+      "libelle": "34 Rue du Dauphiné 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2090_00034"
+    }
+  ],
+  "bdnb-bg-BJYL-AYFE-9BWM": [
+    {
+      "libelle": "224 Avenue Félix Faure 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2685_00224"
+    }
+  ],
+  "bdnb-bg-BMJ5-4ZAR-UFBP": [
+    {
+      "libelle": "49 Rue Maurice Flandin 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4680_00049"
+    }
+  ],
+  "bdnb-bg-BNEE-5E7U-33X2": [
+    {
+      "libelle": "31 Rue Saint-Maximin 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6470_00031"
+    },
+    {
+      "libelle": "33 Rue Saint-Maximin 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6470_00033"
+    }
+  ],
+  "bdnb-bg-BPLL-ADDS-KYL5": [
+    {
+      "libelle": "30 Avenue Lacassagne 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4080_00030"
+    }
+  ],
+  "bdnb-bg-BQ2A-2YSL-ZDVD": [
+    {
+      "libelle": "316 Cours Lafayette 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4095_00316"
+    }
+  ],
+  "bdnb-bg-BR23-GTEH-A2R5": [
+    {
+      "libelle": "39 Rue Maurice Flandin 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4680_00039"
+    }
+  ],
+  "bdnb-bg-BRNB-KK97-9XY7": [
+    {
+      "libelle": "5B Rue Meynis 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4755_00005_bis"
+    }
+  ],
+  "bdnb-bg-BS5M-CREY-A52Z": [
+    {
+      "libelle": "281 Rue Paul Bert 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5245_00281"
+    }
+  ],
+  "bdnb-bg-BSKP-W5G3-L9EK": [
+    {
+      "libelle": "270.0 COURS LAFAYETTE 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4095_00270"
+    }
+  ],
+  "bdnb-bg-BXEH-4Z8G-SH57": [
+    {
+      "libelle": "29 RUE CLAUDIUS PIONCHON 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_1740_00029"
+    },
+    {
+      "libelle": "31 RUE CLAUDIUS PIONCHON 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_1740_00031"
+    }
+  ],
+  "bdnb-bg-BYKE-3R6H-S1VF": [
+    {
+      "libelle": "166 Avenue Félix Faure 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2685_00166"
+    }
+  ],
+  "bdnb-bg-C3BD-7D5L-DALW": [
+    {
+      "libelle": "30 Rue Turbil 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_7205_00030"
+    }
+  ],
+  "bdnb-bg-C4V9-11U5-4EZ8": [
+    {
+      "libelle": "7 Rue Moissonnier 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4805_00007"
+    }
+  ],
+  "bdnb-bg-CBPR-FNNH-5LS3": [],
+  "bdnb-bg-CTWK-YP9Y-TSF6": [
+    {
+      "libelle": "151 Rue Antoine Charial 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0312_00151"
+    }
+  ],
+  "bdnb-bg-CU5B-W5ZK-THBQ": [
+    {
+      "libelle": "1 Rue Guilloud 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_3395_00001"
+    },
+    {
+      "libelle": "3 Rue Guilloud 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_3395_00003"
+    },
+    {
+      "libelle": "5 Rue Rossan 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6145_00005"
+    }
+  ],
+  "bdnb-bg-CVWR-2RXD-989Z": [
+    {
+      "libelle": "302 Cours Lafayette 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4095_00302"
+    }
+  ],
+  "bdnb-bg-CWSF-X85B-CU2K": [
+    {
+      "libelle": "211 Rue Paul Bert 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5245_00211"
+    }
+  ],
+  "bdnb-bg-D3XA-J28L-DYPK": [
+    {
+      "libelle": "1 Rue de l'Espérance 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2550_00001"
+    }
+  ],
+  "bdnb-bg-D4H3-KZ1W-MAXY": [
+    {
+      "libelle": "4 Rue Villon 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_7485_00004"
+    }
+  ],
+  "bdnb-bg-D5ZY-UTDR-4CPC": [
+    {
+      "libelle": "22 Rue Saint-Maximin 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6470_00022"
+    }
+  ],
+  "bdnb-bg-D9LP-CBCP-F74E": [
+    {
+      "libelle": "264B Rue Paul Bert 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5245_00264_bis"
+    }
+  ],
+  "bdnb-bg-D9VX-DFKY-QCH5": [
+    {
+      "libelle": "225 Rue Paul Bert 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5245_00225"
+    }
+  ],
+  "bdnb-bg-DCXG-L24W-5Z53": [
+    {
+      "libelle": "38 Avenue Georges Pompidou 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_3190_00038"
+    }
+  ],
+  "bdnb-bg-DE7V-CLDE-WHQD": [
+    {
+      "libelle": "76 Rue Antoine Charial 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0312_00076"
+    },
+    {
+      "libelle": "78 Rue Antoine Charial 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0312_00078"
+    },
+    {
+      "libelle": "78B Rue Antoine Charial 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0312_00078_bis"
+    },
+    {
+      "libelle": "80 Rue Antoine Charial 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0312_00080"
+    },
+    {
+      "libelle": "80B Rue Antoine Charial 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0312_00080_bis"
+    },
+    {
+      "libelle": "82 Rue Antoine Charial 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0312_00082"
+    },
+    {
+      "libelle": "84 Rue Antoine Charial 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0312_00084"
+    },
+    {
+      "libelle": "277 Rue Paul Bert 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5245_00277"
+    },
+    {
+      "libelle": "279 Rue Paul Bert 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5245_00279"
+    }
+  ],
+  "bdnb-bg-DHU6-K34Z-3B96": [
+    {
+      "libelle": "14 Rue Saint-Maximin 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6470_00014"
+    },
+    {
+      "libelle": "16 Rue des Tuiliers 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_7195_00016"
+    }
+  ],
+  "bdnb-bg-DMBH-53YK-61AS": [
+    {
+      "libelle": "35.0A RUE TURBIL 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_7205_00035"
+    }
+  ],
+  "bdnb-bg-DPD7-7ZP1-GHVU": [
+    {
+      "libelle": "24 Rue Sainte-Anne de Baraban 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6605_00024"
+    }
+  ],
+  "bdnb-bg-DS19-SNL6-WUVX": [
+    {
+      "libelle": "312 RUE PAUL BERT 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5245_00312"
+    }
+  ],
+  "bdnb-bg-DS4H-BEYA-5BRZ": [
+    {
+      "libelle": "80 Rue du Dauphine 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2090_00080"
+    }
+  ],
+  "bdnb-bg-DWC9-G1PX-QY7C": [
+    {
+      "libelle": "147 Rue Baraban 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0645_00147"
+    }
+  ],
+  "bdnb-bg-DYK1-A4VL-D7EG": [
+    {
+      "libelle": "66 Rue Antoine Charial 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0312_00066"
+    }
+  ],
+  "bdnb-bg-DZ9A-B3PC-VXA9": [
+    {
+      "libelle": "139 Avenue Félix Faure 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2685_00139"
+    }
+  ],
+  "bdnb-bg-DZL3-UNYD-N3VX": [
+    {
+      "libelle": "51 Rue Maurice Flandin 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4680_00051"
+    }
+  ],
+  "bdnb-bg-E3CE-41HF-AM87": [
+    {
+      "libelle": "83B Rue du Dauphine 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2090_00083"
+    }
+  ],
+  "bdnb-bg-E3ZW-PDHN-JM11": [
+    {
+      "libelle": "51B Avenue Lacassagne 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4080_00051_bis"
+    }
+  ],
+  "bdnb-bg-E5AA-VUYA-RBTA": [
+    {
+      "libelle": "251 RUE PAUL BERT 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5245_00251"
+    }
+  ],
+  "bdnb-bg-E81K-C7HH-5XF6": [
+    {
+      "libelle": "155 Rue Antoine Charial 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0312_00155"
+    }
+  ],
+  "bdnb-bg-E8XR-BKG2-W74J": [
+    {
+      "libelle": "45 Rue du Dauphiné 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2090_00045"
+    }
+  ],
+  "bdnb-bg-EBJM-4HLV-FBS7": [
+    {
+      "libelle": "294 Rue Paul Bert 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5245_00294"
+    }
+  ],
+  "bdnb-bg-EC36-CQJW-PMK3": [
+    {
+      "libelle": "168 Avenue Félix Faure 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2685_00168"
+    },
+    {
+      "libelle": "170 Avenue Félix Faure 69003 Lyon",
+      "cle_interop": "69383_2685_00170"
+    }
+  ],
+  "bdnb-bg-ED7P-8YCZ-L6UX": [
+    {
+      "libelle": "12 Rue Bara 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0640_00012"
+    }
+  ],
+  "bdnb-bg-EDS8-9W4U-U4UB": [
+    {
+      "libelle": "5B Rue de Montbrillant 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4873_00005_bis"
+    }
+  ],
+  "bdnb-bg-EJD4-1GYW-7BQQ": [
+    {
+      "libelle": "149 Rue Baraban 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0645_00149"
+    }
+  ],
+  "bdnb-bg-ENNV-9814-TZWH": [
+    {
+      "libelle": "10 RUE GUILLOUD 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_3395_00010"
+    }
+  ],
+  "bdnb-bg-EVKT-7UG2-GWAL": [
+    {
+      "libelle": "349 Rue Paul Bert 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5245_00349"
+    }
+  ],
+  "bdnb-bg-EW5B-F4CE-VH1G": [
+    {
+      "libelle": "26 Rue Professeur Paul Sisley 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5790_00026"
+    }
+  ],
+  "bdnb-bg-EYPZ-9TGZ-3WEP": [
+    {
+      "libelle": "49 Rue Saint-Antoine 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6250_00049"
+    }
+  ],
+  "bdnb-bg-EZEL-427V-6SW5": [
+    {
+      "libelle": "28 Rue de la Cité 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_1655_00028"
+    }
+  ],
+  "bdnb-bg-F53L-NRUL-61CZ": [
+    {
+      "libelle": "16 Rue Professeur Paul Sisley 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5790_00016"
+    }
+  ],
+  "bdnb-bg-FBLV-MDEK-PE5T": [
+    {
+      "libelle": "6 Rue Saint-Eusèbe 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6330_00006"
+    },
+    {
+      "libelle": "8 Rue Saint-Eusèbe 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6330_00008"
+    }
+  ],
+  "bdnb-bg-FCLN-D7V1-1RVN": [
+    {
+      "libelle": "41 Cours Albert Thomas 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0120_00041"
+    }
+  ],
+  "bdnb-bg-FEPN-KD1S-CBGH": [
+    {
+      "libelle": "141 RUE DU DAUPHINE 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2090_00141"
+    }
+  ],
+  "bdnb-bg-FF5F-XGDB-MR6B": [
+    {
+      "libelle": "79 Rue Etienne Richerand 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2595_00079"
+    }
+  ],
+  "bdnb-bg-FLT4-WYG9-FBA9": [
+    {
+      "libelle": "248 Cours Lafayette 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4095_00248"
+    }
+  ],
+  "bdnb-bg-FM7U-19RF-11E3": [
+    {
+      "libelle": "27 Avenue Lacassagne 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4080_00027"
+    },
+    {
+      "libelle": "242 Rue Paul Bert 69003 Lyon",
+      "cle_interop": "69383_5245_00242"
+    }
+  ],
+  "bdnb-bg-FR1V-1HV3-KKUP": [
+    {
+      "libelle": "50C Rue Étienne Richerand 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2595_00050"
+    },
+    {
+      "libelle": "1 Rue des Petites Soeurs 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5395_00001"
+    }
+  ],
+  "bdnb-bg-FS5T-27SZ-1D73": [
+    {
+      "libelle": "46 Avenue Georges Pompidou 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_3190_00046"
+    }
+  ],
+  "bdnb-bg-FT4W-ZNSE-AVGM": [
+    {
+      "libelle": "172 AVENUE FELIX FAURE 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2685_00172"
+    }
+  ],
+  "bdnb-bg-FW4B-YECQ-FPCT": [
+    {
+      "libelle": "6 Rue Carry 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_1285_00006"
+    },
+    {
+      "libelle": "8 Rue Carry 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_1285_00008"
+    }
+  ],
+  "bdnb-bg-FWNQ-PFMY-A36E": [
+    {
+      "libelle": "51 Rue Etienne Richerand 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2595_00051"
+    },
+    {
+      "libelle": "53 Rue Etienne Richerand 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2595_00053"
+    }
+  ],
+  "bdnb-bg-FXV9-2QRT-A3S2": [
+    {
+      "libelle": "232 Cours Lafayette 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4095_00232"
+    }
+  ],
+  "bdnb-bg-FY5V-RU9S-BEUY": [
+    {
+      "libelle": "2 R Cadets de la France Libre 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_1156_00002"
+    },
+    {
+      "libelle": "4 R Cadets de la France Libre 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_1156_00004"
+    },
+    {
+      "libelle": "6 R Cadets de la France Libre 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_1156_00006"
+    }
+  ],
+  "bdnb-bg-FYM1-BY91-B21B": [
+    {
+      "libelle": "229 Rue Paul Bert 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5245_00229"
+    }
+  ],
+  "bdnb-bg-FZ78-E8K8-8JQA": [
+    {
+      "libelle": "298 Cours Lafayette 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4095_00298"
+    },
+    {
+      "libelle": "300 Cours Lafayette 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4095_00300"
+    },
+    {
+      "libelle": "41 Rue Saint-Antoine  Lyon 3e Arrondissement",
+      "cle_interop": "IMB/69383/C/001L"
+    }
+  ],
+  "bdnb-bg-G2CP-191M-DTZ4": [
+    {
+      "libelle": "312 Cours Lafayette 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4095_00312"
+    }
+  ],
+  "bdnb-bg-G4JW-P19N-7RXD": [
+    {
+      "libelle": "11 Rue Gabillot 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2930_00011"
+    }
+  ],
+  "bdnb-bg-G4YE-TNDJ-LXSE": [
+    {
+      "libelle": "14 Rue de Nazareth 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4995_00014"
+    }
+  ],
+  "bdnb-bg-GB65-26FA-H5KS": [
+    {
+      "libelle": "3 Cours Albert Thomas 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0120_00003"
+    }
+  ],
+  "bdnb-bg-GFQX-E9BD-25LA": [
+    {
+      "libelle": "8 Rue David 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2095_00008"
+    },
+    {
+      "libelle": "8B Rue David 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2095_00008_bis"
+    }
+  ],
+  "bdnb-bg-GFTC-JHT9-8SS7": [
+    {
+      "libelle": "249 RUE PAUL BERT 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5245_00249"
+    }
+  ],
+  "bdnb-bg-GHCL-TA5Y-YY67": [
+    {
+      "libelle": "48 Rue Saint-Antoine 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6250_00048"
+    }
+  ],
+  "bdnb-bg-GHWA-Q9U4-5UJS": [
+    {
+      "libelle": "10 Rue Jean Renoir 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_3830_00010"
+    }
+  ],
+  "bdnb-bg-GMN1-HL4M-FZQF": [
+    {
+      "libelle": "24 Rue de l'Espérance 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2550_00024"
+    }
+  ],
+  "bdnb-bg-GNUK-4BSX-4WEQ": [
+    {
+      "libelle": "3.0 RUE SAINT MAXIMIN 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6470_00003"
+    }
+  ],
+  "bdnb-bg-GUQS-EXWQ-E93A": [
+    {
+      "libelle": "45B Rue du Dauphiné 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2090_00045_bis"
+    }
+  ],
+  "bdnb-bg-GXGN-3H97-F4RU": [
+    {
+      "libelle": "11 Rue des Petites Soeurs 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5395_00011"
+    }
+  ],
+  "bdnb-bg-H2KM-CBVS-HQK5": [
+    {
+      "libelle": "41 Rue Baraban 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0645_00041"
+    }
+  ],
+  "bdnb-bg-H3HB-LX27-Y9ML": [
+    {
+      "libelle": "19 RUE ANTOINE CHARIAL 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0312_00019"
+    }
+  ],
+  "bdnb-bg-H56H-S1A8-M34J": [
+    {
+      "libelle": "41 Avenue Lacassagne 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4080_00041"
+    }
+  ],
+  "bdnb-bg-H6H4-644T-6NRG": [
+    {
+      "libelle": "12 Rue Claudius Pionchon 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_1740_00012"
+    },
+    {
+      "libelle": "14 Rue Claudius Pionchon 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_1740_00014"
+    },
+    {
+      "libelle": "16 Rue Saint-Victorien 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6580_00016"
+    },
+    {
+      "libelle": "20 Rue Saint-Victorien 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6580_00020"
+    }
+  ],
+  "bdnb-bg-H9T9-DYCH-XSSS": [
+    {
+      "libelle": "137 Rue Antoine Charial 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0312_00137"
+    },
+    {
+      "libelle": "12 Rue Saint Eusèbe 69003 Lyon",
+      "cle_interop": "69383_6330_00012"
+    },
+    {
+      "libelle": "14 Rue Saint Eusèbe 69003 Lyon",
+      "cle_interop": "69383_6330_00014"
+    },
+    {
+      "libelle": "12 Impasse Saint-Eusèbe  Lyon 3e Arrondissement",
+      "cle_interop": "IMB/69383/C/0888"
+    }
+  ],
+  "bdnb-bg-HCFL-ZFNM-X1CS": [
+    {
+      "libelle": "7.0 RUE DE MONTBRILLANT 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4873_00007"
+    },
+    {
+      "libelle": "7.0B RUE DE MONTBRILLANT 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4873_00007_bis"
+    },
+    {
+      "libelle": "7.0T RUE DE MONTBRILLANT 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4873_00007_ter"
+    }
+  ],
+  "bdnb-bg-HD5Z-A5ZB-RL1N": [
+    {
+      "libelle": "153.0 RUE BARABAN 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0645_00153"
+    }
+  ],
+  "bdnb-bg-HDGW-YKPV-1S76": [
+    {
+      "libelle": "10 Rue Frédéric Mistral 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2900_00010"
+    },
+    {
+      "libelle": "10B Rue Frédéric Mistral 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2900_00010_bis"
+    }
+  ],
+  "bdnb-bg-HDNQ-XWDH-QUWU": [
+    {
+      "libelle": "44 Rue Saint-Antoine 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6250_00044"
+    }
+  ],
+  "bdnb-bg-HGKH-L6JR-AERD": [
+    {
+      "libelle": "34 Rue Docteur Rebatel 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2245_00034"
+    }
+  ],
+  "bdnb-bg-HPAL-JMAW-WVE1": [
+    {
+      "libelle": "299 Rue Paul Bert 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5245_00299"
+    }
+  ],
+  "bdnb-bg-HPSP-K133-X6Q5": [
+    {
+      "libelle": "48 Avenue Lacassagne 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4080_00048"
+    },
+    {
+      "libelle": "50 Avenue Lacassagne 69003 Lyon",
+      "cle_interop": "69383_4080_00050"
+    }
+  ],
+  "bdnb-bg-HQWX-SRVS-WAVH": [
+    {
+      "libelle": "50 Rue Saint-Antoine 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6250_00050"
+    }
+  ],
+  "bdnb-bg-HRSC-VTA8-JM5L": [
+    {
+      "libelle": "3.0 RUE SAINT SIDOINE 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6650_00003"
+    }
+  ],
+  "bdnb-bg-HRU7-Q3L9-HXJT": [
+    {
+      "libelle": "35 Avenue Lacassagne 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4080_00035"
+    },
+    {
+      "libelle": "37 Avenue Lacassagne 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4080_00037"
+    }
+  ],
+  "bdnb-bg-HUWG-SW9C-5SZT": [
+    {
+      "libelle": "267 Rue Paul Bert 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5245_00267"
+    },
+    {
+      "libelle": "19 Rue Turbil 69003 Lyon",
+      "cle_interop": "69383_7205_00019"
+    }
+  ],
+  "bdnb-bg-HUXX-75T3-9SX9": [
+    {
+      "libelle": "56 Rue Maurice Flandin 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4680_00056"
+    }
+  ],
+  "bdnb-bg-HV4Y-ENCA-KLHP": [
+    {
+      "libelle": "11 Avenue Lacassagne 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4080_00011"
+    }
+  ],
+  "bdnb-bg-HZW7-ZHQA-SC56": [
+    {
+      "libelle": "18 Rue des Dahlias 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2070_00018"
+    },
+    {
+      "libelle": "26 Rue Docteur Rebatel 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2245_00026"
+    }
+  ],
+  "bdnb-bg-HZXE-HQPD-95HR": [
+    {
+      "libelle": "184 Avenue Félix Faure 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2685_00184"
+    }
+  ],
+  "bdnb-bg-J2UL-UWTM-MNVA": [
+    {
+      "libelle": "28.0 RUE BARABAN 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0645_00028"
+    }
+  ],
+  "bdnb-bg-J3X7-528N-6TTX": [
+    {
+      "libelle": "35 Rue Saint-Maximin 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6470_00035"
+    },
+    {
+      "libelle": "37 Rue Saint-Maximin 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6470_00037"
+    }
+  ],
+  "bdnb-bg-J4G1-U13J-EJGH": [
+    {
+      "libelle": "5 Rue de Montbrillant 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4873_00005"
+    }
+  ],
+  "bdnb-bg-J4PT-D49X-UCD1": [
+    {
+      "libelle": "320 Cours Lafayette 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4095_00320"
+    }
+  ],
+  "bdnb-bg-JA5M-F8KK-JHHH": [
+    {
+      "libelle": "14 Rue François Gillet 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2870_00014"
+    },
+    {
+      "libelle": "16 Rue François Gillet 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2870_00016"
+    }
+  ],
+  "bdnb-bg-JB13-2VYZ-PKZ3": [
+    {
+      "libelle": "185B Avenue Félix Faure 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2685_00185"
+    }
+  ],
+  "bdnb-bg-JB2H-5QUF-8MDB": [
+    {
+      "libelle": "198.0 AVENUE FELIX FAURE 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2685_00198"
+    }
+  ],
+  "bdnb-bg-JDFU-EQ52-1374": [
+    {
+      "libelle": "140.0 AVENUE FELIX FAURE 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2685_00140"
+    }
+  ],
+  "bdnb-bg-JFRZ-XJTQ-L9ZQ": [
+    {
+      "libelle": "318 Rue Paul Bert 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5245_00318"
+    }
+  ],
+  "bdnb-bg-JFW7-YC9P-LXGH": [
+    {
+      "libelle": "47 Rue Antoine Charial 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0312_00047"
+    }
+  ],
+  "bdnb-bg-JGAH-NP8T-HYRQ": [
+    {
+      "libelle": "215 Rue de Bonnel 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_1020_00215"
+    },
+    {
+      "libelle": "224 Cours Lafayette 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4095_00224"
+    },
+    {
+      "libelle": "4 Rue de la Villette 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_7480_00004"
+    },
+    {
+      "libelle": "2 Rue de la Villette 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_7480_00002"
+    },
+    {
+      "libelle": "6 Rue de la Villette 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_7480_00006"
+    }
+  ],
+  "bdnb-bg-JMUE-VX7J-RR9W": [
+    {
+      "libelle": "54 AVENUE LACASSAGNE 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4080_00054"
+    },
+    {
+      "libelle": "56 AVENUE LACASSAGNE 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4080_00056"
+    }
+  ],
+  "bdnb-bg-JTAL-3RN1-KX5T": [
+    {
+      "libelle": "24 Rue Claudius Pionchon 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_1740_00024"
+    },
+    {
+      "libelle": "26 Rue Claudius Pionchon 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_1740_00026"
+    },
+    {
+      "libelle": "28 Rue Claudius Pionchon 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_1740_00028"
+    }
+  ],
+  "bdnb-bg-JY7M-WSSQ-6GE6": [
+    {
+      "libelle": "4 Rue Roger Brechan 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6090_00004"
+    }
+  ],
+  "bdnb-bg-JYTS-DAC7-4FV3": [
+    {
+      "libelle": "10A Rue de Montbrillant 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4873_00010"
+    },
+    {
+      "libelle": "10B Rue de Montbrillant 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4873_00010_bis"
+    },
+    {
+      "libelle": "10T Rue de Montbrillant 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4873_00010_ter"
+    }
+  ],
+  "bdnb-bg-K4P3-8SNY-YGD3": [
+    {
+      "libelle": "165.0 AVENUE FELIX FAURE 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2685_00165"
+    },
+    {
+      "libelle": "167.0 AVENUE FELIX FAURE 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2685_00167"
+    }
+  ],
+  "bdnb-bg-K58L-DSRV-8Q35": [
+    {
+      "libelle": "23 Rue Riboud 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6025_00023"
+    },
+    {
+      "libelle": "10 Rue Ternois 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6930_00010"
+    }
+  ],
+  "bdnb-bg-K5KX-NEHV-8KAS": [
+    {
+      "libelle": "8.0 RUE FRANCOIS GILLET 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2870_00008"
+    },
+    {
+      "libelle": "10.0 RUE FRANCOIS GILLET 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2870_00010"
+    }
+  ],
+  "bdnb-bg-K6LN-JHZ3-JPCS": [
+    {
+      "libelle": "252 Cours Lafayette 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4095_00252"
+    }
+  ],
+  "bdnb-bg-KE3T-DSHM-ZSN4": [
+    {
+      "libelle": "41 Rue Turbil 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_7205_00041"
+    }
+  ],
+  "bdnb-bg-KES8-JTN5-MFWA": [
+    {
+      "libelle": "10 Avenue Lacassagne 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4080_00010"
+    },
+    {
+      "libelle": "12 Avenue Lacassagne 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4080_00012"
+    }
+  ],
+  "bdnb-bg-KLT7-6KAC-4JYW": [
+    {
+      "libelle": "24 Rue Saint-Maximin 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6470_00024"
+    }
+  ],
+  "bdnb-bg-KMB9-JBR4-NCPK": [
+    {
+      "libelle": "20 Rue du Dauphiné 69003 Lyon",
+      "cle_interop": "69383_2090_00020"
+    },
+    {
+      "libelle": "2 Rue Saint-Philippe 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6520_00002"
+    }
+  ],
+  "bdnb-bg-KMCZ-5SAK-P1FU": [
+    {
+      "libelle": "66.0 RUE SAINTE ANNE DE BARABAN 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6605_00066"
+    },
+    {
+      "libelle": "68.0 RUE SAINTE ANNE DE BARABAN 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6605_00068"
+    }
+  ],
+  "bdnb-bg-KN82-27XK-AH9U": [
+    {
+      "libelle": "81 Cours Albert Thomas 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0120_00081"
+    }
+  ],
+  "bdnb-bg-KRLR-7PLQ-B17V": [
+    {
+      "libelle": "50 Rue du Dauphiné 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2090_00050"
+    },
+    {
+      "libelle": "52 Rue du Dauphiné 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2090_00052"
+    }
+  ],
+  "bdnb-bg-KVDR-XPSM-PDB5": [
+    {
+      "libelle": "94 RUE BELLECOMBE 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0795_00094"
+    },
+    {
+      "libelle": "96 RUE BELLECOMBE 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0795_00096"
+    }
+  ],
+  "bdnb-bg-KW55-NHFZ-3KHY": [
+    {
+      "libelle": "2 Rue du Dauphiné 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2090_00002"
+    },
+    {
+      "libelle": "2B Rue du Dauphiné 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2090_00002_bis"
+    }
+  ],
+  "bdnb-bg-KZM4-PUEX-3ZAG": [
+    {
+      "libelle": "6 Rue Turbil 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_7205_00006"
+    },
+    {
+      "libelle": "8 Rue Turbil 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_7205_00008"
+    }
+  ],
+  "bdnb-bg-L2CK-SQ4L-G991": [
+    {
+      "libelle": "4 Rue Étienne Richerand 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2595_00004"
+    }
+  ],
+  "bdnb-bg-L2EK-Q53Q-3HL2": [
+    {
+      "libelle": "180.0 AVENUE FELIX FAURE 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2685_00180"
+    }
+  ],
+  "bdnb-bg-L3Z5-398P-5QLD": [
+    {
+      "libelle": "245 Rue Paul Bert 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5245_00245"
+    },
+    {
+      "libelle": "247 Rue Paul Bert 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5245_00247"
+    }
+  ],
+  "bdnb-bg-L8K2-A1Q4-S44X": [
+    {
+      "libelle": "14 Rue Roposte 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6125_00014"
+    }
+  ],
+  "bdnb-bg-LAY7-65QQ-EV79": [
+    {
+      "libelle": "19 RUE DE MONTBRILLANT 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4873_00019"
+    }
+  ],
+  "bdnb-bg-LC76-MLRA-5DM2": [
+    {
+      "libelle": "24 Rue Frédéric Mistral 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2900_00024"
+    }
+  ],
+  "bdnb-bg-LD4C-VJY6-N5SJ": [
+    {
+      "libelle": "194.0 AVENUE FELIX FAURE 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2685_00194"
+    },
+    {
+      "libelle": "23 RUE DE LA METALLURGIE 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4745_00023"
+    }
+  ],
+  "bdnb-bg-LFKP-MW5K-U39Y": [
+    {
+      "libelle": "152 Rue Baraban 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0645_00152"
+    }
+  ],
+  "bdnb-bg-LGE5-PNS3-M7EZ": [
+    {
+      "libelle": "48A Rue Étienne Richerand 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2595_00048"
+    },
+    {
+      "libelle": "50C Rue Étienne Richerand 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2595_00050"
+    }
+  ],
+  "bdnb-bg-LK7X-LXHQ-XLJ9": [
+    {
+      "libelle": "16 Rue Saint Eusèbe 69003 Lyon",
+      "cle_interop": "69383_6330_00016"
+    },
+    {
+      "libelle": "18 Rue Saint Eusèbe 69003 Lyon",
+      "cle_interop": "69383_6330_00018"
+    },
+    {
+      "libelle": "16 Impasse Saint-Eusèbe  Lyon 3e Arrondissement",
+      "cle_interop": "IMB/69383/C/0891"
+    },
+    {
+      "libelle": "18 Impasse Saint-Eusèbe  Lyon 3e Arrondissement",
+      "cle_interop": "IMB/69383/C/0892"
+    }
+  ],
+  "bdnb-bg-LLGP-81HZ-CXYQ": [
+    {
+      "libelle": "144 Avenue Félix Faure 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2685_00144"
+    }
+  ],
+  "bdnb-bg-LRMF-8NAU-TQV1": [
+    {
+      "libelle": "10 Rue Sainte-Anne de Baraban 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6605_00010"
+    }
+  ],
+  "bdnb-bg-LSZN-NNHS-ZCQE": [
+    {
+      "libelle": "2 Rue Meynis 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4755_00002"
+    },
+    {
+      "libelle": "4 Rue Meynis 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4755_00004"
+    }
+  ],
+  "bdnb-bg-LVR1-HQUG-VS61": [
+    {
+      "libelle": "59 Rue du Dauphiné 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2090_00059"
+    }
+  ],
+  "bdnb-bg-LZZ6-J5TA-PURF": [
+    {
+      "libelle": "6 Rue Villon 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_7485_00006"
+    }
+  ],
+  "bdnb-bg-M12V-QZFL-LQXU": [
+    {
+      "libelle": "188 AVENUE FELIX FAURE 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2685_00188"
+    }
+  ],
+  "bdnb-bg-M185-GHK3-G26C": [
+    {
+      "libelle": "27 Rue Baraban 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0645_00027"
+    }
+  ],
+  "bdnb-bg-M1J3-4PX2-GLHX": [
+    {
+      "libelle": "22 Rue Maurice Flandin 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4680_00022"
+    },
+    {
+      "libelle": "24 Rue Maurice Flandin 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4680_00024"
+    }
+  ],
+  "bdnb-bg-M1MN-YMRZ-5CAR": [
+    {
+      "libelle": "20 Rue Antoine Charial 69003 Lyon",
+      "cle_interop": "69383_0312_00020"
+    },
+    {
+      "libelle": "2 Rue Gabillot 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2930_00002"
+    }
+  ],
+  "bdnb-bg-M3PW-MV9G-428U": [
+    {
+      "libelle": "45 Avenue Lacassagne 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4080_00045"
+    }
+  ],
+  "bdnb-bg-M6EA-Q11S-DTQE": [
+    {
+      "libelle": "8 Rue Marcel Pehu 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4502_00008"
+    }
+  ],
+  "bdnb-bg-MCTC-YUGM-Z71M": [
+    {
+      "libelle": "268 Rue Paul Bert 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5245_00268"
+    }
+  ],
+  "bdnb-bg-MJ6J-9YZD-V9CN": [
+    {
+      "libelle": "311 RUE PAUL BERT 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5245_00311"
+    }
+  ],
+  "bdnb-bg-MKEH-4X4X-H1XF": [
+    {
+      "libelle": "228 Rue Paul Bert 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5245_00228"
+    }
+  ],
+  "bdnb-bg-MLQ3-6L3N-HFMK": [
+    {
+      "libelle": "314 Rue Paul Bert 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5245_00314"
+    },
+    {
+      "libelle": "316 Rue Paul Bert 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5245_00316"
+    },
+    {
+      "libelle": "333 Rue Paul Bert 69003 Lyon",
+      "cle_interop": "69383_5245_00333"
+    }
+  ],
+  "bdnb-bg-MNMB-7F9F-2TDS": [
+    {
+      "libelle": "296 Rue Paul Bert 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5245_00296"
+    },
+    {
+      "libelle": "298 Rue Paul Bert 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5245_00298"
+    }
+  ],
+  "bdnb-bg-MPDU-ABFB-M25E": [
+    {
+      "libelle": "38 Rue du Dauphiné 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2090_00038"
+    }
+  ],
+  "bdnb-bg-MPJU-G3GR-AWJG": [
+    {
+      "libelle": "41 Rue du Dauphiné 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2090_00041"
+    }
+  ],
+  "bdnb-bg-MRTT-PSEJ-TWBW": [
+    {
+      "libelle": "25 Rue Saint-Eusèbe 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6330_00025"
+    },
+    {
+      "libelle": "27 Rue Saint-Eusèbe 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6330_00027"
+    }
+  ],
+  "bdnb-bg-MSC8-FRUG-JQ8P": [
+    {
+      "libelle": "213.0 AVENUE FELIX FAURE 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2685_00213"
+    }
+  ],
+  "bdnb-bg-MXAK-H6X5-46X1": [
+    {
+      "libelle": "12T Rue Guilloud 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_3395_00012_ter"
+    }
+  ],
+  "bdnb-bg-MXP6-JD33-A7G6": [
+    {
+      "libelle": "58 Rue Sainte-Anne de Baraban 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6605_00058"
+    }
+  ],
+  "bdnb-bg-MY6V-TR1W-KH7W": [
+    {
+      "libelle": "15 Rue Roposte 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6125_00015"
+    }
+  ],
+  "bdnb-bg-MYUH-YTYU-45YJ": [
+    {
+      "libelle": "42 Rue Saint-Maximin 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6470_00042"
+    },
+    {
+      "libelle": "44 Rue Saint-Maximin 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6470_00044"
+    },
+    {
+      "libelle": "46 Rue Saint-Maximin 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6470_00046"
+    },
+    {
+      "libelle": "48 Rue Saint-Maximin 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6470_00048"
+    },
+    {
+      "libelle": "50 Rue Saint-Maximin 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6470_00050"
+    }
+  ],
+  "bdnb-bg-N1SJ-X4Z1-S6MF": [
+    {
+      "libelle": "56 Rue du Dauphiné 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2090_00056"
+    }
+  ],
+  "bdnb-bg-N3WT-JLN6-9U34": [
+    {
+      "libelle": "351 Rue Paul Bert 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5245_00351"
+    }
+  ],
+  "bdnb-bg-N5KH-KNTD-H5XS": [
+    {
+      "libelle": "76 Rue Etienne Richerand 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2595_00076"
+    },
+    {
+      "libelle": "4 Place Sainte Anne 69003 Lyon",
+      "cle_interop": "69383_6600_00004"
+    }
+  ],
+  "bdnb-bg-N6UU-5UDV-X532": [
+    {
+      "libelle": "5 Rue Gabillot 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2930_00005"
+    }
+  ],
+  "bdnb-bg-N78C-GK7F-Z3L5": [
+    {
+      "libelle": "19 Rue Roposte 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6125_00019"
+    }
+  ],
+  "bdnb-bg-N7TG-SBBM-TU6S": [
+    {
+      "libelle": "219 Avenue Félix Faure 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2685_00219"
+    },
+    {
+      "libelle": "221 Avenue Félix Faure 69003 Lyon",
+      "cle_interop": "69383_2685_00221"
+    }
+  ],
+  "bdnb-bg-N9LU-1W8M-BYK9": [
+    {
+      "libelle": "294 Cours Lafayette 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4095_00294"
+    }
+  ],
+  "bdnb-bg-NCCN-BJX2-14TC": [
+    {
+      "libelle": "117 Rue Baraban 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0645_00117"
+    }
+  ],
+  "bdnb-bg-NCKX-HGFM-Z9C3": [
+    {
+      "libelle": "212 Rue Paul Bert 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5245_00212"
+    }
+  ],
+  "bdnb-bg-NFHD-LP2Y-313A": [
+    {
+      "libelle": "3 Rue Saint-Philippe 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6520_00003"
+    },
+    {
+      "libelle": "5 Rue Saint-Philippe 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6520_00005"
+    }
+  ],
+  "bdnb-bg-NFZ9-7T8C-747Y": [
+    {
+      "libelle": "13.0 RUE PROFESSEUR PAUL SISLEY 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5790_00013"
+    },
+    {
+      "libelle": "15.0 RUE PROFESSEUR PAUL SISLEY 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5790_00015"
+    },
+    {
+      "libelle": "17.0 RUE PROFESSEUR PAUL SISLEY 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5790_00017"
+    }
+  ],
+  "bdnb-bg-NHDC-1J94-HJ1K": [
+    {
+      "libelle": "79 Cours Albert Thomas 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0120_00079"
+    }
+  ],
+  "bdnb-bg-NHQQ-8MZ7-KS1W": [
+    {
+      "libelle": "20 Avenue Lacassagne 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4080_00020"
+    },
+    {
+      "libelle": "20B Avenue Lacassagne 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4080_00020_bis"
+    },
+    {
+      "libelle": "22 Avenue Lacassagne 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4080_00022"
+    }
+  ],
+  "bdnb-bg-NKWJ-ES2B-18QN": [
+    {
+      "libelle": "15 Rue de Montbrillant 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4873_00015"
+    },
+    {
+      "libelle": "15B Rue de Montbrillant 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4873_00015_bis"
+    }
+  ],
+  "bdnb-bg-NL3F-VFAM-BY7H": [
+    {
+      "libelle": "12 RUE DE NAZARETH 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4995_00012"
+    }
+  ],
+  "bdnb-bg-NLW1-GJKN-HPZ9": [
+    {
+      "libelle": "25 Rue Professeur Paul Sisley 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5790_00025"
+    }
+  ],
+  "bdnb-bg-NLX7-28MW-QS26": [
+    {
+      "libelle": "20 Rue Saint-Maximin 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6470_00020"
+    }
+  ],
+  "bdnb-bg-NNSJ-BQ2K-5R55": [
+    {
+      "libelle": "97B Rue du Dauphiné 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2090_00097_bis"
+    },
+    {
+      "libelle": "97T Rue du Dauphiné 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2090_00097_ter"
+    }
+  ],
+  "bdnb-bg-NTXQ-8UN8-5VYP": [
+    {
+      "libelle": "27 Avenue Georges Pompidou 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_3190_00027"
+    }
+  ],
+  "bdnb-bg-NU1A-E3YK-MUKP": [
+    {
+      "libelle": "21 Rue de Montbrillant 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4873_00021"
+    }
+  ],
+  "bdnb-bg-NV72-5NB3-XZT2": [
+    {
+      "libelle": "33 RUE CLAUDIUS PIONCHON 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_1740_00033"
+    },
+    {
+      "libelle": "27 RUE SAINTE ANNE DE BARABAN 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6605_00027"
+    },
+    {
+      "libelle": "29 RUE SAINTE ANNE DE BARABAN 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6605_00029"
+    },
+    {
+      "libelle": "31 RUE SAINTE ANNE DE BARABAN 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6605_00031"
+    }
+  ],
+  "bdnb-bg-NVBZ-KJRF-RW6M": [
+    {
+      "libelle": "98 Rue Baraban 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0645_00098"
+    }
+  ],
+  "bdnb-bg-NWNV-GU7Z-XPMJ": [
+    {
+      "libelle": "19 Rue Etienne Richerand 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2595_00019"
+    }
+  ],
+  "bdnb-bg-NX8E-C9EL-DXZS": [
+    {
+      "libelle": "40 Rue Saint-Philippe 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6520_00040"
+    }
+  ],
+  "bdnb-bg-NXAY-C3XT-LUKW": [
+    {
+      "libelle": "2 Rue Bara 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0640_00002"
+    }
+  ],
+  "bdnb-bg-NZ2J-NJPV-EKZJ": [
+    {
+      "libelle": "38.0 AVENUE LACASSAGNE 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4080_00038"
+    },
+    {
+      "libelle": "40.0 AVENUE LACASSAGNE 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4080_00040"
+    }
+  ],
+  "bdnb-bg-NZ67-8FQ2-8L1E": [
+    {
+      "libelle": "12 Rue de l'Espérance 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2550_00012"
+    },
+    {
+      "libelle": "14 Rue de l'Espérance 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2550_00014"
+    },
+    {
+      "libelle": "16 Rue de l'Espérance 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2550_00016"
+    }
+  ],
+  "bdnb-bg-P2DS-1Z8K-AK6S": [
+    {
+      "libelle": "42 RUE TURBIL 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_7205_00042"
+    }
+  ],
+  "bdnb-bg-P576-P7RA-3KHE": [
+    {
+      "libelle": "1 Rue de Montbrillant 69003 Lyon",
+      "cle_interop": "69383_4873_00001"
+    },
+    {
+      "libelle": "19 Rue Professeur Paul Sisley 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5790_00019"
+    }
+  ],
+  "bdnb-bg-P6SW-C8ML-QMSG": [
+    {
+      "libelle": "18 Rue de la Metallurgie 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4745_00018"
+    }
+  ],
+  "bdnb-bg-P88B-2B6J-ERHT": [
+    {
+      "libelle": "40 Rue du Dauphiné 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2090_00040"
+    }
+  ],
+  "bdnb-bg-PA9G-CGJM-GRSL": [
+    {
+      "libelle": "54.0 RUE ETIENNE RICHERAND 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2595_00054"
+    }
+  ],
+  "bdnb-bg-PFFK-6Z9V-TUP1": [
+    {
+      "libelle": "17 Rue Saint-Antoine 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6250_00017"
+    }
+  ],
+  "bdnb-bg-PGRE-VDE8-D65X": [
+    {
+      "libelle": "21 Rue Roger Brechan 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6090_00021"
+    }
+  ],
+  "bdnb-bg-PJUP-MU33-65VW": [
+    {
+      "libelle": "238.0 AVENUE FELIX FAURE 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2685_00238"
+    },
+    {
+      "libelle": "240.0 AVENUE FELIX FAURE 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2685_00240"
+    }
+  ],
+  "bdnb-bg-PL25-59WQ-D8KT": [
+    {
+      "libelle": "38 Rue Saint-Maximin 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6470_00038"
+    },
+    {
+      "libelle": "40 Rue Saint-Maximin 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6470_00040"
+    }
+  ],
+  "bdnb-bg-PNCB-MYC1-JB4Q": [
+    {
+      "libelle": "310 Cours Lafayette 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4095_00310"
+    },
+    {
+      "libelle": "51 Rue Saint-Antoine 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6250_00051"
+    }
+  ],
+  "bdnb-bg-PP7G-YWLB-1ZEC": [
+    {
+      "libelle": "3.0 RUE LOUIS JASSERON 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4377_00003"
+    }
+  ],
+  "bdnb-bg-PTBZ-QHYH-Y2WN": [
+    {
+      "libelle": "30 Rue Professeur Paul Sisley 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5790_00030"
+    },
+    {
+      "libelle": "30B Rue Professeur Paul Sisley 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5790_00030_bis"
+    },
+    {
+      "libelle": "32 Rue Professeur Paul Sisley 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5790_00032"
+    }
+  ],
+  "bdnb-bg-PU3N-4779-FEBT": [
+    {
+      "libelle": "38.0 AVENUE LACASSAGNE 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4080_00038"
+    },
+    {
+      "libelle": "42.0 AVENUE LACASSAGNE 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4080_00042"
+    }
+  ],
+  "bdnb-bg-PUFB-FKVJ-1ARX": [
+    {
+      "libelle": "43 Rue Maurice Flandin 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4680_00043"
+    }
+  ],
+  "bdnb-bg-PUVM-SK5M-3WW3": [
+    {
+      "libelle": "22 Rue de l'Espérance 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2550_00022"
+    }
+  ],
+  "bdnb-bg-PWDK-M71Z-3JJQ": [
+    {
+      "libelle": "43 Rue Saint-Maximin 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6470_00043"
+    }
+  ],
+  "bdnb-bg-Q2M9-ECBB-3GVY": [
+    {
+      "libelle": "17 Rue Roger Brechan 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6090_00017"
+    }
+  ],
+  "bdnb-bg-Q2ZC-1XK8-D18M": [
+    {
+      "libelle": "5.0 RUE SAINT EUSEBE 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6330_00005"
+    }
+  ],
+  "bdnb-bg-Q34G-RRJN-UAGN": [
+    {
+      "libelle": "136 Avenue Félix Faure 69003 Lyon",
+      "cle_interop": "69383_2685_00136"
+    },
+    {
+      "libelle": "1 RUE JEAN PIERRE LEVY 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_3798_00001"
+    },
+    {
+      "libelle": "3 RUE JEAN PIERRE LEVY 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_3798_00003"
+    },
+    {
+      "libelle": "5 RUE JEAN PIERRE LEVY 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_3798_00005"
+    }
+  ],
+  "bdnb-bg-Q36H-C7L9-MH5P": [
+    {
+      "libelle": "12 Rue Frédéric Mistral 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2900_00012"
+    }
+  ],
+  "bdnb-bg-Q3KM-8XJ9-VPSD": [
+    {
+      "libelle": "269 Rue Paul Bert 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5245_00269"
+    }
+  ],
+  "bdnb-bg-Q54W-3LRS-ZE57": [
+    {
+      "libelle": "22 Rue David 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2095_00022"
+    }
+  ],
+  "bdnb-bg-Q5EG-1PLG-NDWK": [
+    {
+      "libelle": "10 Rue David 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2095_00010"
+    }
+  ],
+  "bdnb-bg-Q7LS-WV66-NMGE": [
+    {
+      "libelle": "164 Rue Baraban 69003 Lyon",
+      "cle_interop": "69383_0645_00164"
+    },
+    {
+      "libelle": "166 RUE BARABAN 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0645_00166"
+    },
+    {
+      "libelle": "168 RUE BARABAN 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0645_00168"
+    }
+  ],
+  "bdnb-bg-QB8Y-LEHJ-B2P9": [
+    {
+      "libelle": "11 Rue de Montbrillant 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4873_00011"
+    }
+  ],
+  "bdnb-bg-QDXF-JNCM-DCP6": [
+    {
+      "libelle": "17 RUE DE MONTBRILLANT 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4873_00017"
+    }
+  ],
+  "bdnb-bg-QHW9-ND7Q-QFFX": [
+    {
+      "libelle": "308 Rue Paul Bert 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5245_00308"
+    }
+  ],
+  "bdnb-bg-QK73-6LBA-DM5W": [
+    {
+      "libelle": "213 RUE PAUL BERT 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5245_00213"
+    }
+  ],
+  "bdnb-bg-QN57-TWQK-FEX6": [
+    {
+      "libelle": "23 Rue Roposte 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6125_00023"
+    },
+    {
+      "libelle": "25 Rue Roposte 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6125_00025"
+    },
+    {
+      "libelle": "27 Rue Roposte 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6125_00027"
+    }
+  ],
+  "bdnb-bg-QNDY-JKBL-KRG6": [
+    {
+      "libelle": "138 Avenue Félix Faure 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2685_00138"
+    }
+  ],
+  "bdnb-bg-QP8Z-VMM2-M7MW": [
+    {
+      "libelle": "77 Cours Albert Thomas 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0120_00077"
+    },
+    {
+      "libelle": "49 Rue Professeur Paul Sisley 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5790_00049"
+    },
+    {
+      "libelle": "51 Rue Professeur Paul Sisley 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5790_00051"
+    }
+  ],
+  "bdnb-bg-QPW6-FC9L-XAS9": [
+    {
+      "libelle": "40 Rue Turbil 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_7205_00040"
+    }
+  ],
+  "bdnb-bg-QVCH-AAV6-QRFH": [
+    {
+      "libelle": "262 Cours Lafayette 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4095_00262"
+    },
+    {
+      "libelle": "264 Cours Lafayette 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4095_00264"
+    }
+  ],
+  "bdnb-bg-QXAH-Y7QM-A3JB": [
+    {
+      "libelle": "36 Rue du Dauphiné 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2090_00036"
+    }
+  ],
+  "bdnb-bg-QXFZ-J9ZF-PXZQ": [
+    {
+      "libelle": "280 Cours Lafayette 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4095_00280"
+    }
+  ],
+  "bdnb-bg-QZLT-2EQK-1JUG": [
+    {
+      "libelle": "40 Rue Antoine Charial 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0312_00040"
+    },
+    {
+      "libelle": "42 Rue Antoine Charial 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0312_00042"
+    }
+  ],
+  "bdnb-bg-R1DX-6F71-9X8F": [
+    {
+      "libelle": "331 Rue Paul Bert 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5245_00331"
+    }
+  ],
+  "bdnb-bg-R3ZV-UJGF-B5PM": [
+    {
+      "libelle": "177 Avenue Félix Faure 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2685_00177"
+    },
+    {
+      "libelle": "177B Avenue Félix Faure 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2685_00177_bis"
+    },
+    {
+      "libelle": "177T Avenue Félix Faure 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2685_00177_ter"
+    }
+  ],
+  "bdnb-bg-R5CY-C7UQ-ZX56": [
+    {
+      "libelle": "51 Rue d'Aubigny 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0515_00051"
+    }
+  ],
+  "bdnb-bg-R6MK-82WC-ZK2Q": [
+    {
+      "libelle": "51.0 AVENUE GEORGES POMPIDOU 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_3190_00051"
+    },
+    {
+      "libelle": "18.0 RUE LOUIS JASSERON 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4377_00018"
+    },
+    {
+      "libelle": "20.0 RUE LOUIS JASSERON 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4377_00020"
+    },
+    {
+      "libelle": "22.0 RUE LOUIS JASSERON 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4377_00022"
+    }
+  ],
+  "bdnb-bg-R9EU-KTER-Y9ZU": [
+    {
+      "libelle": "20 Rue Roger Brechan 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6090_00020"
+    }
+  ],
+  "bdnb-bg-R9KQ-ZAYE-712F": [
+    {
+      "libelle": "3 Rue du Milieu 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4785_00003"
+    }
+  ],
+  "bdnb-bg-RA9K-1B11-8L1V": [
+    {
+      "libelle": "34 Rue Saint-Philippe 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6520_00034"
+    },
+    {
+      "libelle": "36 Rue Saint-Philippe 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6520_00036"
+    }
+  ],
+  "bdnb-bg-RACK-2GKS-FUGF": [
+    {
+      "libelle": "248 Rue Paul Bert 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5245_00248"
+    }
+  ],
+  "bdnb-bg-RBD4-VFY6-RGM1": [
+    {
+      "libelle": "23 Rue Saint-Maximin 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6470_00023"
+    },
+    {
+      "libelle": "25 Rue Saint-Maximin 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6470_00025"
+    }
+  ],
+  "bdnb-bg-RCEP-GSZB-9NB8": [
+    {
+      "libelle": "34B Avenue Lacassagne 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4080_00034_bis"
+    }
+  ],
+  "bdnb-bg-RD68-16FV-HRL3": [
+    {
+      "libelle": "236 Cours Lafayette 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4095_00236"
+    },
+    {
+      "libelle": "1 Rue Maurice Flandin 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4680_00001"
+    }
+  ],
+  "bdnb-bg-RFNM-BUNN-ZL7U": [
+    {
+      "libelle": "19 Rue Guilloud 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_3395_00019"
+    }
+  ],
+  "bdnb-bg-RG9V-8L1Q-97UN": [
+    {
+      "libelle": "30 Rue Antoine Charial 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0312_00030"
+    },
+    {
+      "libelle": "34 Rue Antoine Charial 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0312_00034"
+    },
+    {
+      "libelle": "74 Rue Etienne Richerand 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2595_00074"
+    }
+  ],
+  "bdnb-bg-RTAG-5EQF-F968": [
+    {
+      "libelle": "4 Rue Saint-Philippe 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6520_00004"
+    }
+  ],
+  "bdnb-bg-RTNL-L1N7-K12Y": [
+    {
+      "libelle": "10 Rue du Dauphine 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2090_00010"
+    },
+    {
+      "libelle": "1.0 RUE SAINT MAXIMIN 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6470_00001"
+    }
+  ],
+  "bdnb-bg-RUV7-747H-Z31A": [
+    {
+      "libelle": "254 Rue Paul Bert 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5245_00254"
+    }
+  ],
+  "bdnb-bg-S25R-PXBG-LUHS": [
+    {
+      "libelle": "52 Rue Saint Antoine 69003 Lyon",
+      "cle_interop": "69383_6250_00052"
+    }
+  ],
+  "bdnb-bg-S3AZ-5DW2-YEGG": [
+    {
+      "libelle": "25 Rue de la Métallurgie 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4745_00025"
+    }
+  ],
+  "bdnb-bg-S3VN-5QYG-KUV9": [
+    {
+      "libelle": "14.0 RUE DU DAUPHINE 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2090_00014"
+    }
+  ],
+  "bdnb-bg-SA1E-6TZ4-AJGZ": [
+    {
+      "libelle": "4 Rue Marcel Pehu 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4502_00004"
+    },
+    {
+      "libelle": "6 Rue Marcel Pehu 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4502_00006"
+    },
+    {
+      "libelle": "28 Rue Saint-Philippe 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6520_00028"
+    }
+  ],
+  "bdnb-bg-SAR3-A4XV-LE8B": [
+    {
+      "libelle": "14 Rue Carry 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_1285_00014"
+    },
+    {
+      "libelle": "89 Rue du Dauphiné 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2090_00089"
+    },
+    {
+      "libelle": "93 Rue du Dauphiné 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2090_00093"
+    }
+  ],
+  "bdnb-bg-SBHG-VQWK-FCA9": [
+    {
+      "libelle": "21 Rue Etienne Richerand 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2595_00021"
+    }
+  ],
+  "bdnb-bg-SCQS-HYN4-PPDQ": [
+    {
+      "libelle": "27 Rue de la Metallurgie 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4745_00027"
+    },
+    {
+      "libelle": "29 Rue de la Metallurgie 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4745_00029"
+    }
+  ],
+  "bdnb-bg-SDMB-7CKJ-3Q9D": [
+    {
+      "libelle": "14 Avenue Georges Pompidou 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_3190_00014"
+    },
+    {
+      "libelle": "70 Rue Maurice Flandin 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4680_00070"
+    },
+    {
+      "libelle": "72 Rue Maurice Flandin 69003 Lyon",
+      "cle_interop": "69383_4680_00072"
+    },
+    {
+      "libelle": "74 Rue Maurice Flandin 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4680_00074"
+    },
+    {
+      "libelle": "75 Rue de la Villette 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_7480_00075"
+    },
+    {
+      "libelle": "89 Rue de la Villette 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_7480_00089"
+    }
+  ],
+  "bdnb-bg-SFD1-MWS9-87FT": [
+    {
+      "libelle": "3 Avenue Lacassagne 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4080_00003"
+    },
+    {
+      "libelle": "208 Rue Paul Bert 69003 Lyon",
+      "cle_interop": "69383_5245_00208"
+    }
+  ],
+  "bdnb-bg-SGG6-LU23-N3G3": [
+    {
+      "libelle": "84 Rue du Dauphiné 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2090_00084"
+    },
+    {
+      "libelle": "84B Rue du Dauphiné 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2090_00084_bis"
+    }
+  ],
+  "bdnb-bg-SJ7A-J84C-CNP7": [
+    {
+      "libelle": "322 Rue Paul Bert 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5245_00322"
+    }
+  ],
+  "bdnb-bg-SM2V-WMB7-NPLJ": [
+    {
+      "libelle": "17 Rue Saint-Maximin 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6470_00017"
+    }
+  ],
+  "bdnb-bg-SR2C-QRF3-15LG": [
+    {
+      "libelle": "4 Rue Sainte-Anne de Baraban 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6605_00004"
+    },
+    {
+      "libelle": "6 Rue Sainte-Anne de Baraban 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6605_00006"
+    },
+    {
+      "libelle": "6B Rue Sainte-Anne de Baraban 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6605_00006_bis"
+    }
+  ],
+  "bdnb-bg-SRS3-M783-6MKY": [
+    {
+      "libelle": "209 Rue Paul Bert 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5245_00209"
+    }
+  ],
+  "bdnb-bg-SS4L-AFK6-4A9H": [
+    {
+      "libelle": "190 Avenue Félix Faure 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2685_00190"
+    }
+  ],
+  "bdnb-bg-SX96-EPAJ-96CM": [
+    {
+      "libelle": "256 Rue Paul Bert 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5245_00256"
+    },
+    {
+      "libelle": "22 Rue Turbil 69003 Lyon",
+      "cle_interop": "69383_7205_00022"
+    }
+  ],
+  "bdnb-bg-SXT7-7PYG-K6WN": [
+    {
+      "libelle": "95 Rue Baraban 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0645_00095"
+    }
+  ],
+  "bdnb-bg-T3FC-QB32-BY5N": [
+    {
+      "libelle": "53 Rue Maurice Flandin 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4680_00053"
+    }
+  ],
+  "bdnb-bg-T5HU-RD7P-8CZV": [
+    {
+      "libelle": "217 Avenue Félix Faure 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2685_00217"
+    }
+  ],
+  "bdnb-bg-TD3K-MD6A-6F6R": [
+    {
+      "libelle": "51 Rue du Dauphiné 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2090_00051"
+    }
+  ],
+  "bdnb-bg-TF7C-WTUX-KMG1": [
+    {
+      "libelle": "43B Rue du Dauphiné 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2090_00043_bis"
+    }
+  ],
+  "bdnb-bg-TFML-Y14X-MUN6": [
+    {
+      "libelle": "48.0 RUE TURBIL 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_7205_00048"
+    }
+  ],
+  "bdnb-bg-TLN3-1VGX-7M2N": [
+    {
+      "libelle": "13 RUE ROSSAN 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6145_00013"
+    }
+  ],
+  "bdnb-bg-TLU8-1B9R-DX25": [
+    {
+      "libelle": "14 Rue Etienne Richerand 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2595_00014"
+    },
+    {
+      "libelle": "16 Rue Etienne Richerand 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2595_00016"
+    },
+    {
+      "libelle": "18 Rue Etienne Richerand 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2595_00018"
+    },
+    {
+      "libelle": "20 Rue Etienne Richerand 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2595_00020"
+    },
+    {
+      "libelle": "22 Rue Etienne Richerand 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2595_00022"
+    },
+    {
+      "libelle": "24 Rue Etienne Richerand 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2595_00024"
+    },
+    {
+      "libelle": "22 Rue Saint-Antoine 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6250_00022"
+    },
+    {
+      "libelle": "24 Rue Saint-Antoine 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6250_00024"
+    },
+    {
+      "libelle": "26 Rue Saint-Antoine 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6250_00026"
+    },
+    {
+      "libelle": "28 Rue Saint-Antoine 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6250_00028"
+    }
+  ],
+  "bdnb-bg-TMHU-J6YL-UVAU": [
+    {
+      "libelle": "62 Rue du Dauphiné 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2090_00062"
+    },
+    {
+      "libelle": "64 Rue du Dauphiné 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2090_00064"
+    }
+  ],
+  "bdnb-bg-TN7P-ZT9Q-69HH": [
+    {
+      "libelle": "30 Rue du Dauphiné 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2090_00030"
+    }
+  ],
+  "bdnb-bg-TPM1-WUGD-1M2H": [
+    {
+      "libelle": "39 Rue du Dauphiné 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2090_00039"
+    }
+  ],
+  "bdnb-bg-TQNC-55PY-EW9Y": [
+    {
+      "libelle": "8 Rue des Dahlias 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2070_00008"
+    }
+  ],
+  "bdnb-bg-TRUQ-P9WK-PJRR": [
+    {
+      "libelle": "186 Avenue Félix Faure 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2685_00186"
+    },
+    {
+      "libelle": "189 Avenue Félix Faure 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2685_00189"
+    }
+  ],
+  "bdnb-bg-TUX2-KMDA-SMNG": [
+    {
+      "libelle": "59 Rue Antoine Charial 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0312_00059"
+    }
+  ],
+  "bdnb-bg-TX28-CP97-X6WL": [
+    {
+      "libelle": "1 Rue des Tuiliers 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_7195_00001"
+    }
+  ],
+  "bdnb-bg-TYWJ-CL2Y-E96B": [
+    {
+      "libelle": "26 Rue Turbil 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_7205_00026"
+    }
+  ],
+  "bdnb-bg-U1NB-AYCR-PGWR": [
+    {
+      "libelle": "146 Avenue Félix Faure 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2685_00146"
+    },
+    {
+      "libelle": "146B Avenue Félix Faure 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2685_00146_bis"
+    }
+  ],
+  "bdnb-bg-U297-N64A-4SXK": [
+    {
+      "libelle": "4 Rue des Teinturiers 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6910_00004"
+    },
+    {
+      "libelle": "6 Rue des Teinturiers 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6910_00006"
+    }
+  ],
+  "bdnb-bg-U4P7-21ML-ED8D": [
+    {
+      "libelle": "3 Rue Turbil 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_7205_00003"
+    }
+  ],
+  "bdnb-bg-U4S4-QR1D-QNE5": [
+    {
+      "libelle": "272 Cours Lafayette 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4095_00272"
+    },
+    {
+      "libelle": "25 Rue Saint-Antoine 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6250_00025"
+    }
+  ],
+  "bdnb-bg-UC42-LDD1-USZ6": [
+    {
+      "libelle": "27.0 RUE TURBIL 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_7205_00027"
+    }
+  ],
+  "bdnb-bg-UD36-AJ94-ZSUK": [
+    {
+      "libelle": "48 Rue Sainte-Anne de Baraban 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6605_00048"
+    },
+    {
+      "libelle": "50 Rue Sainte-Anne de Baraban 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6605_00050"
+    },
+    {
+      "libelle": "52 Rue Sainte-Anne de Baraban 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6605_00052"
+    }
+  ],
+  "bdnb-bg-UE72-HWHE-BR28": [
+    {
+      "libelle": "77 Rue Baraban 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0645_00077"
+    }
+  ],
+  "bdnb-bg-UE8H-XPKC-91DB": [
+    {
+      "libelle": "223 Avenue Félix Faure 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2685_00223"
+    }
+  ],
+  "bdnb-bg-UENZ-ZKDM-3ZP7": [
+    {
+      "libelle": "2 RUE DES DAHLIAS 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2070_00002"
+    }
+  ],
+  "bdnb-bg-UGBJ-X3VC-NQ2F": [
+    {
+      "libelle": "32 Rue Turbil 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_7205_00032"
+    }
+  ],
+  "bdnb-bg-ULHW-P9KF-JSGH": [
+    {
+      "libelle": "76.0 RUE DU DAUPHINE 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2090_00076"
+    },
+    {
+      "libelle": "6.0 RUE PROFESSEUR PAUL SISLEY 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5790_00006"
+    }
+  ],
+  "bdnb-bg-UMXT-U2VY-93SE": [
+    {
+      "libelle": "124 Rue Antoine Charial 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0312_00124"
+    },
+    {
+      "libelle": "11 Rue Saint-Eusèbe 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6330_00011"
+    }
+  ],
+  "bdnb-bg-UPG1-7PY2-42GJ": [
+    {
+      "libelle": "218 Rue Paul Bert 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5245_00218"
+    }
+  ],
+  "bdnb-bg-UQJN-GFRA-XSFK": [
+    {
+      "libelle": "10 Rue Gabillot 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2930_00010"
+    }
+  ],
+  "bdnb-bg-US3B-SS59-8L49": [
+    {
+      "libelle": "47 Cours Albert Thomas 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0120_00047"
+    }
+  ],
+  "bdnb-bg-UUCD-XCZ5-U1K8": [
+    {
+      "libelle": "242 Avenue Félix Faure 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2685_00242"
+    }
+  ],
+  "bdnb-bg-UWK7-TY35-KUDK": [
+    {
+      "libelle": "209 Avenue Félix Faure 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2685_00209"
+    },
+    {
+      "libelle": "7 Petite rue Saint-Eusèbe 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6328_00007"
+    }
+  ],
+  "bdnb-bg-UZNA-S75P-RCYR": [
+    {
+      "libelle": "114 Rue Antoine Charial 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0312_00114"
+    },
+    {
+      "libelle": "116 Rue Antoine Charial 69003 Lyon",
+      "cle_interop": "69383_0312_00116"
+    }
+  ],
+  "bdnb-bg-V8KP-M4VG-15XX": [
+    {
+      "libelle": "43 Rue du Dauphiné 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2090_00043"
+    }
+  ],
+  "bdnb-bg-V8P7-U3SX-2ENC": [
+    {
+      "libelle": "30 Rue Baraban 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0645_00030"
+    },
+    {
+      "libelle": "32 Rue Baraban 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0645_00032"
+    },
+    {
+      "libelle": "34 Rue Baraban 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0645_00034"
+    },
+    {
+      "libelle": "36 Rue Baraban 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0645_00036"
+    },
+    {
+      "libelle": "38 Rue Baraban 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0645_00038"
+    },
+    {
+      "libelle": "40 Rue Baraban 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0645_00040"
+    }
+  ],
+  "bdnb-bg-VB7U-Y1M8-WKTH": [
+    {
+      "libelle": "77 Rue Étienne Richerand 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2595_00077"
+    }
+  ],
+  "bdnb-bg-VD8B-M9GE-ARAU": [
+    {
+      "libelle": "8 RUE SAINTE ANNE DE BARABAN 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6605_00008"
+    }
+  ],
+  "bdnb-bg-VGNW-N4HU-YD2U": [
+    {
+      "libelle": "39 Rue d'Aubigny 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0515_00039"
+    },
+    {
+      "libelle": "41 Rue d'Aubigny 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0515_00041"
+    },
+    {
+      "libelle": "43 Rue d'Aubigny 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0515_00043"
+    },
+    {
+      "libelle": "47 Rue d'Aubigny 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0515_00047"
+    },
+    {
+      "libelle": "29 Rue Etienne Richerand 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2595_00029"
+    }
+  ],
+  "bdnb-bg-VHXH-7AV1-Z6Z6": [
+    {
+      "libelle": "231 Avenue Félix Faure 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2685_00231"
+    },
+    {
+      "libelle": "330 Rue Paul Bert 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5245_00330"
+    }
+  ],
+  "bdnb-bg-VJEJ-AYYN-QPRN": [
+    {
+      "libelle": "193 Avenue Félix Faure 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2685_00193"
+    }
+  ],
+  "bdnb-bg-VMBE-4VS7-3Z6L": [
+    {
+      "libelle": "56 Rue Baraban 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0645_00056"
+    }
+  ],
+  "bdnb-bg-VN5D-RL5T-NVRA": [
+    {
+      "libelle": "36 Rue Saint-Antoine 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6250_00036"
+    },
+    {
+      "libelle": "36B Rue Saint-Antoine 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6250_00036_bis"
+    }
+  ],
+  "bdnb-bg-VNCL-DWLL-H5X5": [
+    {
+      "libelle": "1.0 RUE CADETS DE LA FRANCE LIBRE 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_1156_00001"
+    },
+    {
+      "libelle": "5.0 RUE CADETS DE LA FRANCE LIBRE 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_1156_00005"
+    },
+    {
+      "libelle": "36B Avenue Lacassagne 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4080_00036_bis"
+    }
+  ],
+  "bdnb-bg-VQUJ-JMTX-BB2C": [
+    {
+      "libelle": "235 Avenue Félix Faure 69003 Lyon",
+      "cle_interop": "69383_2685_00235"
+    },
+    {
+      "libelle": "237 Avenue Félix Faure 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2685_00237"
+    },
+    {
+      "libelle": "336 Rue Paul Bert 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5245_00336"
+    }
+  ],
+  "bdnb-bg-VRHU-LHNX-3PHB": [
+    {
+      "libelle": "16 Rue Guilloud 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_3395_00016"
+    },
+    {
+      "libelle": "18 Rue Guilloud 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_3395_00018"
+    },
+    {
+      "libelle": "47 Rue Professeur Paul Sisley 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5790_00047"
+    }
+  ],
+  "bdnb-bg-VRQ2-82K8-7HRF": [
+    {
+      "libelle": "22 RUE DU DAUPHINE 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2090_00022"
+    },
+    {
+      "libelle": "1 Rue Saint Philippe 69003 Lyon",
+      "cle_interop": "69383_6520_00001"
+    }
+  ],
+  "bdnb-bg-VVS2-CGZ5-FN7Y": [
+    {
+      "libelle": "21 RUE MAURICE FLANDIN 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4680_00021"
+    },
+    {
+      "libelle": "10 Rue Riboud 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6025_00010"
+    }
+  ],
+  "bdnb-bg-VXSZ-LNCT-BVJF": [
+    {
+      "libelle": "58 Avenue Lacassagne 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4080_00058"
+    }
+  ],
+  "bdnb-bg-W5E1-2VY3-48EC": [
+    {
+      "libelle": "133 Rue Baraban 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0645_00133"
+    }
+  ],
+  "bdnb-bg-W5JY-2ALM-LUG3": [
+    {
+      "libelle": "29 Rue Roger Brechan 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6090_00029"
+    }
+  ],
+  "bdnb-bg-W624-4P36-PURP": [
+    {
+      "libelle": "59 Rue Baraban 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0645_00059"
+    },
+    {
+      "libelle": "10 Rue Saint Victorien 69003 Lyon",
+      "cle_interop": "69383_6580_00010"
+    },
+    {
+      "libelle": "57 Rue Baraban  Lyon 3e Arrondissement",
+      "cle_interop": "IMB/69383/X/00QT"
+    },
+    {
+      "libelle": "57 Rue Baraban  Lyon 3e Arrondissement",
+      "cle_interop": "IMB/69383/X/00QU"
+    }
+  ],
+  "bdnb-bg-W8VN-TH3A-X19Z": [
+    {
+      "libelle": "5 Cours Albert Thomas 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0120_00005"
+    },
+    {
+      "libelle": "5B Cours Albert Thomas 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0120_00005_bis"
+    },
+    {
+      "libelle": "7 Cours Albert Thomas 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0120_00007"
+    },
+    {
+      "libelle": "7B Cours Albert Thomas 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0120_00007_bis"
+    },
+    {
+      "libelle": "9 Cours Albert Thomas 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0120_00009"
+    }
+  ],
+  "bdnb-bg-WCZE-BJWK-JYM1": [
+    {
+      "libelle": "179 Avenue Félix Faure 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2685_00179"
+    }
+  ],
+  "bdnb-bg-WDLN-W7EH-5BGA": [
+    {
+      "libelle": "301 Rue Paul Bert 69003 Lyon",
+      "cle_interop": "69383_5245_00301"
+    },
+    {
+      "libelle": "10 Passage Meynis 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_76evkz_00010"
+    }
+  ],
+  "bdnb-bg-WFQ8-H7X5-BBHD": [
+    {
+      "libelle": "10 RUE DE NAZARETH 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4995_00010"
+    }
+  ],
+  "bdnb-bg-WG75-B81R-FQTY": [
+    {
+      "libelle": "1 Rue Meynis 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4755_00001"
+    },
+    {
+      "libelle": "290 Rue Paul Bert  Lyon 3e Arrondissement",
+      "cle_interop": "IMB/69383/C/1200"
+    }
+  ],
+  "bdnb-bg-WGTZ-WSS5-E62G": [
+    {
+      "libelle": "243 RUE PAUL BERT 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5245_00243"
+    }
+  ],
+  "bdnb-bg-WLXU-6YKR-D8DU": [
+    {
+      "libelle": "20 Avenue Lacassagne 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4080_00020"
+    },
+    {
+      "libelle": "24 Avenue Lacassagne 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4080_00024"
+    },
+    {
+      "libelle": "24B Avenue Lacassagne 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4080_00024_bis"
+    }
+  ],
+  "bdnb-bg-WRDA-6Y3C-FB1X": [
+    {
+      "libelle": "49 Rue Étienne Richerand 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2595_00049"
+    }
+  ],
+  "bdnb-bg-WW4Y-LLAE-JYGS": [
+    {
+      "libelle": "42 Rue du Dauphiné 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2090_00042"
+    }
+  ],
+  "bdnb-bg-WXNJ-S43J-2KDX": [
+    {
+      "libelle": "141 Rue Antoine Charial 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0312_00141"
+    }
+  ],
+  "bdnb-bg-X1PH-39VM-4738": [
+    {
+      "libelle": "83 COURS ALBERT THOMAS 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0120_00083"
+    },
+    {
+      "libelle": "85 Cours Albert Thomas  Lyon 3e Arrondissement",
+      "cle_interop": "IMB/69383/C/1765"
+    }
+  ],
+  "bdnb-bg-X53V-T1FQ-BG4H": [
+    {
+      "libelle": "215 Avenue Félix Faure 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2685_00215"
+    }
+  ],
+  "bdnb-bg-X6FL-16NZ-F4UB": [
+    {
+      "libelle": "1 Rue Villon 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_7485_00001"
+    },
+    {
+      "libelle": "3 Rue Villon 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_7485_00003"
+    }
+  ],
+  "bdnb-bg-X6N6-8SN4-LA99": [
+    {
+      "libelle": "97 Rue du Dauphiné 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2090_00097"
+    }
+  ],
+  "bdnb-bg-X6UQ-9RMD-36Y5": [
+    {
+      "libelle": "97 Rue Baraban 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0645_00097"
+    },
+    {
+      "libelle": "99 Rue Baraban 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0645_00099"
+    }
+  ],
+  "bdnb-bg-X6ZY-RMTC-GPEA": [
+    {
+      "libelle": "197 Avenue Félix Faure 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2685_00197"
+    },
+    {
+      "libelle": "199 Avenue Félix Faure 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2685_00199"
+    },
+    {
+      "libelle": "201 Avenue Félix Faure 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2685_00201"
+    }
+  ],
+  "bdnb-bg-X9K1-FRKD-EGP4": [
+    {
+      "libelle": "59 Cours Albert Thomas 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0120_00059"
+    },
+    {
+      "libelle": "61 Cours Albert Thomas 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0120_00061"
+    }
+  ],
+  "bdnb-bg-X9VB-91BP-NX9T": [
+    {
+      "libelle": "115 RUE BARABAN 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0645_00115"
+    }
+  ],
+  "bdnb-bg-XBX1-Q8NE-TDXH": [
+    {
+      "libelle": "117 Rue du Dauphiné 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2090_00117"
+    }
+  ],
+  "bdnb-bg-XD3V-294Z-6AAC": [
+    {
+      "libelle": "326 Rue Paul Bert 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5245_00326"
+    }
+  ],
+  "bdnb-bg-XEEK-6E83-3BX4": [
+    {
+      "libelle": "75 Rue du Dauphiné 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2090_00075"
+    }
+  ],
+  "bdnb-bg-XEH3-TX1E-4BGK": [
+    {
+      "libelle": "52 Rue Saint-Maximin 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6470_00052"
+    },
+    {
+      "libelle": "54 Rue Saint-Maximin 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6470_00054"
+    },
+    {
+      "libelle": "56 Rue Saint-Maximin 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6470_00056"
+    }
+  ],
+  "bdnb-bg-XFV3-8SMG-PGQD": [
+    {
+      "libelle": "21 Rue Sainte-Anne de Baraban 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6605_00021"
+    },
+    {
+      "libelle": "21a Rue Sainte Anne de Baraban 69003 Lyon",
+      "cle_interop": "69383_6605_00021_a"
+    },
+    {
+      "libelle": "21b Rue Sainte Anne de Baraban 69003 Lyon",
+      "cle_interop": "69383_6605_00021_b"
+    },
+    {
+      "libelle": "21c Rue Sainte Anne de Baraban 69003 Lyon",
+      "cle_interop": "69383_6605_00021_c"
+    }
+  ],
+  "bdnb-bg-XK3Z-EJHT-UR4E": [
+    {
+      "libelle": "3 Rue de l'Espérance 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2550_00003"
+    }
+  ],
+  "bdnb-bg-XMZC-EM72-55Q1": [
+    {
+      "libelle": "7 Rue Professeur Paul Sisley 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5790_00007"
+    },
+    {
+      "libelle": "8 Rue Professeur Paul Sisley 69003 Lyon",
+      "cle_interop": "69383_5790_00008"
+    }
+  ],
+  "bdnb-bg-XQF2-QFAW-JXCD": [
+    {
+      "libelle": "41 Rue Antoine Charial 69003 Lyon",
+      "cle_interop": "69383_0312_00041"
+    },
+    {
+      "libelle": "45 Rue Antoine Charial 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0312_00045"
+    },
+    {
+      "libelle": "67 Rue Etienne Richerand 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2595_00067"
+    }
+  ],
+  "bdnb-bg-XQQB-985E-JE7E": [
+    {
+      "libelle": "50B Rue Saint-Antoine 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6250_00050_bis"
+    }
+  ],
+  "bdnb-bg-XRFL-2LV8-JEN4": [
+    {
+      "libelle": "1 Rue Saint-Eusèbe 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6330_00001"
+    },
+    {
+      "libelle": "3 Rue Saint-Eusèbe 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6330_00003"
+    }
+  ],
+  "bdnb-bg-XSFG-TW4F-2M6Y": [
+    {
+      "libelle": "150 Rue Baraban 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0645_00150"
+    }
+  ],
+  "bdnb-bg-XXU3-L2LW-69P8": [
+    {
+      "libelle": "6 Avenue Lacassagne 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4080_00006"
+    }
+  ],
+  "bdnb-bg-Y295-3RNY-3GEF": [
+    {
+      "libelle": "1 Rue Moissonnier 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4805_00001"
+    },
+    {
+      "libelle": "3 Rue Moissonnier 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4805_00003"
+    },
+    {
+      "libelle": "5 Rue Moissonnier 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4805_00005"
+    },
+    {
+      "libelle": "222 Rue Paul Bert 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5245_00222"
+    },
+    {
+      "libelle": "224 Rue Paul Bert 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_5245_00224"
+    }
+  ],
+  "bdnb-bg-Y5EX-GMVD-YTXQ": [
+    {
+      "libelle": "139 Rue Baraban 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0645_00139"
+    },
+    {
+      "libelle": "141 Rue Baraban 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0645_00141"
+    },
+    {
+      "libelle": "143 Rue Baraban 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0645_00143"
+    }
+  ],
+  "bdnb-bg-Y8XP-6BXP-QDV5": [
+    {
+      "libelle": "23 Rue Etienne Richerand 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2595_00023"
+    }
+  ],
+  "bdnb-bg-YAR9-LWKG-N28H": [
+    {
+      "libelle": "26 Rue Maurice Flandin 69003 Lyon",
+      "cle_interop": "69383_4680_00026"
+    },
+    {
+      "libelle": "2B RUE RIBOUD 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6025_00002_bis"
+    }
+  ],
+  "bdnb-bg-YBGR-QJHH-DSUQ": [
+    {
+      "libelle": "20 Rue Frédéric Mistral 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2900_00020"
+    }
+  ],
+  "bdnb-bg-YBQ5-DZK6-AMBC": [
+    {
+      "libelle": "49 Rue Sainte-Anne de Baraban 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6605_00049"
+    },
+    {
+      "libelle": "49B Rue Sainte-Anne de Baraban 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6605_00049_bis"
+    }
+  ],
+  "bdnb-bg-YDYV-Q39D-4VFY": [
+    {
+      "libelle": "57 Rue Antoine Charial 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0312_00057"
+    }
+  ],
+  "bdnb-bg-YFY8-XRG7-16PK": [
+    {
+      "libelle": "89 Rue Bellecombe 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0795_00089"
+    },
+    {
+      "libelle": "13 Rue Saint-Antoine 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6250_00013"
+    },
+    {
+      "libelle": "15 Rue Saint-Antoine 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6250_00015"
+    }
+  ],
+  "bdnb-bg-YKDY-DF9W-GKA5": [
+    {
+      "libelle": "234 Cours Lafayette 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4095_00234"
+    },
+    {
+      "libelle": "4 Rue Maurice Flandin 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4680_00004"
+    }
+  ],
+  "bdnb-bg-YLHA-48KR-D1BL": [
+    {
+      "libelle": "5 Rue de l'Espérance 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2550_00005"
+    },
+    {
+      "libelle": "53 Rue Sainte-Anne de Baraban 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6605_00053"
+    }
+  ],
+  "bdnb-bg-YLS6-96WP-N4DU": [
+    {
+      "libelle": "240 Cours Lafayette 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4095_00240"
+    }
+  ],
+  "bdnb-bg-YTPF-DAGN-K1LQ": [
+    {
+      "libelle": "182 Avenue Félix Faure 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2685_00182"
+    },
+    {
+      "libelle": "182B Avenue Félix Faure 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2685_00182_bis"
+    },
+    {
+      "libelle": "9 Rue de la Metallurgie 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4745_00009"
+    },
+    {
+      "libelle": "11 Rue de la Metallurgie 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4745_00011"
+    }
+  ],
+  "bdnb-bg-YTPJ-Q2XB-2DEF": [
+    {
+      "libelle": "39 RUE GUILLOUD 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_3395_00039"
+    },
+    {
+      "libelle": "41 RUE GUILLOUD 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_3395_00041"
+    },
+    {
+      "libelle": "43 RUE GUILLOUD 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_3395_00043"
+    }
+  ],
+  "bdnb-bg-YVT9-BXCD-SPXC": [
+    {
+      "libelle": "178 Avenue Félix Faure 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2685_00178"
+    }
+  ],
+  "bdnb-bg-YW4Y-HHVN-RN3T": [
+    {
+      "libelle": "41 Rue Etienne Richerand 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2595_00041"
+    }
+  ],
+  "bdnb-bg-YYMX-BWJ9-KVGV": [
+    {
+      "libelle": "76 Rue Maurice Flandin 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4680_00076"
+    },
+    {
+      "libelle": "78 Rue Maurice Flandin 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4680_00078"
+    }
+  ],
+  "bdnb-bg-Z4AN-NC3P-E6P7": [
+    {
+      "libelle": "256 Cours Lafayette 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4095_00256"
+    }
+  ],
+  "bdnb-bg-Z5KX-EH2V-1YVC": [
+    {
+      "libelle": "7 Place de la Ferrandière 69003 Lyon",
+      "cle_interop": "69383_2730_00007"
+    },
+    {
+      "libelle": "9 Place de la Ferrandière 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2730_00009"
+    },
+    {
+      "libelle": "11 Place de la Ferrandière 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2730_00011"
+    },
+    {
+      "libelle": "13 Place de la Ferrandière 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2730_00013"
+    },
+    {
+      "libelle": "17.0 PLACE DE LA FERRANDIERE 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2730_00017"
+    }
+  ],
+  "bdnb-bg-Z5KY-TX3N-8L23": [
+    {
+      "libelle": "24 Rue Saint-Philippe 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6520_00024"
+    },
+    {
+      "libelle": "24B Rue Saint-Philippe 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6520_00024_bis"
+    }
+  ],
+  "bdnb-bg-Z75R-1SB6-5E3F": [
+    {
+      "libelle": "14 Rue Bara 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_0640_00014"
+    }
+  ],
+  "bdnb-bg-ZD1U-Y89Q-QK7S": [
+    {
+      "libelle": "13 RUE GUILLOUD 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_3395_00013"
+    }
+  ],
+  "bdnb-bg-ZGRF-99R6-UXW3": [
+    {
+      "libelle": "10 Rue Saint-Philippe 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6520_00010"
+    },
+    {
+      "libelle": "10B Rue Saint-Philippe 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6520_00010_bis"
+    }
+  ],
+  "bdnb-bg-ZJXY-4KSE-WT88": [
+    {
+      "libelle": "5 Petite rue Saint-Eusèbe 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_6328_00005"
+    }
+  ],
+  "bdnb-bg-ZP7Q-5AYC-N9M1": [
+    {
+      "libelle": "47 Rue du Dauphiné 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2090_00047"
+    },
+    {
+      "libelle": "49 Rue du Dauphiné 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2090_00049"
+    }
+  ],
+  "bdnb-bg-ZRJZ-GNPH-8KBH": [
+    {
+      "libelle": "5 Rue François Gillet 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2870_00005"
+    },
+    {
+      "libelle": "7 Rue François Gillet 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2870_00007"
+    },
+    {
+      "libelle": "9 Rue François Gillet 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2870_00009"
+    },
+    {
+      "libelle": "11 Rue François Gillet 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_2870_00011"
+    },
+    {
+      "libelle": "13 Rue François Gillet 69003 Lyon",
+      "cle_interop": "69383_2870_00013"
+    }
+  ],
+  "bdnb-bg-ZTQ2-TQY1-5MFV": [
+    {
+      "libelle": "1 RUE DE LA VILLETTE 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_7480_00001"
+    },
+    {
+      "libelle": "3 RUE DE LA VILLETTE 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_7480_00003"
+    }
+  ],
+  "bdnb-bg-ZVE8-JEVU-TZ7Q": [
+    {
+      "libelle": "9 Rue de Montbrillant 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4873_00009"
+    }
+  ],
+  "bdnb-bg-ZYRR-A3F4-F3HL": [
+    {
+      "libelle": "45B Avenue Lacassagne 69003 Lyon 3e Arrondissement",
+      "cle_interop": "69383_4080_00045_bis"
+    }
+  ]
+}

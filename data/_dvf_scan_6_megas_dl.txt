@@ -1,0 +1,613 @@
+[load] C:\Users\Station 5\DPE-PROSPECTOR\data\secteur_dauphine_lacassagne.json
+[mutations DVF] total = 8852
+
+==============================================================================================================
+  E1a  PAVILLON DE FLORE (7/9 + 7B)
+==============================================================================================================
+  Total mutations DVF dans cet ensemble : 17
+
+  -- 7|COURS|ALBERT THOMAS  (12 mutation(s)) --
+     date       |       valeur | nature         | surf C1 |  lot1 | adr
+     ----------------------------------------------------------------------------------------------------
+     16/09/2021 |      418 500 | Vente          |    76.2 |   166 | 7 CRS ALBERT THOMAS
+     16/09/2021 |      418 500 | Vente          |     0.0 |   137 | 7 CRS ALBERT THOMAS
+     18/02/2022 |      436 850 | Vente          |     0.0 |    90 | 7 CRS ALBERT THOMAS
+     20/05/2022 |      384 000 | Vente          |     0.0 |   103 | 7 CRS ALBERT THOMAS
+     19/07/2022 |      458 070 | Vente          |     0.0 |    81 | 7 CRS ALBERT THOMAS
+     25/08/2022 |      476 700 | Vente          |     0.0 |   121 | 7 CRS ALBERT THOMAS
+     25/08/2022 |      476 700 | Vente          |    83.3 |   159 | 7 CRS ALBERT THOMAS
+     28/02/2023 |      350 000 | Vente          |     0.0 |   150 | 7 CRS ALBERT THOMAS
+     06/09/2023 |      270 000 | Vente          |    51.0 |   173 | 7 CRS ALBERT THOMAS
+     06/09/2023 |      270 000 | Vente          |     0.0 |   173 | 7 CRS ALBERT THOMAS
+     26/08/2025 |      382 450 | Vente          |     0.0 |   154 | 7 CRS ALBERT THOMAS
+     08/09/2025 |      234 750 | Vente          |     0.0 |    97 | 7 CRS ALBERT THOMAS
+
+  -- 9|COURS|ALBERT THOMAS  (5 mutation(s)) --
+     date       |       valeur | nature         | surf C1 |  lot1 | adr
+     ----------------------------------------------------------------------------------------------------
+     28/12/2021 |      415 000 | Vente          |    81.9 |   222 | 9 CRS ALBERT THOMAS
+     19/07/2022 |      458 070 | Vente          |    80.1 |   232 | 9 CRS ALBERT THOMAS
+     13/01/2023 |      196 000 | Vente          |    33.4 |   217 | 9 CRS ALBERT THOMAS
+     28/02/2023 |      350 000 | Vente          |    67.0 |   219 | 9 CRS ALBERT THOMAS
+     26/08/2025 |      382 450 | Vente          |    78.7 |   226 | 9 CRS ALBERT THOMAS
+
+==============================================================================================================
+  E1b  PAVILLON DE FLORE II (5/5B + 7B)
+==============================================================================================================
+  Total mutations DVF dans cet ensemble : 39
+
+  -- 5|COURS|ALBERT THOMAS  (17 mutation(s)) --
+     date       |       valeur | nature         | surf C1 |  lot1 | adr
+     ----------------------------------------------------------------------------------------------------
+     29/04/2021 |       24 000 | Vente          |     0.0 |   625 | 5 CRS ALBERT THOMAS
+     04/04/2022 |       21 000 | Vente          |     0.0 |   624 | 5 CRS ALBERT THOMAS
+     13/04/2022 |      365 000 | Vente          |    72.0 |   669 | 5 CRS ALBERT THOMAS
+     13/04/2022 |      365 000 | Vente          |     0.0 |   669 | 5 CRS ALBERT THOMAS
+     13/04/2022 |      365 000 | Vente          |     0.0 |   611 | 5 CRS ALBERT THOMAS
+     15/04/2022 |      330 000 | Vente          |     0.0 |   603 | 5 CRS ALBERT THOMAS
+     15/04/2022 |      330 000 | Vente          |    73.0 |   677 | 5 CRS ALBERT THOMAS
+     05/05/2022 |      320 000 | Vente          |    72.0 |   680 | 5 CRS ALBERT THOMAS
+     12/10/2022 |      198 900 | Vente          |    37.0 |   711 | 5 CRS ALBERT THOMAS
+     10/01/2023 |      455 800 | Vente          |     0.0 |   623 | 5 CRS ALBERT THOMAS
+     05/06/2024 |      160 000 | Vente          |     0.0 |   648 | 5 CRS ALBERT THOMAS
+     05/06/2024 |      160 000 | Vente          |    41.8 |   700 | 5 CRS ALBERT THOMAS
+     12/06/2024 |       23 000 | Vente          |     0.0 |   625 | 5 CRS ALBERT THOMAS
+     10/07/2024 |      739 700 | Vente          |     0.0 |   617 | 5 CRS ALBERT THOMAS
+     10/07/2024 |      739 700 | Vente          |   113.0 |   665 | 5 CRS ALBERT THOMAS
+     10/07/2024 |      739 700 | Vente          |     0.0 |   624 | 5 CRS ALBERT THOMAS
+     24/10/2024 |      264 000 | Vente          |     0.0 |   650 | 5 CRS ALBERT THOMAS
+
+  -- 5B|COURS|ALBERT THOMAS  (3 mutation(s)) --
+     date       |       valeur | nature         | surf C1 |  lot1 | adr
+     ----------------------------------------------------------------------------------------------------
+     10/01/2023 |      455 800 | Vente          |    83.0 |   692 | 5B CRS ALBERT THOMAS
+     24/10/2024 |      264 000 | Vente          |     0.0 |   686 | 5B CRS ALBERT THOMAS
+     24/10/2024 |      264 000 | Vente          |    51.0 |   686 | 5B CRS ALBERT THOMAS
+
+  -- 7B|COURS|ALBERT THOMAS  (19 mutation(s)) --
+     date       |       valeur | nature         | surf C1 |  lot1 | adr
+     ----------------------------------------------------------------------------------------------------
+     12/01/2021 |      208 149 | Vente          |    82.0 |    57 | 7B CRS ALBERT THOMAS
+     12/01/2021 |      208 149 | Vente          |    55.0 |    34 | 7B CRS ALBERT THOMAS
+     12/01/2021 |      208 149 | Vente          |     0.0 |    57 | 7B CRS ALBERT THOMAS
+     12/01/2021 |      208 149 | Vente          |    55.0 |    34 | 7B CRS ALBERT THOMAS
+     30/11/2021 |      104 000 | Vente          |    42.5 |   181 | 7B CRS ALBERT THOMAS
+     30/11/2021 |      104 000 | Vente          |    42.5 |   181 | 7B CRS ALBERT THOMAS
+     18/02/2022 |      436 850 | Vente          |    81.5 |   193 | 7B CRS ALBERT THOMAS
+     18/02/2022 |      436 850 | Vente          |    81.5 |   193 | 7B CRS ALBERT THOMAS
+     18/03/2022 |      200 000 | Vente          |    52.5 |   180 | 7B CRS ALBERT THOMAS
+     18/03/2022 |      200 000 | Vente          |    52.5 |   180 | 7B CRS ALBERT THOMAS
+     20/05/2022 |      384 000 | Vente          |    70.2 |   199 | 7B CRS ALBERT THOMAS
+     20/05/2022 |      384 000 | Vente          |    70.2 |   199 | 7B CRS ALBERT THOMAS
+     10/11/2022 |      470 000 | Vente          |   100.5 |   185 | 7B CRS ALBERT THOMAS
+     10/11/2022 |      470 000 | Vente          |   100.5 |   185 | 7B CRS ALBERT THOMAS
+     17/10/2023 |      335 000 | Vente          |    70.0 |   204 | 7B CRS ALBERT THOMAS
+     17/10/2023 |      335 000 | Vente          |     0.0 |   204 | 7B CRS ALBERT THOMAS
+     12/05/2025 |      310 000 | Vente          |    70.2 |   184 | 7B CRS ALBERT THOMAS
+     08/09/2025 |      234 750 | Vente          |    35.0 |   206 | 7B CRS ALBERT THOMAS
+     08/09/2025 |      234 750 | Vente          |     0.0 |   206 | 7B CRS ALBERT THOMAS
+
+==============================================================================================================
+  E2  ANTOINE CHARIAL (AUBIGNY+RICHERAND+TERNOIS)
+==============================================================================================================
+  Total mutations DVF dans cet ensemble : 76
+
+  -- 28|RUE|ETIENNE RICHERAND  (52 mutation(s)) --
+     date       |       valeur | nature         | surf C1 |  lot1 | adr
+     ----------------------------------------------------------------------------------------------------
+     29/03/2021 |       63 000 | Vente          |     0.0 |   373 | 28 RUE ETIENNE RICHERAND
+     29/03/2021 |       63 000 | Vente          |     0.0 |   193 | 28 RUE ETIENNE RICHERAND
+     29/03/2021 |       63 000 | Vente          |   103.0 |   193 | 28 RUE ETIENNE RICHERAND
+     30/11/2021 |      394 050 | Vente          |    96.0 |   193 | 28 RUE ETIENNE RICHERAND
+     30/11/2021 |      394 050 | Vente          |    96.0 |   193 | 28 RUE ETIENNE RICHERAND
+     13/01/2022 |       17 800 | Vente          |     0.0 |   352 | 28 RUE ETIENNE RICHERAND
+     01/03/2022 |      275 930 | Vente          |     0.0 |   358 | 28 RUE ETIENNE RICHERAND
+     01/03/2022 |      275 930 | Vente          |    52.2 |   207 | 28 RUE ETIENNE RICHERAND
+     01/03/2022 |      275 930 | Vente          |    52.2 |   207 | 28 RUE ETIENNE RICHERAND
+     18/05/2022 |      368 700 | Vente          |    96.0 |   157 | 28 RUE ETIENNE RICHERAND
+     18/05/2022 |      368 700 | Vente          |     0.0 |   362 | 28 RUE ETIENNE RICHERAND
+     18/05/2022 |      368 700 | Vente          |    96.0 |   157 | 28 RUE ETIENNE RICHERAND
+     18/07/2022 |      182 000 | Vente          |    52.5 |   191 | 28 RUE ETIENNE RICHERAND
+     18/07/2022 |      182 000 | Vente          |    52.5 |   191 | 28 RUE ETIENNE RICHERAND
+     15/09/2022 |      363 400 | Vente          |     0.0 |   344 | 28 RUE ETIENNE RICHERAND
+     19/09/2022 |      290 000 | Vente          |    79.8 |   151 | 28 RUE ETIENNE RICHERAND
+     19/09/2022 |      290 000 | Vente          |    79.8 |   151 | 28 RUE ETIENNE RICHERAND
+     25/10/2022 |      193 000 | Vente          |     0.0 |   351 | 28 RUE ETIENNE RICHERAND
+     25/10/2022 |      193 000 | Vente          |    52.5 |   167 | 28 RUE ETIENNE RICHERAND
+     25/10/2022 |      193 000 | Vente          |    52.5 |   167 | 28 RUE ETIENNE RICHERAND
+     28/11/2022 |      178 000 | Vente          |    52.4 |   159 | 28 RUE ETIENNE RICHERAND
+     28/11/2022 |      178 000 | Vente          |    52.4 |   159 | 28 RUE ETIENNE RICHERAND
+     09/02/2023 |       15 000 | Vente          |     0.0 |   379 | 28 RUE ETIENNE RICHERAND
+     26/05/2023 |      250 000 | Vente          |     0.0 |   348 | 28 RUE ETIENNE RICHERAND
+     04/09/2023 |      268 000 | Vente          |     0.0 |   360 | 28 RUE ETIENNE RICHERAND
+     15/09/2023 |       12 000 | Vente          |     0.0 |   365 | 28 RUE ETIENNE RICHERAND
+     18/10/2023 |      190 000 | Vente          |     0.0 |   340 | 28 RUE ETIENNE RICHERAND
+     18/10/2023 |      190 000 | Vente          |    52.9 |   183 | 28 RUE ETIENNE RICHERAND
+     18/10/2023 |      190 000 | Vente          |    52.9 |   183 | 28 RUE ETIENNE RICHERAND
+     20/11/2023 |      260 000 | Vente          |     0.0 |   370 | 28 RUE ETIENNE RICHERAND
+     17/01/2024 |       21 500 | Vente          |     0.0 |   373 | 28 RUE ETIENNE RICHERAND
+     26/03/2024 |      221 600 | Vente          |    52.2 |   172 | 28 RUE ETIENNE RICHERAND
+     26/03/2024 |      221 600 | Vente          |    52.2 |   172 | 28 RUE ETIENNE RICHERAND
+     29/03/2024 |      325 000 | Vente          |     0.0 |   390 | 28 RUE ETIENNE RICHERAND
+     04/07/2024 |      200 000 | Vente          |    52.0 |   192 | 28 RUE ETIENNE RICHERAND
+     04/07/2024 |      200 000 | Vente          |    52.0 |   192 | 28 RUE ETIENNE RICHERAND
+     23/07/2024 |      325 855 | Vente          |    94.5 |   194 | 28 RUE ETIENNE RICHERAND
+     23/07/2024 |      325 855 | Vente          |    94.5 |   194 | 28 RUE ETIENNE RICHERAND
+     23/09/2024 |      266 000 | Vente          |    94.5 |   166 | 28 RUE ETIENNE RICHERAND
+     23/09/2024 |      266 000 | Vente          |    94.5 |   166 | 28 RUE ETIENNE RICHERAND
+     11/02/2025 |      182 000 | Vente          |    52.5 |   168 | 28 RUE ETIENNE RICHERAND
+     11/02/2025 |      182 000 | Vente          |    52.5 |   168 | 28 RUE ETIENNE RICHERAND
+     19/02/2025 |      232 900 | Vente          |    52.7 |   184 | 28 RUE ETIENNE RICHERAND
+     19/02/2025 |      232 900 | Vente          |    52.7 |   184 | 28 RUE ETIENNE RICHERAND
+     22/05/2025 |      264 000 | Vente          |    94.6 |   162 | 28 RUE ETIENNE RICHERAND
+     22/05/2025 |      264 000 | Vente          |    94.6 |   162 | 28 RUE ETIENNE RICHERAND
+     06/06/2025 |      121 000 | Vente          |    52.5 |   195 | 28 RUE ETIENNE RICHERAND
+     06/06/2025 |      121 000 | Vente          |    52.5 |   195 | 28 RUE ETIENNE RICHERAND
+     03/07/2025 |      361 000 | Vente          |    96.4 |   193 | 28 RUE ETIENNE RICHERAND
+     03/07/2025 |      361 000 | Vente          |    96.4 |   193 | 28 RUE ETIENNE RICHERAND
+     18/12/2025 |      273 000 | Vente          |    96.4 |   189 | 28 RUE ETIENNE RICHERAND
+     18/12/2025 |      273 000 | Vente          |    96.4 |   189 | 28 RUE ETIENNE RICHERAND
+
+  -- 30|RUE|ETIENNE RICHERAND  (24 mutation(s)) --
+     date       |       valeur | nature         | surf C1 |  lot1 | adr
+     ----------------------------------------------------------------------------------------------------
+     25/02/2021 |      375 160 | Vente          |    94.7 |   130 | 30 RUE ETIENNE RICHERAND
+     25/02/2021 |      375 160 | Vente          |    94.7 |   130 | 30 RUE ETIENNE RICHERAND
+     27/04/2021 |      166 500 | Vente          |    96.0 |    87 | 30 RUE ETIENNE RICHERAND
+     27/04/2021 |      166 500 | Vente          |    96.0 |    87 | 30 RUE ETIENNE RICHERAND
+     29/09/2021 |      190 000 | Vente          |    52.3 |   145 | 30 RUE ETIENNE RICHERAND
+     29/09/2021 |      190 000 | Vente          |    52.3 |   145 | 30 RUE ETIENNE RICHERAND
+     15/10/2021 |      227 000 | Vente          |    52.0 |   105 | 30 RUE ETIENNE RICHERAND
+     15/10/2021 |      227 000 | Vente          |    52.0 |   105 | 30 RUE ETIENNE RICHERAND
+     21/04/2022 |      169 000 | Vente          |   103.0 |    90 | 30 RUE ETIENNE RICHERAND
+     21/04/2022 |      169 000 | Vente          |     0.0 |    90 | 30 RUE ETIENNE RICHERAND
+     15/09/2022 |      363 400 | Vente          |    96.6 |   107 | 30 RUE ETIENNE RICHERAND
+     15/09/2022 |      363 400 | Vente          |    96.6 |   107 | 30 RUE ETIENNE RICHERAND
+     30/03/2023 |      263 000 | Vente          |    56.2 |    88 | 30 RUE ETIENNE RICHERAND
+     30/03/2023 |      263 000 | Vente          |    56.2 |    88 | 30 RUE ETIENNE RICHERAND
+     26/05/2023 |      250 000 | Vente          |     0.0 |   124 | 30 RUE ETIENNE RICHERAND
+     26/05/2023 |      250 000 | Vente          |    58.0 |   124 | 30 RUE ETIENNE RICHERAND
+     04/09/2023 |      268 000 | Vente          |    52.1 |   120 | 30 RUE ETIENNE RICHERAND
+     04/09/2023 |      268 000 | Vente          |    52.1 |   120 | 30 RUE ETIENNE RICHERAND
+     20/11/2023 |      260 000 | Vente          |    52.7 |   104 | 30 RUE ETIENNE RICHERAND
+     20/11/2023 |      260 000 | Vente          |    52.7 |   104 | 30 RUE ETIENNE RICHERAND
+     29/03/2024 |      325 000 | Vente          |    94.9 |   142 | 30 RUE ETIENNE RICHERAND
+     29/03/2024 |      325 000 | Vente          |    94.9 |   142 | 30 RUE ETIENNE RICHERAND
+     23/05/2025 |      225 000 | Vente          |    52.2 |   105 | 30 RUE ETIENNE RICHERAND
+     23/05/2025 |      225 000 | Vente          |    52.2 |   105 | 30 RUE ETIENNE RICHERAND
+
+==============================================================================================================
+  E3  LA VICTORIENNE (PIONCHON+ST VICTORIEN+ST SIDOINE)
+==============================================================================================================
+  Total mutations DVF dans cet ensemble : 69
+
+  -- 4|RUE|CLAUDIUS PIONCHON  (14 mutation(s)) --
+     date       |       valeur | nature         | surf C1 |  lot1 | adr
+     ----------------------------------------------------------------------------------------------------
+     24/03/2021 |      266 628 | Vente          |    50.7 |   317 | 4 RUE CLAUDIUS PIONCHON
+     24/03/2021 |      266 628 | Vente          |    50.7 |   317 | 4 RUE CLAUDIUS PIONCHON
+     28/06/2022 |      385 000 | Vente          |    79.2 |   312 | 4 RUE CLAUDIUS PIONCHON
+     28/06/2022 |      385 000 | Vente          |    79.2 |   312 | 4 RUE CLAUDIUS PIONCHON
+     29/06/2023 |      360 000 | Vente          |     0.0 |   306 | 4 RUE CLAUDIUS PIONCHON
+     29/06/2023 |      360 000 | Vente          |    79.0 |   306 | 4 RUE CLAUDIUS PIONCHON
+     08/11/2024 |      187 000 | Vente          |     0.0 |   313 | 4 RUE CLAUDIUS PIONCHON
+     08/11/2024 |      187 000 | Vente          |    38.0 |   313 | 4 RUE CLAUDIUS PIONCHON
+     12/11/2024 |      240 600 | Vente          |     0.0 |   311 | 4 RUE CLAUDIUS PIONCHON
+     12/11/2024 |      240 600 | Vente          |    51.0 |   311 | 4 RUE CLAUDIUS PIONCHON
+     27/01/2025 |      307 150 | Vente          |    78.2 |   309 | 4 RUE CLAUDIUS PIONCHON
+     27/01/2025 |      307 150 | Vente          |    78.2 |   309 | 4 RUE CLAUDIUS PIONCHON
+     29/04/2025 |      334 800 | Vente          |    79.6 |   315 | 4 RUE CLAUDIUS PIONCHON
+     29/04/2025 |      334 800 | Vente          |    79.6 |   315 | 4 RUE CLAUDIUS PIONCHON
+
+  -- 6|RUE|CLAUDIUS PIONCHON  (4 mutation(s)) --
+     date       |       valeur | nature         | surf C1 |  lot1 | adr
+     ----------------------------------------------------------------------------------------------------
+     28/04/2022 |      235 000 | Vente          |    44.4 |   358 | 6 RUE CLAUDIUS PIONCHON
+     28/04/2022 |      235 000 | Vente          |    44.4 |   358 | 6 RUE CLAUDIUS PIONCHON
+     16/01/2023 |      349 000 | Vente          |     0.0 |   357 | 6 RUE CLAUDIUS PIONCHON
+     16/01/2023 |      349 000 | Vente          |    79.0 |   357 | 6 RUE CLAUDIUS PIONCHON
+
+  -- 8|RUE|CLAUDIUS PIONCHON  (19 mutation(s)) --
+     date       |       valeur | nature         | surf C1 |  lot1 | adr
+     ----------------------------------------------------------------------------------------------------
+     06/05/2021 |      356 630 | Vente          |    77.9 |   403 | 8 RUE CLAUDIUS PIONCHON
+     26/05/2021 |      310 000 | Vente          |    79.1 |   418 | 8 RUE CLAUDIUS PIONCHON
+     26/05/2021 |      310 000 | Vente          |    79.1 |   418 | 8 RUE CLAUDIUS PIONCHON
+     14/09/2021 |      309 070 | Vente          |    78.7 |   410 | 8 RUE CLAUDIUS PIONCHON
+     14/09/2021 |      309 070 | Vente          |    78.7 |   410 | 8 RUE CLAUDIUS PIONCHON
+     14/04/2022 |      324 200 | Vente          |    78.0 |   409 | 8 RUE CLAUDIUS PIONCHON
+     14/04/2022 |      324 200 | Vente          |    78.0 |   409 | 8 RUE CLAUDIUS PIONCHON
+     28/04/2022 |      227 800 | Vente          |    44.3 |   411 | 8 RUE CLAUDIUS PIONCHON
+     28/04/2022 |      227 800 | Vente          |    44.3 |   411 | 8 RUE CLAUDIUS PIONCHON
+     21/03/2023 |      360 710 | Vente          |    78.0 |   430 | 8 RUE CLAUDIUS PIONCHON
+     21/03/2023 |      360 710 | Vente          |    79.0 |   416 | 8 RUE CLAUDIUS PIONCHON
+     21/03/2023 |      360 710 | Vente          |     0.0 |   430 | 8 RUE CLAUDIUS PIONCHON
+     21/03/2023 |      360 710 | Vente          |    79.0 |   416 | 8 RUE CLAUDIUS PIONCHON
+     28/10/2024 |      274 000 | Vente          |    79.0 |   406 | 8 RUE CLAUDIUS PIONCHON
+     28/10/2024 |      274 000 | Vente          |    79.0 |   406 | 8 RUE CLAUDIUS PIONCHON
+     08/01/2025 |      310 000 | Vente          |     0.0 |   403 | 8 RUE CLAUDIUS PIONCHON
+     08/01/2025 |      310 000 | Vente          |    78.0 |   403 | 8 RUE CLAUDIUS PIONCHON
+     17/02/2025 |      369 000 | Vente          |     0.0 |   409 | 8 RUE CLAUDIUS PIONCHON
+     17/02/2025 |      369 000 | Vente          |    78.0 |   409 | 8 RUE CLAUDIUS PIONCHON
+
+  -- 15|RUE|ST VICTORIEN  (4 mutation(s)) --
+     date       |       valeur | nature         | surf C1 |  lot1 | adr
+     ----------------------------------------------------------------------------------------------------
+     03/06/2021 |      425 000 | Vente          |    95.0 |   510 | 15 RUE ST VICTORIEN
+     03/06/2021 |      425 000 | Vente          |     0.0 |   510 | 15 RUE ST VICTORIEN
+     31/03/2025 |      499 000 | Vente          |   109.2 |   513 | 15 RUE ST VICTORIEN
+     31/03/2025 |      499 000 | Vente          |   109.2 |   513 | 15 RUE ST VICTORIEN
+
+  -- 17|RUE|ST VICTORIEN  (2 mutation(s)) --
+     date       |       valeur | nature         | surf C1 |  lot1 | adr
+     ----------------------------------------------------------------------------------------------------
+     06/10/2025 |      270 000 | Vente          |    79.0 |   454 | 17 RUE ST VICTORIEN
+     06/10/2025 |      270 000 | Vente          |     0.0 |   454 | 17 RUE ST VICTORIEN
+
+  -- 12|RUE|ST SIDOINE  (6 mutation(s)) --
+     date       |       valeur | nature         | surf C1 |  lot1 | adr
+     ----------------------------------------------------------------------------------------------------
+     07/12/2021 |      229 000 | Vente          |    45.4 |    53 | 12 RUE ST SIDOINE
+     07/12/2021 |      229 000 | Vente          |    45.4 |    53 | 12 RUE ST SIDOINE
+     04/04/2024 |      300 000 | Vente          |     0.0 |   117 | 12 RUE ST SIDOINE
+     04/04/2024 |      300 000 | Vente          |    70.0 |   117 | 12 RUE ST SIDOINE
+     29/08/2025 |      232 000 | Vente          |    45.0 |    65 | 12 RUE ST SIDOINE
+     29/08/2025 |      232 000 | Vente          |     0.0 |    65 | 12 RUE ST SIDOINE
+
+  -- 14|RUE|ST SIDOINE  (5 mutation(s)) --
+     date       |       valeur | nature         | surf C1 |  lot1 | adr
+     ----------------------------------------------------------------------------------------------------
+     16/03/2021 |      492 000 | Vente          |   112.7 |   106 | 14 RUE ST SIDOINE
+     14/12/2023 |      235 400 | Vente          |   112.7 |   104 | 14 RUE ST SIDOINE
+     14/12/2023 |      235 400 | Vente          |   112.7 |   104 | 14 RUE ST SIDOINE
+     12/09/2024 |      465 000 | Vente          |   112.5 |   114 | 14 RUE ST SIDOINE
+     12/09/2024 |      465 000 | Vente          |   112.5 |   114 | 14 RUE ST SIDOINE
+
+  -- 18|RUE|ST SIDOINE  (2 mutation(s)) --
+     date       |       valeur | nature         | surf C1 |  lot1 | adr
+     ----------------------------------------------------------------------------------------------------
+     28/06/2022 |      395 000 | Vente          |    95.2 |   202 | 18 RUE ST SIDOINE
+     28/06/2022 |      395 000 | Vente          |    95.2 |   202 | 18 RUE ST SIDOINE
+
+  -- 20|RUE|ST SIDOINE  (13 mutation(s)) --
+     date       |       valeur | nature         | surf C1 |  lot1 | adr
+     ----------------------------------------------------------------------------------------------------
+     02/09/2021 |      225 000 | Vente          |    44.2 |   261 | 20 RUE ST SIDOINE
+     02/09/2021 |      225 000 | Vente          |    44.2 |   261 | 20 RUE ST SIDOINE
+     14/01/2022 |      218 000 | Vente          |    44.0 |   264 | 20 RUE ST SIDOINE
+     14/01/2022 |      218 000 | Vente          |    44.0 |   264 | 20 RUE ST SIDOINE
+     21/07/2022 |      370 000 | Vente          |    79.0 |   257 | 20 RUE ST SIDOINE
+     21/07/2022 |      370 000 | Vente          |    79.0 |   257 | 20 RUE ST SIDOINE
+     28/10/2022 |      354 650 | Vente          |    76.8 |   262 | 20 RUE ST SIDOINE
+     28/10/2022 |      354 650 | Vente          |    76.8 |   262 | 20 RUE ST SIDOINE
+     28/06/2023 |      120 000 | Vente          |    28.0 |   252 | 20 RUE ST SIDOINE
+     12/12/2023 |      226 050 | Vente          |    43.6 |   255 | 20 RUE ST SIDOINE
+     12/12/2023 |      226 050 | Vente          |    43.6 |   255 | 20 RUE ST SIDOINE
+     15/04/2024 |      205 550 | Vente          |     0.0 |   251 | 20 RUE ST SIDOINE
+     15/04/2024 |      205 550 | Vente          |    64.0 |   251 | 20 RUE ST SIDOINE
+
+==============================================================================================================
+  E4  LE BARABAN 1 (BARABAN+LOUIS JASSERON)
+==============================================================================================================
+  Total mutations DVF dans cet ensemble : 103
+
+  -- 61|RUE|BARABAN  (18 mutation(s)) --
+     date       |       valeur | nature         | surf C1 |  lot1 | adr
+     ----------------------------------------------------------------------------------------------------
+     08/06/2021 |      300 000 | Vente          |    88.0 |   307 | 61 RUE BARABAN
+     08/06/2021 |      300 000 | Vente          |     0.0 |   307 | 61 RUE BARABAN
+     11/06/2021 |      364 000 | Vente          |    84.8 |   315 | 61 RUE BARABAN
+     11/06/2021 |      364 000 | Vente          |    84.8 |   315 | 61 RUE BARABAN
+     16/01/2023 |      300 000 | Vente          |    83.6 |   313 | 61 RUE BARABAN
+     16/01/2023 |      300 000 | Vente          |    83.6 |   313 | 61 RUE BARABAN
+     30/03/2023 |      530 000 | Vente          |   111.9 |   310 | 61 RUE BARABAN
+     30/03/2023 |      530 000 | Vente          |   111.9 |   310 | 61 RUE BARABAN
+     20/06/2023 |      381 900 | Vente          |    82.8 |   307 | 61 RUE BARABAN
+     20/06/2023 |      381 900 | Vente          |    82.8 |   307 | 61 RUE BARABAN
+     15/03/2024 |      260 000 | Vente          |    84.5 |   317 | 61 RUE BARABAN
+     15/03/2024 |      260 000 | Vente          |    84.5 |   317 | 61 RUE BARABAN
+     18/12/2024 |      399 850 | Vente          |   113.1 |   304 | 61 RUE BARABAN
+     18/12/2024 |      399 850 | Vente          |   113.1 |   304 | 61 RUE BARABAN
+     11/04/2025 |      335 000 | Vente          |   111.9 |   310 | 61 RUE BARABAN
+     11/04/2025 |      335 000 | Vente          |   111.9 |   310 | 61 RUE BARABAN
+     01/09/2025 |      507 000 | Vente          |   113.2 |   316 | 61 RUE BARABAN
+     01/09/2025 |      507 000 | Vente          |   113.2 |   316 | 61 RUE BARABAN
+
+  -- 63|RUE|BARABAN  (6 mutation(s)) --
+     date       |       valeur | nature         | surf C1 |  lot1 | adr
+     ----------------------------------------------------------------------------------------------------
+     19/09/2022 |      296 000 | Vente          |    88.0 |   409 | 63 RUE BARABAN
+     19/09/2022 |      296 000 | Vente          |     0.0 |   409 | 63 RUE BARABAN
+     28/05/2025 |      326 450 | Vente          |    83.8 |   411 | 63 RUE BARABAN
+     28/05/2025 |      326 450 | Vente          |    83.8 |   411 | 63 RUE BARABAN
+     02/07/2025 |      346 000 | Vente          |    84.0 |   414 | 63 RUE BARABAN
+     02/07/2025 |      346 000 | Vente          |    84.0 |   414 | 63 RUE BARABAN
+
+  -- 65|RUE|BARABAN  (4 mutation(s)) --
+     date       |       valeur | nature         | surf C1 |  lot1 | adr
+     ----------------------------------------------------------------------------------------------------
+     11/04/2022 |      112 200 | Vente          |     0.0 |   425 | 65 RUE BARABAN
+     11/04/2022 |      112 200 | Vente          |    20.0 |   425 | 65 RUE BARABAN
+     03/10/2024 |      289 100 | Vente          |    72.3 |   517 | 65 RUE BARABAN
+     03/10/2024 |      289 100 | Vente          |    72.3 |   517 | 65 RUE BARABAN
+
+  -- 67|RUE|BARABAN  (7 mutation(s)) --
+     date       |       valeur | nature         | surf C1 |  lot1 | adr
+     ----------------------------------------------------------------------------------------------------
+     28/10/2021 |      240 000 | Vente          |    60.0 |   633 | 67 RUE BARABAN
+     08/09/2022 |      156 667 | Vente          |    60.0 |   631 | 67 RUE BARABAN
+     07/04/2023 |      310 000 | Vente          |    83.9 |   605 | 67 RUE BARABAN
+     07/04/2023 |      310 000 | Vente          |    83.9 |   605 | 67 RUE BARABAN
+     26/03/2025 |       78 334 | Vente          |    60.0 |   631 | 67 RUE BARABAN
+     07/05/2025 |      320 500 | Vente          |    84.0 |   607 | 67 RUE BARABAN
+     07/05/2025 |      320 500 | Vente          |    84.0 |   607 | 67 RUE BARABAN
+
+  -- 69|RUE|BARABAN  (50 mutation(s)) --
+     date       |       valeur | nature         | surf C1 |  lot1 | adr
+     ----------------------------------------------------------------------------------------------------
+     08/06/2021 |      300 000 | Vente          |     0.0 |   855 | 69 RUE BARABAN
+     11/06/2021 |      364 000 | Vente          |     0.0 |   821 | 69 RUE BARABAN
+     10/09/2021 |       27 000 | Vente          |     0.0 |   138 | 69 RUE BARABAN
+     27/10/2021 |      330 000 | Vente          |     0.0 |   811 | 69 RUE BARABAN
+     28/10/2021 |      240 000 | Vente          |   102.6 |   646 | 69 RUE BARABAN
+     17/02/2022 |      385 420 | Vente          |     0.0 |   811 | 69 RUE BARABAN
+     20/05/2022 |       24 500 | Vente          |     0.0 |   155 | 69 RUE BARABAN
+     08/09/2022 |      156 667 | Vente          |     0.0 |   639 | 69 RUE BARABAN
+     08/09/2022 |      156 667 | Vente          |     0.0 |   638 | 69 RUE BARABAN
+     08/09/2022 |      156 667 | Vente          |     0.0 |   737 | 69 RUE BARABAN
+     08/09/2022 |      156 667 | Vente          |     0.0 |   647 | 69 RUE BARABAN
+     19/09/2022 |      296 000 | Vente          |     0.0 |   443 | 69 RUE BARABAN
+     20/09/2022 |       29 000 | Vente          |     9.0 |   147 | 69 RUE BARABAN
+     29/09/2022 |       26 000 | Vente          |     0.0 |   115 | 69 RUE BARABAN
+     05/10/2022 |       15 000 | Vente          |     0.0 |   833 | 69 RUE BARABAN
+     01/12/2022 |       25 500 | Vente          |     0.0 |   148 | 69 RUE BARABAN
+     06/12/2022 |       25 000 | Vente          |     0.0 |   152 | 69 RUE BARABAN
+     16/01/2023 |      300 000 | Vente          |     0.0 |   820 | 69 RUE BARABAN
+     30/03/2023 |      530 000 | Vente          |     0.0 |   858 | 69 RUE BARABAN
+     01/04/2023 |       19 000 | Vente          |     0.0 |   832 | 69 RUE BARABAN
+     07/04/2023 |      310 000 | Vente          |     0.0 |   641 | 69 RUE BARABAN
+     20/06/2023 |      381 900 | Vente          |     0.0 |   855 | 69 RUE BARABAN
+     25/07/2023 |       22 500 | Vente          |    13.4 |   109 | 69 RUE BARABAN
+     06/09/2023 |       25 000 | Vente          |     0.0 |   149 | 69 RUE BARABAN
+     13/06/2024 |       24 700 | Vente          |     0.0 |   143 | 69 RUE BARABAN
+     15/07/2024 |        7 500 | Vente          |     0.0 |   825 | 69 RUE BARABAN
+     23/07/2024 |       24 500 | Vente          |     8.0 |   148 | 69 RUE BARABAN
+     30/10/2024 |       23 500 | Vente          |     0.0 |   806 | 69 RUE BARABAN
+     27/11/2024 |       26 000 | Vente          |     0.0 |   128 | 69 RUE BARABAN
+     18/12/2024 |      399 850 | Vente          |     0.0 |   441 | 69 RUE BARABAN
+     17/01/2025 |      335 000 | Vente          |     0.0 |   878 | 69 RUE BARABAN
+     26/03/2025 |       78 334 | Vente          |     0.0 |   737 | 69 RUE BARABAN
+     26/03/2025 |       78 334 | Vente          |     0.0 |   647 | 69 RUE BARABAN
+     26/03/2025 |       78 334 | Vente          |     0.0 |   639 | 69 RUE BARABAN
+     26/03/2025 |       78 334 | Vente          |     0.0 |   638 | 69 RUE BARABAN
+     28/03/2025 |       20 000 | Vente          |     0.0 |   825 | 69 RUE BARABAN
+     11/04/2025 |      335 000 | Vente          |     0.0 |   858 | 69 RUE BARABAN
+     07/05/2025 |      320 500 | Vente          |     0.0 |   817 | 69 RUE BARABAN
+     19/05/2025 |      261 000 | Vente          |     0.0 |   828 | 69 RUE BARABAN
+     28/05/2025 |      326 450 | Vente          |     0.0 |   877 | 69 RUE BARABAN
+     02/07/2025 |      346 000 | Vente          |     0.0 |   815 | 69 RUE BARABAN
+     22/08/2025 |      220 000 | Vente          |    77.0 |   624 | 69 RUE BARABAN
+     22/08/2025 |      220 000 | Vente          |     0.0 |   812 | 69 RUE BARABAN
+     22/08/2025 |      220 000 | Vente          |     0.0 |   624 | 69 RUE BARABAN
+     01/09/2025 |      507 000 | Vente          |     0.0 |   440 | 69 RUE BARABAN
+     22/09/2025 |       21 000 | Vente          |     0.0 |   347 | 69 RUE BARABAN
+     25/11/2025 |       18 400 | Vente          |     0.0 |   114 | 69 RUE BARABAN
+     01/12/2025 |       25 500 | Vente          |     0.0 |   149 | 69 RUE BARABAN
+     08/12/2025 |      286 740 | Vente          |     0.0 |   802 | 69 RUE BARABAN
+     17/12/2025 |       20 000 | Vente          |     0.0 |   852 | 69 RUE BARABAN
+
+  -- 10|RUE|LOUIS JASSERON  (2 mutation(s)) --
+     date       |       valeur | nature         | surf C1 |  lot1 | adr
+     ----------------------------------------------------------------------------------------------------
+     08/12/2025 |      286 740 | Vente          |    72.7 |   206 | 10 RUE LOUIS JASSERON
+     08/12/2025 |      286 740 | Vente          |    72.7 |   206 | 10 RUE LOUIS JASSERON
+
+  -- 12|RUE|LOUIS JASSERON  (12 mutation(s)) --
+     date       |       valeur | nature         | surf C1 |  lot1 | adr
+     ----------------------------------------------------------------------------------------------------
+     27/10/2021 |      330 000 | Vente          |    83.6 |   116 | 12 RUE LOUIS JASSERON
+     27/10/2021 |      330 000 | Vente          |    83.6 |   116 | 12 RUE LOUIS JASSERON
+     11/02/2022 |      359 500 | Vente          |    83.8 |   112 | 12 RUE LOUIS JASSERON
+     11/02/2022 |      359 500 | Vente          |    83.8 |   112 | 12 RUE LOUIS JASSERON
+     17/02/2022 |      385 420 | Vente          |     0.0 |   116 | 12 RUE LOUIS JASSERON
+     17/02/2022 |      385 420 | Vente          |    88.0 |   116 | 12 RUE LOUIS JASSERON
+     05/07/2022 |      294 700 | Vente          |     0.0 |   117 | 12 RUE LOUIS JASSERON
+     05/07/2022 |      294 700 | Vente          |    84.0 |   117 | 12 RUE LOUIS JASSERON
+     17/01/2025 |      335 000 | Vente          |    84.0 |   114 | 12 RUE LOUIS JASSERON
+     17/01/2025 |      335 000 | Vente          |    84.0 |   114 | 12 RUE LOUIS JASSERON
+     19/05/2025 |      261 000 | Vente          |    82.9 |   105 | 12 RUE LOUIS JASSERON
+     19/05/2025 |      261 000 | Vente          |    82.9 |   105 | 12 RUE LOUIS JASSERON
+
+  -- 14|RUE|LOUIS JASSERON  (4 mutation(s)) --
+     date       |       valeur | nature         | surf C1 |  lot1 | adr
+     ----------------------------------------------------------------------------------------------------
+     14/10/2023 |       50 000 | Vente          |    11.0 |    28 | 14 RUE LOUIS JASSERON
+     14/10/2023 |       50 000 | Vente          |     0.0 |    28 | 14 RUE LOUIS JASSERON
+     07/02/2025 |      193 000 | Vente          |    50.7 |    23 | 14 RUE LOUIS JASSERON
+     07/02/2025 |      193 000 | Vente          |    50.7 |    23 | 14 RUE LOUIS JASSERON
+
+==============================================================================================================
+  E5  JEAN SORNAY (CHARIAL+PAUL BERT)
+==============================================================================================================
+  Total mutations DVF dans cet ensemble : 51
+
+  -- 76|RUE|ANTOINE CHARIAL  (8 mutation(s)) --
+     date       |       valeur | nature         | surf C1 |  lot1 | adr
+     ----------------------------------------------------------------------------------------------------
+     08/01/2021 |      188 000 | Vente          |   100.0 |   350 | 76 RUE ANTOINE CHARIAL
+     08/01/2021 |      188 000 | Vente          |    94.0 |   350 | 76 RUE ANTOINE CHARIAL
+     10/08/2021 |      178 000 | Vente          |    94.0 |   351 | 76 RUE ANTOINE CHARIAL
+     10/08/2021 |      178 000 | Vente          |   100.0 |   351 | 76 RUE ANTOINE CHARIAL
+     10/08/2021 |      178 000 | Vente          |     0.0 |   351 | 76 RUE ANTOINE CHARIAL
+     28/09/2021 |      420 000 | Vente          |     0.0 |   352 | 76 RUE ANTOINE CHARIAL
+     28/09/2021 |      420 000 | Vente          |   100.0 |   352 | 76 RUE ANTOINE CHARIAL
+     28/09/2021 |      420 000 | Vente          |    94.0 |   352 | 76 RUE ANTOINE CHARIAL
+
+  -- 78|RUE|ANTOINE CHARIAL  (19 mutation(s)) --
+     date       |       valeur | nature         | surf C1 |  lot1 | adr
+     ----------------------------------------------------------------------------------------------------
+     08/01/2021 |      188 000 | Vente          |     0.0 |   311 | 78 RUE ANTOINE CHARIAL
+     14/04/2021 |       12 000 | Vente          |     0.0 |   234 | 78 RUE ANTOINE CHARIAL
+     10/08/2021 |      178 000 | Vente          |     0.0 |   312 | 78 RUE ANTOINE CHARIAL
+     23/09/2021 |      250 500 | Vente          |     0.0 |   228 | 78 RUE ANTOINE CHARIAL
+     28/09/2021 |      417 800 | Vente          |     0.0 |   263 | 78 RUE ANTOINE CHARIAL
+     19/11/2021 |      454 000 | Vente          |     0.0 |   250 | 78 RUE ANTOINE CHARIAL
+     14/12/2021 |      340 500 | Vente          |     0.0 |   235 | 78 RUE ANTOINE CHARIAL
+     31/03/2022 |      366 800 | Vente          |     0.0 |   253 | 78 RUE ANTOINE CHARIAL
+     06/04/2022 |      550 000 | Vente          |     0.0 |   295 | 78 RUE ANTOINE CHARIAL
+     25/04/2022 |      462 000 | Vente          |     0.0 |   264 | 78 RUE ANTOINE CHARIAL
+     12/05/2022 |       14 500 | Vente          |     0.0 |   256 | 78 RUE ANTOINE CHARIAL
+     08/07/2022 |      413 000 | Vente          |     0.0 |   279 | 78 RUE ANTOINE CHARIAL
+     18/03/2024 |      312 000 | Vente          |     0.0 |   289 | 78 RUE ANTOINE CHARIAL
+     18/03/2024 |      312 000 | Vente          |    69.9 |    24 | 78 RUE ANTOINE CHARIAL
+     18/03/2024 |      312 000 | Vente          |    69.9 |    24 | 78 RUE ANTOINE CHARIAL
+     26/07/2024 |       15 000 | Vente          |     0.0 |   256 | 78 RUE ANTOINE CHARIAL
+     23/10/2024 |      345 650 | Vente          |     0.0 |   301 | 78 RUE ANTOINE CHARIAL
+     16/06/2025 |      420 000 | Vente          |     0.0 |   303 | 78 RUE ANTOINE CHARIAL
+     06/11/2025 |      337 200 | Vente          |     0.0 |   305 | 78 RUE ANTOINE CHARIAL
+
+  -- 78B|RUE|ANTOINE CHARIAL  (2 mutation(s)) --
+     date       |       valeur | nature         | surf C1 |  lot1 | adr
+     ----------------------------------------------------------------------------------------------------
+     06/04/2022 |      550 000 | Vente          |     0.0 |    39 | 78B RUE ANTOINE CHARIAL
+     06/04/2022 |      550 000 | Vente          |   149.0 |    39 | 78B RUE ANTOINE CHARIAL
+
+  -- 80|RUE|ANTOINE CHARIAL  (3 mutation(s)) --
+     date       |       valeur | nature         | surf C1 |  lot1 | adr
+     ----------------------------------------------------------------------------------------------------
+     23/09/2021 |      250 500 | Vente          |    62.4 |    83 | 80 RUE ANTOINE CHARIAL
+     31/03/2022 |      366 800 | Vente          |    86.2 |    92 | 80 RUE ANTOINE CHARIAL
+     12/05/2022 |      351 499 | Vente          |    86.3 |    89 | 80 RUE ANTOINE CHARIAL
+
+  -- 80B|RUE|ANTOINE CHARIAL  (3 mutation(s)) --
+     date       |       valeur | nature         | surf C1 |  lot1 | adr
+     ----------------------------------------------------------------------------------------------------
+     28/09/2021 |      417 800 | Vente          |   102.8 |   127 | 80B RUE ANTOINE CHARIAL
+     19/11/2021 |      454 000 | Vente          |   109.0 |   112 | 80B RUE ANTOINE CHARIAL
+     25/04/2022 |      462 000 | Vente          |   102.2 |   125 | 80B RUE ANTOINE CHARIAL
+
+  -- 82|RUE|ANTOINE CHARIAL  (4 mutation(s)) --
+     date       |       valeur | nature         | surf C1 |  lot1 | adr
+     ----------------------------------------------------------------------------------------------------
+     08/07/2022 |      413 000 | Vente          |    86.5 |   172 | 82 RUE ANTOINE CHARIAL
+     23/10/2024 |      345 650 | Vente          |    86.8 |   162 | 82 RUE ANTOINE CHARIAL
+     16/06/2025 |      420 000 | Vente          |    85.9 |   160 | 82 RUE ANTOINE CHARIAL
+     06/11/2025 |      337 200 | Vente          |    93.0 |   158 | 82 RUE ANTOINE CHARIAL
+
+  -- 84|RUE|ANTOINE CHARIAL  (5 mutation(s)) --
+     date       |       valeur | nature         | surf C1 |  lot1 | adr
+     ----------------------------------------------------------------------------------------------------
+     22/07/2021 |      163 200 | Vente          |    69.8 |    56 | 84 RUE ANTOINE CHARIAL
+     22/07/2021 |      163 200 | Vente          |    69.8 |    56 | 84 RUE ANTOINE CHARIAL
+     14/12/2021 |      340 500 | Vente          |    69.3 |    60 | 84 RUE ANTOINE CHARIAL
+     14/12/2021 |      340 500 | Vente          |    69.3 |    60 | 84 RUE ANTOINE CHARIAL
+     30/08/2024 |       46 000 | Vente          |    35.8 |    52 | 84 RUE ANTOINE CHARIAL
+
+  -- 277|RUE|PAUL BERT  (5 mutation(s)) --
+     date       |       valeur | nature         | surf C1 |  lot1 | adr
+     ----------------------------------------------------------------------------------------------------
+     28/09/2021 |      420 000 | Vente          |     0.0 |   335 | 277 RUE PAUL BERT
+     22/03/2023 |      343 600 | Vente          |     0.0 |   341 | 277 RUE PAUL BERT
+     14/12/2023 |      335 000 | Vente          |     0.0 |   175 | 277 RUE PAUL BERT
+     14/12/2023 |      335 000 | Vente          |    75.0 |   175 | 277 RUE PAUL BERT
+     05/11/2025 |       23 000 | Vente          |     0.0 |   331 | 277 RUE PAUL BERT
+
+  -- 279|RUE|PAUL BERT  (2 mutation(s)) --
+     date       |       valeur | nature         | surf C1 |  lot1 | adr
+     ----------------------------------------------------------------------------------------------------
+     22/03/2023 |      343 600 | Vente          |    86.5 |   218 | 279 RUE PAUL BERT
+     22/03/2023 |      343 600 | Vente          |    86.5 |   218 | 279 RUE PAUL BERT
+
+==============================================================================================================
+  E6  LAFAYETTE BARABAN (30/32/34/36/38/40 BARABAN)
+==============================================================================================================
+  Total mutations DVF dans cet ensemble : 61
+
+  -- 30|RUE|BARABAN  (30 mutation(s)) --
+     date       |       valeur | nature         | surf C1 |  lot1 | adr
+     ----------------------------------------------------------------------------------------------------
+     19/03/2021 |      420 000 | Vente          |    95.0 |   119 | 30 RUE BARABAN
+     19/03/2021 |      420 000 | Vente          |     0.0 |   237 | 30 RUE BARABAN
+     19/03/2021 |      420 000 | Vente          |    95.0 |   119 | 30 RUE BARABAN
+     06/04/2021 |      426 600 | Vente          |     0.0 |   222 | 30 RUE BARABAN
+     06/04/2021 |      426 600 | Vente          |     0.0 |   260 | 30 RUE BARABAN
+     10/05/2021 |      372 000 | Vente          |     0.0 |   206 | 30 RUE BARABAN
+     31/05/2021 |      406 000 | Vente          |     0.0 |   269 | 30 RUE BARABAN
+     31/05/2021 |      406 000 | Vente          |    93.0 |   135 | 30 RUE BARABAN
+     31/05/2021 |      406 000 | Vente          |    93.0 |   135 | 30 RUE BARABAN
+     31/05/2021 |      406 000 | Vente          |     0.0 |   191 | 30 RUE BARABAN
+     13/07/2021 |      489 750 | Vente          |     0.0 |   250 | 30 RUE BARABAN
+     13/07/2021 |      489 750 | Vente          |     0.0 |   194 | 30 RUE BARABAN
+     24/08/2021 |      230 500 | Vente          |     0.0 |   288 | 30 RUE BARABAN
+     01/07/2022 |      416 650 | Vente          |     0.0 |   246 | 30 RUE BARABAN
+     01/07/2022 |      416 650 | Vente          |    92.0 |   127 | 30 RUE BARABAN
+     01/07/2022 |      416 650 | Vente          |    92.0 |   127 | 30 RUE BARABAN
+     19/09/2022 |       22 000 | Vente          |     0.0 |   222 | 30 RUE BARABAN
+     29/09/2022 |      375 145 | Vente          |     0.0 |   277 | 30 RUE BARABAN
+     29/09/2022 |      421 350 | Vente          |     0.0 |   260 | 30 RUE BARABAN
+     27/03/2023 |      323 650 | Vente          |    93.7 |   113 | 30 RUE BARABAN
+     27/03/2023 |      323 650 | Vente          |    93.7 |   113 | 30 RUE BARABAN
+     26/05/2023 |      367 000 | Vente          |     0.0 |   200 | 30 RUE BARABAN
+     31/08/2023 |      315 000 | Vente          |     0.0 |   281 | 30 RUE BARABAN
+     14/09/2023 |      418 300 | Vente          |     0.0 |   203 | 30 RUE BARABAN
+     09/01/2024 |       30 000 | Vente          |     0.0 |   197 | 30 RUE BARABAN
+     20/09/2024 |      375 000 | Vente          |     0.0 |   210 | 30 RUE BARABAN
+     10/06/2025 |      304 700 | Vente          |     0.0 |   221 | 30 RUE BARABAN
+     11/06/2025 |      153 000 | Vente          |     0.0 |   286 | 30 RUE BARABAN
+     01/07/2025 |      264 150 | Vente          |     0.0 |   263 | 30 RUE BARABAN
+     25/09/2025 |       20 000 | Vente          |     0.0 |   208 | 30 RUE BARABAN
+
+  -- 32|RUE|BARABAN  (4 mutation(s)) --
+     date       |       valeur | nature         | surf C1 |  lot1 | adr
+     ----------------------------------------------------------------------------------------------------
+     10/06/2025 |      304 700 | Vente          |    79.0 |    87 | 32 RUE BARABAN
+     10/06/2025 |      304 700 | Vente          |     0.0 |    87 | 32 RUE BARABAN
+     01/07/2025 |      264 150 | Vente          |    78.6 |    79 | 32 RUE BARABAN
+     01/07/2025 |      264 150 | Vente          |    78.6 |    79 | 32 RUE BARABAN
+
+  -- 34|RUE|BARABAN  (6 mutation(s)) --
+     date       |       valeur | nature         | surf C1 |  lot1 | adr
+     ----------------------------------------------------------------------------------------------------
+     10/05/2021 |      372 000 | Vente          |    85.8 |    35 | 34 RUE BARABAN
+     10/05/2021 |      372 000 | Vente          |    85.8 |    35 | 34 RUE BARABAN
+     18/10/2021 |      428 420 | Vente          |    87.6 |    51 | 34 RUE BARABAN
+     18/10/2021 |      428 420 | Vente          |    87.6 |    51 | 34 RUE BARABAN
+     14/09/2023 |      418 300 | Vente          |     0.0 |    55 | 34 RUE BARABAN
+     14/09/2023 |      418 300 | Vente          |    87.0 |    55 | 34 RUE BARABAN
+
+  -- 36|RUE|BARABAN  (7 mutation(s)) --
+     date       |       valeur | nature         | surf C1 |  lot1 | adr
+     ----------------------------------------------------------------------------------------------------
+     06/04/2021 |      426 600 | Vente          |    93.2 |     7 | 36 RUE BARABAN
+     13/07/2021 |      489 750 | Vente          |     0.0 |    21 | 36 RUE BARABAN
+     13/07/2021 |      489 750 | Vente          |    93.0 |    21 | 36 RUE BARABAN
+     29/09/2022 |      421 350 | Vente          |    93.2 |     7 | 36 RUE BARABAN
+     29/09/2022 |      421 350 | Vente          |    93.2 |     7 | 36 RUE BARABAN
+     20/09/2024 |      375 000 | Vente          |    93.2 |    19 | 36 RUE BARABAN
+     20/09/2024 |      375 000 | Vente          |    93.2 |    19 | 36 RUE BARABAN
+
+  -- 38|RUE|BARABAN  (10 mutation(s)) --
+     date       |       valeur | nature         | surf C1 |  lot1 | adr
+     ----------------------------------------------------------------------------------------------------
+     29/09/2022 |      375 145 | Vente          |    71.9 |   149 | 38 RUE BARABAN
+     29/09/2022 |      375 145 | Vente          |    71.9 |   149 | 38 RUE BARABAN
+     05/01/2023 |      357 500 | Vente          |    72.0 |   143 | 38 RUE BARABAN
+     05/01/2023 |      357 500 | Vente          |     0.0 |   143 | 38 RUE BARABAN
+     31/08/2023 |      315 000 | Vente          |    71.8 |   153 | 38 RUE BARABAN
+     31/08/2023 |      315 000 | Vente          |    71.8 |   153 | 38 RUE BARABAN
+     09/01/2024 |      322 300 | Vente          |    73.2 |   155 | 38 RUE BARABAN
+     09/01/2024 |      322 300 | Vente          |    73.2 |   155 | 38 RUE BARABAN
+     11/06/2025 |      153 000 | Vente          |    55.9 |   137 | 38 RUE BARABAN
+     11/06/2025 |      153 000 | Vente          |    55.9 |   137 | 38 RUE BARABAN
+
+  -- 40|RUE|BARABAN  (4 mutation(s)) --
+     date       |       valeur | nature         | surf C1 |  lot1 | adr
+     ----------------------------------------------------------------------------------------------------
+     24/08/2021 |      230 500 | Vente          |     0.0 |   165 | 40 RUE BARABAN
+     24/08/2021 |      230 500 | Vente          |    56.0 |   165 | 40 RUE BARABAN
+     26/05/2023 |      367 000 | Vente          |    73.6 |   173 | 40 RUE BARABAN
+     26/05/2023 |      367 000 | Vente          |    73.6 |   173 | 40 RUE BARABAN
+
+==============================================================================================================
+GRAND TOTAL : 416 mutations DVF sur les 6 ensembles
+==============================================================================================================
