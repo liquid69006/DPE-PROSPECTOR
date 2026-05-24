@@ -2647,8 +2647,16 @@ async function sctGenStart() {
     if (!v || !validIds.has(v.conseillerId)) delete sctGenState.repartition[iid];
   }
   sctGenRoundRobin();
-  sctGenBalance();
-  sctGenShowResult();
+  // [FIX 2026-05-24] try/catch global : empeche le bouton de rester
+  // disable sur une exception (ex ilotEffectif undefined, mutation
+  // secteurData inattendue). Log console F12 pour diag.
+  try {
+    sctGenBalance();
+    sctGenShowResult();
+  } catch (e) {
+    console.error('[sctGenStart] erreur algorithme/rendu :', e);
+    showToast('⚠️ Erreur génération (voir console F12) : ' + (e.message || e), true);
+  }
   btn.disabled = false; btn.textContent = '⚡ Générer';
 }
 
@@ -3039,6 +3047,11 @@ function renderSecteur() {
     }
     return null;
   };
+  // [FIX 2026-05-24] Exposition globale : sctGenComputeIlots() (scope
+  // module) appelle ilotEffectif sinon ReferenceError. Re-bind a chaque
+  // render (capture du secteurAssign courant). Safe car loadSecteurData()
+  // appelle renderSecteur() avant que le bouton Generer ne soit cliquable.
+  window.ilotEffectif = ilotEffectif;
 
   // (refactor 2026-05-24 : suppression du groupement IRIS top-level. Les
   // filtres secteurNoLog/HrActif/Mono/AQualif sont appliques en bloc dans
