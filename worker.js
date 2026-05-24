@@ -248,7 +248,7 @@ async function resolveConseillerAgence(env, agenceId, cfg, prenom, hint) {
 
 const CORS = {
   "Access-Control-Allow-Origin":  "*",
-  "Access-Control-Allow-Methods": "GET, POST, DELETE, OPTIONS",
+  "Access-Control-Allow-Methods": "GET, POST, PATCH, DELETE, OPTIONS",
   "Access-Control-Allow-Headers": "Content-Type, Authorization",
 };
 
@@ -624,6 +624,63 @@ async function handleRequest(request, env) {
                       fusions: Object.keys(fusions).length, noms: Object.keys(noms).length });
       }
       return err("Méthode non supportée", 405);
+    }
+
+    // ── /secteur-repartition/:agence ── génération de secteurs conseillers ─
+    // KV : secteur_repartition:{agenceId} -> { adresse_agence, agence_lat,
+    // agence_lng, conseillers:[{id,nom,couleur}], repartition:{ilotId:{
+    // conseillerId, locked}} }. GET renvoie {} si absent (frontend traite
+    // comme état vierge). POST écrase tout. PATCH /ilot met à jour 1 entrée.
+    const secteurRepartMatch = path.match(/^\/secteur-repartition\/([a-z0-9-]+)$/);
+    if (secteurRepartMatch) {
+      const agenceId = secteurRepartMatch[1];
+      const [, authErr] = await requireAuth(agenceId);
+      if (authErr) return authErr;
+
+      if (method === "GET") {
+        const raw = await env.DPE_KV.get(`secteur_repartition:${agenceId}`);
+        return json(raw ? JSON.parse(raw) : {});
+      }
+      if (method === "POST") {
+        let body; try { body = await request.json(); } catch { return err("JSON invalide"); }
+        if (typeof body !== "object" || body === null) return err("body doit être un objet");
+        const payload = {
+          adresse_agence: typeof body.adresse_agence === "string" ? body.adresse_agence : "",
+          agence_lat: typeof body.agence_lat === "number" ? body.agence_lat : null,
+          agence_lng: typeof body.agence_lng === "number" ? body.agence_lng : null,
+          conseillers: Array.isArray(body.conseillers) ? body.conseillers : [],
+          repartition: (body.repartition && typeof body.repartition === "object") ? body.repartition : {},
+          updated_at: new Date().toISOString(),
+        };
+        await env.DPE_KV.put(`secteur_repartition:${agenceId}`, JSON.stringify(payload));
+        return json({ ok: true, ilots: Object.keys(payload.repartition).length,
+                      conseillers: payload.conseillers.length });
+      }
+      return err("Méthode non supportée", 405);
+    }
+
+    // ── PATCH /secteur-repartition/:agence/ilot ── update partiel 1 îlot ──
+    const secteurRepartIlotMatch = path.match(/^\/secteur-repartition\/([a-z0-9-]+)\/ilot$/);
+    if (secteurRepartIlotMatch && method === "PATCH") {
+      const agenceId = secteurRepartIlotMatch[1];
+      const [, authErr] = await requireAuth(agenceId);
+      if (authErr) return authErr;
+      let body; try { body = await request.json(); } catch { return err("JSON invalide"); }
+      const ilotId = body.ilotId != null ? String(body.ilotId) : "";
+      if (!ilotId) return err("ilotId requis");
+
+      const raw = await env.DPE_KV.get(`secteur_repartition:${agenceId}`);
+      const obj = raw ? JSON.parse(raw) : {};
+      if (!obj.repartition || typeof obj.repartition !== "object") obj.repartition = {};
+
+      const prev = obj.repartition[ilotId] || {};
+      obj.repartition[ilotId] = {
+        conseillerId: body.conseillerId !== undefined ? body.conseillerId : prev.conseillerId,
+        locked: body.locked !== undefined ? !!body.locked : !!prev.locked,
+      };
+      obj.updated_at = new Date().toISOString();
+      await env.DPE_KV.put(`secteur_repartition:${agenceId}`, JSON.stringify(obj));
+      return json({ ok: true, ilot: obj.repartition[ilotId] });
     }
 
     // ── POST /conseillers/:agence/create ── créer une session conseiller ──
