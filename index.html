@@ -781,7 +781,7 @@ td{padding:11px 14px;vertical-align:middle;}
                background:var(--surface2);color:var(--text);font-size:13px;
                cursor:pointer;white-space:nowrap;">❓ À qualifier</button>
       <button id="secteur-gen-btn" onclick="sctGenOpen()"
-        title="Générer automatiquement N secteurs équilibrés : couverture zones (passe 0) + total ±5% + proche+moyenne ±10%."
+        title="Générer automatiquement N secteurs équilibrés : couverture zones (passe 0) + total ±8% + proche+moyenne ±10%."
         style="padding:7px 14px;border:1px solid #BEAF87;border-radius:6px;
                background:#1f2937;color:#BEAF87;font-size:13px;font-weight:600;
                cursor:pointer;white-space:nowrap;">⚡ Générer secteurs</button>
@@ -878,7 +878,7 @@ td{padding:11px 14px;vertical-align:middle;}
                 style="width:100%;box-sizing:border-box;background:#1f2937;color:#fff;
                        border:1px solid #4b5563;border-radius:6px;padding:8px 12px;font-size:13px;">
               <div style="font-size:11px;color:var(--text2);margin-top:4px;">
-                Tolérances : T ±5 %, P+M ±10 %</div>
+                Tolérances : T ±8 %, P+M ±10 %</div>
             </div>
           </div>
           <div style="background:#1f2937;border:1px solid #374151;border-radius:6px;
@@ -888,7 +888,7 @@ td{padding:11px 14px;vertical-align:middle;}
             distribué en round-robin <i>(ordre des secteurs aléatoire)</i> par ventes décroissantes
             sur N secteurs. Équilibrage en <b>3 passes</b> séquentielles :<br>
             &nbsp;&nbsp;<b>0.</b> <b style="color:#BEAF87;">Couverture zones</b> : ≥ 1 îlot proche/moyen/lointain par secteur (si possible).<br>
-            &nbsp;&nbsp;<b>1.</b> <b style="color:#BEAF87;">Total</b> ±5 % (50 itérations, malus 20 % si proximité &lt; 300 m).<br>
+            &nbsp;&nbsp;<b>1.</b> <b style="color:#BEAF87;">Total</b> ±8 % (50 itérations, malus 20 % si proximité &lt; 300 m).<br>
             &nbsp;&nbsp;<b>2.</b> <b style="color:#BEAF87;">Proche+Moyenne</b> ±10 % (sans casser l'enveloppe total).<br>
             Les îlots <code>X</code> et <code>non assignés</code> sont ignorés.
           </div>
@@ -2728,7 +2728,7 @@ function sctGenEnsureZoneCoverage() {
 }
 
 // Tolerances par niveau (sctGenBalance 2 passes + indicateurs UI).
-const SCT_GEN_TOL_TOTAL = 0.05;   // passe 1 : equilibre total des secteurs
+const SCT_GEN_TOL_TOTAL = 0.08;   // passe 1 : equilibre total des secteurs
 const SCT_GEN_TOL_PM    = 0.10;   // passe 2 : equilibre proche+moyenne
 const SCT_GEN_MAX_ITER  = 50;     // par passe
 
@@ -3069,7 +3069,7 @@ function sctGenRenderTable() {
   const bilan = document.getElementById('sct-gen-bilan');
   // Summary multi-niveaux (toutes valeurs en ventes/an a l'affichage).
   summary.innerHTML = `<b style="color:var(--text);">Moyenne :</b> ${sctGenPerYear(meanT)} ventes/an · `
-    + `<b>Tol. totale ±5% :</b> ±${sctGenPerYear(tolT)} · `
+    + `<b>Tol. totale ±8% :</b> ±${sctGenPerYear(tolT)} · `
     + `<b>P+M ±10% :</b> ±${sctGenPerYear(tolPM)} · `
     + `<b>Mode :</b> ${secteurStrict ? 'ventes strictes' : 'ventes brutes'}`;
 
@@ -3122,7 +3122,7 @@ function sctGenRenderTable() {
     const swatch = `<span style="display:inline-block;width:14px;height:14px;border-radius:3px;border:1px solid #00000033;${sctGenSwatchCss(sctGenState.conseillers.indexOf(c))}"></span>`;
     const balCell =
         `<div style="display:flex;flex-direction:column;gap:3px;align-items:flex-start;">`
-      + balDot(inT,  'T',   `Total ±5% — passe 1 (cible : ${sctGenPerYear(meanT)} ventes/an, secteur : ${sctGenPerYear(sc.total)})`)
+      + balDot(inT,  'T',   `Total ±8% — passe 1 (cible : ${sctGenPerYear(meanT)} ventes/an, secteur : ${sctGenPerYear(sc.total)})`)
       + balDot(inPM, 'P+M', `Proche+Moyenne ±10% — passe 2 (cible : ${sctGenPerYear(meanPM)}, secteur : ${sctGenPerYear(pmOf(sc))})`)
       + `</div>`;
 
@@ -3214,7 +3214,7 @@ function sctGenRenderTable() {
       ? `<span style="color:#16a34a;">${ok_label}</span>`
       : `<span style="color:#e67e22;">${ko_label.replace('{n}', count)}</span>`;
   let bilanHtml =
-      bItem(outT,  'Total ✓',  'Total : {n} hors ±5%') + ' &nbsp;|&nbsp; '
+      bItem(outT,  'Total ✓',  'Total : {n} hors ±8%') + ' &nbsp;|&nbsp; '
     + bItem(outPM, 'P+M ✓',    'P+M : {n} hors ±10%');
   // Warnings couverture (passe 0) : zones insuffisamment representees.
   const warns = (sctGenState._coverageWarnings || []);
@@ -3477,6 +3477,25 @@ async function sctMapOpen() {
 }
 
 function sctMapAddLegend() {
+  // [FIX 2026-05-25] Pre-calcul du nb de logements par secteur :
+  // somme de nb_lots_habitation des adresses dont l'ilotEffectif()
+  // appartient au secteur via sctGenState.repartition. Adresses sans
+  // ilot, sans conseillerId, ou avec nb_lots_habitation null/0 ignorees.
+  const lgtsBySec = {};
+  for (const c of sctGenState.conseillers) lgtsBySec[c.id] = 0;
+  const ilotEff = window.ilotEffectif;
+  if (typeof ilotEff === 'function' && secteurData && Array.isArray(secteurData.adresses)) {
+    for (const a of secteurData.adresses) {
+      const iid = ilotEff(a);
+      if (iid == null) continue;
+      const rep = sctGenState.repartition[String(iid)];
+      if (!rep || !rep.conseillerId) continue;
+      const n = +a.nb_lots_habitation;
+      if (!Number.isFinite(n) || n <= 0) continue;
+      lgtsBySec[rep.conseillerId] = (lgtsBySec[rep.conseillerId] || 0) + n;
+    }
+  }
+
   const Legend = L.Control.extend({
     options: { position: 'bottomright' },
     onAdd: function() {
@@ -3485,21 +3504,22 @@ function sctMapAddLegend() {
         background: 'rgba(255,255,255,0.95)', padding: '8px 12px',
         borderRadius: '6px', boxShadow: '0 2px 8px rgba(0,0,0,0.25)',
         fontSize: '12px', color: '#1f2937', maxHeight: '320px',
-        overflowY: 'auto', minWidth: '180px',
+        overflowY: 'auto', minWidth: '210px',
       });
       const scores = sctGenState.conseillers.map(c => sctGenScoreSecteur(c.id));
       let html = '<div style="font-weight:700;margin-bottom:6px;">Secteurs</div>';
       for (let i = 0; i < sctGenState.conseillers.length; i++) {
         const c = sctGenState.conseillers[i];
         const sc = scores[i] || { total: 0 };
-        // [FIX 2026-05-25] Swatch uni pour tous (les polygones n'ont plus
-        // de stripe sur la carte -> coherence visuelle).
+        const lgts = lgtsBySec[c.id] || 0;
+        // Swatch uni pour tous (les polygones n'ont plus de stripe).
         const swatchBg = `background:${c.couleur};`;
-        html += `<div style="display:flex;align-items:center;gap:6px;margin:3px 0;">`
-              + `<span style="display:inline-block;width:14px;height:14px;border-radius:3px;border:1px solid #00000033;${swatchBg}"></span>`
-              + `<span style="flex:1;">${esc(c.nom)}</span>`
-              + `<span style="color:#666;margin-left:8px;">${sctGenPerYear(sc.total)}/an</span>`
-              + `</div>`;
+        html += `<div style="display:flex;align-items:flex-start;gap:6px;margin:3px 0;">`
+              + `<span style="display:inline-block;width:14px;height:14px;border-radius:3px;border:1px solid #00000033;${swatchBg};margin-top:2px;flex:0 0 auto;"></span>`
+              + `<div style="flex:1;min-width:0;">`
+              + `<div style="font-weight:600;">${esc(c.nom)}</div>`
+              + `<div style="color:#666;font-size:11px;">${sctGenPerYear(sc.total)} v/an &middot; ${lgts.toLocaleString('fr-FR')} lgts</div>`
+              + `</div></div>`;
       }
       html += '<div style="display:flex;align-items:center;gap:6px;margin:6px 0 0;padding-top:6px;border-top:1px solid #ddd;">'
             + '<span style="display:inline-block;width:14px;height:14px;border-radius:3px;background:#888;"></span>'
