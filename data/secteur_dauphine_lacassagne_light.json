@@ -10494,7 +10494,7 @@
       "longitude": 4.870659,
       "latitude": 45.751735,
       "code_iris": "693830604",
-      "cle_adresse": "20B|AVENUE|LACASSAGNE 22 AVENUE LACASSAGNE",
+      "cle_adresse": "20B|AVENUE|LACASSAGNE",
       "nb_lots_total": 188,
       "nb_lots_habitation": 98,
       "nb_lots_habitation_rnc": 98,
@@ -17411,7 +17411,7 @@
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "_fusion_auto": true,
-      "_fusion_cible": "20B|AVENUE|LACASSAGNE 22 AVENUE LACASSAGNE",
+      "_fusion_cible": "20B|AVENUE|LACASSAGNE",
       "_ilot": "54"
     },
     {
@@ -32236,7 +32236,7 @@
       "batiment_groupe_id": "bdnb-bg-9DFR-GCRL-WUGG",
       "_bdnb_match": "num_voie",
       "_fusion_auto": true,
-      "_fusion_cible": "20B|AVENUE|LACASSAGNE 22 AVENUE LACASSAGNE",
+      "_fusion_cible": "20B|AVENUE|LACASSAGNE",
       "ventes_par_an_logement": {
         "2023": 1,
         "2024": 1
@@ -60027,46 +60027,6 @@
       "_ilot": "53"
     },
     {
-      "cle": "20B|AVENUE|LACASSAGNE 22 AVENUE LACASSAGNE",
-      "adresse": "20B AVENUE LACASSAGNE 22 AVENUE LACASSAGNE",
-      "longitude": 4.870659,
-      "latitude": 45.751735,
-      "code_iris": "693830604",
-      "_coord_source": "rnc_immat_horsrnc_fix",
-      "dans_majic": false,
-      "sci_proprietaire": "non",
-      "sci_nom": null,
-      "sci_siren": null,
-      "syndic": "FONCIA LYON",
-      "_syndic_src": "rnc",
-      "ventes_par_an": {},
-      "nb_ventes_total": 0,
-      "nb_log_bdnb": 97,
-      "annee_construction": 2018,
-      "classe_dpe": "C",
-      "type_batiment": "appartement",
-      "type_chauffage": "reseau de chaleur",
-      "batiment_groupe_id": "bdnb-bg-NHQQ-8MZ7-KS1W",
-      "_bdnb_match": "immat_horsrnc_fix",
-      "ventes_par_an_logement": {},
-      "nb_ventes_logement": 0,
-      "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Figé",
-      "_taux_logement_src": "copie_sans_dependance",
-      "usage_principal_bdnb": "Résidentiel collectif",
-      "_usage_bdnb_src": "snapshot",
-      "_fusion_auto_sources": [
-        "20|AVENUE|LACASSAGNE",
-        "22|AVENUE|LACASSAGNE"
-      ],
-      "_fusion_auto_label": null,
-      "numero_immatriculation": "AD5268305",
-      "nb_lots_habitation": 98,
-      "taux_rotation": 0.0,
-      "classement_rotation": "Figé",
-      "_ilot": null
-    },
-    {
       "cle": "51B|AVENUE|LACASSAGNE",
       "adresse": "51B AVENUE LACASSAGNE",
       "longitude": 4.869637,
@@ -61512,7 +61472,11 @@
       "_bdnb_match": "num_voie",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
       "_correctif_propagation_indice": "fix_propag_immat_21suff_dl_2026-05-23",
-      "_ilot": "54"
+      "_ilot": "54",
+      "_fusion_auto_sources": [
+        "20|AVENUE|LACASSAGNE",
+        "22|AVENUE|LACASSAGNE"
+      ]
     },
     {
       "cle": "21B|RUE|CLAUDIUS PIONCHON",
