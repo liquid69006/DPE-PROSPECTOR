@@ -2398,10 +2398,15 @@ function sctGenHaversine(lat1, lng1, lat2, lng2) {
   return 2 * R * Math.asin(Math.sqrt(a));
 }
 
+// Seuils de zonage par rapport a l'adresse de l'agence (haversine, m) :
+//   proche    : <  300 m
+//   moyenne   : 300-600 m
+//   lointaine : >  600 m
+// Updated 2026-05-24 (anciens seuils : 200 / 500).
 function sctGenZoneOf(distM) {
   if (distM == null) return 'lointaine';
-  if (distM < 200) return 'proche';
-  if (distM <= 500) return 'moyenne';
+  if (distM < 300) return 'proche';
+  if (distM <= 600) return 'moyenne';
   return 'lointaine';
 }
 
@@ -2781,9 +2786,9 @@ function sctGenRenderTable() {
   html += '<thead><tr style="color:var(--text2);font-weight:700;">'
        + '<th style="text-align:left;padding:10px 10px;width:170px;background:#1f2937;border-bottom:2px solid var(--border);">Secteur</th>'
        + '<th style="text-align:left;padding:10px 10px;background:#1f2937;border-bottom:2px solid var(--border);">Îlots</th>'
-       + '<th style="text-align:center;padding:10px 6px;width:90px;background:#1f2937;border-bottom:2px solid var(--border);" title="Ventes/an des ilots a < 200 m de l\'agence">Proche/an</th>'
-       + '<th style="text-align:center;padding:10px 6px;width:100px;background:#1f2937;border-bottom:2px solid var(--border);" title="Ventes/an des ilots a 200-500 m de l\'agence">Moyenne/an</th>'
-       + '<th style="text-align:center;padding:10px 6px;width:100px;background:#1f2937;border-bottom:2px solid var(--border);" title="Ventes/an des ilots a > 500 m de l\'agence">Lointaine/an</th>'
+       + '<th style="text-align:center;padding:10px 6px;width:90px;background:#1f2937;border-bottom:2px solid var(--border);" title="Ventes/an des ilots a < 300 m de l\'agence">Proche/an</th>'
+       + '<th style="text-align:center;padding:10px 6px;width:100px;background:#1f2937;border-bottom:2px solid var(--border);" title="Ventes/an des ilots a 300-600 m de l\'agence">Moyenne/an</th>'
+       + '<th style="text-align:center;padding:10px 6px;width:100px;background:#1f2937;border-bottom:2px solid var(--border);" title="Ventes/an des ilots a > 600 m de l\'agence">Lointaine/an</th>'
        + '<th style="text-align:center;padding:10px 6px;width:80px;background:#1f2937;border-bottom:2px solid var(--border);">Ventes/an</th>'
        + '<th style="text-align:center;padding:10px 6px;width:80px;background:#1f2937;border-bottom:2px solid var(--border);">Équilibre</th>'
        + '</tr></thead><tbody>';
@@ -2798,10 +2803,14 @@ function sctGenRenderTable() {
       ? '<span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#16a34a;" title="Dans la tolérance ±10%"></span>'
       : '<span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#e67e22;" title="Hors tolérance"></span>';
 
-    // [FIX 2026-05-24 r2] Groupement des ilots par zone (3 lignes :
-    // Proche/Moyenne/Lointaine). Tri num croissant a l'interieur de
-    // chaque zone. Une zone vide est masquee (pas de ligne).
-    // Deplacement par fleches <-/-> (wrap-around) au lieu du <select>.
+    // [FIX 2026-05-24 r3] Groupement par zone + drag&drop natif.
+    // - Chaque pastille est draggable (sauf locked).
+    // - Chaque ligne de zone est une dropzone (highlight bord dashed).
+    // - Le <td> Ilots est aussi dropzone (fallback secteur vide).
+    // - Drop : conseillerId := secId du secteur cible (la zone d'arrivee
+    //   est reaffectee automatiquement selon ilot.distance, donc
+    //   deposer sur 'Proche' d'un secteur lointain est equivalent a
+    //   deposer sur 'Lointaine' du meme secteur : meme resultat).
     const ZONES = [
       { key:'proche',    icon:'🟢', label:'Proche'    },
       { key:'moyenne',   icon:'🟡', label:'Moyenne'   },
@@ -2821,22 +2830,32 @@ function sctGenRenderTable() {
       const lock = v.locked
         ? '<span onclick="sctGenToggleLock(\''+esc(iid)+'\')" title="Déverrouiller" style="cursor:pointer;color:#BEAF87;">🔒</span>'
         : '<span onclick="sctGenToggleLock(\''+esc(iid)+'\')" title="Verrouiller dans ce secteur" style="cursor:pointer;color:var(--text2);opacity:.5;">🔓</span>';
-      const arrows = v.locked ? '' :
-          `<span onclick="sctGenMoveIlotDir('${esc(iid)}',-1)" title="Secteur précédent" `
-        + `style="cursor:pointer;color:#BEAF87;margin-left:4px;font-size:11px;">◀</span>`
-        + `<span onclick="sctGenMoveIlotDir('${esc(iid)}',1)" title="Secteur suivant" `
-        + `style="cursor:pointer;color:#BEAF87;margin-left:2px;font-size:11px;">▶</span>`;
-      return `<span style="display:inline-flex;align-items:center;gap:3px;background:#1f2937;`
-           + `border:1px solid #374151;border-radius:4px;padding:2px 6px;margin:2px 3px 2px 0;`
-           + `font-size:11px;">${lock} <b>${iid}</b> `
-           + `<span style="color:var(--text2);">(${sctGenPerYear(ilot.nb_ventes)}/an)</span>${arrows}</span>`;
+      // Pastilles non verrouillees : draggable + cursor:grab. Verrouillees :
+      // draggable false + cursor par defaut (pas de hint glisser).
+      const dragAttrs = v.locked
+        ? `draggable="false" style="display:inline-flex;align-items:center;gap:3px;background:#1f2937;border:1px solid #374151;border-radius:4px;padding:2px 6px;margin:2px 3px 2px 0;font-size:11px;opacity:.85;"`
+        : `draggable="true" ondragstart="sctGenDragStart(event,'${esc(iid)}')" `
+        + `title="Glisser vers un autre secteur" `
+        + `style="display:inline-flex;align-items:center;gap:3px;background:#1f2937;border:1px solid #374151;border-radius:4px;padding:2px 6px;margin:2px 3px 2px 0;font-size:11px;cursor:grab;"`;
+      return `<span ${dragAttrs}>${lock} <b>${iid}</b> `
+           + `<span style="color:var(--text2);">(${sctGenPerYear(ilot.nb_ventes)}/an)</span></span>`;
     };
+
+    // Helper qui construit les attributs dropzone (factorise pour
+    // dropzone de zone + dropzone fallback du <td> vide).
+    const dropAttrs = secId =>
+        ` ondragenter="sctGenDragEnter(event)"`
+      + ` ondragover="sctGenDragOver(event)"`
+      + ` ondragleave="sctGenDragLeave(event)"`
+      + ` ondrop="sctGenDrop(event,'${esc(secId)}')"`;
 
     let ilotItems = '';
     for (const z of ZONES) {
       const list = byZone[z.key];
       if (!list.length) continue;
-      ilotItems += `<div style="display:flex;align-items:flex-start;gap:6px;margin:3px 0;flex-wrap:wrap;">`
+      ilotItems += `<div${dropAttrs(c.id)} `
+                + `style="display:flex;align-items:flex-start;gap:6px;margin:3px 0;flex-wrap:wrap;`
+                + `padding:2px;border-radius:4px;">`
                 + `<span style="font-size:11px;color:var(--text2);white-space:nowrap;min-width:90px;padding-top:4px;">`
                 + `${z.icon} ${z.label}</span>`
                 + `<span style="flex:1;">${list.map(buildPastille).join('')}</span></div>`;
@@ -2854,7 +2873,7 @@ function sctGenRenderTable() {
          + `onblur="this.style.border='1px solid transparent';this.style.background='transparent';`
          + `sctGenRenameSecteur('${esc(c.id)}',this.value)">`
          + `</div></td>`
-         + `<td style="padding:6px 10px;border-top:1px solid var(--border);">${ilotItems || '<i style="color:var(--text2);">(vide)</i>'}</td>`
+         + `<td${dropAttrs(c.id)} style="padding:6px 10px;border-top:1px solid var(--border);">${ilotItems || '<i style="color:var(--text2);">(vide — glisser un ilot ici)</i>'}</td>`
          + `<td style="text-align:center;padding:8px 6px;border-top:1px solid var(--border);">${sctGenPerYear(sc.zones.proche)}</td>`
          + `<td style="text-align:center;padding:8px 6px;border-top:1px solid var(--border);">${sctGenPerYear(sc.zones.moyenne)}</td>`
          + `<td style="text-align:center;padding:8px 6px;border-top:1px solid var(--border);">${sctGenPerYear(sc.zones.lointaine)}</td>`
@@ -2877,20 +2896,55 @@ function sctGenToggleLock(ilotId) {
   sctGenRenderTable();
 }
 
-// [FIX 2026-05-24 r2] Deplacement par fleches uniquement (◀ ▶) avec
-// wrap-around (sec-1 ◀ va vers sec-N, sec-N ▶ vers sec-1). Les ilots
-// verrouillés ne sont pas deplacables (les fleches ne sont meme pas
-// rendues par buildPastille).
-function sctGenMoveIlotDir(ilotId, dir) {
-  const v = sctGenState.repartition[ilotId];
+// [FIX 2026-05-24 r3] Drag & drop natif HTML5 a la place des fleches.
+// La pastille porte draggable="true" + ondragstart (sauf si locked). Les
+// dropzones (lignes de zone + <td> Ilots en fallback pour secteur vide)
+// portent ondragenter/over/leave/drop. Le compteur _dragdepth gere les
+// dragenter/leave qui se declenchent aussi sur les enfants (pastilles)
+// -> evite le flicker du highlight quand on survole une pastille de la
+// dropzone elle-meme.
+
+function sctGenDragStart(e, iid) {
+  if (!e || !e.dataTransfer) return;
+  e.dataTransfer.setData('text/plain', String(iid));
+  e.dataTransfer.effectAllowed = 'move';
+}
+function sctGenDragOver(e) {
+  e.preventDefault();
+  if (e.dataTransfer) e.dataTransfer.dropEffect = 'move';
+}
+function sctGenDragEnter(e) {
+  e.preventDefault();
+  const dz = e.currentTarget;
+  const d = (parseInt(dz.dataset._dragdepth || '0', 10) || 0) + 1;
+  dz.dataset._dragdepth = String(d);
+  dz.style.outline = '2px dashed #BEAF87';
+  dz.style.outlineOffset = '-2px';
+  dz.style.background = 'rgba(190,175,135,0.08)';
+}
+function sctGenDragLeave(e) {
+  const dz = e.currentTarget;
+  const d = (parseInt(dz.dataset._dragdepth || '0', 10) || 0) - 1;
+  if (d <= 0) {
+    dz.dataset._dragdepth = '0';
+    dz.style.outline = '';
+    dz.style.background = '';
+  } else {
+    dz.dataset._dragdepth = String(d);
+  }
+}
+function sctGenDrop(e, secId) {
+  e.preventDefault();
+  const dz = e.currentTarget;
+  dz.dataset._dragdepth = '0';
+  dz.style.outline = '';
+  dz.style.background = '';
+  const iid = e.dataTransfer ? e.dataTransfer.getData('text/plain') : '';
+  if (!iid) return;
+  const v = sctGenState.repartition[iid];
   if (!v || v.locked) return;
-  const cs = sctGenState.conseillers || [];
-  if (!cs.length) return;
-  const cur = cs.findIndex(c => c.id === v.conseillerId);
-  if (cur < 0) return;
-  const N = cs.length;
-  const next = ((cur + (dir > 0 ? 1 : -1)) % N + N) % N;  // modulo positif
-  v.conseillerId = cs[next].id;
+  if (v.conseillerId === secId) return;   // meme secteur -> no-op
+  v.conseillerId = secId;
   sctGenRenderTable();
 }
 
@@ -2931,7 +2985,11 @@ window.sctGenStart = sctGenStart;
 window.sctGenRegen = sctGenRegen;
 window.sctGenSave = sctGenSave;
 window.sctGenToggleLock = sctGenToggleLock;
-window.sctGenMoveIlotDir = sctGenMoveIlotDir;
+window.sctGenDragStart = sctGenDragStart;
+window.sctGenDragOver = sctGenDragOver;
+window.sctGenDragEnter = sctGenDragEnter;
+window.sctGenDragLeave = sctGenDragLeave;
+window.sctGenDrop = sctGenDrop;
 window.sctGenRenameSecteur = sctGenRenameSecteur;
 
 // Memoire des Ilots ouverts cross-render. null = comportement par defaut
