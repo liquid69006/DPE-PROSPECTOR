@@ -836,6 +836,435 @@
       ],
       "delta_parc_dedup_total": 0,
       "note": "Les switchs BDNB->RNC sont deja en place via snapshot lots_hab populated. VAGUE 3 (detach AG8595613 sur 7B) integree a E1b."
+    },
+    "_correctif_12_megas_dl": {
+      "date": "2026-05-24T16:39:37Z",
+      "pattern": "12 mega-ensembles E7-E18 terrain user (post-audit eclatements top 30)",
+      "fixes": [
+        {
+          "id": "E7",
+          "tag": "jardins_babylone",
+          "ancre": "27|RUE|STE ANNE DE BARABAN",
+          "immat": "AA1700848",
+          "label": "27-29-31 RUE STE ANNE DE BARABAN / 33 RUE CLAUDIUS PIONCHON"
+        },
+        {
+          "id": "E8",
+          "tag": "177_felix_faure",
+          "ancre": "177|AVENUE|FELIX FAURE",
+          "immat": "AB3274529",
+          "label": "177 / 177B / 177T AVENUE FELIX FAURE"
+        },
+        {
+          "id": "E9",
+          "tag": "lacassagne_david",
+          "ancre": "9|RUE|DAVID",
+          "immat": "AB3954260",
+          "label": "9-11 RUE DAVID / 2-6-8-10-12 RUE METALLURGIE"
+        },
+        {
+          "id": "E10",
+          "tag": "hermitage",
+          "ancre": "27|RUE|GUILLOUD",
+          "immat": "AB3360401",
+          "label": "25-27-29-31 RUE GUILLOUD"
+        },
+        {
+          "id": "E11",
+          "tag": "carre_st_antoine",
+          "ancre": "35|RUE|ST ANTOINE",
+          "immat": "AC6493506",
+          "label": "3-5 RUE ETIENNE RICHERAND / 35 RUE ST ANTOINE"
+        },
+        {
+          "id": "E12",
+          "tag": "horizon_monplaisir",
+          "ancre": "66|AVENUE|LACASSAGNE",
+          "immat": "AE8227266",
+          "label": "66 AVENUE LACASSAGNE / 64-64B AVENUE LACASSAGNE / 7 RUE BARA"
+        },
+        {
+          "id": "E14",
+          "tag": "victorines",
+          "ancre": "14|RUE|ST VICTORIEN",
+          "immat": "AC3805199",
+          "label": "14 RUE ST VICTORIEN / 2 RUE LOUIS JASSERON"
+        },
+        {
+          "id": "E15",
+          "tag": "closerie_tilleuls_ii",
+          "ancre": "7|RUE|FRANCOIS GILLET",
+          "immat": "AA4868378",
+          "label": "5-7-9-11-13 RUE FRANCOIS GILLET"
+        },
+        {
+          "id": "E16",
+          "tag": "pavillon_dauphin",
+          "ancre": "89|RUE|DAUPHINE",
+          "immat": "AC9350984",
+          "label": "89-93 RUE DAUPHINE / 14 RUE CARRY"
+        },
+        {
+          "id": "E17",
+          "tag": "jardins_president_ext",
+          "ancre": "57|RUE|ETIENNE RICHERAND",
+          "immat": "AA1888700",
+          "label": "57 RUE ETIENNE RICHERAND / 36 AVENUE GEORGES POMPIDOU / 3 RUE TEINTURIERS"
+        },
+        {
+          "id": "E18",
+          "tag": "jardins_charial",
+          "ancre": "22|RUE|ST ANTOINE",
+          "immat": "AA1601434",
+          "label": "22-24-26-28-30 RUE ST ANTOINE / 14-16-18-20-22-24 RUE ETIENNE RICHERAND"
+        }
+      ],
+      "e13_special": "REBIND copro AA2505634 cle malformee '42A||50 RUE ST MAXIMIN' -> '42|RUE|ST MAXIMIN' + INJECT propre ancre",
+      "log": [
+        {
+          "op": "RE-FUSE",
+          "cle": "33|RUE|CLAUDIUS PIONCHON",
+          "cible": "27|RUE|STE ANNE DE BARABAN",
+          "old_cible": "29|RUE|CLAUDIUS PIONCHON",
+          "bgid_change": true
+        },
+        {
+          "op": "LABEL",
+          "cle": "27|RUE|STE ANNE DE BARABAN",
+          "label": "27-29-31 RUE STE ANNE DE BARABAN / 33 RUE CLAUDIUS PIONCHON",
+          "sources": [
+            "29|RUE|STE ANNE DE BARABAN",
+            "31|RUE|STE ANNE DE BARABAN",
+            "33|RUE|CLAUDIUS PIONCHON"
+          ]
+        },
+        {
+          "op": "RE-FUSE",
+          "cle": "177T|AVENUE|FELIX FAURE",
+          "cible": "177|AVENUE|FELIX FAURE",
+          "old_cible": "179|AVENUE|FELIX FAURE",
+          "bgid_change": true
+        },
+        {
+          "op": "LABEL",
+          "cle": "177|AVENUE|FELIX FAURE",
+          "label": "177 / 177B / 177T AVENUE FELIX FAURE",
+          "sources": [
+            "177T|AVENUE|FELIX FAURE",
+            "177B|AVENUE|FELIX FAURE"
+          ]
+        },
+        {
+          "op": "RE-FUSE",
+          "cle": "2|RUE|METALLURGIE",
+          "cible": "9|RUE|DAVID",
+          "old_cible": "1|RUE|METALLURGIE",
+          "bgid_change": true
+        },
+        {
+          "op": "LABEL",
+          "cle": "9|RUE|DAVID",
+          "label": "9-11 RUE DAVID / 2-6-8-10-12 RUE METALLURGIE",
+          "sources": [
+            "10|RUE|METALLURGIE",
+            "11|RUE|DAVID",
+            "12|RUE|METALLURGIE",
+            "6|RUE|METALLURGIE",
+            "8|RUE|METALLURGIE",
+            "2|RUE|METALLURGIE"
+          ]
+        },
+        {
+          "op": "RE-FUSE",
+          "cle": "31|RUE|GUILLOUD",
+          "cible": "27|RUE|GUILLOUD",
+          "old_cible": "35|RUE|GUILLOUD",
+          "bgid_change": true
+        },
+        {
+          "op": "INJECT",
+          "cle": "29|RUE|GUILLOUD",
+          "fcible": "27|RUE|GUILLOUD"
+        },
+        {
+          "op": "LABEL",
+          "cle": "27|RUE|GUILLOUD",
+          "label": "25-27-29-31 RUE GUILLOUD",
+          "sources": [
+            "25|RUE|GUILLOUD",
+            "31|RUE|GUILLOUD",
+            "29|RUE|GUILLOUD"
+          ]
+        },
+        {
+          "op": "RE-FUSE",
+          "cle": "5|RUE|ETIENNE RICHERAND",
+          "cible": "35|RUE|ST ANTOINE",
+          "old_cible": null,
+          "bgid_change": true
+        },
+        {
+          "op": "INJECT",
+          "cle": "3|RUE|ETIENNE RICHERAND",
+          "fcible": "35|RUE|ST ANTOINE"
+        },
+        {
+          "op": "LABEL",
+          "cle": "35|RUE|ST ANTOINE",
+          "label": "3-5 RUE ETIENNE RICHERAND / 35 RUE ST ANTOINE",
+          "sources": [
+            "31|RUE|ST ANTOINE",
+            "5|RUE|ETIENNE RICHERAND",
+            "3|RUE|ETIENNE RICHERAND"
+          ]
+        },
+        {
+          "op": "RE-FUSE",
+          "cle": "64|AVENUE|LACASSAGNE",
+          "cible": "66|AVENUE|LACASSAGNE",
+          "old_cible": null,
+          "bgid_change": true
+        },
+        {
+          "op": "RE-FUSE",
+          "cle": "64B|AVENUE|LACASSAGNE",
+          "cible": "66|AVENUE|LACASSAGNE",
+          "old_cible": "64|AVENUE|LACASSAGNE",
+          "bgid_change": true
+        },
+        {
+          "op": "INJECT",
+          "cle": "7|RUE|BARA",
+          "fcible": "66|AVENUE|LACASSAGNE"
+        },
+        {
+          "op": "LABEL",
+          "cle": "66|AVENUE|LACASSAGNE",
+          "label": "66 AVENUE LACASSAGNE / 64-64B AVENUE LACASSAGNE / 7 RUE BARA",
+          "sources": [
+            "66B|AVENUE|LACASSAGNE",
+            "68|AVENUE|LACASSAGNE",
+            "64|AVENUE|LACASSAGNE",
+            "64B|AVENUE|LACASSAGNE",
+            "7|RUE|BARA"
+          ]
+        },
+        {
+          "op": "RE-FUSE",
+          "cle": "2|RUE|LOUIS JASSERON",
+          "cible": "14|RUE|ST VICTORIEN",
+          "old_cible": "3|RUE|LOUIS JASSERON",
+          "bgid_change": true
+        },
+        {
+          "op": "LABEL",
+          "cle": "14|RUE|ST VICTORIEN",
+          "label": "14 RUE ST VICTORIEN / 2 RUE LOUIS JASSERON",
+          "sources": [
+            "2|RUE|LOUIS JASSERON"
+          ]
+        },
+        {
+          "op": "RE-FUSE",
+          "cle": "9|RUE|FRANCOIS GILLET",
+          "cible": "7|RUE|FRANCOIS GILLET",
+          "old_cible": null,
+          "bgid_change": true
+        },
+        {
+          "op": "INJECT",
+          "cle": "5|RUE|FRANCOIS GILLET",
+          "fcible": "7|RUE|FRANCOIS GILLET"
+        },
+        {
+          "op": "INJECT",
+          "cle": "13|RUE|FRANCOIS GILLET",
+          "fcible": "7|RUE|FRANCOIS GILLET"
+        },
+        {
+          "op": "LABEL",
+          "cle": "7|RUE|FRANCOIS GILLET",
+          "label": "5-7-9-11-13 RUE FRANCOIS GILLET",
+          "sources": [
+            "11|RUE|FRANCOIS GILLET",
+            "9|RUE|FRANCOIS GILLET",
+            "5|RUE|FRANCOIS GILLET",
+            "13|RUE|FRANCOIS GILLET"
+          ]
+        },
+        {
+          "op": "RE-FUSE",
+          "cle": "14|RUE|CARRY",
+          "cible": "89|RUE|DAUPHINE",
+          "old_cible": "6|RUE|CARRY",
+          "bgid_change": true
+        },
+        {
+          "op": "LABEL",
+          "cle": "89|RUE|DAUPHINE",
+          "label": "89-93 RUE DAUPHINE / 14 RUE CARRY",
+          "sources": [
+            "93|RUE|DAUPHINE",
+            "14|RUE|CARRY"
+          ]
+        },
+        {
+          "op": "RE-FUSE",
+          "cle": "3|RUE|TEINTURIERS",
+          "cible": "57|RUE|ETIENNE RICHERAND",
+          "old_cible": null,
+          "bgid_change": true
+        },
+        {
+          "op": "INJECT",
+          "cle": "36|AVENUE|GEORGES POMPIDOU",
+          "fcible": "57|RUE|ETIENNE RICHERAND"
+        },
+        {
+          "op": "LABEL",
+          "cle": "57|RUE|ETIENNE RICHERAND",
+          "label": "57 RUE ETIENNE RICHERAND / 36 AVENUE GEORGES POMPIDOU / 3 RUE TEINTURIERS",
+          "sources": [
+            "3|RUE|TEINTURIERS",
+            "36|AVENUE|GEORGES POMPIDOU"
+          ]
+        },
+        {
+          "op": "RE-FUSE",
+          "cle": "14|RUE|ETIENNE RICHERAND",
+          "cible": "22|RUE|ST ANTOINE",
+          "old_cible": null,
+          "bgid_change": true
+        },
+        {
+          "op": "RE-FUSE",
+          "cle": "18|RUE|ETIENNE RICHERAND",
+          "cible": "22|RUE|ST ANTOINE",
+          "old_cible": "19|RUE|ETIENNE RICHERAND",
+          "bgid_change": true
+        },
+        {
+          "op": "RE-FUSE",
+          "cle": "20|RUE|ETIENNE RICHERAND",
+          "cible": "22|RUE|ST ANTOINE",
+          "old_cible": "19|RUE|ETIENNE RICHERAND",
+          "bgid_change": true
+        },
+        {
+          "op": "RE-FUSE",
+          "cle": "22|RUE|ETIENNE RICHERAND",
+          "cible": "22|RUE|ST ANTOINE",
+          "old_cible": "21|RUE|ETIENNE RICHERAND",
+          "bgid_change": true
+        },
+        {
+          "op": "RE-FUSE",
+          "cle": "24|RUE|ETIENNE RICHERAND",
+          "cible": "22|RUE|ST ANTOINE",
+          "old_cible": "28|RUE|ETIENNE RICHERAND",
+          "bgid_change": true
+        },
+        {
+          "op": "RE-FUSE",
+          "cle": "24|RUE|ST ANTOINE",
+          "cible": "22|RUE|ST ANTOINE",
+          "old_cible": "22|RUE|ST ANTOINE",
+          "bgid_change": true
+        },
+        {
+          "op": "RE-FUSE",
+          "cle": "26|RUE|ST ANTOINE",
+          "cible": "22|RUE|ST ANTOINE",
+          "old_cible": "22|RUE|ST ANTOINE",
+          "bgid_change": true
+        },
+        {
+          "op": "RE-FUSE",
+          "cle": "28|RUE|ST ANTOINE",
+          "cible": "22|RUE|ST ANTOINE",
+          "old_cible": "22|RUE|ST ANTOINE",
+          "bgid_change": true
+        },
+        {
+          "op": "RE-FUSE",
+          "cle": "30|RUE|ST ANTOINE",
+          "cible": "22|RUE|ST ANTOINE",
+          "old_cible": "25|RUE|ST ANTOINE",
+          "bgid_change": true
+        },
+        {
+          "op": "LABEL",
+          "cle": "22|RUE|ST ANTOINE",
+          "label": "22-24-26-28-30 RUE ST ANTOINE / 14-16-18-20-22-24 RUE ETIENNE RICHERAND",
+          "sources": [
+            "16|RUE|ETIENNE RICHERAND",
+            "24|RUE|ST ANTOINE",
+            "26|RUE|ST ANTOINE",
+            "28|RUE|ST ANTOINE",
+            "14|RUE|ETIENNE RICHERAND",
+            "18|RUE|ETIENNE RICHERAND",
+            "20|RUE|ETIENNE RICHERAND",
+            "22|RUE|ETIENNE RICHERAND",
+            "24|RUE|ETIENNE RICHERAND",
+            "30|RUE|ST ANTOINE"
+          ]
+        },
+        {
+          "op": "REBIND-COPRO",
+          "immat": "AA2505634",
+          "old_cle": "42A||50 RUE ST MAXIMIN",
+          "new_cle": "42|RUE|ST MAXIMIN"
+        },
+        {
+          "op": "INJECT-ANCRE",
+          "cle": "42|RUE|ST MAXIMIN",
+          "immat": "AA2505634",
+          "bgid": "bdnb-bg-MYUH-YTYU-45YJ"
+        },
+        {
+          "op": "RE-FUSE-MALFORMED",
+          "cle": "42A||50 RUE ST MAXIMIN",
+          "new": "42|RUE|ST MAXIMIN",
+          "detach_immat": "AA2505634"
+        },
+        {
+          "op": "RE-FUSE",
+          "cle": "44|RUE|ST MAXIMIN",
+          "cible": "42|RUE|ST MAXIMIN",
+          "old_bgid": "bdnb-bg-PWDK-M71Z-3JJQ"
+        },
+        {
+          "op": "RE-FUSE",
+          "cle": "46|RUE|ST MAXIMIN",
+          "cible": "42|RUE|ST MAXIMIN",
+          "old_bgid": "bdnb-bg-PWDK-M71Z-3JJQ"
+        },
+        {
+          "op": "RE-FUSE",
+          "cle": "48|RUE|ST MAXIMIN",
+          "cible": "42|RUE|ST MAXIMIN",
+          "old_bgid": "bdnb-bg-4F6G-4P2Q-RRZK"
+        },
+        {
+          "op": "RE-FUSE",
+          "cle": "50|RUE|ST MAXIMIN",
+          "cible": "42|RUE|ST MAXIMIN",
+          "old_bgid": "bdnb-bg-4F6G-4P2Q-RRZK"
+        },
+        {
+          "op": "LABEL",
+          "cle": "42|RUE|ST MAXIMIN",
+          "label": "42-44-46-48-50 RUE ST MAXIMIN",
+          "sources": [
+            "44|RUE|ST MAXIMIN",
+            "46|RUE|ST MAXIMIN",
+            "48|RUE|ST MAXIMIN",
+            "50|RUE|ST MAXIMIN",
+            "42A||50 RUE ST MAXIMIN"
+          ]
+        }
+      ],
+      "delta_parc_dedup_total": 0
     }
   },
   "iris": [
@@ -2235,7 +2664,7 @@
       "longitude": 4.870255,
       "latitude": 45.748108,
       "code_iris": "693830603",
-      "cle_adresse": "42A||50 RUE ST MAXIMIN",
+      "cle_adresse": "42|RUE|ST MAXIMIN",
       "nb_lots_total": 190,
       "nb_lots_habitation": 63,
       "nb_lots_habitation_rnc": 63,
@@ -2243,7 +2672,8 @@
       "nb_ventes_2021_2025": 0,
       "ventes_par_an": {},
       "taux_rotation_5ans": 0.0,
-      "classement_rotation": "Fige"
+      "classement_rotation": "Fige",
+      "_cle_adresse_ex": "42A||50 RUE ST MAXIMIN"
     },
     {
       "numero_immatriculation": "AA2610087",
@@ -15093,7 +15523,12 @@
       "nb_lots_habitation": 83,
       "taux_rotation": 3.4,
       "classement_rotation": "Très actif",
-      "_ilot": "51"
+      "_ilot": "51",
+      "_fusion_auto_label": "177 / 177B / 177T AVENUE FELIX FAURE",
+      "_fusion_auto_sources": [
+        "177T|AVENUE|FELIX FAURE",
+        "177B|AVENUE|FELIX FAURE"
+      ]
     },
     {
       "cle": "194|AVENUE|FELIX FAURE",
@@ -15359,10 +15794,10 @@
       "classe_dpe": "D",
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
-      "batiment_groupe_id": "bdnb-bg-BXEH-4Z8G-SH57",
-      "_bdnb_match": "num_voie",
+      "batiment_groupe_id": "bdnb-bg-NV72-5NB3-XZT2",
+      "_bdnb_match": "correctif_12megas_jardins_babylone_re_fuse",
       "_fusion_auto": true,
-      "_fusion_cible": "29|RUE|CLAUDIUS PIONCHON",
+      "_fusion_cible": "27|RUE|STE ANNE DE BARABAN",
       "ventes_par_an_logement": {
         "2022": 1,
         "2023": 0,
@@ -16447,8 +16882,8 @@
       "classe_dpe": "D",
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
-      "batiment_groupe_id": "bdnb-bg-4F6G-4P2Q-RRZK",
-      "_bdnb_match": "num_voie",
+      "batiment_groupe_id": "bdnb-bg-MYUH-YTYU-45YJ",
+      "_bdnb_match": "correctif_12megas_saint_marc_i_re_fuse",
       "_fusion_auto_label": "48/50 RUE ST MAXIMIN",
       "_fusion_auto_sources": null,
       "ventes_par_an_logement": {
@@ -16464,7 +16899,7 @@
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "_fusion_auto": true,
-      "_fusion_cible": "51|RUE|ST MAXIMIN",
+      "_fusion_cible": "42|RUE|ST MAXIMIN",
       "_ilot": "78"
     },
     {
@@ -16687,8 +17122,8 @@
       "classe_dpe": "D",
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
-      "batiment_groupe_id": "bdnb-bg-G6ZB-A3PE-27QQ",
-      "_bdnb_match": "num_voie",
+      "batiment_groupe_id": "bdnb-bg-2ZP4-TAU6-UC13",
+      "_bdnb_match": "correctif_12megas_horizon_monplaisir_re_fuse",
       "ventes_par_an_logement": {
         "2022": 0,
         "2024": 0,
@@ -16700,7 +17135,9 @@
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
-      "_ilot": "75"
+      "_ilot": "75",
+      "_fusion_auto": true,
+      "_fusion_cible": "66|AVENUE|LACASSAGNE"
     },
     {
       "cle": "71|RUE|MAURICE FLANDIN",
@@ -18296,9 +18733,11 @@
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-9TQ2-3NZF-3HY8",
       "_bdnb_match": "immat",
-      "_fusion_auto_label": "25/27 RUE GUILLOUD",
+      "_fusion_auto_label": "25-27-29-31 RUE GUILLOUD",
       "_fusion_auto_sources": [
-        "25|RUE|GUILLOUD"
+        "25|RUE|GUILLOUD",
+        "31|RUE|GUILLOUD",
+        "29|RUE|GUILLOUD"
       ],
       "ventes_par_an_logement": {
         "2021": 1,
@@ -19173,10 +19612,13 @@
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-2ZP4-TAU6-UC13",
       "_bdnb_match": "immat",
-      "_fusion_auto_label": "66/66B/68 AVENUE LACASSAGNE",
+      "_fusion_auto_label": "66 AVENUE LACASSAGNE / 64-64B AVENUE LACASSAGNE / 7 RUE BARA",
       "_fusion_auto_sources": [
         "66B|AVENUE|LACASSAGNE",
-        "68|AVENUE|LACASSAGNE"
+        "68|AVENUE|LACASSAGNE",
+        "64|AVENUE|LACASSAGNE",
+        "64B|AVENUE|LACASSAGNE",
+        "7|RUE|BARA"
       ],
       "ventes_par_an_logement": {
         "2021": 1,
@@ -19222,9 +19664,12 @@
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-ZRJZ-GNPH-8KBH",
       "_bdnb_match": "immat",
-      "_fusion_auto_label": "7/11 RUE FRANCOIS GILLET",
+      "_fusion_auto_label": "5-7-9-11-13 RUE FRANCOIS GILLET",
       "_fusion_auto_sources": [
-        "11|RUE|FRANCOIS GILLET"
+        "11|RUE|FRANCOIS GILLET",
+        "9|RUE|FRANCOIS GILLET",
+        "5|RUE|FRANCOIS GILLET",
+        "13|RUE|FRANCOIS GILLET"
       ],
       "ventes_par_an_logement": {
         "2021": 0,
@@ -20372,8 +20817,8 @@
       "classe_dpe": "C",
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
-      "batiment_groupe_id": "bdnb-bg-NWNV-GU7Z-XPMJ",
-      "_bdnb_match": "num_voie",
+      "batiment_groupe_id": "bdnb-bg-TLU8-1B9R-DX25",
+      "_bdnb_match": "correctif_12megas_jardins_charial_re_fuse",
       "_fusion_auto_label": "18/20 RUE ETIENNE RICHERAND",
       "_fusion_auto_sources": null,
       "ventes_par_an_logement": {
@@ -20388,7 +20833,7 @@
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "_fusion_auto": true,
-      "_fusion_cible": "19|RUE|ETIENNE RICHERAND",
+      "_fusion_cible": "22|RUE|ST ANTOINE",
       "_ilot": "9"
     },
     {
@@ -20599,8 +21044,8 @@
       "classe_dpe": "C",
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
-      "batiment_groupe_id": "bdnb-bg-PP7G-YWLB-1ZEC",
-      "_bdnb_match": "num_voie",
+      "batiment_groupe_id": "bdnb-bg-9SJM-2V31-SHKZ",
+      "_bdnb_match": "correctif_12megas_victorines_re_fuse",
       "ventes_par_an_logement": {
         "2021": 1,
         "2022": 0,
@@ -20615,7 +21060,7 @@
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "_fusion_auto": true,
-      "_fusion_cible": "3|RUE|LOUIS JASSERON",
+      "_fusion_cible": "14|RUE|ST VICTORIEN",
       "_ilot": "22"
     },
     {
@@ -21724,9 +22169,11 @@
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-ASMY-1BJU-2LUB",
       "_bdnb_match": "immat",
-      "_fusion_auto_label": "31/35 RUE ST ANTOINE",
+      "_fusion_auto_label": "3-5 RUE ETIENNE RICHERAND / 35 RUE ST ANTOINE",
       "_fusion_auto_sources": [
-        "31|RUE|ST ANTOINE"
+        "31|RUE|ST ANTOINE",
+        "5|RUE|ETIENNE RICHERAND",
+        "3|RUE|ETIENNE RICHERAND"
       ],
       "ventes_par_an_logement": {
         "2021": 5,
@@ -22302,8 +22749,8 @@
       "classe_dpe": "D",
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
-      "batiment_groupe_id": "bdnb-bg-L2CK-SQ4L-G991",
-      "_bdnb_match": "num_voie",
+      "batiment_groupe_id": "bdnb-bg-ASMY-1BJU-2LUB",
+      "_bdnb_match": "correctif_12megas_carre_st_antoine_re_fuse",
       "ventes_par_an_logement": {
         "2021": 0,
         "2022": 0,
@@ -22317,7 +22764,9 @@
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
-      "_ilot": "4"
+      "_ilot": "4",
+      "_fusion_auto": true,
+      "_fusion_cible": "35|RUE|ST ANTOINE"
     },
     {
       "cle": "5|RUE|MAURICE FLANDIN",
@@ -23175,9 +23624,10 @@
         "11|RUE|DAVID",
         "12|RUE|METALLURGIE",
         "6|RUE|METALLURGIE",
-        "8|RUE|METALLURGIE"
+        "8|RUE|METALLURGIE",
+        "2|RUE|METALLURGIE"
       ],
-      "_fusion_auto_label": null,
+      "_fusion_auto_label": "9-11 RUE DAVID / 2-6-8-10-12 RUE METALLURGIE",
       "numero_immatriculation": "AB3954260",
       "nb_lots_habitation": 84,
       "taux_rotation": 0.7,
@@ -23301,10 +23751,10 @@
       "classe_dpe": "C",
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
-      "batiment_groupe_id": "bdnb-bg-8S47-R5PB-QQTY",
-      "_bdnb_match": "num_voie",
+      "batiment_groupe_id": "bdnb-bg-9TQ2-3NZF-3HY8",
+      "_bdnb_match": "correctif_12megas_hermitage_re_fuse",
       "_fusion_auto": true,
-      "_fusion_cible": "35|RUE|GUILLOUD",
+      "_fusion_cible": "27|RUE|GUILLOUD",
       "ventes_par_an_logement": {
         "2021": 1,
         "2022": 1,
@@ -24692,7 +25142,11 @@
       "nb_lots_habitation": 60,
       "taux_rotation": 3.3,
       "classement_rotation": "Très actif",
-      "_ilot": "11"
+      "_ilot": "11",
+      "_fusion_auto_label": "14 RUE ST VICTORIEN / 2 RUE LOUIS JASSERON",
+      "_fusion_auto_sources": [
+        "2|RUE|LOUIS JASSERON"
+      ]
     },
     {
       "cle": "140|AVENUE|FELIX FAURE",
@@ -26173,9 +26627,10 @@
       "_usage_bdnb_src": "snapshot",
       "_fusion_auto_sources": [
         "29|RUE|STE ANNE DE BARABAN",
-        "31|RUE|STE ANNE DE BARABAN"
+        "31|RUE|STE ANNE DE BARABAN",
+        "33|RUE|CLAUDIUS PIONCHON"
       ],
-      "_fusion_auto_label": null,
+      "_fusion_auto_label": "27-29-31 RUE STE ANNE DE BARABAN / 33 RUE CLAUDIUS PIONCHON",
       "numero_immatriculation": "AA1700848",
       "nb_lots_habitation": 99,
       "taux_rotation": 1.2,
@@ -26444,8 +26899,8 @@
       "classe_dpe": "C",
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
-      "batiment_groupe_id": "bdnb-bg-6UE1-UT3G-U7D2",
-      "_bdnb_match": "num_voie",
+      "batiment_groupe_id": "bdnb-bg-TLU8-1B9R-DX25",
+      "_bdnb_match": "correctif_12megas_jardins_charial_re_fuse",
       "ventes_par_an_logement": {
         "2021": 1,
         "2023": 1,
@@ -26459,7 +26914,7 @@
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "_fusion_auto": true,
-      "_fusion_cible": "25|RUE|ST ANTOINE",
+      "_fusion_cible": "22|RUE|ST ANTOINE",
       "_ilot": "9"
     },
     {
@@ -31258,8 +31713,8 @@
       "classe_dpe": "D",
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
-      "batiment_groupe_id": "bdnb-bg-YQDT-7VMV-E5S5",
-      "_bdnb_match": "num_voie",
+      "batiment_groupe_id": "bdnb-bg-TLU8-1B9R-DX25",
+      "_bdnb_match": "correctif_12megas_jardins_charial_re_fuse",
       "ventes_par_an_logement": {
         "2021": 0,
         "2024": 0
@@ -31270,7 +31725,9 @@
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
-      "_ilot": "8"
+      "_ilot": "8",
+      "_fusion_auto": true,
+      "_fusion_cible": "22|RUE|ST ANTOINE"
     },
     {
       "cle": "14|RUE|LOUIS JASSERON",
@@ -32419,8 +32876,8 @@
       "classe_dpe": "D",
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
-      "batiment_groupe_id": "bdnb-bg-51HE-8CSW-Q4A6",
-      "_bdnb_match": "num_voie",
+      "batiment_groupe_id": "bdnb-bg-AJ85-YHNQ-MYVH",
+      "_bdnb_match": "correctif_12megas_lacassagne_david_re_fuse",
       "ventes_par_an_logement": {
         "2025": 1
       },
@@ -32431,7 +32888,7 @@
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "_fusion_auto": true,
-      "_fusion_cible": "1|RUE|METALLURGIE",
+      "_fusion_cible": "9|RUE|DAVID",
       "_ilot": "59"
     },
     {
@@ -32503,10 +32960,10 @@
       "classe_dpe": "C",
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
-      "batiment_groupe_id": "bdnb-bg-NWNV-GU7Z-XPMJ",
-      "_bdnb_match": "num_voie",
+      "batiment_groupe_id": "bdnb-bg-TLU8-1B9R-DX25",
+      "_bdnb_match": "correctif_12megas_jardins_charial_re_fuse",
       "_fusion_auto": true,
-      "_fusion_cible": "19|RUE|ETIENNE RICHERAND",
+      "_fusion_cible": "22|RUE|ST ANTOINE",
       "ventes_par_an_logement": {
         "2021": 0,
         "2022": 1,
@@ -33349,10 +33806,10 @@
       "classe_dpe": "D",
       "type_batiment": "appartement",
       "type_chauffage": "reseau de chaleur",
-      "batiment_groupe_id": "bdnb-bg-8U51-96UR-3947",
-      "_bdnb_match": "num_voie",
+      "batiment_groupe_id": "bdnb-bg-TLU8-1B9R-DX25",
+      "_bdnb_match": "correctif_12megas_jardins_charial_re_fuse",
       "_fusion_auto": true,
-      "_fusion_cible": "28|RUE|ETIENNE RICHERAND",
+      "_fusion_cible": "22|RUE|ST ANTOINE",
       "ventes_par_an_logement": {
         "2022": 1,
         "2023": 1,
@@ -33389,8 +33846,8 @@
       "classe_dpe": "E",
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
-      "batiment_groupe_id": "bdnb-bg-ALA1-7UY8-ULUG",
-      "_bdnb_match": "num_voie",
+      "batiment_groupe_id": "bdnb-bg-TLU8-1B9R-DX25",
+      "_bdnb_match": "correctif_12megas_jardins_charial_re_fuse",
       "_fusion_auto": true,
       "_fusion_cible": "22|RUE|ST ANTOINE",
       "ventes_par_an_logement": {
@@ -33879,8 +34336,8 @@
       "classe_dpe": "C",
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
-      "batiment_groupe_id": "bdnb-bg-6UE1-UT3G-U7D2",
-      "_bdnb_match": "num_voie",
+      "batiment_groupe_id": "bdnb-bg-TLU8-1B9R-DX25",
+      "_bdnb_match": "correctif_12megas_jardins_charial_re_fuse",
       "_fusion_auto": true,
       "_fusion_cible": "22|RUE|ST ANTOINE",
       "ventes_par_an_logement": {
@@ -35702,8 +36159,8 @@
       "classe_dpe": "C",
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
-      "batiment_groupe_id": "bdnb-bg-PWDK-M71Z-3JJQ",
-      "_bdnb_match": "num_voie",
+      "batiment_groupe_id": "bdnb-bg-MYUH-YTYU-45YJ",
+      "_bdnb_match": "correctif_12megas_saint_marc_i_re_fuse",
       "_fusion_auto_label": "44/46 RUE ST MAXIMIN",
       "_fusion_auto_sources": null,
       "ventes_par_an_logement": {
@@ -35717,7 +36174,7 @@
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "_fusion_auto": true,
-      "_fusion_cible": "43|RUE|ST MAXIMIN",
+      "_fusion_cible": "42|RUE|ST MAXIMIN",
       "_ilot": "80"
     },
     {
@@ -35980,10 +36437,10 @@
       "classe_dpe": "D",
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
-      "batiment_groupe_id": "bdnb-bg-4F6G-4P2Q-RRZK",
-      "_bdnb_match": "num_voie",
+      "batiment_groupe_id": "bdnb-bg-MYUH-YTYU-45YJ",
+      "_bdnb_match": "correctif_12megas_saint_marc_i_re_fuse",
       "_fusion_auto": true,
-      "_fusion_cible": "51|RUE|ST MAXIMIN",
+      "_fusion_cible": "42|RUE|ST MAXIMIN",
       "ventes_par_an_logement": {
         "2022": 0,
         "2023": 1,
@@ -37222,9 +37679,10 @@
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-SAR3-A4XV-LE8B",
       "_bdnb_match": "immat",
-      "_fusion_auto_label": "89/93 RUE DAUPHINE",
+      "_fusion_auto_label": "89-93 RUE DAUPHINE / 14 RUE CARRY",
       "_fusion_auto_sources": [
-        "93|RUE|DAUPHINE"
+        "93|RUE|DAUPHINE",
+        "14|RUE|CARRY"
       ],
       "ventes_par_an_logement": {
         "2021": 0,
@@ -40186,10 +40644,10 @@
       "classe_dpe": "F",
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
-      "batiment_groupe_id": "bdnb-bg-FW4B-YECQ-FPCT",
-      "_bdnb_match": "num_voie",
+      "batiment_groupe_id": "bdnb-bg-SAR3-A4XV-LE8B",
+      "_bdnb_match": "correctif_12megas_pavillon_dauphin_re_fuse",
       "_fusion_auto": true,
-      "_fusion_cible": "6|RUE|CARRY",
+      "_fusion_cible": "89|RUE|DAUPHINE",
       "ventes_par_an_logement": {
         "2021": 1
       },
@@ -45214,8 +45672,8 @@
       "classe_dpe": "E",
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
-      "batiment_groupe_id": "bdnb-bg-SBHG-VQWK-FCA9",
-      "_bdnb_match": "num_voie",
+      "batiment_groupe_id": "bdnb-bg-TLU8-1B9R-DX25",
+      "_bdnb_match": "correctif_12megas_jardins_charial_re_fuse",
       "ventes_par_an_logement": {
         "2021": 1,
         "2023": 2
@@ -45227,7 +45685,7 @@
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "_fusion_auto": true,
-      "_fusion_cible": "21|RUE|ETIENNE RICHERAND",
+      "_fusion_cible": "22|RUE|ST ANTOINE",
       "_ilot": "9"
     },
     {
@@ -45388,12 +45846,18 @@
       "type_chauffage": "reseau de chaleur",
       "batiment_groupe_id": "bdnb-bg-TLU8-1B9R-DX25",
       "_bdnb_match": "immat",
-      "_fusion_auto_label": "22/24/26/28 RUE ST ANTOINE",
+      "_fusion_auto_label": "22-24-26-28-30 RUE ST ANTOINE / 14-16-18-20-22-24 RUE ETIENNE RICHERAND",
       "_fusion_auto_sources": [
         "16|RUE|ETIENNE RICHERAND",
         "24|RUE|ST ANTOINE",
         "26|RUE|ST ANTOINE",
-        "28|RUE|ST ANTOINE"
+        "28|RUE|ST ANTOINE",
+        "14|RUE|ETIENNE RICHERAND",
+        "18|RUE|ETIENNE RICHERAND",
+        "20|RUE|ETIENNE RICHERAND",
+        "22|RUE|ETIENNE RICHERAND",
+        "24|RUE|ETIENNE RICHERAND",
+        "30|RUE|ST ANTOINE"
       ],
       "ventes_par_an_logement": {
         "2023": 1
@@ -48113,8 +48577,8 @@
       "classe_dpe": "C",
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
-      "batiment_groupe_id": "bdnb-bg-6UE1-UT3G-U7D2",
-      "_bdnb_match": "num_voie",
+      "batiment_groupe_id": "bdnb-bg-TLU8-1B9R-DX25",
+      "_bdnb_match": "correctif_12megas_jardins_charial_re_fuse",
       "_fusion_auto": true,
       "_fusion_cible": "22|RUE|ST ANTOINE",
       "ventes_par_an_logement": {},
@@ -48952,8 +49416,8 @@
       "classe_dpe": "D",
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
-      "batiment_groupe_id": "bdnb-bg-U297-N64A-4SXK",
-      "_bdnb_match": "num_voie",
+      "batiment_groupe_id": "bdnb-bg-38KK-XRWR-3TVE",
+      "_bdnb_match": "correctif_12megas_jardins_president_ext_re_fuse",
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
@@ -48961,7 +49425,9 @@
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
-      "_ilot": "42"
+      "_ilot": "42",
+      "_fusion_auto": true,
+      "_fusion_cible": "57|RUE|ETIENNE RICHERAND"
     },
     {
       "cle": "3|RUE|LOUIS JASSERON",
@@ -52652,10 +53118,10 @@
       "classe_dpe": "C",
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
-      "batiment_groupe_id": "bdnb-bg-PWDK-M71Z-3JJQ",
-      "_bdnb_match": "num_voie",
+      "batiment_groupe_id": "bdnb-bg-MYUH-YTYU-45YJ",
+      "_bdnb_match": "correctif_12megas_saint_marc_i_re_fuse",
       "_fusion_auto": true,
-      "_fusion_cible": "43|RUE|ST MAXIMIN",
+      "_fusion_cible": "42|RUE|ST MAXIMIN",
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
@@ -54912,7 +55378,12 @@
       "nb_lots_habitation": 55,
       "taux_rotation": 0.0,
       "classement_rotation": "Figé",
-      "_ilot": "41"
+      "_ilot": "41",
+      "_fusion_auto_label": "57 RUE ETIENNE RICHERAND / 36 AVENUE GEORGES POMPIDOU / 3 RUE TEINTURIERS",
+      "_fusion_auto_sources": [
+        "3|RUE|TEINTURIERS",
+        "36|AVENUE|GEORGES POMPIDOU"
+      ]
     },
     {
       "cle": "59|RUE|ANTOINE CHARIAL",
@@ -57644,8 +58115,8 @@
       "classe_dpe": "D",
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
-      "batiment_groupe_id": "bdnb-bg-K5KX-NEHV-8KAS",
-      "_bdnb_match": "num_voie",
+      "batiment_groupe_id": "bdnb-bg-ZRJZ-GNPH-8KBH",
+      "_bdnb_match": "correctif_12megas_closerie_tilleuls_ii_re_fuse",
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
@@ -57653,7 +58124,9 @@
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
-      "_ilot": "26"
+      "_ilot": "26",
+      "_fusion_auto": true,
+      "_fusion_cible": "7|RUE|FRANCOIS GILLET"
     },
     {
       "cle": "9|RUE|GABILLOT",
@@ -59857,7 +60330,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-MYUH-YTYU-45YJ",
-      "_bdnb_match": "immat_horsrnc_fix",
+      "_bdnb_match": "correctif_12megas_saint_marc_i_old_malformed",
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
@@ -59865,11 +60338,14 @@
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
-      "numero_immatriculation": "AA2505634",
+      "numero_immatriculation": null,
       "nb_lots_habitation": 63,
       "taux_rotation": 0.0,
       "classement_rotation": "Figé",
-      "_ilot": "80"
+      "_ilot": "80",
+      "_fusion_auto": true,
+      "_fusion_cible": "42|RUE|ST MAXIMIN",
+      "_detach_immat_ex": "AA2505634"
     },
     {
       "cle": "3B|RUE|BARA",
@@ -61742,10 +62218,10 @@
       "classe_dpe": "E",
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
-      "batiment_groupe_id": "bdnb-bg-WCZE-BJWK-JYM1",
-      "_bdnb_match": "num_voie",
+      "batiment_groupe_id": "bdnb-bg-R3ZV-UJGF-B5PM",
+      "_bdnb_match": "correctif_12megas_177_felix_faure_re_fuse",
       "_fusion_auto": true,
-      "_fusion_cible": "179|AVENUE|FELIX FAURE",
+      "_fusion_cible": "177|AVENUE|FELIX FAURE",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
       "_ilot": "51"
     },
@@ -63085,10 +63561,10 @@
       "classe_dpe": "D",
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
-      "batiment_groupe_id": "bdnb-bg-G6ZB-A3PE-27QQ",
-      "_bdnb_match": "num_voie",
+      "batiment_groupe_id": "bdnb-bg-2ZP4-TAU6-UC13",
+      "_bdnb_match": "correctif_12megas_horizon_monplaisir_re_fuse",
       "_fusion_auto": true,
-      "_fusion_cible": "64|AVENUE|LACASSAGNE",
+      "_fusion_cible": "66|AVENUE|LACASSAGNE",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
       "_ilot": "75"
     },
@@ -65293,6 +65769,242 @@
       "_ilot": "8",
       "_fusion_auto": true,
       "_fusion_cible": "30|RUE|BARABAN"
+    },
+    {
+      "cle": "29|RUE|GUILLOUD",
+      "adresse": "29 RUE GUILLOUD",
+      "longitude": 4.869679,
+      "latitude": 45.747517,
+      "code_iris": "693830603",
+      "_coord_source": "clone_27|RUE|GUILLOUD",
+      "dans_majic": false,
+      "sci_proprietaire": "non",
+      "sci_nom": "",
+      "sci_siren": "",
+      "syndic": "REGIE PEDRINI",
+      "_syndic_src": "rnc",
+      "ventes_par_an": {},
+      "nb_ventes_total": 0,
+      "nb_log_bdnb": null,
+      "annee_construction": 1976,
+      "classe_dpe": "D",
+      "type_batiment": "appartement",
+      "type_chauffage": "gaz",
+      "batiment_groupe_id": "bdnb-bg-9TQ2-3NZF-3HY8",
+      "_bdnb_match": "correctif_12megas_hermitage_inject_label",
+      "ventes_par_an_logement": {},
+      "nb_ventes_logement": 0,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Fige",
+      "_taux_logement_src": "copie_inject",
+      "usage_principal_bdnb": "Résidentiel collectif",
+      "_ilot": "80",
+      "_fusion_auto": true,
+      "_fusion_cible": "27|RUE|GUILLOUD"
+    },
+    {
+      "cle": "3|RUE|ETIENNE RICHERAND",
+      "adresse": "3 RUE ETIENNE RICHERAND",
+      "longitude": 4.867152,
+      "latitude": 45.763053,
+      "code_iris": "693830402",
+      "_coord_source": "clone_35|RUE|ST ANTOINE",
+      "dans_majic": false,
+      "sci_proprietaire": "non",
+      "sci_nom": "",
+      "sci_siren": "",
+      "syndic": "non connu",
+      "_syndic_src": "rnc",
+      "ventes_par_an": {},
+      "nb_ventes_total": 0,
+      "nb_log_bdnb": null,
+      "annee_construction": 2005,
+      "classe_dpe": "C",
+      "type_batiment": "immeuble",
+      "type_chauffage": "gaz",
+      "batiment_groupe_id": "bdnb-bg-ASMY-1BJU-2LUB",
+      "_bdnb_match": "correctif_12megas_carre_st_antoine_inject_label",
+      "ventes_par_an_logement": {},
+      "nb_ventes_logement": 0,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Fige",
+      "_taux_logement_src": "copie_inject",
+      "usage_principal_bdnb": "Résidentiel collectif",
+      "_ilot": "4",
+      "_fusion_auto": true,
+      "_fusion_cible": "35|RUE|ST ANTOINE"
+    },
+    {
+      "cle": "7|RUE|BARA",
+      "adresse": "7 RUE BARA",
+      "longitude": 4.873271,
+      "latitude": 45.750915,
+      "code_iris": "693830604",
+      "_coord_source": "clone_66|AVENUE|LACASSAGNE",
+      "dans_majic": false,
+      "sci_proprietaire": "non",
+      "sci_nom": "",
+      "sci_siren": "",
+      "syndic": "GESTION ET PATRIMOINE LESCUYER",
+      "_syndic_src": "rnc",
+      "ventes_par_an": {},
+      "nb_ventes_total": 0,
+      "nb_log_bdnb": null,
+      "annee_construction": 2018,
+      "classe_dpe": "C",
+      "type_batiment": "appartement",
+      "type_chauffage": "gaz",
+      "batiment_groupe_id": "bdnb-bg-2ZP4-TAU6-UC13",
+      "_bdnb_match": "correctif_12megas_horizon_monplaisir_inject_label",
+      "ventes_par_an_logement": {},
+      "nb_ventes_logement": 0,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Fige",
+      "_taux_logement_src": "copie_inject",
+      "usage_principal_bdnb": "Résidentiel collectif",
+      "_ilot": "75",
+      "_fusion_auto": true,
+      "_fusion_cible": "66|AVENUE|LACASSAGNE"
+    },
+    {
+      "cle": "5|RUE|FRANCOIS GILLET",
+      "adresse": "5 RUE FRANCOIS GILLET",
+      "longitude": 4.873381,
+      "latitude": 45.759543,
+      "code_iris": "693830405",
+      "_coord_source": "clone_7|RUE|FRANCOIS GILLET",
+      "dans_majic": false,
+      "sci_proprietaire": "non",
+      "sci_nom": "",
+      "sci_siren": "",
+      "syndic": "REGIE MOLIERE",
+      "_syndic_src": "rnc",
+      "ventes_par_an": {},
+      "nb_ventes_total": 0,
+      "nb_log_bdnb": null,
+      "annee_construction": 1993,
+      "classe_dpe": "C",
+      "type_batiment": "immeuble",
+      "type_chauffage": "electricite",
+      "batiment_groupe_id": "bdnb-bg-ZRJZ-GNPH-8KBH",
+      "_bdnb_match": "correctif_12megas_closerie_tilleuls_ii_inject_label",
+      "ventes_par_an_logement": {},
+      "nb_ventes_logement": 0,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Fige",
+      "_taux_logement_src": "copie_inject",
+      "usage_principal_bdnb": "Résidentiel collectif",
+      "_ilot": "26",
+      "_fusion_auto": true,
+      "_fusion_cible": "7|RUE|FRANCOIS GILLET"
+    },
+    {
+      "cle": "13|RUE|FRANCOIS GILLET",
+      "adresse": "13 RUE FRANCOIS GILLET",
+      "longitude": 4.873381,
+      "latitude": 45.759543,
+      "code_iris": "693830405",
+      "_coord_source": "clone_7|RUE|FRANCOIS GILLET",
+      "dans_majic": false,
+      "sci_proprietaire": "non",
+      "sci_nom": "",
+      "sci_siren": "",
+      "syndic": "REGIE MOLIERE",
+      "_syndic_src": "rnc",
+      "ventes_par_an": {},
+      "nb_ventes_total": 0,
+      "nb_log_bdnb": null,
+      "annee_construction": 1993,
+      "classe_dpe": "C",
+      "type_batiment": "immeuble",
+      "type_chauffage": "electricite",
+      "batiment_groupe_id": "bdnb-bg-ZRJZ-GNPH-8KBH",
+      "_bdnb_match": "correctif_12megas_closerie_tilleuls_ii_inject_label",
+      "ventes_par_an_logement": {},
+      "nb_ventes_logement": 0,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Fige",
+      "_taux_logement_src": "copie_inject",
+      "usage_principal_bdnb": "Résidentiel collectif",
+      "_ilot": "26",
+      "_fusion_auto": true,
+      "_fusion_cible": "7|RUE|FRANCOIS GILLET"
+    },
+    {
+      "cle": "36|AVENUE|GEORGES POMPIDOU",
+      "adresse": "36 AVENUE GEORGES POMPIDOU",
+      "longitude": 4.866115,
+      "latitude": 45.759065,
+      "code_iris": "693830403",
+      "_coord_source": "clone_57|RUE|ETIENNE RICHERAND",
+      "dans_majic": false,
+      "sci_proprietaire": "non",
+      "sci_nom": "",
+      "sci_siren": "",
+      "syndic": "CABINET GINET SA",
+      "_syndic_src": "rnic_live",
+      "ventes_par_an": {},
+      "nb_ventes_total": 0,
+      "nb_log_bdnb": null,
+      "annee_construction": 1993,
+      "classe_dpe": "C",
+      "type_batiment": "immeuble",
+      "type_chauffage": "electricite",
+      "batiment_groupe_id": "bdnb-bg-38KK-XRWR-3TVE",
+      "_bdnb_match": "correctif_12megas_jardins_president_ext_inject_label",
+      "ventes_par_an_logement": {},
+      "nb_ventes_logement": 0,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Fige",
+      "_taux_logement_src": "copie_inject",
+      "usage_principal_bdnb": "Tertiaire",
+      "_ilot": "41",
+      "_fusion_auto": true,
+      "_fusion_cible": "57|RUE|ETIENNE RICHERAND"
+    },
+    {
+      "cle": "42|RUE|ST MAXIMIN",
+      "adresse": "42 RUE ST MAXIMIN",
+      "longitude": 4.870255,
+      "latitude": 45.748108,
+      "code_iris": "693830603",
+      "_coord_source": "clone_42A||50 RUE ST MAXIMIN",
+      "dans_majic": false,
+      "sci_proprietaire": "non",
+      "sci_nom": "",
+      "sci_siren": "",
+      "syndic": "CITYA BARIOZ IMMOBILIER",
+      "_syndic_src": "rnc",
+      "ventes_par_an": {},
+      "nb_ventes_total": 0,
+      "nb_log_bdnb": 64,
+      "annee_construction": 1968,
+      "classe_dpe": "D",
+      "type_batiment": "appartement",
+      "type_chauffage": "gaz",
+      "batiment_groupe_id": "bdnb-bg-MYUH-YTYU-45YJ",
+      "_bdnb_match": "correctif_12megas_saint_marc_i_inject_ancre",
+      "ventes_par_an_logement": {},
+      "nb_ventes_logement": 0,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Fige",
+      "_taux_logement_src": "copie_inject",
+      "usage_principal_bdnb": "Résidentiel collectif",
+      "_ilot": "80",
+      "numero_immatriculation": "AA2505634",
+      "nb_lots_habitation": 63,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Fige",
+      "_fusion_auto": null,
+      "_fusion_cible": null,
+      "_fusion_auto_label": "42-44-46-48-50 RUE ST MAXIMIN",
+      "_fusion_auto_sources": [
+        "44|RUE|ST MAXIMIN",
+        "46|RUE|ST MAXIMIN",
+        "48|RUE|ST MAXIMIN",
+        "50|RUE|ST MAXIMIN",
+        "42A||50 RUE ST MAXIMIN"
+      ]
     }
   ]
 }
