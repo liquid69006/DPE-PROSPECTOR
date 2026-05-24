@@ -2213,6 +2213,32 @@ const TYPE_OPTS = [['', '— type —'], ['copro_non_immat', 'Copropriété non 
 const TYPE_LABELS = { copro_non_immat: 'Copro non immat.', mono: 'Monopropriété',
   social: 'Logements sociaux', bureaux: 'Bureaux', non_qualifie: 'Non qualifié' };
 
+// Sticky IRIS pour ilots a la frontiere IRIS (audit 2026-05-24).
+// 15 ilots avec 1-2 adresses "deviantes" IRIS-wise -> on force l'IRIS
+// majoritaire pour eviter qu'un meme ilot apparaisse dans 2 sous-blocs
+// IRIS (UI plus lisible, agregats par ilot intacts). DATA INCHANGEE.
+// NB : les ilots 80/55/64 (split equilibre ou 3 IRIS) restent
+// volontairement non listes -> gestion terrain manuelle.
+const ILOT_IRIS_STICKY = {
+  // 1-hors-IRIS (11 ilots)
+  '8':  '693830402',  // Richerand-Petites Sœurs (1 hors)
+  '13': '693830401',  // Villette Gare
+  '21': '693830402',  // Richerand-Petites Sœurs
+  '33': '693830405',  // Saint-Anne de Baraban
+  '40': '693830502',  // Paul Bert-Maisons Neuves
+  '43': '693830403',  // Pompidou
+  '47': '693830501',  // Villette-Paul Bert
+  '53': '693830502',  // Paul Bert-Maisons Neuves
+  '61': '693830601',  // Rouget de Lisle-Félix Faure
+  '73': '693830603',  // Saint-Maximin-Sisley
+  '81': '693830603',  // Saint-Maximin-Sisley
+  // 2-hors-IRIS (4 ilots)
+  '4':  '693830402',  // Richerand-Petites Sœurs (2 hors)
+  '9':  '693830402',  // Richerand-Petites Sœurs
+  '10': '693830401',  // Villette Gare
+  '35': '693830405',  // Saint-Anne de Baraban
+};
+
 function secteurSetAssign(key, field, val) {
   if (!secteurAssign[key]) secteurAssign[key] = {};
   if (val === '' || val == null) delete secteurAssign[key][field];
@@ -2437,6 +2463,20 @@ function renderSecteur() {
     }
   });
 
+  // Resolution effective de l'ilot : KV manuel prioritaire (secteurAssign),
+  // sinon fallback _ilot light (sauf 'X'/null). Helper unifie utilise a la
+  // fois pour le groupement par ilot (parIlot ci-dessous) ET pour le
+  // sticky IRIS dans le groupement par IRIS (parIris). Retourne int|null.
+  const ilotEffectif = a => {
+    const as = secteurAssign[a.cle] || {};
+    if (as.ilot != null) return as.ilot;
+    if (a._ilot && a._ilot !== 'X') {
+      const n = parseInt(a._ilot);
+      if (!Number.isNaN(n)) return n;
+    }
+    return null;
+  };
+
   const parIris = {};
   (d.adresses || []).forEach(a => {
     if (fusedSrc[a.cle]) return;     // source fusionnée : retirée de l'arbre
@@ -2470,7 +2510,13 @@ function renderSecteur() {
       const as = secteurAssign[a.cle] || {};
       if (!(horsRnc && (!as.type || as.type === ''))) return;
     }
-    const ci = a.code_iris || '_nd';
+    // Sticky IRIS : si l'ilot effectif est dans ILOT_IRIS_STICKY,
+    // on force l'IRIS majoritaire pour eviter le split d'un meme ilot
+    // sur 2 sous-blocs IRIS (cf. audit 2026-05-24, 15 ilots concernes).
+    // Pour les autres adresses, on utilise leur code_iris natif.
+    const ilotEff = ilotEffectif(a);
+    const irisSticky = (ilotEff != null) ? ILOT_IRIS_STICKY[String(ilotEff)] : null;
+    const ci = irisSticky || a.code_iris || '_nd';
     (parIris[ci] = parIris[ci] || []).push(a);
   });
   let html = '';
@@ -2540,22 +2586,14 @@ function renderSecteur() {
   ordre.forEach((ci, ii) => {
     const I = irisById[ci];
     const idI = 'sct-i' + ii;
-    // regrouper par îlot (assignations)
-    // Piste 3 : KV manuel (`as.ilot`) prioritaire, sinon fallback sur le
-    // champ `a._ilot` du light (= jointure spatiale KML, cf. commit
-    // cde0736). Ignorer 'X' (hors-secteur explicite) et null/undefined :
-    // ces adresses tombent dans 'Îlot non assigné'. parseInt force la
-    // coherence avec le KV (int) puisque _ilot est stocke en string.
-    // Le menu deroulant ligne ~2662 reste sur `as.ilot` seul -- il ne
-    // reflete que les choix manuels patron, pas le defaut spatial.
+    // regrouper par îlot (assignations) -- reutilise le helper
+    // ilotEffectif() defini en haut de renderSecteur (cf. ligne ~2441).
+    // KV manuel (`as.ilot`) prioritaire, fallback `a._ilot` du light
+    // (jointure spatiale KML commit cde0736), exclusion 'X' et null.
+    // Le menu deroulant ligne ~2662 reste sur `as.ilot` seul.
     const parIlot = {};
     parIris[ci].forEach(a => {
-      const as = secteurAssign[a.cle] || {};
-      let ilot = as.ilot;
-      if (ilot == null && a._ilot && a._ilot !== 'X') {
-        const n = parseInt(a._ilot);
-        if (!Number.isNaN(n)) ilot = n;
-      }
+      const ilot = ilotEffectif(a);
       const k = (ilot != null) ? ('Îlot ' + ilot) : 'Îlot non assigné';
       (parIlot[k] = parIlot[k] || []).push(a);
     });
