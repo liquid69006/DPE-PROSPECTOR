@@ -325,6 +325,181 @@
         }
       },
       "decouverte": "distance copro AH9240847 vs 57 BAR light = 291m (prouve faux matching) ; 10 ST VIC = 13m ; 59 BAR = 60m (vrais batis du programme neuf)"
+    },
+    "_correctif_5_ensembles_dl": {
+      "date": "2026-05-24T13:32:33Z",
+      "pattern": "5 ensembles immobiliers DL terrain user (RE-FUSE Cambronne/Fondary + ETIQUETAGE/REBIND)",
+      "fixes": [
+        {
+          "id": 1,
+          "tag": "f1_lafayette",
+          "ancre": "36|RUE|ST ANTOINE",
+          "immat": "AB1367051",
+          "lots_tot_rnc": 266,
+          "preuve": "RNC live AB1367051 adresse_complementaire_1='15 r etienne richerand'",
+          "label": "36 RUE ST ANTOINE / 13/15 RUE ETIENNE RICHERAND"
+        },
+        {
+          "id": 2,
+          "tag": "f2_thesee",
+          "ancre": "228|AVENUE|FELIX FAURE",
+          "immat": "AB5933841",
+          "lots_tot_rnc": 114,
+          "preuve": "RNC live AB5933841 adresse_complementaire_1='125 r du dauphine'",
+          "label": "228/230 AV FELIX FAURE / 125 RUE DAUPHINE"
+        },
+        {
+          "id": 3,
+          "tag": "f3_clos_jardin",
+          "ancre": "180|AVENUE|FELIX FAURE",
+          "immat": "AA1827179",
+          "lots_tot_rnc": 114,
+          "preuve": "Terrain user + parcelle DO/0010 commune (pattern Cambronne)",
+          "label": "180 AV FELIX FAURE / 7 RUE METALLURGIE"
+        },
+        {
+          "id": 4,
+          "tag": "f4_rebind_bellecombe",
+          "ancre": "4|RUE|TERNOIS",
+          "immat": null,
+          "lots_tot_rnc": null,
+          "preuve": "Terrain user (label 18 ST ANTOINE deja inclut 93 BELLECOMBE)",
+          "label": "4/6 RUE TERNOIS / 93 RUE BELLECOMBE / 18 RUE ST ANTOINE"
+        },
+        {
+          "id": 5,
+          "tag": "f5_flandin_label",
+          "ancre": "3|RUE|MAURICE FLANDIN",
+          "immat": null,
+          "lots_tot_rnc": null,
+          "preuve": "Coherence labels (5 cible='3', 7 cible='3/5/7' - uniformiser ancre)",
+          "label": "3/5/7 RUE MAURICE FLANDIN"
+        }
+      ],
+      "log": [
+        {
+          "op": "RE-FUSE",
+          "cle": "15|RUE|ETIENNE RICHERAND",
+          "cible": "36|RUE|ST ANTOINE",
+          "bgid_change": true,
+          "old_cible": null
+        },
+        {
+          "op": "RE-FUSE",
+          "cle": "13|RUE|ETIENNE RICHERAND",
+          "cible": "36|RUE|ST ANTOINE",
+          "bgid_change": true,
+          "old_cible": "15|RUE|ETIENNE RICHERAND"
+        },
+        {
+          "op": "LABEL",
+          "cle": "36|RUE|ST ANTOINE",
+          "label": "36 RUE ST ANTOINE / 13/15 RUE ETIENNE RICHERAND",
+          "sources": [
+            "15|RUE|ETIENNE RICHERAND",
+            "13|RUE|ETIENNE RICHERAND"
+          ]
+        },
+        {
+          "op": "PROPAG_COPRO",
+          "immat": "AB1367051",
+          "patched": [
+            "nom='LE LAFAYETTE'",
+            "nombre_total_lots=266",
+            "nb_lots_habit_fallback=266"
+          ]
+        },
+        {
+          "op": "RE-FUSE",
+          "cle": "125|RUE|DAUPHINE",
+          "cible": "228|AVENUE|FELIX FAURE",
+          "bgid_change": true,
+          "old_cible": null
+        },
+        {
+          "op": "LABEL",
+          "cle": "228|AVENUE|FELIX FAURE",
+          "label": "228/230 AV FELIX FAURE / 125 RUE DAUPHINE",
+          "sources": [
+            "230|AVENUE|FELIX FAURE",
+            "125|RUE|DAUPHINE"
+          ]
+        },
+        {
+          "op": "PROPAG_COPRO",
+          "immat": "AB5933841",
+          "patched": [
+            "nom='LE THESEE-THETIS'",
+            "nombre_total_lots=114",
+            "nb_lots_habit_fallback=114"
+          ]
+        },
+        {
+          "op": "RE-FUSE",
+          "cle": "7|RUE|METALLURGIE",
+          "cible": "180|AVENUE|FELIX FAURE",
+          "bgid_change": true,
+          "old_cible": null
+        },
+        {
+          "op": "LABEL",
+          "cle": "180|AVENUE|FELIX FAURE",
+          "label": "180 AV FELIX FAURE / 7 RUE METALLURGIE",
+          "sources": [
+            "7|RUE|METALLURGIE"
+          ]
+        },
+        {
+          "op": "PROPAG_COPRO",
+          "immat": "AA1827179",
+          "patched": [
+            "nom='LE CLOS JARDIN'",
+            "nombre_total_lots=114",
+            "nb_lots_habit_fallback=114"
+          ]
+        },
+        {
+          "op": "RE-FUSE",
+          "cle": "93|RUE|BELLECOMBE",
+          "cible": "4|RUE|TERNOIS",
+          "bgid_change": false,
+          "old_cible": "94|RUE|BELLECOMBE"
+        },
+        {
+          "op": "LABEL",
+          "cle": "4|RUE|TERNOIS",
+          "label": "4/6 RUE TERNOIS / 93 RUE BELLECOMBE / 18 RUE ST ANTOINE",
+          "sources": [
+            "6|RUE|TERNOIS",
+            "18|RUE|ST ANTOINE",
+            "93|RUE|BELLECOMBE"
+          ]
+        },
+        {
+          "op": "RE-FUSE",
+          "cle": "5|RUE|MAURICE FLANDIN",
+          "cible": "3|RUE|MAURICE FLANDIN",
+          "bgid_change": false,
+          "old_cible": "3|RUE|MAURICE FLANDIN"
+        },
+        {
+          "op": "RE-FUSE",
+          "cle": "7|RUE|MAURICE FLANDIN",
+          "cible": "3|RUE|MAURICE FLANDIN",
+          "bgid_change": false,
+          "old_cible": "3/5/7 RUE MAURICE FLANDIN"
+        },
+        {
+          "op": "LABEL",
+          "cle": "3|RUE|MAURICE FLANDIN",
+          "label": "3/5/7 RUE MAURICE FLANDIN",
+          "sources": [
+            "5|RUE|MAURICE FLANDIN",
+            "7|RUE|MAURICE FLANDIN"
+          ]
+        }
+      ],
+      "delta_parc_estime_total": 314
     }
   },
   "iris": [
@@ -1256,7 +1431,11 @@
         "2021": 1
       },
       "taux_rotation_5ans": 6.5,
-      "classement_rotation": "Modere"
+      "classement_rotation": "Modere",
+      "nom_usage_copropriete": "LE CLOS JARDIN",
+      "nombre_total_lots": 114,
+      "nombre_lots_usage_habitation": 114,
+      "_lots_habit_src": "rnc_total_fallback_5ensdl"
     },
     {
       "numero_immatriculation": "AA1827336",
@@ -4373,7 +4552,11 @@
       "nb_ventes_2021_2025": 0,
       "ventes_par_an": {},
       "taux_rotation_5ans": 0.0,
-      "classement_rotation": "Fige"
+      "classement_rotation": "Fige",
+      "nom_usage_copropriete": "LE LAFAYETTE",
+      "nombre_total_lots": 266,
+      "nombre_lots_usage_habitation": 266,
+      "_lots_habit_src": "rnc_total_fallback_5ensdl"
     },
     {
       "numero_immatriculation": "AB1393370",
@@ -6182,7 +6365,11 @@
         "2023": 1
       },
       "taux_rotation_5ans": 4.3,
-      "classement_rotation": "Fige"
+      "classement_rotation": "Fige",
+      "nom_usage_copropriete": "LE THESEE-THETIS",
+      "nombre_total_lots": 114,
+      "nombre_lots_usage_habitation": 114,
+      "_lots_habit_src": "rnc_total_fallback_5ensdl"
     },
     {
       "numero_immatriculation": "AB6005698",
@@ -19397,8 +19584,8 @@
       "classe_dpe": "E",
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
-      "batiment_groupe_id": "bdnb-bg-NP5T-JZFB-UVR7",
-      "_bdnb_match": "num_voie",
+      "batiment_groupe_id": "bdnb-bg-47D6-WCMM-3V8Y",
+      "_bdnb_match": "correctif_5ensdl_f2_thesee_re_fuse",
       "_fusion_auto_label": "123/125 RUE DAUPHINE",
       "_fusion_auto_sources": [
         "123|RUE|DAUPHINE"
@@ -19412,7 +19599,9 @@
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
-      "_ilot": "61"
+      "_ilot": "61",
+      "_fusion_auto": true,
+      "_fusion_cible": "228|AVENUE|FELIX FAURE"
     },
     {
       "cle": "13|RUE|ETIENNE RICHERAND",
@@ -19439,10 +19628,10 @@
       "classe_dpe": "D",
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
-      "batiment_groupe_id": "bdnb-bg-YQDT-7VMV-E5S5",
-      "_bdnb_match": "num_voie",
+      "batiment_groupe_id": "bdnb-bg-VN5D-RL5T-NVRA",
+      "_bdnb_match": "correctif_5ensdl_f1_lafayette_re_fuse",
       "_fusion_auto": true,
-      "_fusion_cible": "15|RUE|ETIENNE RICHERAND",
+      "_fusion_cible": "36|RUE|ST ANTOINE",
       "ventes_par_an_logement": {
         "2021": 1,
         "2022": 1,
@@ -19609,8 +19798,8 @@
       "classe_dpe": "D",
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
-      "batiment_groupe_id": "bdnb-bg-YQDT-7VMV-E5S5",
-      "_bdnb_match": "num_voie",
+      "batiment_groupe_id": "bdnb-bg-VN5D-RL5T-NVRA",
+      "_bdnb_match": "correctif_5ensdl_f1_lafayette_re_fuse",
       "_fusion_auto_label": "13/15 RUE ETIENNE RICHERAND",
       "_fusion_auto_sources": [
         "13|RUE|ETIENNE RICHERAND"
@@ -19627,7 +19816,9 @@
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
-      "_ilot": "8"
+      "_ilot": "8",
+      "_fusion_auto": true,
+      "_fusion_cible": "36|RUE|ST ANTOINE"
     },
     {
       "cle": "15|RUE|GUILLOUD",
@@ -21795,7 +21986,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-W2RS-K6JM-Z1H3",
-      "_bdnb_match": "num_voie",
+      "_bdnb_match": "correctif_5ensdl_f5_flandin_label_re_fuse",
       "_fusion_auto": true,
       "_fusion_cible": "3|RUE|MAURICE FLANDIN",
       "ventes_par_an_logement": {
@@ -22344,8 +22535,8 @@
       "classe_dpe": "C",
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
-      "batiment_groupe_id": "bdnb-bg-WSTK-SKSS-P2M2",
-      "_bdnb_match": "num_voie",
+      "batiment_groupe_id": "bdnb-bg-L2EK-Q53Q-3HL2",
+      "_bdnb_match": "correctif_5ensdl_f3_clos_jardin_re_fuse",
       "ventes_par_an_logement": {
         "2021": 2,
         "2022": 1,
@@ -22358,7 +22549,9 @@
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
-      "_ilot": "59"
+      "_ilot": "59",
+      "_fusion_auto": true,
+      "_fusion_cible": "180|AVENUE|FELIX FAURE"
     },
     {
       "cle": "71|COURS|ALBERT THOMAS",
@@ -27754,7 +27947,7 @@
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-KVDR-XPSM-PDB5",
-      "_bdnb_match": "num_voie",
+      "_bdnb_match": "correctif_5ensdl_f4_rebind_bellecombe_re_fuse",
       "ventes_par_an_logement": {
         "2022": 2,
         "2023": 1,
@@ -27768,7 +27961,7 @@
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "_fusion_auto": true,
-      "_fusion_cible": "94|RUE|BELLECOMBE",
+      "_fusion_cible": "4|RUE|TERNOIS",
       "_ilot": "2"
     },
     {
@@ -29371,7 +29564,11 @@
       "nb_lots_habitation": 46,
       "taux_rotation": 1.3,
       "classement_rotation": "Modéré",
-      "_ilot": "59"
+      "_ilot": "59",
+      "_fusion_auto_label": "180 AV FELIX FAURE / 7 RUE METALLURGIE",
+      "_fusion_auto_sources": [
+        "7|RUE|METALLURGIE"
+      ]
     },
     {
       "cle": "52|AVENUE|GEORGES POMPIDOU",
@@ -32444,9 +32641,10 @@
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-47D6-WCMM-3V8Y",
       "_bdnb_match": "immat",
-      "_fusion_auto_label": "228/230 AVENUE FELIX FAURE",
+      "_fusion_auto_label": "228/230 AV FELIX FAURE / 125 RUE DAUPHINE",
       "_fusion_auto_sources": [
-        "230|AVENUE|FELIX FAURE"
+        "230|AVENUE|FELIX FAURE",
+        "125|RUE|DAUPHINE"
       ],
       "ventes_par_an_logement": {
         "2023": 1,
@@ -34533,7 +34731,12 @@
       "nb_lots_habitation": 87,
       "taux_rotation": 1.1,
       "classement_rotation": "Modéré",
-      "_ilot": "8"
+      "_ilot": "8",
+      "_fusion_auto_label": "36 RUE ST ANTOINE / 13/15 RUE ETIENNE RICHERAND",
+      "_fusion_auto_sources": [
+        "15|RUE|ETIENNE RICHERAND",
+        "13|RUE|ETIENNE RICHERAND"
+      ]
     },
     {
       "cle": "37|RUE|TURBIL",
@@ -51146,7 +51349,8 @@
       "_fusion_auto_label": "4/6 RUE TERNOIS / 93 RUE BELLECOMBE / 18 RUE ST ANTOINE",
       "_fusion_auto_sources": [
         "6|RUE|TERNOIS",
-        "18|RUE|ST ANTOINE"
+        "18|RUE|ST ANTOINE",
+        "93|RUE|BELLECOMBE"
       ],
       "ventes_par_an_logement": {
         "2022": 1
@@ -55578,7 +55782,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-W2RS-K6JM-Z1H3",
-      "_bdnb_match": "correctif_7flandin_re_point",
+      "_bdnb_match": "correctif_5ensdl_f5_flandin_label_re_fuse",
       "ventes_par_an_logement": {
         "2021": 1,
         "2022": 2,
@@ -55591,7 +55795,7 @@
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "_fusion_auto": true,
-      "_fusion_cible": "3/5/7 RUE MAURICE FLANDIN",
+      "_fusion_cible": "3|RUE|MAURICE FLANDIN",
       "_ilot": "2"
     },
     {

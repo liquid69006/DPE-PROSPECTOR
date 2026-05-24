@@ -700,5 +700,19 @@
   "69123383DN0086": [],
   "69123383DT0096": [],
   "69123383DY0060": [],
-  "69123383EI0097": []
+  "69123383EI0097": [],
+  "69123383BH0015": [],
+  "69123383DN0065": [
+    {
+      "immat": "AB5933841",
+      "nom": "LE THESEE-THETIS",
+      "syndic": "",
+      "adresse": "228 av felix faure 69003 Lyon",
+      "lots_tot": "114",
+      "lots_hab": null,
+      "date_immat": "",
+      "ref_col": "reference_cadastrale_1"
+    }
+  ],
+  "69123383EI0042": []
 }
