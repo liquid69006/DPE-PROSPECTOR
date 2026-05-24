@@ -3564,7 +3564,9 @@ function sctMapRegen() {
 // Workflow : POST /map-a0/generate -> POST GitHub workflow_dispatch ->
 //            polling /map-a0/status toutes les 5 s (timeout 3 min) ->
 //            GET /map-a0/artifact/:runId -> window.open(download_url)
-//            (proxy worker qui pipe le ZIP avec auth GH_PAT).
+//            (le Worker resout l'archive_download_url GitHub en signed
+//            URL S3 directe, sans auth ; expire en ~1 min, suffisant
+//            pour declencher le download navigateur immediatement).
 async function sctMapExportA0() {
   const btn = document.getElementById('sct-map-export-btn');
   if (!btn) return;
@@ -3621,7 +3623,7 @@ async function sctMapExportA0() {
     }
     if (!runId) throw new Error('run_id introuvable');
 
-    // 3) Récupère l'artifact (proxy worker).
+    // 3) Resout l'artifact en signed URL S3 directe (Worker fait la redirect).
     btn.textContent = '⏳ Téléchargement…';
     const ra = await fetch(`${API_URL}/map-a0/artifact/${runId}?token=${encodeURIComponent(authToken)}`, {
       headers: { 'Authorization': `Bearer ${authToken}` },
@@ -3630,7 +3632,7 @@ async function sctMapExportA0() {
     const art = await ra.json();
     if (!art.download_url) throw new Error('Aucun artifact disponible');
 
-    // 4) Ouvre dans un nouvel onglet (le download_url contient deja le token).
+    // 4) Ouvre la signed URL S3 directement (pas d'auth, expire ~1 min).
     window.open(art.download_url, '_blank');
     showToast('✅ Téléchargement lancé');
   } catch (e) {

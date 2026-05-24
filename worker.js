@@ -703,10 +703,13 @@ async function handleRequest(request, env) {
     // ── /map-a0/* ── generation de carte A0 via GitHub Actions ───────
     //  POST /map-a0/generate/:agence  -> declenche workflow
     //  GET  /map-a0/status/:agence    -> dernier run du workflow
-    //  GET  /map-a0/artifact/:runId   -> meta + download_url (proxy)
-    //  GET  /map-a0/download/:runId   -> proxy streaming du ZIP artifact
-    //  Auth : requireAuth(agenceId) ; le proxy download accepte le token
-    //  en query (?token=jwt) pour permettre window.open() cote front.
+    //  GET  /map-a0/artifact/:runId   -> resout l'archive_download_url
+    //                                     en signed URL S3 directe, que
+    //                                     le front passe a window.open()
+    //                                     (pas d'auth necessaire, l'URL
+    //                                     est signee + expire en ~1 min).
+    //  Auth : requireAuth(agenceId) sauf /artifact qui accepte aussi
+    //  ?token=... pour permettre window.open() cote front.
     //  Necessite env.GH_PAT (Cloudflare secret).
     // Auth GitHub : "token <PAT>" pour les PAT classiques (compatible avec
     // tous les endpoints REST + artifacts/zip). "Bearer" cassait le download
@@ -786,6 +789,7 @@ async function handleRequest(request, env) {
       if (!env.GH_PAT) return err("GH_PAT non configuré côté Worker", 500);
 
       const runId = mapA0ArtifactMatch[1];
+      // 1) Liste les artifacts du run (on n'en uploade qu'un seul).
       const ghResp = await fetch(
         `https://api.github.com/repos/${GH_REPO}/actions/runs/${runId}/artifacts`,
         { headers: ghHeaders() }
@@ -797,54 +801,29 @@ async function handleRequest(request, env) {
       const data = await ghResp.json();
       const art = (data.artifacts || [])[0];
       if (!art) return json({ download_url: null, message: "Aucun artifact" });
-      // URL proxy worker (avec token en query pour window.open).
-      const proxyUrl = `${urlObj.origin}/map-a0/download/${runId}?token=${encodeURIComponent(token)}`;
+
+      // 2) Resout archive_download_url -> signed URL S3 (redirect manual).
+      //    La signed URL n'accepte PAS Authorization (S3 rejette), donc on
+      //    la retourne directement au front qui la passe a window.open().
+      //    Elle expire en ~1 min, ce qui est suffisant pour un download
+      //    declenche immediatement par le navigateur.
+      const redirResp = await fetch(art.archive_download_url, {
+        headers: ghHeaders(),
+        redirect: "manual",
+      });
+      const signedUrl = redirResp.headers.get("Location");
+      if (!signedUrl) {
+        const txt = await redirResp.text().catch(() => "");
+        return err(
+          `Pas de Location header (status ${redirResp.status}) : ${txt.slice(0, 200)}`,
+          502
+        );
+      }
+
       return json({
-        download_url: proxyUrl,
+        download_url: signedUrl,
         name: art.name,
         size: art.size_in_bytes,
-        github_url: art.archive_download_url,
-      });
-    }
-
-    // Proxy streaming du ZIP artifact (necessite GH_PAT pour l'auth GitHub).
-    // Le token JWT est verifie via ?token=... (UX window.open cote front).
-    const mapA0DlMatch = path.match(/^\/map-a0\/download\/(\d+)$/);
-    if (mapA0DlMatch && method === "GET") {
-      const urlObj = new URL(request.url);
-      const token = urlObj.searchParams.get("token")
-                 || (request.headers.get("Authorization") || "").replace(/^Bearer\s+/i, "");
-      if (!token) return err("Token manquant", 401);
-      const payload = await verifyJwt(token, JWT_SECRET);
-      if (!payload) return err("Token invalide ou expiré", 401);
-      if (!env.GH_PAT) return err("GH_PAT non configuré côté Worker", 500);
-
-      const runId = mapA0DlMatch[1];
-      // 1) Recupere l'artifact ID (le 1er, on n'en uploade qu'un seul).
-      const listResp = await fetch(
-        `https://api.github.com/repos/${GH_REPO}/actions/runs/${runId}/artifacts`,
-        { headers: ghHeaders() }
-      );
-      if (!listResp.ok) return err(`Échec liste artifacts (${listResp.status})`, 502);
-      const lst = await listResp.json();
-      const art = (lst.artifacts || [])[0];
-      if (!art) return err("Aucun artifact disponible", 404);
-
-      // 2) Download le ZIP avec auth GH_PAT (suit la redirect signed URL).
-      const dlResp = await fetch(art.archive_download_url, {
-        headers: ghHeaders(),
-        redirect: "follow",
-      });
-      if (!dlResp.ok) return err(`Échec download (${dlResp.status})`, 502);
-
-      // 3) Pipe le ZIP au client.
-      return new Response(dlResp.body, {
-        status: 200,
-        headers: {
-          ...CORS,
-          "Content-Type": "application/zip",
-          "Content-Disposition": `attachment; filename="${art.name || `carte_a0_${runId}`}.zip"`,
-        },
       });
     }
 

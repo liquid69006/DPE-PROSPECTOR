@@ -146,6 +146,12 @@ def capture_html_to_png(html_path, png_path, w, h):
     service = ChromeService(executable_path=chromedriver_path)
     driver = webdriver.Chrome(service=service, options=opts)
     try:
+        # Force la taille du viewport AVANT le get(url) : Leaflet calcule
+        # le nombre de tuiles a charger des le premier render selon la
+        # taille de la fenetre.
+        driver.set_window_size(w, h)
+        print(f"[OK] Window size : {w}x{h}", flush=True)
+
         url = pathlib.Path(html_path).resolve().as_uri()
         driver.get(url)
 
@@ -160,13 +166,20 @@ def capture_html_to_png(html_path, png_path, w, h):
         )
         print("[OK] Leaflet pret", flush=True)
 
-        # 2) Tuiles majoritairement chargees (>=85 %, evite les trous).
-        print("[INFO] Attente chargement tuiles (>=85 %)...", flush=True)
-        WebDriverWait(driver, 60).until(
+        # 2) Force un resize pour que Leaflet recharge les tuiles a la
+        # bonne resolution apres set_window_size + fit_bounds applique.
+        driver.execute_script("window.dispatchEvent(new Event('resize'));")
+        time.sleep(2)
+
+        # 3) Tuiles majoritairement chargees (>=70 %, certaines tuiles
+        # en bordure ne se chargent jamais en headless ; 70 % suffit
+        # pour un rendu propre).
+        print("[INFO] Attente chargement tuiles (>=70 %)...", flush=True)
+        WebDriverWait(driver, 90).until(
             lambda d: d.execute_script("""
               var imgs  = document.querySelectorAll('.leaflet-tile-loaded');
               var total = document.querySelectorAll('.leaflet-tile').length;
-              return total > 0 && imgs.length >= total * 0.85;
+              return total > 0 && imgs.length >= total * 0.70;
             """)
         )
         loaded = driver.execute_script(
@@ -177,7 +190,7 @@ def capture_html_to_png(html_path, png_path, w, h):
         )
         print(f"[OK] Tuiles {loaded}/{total}", flush=True)
 
-        # 3) Buffer final pour le rendu SVG des polygones (instantane mais
+        # 4) Buffer final pour le rendu SVG des polygones (instantane mais
         # le compositor du navigateur a besoin d'un dernier frame).
         time.sleep(3)
 
@@ -246,7 +259,8 @@ def main():
         print("[FATAL] Aucun polygone KML utilisable", file=sys.stderr)
         sys.exit(3)
 
-    # Calcul bbox.
+    # Centre initial (sera ecrase par fit_bounds final ; sert juste a
+    # eviter un crash si la liste est vide).
     all_lats, all_lngs = [], []
     for rings in ilot_rings.values():
         for ring in rings:
@@ -254,9 +268,9 @@ def main():
                 all_lats.append(lat)
                 all_lngs.append(lng)
     center = (sum(all_lats) / len(all_lats), sum(all_lngs) / len(all_lngs))
-    bounds = [[min(all_lats), min(all_lngs)], [max(all_lats), max(all_lngs)]]
 
-    # Carte folium (Positron, aligne avec sctMap UI).
+    # Carte folium (Positron, aligne avec sctMap UI). zoom_start ecrase
+    # par fit_bounds plus bas.
     m = folium.Map(
         location=center,
         zoom_start=14,
@@ -297,8 +311,12 @@ def main():
     else:
         print(f"[INFO] Pas de coords pour agence {agence_id} (extensible via AGENCE_COORDS)", flush=True)
 
-    # Fit bounds avec padding.
-    m.fit_bounds(bounds, padding=(20, 20))
+    # Fit bounds AUTOMATIQUE sur les polygones reels (zoom calcule pour
+    # remplir le viewport). Plus fiable que zoom_start fixe : robuste si
+    # on rajoute/retire des ilots, et tient compte de l'aspect ratio A0.
+    sw = [min(all_lats), min(all_lngs)]
+    ne = [max(all_lats), max(all_lngs)]
+    m.fit_bounds([sw, ne], padding=[20, 20])
 
     # Sortie : HTML puis PNG.
     OUT_DIR.mkdir(parents=True, exist_ok=True)
