@@ -778,7 +778,7 @@ td{padding:11px 14px;vertical-align:middle;}
                background:var(--surface2);color:var(--text);font-size:13px;
                cursor:pointer;white-space:nowrap;">❓ À qualifier</button>
       <button id="secteur-gen-btn" onclick="sctGenOpen()"
-        title="Générer automatiquement N secteurs équilibrés (par nb de ventes ±5%) à partir des îlots, en pondérant proche/moyenne/lointaine par rapport à l'adresse de l'agence."
+        title="Générer automatiquement N secteurs équilibrés en 3 passes : total ±5%, proche+moyenne ±10%, par zone ±20%."
         style="padding:7px 14px;border:1px solid #BEAF87;border-radius:6px;
                background:#1f2937;color:#BEAF87;font-size:13px;font-weight:600;
                cursor:pointer;white-space:nowrap;">⚡ Générer secteurs</button>
@@ -875,15 +875,18 @@ td{padding:11px 14px;vertical-align:middle;}
                 style="width:100%;box-sizing:border-box;background:#1f2937;color:#fff;
                        border:1px solid #4b5563;border-radius:6px;padding:8px 12px;font-size:13px;">
               <div style="font-size:11px;color:var(--text2);margin-top:4px;">
-                Tolérance : ±5 % sur les ventes</div>
+                3 passes : T ±5 %, P+M ±10 %, par zone ±20 %</div>
             </div>
           </div>
           <div style="background:#1f2937;border:1px solid #374151;border-radius:6px;
                padding:10px 14px;font-size:12px;color:var(--text2);line-height:1.6;">
             <b style="color:#BEAF87;">Méthode :</b> chaque îlot est agrégé (somme des ventes
             <span id="sct-gen-mode-info">strictes</span>, centroïde GPS, distance à l'agence) puis
-            distribué en round-robin par ventes décroissantes sur N secteurs.
-            Un swap itératif équilibre à ±5 % de la moyenne.
+            distribué en round-robin par ventes décroissantes sur N secteurs. Équilibrage en
+            <b>3 passes</b> séquentielles :<br>
+            &nbsp;&nbsp;<b>1.</b> <b style="color:#BEAF87;">Total</b> ±5 % (50 itérations, malus 20 % si proximité &lt; 300 m).<br>
+            &nbsp;&nbsp;<b>2.</b> <b style="color:#BEAF87;">Proche+Moyenne</b> ±10 % (sans casser l'enveloppe total).<br>
+            &nbsp;&nbsp;<b>3.</b> <b style="color:#BEAF87;">Par zone</b> ±20 % (sans casser les enveloppes total ni P+M).<br>
             Les îlots <code>X</code> et <code>non assignés</code> sont ignorés.
           </div>
           <div style="margin-top:18px;display:flex;justify-content:flex-end;gap:10px;">
@@ -2355,8 +2358,11 @@ window.secteurSetAssign = secteurSetAssign;
 // ════════════════════════════════════════════════════════════════════
 //  GÉNÉRATION DE SECTEURS CONSEILLERS  (module ⚡)
 //  Crée N "secteurs conseillers" en répartissant les îlots du secteur
-//  par nb de ventes (round-robin DESC) + équilibrage par moves (50 iter,
-//  ±5 % moyenne, bonus équilibre des 3 zones distance/agence).
+//  par nb de ventes (round-robin DESC) + équilibrage par moves en
+//  3 passes sequentielles :
+//    Passe 1 : total des ventes  +/-5 %  (50 iters, malus prox <300m)
+//    Passe 2 : proche + moyenne  +/-10 % (contrainte enveloppe T)
+//    Passe 3 : par zone P/M/L    +/-20 % (contrainte T + P+M)
 //  KV : secteur_repartition:{secId} (3 endpoints worker.js).
 // ════════════════════════════════════════════════════════════════════
 
@@ -2523,26 +2529,51 @@ function sctGenRoundRobin() {
   sctGenState.repartition = newRep;
 }
 
-// Équilibrage par moves (50 itérations max ; arrêt si ±5 % moyenne).
-// Penalite proximite : si un candidat est a < 300m d'un ilot deja dans
-// minS, son gain est ampute de 20% -> defavorise les paires geographiques
-// trop proches sans les interdire (laisse passer si pas d'alternative).
+// Tolerances par niveau (sctGenBalance 3 passes + indicateurs UI).
+const SCT_GEN_TOL_TOTAL = 0.05;   // passe 1 : equilibre total des secteurs
+const SCT_GEN_TOL_PM    = 0.10;   // passe 2 : equilibre proche+moyenne
+const SCT_GEN_TOL_ZONE  = 0.20;   // passe 3 : equilibre par zone
+const SCT_GEN_MAX_ITER  = 50;     // par passe (et par zone en passe 3)
+
+// Penalite proximite (passe 1 uniquement) : si un candidat est a < 300m
+// d'un ilot deja dans minS, son gain est ampute de 20% -> defavorise les
+// paires geographiques trop proches sans les interdire.
 const SCT_GEN_PROXIMITY_M = 300;
 const SCT_GEN_PROXIMITY_MALUS = 0.8;
 
+// Equilibrage en 3 passes sequentielles :
+//   Passe 1 : total des ventes par secteur (tol +/-5%, malus proximite).
+//   Passe 2 : ventes des zones proche+moyenne (tol +/-10%), avec
+//             contrainte : preserver l'enveloppe totale de la passe 1.
+//   Passe 3 : ventes par zone individuelle (proche, puis moyenne, puis
+//             lointaine), tol +/-20%, avec double contrainte :
+//             enveloppe totale +/-5% ET enveloppe P+M +/-10%.
+// Chaque passe : 50 iters max, arret anticipe si tolerance atteinte.
 function sctGenBalance() {
   const N = sctGenState.N;
+  if (N <= 0) return;
   const ilotMap = {}; for (const i of sctGenState.ilots) ilotMap[i.ilotId] = i;
-  for (let iter = 0; iter < 50; iter++) {
-    const scores = [];
-    for (let i = 1; i <= N; i++) scores.push(sctGenScoreSecteur('sec-' + i));
+
+  // Helpers locaux ---------------------------------------------------
+  const computeScores = () => {
+    const out = [];
+    for (let i = 1; i <= N; i++) out.push(sctGenScoreSecteur('sec-' + i));
+    return out;
+  };
+  const pmOf = s => s.zones.proche + s.zones.moyenne;
+  // Cle servant a indexer scores par secId (utile pour relire post-move).
+  const byId = arr => { const m = {}; for (const s of arr) m[s.secId] = s; return m; };
+
+  // ── PASSE 1 : equilibre total (tol +/-5%, malus proximite) ────────
+  for (let iter = 0; iter < SCT_GEN_MAX_ITER; iter++) {
+    const scores = computeScores();
     const mean = scores.reduce((s,x) => s + x.total, 0) / N;
-    const tol = mean * 0.05;
+    const tol = mean * SCT_GEN_TOL_TOTAL;
     let maxS = scores[0], minS = scores[0];
     for (const s of scores) { if (s.total > maxS.total) maxS = s; if (s.total < minS.total) minS = s; }
     if ((maxS.total - mean) <= tol && (mean - minS.total) <= tol) break;
 
-    // Precalcul ilots deja dans minS (pour la verif de proximite).
+    // Precalcul ilots deja dans minS (verif proximite).
     const minSIlots = [];
     for (const [iid, v] of Object.entries(sctGenState.repartition)) {
       if (v && v.conseillerId === minS.secId) {
@@ -2551,21 +2582,14 @@ function sctGenBalance() {
       }
     }
 
-    // Cherche le meilleur "move" d'un îlot non-locked de maxS vers minS.
     let bestGain = 0, bestIid = null;
     const curDiff = maxS.total - minS.total;
     for (const [iid, v] of Object.entries(sctGenState.repartition)) {
-      if (!v || v.locked) continue;
-      if (v.conseillerId !== maxS.secId) continue;
+      if (!v || v.locked || v.conseillerId !== maxS.secId) continue;
       const ilot = ilotMap[iid]; if (!ilot) continue;
-      const newMax = maxS.total - ilot.nb_ventes;
-      const newMin = minS.total + ilot.nb_ventes;
-      const newDiff = Math.abs(newMax - newMin);
+      const newDiff = Math.abs((maxS.total - ilot.nb_ventes) - (minS.total + ilot.nb_ventes));
       let gain = curDiff - newDiff;
-
-      // Malus 20% si l'ilot candidat est tres proche (<300m) d'un ilot
-      // deja affecte a minS. N'interdit pas le move, mais le defavorise
-      // face a un candidat plus eloigne avec un gain similaire.
+      // Malus 20% si proximite < 300m avec un ilot deja dans minS.
       if (ilot.centroide_lat != null && minSIlots.length) {
         let minDist = Infinity;
         for (const other of minSIlots) {
@@ -2577,8 +2601,94 @@ function sctGenBalance() {
       }
       if (gain > bestGain) { bestGain = gain; bestIid = iid; }
     }
-    if (!bestIid) break;                              // pas d'amélioration possible
+    if (!bestIid) break;
     sctGenState.repartition[bestIid].conseillerId = minS.secId;
+  }
+
+  // ── Snapshot de l'enveloppe totale apres passe 1 (contrainte pour
+  //    passes 2 et 3 : aucun move ne doit faire sortir un secteur
+  //    de cette enveloppe). On capture mean + tol GELES.
+  const scoresAfterP1 = computeScores();
+  const meanTotal = scoresAfterP1.reduce((s,x) => s + x.total, 0) / N;
+  const tolTotal = meanTotal * SCT_GEN_TOL_TOTAL;
+
+  // ── PASSE 2 : equilibre P+M (tol +/-10%, contrainte total +/-5%) ──
+  for (let iter = 0; iter < SCT_GEN_MAX_ITER; iter++) {
+    const scores = computeScores();
+    const mean = scores.reduce((s,x) => s + pmOf(x), 0) / N;
+    const tol = mean * SCT_GEN_TOL_PM;
+    if (mean === 0) break;                           // aucune vente P+M
+    let maxS = scores[0], minS = scores[0];
+    for (const s of scores) { if (pmOf(s) > pmOf(maxS)) maxS = s; if (pmOf(s) < pmOf(minS)) minS = s; }
+    if ((pmOf(maxS) - mean) <= tol && (mean - pmOf(minS)) <= tol) break;
+
+    let bestGain = 0, bestIid = null;
+    const curDiff = pmOf(maxS) - pmOf(minS);
+    for (const [iid, v] of Object.entries(sctGenState.repartition)) {
+      if (!v || v.locked || v.conseillerId !== maxS.secId) continue;
+      const ilot = ilotMap[iid]; if (!ilot) continue;
+      if (ilot.zone !== 'proche' && ilot.zone !== 'moyenne') continue;
+      // Contrainte : le move ne doit pas faire sortir maxS ou minS de
+      // l'enveloppe totale +/-5% (gelee apres passe 1).
+      const newMaxTotal = maxS.total - ilot.nb_ventes;
+      const newMinTotal = minS.total + ilot.nb_ventes;
+      if (Math.abs(newMaxTotal - meanTotal) > tolTotal) continue;
+      if (Math.abs(newMinTotal - meanTotal) > tolTotal) continue;
+      const newDiff = Math.abs((pmOf(maxS) - ilot.nb_ventes) - (pmOf(minS) + ilot.nb_ventes));
+      const gain = curDiff - newDiff;
+      if (gain > bestGain) { bestGain = gain; bestIid = iid; }
+    }
+    if (!bestIid) break;
+    sctGenState.repartition[bestIid].conseillerId = minS.secId;
+  }
+
+  // ── Snapshot enveloppe P+M apres passe 2 (contrainte pour passe 3).
+  const scoresAfterP2 = computeScores();
+  const meanPM = scoresAfterP2.reduce((s,x) => s + pmOf(x), 0) / N;
+  const tolPM = meanPM * SCT_GEN_TOL_PM;
+
+  // ── PASSE 3 : equilibre par zone (tol +/-20%, contraintes T + P+M) ─
+  for (const zoneKey of ['proche', 'moyenne', 'lointaine']) {
+    for (let iter = 0; iter < SCT_GEN_MAX_ITER; iter++) {
+      const scores = computeScores();
+      const meanZ = scores.reduce((s,x) => s + x.zones[zoneKey], 0) / N;
+      if (meanZ === 0) break;                        // zone vide partout
+      const tolZ = meanZ * SCT_GEN_TOL_ZONE;
+      let maxS = scores[0], minS = scores[0];
+      for (const s of scores) {
+        if (s.zones[zoneKey] > maxS.zones[zoneKey]) maxS = s;
+        if (s.zones[zoneKey] < minS.zones[zoneKey]) minS = s;
+      }
+      if ((maxS.zones[zoneKey] - meanZ) <= tolZ && (meanZ - minS.zones[zoneKey]) <= tolZ) break;
+
+      let bestGain = 0, bestIid = null;
+      const curDiff = maxS.zones[zoneKey] - minS.zones[zoneKey];
+      const pmAffected = (zoneKey === 'proche' || zoneKey === 'moyenne');
+      for (const [iid, v] of Object.entries(sctGenState.repartition)) {
+        if (!v || v.locked || v.conseillerId !== maxS.secId) continue;
+        const ilot = ilotMap[iid]; if (!ilot) continue;
+        if (ilot.zone !== zoneKey) continue;
+        // Contrainte totale +/-5%
+        const newMaxTotal = maxS.total - ilot.nb_ventes;
+        const newMinTotal = minS.total + ilot.nb_ventes;
+        if (Math.abs(newMaxTotal - meanTotal) > tolTotal) continue;
+        if (Math.abs(newMinTotal - meanTotal) > tolTotal) continue;
+        // Contrainte P+M +/-10% : ne s'applique que si zone affecte P+M
+        // (un move de zone 'lointaine' ne change ni proche ni moyenne).
+        if (pmAffected) {
+          const newMaxPM = pmOf(maxS) - ilot.nb_ventes;
+          const newMinPM = pmOf(minS) + ilot.nb_ventes;
+          if (Math.abs(newMaxPM - meanPM) > tolPM) continue;
+          if (Math.abs(newMinPM - meanPM) > tolPM) continue;
+        }
+        const newDiff = Math.abs((maxS.zones[zoneKey] - ilot.nb_ventes)
+                                - (minS.zones[zoneKey] + ilot.nb_ventes));
+        const gain = curDiff - newDiff;
+        if (gain > bestGain) { bestGain = gain; bestIid = iid; }
+      }
+      if (!bestIid) break;
+      sctGenState.repartition[bestIid].conseillerId = minS.secId;
+    }
   }
 }
 
@@ -2758,10 +2868,26 @@ function sctGenShowResult() {
 
 function sctGenRenderTable() {
   const ilotMap = {}; for (const i of sctGenState.ilots) ilotMap[i.ilotId] = i;
-  // 1) calc moyenne + tol
+  // 1) calc scores + moyennes/tolerances pour les 3 niveaux (T, P+M, Z)
   const scores = sctGenState.conseillers.map(c => sctGenScoreSecteur(c.id));
-  const mean = scores.reduce((s,x) => s + x.total, 0) / Math.max(1, scores.length);
-  const tol = mean * 0.05;
+  const Nsc = Math.max(1, scores.length);
+  const pmOf = s => s.zones.proche + s.zones.moyenne;
+  // Total
+  const meanT = scores.reduce((s,x) => s + x.total, 0) / Nsc;
+  const tolT  = meanT * SCT_GEN_TOL_TOTAL;
+  // Proche + Moyenne
+  const meanPM = scores.reduce((s,x) => s + pmOf(x), 0) / Nsc;
+  const tolPM  = meanPM * SCT_GEN_TOL_PM;
+  // Par zone individuelle
+  const meanZ = { proche:0, moyenne:0, lointaine:0 };
+  for (const zk of ['proche','moyenne','lointaine']) {
+    meanZ[zk] = scores.reduce((s,x) => s + x.zones[zk], 0) / Nsc;
+  }
+  const tolZ = {
+    proche:    meanZ.proche    * SCT_GEN_TOL_ZONE,
+    moyenne:   meanZ.moyenne   * SCT_GEN_TOL_ZONE,
+    lointaine: meanZ.lointaine * SCT_GEN_TOL_ZONE,
+  };
 
   // 2) regroupe îlots par secteur
   const bySec = {}; for (const c of sctGenState.conseillers) bySec[c.id] = [];
@@ -2774,11 +2900,11 @@ function sctGenRenderTable() {
   // 3) render
   const summary = document.getElementById('sct-gen-summary');
   const bilan = document.getElementById('sct-gen-bilan');
-  // [FIX 2026-05-24] Affichage en ventes/an (mean/5, tol/5). Algo
-  // sctGenBalance() continue de travailler sur les totaux 5 ans bruts.
-  summary.innerHTML = `<b style="color:var(--text);">Moyenne :</b> ${sctGenPerYear(mean)} ventes/an · ` +
-    `<b>Tolérance :</b> ±${sctGenPerYear(tol)} ventes/an · ` +
-    `<b>Mode :</b> ${secteurStrict ? 'ventes strictes' : 'ventes brutes'}`;
+  // Summary multi-niveaux (toutes valeurs en ventes/an a l'affichage).
+  summary.innerHTML = `<b style="color:var(--text);">Moyenne :</b> ${sctGenPerYear(meanT)} ventes/an · `
+    + `<b>Tol. totale ±5% :</b> ±${sctGenPerYear(tolT)} · `
+    + `<b>P+M ±10% :</b> ±${sctGenPerYear(tolPM)} · `
+    + `<b>Mode :</b> ${secteurStrict ? 'ventes strictes' : 'ventes brutes'}`;
 
   // [FIX 2026-05-24 r4] Table splitee en 2 sous-tables avec colgroup
   // STRICTEMENT IDENTIQUE (table-layout:fixed) -> alignement parfait
@@ -2811,15 +2937,34 @@ function sctGenRenderTable() {
 
   let html = `<table style="${TBL_STYLE}">` + COLGROUP + '<tbody>';
 
-  let outOfBalance = 0;
+  // Compteurs hors-tolerance par niveau (pour bilan global).
+  let outT = 0, outPM = 0, outZ = 0;
+  // Helper rendu indicateur (point + label, vert si ok, orange sinon).
+  const balDot = (ok, lbl, tip) =>
+      `<span title="${tip}" style="display:inline-flex;align-items:center;gap:3px;font-size:10px;color:var(--text2);white-space:nowrap;">`
+    + `<span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${ok ? '#16a34a' : '#e67e22'};"></span>`
+    + `${lbl}</span>`;
+
   for (const c of sctGenState.conseillers) {
     const sc = scores.find(s => s.secId === c.id) || { total:0, zones:{proche:0,moyenne:0,lointaine:0} };
-    const inTol = Math.abs(sc.total - mean) <= tol;
-    if (!inTol) outOfBalance++;
+    // Verifs des 3 niveaux : T, P+M, Z (Z = toutes zones non-vides).
+    const inT  = Math.abs(sc.total  - meanT)  <= tolT;
+    const inPM = Math.abs(pmOf(sc)  - meanPM) <= tolPM;
+    let inZ = true;
+    for (const zk of ['proche','moyenne','lointaine']) {
+      if (meanZ[zk] === 0) continue;                 // zone vide partout
+      if (Math.abs(sc.zones[zk] - meanZ[zk]) > tolZ[zk]) { inZ = false; break; }
+    }
+    if (!inT) outT++;
+    if (!inPM) outPM++;
+    if (!inZ) outZ++;
     const swatch = `<span style="display:inline-block;width:14px;height:14px;border-radius:3px;border:1px solid #00000033;${sctGenSwatchCss(sctGenState.conseillers.indexOf(c))}"></span>`;
-    const balDot = inTol
-      ? '<span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#16a34a;" title="Dans la tolérance ±5%"></span>'
-      : '<span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#e67e22;" title="Hors tolérance"></span>';
+    const balCell =
+        `<div style="display:flex;flex-direction:column;gap:3px;align-items:flex-start;">`
+      + balDot(inT,  'T',   `Total ±5% — passe 1 (cible : ${sctGenPerYear(meanT)} ventes/an, secteur : ${sctGenPerYear(sc.total)})`)
+      + balDot(inPM, 'P+M', `Proche+Moyenne ±10% — passe 2 (cible : ${sctGenPerYear(meanPM)}, secteur : ${sctGenPerYear(pmOf(sc))})`)
+      + balDot(inZ,  'Z',   `Par zone ±20% — passe 3 (chaque zone P/M/L doit etre a +/-20% de sa moyenne)`)
+      + `</div>`;
 
     // [FIX 2026-05-24 r3] Groupement par zone + drag&drop natif.
     // - Chaque pastille est draggable (sauf locked).
@@ -2896,16 +3041,22 @@ function sctGenRenderTable() {
          + `<td style="text-align:center;padding:8px 6px;border-top:1px solid var(--border);">${sctGenPerYear(sc.zones.moyenne)}</td>`
          + `<td style="text-align:center;padding:8px 6px;border-top:1px solid var(--border);">${sctGenPerYear(sc.zones.lointaine)}</td>`
          + `<td style="text-align:center;padding:8px 6px;font-weight:700;color:var(--text);border-top:1px solid var(--border);">${sctGenPerYear(sc.total)}</td>`
-         + `<td style="text-align:center;padding:8px 6px;border-top:1px solid var(--border);">${balDot}</td>`
+         + `<td style="text-align:center;padding:8px 6px;border-top:1px solid var(--border);">${balCell}</td>`
          + `</tr>`;
   }
   html += '</tbody></table>';
   document.getElementById('sct-gen-table-header').innerHTML = headerHtml;
   document.getElementById('sct-gen-table-body').innerHTML = html;
 
-  bilan.innerHTML = outOfBalance === 0
-    ? `<span style="color:#16a34a;">✓ Tous les secteurs sont dans la tolérance ±5 % (ventes/an)</span>`
-    : `<span style="color:#e67e22;">⚠️ ${outOfBalance} secteur(s) hors tolérance ±5 % (ventes/an) — relance "Regénérer" ou ajuste manuellement.</span>`;
+  // Bilan multi-niveaux : 3 indicateurs T / P+M / Z.
+  const bItem = (count, ok_label, ko_label) =>
+    count === 0
+      ? `<span style="color:#16a34a;">${ok_label}</span>`
+      : `<span style="color:#e67e22;">${ko_label.replace('{n}', count)}</span>`;
+  bilan.innerHTML =
+      bItem(outT,  'Total ✓',  'Total : {n} hors ±5%') + ' &nbsp;|&nbsp; '
+    + bItem(outPM, 'P+M ✓',    'P+M : {n} hors ±10%')  + ' &nbsp;|&nbsp; '
+    + bItem(outZ,  'Zones ✓',  'Zones : {n} hors ±20%');
 }
 
 function sctGenToggleLock(ilotId) {
