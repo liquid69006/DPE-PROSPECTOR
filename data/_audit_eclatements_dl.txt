@@ -1,6 +1,6 @@
 ==============================================================================================================
 AUDIT ECLATEMENTS make_light DL  --  via BDNB rel_batiment_groupe_adresse
-  date scan : 2026-05-24 17:43:19
+  date scan : 2026-05-24 18:15:04
 ==============================================================================================================
 
 RESUME :
@@ -9,110 +9,108 @@ RESUME :
   BAN libelles examines  : 889
   Normalisations OK      : 887
   Normalisations echoues : 2
-  MATCH (meme bgid)      : 725
-  ECLATEMENT (bgid diff) : 65
-  MISSING (cle absente)  : 113
+  MATCH (meme bgid)      : 735
+  ECLATEMENT (bgid diff) : 56
+  MISSING (cle absente)  : 112
 
 ==============================================================================================================
 TOP 20 ECLATEMENT (faux-matching make_light) -- tri par nb_log_bdnb cote ancre
 ==============================================================================================================
 
-#01  7|RUE|TERNOIS                           (libelle BAN: '7 Rue Ternois 69003 Lyon 3e Arrondissement')
-     ANCRE :   28|RUE|ETIENNE RICHERAND                bgid=...96UR-3947  immat=AA0358655  nom='Antoine Charial'  bdnb=211
-     LIGHT :   bgid=...KXL7-E97N  bdnb=80  immat=-  match='num_voie'  fauto=None
-
-#02  9|RUE|TERNOIS                           (libelle BAN: '9 Rue Ternois 69003 Lyon 3e Arrondissement')
-     ANCRE :   28|RUE|ETIENNE RICHERAND                bgid=...96UR-3947  immat=AA0358655  nom='Antoine Charial'  bdnb=211
-     LIGHT :   bgid=...DSRV-8Q35  bdnb=35  immat=-  match='gps'  fauto=True
-     fauto_cible actuel : '23|RUE|RIBOUD'
-
-#03  15|RUE|ST VICTORIEN                     (libelle BAN: '15 Rue Saint-Victorien 69003 Lyon 3e Arrondissement')
-     ANCRE :   12|RUE|ST SIDOINE                       bgid=...EFDZ-724F  immat=AB2206571  nom='LA VICTORIENNE'  bdnb=164
-     LIGHT :   bgid=...2V31-SHKZ  bdnb=60  immat=-  match='num_voie'  fauto=True
-     fauto_cible actuel : '13|RUE|ST VICTORIEN'
-
-#04  17|RUE|ST VICTORIEN                     (libelle BAN: '17 Rue Saint-Victorien 69003 Lyon 3e Arrondissement')
-     ANCRE :   12|RUE|ST SIDOINE                       bgid=...EFDZ-724F  immat=AB2206571  nom='LA VICTORIENNE'  bdnb=164
-     LIGHT :   bgid=...644T-6NRG  bdnb=69  immat=-  match='num_voie'  fauto=True
-     fauto_cible actuel : '16|RUE|ST VICTORIEN'
-
-#05  10|RUE|LOUIS JASSERON                   (libelle BAN: '10 Rue Louis Jasseron 69003 Lyon 3e Arrondissement')
-     ANCRE :   61|RUE|BARABAN                          bgid=...ZKT4-JZ9V  immat=AB2515468  nom='LE BARABAN 1'  bdnb=154
-     LIGHT :   bgid=...A62Z-LN35  bdnb=45  immat=-  match='num_voie'  fauto=True
-     fauto_cible actuel : '13|RUE|LOUIS JASSERON'
-
-#06  12|RUE|LOUIS JASSERON                   (libelle BAN: '12 Rue Louis Jasseron 69003 Lyon 3e Arrondissement')
-     ANCRE :   61|RUE|BARABAN                          bgid=...ZKT4-JZ9V  immat=AB2515468  nom='LE BARABAN 1'  bdnb=154
-     LIGHT :   bgid=...A62Z-LN35  bdnb=45  immat=-  match='num_voie'  fauto=True
-     fauto_cible actuel : '13|RUE|LOUIS JASSERON'
-
-#07  14|RUE|LOUIS JASSERON                   (libelle BAN: '14 Rue Louis Jasseron 69003 Lyon 3e Arrondissement')
-     ANCRE :   61|RUE|BARABAN                          bgid=...ZKT4-JZ9V  immat=AB2515468  nom='LE BARABAN 1'  bdnb=154
-     LIGHT :   bgid=...A62Z-LN35  bdnb=45  immat=-  match='num_voie'  fauto=True
-     fauto_cible actuel : '13|RUE|LOUIS JASSERON'
-
-#08  5|COURS|ALBERT THOMAS                   (libelle BAN: '5 Cours Albert Thomas 69003 Lyon 3e Arrondissement')
+#01  5|COURS|ALBERT THOMAS                   (libelle BAN: '5 Cours Albert Thomas 69003 Lyon 3e Arrondissement')
      ANCRE :   7|COURS|ALBERT THOMAS                   bgid=...TH3A-X19Z  immat=AB0219808  nom='LE PAVILLON DE FLORE - MS32843'  bdnb=151
      LIGHT :   bgid=...26FA-H5KS  bdnb=None  immat=AB0222935  match='num_voie'  fauto=None
 
-#09  5B|COURS|ALBERT THOMAS                  (libelle BAN: '5B Cours Albert Thomas 69003 Lyon 3e Arrondissement')
+#02  5B|COURS|ALBERT THOMAS                  (libelle BAN: '5B Cours Albert Thomas 69003 Lyon 3e Arrondissement')
      ANCRE :   7|COURS|ALBERT THOMAS                   bgid=...TH3A-X19Z  immat=AB0219808  nom='LE PAVILLON DE FLORE - MS32843'  bdnb=151
      LIGHT :   bgid=...26FA-H5KS  bdnb=None  immat=-  match='num_voie'  fauto=True
      fauto_cible actuel : '5|COURS|ALBERT THOMAS'
 
-#10  84|RUE|ANTOINE CHARIAL                  (libelle BAN: '84 Rue Antoine Charial 69003 Lyon 3e Arrondissement')
-     ANCRE :   76|RUE|ANTOINE CHARIAL                  bgid=...CLDE-WHQD  immat=AA1694256  nom='RESIDENCE JEAN SORNAY'  bdnb=119
-     LIGHT :   bgid=...AXLT-FC77  bdnb=38  immat=-  match='num_voie'  fauto=True
-     fauto_cible actuel : '86|RUE|ANTOINE CHARIAL'
+#03  7B|COURS|ALBERT THOMAS                  (libelle BAN: '7B Cours Albert Thomas 69003 Lyon 3e Arrondissement')
+     ANCRE :   7|COURS|ALBERT THOMAS                   bgid=...TH3A-X19Z  immat=AB0219808  nom='LE PAVILLON DE FLORE - MS32843'  bdnb=151
+     LIGHT :   bgid=...26FA-H5KS  bdnb=151  immat=-  match='correctif_6megas_pavillon_flore_ii_re_fuse'  fauto=True
+     fauto_cible actuel : '5|COURS|ALBERT THOMAS'
 
-#11  14|RUE|ETIENNE RICHERAND                (libelle BAN: '14 Rue Etienne Richerand 69003 Lyon 3e Arrondissement')
+#04  14|RUE|ETIENNE RICHERAND                (libelle BAN: '14 Rue Etienne Richerand 69003 Lyon 3e Arrondissement')
      ANCRE :   22|RUE|ST ANTOINE                       bgid=...1B9R-DX25  immat=AA1601434  nom='LES JARDINS DE CHARIAL'  bdnb=115
      LIGHT :   bgid=...7VMV-E5S5  bdnb=45  immat=-  match='num_voie'  fauto=None
 
-#12  18|RUE|ETIENNE RICHERAND                (libelle BAN: '18 Rue Etienne Richerand 69003 Lyon 3e Arrondissement')
+#05  18|RUE|ETIENNE RICHERAND                (libelle BAN: '18 Rue Etienne Richerand 69003 Lyon 3e Arrondissement')
      ANCRE :   22|RUE|ST ANTOINE                       bgid=...1B9R-DX25  immat=AA1601434  nom='LES JARDINS DE CHARIAL'  bdnb=115
      LIGHT :   bgid=...GU7Z-XPMJ  bdnb=7  immat=-  match='num_voie'  fauto=True
      fauto_cible actuel : '19|RUE|ETIENNE RICHERAND'
 
-#13  20|RUE|ETIENNE RICHERAND                (libelle BAN: '20 Rue Etienne Richerand 69003 Lyon 3e Arrondissement')
+#06  20|RUE|ETIENNE RICHERAND                (libelle BAN: '20 Rue Etienne Richerand 69003 Lyon 3e Arrondissement')
      ANCRE :   22|RUE|ST ANTOINE                       bgid=...1B9R-DX25  immat=AA1601434  nom='LES JARDINS DE CHARIAL'  bdnb=115
      LIGHT :   bgid=...GU7Z-XPMJ  bdnb=7  immat=-  match='num_voie'  fauto=True
      fauto_cible actuel : '19|RUE|ETIENNE RICHERAND'
 
-#14  22|RUE|ETIENNE RICHERAND                (libelle BAN: '22 Rue Etienne Richerand 69003 Lyon 3e Arrondissement')
+#07  22|RUE|ETIENNE RICHERAND                (libelle BAN: '22 Rue Etienne Richerand 69003 Lyon 3e Arrondissement')
      ANCRE :   22|RUE|ST ANTOINE                       bgid=...1B9R-DX25  immat=AA1601434  nom='LES JARDINS DE CHARIAL'  bdnb=115
      LIGHT :   bgid=...VQWK-FCA9  bdnb=14  immat=-  match='num_voie'  fauto=True
      fauto_cible actuel : '21|RUE|ETIENNE RICHERAND'
 
-#15  24|RUE|ETIENNE RICHERAND                (libelle BAN: '24 Rue Etienne Richerand 69003 Lyon 3e Arrondissement')
+#08  24|RUE|ETIENNE RICHERAND                (libelle BAN: '24 Rue Etienne Richerand 69003 Lyon 3e Arrondissement')
      ANCRE :   22|RUE|ST ANTOINE                       bgid=...1B9R-DX25  immat=AA1601434  nom='LES JARDINS DE CHARIAL'  bdnb=115
      LIGHT :   bgid=...96UR-3947  bdnb=211  immat=-  match='num_voie'  fauto=True
      fauto_cible actuel : '28|RUE|ETIENNE RICHERAND'
 
-#16  33|RUE|CLAUDIUS PIONCHON                (libelle BAN: '33 RUE CLAUDIUS PIONCHON 69003 Lyon 3e Arrondissement')
+#09  33|RUE|CLAUDIUS PIONCHON                (libelle BAN: '33 RUE CLAUDIUS PIONCHON 69003 Lyon 3e Arrondissement')
      ANCRE :   27|RUE|STE ANNE DE BARABAN              bgid=...5NB3-XZT2  immat=AA1700848  nom='LES JARDINS DE BABYLONE'  bdnb=99
      LIGHT :   bgid=...4Z8G-SH57  bdnb=42  immat=-  match='num_voie'  fauto=True
      fauto_cible actuel : '29|RUE|CLAUDIUS PIONCHON'
 
-#17  36|RUE|BARABAN                          (libelle BAN: '36 Rue Baraban 69003 Lyon 3e Arrondissement')
-     ANCRE :   30|RUE|BARABAN                          bgid=...U3SX-2ENC  immat=AB3379567  nom='LAFAYETTE BARABAN'  bdnb=96
-     LIGHT :   bgid=...S4U4-AGR1  bdnb=28  immat=-  match='num_voie'  fauto=True
-     fauto_cible actuel : '37|RUE|BARABAN'
-
-#18  38|RUE|BARABAN                          (libelle BAN: '38 Rue Baraban 69003 Lyon 3e Arrondissement')
-     ANCRE :   30|RUE|BARABAN                          bgid=...U3SX-2ENC  immat=AB3379567  nom='LAFAYETTE BARABAN'  bdnb=96
-     LIGHT :   bgid=...S4U4-AGR1  bdnb=28  immat=-  match='num_voie'  fauto=True
-     fauto_cible actuel : '37|RUE|BARABAN'
-
-#19  177T|AVENUE|FELIX FAURE                 (libelle BAN: '177T Avenue Félix Faure 69003 Lyon 3e Arrondissement')
+#10  177T|AVENUE|FELIX FAURE                 (libelle BAN: '177T Avenue Félix Faure 69003 Lyon 3e Arrondissement')
      ANCRE :   177|AVENUE|FELIX FAURE                  bgid=...UJGF-B5PM  immat=AB3274529  nom='177 AV FELIX FAURE'  bdnb=85
      LIGHT :   bgid=...BJWK-JYM1  bdnb=15  immat=-  match='num_voie'  fauto=True
      fauto_cible actuel : '179|AVENUE|FELIX FAURE'
 
-#20  2|RUE|METALLURGIE                       (libelle BAN: '2 Rue de la Metallurgie 69003 Lyon 3e Arrondissement')
+#11  2|RUE|METALLURGIE                       (libelle BAN: '2 Rue de la Metallurgie 69003 Lyon 3e Arrondissement')
      ANCRE :   9|RUE|DAVID                             bgid=...YHNQ-MYVH  immat=AB3954260  nom='LACASSAGNE DAVID'  bdnb=85
      LIGHT :   bgid=...8CSW-Q4A6  bdnb=10  immat=-  match='num_voie'  fauto=True
      fauto_cible actuel : '1|RUE|METALLURGIE'
+
+#12  31|RUE|GUILLOUD                         (libelle BAN: '31 RUE GUILLOUD 69003 Lyon 3e Arrondissement')
+     ANCRE :   27|RUE|GUILLOUD                         bgid=...3NZF-3HY8  immat=AB3360401  nom="L'HERMITAGE"  bdnb=81
+     LIGHT :   bgid=...R5PB-QQTY  bdnb=10  immat=-  match='num_voie'  fauto=True
+     fauto_cible actuel : '35|RUE|GUILLOUD'
+
+#13  25|RUE|ST ANTOINE                       (libelle BAN: '25 Rue Saint-Antoine 69003 Lyon 3e Arrondissement')
+     ANCRE :   272|COURS|LAFAYETTE                     bgid=...QR1D-QNE5  immat=AC3212578  nom="'LA COUR LAFAYETTE'"  bdnb=78
+     LIGHT :   bgid=...UT3G-U7D2  bdnb=60  immat=AC3226362  match='immat'  fauto=None
+
+#14  5|RUE|ETIENNE RICHERAND                 (libelle BAN: '5 Rue Etienne Richerand 69003 Lyon 3e Arrondissement')
+     ANCRE :   35|RUE|ST ANTOINE                       bgid=...1BJU-2LUB  immat=AC6493506  nom='LE CARRE SAINT ANTOINE'  bdnb=72
+     LIGHT :   bgid=...SQ4L-G991  bdnb=15  immat=-  match='num_voie'  fauto=None
+
+#15  64|AVENUE|LACASSAGNE                    (libelle BAN: '64 Avenue Lacassagne 69003 Lyon 3e Arrondissement')
+     ANCRE :   66|AVENUE|LACASSAGNE                    bgid=...TAU6-UC13  immat=AE8227266  nom='HORIZON MONPLAISIR'  bdnb=69
+     LIGHT :   bgid=...A3PE-27QQ  bdnb=12  immat=-  match='num_voie'  fauto=None
+
+#16  64B|AVENUE|LACASSAGNE                   (libelle BAN: '64B Avenue Lacassagne 69003 Lyon 3e Arrondissement')
+     ANCRE :   66|AVENUE|LACASSAGNE                    bgid=...TAU6-UC13  immat=AE8227266  nom='HORIZON MONPLAISIR'  bdnb=69
+     LIGHT :   bgid=...A3PE-27QQ  bdnb=12  immat=-  match='num_voie'  fauto=True
+     fauto_cible actuel : '64|AVENUE|LACASSAGNE'
+
+#17  44|RUE|ST MAXIMIN                       (libelle BAN: '44 Rue Saint-Maximin 69003 Lyon 3e Arrondissement')
+     ANCRE :   42A||50 RUE ST MAXIMIN                  bgid=...YTYU-45YJ  immat=AA2505634  nom='SAINT MARC I'  bdnb=64
+     LIGHT :   bgid=...M71Z-3JJQ  bdnb=22  immat=-  match='num_voie'  fauto=True
+     fauto_cible actuel : '43|RUE|ST MAXIMIN'
+
+#18  46|RUE|ST MAXIMIN                       (libelle BAN: '46 Rue Saint-Maximin 69003 Lyon 3e Arrondissement')
+     ANCRE :   42A||50 RUE ST MAXIMIN                  bgid=...YTYU-45YJ  immat=AA2505634  nom='SAINT MARC I'  bdnb=64
+     LIGHT :   bgid=...M71Z-3JJQ  bdnb=22  immat=-  match='num_voie'  fauto=True
+     fauto_cible actuel : '43|RUE|ST MAXIMIN'
+
+#19  48|RUE|ST MAXIMIN                       (libelle BAN: '48 Rue Saint-Maximin 69003 Lyon 3e Arrondissement')
+     ANCRE :   42A||50 RUE ST MAXIMIN                  bgid=...YTYU-45YJ  immat=AA2505634  nom='SAINT MARC I'  bdnb=64
+     LIGHT :   bgid=...4P2Q-RRZK  bdnb=51  immat=-  match='num_voie'  fauto=True
+     fauto_cible actuel : '51|RUE|ST MAXIMIN'
+
+#20  50|RUE|ST MAXIMIN                       (libelle BAN: '50 Rue Saint-Maximin 69003 Lyon 3e Arrondissement')
+     ANCRE :   42A||50 RUE ST MAXIMIN                  bgid=...YTYU-45YJ  immat=AA2505634  nom='SAINT MARC I'  bdnb=64
+     LIGHT :   bgid=...4P2Q-RRZK  bdnb=51  immat=-  match='num_voie'  fauto=True
+     fauto_cible actuel : '51|RUE|ST MAXIMIN'
 
 ==============================================================================================================
 TOP 20 MISSING (BAN signale par BDNB sur ancre, absente du light)
@@ -139,43 +137,43 @@ TOP 20 MISSING (BAN signale par BDNB sur ancre, absente du light)
 #07  50C|RUE|ETIENNE RICHERAND               (libelle BAN: '50C Rue Étienne Richerand 69003 Lyon 3e Arrondissement')
      ANCRE :   48|RUE|ETIENNE RICHERAND                bgid=...PNS3-M7EZ  immat=AB8847345  nom="Les Jardins d'Orsay"  bdnb=98
 
-#08  40|RUE|BARABAN                          (libelle BAN: '40 Rue Baraban 69003 Lyon 3e Arrondissement')
-     ANCRE :   30|RUE|BARABAN                          bgid=...U3SX-2ENC  immat=AB3379567  nom='LAFAYETTE BARABAN'  bdnb=96
-
-#09  12|RUE|L'ESPERANCE                      (libelle BAN: '12 Rue de l'Espérance 69003 Lyon 3e Arrondissement')
+#08  12|RUE|L'ESPERANCE                      (libelle BAN: '12 Rue de l'Espérance 69003 Lyon 3e Arrondissement')
      ANCRE :   14|RUE|ESPERANCE                        bgid=...8FQ2-8L1E  immat=AA8145336  nom='ESPACE EMERAUDE'  bdnb=95
 
-#10  14|RUE|L'ESPERANCE                      (libelle BAN: '14 Rue de l'Espérance 69003 Lyon 3e Arrondissement')
+#09  14|RUE|L'ESPERANCE                      (libelle BAN: '14 Rue de l'Espérance 69003 Lyon 3e Arrondissement')
      ANCRE :   14|RUE|ESPERANCE                        bgid=...8FQ2-8L1E  immat=AA8145336  nom='ESPACE EMERAUDE'  bdnb=95
 
-#11  16|RUE|L'ESPERANCE                      (libelle BAN: '16 Rue de l'Espérance 69003 Lyon 3e Arrondissement')
+#10  16|RUE|L'ESPERANCE                      (libelle BAN: '16 Rue de l'Espérance 69003 Lyon 3e Arrondissement')
      ANCRE :   14|RUE|ESPERANCE                        bgid=...8FQ2-8L1E  immat=AA8145336  nom='ESPACE EMERAUDE'  bdnb=95
 
-#12  185B|AVENUE|FELIX FAURE                 (libelle BAN: '185B Avenue Félix Faure 69003 Lyon 3e Arrondissement')
+#11  185B|AVENUE|FELIX FAURE                 (libelle BAN: '185B Avenue Félix Faure 69003 Lyon 3e Arrondissement')
      ANCRE :   185|AVENUE|FELIX FAURE                  bgid=...2VYZ-PKZ3  immat=AB8383838  nom='RESIDENCE LES FRERES LUMIERE'  bdnb=88
 
-#13  36B|AVENUE|LACASSAGNE                   (libelle BAN: '36B Avenue Lacassagne 69003 Lyon 3e Arrondissement')
+#12  36B|AVENUE|LACASSAGNE                   (libelle BAN: '36B Avenue Lacassagne 69003 Lyon 3e Arrondissement')
      ANCRE :   1|RUE|CADETS DE LA FRANCE LIBRE         bgid=...DWLL-H5X5  immat=AA7379084  nom='ALLEES DU CHATEAU/ CHATEAU LAC'  bdnb=84
 
-#14  136|AVENUE|FELIX FAURE                  (libelle BAN: '136 Avenue Félix Faure 69003 Lyon')
+#13  136|AVENUE|FELIX FAURE                  (libelle BAN: '136 Avenue Félix Faure 69003 Lyon')
      ANCRE :   1|RUE|JEAN PIERRE LEVY                  bgid=...RRJN-UAGN  immat=AB3947009  nom='VUE SUR PARC'  bdnb=84
 
-#15  29|RUE|GUILLOUD                         (libelle BAN: '29 RUE GUILLOUD 69003 Lyon 3e Arrondissement')
+#14  29|RUE|GUILLOUD                         (libelle BAN: '29 RUE GUILLOUD 69003 Lyon 3e Arrondissement')
      ANCRE :   27|RUE|GUILLOUD                         bgid=...3NZF-3HY8  immat=AB3360401  nom="L'HERMITAGE"  bdnb=81
 
-#16  41|RUE|ST ANTOINE LYON 3E ARRONDISSEMENT  (libelle BAN: '41 Rue Saint-Antoine  Lyon 3e Arrondissement')
+#15  41|RUE|ST ANTOINE LYON 3E ARRONDISSEMENT  (libelle BAN: '41 Rue Saint-Antoine  Lyon 3e Arrondissement')
      ANCRE :   300|COURS|LAFAYETTE                     bgid=...E8K8-8JQA  immat=AB8800625  nom='300 cours Lafayette'  bdnb=77
 
-#17  50C|RUE|ETIENNE RICHERAND               (libelle BAN: '50C Rue Étienne Richerand 69003 Lyon 3e Arrondissement')
+#16  50C|RUE|ETIENNE RICHERAND               (libelle BAN: '50C Rue Étienne Richerand 69003 Lyon 3e Arrondissement')
      ANCRE :   1|RUE|PETITES SOEURS                    bgid=...1HV3-KKUP  immat=AB7330897  nom='SDC LE MANET'  bdnb=75
 
-#18  11|PLACE|FERRANDIERE                    (libelle BAN: '11 Place de la Ferrandière 69003 Lyon 3e Arrondissement')
+#17  11|PLACE|FERRANDIERE                    (libelle BAN: '11 Place de la Ferrandière 69003 Lyon 3e Arrondissement')
      ANCRE :   9|PLACE|FERRANDIERE                     bgid=...EH2V-1YVC  immat=AB0618207  nom='LA FERRRANDIERE'  bdnb=74
 
-#19  17|PLACE|FERRANDIERE                    (libelle BAN: '17.0 PLACE DE LA FERRANDIERE 69003 Lyon 3e Arrondissement')
+#18  17|PLACE|FERRANDIERE                    (libelle BAN: '17.0 PLACE DE LA FERRANDIERE 69003 Lyon 3e Arrondissement')
      ANCRE :   9|PLACE|FERRANDIERE                     bgid=...EH2V-1YVC  immat=AB0618207  nom='LA FERRRANDIERE'  bdnb=74
 
-#20  7.0B|RUE|MONTBRILLANT                   (libelle BAN: '7.0B RUE DE MONTBRILLANT 69003 Lyon 3e Arrondissement')
+#19  7.0B|RUE|MONTBRILLANT                   (libelle BAN: '7.0B RUE DE MONTBRILLANT 69003 Lyon 3e Arrondissement')
+     ANCRE :   7|RUE|MONTBRILLANT                      bgid=...ZFNM-X1CS  immat=AA7503493  nom='LE PRIVILEGE MONTBRILLANT'  bdnb=73
+
+#20  7.0T|RUE|MONTBRILLANT                   (libelle BAN: '7.0T RUE DE MONTBRILLANT 69003 Lyon 3e Arrondissement')
      ANCRE :   7|RUE|MONTBRILLANT                      bgid=...ZFNM-X1CS  immat=AA7503493  nom='LE PRIVILEGE MONTBRILLANT'  bdnb=73
 
 ==============================================================================================================

@@ -1,5 +1,5 @@
 TOP 30 ECLATEMENT non-resolus DL (post-fix 6 megas + EMERGENCE LAFAYETTE)
-Total : 53 eclatements (53 avec ancre_bdnb > 0)
+Total : 34 eclatements (34 avec ancre_bdnb > 0)
 
 #01  cle_eclatee = 5|COURS|ALBERT THOMAS
      ancre = 7|COURS|ALBERT THOMAS  immat=AB0219808  nom='LE PAVILLON DE FLORE - MS32843'  lots=244/90
@@ -19,165 +19,165 @@ Total : 53 eclatements (53 avec ancre_bdnb > 0)
      cle_actuel : bdnb=151, immat=None, match=correctif_6megas_pavillon_flore_ii_re_fuse, fauto=True, fcible=5|COURS|ALBERT THOMAS
      mecanisme : REBIND _fusion_cible (actuelle='5|COURS|ALBERT THOMAS' -> ancre) + bgid switch
 
-#04  cle_eclatee = 14|RUE|ETIENNE RICHERAND
-     ancre = 22|RUE|ST ANTOINE  immat=AA1601434  nom='LES JARDINS DE CHARIAL'  lots=282/115
-     light_bgid = bdnb-bg-YQDT-7VMV-E5S5  vs  ancre_bgid = bdnb-bg-TLU8-1B9R-DX25
-     cle_actuel : bdnb=45, immat=None, match=num_voie, fauto=None, fcible=None
-     mecanisme : RE-FUSE Cambronne (bgid switch + _fusion_auto + cible)
-
-#05  cle_eclatee = 18|RUE|ETIENNE RICHERAND
-     ancre = 22|RUE|ST ANTOINE  immat=AA1601434  nom='LES JARDINS DE CHARIAL'  lots=282/115
-     light_bgid = bdnb-bg-NWNV-GU7Z-XPMJ  vs  ancre_bgid = bdnb-bg-TLU8-1B9R-DX25
-     cle_actuel : bdnb=7, immat=None, match=num_voie, fauto=True, fcible=19|RUE|ETIENNE RICHERAND
-     mecanisme : REBIND _fusion_cible (actuelle='19|RUE|ETIENNE RICHERAND' -> ancre) + bgid switch
-
-#06  cle_eclatee = 20|RUE|ETIENNE RICHERAND
-     ancre = 22|RUE|ST ANTOINE  immat=AA1601434  nom='LES JARDINS DE CHARIAL'  lots=282/115
-     light_bgid = bdnb-bg-NWNV-GU7Z-XPMJ  vs  ancre_bgid = bdnb-bg-TLU8-1B9R-DX25
-     cle_actuel : bdnb=7, immat=None, match=num_voie, fauto=True, fcible=19|RUE|ETIENNE RICHERAND
-     mecanisme : REBIND _fusion_cible (actuelle='19|RUE|ETIENNE RICHERAND' -> ancre) + bgid switch
-
-#07  cle_eclatee = 22|RUE|ETIENNE RICHERAND
-     ancre = 22|RUE|ST ANTOINE  immat=AA1601434  nom='LES JARDINS DE CHARIAL'  lots=282/115
-     light_bgid = bdnb-bg-SBHG-VQWK-FCA9  vs  ancre_bgid = bdnb-bg-TLU8-1B9R-DX25
-     cle_actuel : bdnb=14, immat=None, match=num_voie, fauto=True, fcible=21|RUE|ETIENNE RICHERAND
-     mecanisme : REBIND _fusion_cible (actuelle='21|RUE|ETIENNE RICHERAND' -> ancre) + bgid switch
-
-#08  cle_eclatee = 24|RUE|ETIENNE RICHERAND
-     ancre = 22|RUE|ST ANTOINE  immat=AA1601434  nom='LES JARDINS DE CHARIAL'  lots=282/115
-     light_bgid = bdnb-bg-8U51-96UR-3947  vs  ancre_bgid = bdnb-bg-TLU8-1B9R-DX25
-     cle_actuel : bdnb=211, immat=None, match=num_voie, fauto=True, fcible=28|RUE|ETIENNE RICHERAND
-     mecanisme : REBIND _fusion_cible (actuelle='28|RUE|ETIENNE RICHERAND' -> ancre) + bgid switch
-
-#09  cle_eclatee = 33|RUE|CLAUDIUS PIONCHON
-     ancre = 27|RUE|STE ANNE DE BARABAN  immat=AA1700848  nom='LES JARDINS DE BABYLONE'  lots=277/99
-     light_bgid = bdnb-bg-BXEH-4Z8G-SH57  vs  ancre_bgid = bdnb-bg-NV72-5NB3-XZT2
-     cle_actuel : bdnb=42, immat=None, match=num_voie, fauto=True, fcible=29|RUE|CLAUDIUS PIONCHON
-     mecanisme : REBIND _fusion_cible (actuelle='29|RUE|CLAUDIUS PIONCHON' -> ancre) + bgid switch
-
-#10  cle_eclatee = 177T|AVENUE|FELIX FAURE
-     ancre = 177|AVENUE|FELIX FAURE  immat=AB3274529  nom='177 AV FELIX FAURE'  lots=272/83
-     light_bgid = bdnb-bg-WCZE-BJWK-JYM1  vs  ancre_bgid = bdnb-bg-R3ZV-UJGF-B5PM
-     cle_actuel : bdnb=15, immat=None, match=num_voie, fauto=True, fcible=179|AVENUE|FELIX FAURE
-     mecanisme : REBIND _fusion_cible (actuelle='179|AVENUE|FELIX FAURE' -> ancre) + bgid switch
-
-#11  cle_eclatee = 2|RUE|METALLURGIE
-     ancre = 9|RUE|DAVID  immat=AB3954260  nom='LACASSAGNE DAVID'  lots=253/84
-     light_bgid = bdnb-bg-51HE-8CSW-Q4A6  vs  ancre_bgid = bdnb-bg-AJ85-YHNQ-MYVH
-     cle_actuel : bdnb=10, immat=None, match=num_voie, fauto=True, fcible=1|RUE|METALLURGIE
-     mecanisme : REBIND _fusion_cible (actuelle='1|RUE|METALLURGIE' -> ancre) + bgid switch
-
-#12  cle_eclatee = 31|RUE|GUILLOUD
-     ancre = 27|RUE|GUILLOUD  immat=AB3360401  nom='L'HERMITAGE'  lots=245/87
-     light_bgid = bdnb-bg-8S47-R5PB-QQTY  vs  ancre_bgid = bdnb-bg-9TQ2-3NZF-3HY8
-     cle_actuel : bdnb=10, immat=None, match=num_voie, fauto=True, fcible=35|RUE|GUILLOUD
-     mecanisme : REBIND _fusion_cible (actuelle='35|RUE|GUILLOUD' -> ancre) + bgid switch
-
-#13  cle_eclatee = 25|RUE|ST ANTOINE
+#04  cle_eclatee = 25|RUE|ST ANTOINE
      ancre = 272|COURS|LAFAYETTE  immat=AC3212578  nom=''LA COUR LAFAYETTE''  lots=209/86
      light_bgid = bdnb-bg-6UE1-UT3G-U7D2  vs  ancre_bgid = bdnb-bg-U4S4-QR1D-QNE5
      cle_actuel : bdnb=60, immat=AC3226362, match=immat, fauto=None, fcible=None
      mecanisme : WARN-2nd-ancre (cle a immat AC3226362 != ancre AC3212578) - 2 SDC distincts ?
 
-#14  cle_eclatee = 5|RUE|ETIENNE RICHERAND
-     ancre = 35|RUE|ST ANTOINE  immat=AC6493506  nom='LE CARRE SAINT ANTOINE'  lots=80/48
-     light_bgid = bdnb-bg-L2CK-SQ4L-G991  vs  ancre_bgid = bdnb-bg-ASMY-1BJU-2LUB
-     cle_actuel : bdnb=15, immat=None, match=num_voie, fauto=None, fcible=None
-     mecanisme : RE-FUSE Cambronne (bgid switch + _fusion_auto + cible)
-
-#15  cle_eclatee = 64|AVENUE|LACASSAGNE
-     ancre = 66|AVENUE|LACASSAGNE  immat=AE8227266  nom='HORIZON MONPLAISIR'  lots=115/51
-     light_bgid = bdnb-bg-G6ZB-A3PE-27QQ  vs  ancre_bgid = bdnb-bg-2ZP4-TAU6-UC13
-     cle_actuel : bdnb=12, immat=None, match=num_voie, fauto=None, fcible=None
-     mecanisme : RE-FUSE Cambronne (bgid switch + _fusion_auto + cible)
-
-#16  cle_eclatee = 64B|AVENUE|LACASSAGNE
-     ancre = 66|AVENUE|LACASSAGNE  immat=AE8227266  nom='HORIZON MONPLAISIR'  lots=115/51
-     light_bgid = bdnb-bg-G6ZB-A3PE-27QQ  vs  ancre_bgid = bdnb-bg-2ZP4-TAU6-UC13
-     cle_actuel : bdnb=12, immat=None, match=num_voie, fauto=True, fcible=64|AVENUE|LACASSAGNE
-     mecanisme : REBIND _fusion_cible (actuelle='64|AVENUE|LACASSAGNE' -> ancre) + bgid switch
-
-#17  cle_eclatee = 44|RUE|ST MAXIMIN
-     ancre = 42A||50 RUE ST MAXIMIN  immat=AA2505634  nom='SAINT MARC I'  lots=190/63
-     light_bgid = bdnb-bg-PWDK-M71Z-3JJQ  vs  ancre_bgid = bdnb-bg-MYUH-YTYU-45YJ
-     cle_actuel : bdnb=22, immat=None, match=num_voie, fauto=True, fcible=43|RUE|ST MAXIMIN
-     mecanisme : REBIND _fusion_cible (actuelle='43|RUE|ST MAXIMIN' -> ancre) + bgid switch
-
-#18  cle_eclatee = 46|RUE|ST MAXIMIN
-     ancre = 42A||50 RUE ST MAXIMIN  immat=AA2505634  nom='SAINT MARC I'  lots=190/63
-     light_bgid = bdnb-bg-PWDK-M71Z-3JJQ  vs  ancre_bgid = bdnb-bg-MYUH-YTYU-45YJ
-     cle_actuel : bdnb=22, immat=None, match=num_voie, fauto=True, fcible=43|RUE|ST MAXIMIN
-     mecanisme : REBIND _fusion_cible (actuelle='43|RUE|ST MAXIMIN' -> ancre) + bgid switch
-
-#19  cle_eclatee = 48|RUE|ST MAXIMIN
-     ancre = 42A||50 RUE ST MAXIMIN  immat=AA2505634  nom='SAINT MARC I'  lots=190/63
-     light_bgid = bdnb-bg-4F6G-4P2Q-RRZK  vs  ancre_bgid = bdnb-bg-MYUH-YTYU-45YJ
-     cle_actuel : bdnb=51, immat=None, match=num_voie, fauto=True, fcible=51|RUE|ST MAXIMIN
-     mecanisme : REBIND _fusion_cible (actuelle='51|RUE|ST MAXIMIN' -> ancre) + bgid switch
-
-#20  cle_eclatee = 50|RUE|ST MAXIMIN
-     ancre = 42A||50 RUE ST MAXIMIN  immat=AA2505634  nom='SAINT MARC I'  lots=190/63
-     light_bgid = bdnb-bg-4F6G-4P2Q-RRZK  vs  ancre_bgid = bdnb-bg-MYUH-YTYU-45YJ
-     cle_actuel : bdnb=51, immat=None, match=num_voie, fauto=True, fcible=51|RUE|ST MAXIMIN
-     mecanisme : REBIND _fusion_cible (actuelle='51|RUE|ST MAXIMIN' -> ancre) + bgid switch
-
-#21  cle_eclatee = 20|AVENUE|LACASSAGNE
+#05  cle_eclatee = 20|AVENUE|LACASSAGNE
      ancre = 24||ET 24 BIS AVENUE LACASSAGNE  immat=AG1556893  nom='BRICKS 2'  lots=122/64
      light_bgid = bdnb-bg-NHQQ-8MZ7-KS1W  vs  ancre_bgid = bdnb-bg-WLXU-6YKR-D8DU
      cle_actuel : bdnb=97, immat=None, match=immat, fauto=True, fcible=20B|AVENUE|LACASSAGNE
      mecanisme : REBIND _fusion_cible (actuelle='20B|AVENUE|LACASSAGNE' -> ancre) + bgid switch
 
-#22  cle_eclatee = 2|RUE|LOUIS JASSERON
-     ancre = 14|RUE|ST VICTORIEN  immat=AC3805199  nom=''LES VICTORINES''  lots=188/60
-     light_bgid = bdnb-bg-PP7G-YWLB-1ZEC  vs  ancre_bgid = bdnb-bg-9SJM-2V31-SHKZ
-     cle_actuel : bdnb=25, immat=None, match=num_voie, fauto=True, fcible=3|RUE|LOUIS JASSERON
-     mecanisme : REBIND _fusion_cible (actuelle='3|RUE|LOUIS JASSERON' -> ancre) + bgid switch
-
-#23  cle_eclatee = 9|RUE|FRANCOIS GILLET
-     ancre = 7|RUE|FRANCOIS GILLET  immat=AA4868378  nom='La Closerie des Tilleuls II'  lots=207/59
-     light_bgid = bdnb-bg-K5KX-NEHV-8KAS  vs  ancre_bgid = bdnb-bg-ZRJZ-GNPH-8KBH
-     cle_actuel : bdnb=52, immat=None, match=num_voie, fauto=None, fcible=None
-     mecanisme : RE-FUSE Cambronne (bgid switch + _fusion_auto + cible)
-
-#24  cle_eclatee = 260|RUE|PAUL BERT
+#06  cle_eclatee = 260|RUE|PAUL BERT
      ancre = 23|RUE|TURBIL  immat=AB2926236  nom='LE SAINT GERMAIN'  lots=122/56
      light_bgid = bdnb-bg-D9LP-CBCP-F74E  vs  ancre_bgid = bdnb-bg-ASUK-VSRP-TFTA
      cle_actuel : bdnb=1, immat=None, match=num_voie, fauto=True, fcible=264B|RUE|PAUL BERT
      mecanisme : REBIND _fusion_cible (actuelle='264B|RUE|PAUL BERT' -> ancre) + bgid switch
 
-#25  cle_eclatee = 262|RUE|PAUL BERT
+#07  cle_eclatee = 262|RUE|PAUL BERT
      ancre = 23|RUE|TURBIL  immat=AB2926236  nom='LE SAINT GERMAIN'  lots=122/56
      light_bgid = bdnb-bg-D9LP-CBCP-F74E  vs  ancre_bgid = bdnb-bg-ASUK-VSRP-TFTA
      cle_actuel : bdnb=1, immat=None, match=num_voie, fauto=True, fcible=264B|RUE|PAUL BERT
      mecanisme : REBIND _fusion_cible (actuelle='264B|RUE|PAUL BERT' -> ancre) + bgid switch
 
-#26  cle_eclatee = 14|RUE|CARRY
-     ancre = 89|RUE|DAUPHINE  immat=AC9350984  nom='LE PAVILLON DU DAUPHIN'  lots=122/57
-     light_bgid = bdnb-bg-FW4B-YECQ-FPCT  vs  ancre_bgid = bdnb-bg-SAR3-A4XV-LE8B
-     cle_actuel : bdnb=9, immat=None, match=num_voie, fauto=True, fcible=6|RUE|CARRY
-     mecanisme : REBIND _fusion_cible (actuelle='6|RUE|CARRY' -> ancre) + bgid switch
-
-#27  cle_eclatee = 3|RUE|TEINTURIERS
-     ancre = 57|RUE|ETIENNE RICHERAND  immat=AA1888700  nom='SDC LES JARDINS DU PRESIDENT'  lots=210/55
-     light_bgid = bdnb-bg-U297-N64A-4SXK  vs  ancre_bgid = bdnb-bg-38KK-XRWR-3TVE
-     cle_actuel : bdnb=32, immat=None, match=num_voie, fauto=None, fcible=None
-     mecanisme : RE-FUSE Cambronne (bgid switch + _fusion_auto + cible)
-
-#28  cle_eclatee = 137|RUE|ANTOINE CHARIAL
+#08  cle_eclatee = 137|RUE|ANTOINE CHARIAL
      ancre = 12|RUE|ST EUSEBE  immat=AA2028389  nom='SDC ESPACE EMERAUDE BAT B'  lots=96/33
      light_bgid = bdnb-bg-TYEL-NYRS-F6BJ  vs  ancre_bgid = bdnb-bg-H9T9-DYCH-XSSS
      cle_actuel : bdnb=30, immat=None, match=num_voie, fauto=None, fcible=None
      mecanisme : RE-FUSE Cambronne (bgid switch + _fusion_auto + cible)
 
-#29  cle_eclatee = 14|RUE|ST MAXIMIN
+#09  cle_eclatee = 14|RUE|ST MAXIMIN
      ancre = 16|RUE|TUILIERS  immat=AE0762401  nom='SDC TUILIERS'  lots=109/55
      light_bgid = bdnb-bg-6J3V-PN4E-7QWG  vs  ancre_bgid = bdnb-bg-DHU6-K34Z-3B96
      cle_actuel : bdnb=31, immat=None, match=num_voie, fauto=True, fcible=1|RUE|ROSSAN
      mecanisme : REBIND _fusion_cible (actuelle='1|RUE|ROSSAN' -> ancre) + bgid switch
 
-#30  cle_eclatee = 38|AVENUE|LACASSAGNE
+#10  cle_eclatee = 38|AVENUE|LACASSAGNE
      ancre = 42|AVENUE|LACASSAGNE  immat=AB7739527  nom='LES PORTES DE L'ESPLANADE'  lots=255/85
      light_bgid = bdnb-bg-NZ2J-NJPV-EKZJ  vs  ancre_bgid = bdnb-bg-PU3N-4779-FEBT
      cle_actuel : bdnb=71, immat=AB8378317, match=immat, fauto=None, fcible=None
      mecanisme : WARN-2nd-ancre (cle a immat AB8378317 != ancre AB7739527) - 2 SDC distincts ?
+
+#11  cle_eclatee = 40|RUE|ST MAXIMIN
+     ancre = 38|RUE|ST MAXIMIN  immat=AA9435975  nom='LE CLOS SAINT MARC'  lots=167/51
+     light_bgid = bdnb-bg-6BRM-AZZY-6Q8H  vs  ancre_bgid = bdnb-bg-PL25-59WQ-D8KT
+     cle_actuel : bdnb=33, immat=None, match=num_voie, fauto=True, fcible=39|RUE|ST MAXIMIN
+     mecanisme : REBIND _fusion_cible (actuelle='39|RUE|ST MAXIMIN' -> ancre) + bgid switch
+
+#12  cle_eclatee = 18|RUE|DAHLIAS
+     ancre = 26|RUE|DOCTEUR REBATEL  immat=AC9718610  nom='SDC SQUARE REBATEL'  lots=140/52
+     light_bgid = bdnb-bg-VM76-DC2D-8ZBM  vs  ancre_bgid = bdnb-bg-HZW7-ZHQA-SC56
+     cle_actuel : bdnb=1, immat=None, match=num_voie, fauto=None, fcible=None
+     mecanisme : RE-FUSE Cambronne (bgid switch + _fusion_auto + cible)
+
+#13  cle_eclatee = 12|RUE|CARRY
+     ancre = 24|RUE|METALLURGIE  immat=AB3965985  nom='LE JARDIN CLAIR'  lots=151/49
+     light_bgid = bdnb-bg-FW4B-YECQ-FPCT  vs  ancre_bgid = bdnb-bg-4RMJ-W193-8VZA
+     cle_actuel : bdnb=9, immat=None, match=num_voie, fauto=True, fcible=6|RUE|CARRY
+     mecanisme : REBIND _fusion_cible (actuelle='6|RUE|CARRY' -> ancre) + bgid switch
+
+#14  cle_eclatee = 26|RUE|METALLURGIE
+     ancre = 24|RUE|METALLURGIE  immat=AB3965985  nom='LE JARDIN CLAIR'  lots=151/49
+     light_bgid = bdnb-bg-SCQS-HYN4-PPDQ  vs  ancre_bgid = bdnb-bg-4RMJ-W193-8VZA
+     cle_actuel : bdnb=20, immat=None, match=num_voie, fauto=None, fcible=None
+     mecanisme : RE-FUSE Cambronne (bgid switch + _fusion_auto + cible)
+
+#15  cle_eclatee = 49|RUE|PROFESSEUR PAUL SISLEY
+     ancre = 77|COURS|ALBERT THOMAS  immat=AC1055698  nom='77 A.Thomas/49-51 Paul Sisley'  lots=49/48
+     light_bgid = bdnb-bg-VRHU-LHNX-3PHB  vs  ancre_bgid = bdnb-bg-QP8Z-VMM2-M7MW
+     cle_actuel : bdnb=48, immat=None, match=immat, fauto=True, fcible=16|RUE|GUILLOUD
+     mecanisme : REBIND _fusion_cible (actuelle='16|RUE|GUILLOUD' -> ancre) + bgid switch
+
+#16  cle_eclatee = 32|RUE|PROFESSEUR PAUL SISLEY
+     ancre = 30||30B R DU PROFESSEUR PAUL SISLEY  immat=AC7505134  nom='SDC SDC LE SISLEY'  lots=87/43
+     light_bgid = bdnb-bg-7A21-PPNH-TLQM  vs  ancre_bgid = bdnb-bg-PTBZ-QHYH-Y2WN
+     cle_actuel : bdnb=30, immat=None, match=num_voie, fauto=True, fcible=31|RUE|PROFESSEUR PAUL SISLEY
+     mecanisme : REBIND _fusion_cible (actuelle='31|RUE|PROFESSEUR PAUL SISLEY' -> ancre) + bgid switch
+
+#17  cle_eclatee = 64|RUE|ANTOINE CHARIAL
+     ancre = 113|RUE|BARABAN  immat=AD5133418  nom='SDC LE DUO II'  lots=97/42
+     light_bgid = bdnb-bg-DYK1-A4VL-D7EG  vs  ancre_bgid = bdnb-bg-6JZ9-FA72-RT9X
+     cle_actuel : bdnb=21, immat=None, match=num_voie, fauto=True, fcible=66|RUE|ANTOINE CHARIAL
+     mecanisme : REBIND _fusion_cible (actuelle='66|RUE|ANTOINE CHARIAL' -> ancre) + bgid switch
+
+#18  cle_eclatee = 115|RUE|BARABAN
+     ancre = 113|RUE|BARABAN  immat=AD5133418  nom='SDC LE DUO II'  lots=97/42
+     light_bgid = bdnb-bg-X9VB-91BP-NX9T  vs  ancre_bgid = bdnb-bg-6JZ9-FA72-RT9X
+     cle_actuel : bdnb=35, immat=AD5237797, match=immat, fauto=None, fcible=None
+     mecanisme : WARN-2nd-ancre (cle a immat AD5237797 != ancre AD5133418) - 2 SDC distincts ?
+
+#19  cle_eclatee = 316|RUE|PAUL BERT
+     ancre = 314|RUE|PAUL BERT  immat=AH0111229  nom='PAUL BERT 314/316'  lots=115/38
+     light_bgid = bdnb-bg-JFRZ-XJTQ-L9ZQ  vs  ancre_bgid = bdnb-bg-MLQ3-6L3N-HFMK
+     cle_actuel : bdnb=7, immat=None, match=num_voie, fauto=True, fcible=318|RUE|PAUL BERT
+     mecanisme : REBIND _fusion_cible (actuelle='318|RUE|PAUL BERT' -> ancre) + bgid switch
+
+#20  cle_eclatee = 7|RUE|PROFESSEUR PAUL SISLEY
+     ancre = 7|RUE|PROFESSEUR PAUL SISLEY #AI9420605  immat=AI9420605  nom='APRIM'  lots=102/34
+     light_bgid = bdnb-bg-68CY-P7TQ-TZ2P  vs  ancre_bgid = bdnb-bg-XMZC-EM72-55Q1
+     cle_actuel : bdnb=229, immat=None, match=immat, fauto=True, fcible=7B|RUE|PROFESSEUR PAUL SISLEY
+     mecanisme : REBIND _fusion_cible (actuelle='7B|RUE|PROFESSEUR PAUL SISLEY' -> ancre) + bgid switch
+
+#21  cle_eclatee = 5|RUE|FRANCOIS GILLET
+     ancre = 3|RUE|FRANCOIS GILLET  immat=AA1827336  nom='LA CLOSERIE DES TILLEULS'  lots=145/30
+     light_bgid = bdnb-bg-ZRJZ-GNPH-8KBH  vs  ancre_bgid = bdnb-bg-6D6N-M1N7-38NB
+     cle_actuel : bdnb=0, immat=None, match=correctif_12megas_closerie_tilleuls_ii_inject_label, fauto=True, fcible=7|RUE|FRANCOIS GILLET
+     mecanisme : REBIND _fusion_cible (actuelle='7|RUE|FRANCOIS GILLET' -> ancre) + bgid switch
+
+#22  cle_eclatee = 7|RUE|FRANCOIS GILLET
+     ancre = 3|RUE|FRANCOIS GILLET  immat=AA1827336  nom='LA CLOSERIE DES TILLEULS'  lots=145/30
+     light_bgid = bdnb-bg-ZRJZ-GNPH-8KBH  vs  ancre_bgid = bdnb-bg-6D6N-M1N7-38NB
+     cle_actuel : bdnb=58, immat=AA4868378, match=immat, fauto=None, fcible=None
+     mecanisme : WARN-2nd-ancre (cle a immat AA4868378 != ancre AA1827336) - 2 SDC distincts ?
+
+#23  cle_eclatee = 10|RUE|ST MAXIMIN
+     ancre = 1|RUE|ROSSAN  immat=AB2460335  nom='TERRASSES ET VILLAS ST MAXIMIN'  lots=138/53
+     light_bgid = bdnb-bg-WF2W-21FC-LN83  vs  ancre_bgid = bdnb-bg-6J3V-PN4E-7QWG
+     cle_actuel : bdnb=1, immat=None, match=num_voie, fauto=None, fcible=None
+     mecanisme : RE-FUSE Cambronne (bgid switch + _fusion_auto + cible)
+
+#24  cle_eclatee = 31|RUE|ST ANTOINE
+     ancre = 8|RUE|ETIENNE RICHERAND  immat=AA8338717  nom='LE RICHERAND'  lots=65/27
+     light_bgid = bdnb-bg-ASMY-1BJU-2LUB  vs  ancre_bgid = bdnb-bg-4QVP-WA8R-HHUX
+     cle_actuel : bdnb=72, immat=None, match=num_voie, fauto=True, fcible=35|RUE|ST ANTOINE
+     mecanisme : REBIND _fusion_cible (actuelle='35|RUE|ST ANTOINE' -> ancre) + bgid switch
+
+#25  cle_eclatee = 9|RUE|MONTBRILLANT
+     ancre = 9|RUE|MONTBRILLANT #AB6220503  immat=AB6220503  nom='LE PRIVILEGE MONTBRILLANT C'  lots=92/28
+     light_bgid = bdnb-bg-9MYW-M2VT-GSQE  vs  ancre_bgid = bdnb-bg-ZVE8-JEVU-TZ7Q
+     cle_actuel : bdnb=58, immat=None, match=immat, fauto=True, fcible=9B|RUE|MONTBRILLANT
+     mecanisme : REBIND _fusion_cible (actuelle='9B|RUE|MONTBRILLANT' -> ancre) + bgid switch
+
+#26  cle_eclatee = 3|RUE|MARCEL PEHU
+     ancre = 30|RUE|ST PHILIPPE  immat=AC3393907  nom='SDC LES DOMES ST PHILIPPE'  lots=74/27
+     light_bgid = bdnb-bg-GMWN-9ZYS-LQGQ  vs  ancre_bgid = bdnb-bg-A83M-3CFY-N648
+     cle_actuel : bdnb=32, immat=None, match=num_voie, fauto=True, fcible=23|RUE|ST MAXIMIN
+     mecanisme : REBIND _fusion_cible (actuelle='23|RUE|ST MAXIMIN' -> ancre) + bgid switch
+
+#27  cle_eclatee = 10|RUE|RIBOUD
+     ancre = 21|RUE|MAURICE FLANDIN  immat=AC9634627  nom='SDC 21 RUE MAURICE FLANDIN'  lots=33/26
+     light_bgid = bdnb-bg-ZS47-TD9J-M4FB  vs  ancre_bgid = bdnb-bg-VVS2-CGZ5-FN7Y
+     cle_actuel : bdnb=13, immat=None, match=num_voie, fauto=None, fcible=None
+     mecanisme : RE-FUSE Cambronne (bgid switch + _fusion_auto + cible)
+
+#28  cle_eclatee = 3|RUE|ST EUSEBE
+     ancre = 1|RUE|ST EUSEBE  immat=AA8431108  nom='1/3 RUE SAINT EUSEBE'  lots=16/12
+     light_bgid = bdnb-bg-81HL-8BC6-UPG6  vs  ancre_bgid = bdnb-bg-XRFL-2LV8-JEN4
+     cle_actuel : bdnb=14, immat=None, match=num_voie, fauto=True, fcible=2|RUE|ST EUSEBE
+     mecanisme : REBIND _fusion_cible (actuelle='2|RUE|ST EUSEBE' -> ancre) + bgid switch
+
+#29  cle_eclatee = 338|RUE|PAUL BERT
+     ancre = 239|AVENUE|FELIX FAURE  immat=AA8508269  nom='239 avenue Felix faure'  lots=41/18
+     light_bgid = bdnb-bg-K6MG-1NKK-3RPG  vs  ancre_bgid = bdnb-bg-9P8K-R96Z-PWH2
+     cle_actuel : bdnb=1, immat=None, match=num_voie, fauto=None, fcible=None
+     mecanisme : RE-FUSE Cambronne (bgid switch + _fusion_auto + cible)
+
+#30  cle_eclatee = 51|RUE|ST ANTOINE
+     ancre = 310|COURS|LAFAYETTE  immat=AD5250634  nom='310 COURS LAFAYETTE / 51 RUE ST ANTOINE'  lots=35/11
+     light_bgid = bdnb-bg-HQWX-SRVS-WAVH  vs  ancre_bgid = bdnb-bg-PNCB-MYC1-JB4Q
+     cle_actuel : bdnb=23, immat=None, match=num_voie, fauto=True, fcible=50|RUE|ST ANTOINE
+     mecanisme : REBIND _fusion_cible (actuelle='50|RUE|ST ANTOINE' -> ancre) + bgid switch
 
