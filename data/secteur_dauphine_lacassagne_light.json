@@ -1265,6 +1265,444 @@
         }
       ],
       "delta_parc_dedup_total": 0
+    },
+    "_correctif_vague3_dl": {
+      "date": "2026-05-24T17:01:05Z",
+      "pattern": "Vague 3 DL : 10 mega-ensembles E19-E28 + 8 REBIND univoques + 3 special (BRICKS2 REBIND-COPRO, SISLEY REBIND-COPRO+PROMOTE, 25 ST ANT DETACH)",
+      "fixes": [
+        {
+          "id": "E19",
+          "tag": "jardin_clair",
+          "ancre": "24|RUE|METALLURGIE",
+          "immat": "AB3965985",
+          "label": "24-26-28 RUE METALLURGIE / 12 RUE CARRY"
+        },
+        {
+          "id": "E20",
+          "tag": "saint_germain",
+          "ancre": "23|RUE|TURBIL",
+          "immat": "AB2926236",
+          "label": "23 RUE TURBIL / 258-260-262 RUE PAUL BERT"
+        },
+        {
+          "id": "E21",
+          "tag": "clos_saint_marc",
+          "ancre": "38|RUE|ST MAXIMIN",
+          "immat": "AA9435975",
+          "label": "38-40 RUE ST MAXIMIN"
+        },
+        {
+          "id": "E22",
+          "tag": "terrasses_villas_st_max",
+          "ancre": "1|RUE|ROSSAN",
+          "immat": "AB2460335",
+          "label": "1 RUE ROSSAN / 10-12 RUE ST MAXIMIN"
+        },
+        {
+          "id": "E23",
+          "tag": "77_alb_thomas_sisley",
+          "ancre": "77|COURS|ALBERT THOMAS",
+          "immat": "AC1055698",
+          "label": "77 COURS ALBERT THOMAS / 49-51 RUE PROFESSEUR PAUL SISLEY"
+        },
+        {
+          "id": "E24",
+          "tag": "duo_ii",
+          "ancre": "113|RUE|BARABAN",
+          "immat": "AD5133418",
+          "label": "113 RUE BARABAN (SDC LE DUO II) / 111 RUE BARABAN / 64 RUE ANTOINE CHARIAL"
+        },
+        {
+          "id": "E26",
+          "tag": "tuiliers",
+          "ancre": "16|RUE|TUILIERS",
+          "immat": "AE0762401",
+          "label": "16 RUE TUILIERS (SDC TUILIERS) / 14 RUE ST MAXIMIN"
+        },
+        {
+          "id": "E28",
+          "tag": "lac_38_40",
+          "ancre": "38|AVENUE|LACASSAGNE",
+          "immat": "AB8378317",
+          "label": "38-40 AVENUE LACASSAGNE (LES JARDINS DU CHATEAU)"
+        },
+        {
+          "id": "R51",
+          "tag": "51_st_ant_310_laf",
+          "ancre": "310|COURS|LAFAYETTE",
+          "immat": "AD5250634",
+          "label": "310 COURS LAFAYETTE / 51 RUE ST ANTOINE"
+        },
+        {
+          "id": "R31",
+          "tag": "31_st_ant_richerand",
+          "ancre": "8|RUE|ETIENNE RICHERAND",
+          "immat": "AA8338717",
+          "label": "8 RUE ETIENNE RICHERAND (LE RICHERAND) / 31 RUE ST ANTOINE"
+        },
+        {
+          "id": "R137",
+          "tag": "137_charial_eusebe",
+          "ancre": "12|RUE|ST EUSEBE",
+          "immat": "AA2028389",
+          "label": "12 RUE ST EUSEBE (SDC ESPACE EMERAUDE BAT B) / 137 RUE ANTOINE CHARIAL"
+        },
+        {
+          "id": "R18",
+          "tag": "18_dahlias_rebatel",
+          "ancre": "26|RUE|DOCTEUR REBATEL",
+          "immat": "AC9718610",
+          "label": "26 RUE DOCTEUR REBATEL (SDC SQUARE REBATEL) / 18 RUE DAHLIAS"
+        },
+        {
+          "id": "R10R",
+          "tag": "10_riboud_flandin",
+          "ancre": "21|RUE|MAURICE FLANDIN",
+          "immat": "AC9634627",
+          "label": "21 RUE MAURICE FLANDIN (SDC 21 MAURICE FLANDIN) / 10 RUE RIBOUD"
+        },
+        {
+          "id": "R338",
+          "tag": "338_pb_239_ff",
+          "ancre": "239|AVENUE|FELIX FAURE",
+          "immat": "AA8508269",
+          "label": "239 AVENUE FELIX FAURE / 338 RUE PAUL BERT"
+        },
+        {
+          "id": "R3E",
+          "tag": "3_eusebe_1_eusebe",
+          "ancre": "1|RUE|ST EUSEBE",
+          "immat": "AA8431108",
+          "label": "1 RUE ST EUSEBE (1/3 RUE SAINT EUSEBE) / 3 RUE ST EUSEBE"
+        }
+      ],
+      "specials": [
+        "BRICKS2 (AG1556893 REBIND-COPRO + INJECT 24 LAC + RE-FUSE 20 LAC)",
+        "SDC LE SISLEY (AC7505134 REBIND-COPRO + PROMOTE 30 SISLEY + RE-FUSE 32 + INJECT 30B)",
+        "LA COUR LAFAYETTE 25 ST ANT (DETACH AC3226362 + RE-FUSE 272 LAFAYETTE)"
+      ],
+      "log": [
+        {
+          "op": "RE-FUSE",
+          "cle": "12|RUE|CARRY",
+          "cible": "24|RUE|METALLURGIE",
+          "old_cible": "6|RUE|CARRY"
+        },
+        {
+          "op": "RE-FUSE",
+          "cle": "26|RUE|METALLURGIE",
+          "cible": "24|RUE|METALLURGIE",
+          "old_cible": null
+        },
+        {
+          "op": "INJECT",
+          "cle": "28|RUE|METALLURGIE",
+          "fcible": "24|RUE|METALLURGIE"
+        },
+        {
+          "op": "LABEL",
+          "cle": "24|RUE|METALLURGIE",
+          "label": "24-26-28 RUE METALLURGIE / 12 RUE CARRY",
+          "sources": [
+            "12|RUE|CARRY",
+            "26|RUE|METALLURGIE",
+            "28|RUE|METALLURGIE"
+          ]
+        },
+        {
+          "op": "RE-FUSE",
+          "cle": "260|RUE|PAUL BERT",
+          "cible": "23|RUE|TURBIL",
+          "old_cible": "264B|RUE|PAUL BERT"
+        },
+        {
+          "op": "RE-FUSE",
+          "cle": "262|RUE|PAUL BERT",
+          "cible": "23|RUE|TURBIL",
+          "old_cible": "264B|RUE|PAUL BERT"
+        },
+        {
+          "op": "INJECT",
+          "cle": "258|RUE|PAUL BERT",
+          "fcible": "23|RUE|TURBIL"
+        },
+        {
+          "op": "LABEL",
+          "cle": "23|RUE|TURBIL",
+          "label": "23 RUE TURBIL / 258-260-262 RUE PAUL BERT",
+          "sources": [
+            "260|RUE|PAUL BERT",
+            "262|RUE|PAUL BERT",
+            "258|RUE|PAUL BERT"
+          ]
+        },
+        {
+          "op": "RE-FUSE",
+          "cle": "40|RUE|ST MAXIMIN",
+          "cible": "38|RUE|ST MAXIMIN",
+          "old_cible": "39|RUE|ST MAXIMIN"
+        },
+        {
+          "op": "LABEL",
+          "cle": "38|RUE|ST MAXIMIN",
+          "label": "38-40 RUE ST MAXIMIN",
+          "sources": [
+            "40|RUE|ST MAXIMIN"
+          ]
+        },
+        {
+          "op": "RE-FUSE",
+          "cle": "10|RUE|ST MAXIMIN",
+          "cible": "1|RUE|ROSSAN",
+          "old_cible": null
+        },
+        {
+          "op": "LABEL",
+          "cle": "1|RUE|ROSSAN",
+          "label": "1 RUE ROSSAN / 10-12 RUE ST MAXIMIN",
+          "sources": [
+            "12|RUE|ST MAXIMIN",
+            "14|RUE|ST MAXIMIN",
+            "10|RUE|ST MAXIMIN"
+          ]
+        },
+        {
+          "op": "RE-FUSE",
+          "cle": "49|RUE|PROFESSEUR PAUL SISLEY",
+          "cible": "77|COURS|ALBERT THOMAS",
+          "old_cible": "16|RUE|GUILLOUD"
+        },
+        {
+          "op": "LABEL",
+          "cle": "77|COURS|ALBERT THOMAS",
+          "label": "77 COURS ALBERT THOMAS / 49-51 RUE PROFESSEUR PAUL SISLEY",
+          "sources": [
+            "71|COURS|ALBERT THOMAS",
+            "51|RUE|PROFESSEUR PAUL SISLEY",
+            "49|RUE|PROFESSEUR PAUL SISLEY"
+          ]
+        },
+        {
+          "op": "RE-FUSE",
+          "cle": "64|RUE|ANTOINE CHARIAL",
+          "cible": "113|RUE|BARABAN",
+          "old_cible": "66|RUE|ANTOINE CHARIAL"
+        },
+        {
+          "op": "INJECT",
+          "cle": "111|RUE|BARABAN",
+          "fcible": "113|RUE|BARABAN"
+        },
+        {
+          "op": "LABEL",
+          "cle": "113|RUE|BARABAN",
+          "label": "113 RUE BARABAN (SDC LE DUO II) / 111 RUE BARABAN / 64 RUE ANTOINE CHARIAL",
+          "sources": [
+            "64|RUE|ANTOINE CHARIAL",
+            "111|RUE|BARABAN"
+          ]
+        },
+        {
+          "op": "RE-FUSE",
+          "cle": "14|RUE|ST MAXIMIN",
+          "cible": "16|RUE|TUILIERS",
+          "old_cible": "1|RUE|ROSSAN"
+        },
+        {
+          "op": "LABEL",
+          "cle": "16|RUE|TUILIERS",
+          "label": "16 RUE TUILIERS (SDC TUILIERS) / 14 RUE ST MAXIMIN",
+          "sources": [
+            "14|RUE|ST MAXIMIN"
+          ]
+        },
+        {
+          "op": "RE-FUSE",
+          "cle": "40|AVENUE|LACASSAGNE",
+          "cible": "38|AVENUE|LACASSAGNE",
+          "old_cible": "38|AVENUE|LACASSAGNE"
+        },
+        {
+          "op": "LABEL",
+          "cle": "38|AVENUE|LACASSAGNE",
+          "label": "38-40 AVENUE LACASSAGNE (LES JARDINS DU CHATEAU)",
+          "sources": [
+            "40|AVENUE|LACASSAGNE"
+          ]
+        },
+        {
+          "op": "RE-FUSE",
+          "cle": "51|RUE|ST ANTOINE",
+          "cible": "310|COURS|LAFAYETTE",
+          "old_cible": "50|RUE|ST ANTOINE"
+        },
+        {
+          "op": "LABEL",
+          "cle": "310|COURS|LAFAYETTE",
+          "label": "310 COURS LAFAYETTE / 51 RUE ST ANTOINE",
+          "sources": [
+            "51|RUE|ST ANTOINE"
+          ]
+        },
+        {
+          "op": "RE-FUSE",
+          "cle": "31|RUE|ST ANTOINE",
+          "cible": "8|RUE|ETIENNE RICHERAND",
+          "old_cible": "35|RUE|ST ANTOINE"
+        },
+        {
+          "op": "LABEL",
+          "cle": "8|RUE|ETIENNE RICHERAND",
+          "label": "8 RUE ETIENNE RICHERAND (LE RICHERAND) / 31 RUE ST ANTOINE",
+          "sources": [
+            "31|RUE|ST ANTOINE"
+          ]
+        },
+        {
+          "op": "RE-FUSE",
+          "cle": "137|RUE|ANTOINE CHARIAL",
+          "cible": "12|RUE|ST EUSEBE",
+          "old_cible": null
+        },
+        {
+          "op": "LABEL",
+          "cle": "12|RUE|ST EUSEBE",
+          "label": "12 RUE ST EUSEBE (SDC ESPACE EMERAUDE BAT B) / 137 RUE ANTOINE CHARIAL",
+          "sources": [
+            "14|RUE|ST EUSEBE",
+            "15|RUE|ST EUSEBE",
+            "137|RUE|ANTOINE CHARIAL"
+          ]
+        },
+        {
+          "op": "RE-FUSE",
+          "cle": "18|RUE|DAHLIAS",
+          "cible": "26|RUE|DOCTEUR REBATEL",
+          "old_cible": null
+        },
+        {
+          "op": "LABEL",
+          "cle": "26|RUE|DOCTEUR REBATEL",
+          "label": "26 RUE DOCTEUR REBATEL (SDC SQUARE REBATEL) / 18 RUE DAHLIAS",
+          "sources": [
+            "18|RUE|DAHLIAS"
+          ]
+        },
+        {
+          "op": "RE-FUSE",
+          "cle": "10|RUE|RIBOUD",
+          "cible": "21|RUE|MAURICE FLANDIN",
+          "old_cible": null
+        },
+        {
+          "op": "LABEL",
+          "cle": "21|RUE|MAURICE FLANDIN",
+          "label": "21 RUE MAURICE FLANDIN (SDC 21 MAURICE FLANDIN) / 10 RUE RIBOUD",
+          "sources": [
+            "10|RUE|RIBOUD"
+          ]
+        },
+        {
+          "op": "RE-FUSE",
+          "cle": "338|RUE|PAUL BERT",
+          "cible": "239|AVENUE|FELIX FAURE",
+          "old_cible": null
+        },
+        {
+          "op": "LABEL",
+          "cle": "239|AVENUE|FELIX FAURE",
+          "label": "239 AVENUE FELIX FAURE / 338 RUE PAUL BERT",
+          "sources": [
+            "338|RUE|PAUL BERT"
+          ]
+        },
+        {
+          "op": "RE-FUSE",
+          "cle": "3|RUE|ST EUSEBE",
+          "cible": "1|RUE|ST EUSEBE",
+          "old_cible": "2|RUE|ST EUSEBE"
+        },
+        {
+          "op": "LABEL",
+          "cle": "1|RUE|ST EUSEBE",
+          "label": "1 RUE ST EUSEBE (1/3 RUE SAINT EUSEBE) / 3 RUE ST EUSEBE",
+          "sources": [
+            "3|RUE|ST EUSEBE"
+          ]
+        },
+        {
+          "op": "REBIND-COPRO",
+          "immat": "AG1556893",
+          "old_cle": "24||ET 24 BIS AVENUE LACASSAGNE",
+          "new_cle": "24|AVENUE|LACASSAGNE"
+        },
+        {
+          "op": "RE-FUSE-MALFORMED",
+          "cle": "24||ET 24 BIS AVENUE LACASSAGNE",
+          "new": "24|AVENUE|LACASSAGNE",
+          "detach": "AG1556893"
+        },
+        {
+          "op": "RE-FUSE",
+          "cle": "20|AVENUE|LACASSAGNE",
+          "cible": "24|AVENUE|LACASSAGNE",
+          "old_cible": "20B|AVENUE|LACASSAGNE"
+        },
+        {
+          "op": "LABEL",
+          "cle": "24|AVENUE|LACASSAGNE",
+          "label": "24-24B AVENUE LACASSAGNE (BRICKS 2) / 20 AVENUE LACASSAGNE",
+          "sources": [
+            "20|AVENUE|LACASSAGNE",
+            "24||ET 24 BIS AVENUE LACASSAGNE"
+          ]
+        },
+        {
+          "op": "REBIND-COPRO",
+          "immat": "AC7505134",
+          "old_cle": "30||30B R DU PROFESSEUR PAUL SISLEY",
+          "new_cle": "30|RUE|PROFESSEUR PAUL SISLEY"
+        },
+        {
+          "op": "PROMOTE",
+          "cle": "30|RUE|PROFESSEUR PAUL SISLEY",
+          "immat": "AC7505134"
+        },
+        {
+          "op": "RE-FUSE",
+          "cle": "32|RUE|PROFESSEUR PAUL SISLEY",
+          "cible": "30|RUE|PROFESSEUR PAUL SISLEY",
+          "old_cible": "31|RUE|PROFESSEUR PAUL SISLEY"
+        },
+        {
+          "op": "INJECT",
+          "cle": "30B|RUE|PROFESSEUR PAUL SISLEY"
+        },
+        {
+          "op": "LABEL",
+          "cle": "30|RUE|PROFESSEUR PAUL SISLEY",
+          "label": "30-30B-32 RUE PROFESSEUR PAUL SISLEY (SDC LE SISLEY)",
+          "sources": [
+            "32|RUE|PROFESSEUR PAUL SISLEY",
+            "30B|RUE|PROFESSEUR PAUL SISLEY",
+            "30||30B R DU PROFESSEUR PAUL SISLEY"
+          ]
+        },
+        {
+          "op": "DETACH+RE-FUSE",
+          "cle": "25|RUE|ST ANTOINE",
+          "cible": "272|COURS|LAFAYETTE",
+          "detach": "AC3226362"
+        },
+        {
+          "op": "LABEL",
+          "cle": "272|COURS|LAFAYETTE",
+          "sources": [
+            "25|RUE|ST ANTOINE"
+          ]
+        }
+      ],
+      "delta_parc_dedup": -63
     }
   },
   "iris": [
@@ -9697,7 +10135,7 @@
       "longitude": 4.868259,
       "latitude": 45.749273,
       "code_iris": "693830603",
-      "cle_adresse": "30||30B R DU PROFESSEUR PAUL SISLEY",
+      "cle_adresse": "30|RUE|PROFESSEUR PAUL SISLEY",
       "nb_lots_total": 87,
       "nb_lots_habitation": 43,
       "nb_lots_habitation_rnc": 43,
@@ -9705,7 +10143,8 @@
       "nb_ventes_2021_2025": 0,
       "ventes_par_an": {},
       "taux_rotation_5ans": 0.0,
-      "classement_rotation": "Fige"
+      "classement_rotation": "Fige",
+      "_cle_adresse_ex": "30||30B R DU PROFESSEUR PAUL SISLEY"
     },
     {
       "numero_immatriculation": "AC7505886",
@@ -12906,7 +13345,7 @@
       "longitude": 4.863744,
       "latitude": 45.755186,
       "code_iris": "693830501",
-      "cle_adresse": "24||ET 24 BIS AVENUE LACASSAGNE",
+      "cle_adresse": "24|AVENUE|LACASSAGNE",
       "nb_lots_total": 122,
       "nb_lots_habitation": 64,
       "nb_lots_habitation_rnc": 64,
@@ -12914,7 +13353,8 @@
       "nb_ventes_2021_2025": 0,
       "ventes_par_an": {},
       "taux_rotation_5ans": 0.0,
-      "classement_rotation": "Fige"
+      "classement_rotation": "Fige",
+      "_cle_adresse_ex": "24||ET 24 BIS AVENUE LACASSAGNE"
     },
     {
       "numero_immatriculation": "AG1562818",
@@ -14031,7 +14471,7 @@
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-NZ2J-NJPV-EKZJ",
       "_bdnb_match": "immat",
-      "_fusion_auto_label": "38/40 AVENUE LACASSAGNE",
+      "_fusion_auto_label": "38-40 AVENUE LACASSAGNE (LES JARDINS DU CHATEAU)",
       "_fusion_auto_sources": [
         "40|AVENUE|LACASSAGNE"
       ],
@@ -14127,8 +14567,8 @@
       "classe_dpe": "C",
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
-      "batiment_groupe_id": "bdnb-bg-6UE1-UT3G-U7D2",
-      "_bdnb_match": "immat",
+      "batiment_groupe_id": "bdnb-bg-U4S4-QR1D-QNE5",
+      "_bdnb_match": "correctif_v3_25stant_detach_refuse",
       "ventes_par_an_logement": {
         "2021": 5,
         "2022": 0,
@@ -14146,11 +14586,14 @@
         "30|RUE|ST ANTOINE"
       ],
       "_fusion_auto_label": null,
-      "numero_immatriculation": "AC3226362",
+      "numero_immatriculation": null,
       "nb_lots_habitation": 63,
       "taux_rotation": 9.8,
       "classement_rotation": "Très actif",
-      "_ilot": "9"
+      "_ilot": "9",
+      "_fusion_auto": true,
+      "_fusion_cible": "272|COURS|LAFAYETTE",
+      "_detach_immat_ex": "AC3226362"
     },
     {
       "cle": "28|RUE|ETIENNE RICHERAND",
@@ -15195,7 +15638,13 @@
       "nb_lots_habitation": 56,
       "taux_rotation": 5.4,
       "classement_rotation": "Très actif",
-      "_ilot": "51"
+      "_ilot": "51",
+      "_fusion_auto_label": "23 RUE TURBIL / 258-260-262 RUE PAUL BERT",
+      "_fusion_auto_sources": [
+        "260|RUE|PAUL BERT",
+        "262|RUE|PAUL BERT",
+        "258|RUE|PAUL BERT"
+      ]
     },
     {
       "cle": "3|RUE|JEAN PIERRE LEVY",
@@ -15665,7 +16114,11 @@
       "nb_lots_habitation": 86,
       "taux_rotation": 5.1,
       "classement_rotation": "Très actif",
-      "_ilot": "3"
+      "_ilot": "3",
+      "_fusion_auto_label": "272 COURS LAFAYETTE (LA COUR LAFAYETTE) / 25 RUE ST ANTOINE",
+      "_fusion_auto_sources": [
+        "25|RUE|ST ANTOINE"
+      ]
     },
     {
       "cle": "3|AVENUE|LACASSAGNE",
@@ -18364,8 +18817,8 @@
       "classe_dpe": "C",
       "type_batiment": "appartement",
       "type_chauffage": "reseau de chaleur",
-      "batiment_groupe_id": "bdnb-bg-NHQQ-8MZ7-KS1W",
-      "_bdnb_match": "immat",
+      "batiment_groupe_id": "bdnb-bg-WLXU-6YKR-D8DU",
+      "_bdnb_match": "correctif_v3_20lac_rebind",
       "_fusion_auto_label": "20/22 AVENUE LACASSAGNE",
       "_fusion_auto_sources": null,
       "ventes_par_an_logement": {
@@ -18382,7 +18835,7 @@
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "_fusion_auto": true,
-      "_fusion_cible": "20B|AVENUE|LACASSAGNE",
+      "_fusion_cible": "24|AVENUE|LACASSAGNE",
       "_ilot": "54"
     },
     {
@@ -19324,8 +19777,8 @@
       "classe_dpe": "D",
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
-      "batiment_groupe_id": "bdnb-bg-H56H-S1A8-M34J",
-      "_bdnb_match": "num_voie",
+      "batiment_groupe_id": "bdnb-bg-NZ2J-NJPV-EKZJ",
+      "_bdnb_match": "correctif_v3_lac_38_40_re_fuse",
       "_fusion_auto": true,
       "_fusion_cible": "38|AVENUE|LACASSAGNE",
       "ventes_par_an_logement": {
@@ -20163,8 +20616,8 @@
       "classe_dpe": null,
       "type_batiment": null,
       "type_chauffage": null,
-      "batiment_groupe_id": "bdnb-bg-WF2W-21FC-LN83",
-      "_bdnb_match": "num_voie",
+      "batiment_groupe_id": "bdnb-bg-6J3V-PN4E-7QWG",
+      "_bdnb_match": "correctif_v3_terrasses_villas_st_max_re_fuse",
       "ventes_par_an_logement": {
         "2021": 0,
         "2024": 0,
@@ -20176,7 +20629,9 @@
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel individuel",
       "_usage_bdnb_src": "snapshot",
-      "_ilot": "70"
+      "_ilot": "70",
+      "_fusion_auto": true,
+      "_fusion_cible": "1|RUE|ROSSAN"
     },
     {
       "cle": "11|RUE|ST EUSEBE",
@@ -20779,8 +21234,8 @@
       "classe_dpe": null,
       "type_batiment": null,
       "type_chauffage": null,
-      "batiment_groupe_id": "bdnb-bg-VM76-DC2D-8ZBM",
-      "_bdnb_match": "num_voie",
+      "batiment_groupe_id": "bdnb-bg-HZW7-ZHQA-SC56",
+      "_bdnb_match": "correctif_v3_18_dahlias_rebatel_re_fuse",
       "ventes_par_an_logement": {
         "2021": 0,
         "2025": 0
@@ -20791,7 +21246,9 @@
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel individuel",
       "_usage_bdnb_src": "snapshot",
-      "_ilot": "78"
+      "_ilot": "78",
+      "_fusion_auto": true,
+      "_fusion_cible": "26|RUE|DOCTEUR REBATEL"
     },
     {
       "cle": "18|RUE|ETIENNE RICHERAND",
@@ -23431,10 +23888,11 @@
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-QP8Z-VMM2-M7MW",
       "_bdnb_match": "immat",
-      "_fusion_auto_label": null,
+      "_fusion_auto_label": "77 COURS ALBERT THOMAS / 49-51 RUE PROFESSEUR PAUL SISLEY",
       "_fusion_auto_sources": [
         "71|COURS|ALBERT THOMAS",
-        "51|RUE|PROFESSEUR PAUL SISLEY"
+        "51|RUE|PROFESSEUR PAUL SISLEY",
+        "49|RUE|PROFESSEUR PAUL SISLEY"
       ],
       "ventes_par_an_logement": {
         "2021": 1,
@@ -24099,8 +24557,8 @@
       "classe_dpe": "D",
       "type_batiment": "maison",
       "type_chauffage": "electricite",
-      "batiment_groupe_id": "bdnb-bg-D9LP-CBCP-F74E",
-      "_bdnb_match": "num_voie",
+      "batiment_groupe_id": "bdnb-bg-ASUK-VSRP-TFTA",
+      "_bdnb_match": "correctif_v3_saint_germain_re_fuse",
       "_fusion_auto_label": "260/262 RUE PAUL BERT",
       "_fusion_auto_sources": null,
       "ventes_par_an_logement": {
@@ -24116,7 +24574,7 @@
       "usage_principal_bdnb": "Résidentiel individuel",
       "_usage_bdnb_src": "snapshot",
       "_fusion_auto": true,
-      "_fusion_cible": "264B|RUE|PAUL BERT",
+      "_fusion_cible": "23|RUE|TURBIL",
       "_ilot": "51"
     },
     {
@@ -26069,7 +26527,11 @@
       "nb_lots_habitation": 26,
       "taux_rotation": 3.1,
       "classement_rotation": "Très actif",
-      "_ilot": "X"
+      "_ilot": "X",
+      "_fusion_auto_label": "21 RUE MAURICE FLANDIN (SDC 21 MAURICE FLANDIN) / 10 RUE RIBOUD",
+      "_fusion_auto_sources": [
+        "10|RUE|RIBOUD"
+      ]
     },
     {
       "cle": "224|AVENUE|FELIX FAURE",
@@ -26310,8 +26772,11 @@
       "type_chauffage": "reseau de chaleur",
       "batiment_groupe_id": "bdnb-bg-WLXU-6YKR-D8DU",
       "_bdnb_match": "immat",
-      "_fusion_auto_label": "24/26 AVENUE LACASSAGNE",
-      "_fusion_auto_sources": null,
+      "_fusion_auto_label": "24-24B AVENUE LACASSAGNE (BRICKS 2) / 20 AVENUE LACASSAGNE",
+      "_fusion_auto_sources": [
+        "20|AVENUE|LACASSAGNE",
+        "24||ET 24 BIS AVENUE LACASSAGNE"
+      ],
       "ventes_par_an_logement": {
         "2023": 1
       },
@@ -26708,8 +27173,8 @@
       "classe_dpe": "E",
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
-      "batiment_groupe_id": "bdnb-bg-81HL-8BC6-UPG6",
-      "_bdnb_match": "num_voie",
+      "batiment_groupe_id": "bdnb-bg-XRFL-2LV8-JEN4",
+      "_bdnb_match": "correctif_v3_3_eusebe_1_eusebe_re_fuse",
       "ventes_par_an_logement": {
         "2021": 1,
         "2024": 1,
@@ -26722,7 +27187,7 @@
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "_fusion_auto": true,
-      "_fusion_cible": "2|RUE|ST EUSEBE",
+      "_fusion_cible": "1|RUE|ST EUSEBE",
       "_ilot": "37"
     },
     {
@@ -27090,7 +27555,11 @@
       "nb_lots_habitation": 11,
       "taux_rotation": 0.0,
       "classement_rotation": "Fige",
-      "_ilot": "5"
+      "_ilot": "5",
+      "_fusion_auto_label": "310 COURS LAFAYETTE / 51 RUE ST ANTOINE",
+      "_fusion_auto_sources": [
+        "51|RUE|ST ANTOINE"
+      ]
     },
     {
       "cle": "316|RUE|PAUL BERT",
@@ -28511,7 +28980,11 @@
       "nb_lots_habitation": 27,
       "taux_rotation": 3.7,
       "classement_rotation": "Très actif",
-      "_ilot": "13"
+      "_ilot": "13",
+      "_fusion_auto_label": "8 RUE ETIENNE RICHERAND (LE RICHERAND) / 31 RUE ST ANTOINE",
+      "_fusion_auto_sources": [
+        "31|RUE|ST ANTOINE"
+      ]
     },
     {
       "cle": "82|RUE|MAURICE FLANDIN",
@@ -29762,10 +30235,10 @@
       "classe_dpe": "D",
       "type_batiment": "maison",
       "type_chauffage": "electricite",
-      "batiment_groupe_id": "bdnb-bg-D9LP-CBCP-F74E",
-      "_bdnb_match": "num_voie",
+      "batiment_groupe_id": "bdnb-bg-ASUK-VSRP-TFTA",
+      "_bdnb_match": "correctif_v3_saint_germain_re_fuse",
       "_fusion_auto": true,
-      "_fusion_cible": "264B|RUE|PAUL BERT",
+      "_fusion_cible": "23|RUE|TURBIL",
       "ventes_par_an_logement": {
         "2024": 1
       },
@@ -31377,8 +31850,8 @@
       "classe_dpe": "F",
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
-      "batiment_groupe_id": "bdnb-bg-FW4B-YECQ-FPCT",
-      "_bdnb_match": "num_voie",
+      "batiment_groupe_id": "bdnb-bg-4RMJ-W193-8VZA",
+      "_bdnb_match": "correctif_v3_jardin_clair_re_fuse",
       "_fusion_auto_label": "12/14 RUE CARRY",
       "_fusion_auto_sources": null,
       "ventes_par_an_logement": {
@@ -31394,7 +31867,7 @@
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "_fusion_auto": true,
-      "_fusion_cible": "6|RUE|CARRY",
+      "_fusion_cible": "24|RUE|METALLURGIE",
       "_ilot": "59"
     },
     {
@@ -31794,8 +32267,8 @@
       "classe_dpe": "C",
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
-      "batiment_groupe_id": "bdnb-bg-6J3V-PN4E-7QWG",
-      "_bdnb_match": "num_voie",
+      "batiment_groupe_id": "bdnb-bg-DHU6-K34Z-3B96",
+      "_bdnb_match": "correctif_v3_tuiliers_re_fuse",
       "_fusion_auto_label": "12/14 RUE ST MAXIMIN",
       "_fusion_auto_sources": null,
       "ventes_par_an_logement": {
@@ -31811,7 +32284,7 @@
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "_fusion_auto": true,
-      "_fusion_cible": "1|RUE|ROSSAN",
+      "_fusion_cible": "16|RUE|TUILIERS",
       "_ilot": "70"
     },
     {
@@ -32235,7 +32708,11 @@
       "nb_lots_habitation": 55,
       "taux_rotation": 1.5,
       "classement_rotation": "Modéré",
-      "_ilot": "70"
+      "_ilot": "70",
+      "_fusion_auto_label": "16 RUE TUILIERS (SDC TUILIERS) / 14 RUE ST MAXIMIN",
+      "_fusion_auto_sources": [
+        "14|RUE|ST MAXIMIN"
+      ]
     },
     {
       "cle": "17|RUE|PROFESSEUR PAUL SISLEY",
@@ -33735,7 +34212,11 @@
       "nb_lots_habitation": 18,
       "taux_rotation": 4.4,
       "classement_rotation": "Très actif",
-      "_ilot": "53"
+      "_ilot": "53",
+      "_fusion_auto_label": "239 AVENUE FELIX FAURE / 338 RUE PAUL BERT",
+      "_fusion_auto_sources": [
+        "338|RUE|PAUL BERT"
+      ]
     },
     {
       "cle": "24|RUE|METALLURGIE",
@@ -33780,7 +34261,13 @@
       "nb_lots_habitation": 49,
       "taux_rotation": 4.9,
       "classement_rotation": "Très actif",
-      "_ilot": "60"
+      "_ilot": "60",
+      "_fusion_auto_label": "24-26-28 RUE METALLURGIE / 12 RUE CARRY",
+      "_fusion_auto_sources": [
+        "12|RUE|CARRY",
+        "26|RUE|METALLURGIE",
+        "28|RUE|METALLURGIE"
+      ]
     },
     {
       "cle": "24|RUE|ETIENNE RICHERAND",
@@ -34270,7 +34757,11 @@
       "nb_lots_habitation": 52,
       "taux_rotation": 1.2,
       "classement_rotation": "Modéré",
-      "_ilot": "78"
+      "_ilot": "78",
+      "_fusion_auto_label": "26 RUE DOCTEUR REBATEL (SDC SQUARE REBATEL) / 18 RUE DAHLIAS",
+      "_fusion_auto_sources": [
+        "18|RUE|DAHLIAS"
+      ]
     },
     {
       "cle": "26|RUE|PROFESSEUR PAUL SISLEY",
@@ -35157,8 +35648,8 @@
       "classe_dpe": "E",
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
-      "batiment_groupe_id": "bdnb-bg-7A21-PPNH-TLQM",
-      "_bdnb_match": "num_voie",
+      "batiment_groupe_id": "bdnb-bg-PTBZ-QHYH-Y2WN",
+      "_bdnb_match": "correctif_v3_32sisley_rebind",
       "ventes_par_an_logement": {
         "2023": 1,
         "2024": 1
@@ -35170,7 +35661,7 @@
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "_fusion_auto": true,
-      "_fusion_cible": "31|RUE|PROFESSEUR PAUL SISLEY",
+      "_fusion_cible": "30|RUE|PROFESSEUR PAUL SISLEY",
       "_ilot": "67"
     },
     {
@@ -35678,7 +36169,11 @@
       "nb_lots_habitation": 51,
       "taux_rotation": 1.6,
       "classement_rotation": "Modéré",
-      "_ilot": "80"
+      "_ilot": "80",
+      "_fusion_auto_label": "38-40 RUE ST MAXIMIN",
+      "_fusion_auto_sources": [
+        "40|RUE|ST MAXIMIN"
+      ]
     },
     {
       "cle": "39|RUE|ST MAXIMIN",
@@ -35915,8 +36410,8 @@
       "classe_dpe": "D",
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
-      "batiment_groupe_id": "bdnb-bg-6BRM-AZZY-6Q8H",
-      "_bdnb_match": "num_voie",
+      "batiment_groupe_id": "bdnb-bg-PL25-59WQ-D8KT",
+      "_bdnb_match": "correctif_v3_clos_saint_marc_re_fuse",
       "ventes_par_an_logement": {
         "2021": 0,
         "2022": 0,
@@ -35930,7 +36425,7 @@
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "_fusion_auto": true,
-      "_fusion_cible": "39|RUE|ST MAXIMIN",
+      "_fusion_cible": "38|RUE|ST MAXIMIN",
       "_ilot": "78"
     },
     {
@@ -38471,8 +38966,8 @@
       "classe_dpe": "D",
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
-      "batiment_groupe_id": "bdnb-bg-ZS47-TD9J-M4FB",
-      "_bdnb_match": "num_voie",
+      "batiment_groupe_id": "bdnb-bg-VVS2-CGZ5-FN7Y",
+      "_bdnb_match": "correctif_v3_10_riboud_flandin_re_fuse",
       "_fusion_auto_label": "10/12 RUE RIBOUD",
       "_fusion_auto_sources": [
         "12|RUE|RIBOUD"
@@ -38484,7 +38979,9 @@
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
-      "_ilot": "X"
+      "_ilot": "X",
+      "_fusion_auto": true,
+      "_fusion_cible": "21|RUE|MAURICE FLANDIN"
     },
     {
       "cle": "10|RUE|ROGER BRECHAN",
@@ -39103,7 +39600,12 @@
       "nb_lots_habitation": 42,
       "taux_rotation": 0.5,
       "classement_rotation": "Figé",
-      "_ilot": "40"
+      "_ilot": "40",
+      "_fusion_auto_label": "113 RUE BARABAN (SDC LE DUO II) / 111 RUE BARABAN / 64 RUE ANTOINE CHARIAL",
+      "_fusion_auto_sources": [
+        "64|RUE|ANTOINE CHARIAL",
+        "111|RUE|BARABAN"
+      ]
     },
     {
       "cle": "116|RUE|BARABAN",
@@ -39482,10 +39984,11 @@
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-H9T9-DYCH-XSSS",
       "_bdnb_match": "immat",
-      "_fusion_auto_label": "12/14 RUE ST EUSEBE",
+      "_fusion_auto_label": "12 RUE ST EUSEBE (SDC ESPACE EMERAUDE BAT B) / 137 RUE ANTOINE CHARIAL",
       "_fusion_auto_sources": [
         "14|RUE|ST EUSEBE",
-        "15|RUE|ST EUSEBE"
+        "15|RUE|ST EUSEBE",
+        "137|RUE|ANTOINE CHARIAL"
       ],
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
@@ -40473,8 +40976,8 @@
       "classe_dpe": "C",
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
-      "batiment_groupe_id": "bdnb-bg-TYEL-NYRS-F6BJ",
-      "_bdnb_match": "num_voie",
+      "batiment_groupe_id": "bdnb-bg-H9T9-DYCH-XSSS",
+      "_bdnb_match": "correctif_v3_137_charial_eusebe_re_fuse",
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
@@ -40482,7 +40985,9 @@
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
-      "_ilot": "33"
+      "_ilot": "33",
+      "_fusion_auto": true,
+      "_fusion_cible": "12|RUE|ST EUSEBE"
     },
     {
       "cle": "137|RUE|DAUPHINE",
@@ -47853,8 +48358,8 @@
       "classe_dpe": "E",
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
-      "batiment_groupe_id": "bdnb-bg-SCQS-HYN4-PPDQ",
-      "_bdnb_match": "num_voie",
+      "batiment_groupe_id": "bdnb-bg-4RMJ-W193-8VZA",
+      "_bdnb_match": "correctif_v3_jardin_clair_re_fuse",
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
@@ -47862,7 +48367,9 @@
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
-      "_ilot": "59"
+      "_ilot": "59",
+      "_fusion_auto": true,
+      "_fusion_cible": "24|RUE|METALLURGIE"
     },
     {
       "cle": "26|RUE|VILLETTE",
@@ -49858,7 +50365,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-PTBZ-QHYH-Y2WN",
-      "_bdnb_match": "num_voie",
+      "_bdnb_match": "correctif_v3_sisley_promote_ancre",
       "ventes_par_an_logement": {
         "2021": 1
       },
@@ -49868,9 +50375,19 @@
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
-      "_fusion_auto": true,
-      "_fusion_cible": "30||30B R DU PROFESSEUR PAUL SISLEY",
-      "_ilot": "67"
+      "_fusion_auto": null,
+      "_fusion_cible": null,
+      "_ilot": "67",
+      "numero_immatriculation": "AC7505134",
+      "nb_lots_habitation": 43,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Fige",
+      "_fusion_auto_label": "30-30B-32 RUE PROFESSEUR PAUL SISLEY (SDC LE SISLEY)",
+      "_fusion_auto_sources": [
+        "32|RUE|PROFESSEUR PAUL SISLEY",
+        "30B|RUE|PROFESSEUR PAUL SISLEY",
+        "30||30B R DU PROFESSEUR PAUL SISLEY"
+      ]
     },
     {
       "cle": "300|RUE|PAUL BERT",
@@ -50133,10 +50650,10 @@
       "classe_dpe": "C",
       "type_batiment": "immeuble",
       "type_chauffage": "gaz",
-      "batiment_groupe_id": "bdnb-bg-ASMY-1BJU-2LUB",
-      "_bdnb_match": "num_voie",
+      "batiment_groupe_id": "bdnb-bg-4QVP-WA8R-HHUX",
+      "_bdnb_match": "correctif_v3_31_st_ant_richerand_re_fuse",
       "_fusion_auto": true,
-      "_fusion_cible": "35|RUE|ST ANTOINE",
+      "_fusion_cible": "8|RUE|ETIENNE RICHERAND",
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
@@ -50833,8 +51350,8 @@
       "classe_dpe": null,
       "type_batiment": null,
       "type_chauffage": null,
-      "batiment_groupe_id": "bdnb-bg-K6MG-1NKK-3RPG",
-      "_bdnb_match": "num_voie",
+      "batiment_groupe_id": "bdnb-bg-9P8K-R96Z-PWH2",
+      "_bdnb_match": "correctif_v3_338_pb_239_ff_re_fuse",
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
@@ -50842,7 +51359,9 @@
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel individuel",
       "_usage_bdnb_src": "snapshot",
-      "_ilot": "53"
+      "_ilot": "53",
+      "_fusion_auto": true,
+      "_fusion_cible": "239|AVENUE|FELIX FAURE"
     },
     {
       "cle": "339|RUE|PAUL BERT",
@@ -53724,10 +54243,10 @@
       "classe_dpe": "E",
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
-      "batiment_groupe_id": "bdnb-bg-VRHU-LHNX-3PHB",
-      "_bdnb_match": "immat",
+      "batiment_groupe_id": "bdnb-bg-QP8Z-VMM2-M7MW",
+      "_bdnb_match": "correctif_v3_77_alb_thomas_sisley_re_fuse",
       "_fusion_auto": true,
-      "_fusion_cible": "16|RUE|GUILLOUD",
+      "_fusion_cible": "77|COURS|ALBERT THOMAS",
       "ventes_par_an_logement": {
         "2021": 1,
         "2023": 2
@@ -54554,8 +55073,8 @@
       "classe_dpe": "C",
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
-      "batiment_groupe_id": "bdnb-bg-HQWX-SRVS-WAVH",
-      "_bdnb_match": "num_voie",
+      "batiment_groupe_id": "bdnb-bg-PNCB-MYC1-JB4Q",
+      "_bdnb_match": "correctif_v3_51_st_ant_310_laf_re_fuse",
       "ventes_par_an_logement": {
         "2021": 2,
         "2022": 2,
@@ -54568,7 +55087,7 @@
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "_fusion_auto": true,
-      "_fusion_cible": "50|RUE|ST ANTOINE",
+      "_fusion_cible": "310|COURS|LAFAYETTE",
       "_ilot": "5"
     },
     {
@@ -56099,10 +56618,10 @@
       "classe_dpe": "C",
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
-      "batiment_groupe_id": "bdnb-bg-DYK1-A4VL-D7EG",
-      "_bdnb_match": "num_voie",
+      "batiment_groupe_id": "bdnb-bg-6JZ9-FA72-RT9X",
+      "_bdnb_match": "correctif_v3_duo_ii_re_fuse",
       "_fusion_auto": true,
-      "_fusion_cible": "66|RUE|ANTOINE CHARIAL",
+      "_fusion_cible": "113|RUE|BARABAN",
       "ventes_par_an_logement": {
         "2022": 1
       },
@@ -58788,7 +59307,11 @@
       "nb_lots_habitation": 12,
       "taux_rotation": 0.0,
       "classement_rotation": "Figé",
-      "_ilot": "38"
+      "_ilot": "38",
+      "_fusion_auto_label": "1 RUE ST EUSEBE (1/3 RUE SAINT EUSEBE) / 3 RUE ST EUSEBE",
+      "_fusion_auto_sources": [
+        "3|RUE|ST EUSEBE"
+      ]
     },
     {
       "cle": "10|RUE|DAHLIAS",
@@ -60647,9 +61170,10 @@
       "_usage_bdnb_src": "snapshot",
       "_fusion_auto_sources": [
         "12|RUE|ST MAXIMIN",
-        "14|RUE|ST MAXIMIN"
+        "14|RUE|ST MAXIMIN",
+        "10|RUE|ST MAXIMIN"
       ],
-      "_fusion_auto_label": null,
+      "_fusion_auto_label": "1 RUE ROSSAN / 10-12 RUE ST MAXIMIN",
       "numero_immatriculation": "AB2460335",
       "nb_lots_habitation": 53,
       "taux_rotation": 0.4,
@@ -61288,7 +61812,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "reseau de chaleur",
       "batiment_groupe_id": "bdnb-bg-WLXU-6YKR-D8DU",
-      "_bdnb_match": "immat_horsrnc_fix",
+      "_bdnb_match": "correctif_v3_bricks2_old_malformed",
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
@@ -61301,11 +61825,14 @@
         "26|AVENUE|LACASSAGNE"
       ],
       "_fusion_auto_label": null,
-      "numero_immatriculation": "AG1556893",
+      "numero_immatriculation": null,
       "nb_lots_habitation": 64,
       "taux_rotation": 0.0,
       "classement_rotation": "Figé",
-      "_ilot": "54"
+      "_ilot": "54",
+      "_fusion_auto": true,
+      "_fusion_cible": "24|AVENUE|LACASSAGNE",
+      "_detach_immat_ex": "AG1556893"
     },
     {
       "cle": "41|COURS|ALBERT THOMAS 24 RUE DES TUILIERS",
@@ -66005,6 +66532,134 @@
         "50|RUE|ST MAXIMIN",
         "42A||50 RUE ST MAXIMIN"
       ]
+    },
+    {
+      "cle": "28|RUE|METALLURGIE",
+      "adresse": "28 RUE METALLURGIE",
+      "longitude": 4.871184,
+      "latitude": 45.75405,
+      "code_iris": "693830601",
+      "_coord_source": "clone_24|RUE|METALLURGIE",
+      "dans_majic": false,
+      "sci_proprietaire": "non",
+      "sci_nom": "",
+      "sci_siren": "",
+      "syndic": "REGIE DE VENDIN",
+      "_syndic_src": "rnc",
+      "ventes_par_an": {},
+      "nb_ventes_total": 0,
+      "nb_log_bdnb": null,
+      "annee_construction": 2002,
+      "classe_dpe": "C",
+      "type_batiment": "appartement",
+      "type_chauffage": "gaz",
+      "batiment_groupe_id": "bdnb-bg-4RMJ-W193-8VZA",
+      "_bdnb_match": "correctif_v3_jardin_clair_inject_label",
+      "ventes_par_an_logement": {},
+      "nb_ventes_logement": 0,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Fige",
+      "_taux_logement_src": "copie_inject",
+      "usage_principal_bdnb": "Résidentiel collectif",
+      "_ilot": "60",
+      "_fusion_auto": true,
+      "_fusion_cible": "24|RUE|METALLURGIE"
+    },
+    {
+      "cle": "258|RUE|PAUL BERT",
+      "adresse": "258 RUE PAUL BERT",
+      "longitude": 4.868396,
+      "latitude": 45.756466,
+      "code_iris": "693830502",
+      "_coord_source": "clone_23|RUE|TURBIL",
+      "dans_majic": false,
+      "sci_proprietaire": "non",
+      "sci_nom": "",
+      "sci_siren": "",
+      "syndic": "REGIE CENTRALE IMMOBILIERE",
+      "_syndic_src": "rnc",
+      "ventes_par_an": {},
+      "nb_ventes_total": 0,
+      "nb_log_bdnb": null,
+      "annee_construction": 2000,
+      "classe_dpe": "C",
+      "type_batiment": "immeuble",
+      "type_chauffage": "gaz",
+      "batiment_groupe_id": "bdnb-bg-ASUK-VSRP-TFTA",
+      "_bdnb_match": "correctif_v3_saint_germain_inject_label",
+      "ventes_par_an_logement": {},
+      "nb_ventes_logement": 0,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Fige",
+      "_taux_logement_src": "copie_inject",
+      "usage_principal_bdnb": "Résidentiel collectif",
+      "_ilot": "51",
+      "_fusion_auto": true,
+      "_fusion_cible": "23|RUE|TURBIL"
+    },
+    {
+      "cle": "111|RUE|BARABAN",
+      "adresse": "111 RUE BARABAN",
+      "longitude": 4.867615,
+      "latitude": 45.757804,
+      "code_iris": "693830502",
+      "_coord_source": "clone_113|RUE|BARABAN",
+      "dans_majic": false,
+      "sci_proprietaire": "non",
+      "sci_nom": "",
+      "sci_siren": "",
+      "syndic": "ADMINISTION D'IMMEUBLES ROSIER ET MODICA",
+      "_syndic_src": "rnc",
+      "ventes_par_an": {},
+      "nb_ventes_total": 0,
+      "nb_log_bdnb": null,
+      "annee_construction": 1996,
+      "classe_dpe": "D",
+      "type_batiment": "appartement",
+      "type_chauffage": "gaz",
+      "batiment_groupe_id": "bdnb-bg-6JZ9-FA72-RT9X",
+      "_bdnb_match": "correctif_v3_duo_ii_inject_label",
+      "ventes_par_an_logement": {},
+      "nb_ventes_logement": 0,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Fige",
+      "_taux_logement_src": "copie_inject",
+      "usage_principal_bdnb": "Résidentiel collectif",
+      "_ilot": "40",
+      "_fusion_auto": true,
+      "_fusion_cible": "113|RUE|BARABAN"
+    },
+    {
+      "cle": "30B|RUE|PROFESSEUR PAUL SISLEY",
+      "adresse": "30B RUE PROFESSEUR PAUL SISLEY",
+      "longitude": 4.868254,
+      "latitude": 45.749464,
+      "code_iris": "693830603",
+      "_coord_source": "clone_30|RUE|PROFESSEUR PAUL SISLEY",
+      "dans_majic": false,
+      "sci_proprietaire": "non",
+      "sci_nom": "",
+      "sci_siren": "",
+      "syndic": "CENTRALE IMMOBILIERE DE GESTION",
+      "_syndic_src": "rnc_grp",
+      "ventes_par_an": {},
+      "nb_ventes_total": 0,
+      "nb_log_bdnb": null,
+      "annee_construction": 1959,
+      "classe_dpe": "E",
+      "type_batiment": "appartement",
+      "type_chauffage": "electricite",
+      "batiment_groupe_id": "bdnb-bg-PTBZ-QHYH-Y2WN",
+      "_bdnb_match": "correctif_v3_sisley_inject_30b_label",
+      "ventes_par_an_logement": {},
+      "nb_ventes_logement": 0,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Fige",
+      "_taux_logement_src": "copie_inject",
+      "usage_principal_bdnb": "Résidentiel collectif",
+      "_ilot": "67",
+      "_fusion_auto": true,
+      "_fusion_cible": "30|RUE|PROFESSEUR PAUL SISLEY"
     }
   ]
 }

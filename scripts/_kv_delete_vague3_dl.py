@@ -1,0 +1,93 @@
+#!/usr/bin/env python3
+"""DELETE KV vague 3 DL : 6 cles devenues fauto qui avaient encore un tag."""
+import json, os, sys, shutil, urllib.request, urllib.error
+from pathlib import Path
+
+sys.stdout.reconfigure(encoding="utf-8") if hasattr(sys.stdout, "reconfigure") else None
+
+ROOT     = Path(r"C:\Users\Station 5\DPE-PROSPECTOR")
+KV_LOCAL = ROOT / "data" / "_kv_assign_dl.json"
+BAK      = KV_LOCAL.with_suffix(KV_LOCAL.suffix + ".prev3.bak")
+ENDPOINT = "https://dpe-prospector-api.yann-bufferne.workers.dev/secteur-assignments/dauphine-lacassagne"
+
+TOKEN = (sys.argv[1] if len(sys.argv) > 1 else os.environ.get("DPE_TOKEN", "")).strip()
+if not TOKEN: print("ERREUR : TOKEN manquant"); sys.exit(2)
+UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+      "(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36")
+HDR_GET  = {"Authorization": f"Bearer {TOKEN}", "User-Agent": UA, "Accept": "application/json"}
+HDR_POST = {**HDR_GET, "Content-Type": "application/json"}
+
+DELETE_CLES = {
+    "26|RUE|METALLURGIE":        "copro_non_immat",
+    "137|RUE|ANTOINE CHARIAL":   "copro_non_immat",
+    "18|RUE|DAHLIAS":            "copro_non_immat",
+    "10|RUE|RIBOUD":             "social",
+    "338|RUE|PAUL BERT":         "copro_non_immat",
+    "10|RUE|ST MAXIMIN":         "copro_non_immat",
+}
+
+
+def http(m, u, h=None, b=None):
+    req = urllib.request.Request(u, method=m, headers=h or {},
+        data=(json.dumps(b).encode("utf-8") if b is not None else None))
+    try:
+        with urllib.request.urlopen(req, timeout=30) as r:
+            return r.status, r.read().decode("utf-8")
+    except urllib.error.HTTPError as e:
+        return e.code, e.read().decode("utf-8", "replace")
+
+
+def fail(msg):
+    print("!"*90); print(f"!  ECHEC : {msg}"); print("!"*90); sys.exit(10)
+
+
+print("=" * 90)
+print(f"KV DELETE x{len(DELETE_CLES)} : vague 3 DL")
+print("=" * 90)
+
+code, raw = http("GET", ENDPOINT, HDR_GET)
+if code != 200: fail(f"GET {code}: {raw[:200]}")
+kv = json.loads(raw)
+assigns = kv.get("assignments") or {}; fusions = kv.get("fusions") or {}; noms = kv.get("noms") or {}
+print(f"  KV avant : {len(assigns)} assigns, {len(fusions)} fusions")
+
+to_del = {}
+for c, expected in DELETE_CLES.items():
+    cur = assigns.get(c)
+    print(f"  Etat : {c:38s} -> {cur}")
+    if not cur:
+        print(f"    [SKIP] absente"); continue
+    t = cur.get("type") if isinstance(cur, dict) else None
+    if t != expected: print(f"    [WARN] type={t!r}, attendu {expected!r}")
+    to_del[c] = cur
+
+if not to_del: print("  Rien a supprimer"); sys.exit(0)
+
+if KV_LOCAL.exists(): shutil.copy2(KV_LOCAL, BAK); print(f"  Backup : {BAK.name}")
+
+new_assigns = {k: v for k, v in assigns.items() if k not in to_del}
+print(f"  Apres pop : {len(new_assigns)} ({len(to_del)} supprimees)")
+
+code, raw = http("POST", ENDPOINT, HDR_POST,
+                 {"assignments": new_assigns, "fusions": fusions, "noms": noms})
+print(f"  POST HTTP {code} : {raw[:200]}")
+if code not in (200, 204): fail(f"POST KO {code}")
+
+code, raw = http("GET", ENDPOINT, HDR_GET)
+if code != 200: fail(f"Re-GET {code}")
+ka = json.loads(raw).get("assignments") or {}
+print(f"  Re-GET : {len(ka)} assigns")
+for c in to_del:
+    if c in ka: fail(f"verif KO : {c} encore present")
+    print(f"    {c:38s} -> ABSENTE OK")
+
+KV_LOCAL.write_text(json.dumps({**json.loads(raw)}, ensure_ascii=False), encoding="utf-8")
+print(f"  Local sync : {KV_LOCAL.name}")
+
+from collections import Counter
+co = Counter((v or {}).get("type", "?") for v in ka.values())
+print()
+print("  Distribution KV apres :")
+for k, v in co.most_common(): print(f"    {k:20s} {v}")
+print()
+print(f">>> SUCCES : {len(to_del)} cles supprimees")
