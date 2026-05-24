@@ -18,6 +18,8 @@ import base64
 import json
 import os
 import pathlib
+import shutil
+import subprocess
 import sys
 import time
 import xml.etree.ElementTree as ET
@@ -104,30 +106,54 @@ def parse_kml(path):
 # Capture headless (Chromium via Selenium)
 # ---------------------------------------------------------------------
 def capture_html_to_png(html_path, png_path, w, h):
-    """Capture une page HTML locale en PNG via Chromium headless."""
+    """Capture une page HTML locale en PNG via Google Chrome headless.
+
+    Strategie CI (ubuntu-latest 24.04) :
+      - google-chrome (paquet .deb officiel) au lieu de chromium-browser
+        snap qui casse en headless ("DevToolsActivePort file doesn't
+        exist").
+      - chromedriver depuis chromium-driver apt (compatible CDP).
+    """
     from selenium import webdriver
     from selenium.webdriver.chrome.options import Options
-    from selenium.webdriver.chrome.service import Service
+    from selenium.webdriver.chrome.service import Service as ChromeService
 
     opts = Options()
     opts.add_argument("--headless=new")
     opts.add_argument("--no-sandbox")
     opts.add_argument("--disable-dev-shm-usage")
     opts.add_argument("--disable-gpu")
+    opts.add_argument("--disable-software-rasterizer")
     opts.add_argument("--hide-scrollbars")
     opts.add_argument(f"--window-size={w},{h}")
-    # /usr/bin/chromium-browser : chemin sur ubuntu-latest.
-    if pathlib.Path("/usr/bin/chromium-browser").exists():
-        opts.binary_location = "/usr/bin/chromium-browser"
+    # Binaire Chrome : prefere google-chrome (CI), fallback chrome local.
+    if pathlib.Path("/usr/bin/google-chrome").exists():
+        opts.binary_location = "/usr/bin/google-chrome"
+    elif pathlib.Path("/usr/bin/google-chrome-stable").exists():
+        opts.binary_location = "/usr/bin/google-chrome-stable"
 
-    # webdriver-manager va chercher la bonne version de chromedriver.
-    try:
-        from webdriver_manager.chrome import ChromeDriverManager
-        from webdriver_manager.core.os_manager import ChromeType
-        service = Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install())
-    except Exception:
-        service = Service()                              # fallback PATH
+    # ChromeDriver : cherche dans PATH (chromium-driver apt), fallback
+    # /usr/bin/chromedriver. Si introuvable, tente apt-get install.
+    chromedriver_path = shutil.which("chromedriver")
+    if not chromedriver_path:
+        try:
+            chrome_ver = subprocess.check_output(
+                ["google-chrome", "--version"], stderr=subprocess.STDOUT
+            ).decode().strip()
+            print(f"[INFO] {chrome_ver}", flush=True)
+        except Exception:
+            pass
+        try:
+            subprocess.check_call(
+                ["sudo", "apt-get", "install", "-y", "chromium-driver"],
+                stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT,
+            )
+        except Exception as exc:
+            print(f"[WARN] apt-get chromium-driver KO : {exc}", flush=True)
+        chromedriver_path = shutil.which("chromedriver") or "/usr/bin/chromedriver"
+    print(f"[OK] chromedriver : {chromedriver_path}", flush=True)
 
+    service = ChromeService(executable_path=chromedriver_path)
     driver = webdriver.Chrome(service=service, options=opts)
     try:
         url = pathlib.Path(html_path).resolve().as_uri()

@@ -25,14 +25,28 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: 🌐 Chromium
+      - name: 🌐 Google Chrome
+        # Le snap chromium-browser livré par défaut sur ubuntu-latest
+        # (Ubuntu 24.04) casse en headless ("DevToolsActivePort file
+        # doesn't exist"). On installe le paquet .deb officiel Google
+        # Chrome qui fonctionne bien en CI.
         run: |
-          sudo apt-get update
-          sudo apt-get install -y chromium-browser
-          chromium-browser --version
+          wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+          echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
+          sudo apt-get update -q
+          sudo apt-get install -y google-chrome-stable
+          google-chrome --version
+
+      - name: 🔧 ChromeDriver
+        # chromium-driver depuis le repo Ubuntu : son chromedriver est
+        # compatible avec n'importe quelle version recente de Chrome
+        # (Selenium 4.x utilise le protocole CDP, retrocompatible).
+        run: |
+          sudo apt-get install -y chromium-driver
+          chromedriver --version
 
       - name: 📦 Dépendances
-        run: pip install folium pillow requests selenium webdriver-manager
+        run: pip install folium pillow requests selenium
 
       - name: 🗺️ Générer carte A0
         run: python scripts/generate_map_a0.py
