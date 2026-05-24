@@ -2542,32 +2542,92 @@ function sctGenScoreSecteur(secId) {
   return { secId, total, zones: z, score: allZones ? total : total * 0.9 };
 }
 
-// Round-robin DESC ventes -> N secteurs. Respecte les îlots verrouillés.
-// [FIX 2026-05-24 r5] Ordre des secteurs SHUFFLE (Fisher-Yates) avant
-// le round-robin : chaque appel produit un point de depart different
-// -> Regenerer explore des optimums locaux varies. Les ilots restent
-// tries DESC par ventes (fait en amont par sctGenComputeIlots).
+// Distribution gloutonne DISPERSEE des ilots sur N secteurs.
+// [FIX 2026-05-25] Remplace le round-robin strict par un choix glouton :
+// pour chaque ilot (tri DESC par ventes en amont), on selectionne le
+// secteur ayant le MOINS d'ilots deja affectes, puis parmi ceux-ci
+// celui dont le CENTROIDE MOYEN est le PLUS ELOIGNE du centroide de
+// l'ilot courant (un secteur vide a une distance "infinie" -> toujours
+// prioritaire).
+// Le shuffle Fisher-Yates de l'ordre des secteurs sert de tie-breaker
+// stable (cas typique : iteration 1, tous les secteurs sont vides).
+// Les ilots locked sont preserves et comptes dans le bookkeeping initial.
 function sctGenRoundRobin() {
   const N = sctGenState.N;
   if (N <= 0) return;
+  const ilotMap = {}; for (const i of sctGenState.ilots) ilotMap[i.ilotId] = i;
   const old = sctGenState.repartition || {};
   const newRep = {};
-  // 1) on conserve les locked tels quels
+
+  // 1) Preservation des locked (tels quels).
   for (const [iid, v] of Object.entries(old)) {
     if (v && v.locked && v.conseillerId) newRep[iid] = { conseillerId: v.conseillerId, locked: true };
   }
-  // 2) shuffle Fisher-Yates de l'ordre des secteurs (sec-1 ... sec-N).
+
+  // 2) Shuffle Fisher-Yates de l'ordre des secteurs (tie-breaker).
   const secOrder = Array.from({ length: N }, (_, i) => i + 1);
   for (let i = secOrder.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [secOrder[i], secOrder[j]] = [secOrder[j], secOrder[i]];
   }
-  // 3) round-robin avec secOrder[cur % N] au lieu de cur+1.
-  let cur = 0;
+
+  // 3) Bookkeeping initial : counts + centSum par secteur (init avec
+  //    les locked deja places).
+  const counts = {};
+  const centSum = {};
+  for (let i = 1; i <= N; i++) {
+    counts['sec-' + i] = 0;
+    centSum['sec-' + i] = { lat: 0, lng: 0, n: 0 };
+  }
+  for (const [iid, v] of Object.entries(newRep)) {
+    counts[v.conseillerId] = (counts[v.conseillerId] || 0) + 1;
+    const ilot = ilotMap[iid];
+    if (ilot && ilot.centroide_lat != null) {
+      const cs = centSum[v.conseillerId] || (centSum[v.conseillerId] = { lat:0, lng:0, n:0 });
+      cs.lat += ilot.centroide_lat;
+      cs.lng += ilot.centroide_lng;
+      cs.n++;
+    }
+  }
+
+  // 4) Distribution gloutonne dispersee.
   for (const ilot of sctGenState.ilots) {
     if (newRep[ilot.ilotId]) continue;
-    newRep[ilot.ilotId] = { conseillerId: 'sec-' + secOrder[cur % N], locked: false };
-    cur++;
+    // a) Trouver le count minimum.
+    let minCount = Infinity;
+    for (const sid of Object.keys(counts)) if (counts[sid] < minCount) minCount = counts[sid];
+    // b) Candidats = secteurs avec ce minCount, dans l'ordre shuffle
+    //    (tie-breaker stable + aleatoire d'un Regenerer a l'autre).
+    const candidates = secOrder
+      .map(n => 'sec-' + n)
+      .filter(sid => counts[sid] === minCount);
+    // c) Parmi candidats, choisir celui dont le centroide moyen est le
+    //    PLUS ELOIGNE de l'ilot. Secteur vide -> distance infinie.
+    let bestSid = candidates[0];
+    let bestDist = -Infinity;
+    for (const sid of candidates) {
+      const cs = centSum[sid];
+      let dist;
+      if (!cs || cs.n === 0) {
+        dist = Infinity;                         // vide -> prioritaire
+      } else if (ilot.centroide_lat == null) {
+        dist = 0;                                // pas de centroide -> neutre
+      } else {
+        dist = sctGenHaversine(ilot.centroide_lat, ilot.centroide_lng,
+                               cs.lat / cs.n, cs.lng / cs.n);
+        if (dist == null) dist = 0;
+      }
+      if (dist > bestDist) { bestDist = dist; bestSid = sid; }
+    }
+    // d) Affecter + update bookkeeping.
+    newRep[ilot.ilotId] = { conseillerId: bestSid, locked: false };
+    counts[bestSid]++;
+    if (ilot.centroide_lat != null) {
+      const cs = centSum[bestSid];
+      cs.lat += ilot.centroide_lat;
+      cs.lng += ilot.centroide_lng;
+      cs.n++;
+    }
   }
   sctGenState.repartition = newRep;
 }
@@ -2672,11 +2732,32 @@ const SCT_GEN_TOL_TOTAL = 0.05;   // passe 1 : equilibre total des secteurs
 const SCT_GEN_TOL_PM    = 0.10;   // passe 2 : equilibre proche+moyenne
 const SCT_GEN_MAX_ITER  = 50;     // par passe
 
-// Penalite proximite (passe 1 uniquement) : si un candidat est a < 300m
-// d'un ilot deja dans minS, son gain est ampute de 20% -> defavorise les
-// paires geographiques trop proches sans les interdire.
-const SCT_GEN_PROXIMITY_M = 300;
-const SCT_GEN_PROXIMITY_MALUS = 0.8;
+// Penalite proximite (passes 1 ET 2) : malus 3 paliers selon la distance
+// min entre l'ilot candidat et un ilot deja dans minS.
+//   <300m : gain *= 0.3  (malus 70%)
+//   300-600m : gain *= 0.7  (malus 30%)
+//   >=600m : pas de malus
+// Le gain reste positif (move non interdit) mais fortement defavorise
+// face a un candidat plus eloigne avec un gain comparable.
+const SCT_GEN_PROX_NEAR_M    = 300;
+const SCT_GEN_PROX_MID_M     = 600;
+const SCT_GEN_PROX_NEAR_MUL  = 0.3;
+const SCT_GEN_PROX_MID_MUL   = 0.7;
+
+function sctGenProxMalus(ilot, peers) {
+  if (!ilot || ilot.centroide_lat == null || !peers || !peers.length) return 1;
+  let minDist = Infinity;
+  for (const other of peers) {
+    if (!other || other.centroide_lat == null) continue;
+    const d = sctGenHaversine(ilot.centroide_lat, ilot.centroide_lng,
+                              other.centroide_lat, other.centroide_lng);
+    if (d != null && d < minDist) minDist = d;
+  }
+  if (minDist === Infinity) return 1;
+  if (minDist < SCT_GEN_PROX_NEAR_M) return SCT_GEN_PROX_NEAR_MUL;
+  if (minDist < SCT_GEN_PROX_MID_M)  return SCT_GEN_PROX_MID_MUL;
+  return 1;
+}
 
 // Equilibrage en 2 passes sequentielles :
 //   Passe 1 : total des ventes par secteur (tol +/-5%, malus proximite).
@@ -2725,16 +2806,8 @@ function sctGenBalance() {
       const ilot = ilotMap[iid]; if (!ilot) continue;
       const newDiff = Math.abs((maxS.total - ilot.nb_ventes) - (minS.total + ilot.nb_ventes));
       let gain = curDiff - newDiff;
-      // Malus 20% si proximite < 300m avec un ilot deja dans minS.
-      if (ilot.centroide_lat != null && minSIlots.length) {
-        let minDist = Infinity;
-        for (const other of minSIlots) {
-          const d = sctGenHaversine(ilot.centroide_lat, ilot.centroide_lng,
-                                    other.centroide_lat, other.centroide_lng);
-          if (d != null && d < minDist) minDist = d;
-        }
-        if (minDist < SCT_GEN_PROXIMITY_M) gain *= SCT_GEN_PROXIMITY_MALUS;
-      }
+      // Malus proximite 3 paliers (helper).
+      gain *= sctGenProxMalus(ilot, minSIlots);
       if (gain > bestGain) { bestGain = gain; bestIid = iid; }
     }
     if (!bestIid) break;
@@ -2758,6 +2831,16 @@ function sctGenBalance() {
     for (const s of scores) { if (pmOf(s) > pmOf(maxS)) maxS = s; if (pmOf(s) < pmOf(minS)) minS = s; }
     if ((pmOf(maxS) - mean) <= tol && (mean - pmOf(minS)) <= tol) break;
 
+    // [FIX 2026-05-25] Precalcul ilots de minS pour le malus proximite
+    // (applique aussi en passe 2 -- avant uniquement en passe 1).
+    const minSIlots = [];
+    for (const [iid, v] of Object.entries(sctGenState.repartition)) {
+      if (v && v.conseillerId === minS.secId) {
+        const o = ilotMap[iid];
+        if (o && o.centroide_lat != null) minSIlots.push(o);
+      }
+    }
+
     let bestGain = 0, bestIid = null;
     const curDiff = pmOf(maxS) - pmOf(minS);
     for (const [iid, v] of Object.entries(sctGenState.repartition)) {
@@ -2771,7 +2854,8 @@ function sctGenBalance() {
       if (Math.abs(newMaxTotal - meanTotal) > tolTotal) continue;
       if (Math.abs(newMinTotal - meanTotal) > tolTotal) continue;
       const newDiff = Math.abs((pmOf(maxS) - ilot.nb_ventes) - (pmOf(minS) + ilot.nb_ventes));
-      const gain = curDiff - newDiff;
+      let gain = curDiff - newDiff;
+      gain *= sctGenProxMalus(ilot, minSIlots);
       if (gain > bestGain) { bestGain = gain; bestIid = iid; }
     }
     if (!bestIid) break;
@@ -3290,9 +3374,11 @@ async function sctMapOpen() {
   // 1. Init Leaflet (remove prev si reouverture).
   if (sctMapInstance) { sctMapInstance.remove(); sctMapInstance = null; }
   sctMapInstance = L.map('sct-map-canvas', { preferCanvas: true });
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  // [FIX 2026-05-25] CartoDB Positron : fond clair + labels noirs nets,
+  // meilleure lisibilite pour impression A0 vs OSM standard (plus colore).
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
     maxZoom: 19,
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
   }).addTo(sctMapInstance);
 
   // 2. Fetch les 3 KML en parallele.
@@ -3329,7 +3415,6 @@ async function sctMapOpen() {
         : null;
 
       const color = conseiller ? (conseiller.couleur || '#888') : '#888';
-      const isStriped = !!(conseiller && conseiller.kind === 'stripe');
       const ilot = ilotById[String(ilotId)];
       const ventesYearLbl = ilot ? sctGenPerYear(ilot.nb_ventes) : '0.0';
 
@@ -3347,12 +3432,14 @@ async function sctMapOpen() {
         }
         if (latlngs.length < 3) continue;
 
+        // [FIX 2026-05-25] Plus de distinction stripe/solid -> tous les
+        // secteurs en uni (couleur seulement, fillOpacity 0.65, weight 2).
+        // Non affectes : 0.20 (plus lisible que 0.15 sur fond Positron clair).
         const polygon = L.polygon(latlngs, {
           color: color,
           weight: conseiller ? 2 : 1,
           fillColor: color,
-          fillOpacity: conseiller ? (isStriped ? 0.20 : 0.35) : 0.15,
-          dashArray: isStriped ? '6,4' : null,
+          fillOpacity: conseiller ? 0.65 : 0.20,
         });
         const tooltip = conseiller
           ? `Îlot ${ilotId} — ${esc(conseiller.nom)} — ${ventesYearLbl} v/an`
@@ -3405,10 +3492,9 @@ function sctMapAddLegend() {
       for (let i = 0; i < sctGenState.conseillers.length; i++) {
         const c = sctGenState.conseillers[i];
         const sc = scores[i] || { total: 0 };
-        const isStriped = c.kind === 'stripe';
-        const swatchBg = isStriped
-          ? `background:repeating-linear-gradient(45deg,${c.couleur} 0 4px,#fff 4px 8px);`
-          : `background:${c.couleur};`;
+        // [FIX 2026-05-25] Swatch uni pour tous (les polygones n'ont plus
+        // de stripe sur la carte -> coherence visuelle).
+        const swatchBg = `background:${c.couleur};`;
         html += `<div style="display:flex;align-items:center;gap:6px;margin:3px 0;">`
               + `<span style="display:inline-block;width:14px;height:14px;border-radius:3px;border:1px solid #00000033;${swatchBg}"></span>`
               + `<span style="flex:1;">${esc(c.nom)}</span>`
