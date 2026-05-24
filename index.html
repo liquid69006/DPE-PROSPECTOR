@@ -946,12 +946,20 @@ td{padding:11px 14px;vertical-align:middle;}
 ════════════════════════════════════════════════════════════════ -->
 <div id="sct-map-overlay" style="display:none;position:fixed;inset:0;
      background:#000;z-index:10000;">
-  <button onclick="sctMapClose()"
-    style="position:absolute;top:14px;right:14px;z-index:10002;
-           background:rgba(255,255,255,0.95);color:#1f2937;
-           border:1px solid #ccc;border-radius:6px;padding:8px 16px;
-           cursor:pointer;font-size:14px;font-weight:700;
-           box-shadow:0 2px 8px rgba(0,0,0,0.3);">✕ Fermer</button>
+  <!-- Header actions (en haut-droite, regen + fermer) -->
+  <div style="position:absolute;top:14px;right:14px;z-index:10002;
+       display:flex;gap:8px;">
+    <button onclick="sctMapRegen()"
+      title="Génère une nouvelle répartition aléatoire et rafraîchit la carte."
+      style="background:#1f2937;color:#BEAF87;border:1px solid #BEAF87;
+             border-radius:6px;padding:8px 14px;cursor:pointer;font-size:13px;
+             box-shadow:0 2px 8px rgba(0,0,0,0.3);">↺ Nouvelle répartition</button>
+    <button onclick="sctMapClose()"
+      style="background:rgba(255,255,255,0.95);color:#1f2937;
+             border:1px solid #ccc;border-radius:6px;padding:8px 16px;
+             cursor:pointer;font-size:14px;font-weight:700;
+             box-shadow:0 2px 8px rgba(0,0,0,0.3);">✕ Fermer</button>
+  </div>
   <div id="sct-map-canvas" style="position:absolute;inset:0;"></div>
 </div>
 
@@ -3428,8 +3436,22 @@ function sctMapClose() {
   if (ov) ov.style.display = 'none';
 }
 
+// Bouton 'Nouvelle repartition' du header carte : relance sctGenRegen
+// (shuffle Fisher-Yates + passe 0 + balance) puis re-ouvre la carte
+// pour refleter la nouvelle repartition. Le delai 100 ms laisse au DOM
+// le temps de retirer proprement la map Leaflet (map.remove releve les
+// listeners + retire les tuiles) avant la nouvelle init.
+function sctMapRegen() {
+  try { sctGenRegen(); } catch (e) {
+    console.error('[sctMapRegen] sctGenRegen :', e);
+  }
+  sctMapClose();
+  setTimeout(sctMapOpen, 100);
+}
+
 window.sctMapOpen = sctMapOpen;
 window.sctMapClose = sctMapClose;
+window.sctMapRegen = sctMapRegen;
 
 // Memoire des Ilots ouverts cross-render. null = comportement par defaut
 // (tous Ilots fermes). Set vide = aucun Ilot ouvert (preservation user).
