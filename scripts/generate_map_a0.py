@@ -19,7 +19,6 @@ import json
 import os
 import pathlib
 import shutil
-import subprocess
 import sys
 import time
 import xml.etree.ElementTree as ET
@@ -126,32 +125,22 @@ def capture_html_to_png(html_path, png_path, w, h):
     opts.add_argument("--disable-software-rasterizer")
     opts.add_argument("--hide-scrollbars")
     opts.add_argument(f"--window-size={w},{h}")
-    # Binaire Chrome : prefere google-chrome (CI), fallback chrome local.
-    if pathlib.Path("/usr/bin/google-chrome").exists():
-        opts.binary_location = "/usr/bin/google-chrome"
-    elif pathlib.Path("/usr/bin/google-chrome-stable").exists():
-        opts.binary_location = "/usr/bin/google-chrome-stable"
 
-    # ChromeDriver : cherche dans PATH (chromium-driver apt), fallback
-    # /usr/bin/chromedriver. Si introuvable, tente apt-get install.
-    chromedriver_path = shutil.which("chromedriver")
-    if not chromedriver_path:
-        try:
-            chrome_ver = subprocess.check_output(
-                ["google-chrome", "--version"], stderr=subprocess.STDOUT
-            ).decode().strip()
-            print(f"[INFO] {chrome_ver}", flush=True)
-        except Exception:
-            pass
-        try:
-            subprocess.check_call(
-                ["sudo", "apt-get", "install", "-y", "chromium-driver"],
-                stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT,
-            )
-        except Exception as exc:
-            print(f"[WARN] apt-get chromium-driver KO : {exc}", flush=True)
-        chromedriver_path = shutil.which("chromedriver") or "/usr/bin/chromedriver"
-    print(f"[OK] chromedriver : {chromedriver_path}", flush=True)
+    # Binaire Chrome : Ubuntu 24.04 installe google-chrome-stable
+    # (pas /usr/bin/google-chrome). On utilise shutil.which pour
+    # detecter le binaire reel dans PATH.
+    chrome_bin = (shutil.which("google-chrome-stable")
+                  or shutil.which("google-chrome")
+                  or "/usr/bin/google-chrome-stable")
+    opts.binary_location = chrome_bin
+
+    # ChromeDriver : installe par le workflow dans /usr/local/bin
+    # via chrome-for-testing-public (version matchee avec Chrome).
+    chromedriver_path = (shutil.which("chromedriver")
+                         or "/usr/local/bin/chromedriver")
+
+    print(f"[DEBUG] Chrome binary : {chrome_bin}", flush=True)
+    print(f"[DEBUG] ChromeDriver  : {chromedriver_path}", flush=True)
 
     service = ChromeService(executable_path=chromedriver_path)
     driver = webdriver.Chrome(service=service, options=opts)
