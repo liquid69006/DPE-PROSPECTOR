@@ -882,8 +882,9 @@ td{padding:11px 14px;vertical-align:middle;}
                padding:10px 14px;font-size:12px;color:var(--text2);line-height:1.6;">
             <b style="color:#BEAF87;">Méthode :</b> chaque îlot est agrégé (somme des ventes
             <span id="sct-gen-mode-info">strictes</span>, centroïde GPS, distance à l'agence) puis
-            distribué en round-robin par ventes décroissantes sur N secteurs. Équilibrage en
-            <b>3 passes</b> séquentielles :<br>
+            distribué en round-robin <i>(ordre des secteurs aléatoire)</i> par ventes décroissantes
+            sur N secteurs. Équilibrage en <b>4 passes</b> séquentielles :<br>
+            &nbsp;&nbsp;<b>0.</b> <b style="color:#BEAF87;">Couverture zones</b> : ≥ 1 îlot proche/moyen/lointain par secteur (si possible).<br>
             &nbsp;&nbsp;<b>1.</b> <b style="color:#BEAF87;">Total</b> ±5 % (50 itérations, malus 20 % si proximité &lt; 300 m).<br>
             &nbsp;&nbsp;<b>2.</b> <b style="color:#BEAF87;">Proche+Moyenne</b> ±10 % (sans casser l'enveloppe total).<br>
             &nbsp;&nbsp;<b>3.</b> <b style="color:#BEAF87;">Par zone</b> ±20 % (sans casser les enveloppes total ni P+M).<br>
@@ -921,8 +922,9 @@ td{padding:11px 14px;vertical-align:middle;}
             style="background:var(--surface2);color:var(--text);border:1px solid var(--border);
                    border-radius:6px;padding:8px 14px;cursor:pointer;font-size:13px;">← Config</button>
           <button onclick="sctGenRegen()"
+            title="Nouvelle répartition aléatoire (ordre des secteurs mélangé Fisher-Yates) — clique plusieurs fois pour explorer différents équilibrages."
             style="background:#1f2937;color:#BEAF87;border:1px solid #BEAF87;
-                   border-radius:6px;padding:8px 14px;cursor:pointer;font-size:13px;">↺ Regénérer</button>
+                   border-radius:6px;padding:8px 14px;cursor:pointer;font-size:13px;">↺ Nouvelle répartition</button>
           <button onclick="sctGenSave()"
             style="background:#16a34a;color:#fff;border:none;border-radius:6px;
                    padding:8px 18px;cursor:pointer;font-size:13px;font-weight:700;">✓ Enregistrer</button>
@@ -2358,8 +2360,10 @@ window.secteurSetAssign = secteurSetAssign;
 // ════════════════════════════════════════════════════════════════════
 //  GÉNÉRATION DE SECTEURS CONSEILLERS  (module ⚡)
 //  Crée N "secteurs conseillers" en répartissant les îlots du secteur
-//  par nb de ventes (round-robin DESC) + équilibrage par moves en
-//  3 passes sequentielles :
+//  par nb de ventes (round-robin DESC, ordre des secteurs SHUFFLE
+//  Fisher-Yates -> Regenerer explore des optimums locaux varies).
+//  Equilibrage par moves en 4 passes sequentielles :
+//    Passe 0 : couverture zones (assurer >= 1 ilot P/M/L par secteur)
 //    Passe 1 : total des ventes  +/-5 %  (50 iters, malus prox <300m)
 //    Passe 2 : proche + moyenne  +/-10 % (contrainte enveloppe T)
 //    Passe 3 : par zone P/M/L    +/-20 % (contrainte T + P+M)
@@ -2511,22 +2515,128 @@ function sctGenScoreSecteur(secId) {
 }
 
 // Round-robin DESC ventes -> N secteurs. Respecte les îlots verrouillés.
+// [FIX 2026-05-24 r5] Ordre des secteurs SHUFFLE (Fisher-Yates) avant
+// le round-robin : chaque appel produit un point de depart different
+// -> Regenerer explore des optimums locaux varies. Les ilots restent
+// tries DESC par ventes (fait en amont par sctGenComputeIlots).
 function sctGenRoundRobin() {
   const N = sctGenState.N;
+  if (N <= 0) return;
   const old = sctGenState.repartition || {};
   const newRep = {};
   // 1) on conserve les locked tels quels
   for (const [iid, v] of Object.entries(old)) {
     if (v && v.locked && v.conseillerId) newRep[iid] = { conseillerId: v.conseillerId, locked: true };
   }
-  // 2) round-robin sur le reste
+  // 2) shuffle Fisher-Yates de l'ordre des secteurs (sec-1 ... sec-N).
+  const secOrder = Array.from({ length: N }, (_, i) => i + 1);
+  for (let i = secOrder.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [secOrder[i], secOrder[j]] = [secOrder[j], secOrder[i]];
+  }
+  // 3) round-robin avec secOrder[cur % N] au lieu de cur+1.
   let cur = 0;
   for (const ilot of sctGenState.ilots) {
     if (newRep[ilot.ilotId]) continue;
-    newRep[ilot.ilotId] = { conseillerId: 'sec-' + (cur + 1), locked: false };
-    cur = (cur + 1) % N;
+    newRep[ilot.ilotId] = { conseillerId: 'sec-' + secOrder[cur % N], locked: false };
+    cur++;
   }
   sctGenState.repartition = newRep;
+}
+
+// ── PASSE 0 : garantie couverture des zones ─────────────────────────
+// Pour chaque zone (proche/moyenne/lointaine), si au moins un secteur
+// n'a aucun ilot de cette zone et qu'il existe un autre secteur qui en
+// a plusieurs, transferer l'ilot le MOINS lourd (mini impact equilibre
+// total) du donneur le PLUS riche dans cette zone vers le secteur sans
+// representation.
+// Warnings collectes dans sctGenState._coverageWarnings (Array<string>)
+// -> affiches en bilan par sctGenRenderTable. Reinitialise a chaque
+// passe pour qu'un Regenerer rafraichisse le diagnostic.
+// Les ilots locked ne sont jamais deplaces (donc parfois la passe ne
+// peut pas couvrir un secteur meme si la zone est globalement riche).
+function sctGenEnsureZoneCoverage() {
+  const N = sctGenState.N;
+  if (N <= 0) return;
+  sctGenState._coverageWarnings = [];
+  const ilotMap = {}; for (const i of sctGenState.ilots) ilotMap[i.ilotId] = i;
+  const ZONES = ['proche', 'moyenne', 'lointaine'];
+
+  // 1) Diag global : combien d'ilots dans chaque zone (au total).
+  const zoneCounts = { proche:0, moyenne:0, lointaine:0 };
+  for (const ilot of sctGenState.ilots) {
+    if (zoneCounts[ilot.zone] != null) zoneCounts[ilot.zone]++;
+  }
+  for (const zk of ZONES) {
+    if (zoneCounts[zk] < N) {
+      sctGenState._coverageWarnings.push(
+        `Seulement ${zoneCounts[zk]} îlot${zoneCounts[zk]>1?'s':''} ${zk}${zoneCounts[zk]>1?'s':''} pour ${N} secteurs — certains secteurs n'auront pas de zone ${zk}.`);
+    }
+  }
+
+  // 2) Tentative de couverture par zone (independantes).
+  for (const zk of ZONES) {
+    // Index secteur -> ilots de cette zone (non-locked d'abord).
+    const recalc = () => {
+      const map = {};
+      for (let i = 1; i <= N; i++) map['sec-' + i] = { all: [], movable: [] };
+      for (const [iid, v] of Object.entries(sctGenState.repartition)) {
+        if (!v || !v.conseillerId) continue;
+        const ilot = ilotMap[iid]; if (!ilot || ilot.zone !== zk) continue;
+        const slot = map[v.conseillerId];
+        if (!slot) continue;
+        slot.all.push(iid);
+        if (!v.locked) slot.movable.push(iid);
+      }
+      return map;
+    };
+
+    // Boucle : tant qu'un secteur receveur peut etre servi.
+    // Limite anti-runaway = N (a chaque iter on couvre au moins 1
+    // receveur ou on sort).
+    for (let iter = 0; iter < N; iter++) {
+      const map = recalc();
+      // Receveurs : secteurs avec 0 ilot de cette zone (any).
+      const receivers = [];
+      for (let i = 1; i <= N; i++) {
+        const sid = 'sec-' + i;
+        if (map[sid].all.length === 0) receivers.push(sid);
+      }
+      if (!receivers.length) break;                  // tout le monde couvre
+
+      // Donneurs : secteurs avec >= 2 ilots movables de cette zone
+      // (>= 2 movable pour ne pas vider un donneur a 1).
+      const donors = [];
+      for (let i = 1; i <= N; i++) {
+        const sid = 'sec-' + i;
+        if (map[sid].movable.length >= 2) donors.push(sid);
+      }
+      if (!donors.length) break;                     // plus rien a deplacer
+
+      // Donneur le plus riche (max ilots de cette zone, all confondus).
+      donors.sort((a, b) => map[b].all.length - map[a].all.length);
+      const donor = donors[0];
+      // Ilot le MOINS lourd (mini impact equilibre total) parmi movables.
+      const candidates = map[donor].movable
+        .map(iid => ilotMap[iid])
+        .filter(o => o)
+        .sort((a, b) => (a.nb_ventes || 0) - (b.nb_ventes || 0));
+      if (!candidates.length) break;
+      const ilotToMove = candidates[0];
+      // Receveur prioritaire = celui avec le total le plus faible
+      // (eviter de plomber un secteur deja lourd).
+      const scores = receivers.map(sid => {
+        let total = 0;
+        for (const [iid, v] of Object.entries(sctGenState.repartition)) {
+          if (v && v.conseillerId === sid) total += (ilotMap[iid] || {}).nb_ventes || 0;
+        }
+        return { sid, total };
+      });
+      scores.sort((a, b) => a.total - b.total);
+      const receiver = scores[0].sid;
+      sctGenState.repartition[ilotToMove.ilotId].conseillerId = receiver;
+    }
+  }
 }
 
 // Tolerances par niveau (sctGenBalance 3 passes + indicateurs UI).
@@ -2825,7 +2935,10 @@ async function sctGenStart() {
   // [FIX 2026-05-24] try/catch global : empeche le bouton de rester
   // disable sur une exception (ex ilotEffectif undefined, mutation
   // secteurData inattendue). Log console F12 pour diag.
+  // [FIX 2026-05-24 r5] Passe 0 (couverture zones) avant les 3 passes
+  // d'equilibrage.
   try {
+    sctGenEnsureZoneCoverage();
     sctGenBalance();
     sctGenShowResult();
   } catch (e) {
@@ -2836,21 +2949,19 @@ async function sctGenStart() {
 }
 
 function sctGenRegen() {
-  // Repart de zéro pour les non-locked (les locked restent en place).
-  // [FIX 2026-05-24] try/catch + toast de confirmation pour rendre
-  // visible l'effet (l'algorithme est deterministe : memes ilots +
-  // memes locked => meme resultat, mais user voit au moins que la
-  // regen a tourne). Re-render direct via sctGenRenderTable (on est
-  // deja en step2, pas besoin du toggle step1->step2).
+  // [FIX 2026-05-24 r5] sctGenRoundRobin shuffle Fisher-Yates l'ordre
+  // des secteurs -> chaque Regen explore un optimum local different.
+  // Le patron peut cliquer plusieurs fois pour comparer.
   if (!sctGenState.ilots || !sctGenState.ilots.length) {
     showToast('⚠️ Aucun îlot — lance d\'abord Générer', true);
     return;
   }
   try {
     sctGenRoundRobin();
+    sctGenEnsureZoneCoverage();
     sctGenBalance();
     sctGenRenderTable();
-    showToast('↺ Répartition regénérée');
+    showToast('↺ Nouvelle répartition aléatoire');
   } catch (e) {
     console.error('[sctGenRegen] erreur :', e);
     showToast('⚠️ Erreur régénération (voir console F12) : ' + (e.message || e), true);
@@ -3048,15 +3159,22 @@ function sctGenRenderTable() {
   document.getElementById('sct-gen-table-header').innerHTML = headerHtml;
   document.getElementById('sct-gen-table-body').innerHTML = html;
 
-  // Bilan multi-niveaux : 3 indicateurs T / P+M / Z.
+  // Bilan multi-niveaux : 3 indicateurs T / P+M / Z + warnings couverture.
   const bItem = (count, ok_label, ko_label) =>
     count === 0
       ? `<span style="color:#16a34a;">${ok_label}</span>`
       : `<span style="color:#e67e22;">${ko_label.replace('{n}', count)}</span>`;
-  bilan.innerHTML =
+  let bilanHtml =
       bItem(outT,  'Total ✓',  'Total : {n} hors ±5%') + ' &nbsp;|&nbsp; '
     + bItem(outPM, 'P+M ✓',    'P+M : {n} hors ±10%')  + ' &nbsp;|&nbsp; '
     + bItem(outZ,  'Zones ✓',  'Zones : {n} hors ±20%');
+  // Warnings couverture (passe 0) : zones insuffisamment representees.
+  const warns = (sctGenState._coverageWarnings || []);
+  if (warns.length) {
+    bilanHtml += '<div style="margin-top:6px;color:#e67e22;font-size:11px;">'
+              + warns.map(w => '⚠️ ' + w).join('<br>') + '</div>';
+  }
+  bilan.innerHTML = bilanHtml;
 }
 
 function sctGenToggleLock(ilotId) {
