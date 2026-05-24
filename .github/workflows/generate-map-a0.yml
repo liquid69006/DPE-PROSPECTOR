@@ -1,0 +1,48 @@
+name: 🗺️ Générer carte A0
+
+on:
+  workflow_dispatch:
+    inputs:
+      repartition_json:
+        description: 'JSON répartition secteurs'
+        required: true
+        type: string
+      agence_id:
+        description: 'ID agence'
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  generate-map:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: 🌐 Chromium
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y chromium-browser
+          chromium-browser --version
+
+      - name: 📦 Dépendances
+        run: pip install folium pillow requests selenium webdriver-manager
+
+      - name: 🗺️ Générer carte A0
+        run: python scripts/generate_map_a0.py
+        env:
+          REPARTITION_JSON: ${{ inputs.repartition_json }}
+          AGENCE_ID: ${{ inputs.agence_id }}
+
+      - name: 📥 Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: carte-a0-${{ inputs.agence_id }}
+          path: output/carte_a0.png
+          retention-days: 7

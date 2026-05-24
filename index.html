@@ -946,9 +946,14 @@ td{padding:11px 14px;vertical-align:middle;}
 ════════════════════════════════════════════════════════════════ -->
 <div id="sct-map-overlay" style="display:none;position:fixed;inset:0;
      background:#000;z-index:10000;">
-  <!-- Header actions (en haut-droite, regen + fermer) -->
+  <!-- Header actions (en haut-droite, export + regen + fermer) -->
   <div style="position:absolute;top:14px;right:14px;z-index:10002;
        display:flex;gap:8px;">
+    <button id="sct-map-export-btn" onclick="sctMapExportA0()"
+      title="Génère et télécharge une carte A0 (PNG 300 DPI portrait) via GitHub Actions (~1-2 min)."
+      style="background:#1f2937;color:#BEAF87;border:1px solid #BEAF87;
+             border-radius:6px;padding:8px 14px;cursor:pointer;font-size:13px;
+             box-shadow:0 2px 8px rgba(0,0,0,0.3);">📥 Export A0</button>
     <button onclick="sctMapRegen()"
       title="Génère une nouvelle répartition aléatoire et rafraîchit la carte."
       style="background:#1f2937;color:#BEAF87;border:1px solid #BEAF87;
@@ -3555,9 +3560,92 @@ function sctMapRegen() {
   setTimeout(sctMapOpen, 100);
 }
 
+// Export A0 (PNG 300 DPI portrait) via GitHub Actions.
+// Workflow : POST /map-a0/generate -> POST GitHub workflow_dispatch ->
+//            polling /map-a0/status toutes les 5 s (timeout 3 min) ->
+//            GET /map-a0/artifact/:runId -> window.open(download_url)
+//            (proxy worker qui pipe le ZIP avec auth GH_PAT).
+async function sctMapExportA0() {
+  const btn = document.getElementById('sct-map-export-btn');
+  if (!btn) return;
+  if (!sctGenState.repartition || !Object.keys(sctGenState.repartition).length) {
+    showToast('⚠️ Génère d\'abord une répartition', true);
+    return;
+  }
+  const oldText = btn.textContent;
+  btn.disabled = true;
+  btn.textContent = '⏳ Démarrage…';
+  try {
+    const [, secId] = secteurResolve();
+    // 1) POST /map-a0/generate/:secId
+    const r = await fetch(`${API_URL}/map-a0/generate/${secId}`, {
+      method: 'POST',
+      headers: { 'Authorization': `Bearer ${authToken}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        repartition: sctGenState.repartition,
+        conseillers: sctGenState.conseillers,
+      }),
+    });
+    if (!r.ok) throw new Error('POST generate : HTTP ' + r.status);
+    showToast('🗺️ Génération en cours (~1-2 min)…');
+    btn.textContent = '⏳ En attente…';
+
+    // 2) Polling status toutes les 5 s, timeout 3 min.
+    const TIMEOUT_MS = 180000;
+    const POLL_MS = 5000;
+    const t0 = Date.now();
+    let runId = null;
+    let lastStatus = '';
+    // Petit delai initial : GitHub met ~3-5 s a creer le run apres le dispatch.
+    await new Promise(res => setTimeout(res, 4000));
+    while (Date.now() - t0 < TIMEOUT_MS) {
+      const rs = await fetch(`${API_URL}/map-a0/status/${secId}`, {
+        headers: { 'Authorization': `Bearer ${authToken}` },
+      });
+      if (rs.ok) {
+        const st = await rs.json();
+        if (st.run_id) runId = st.run_id;
+        lastStatus = st.status || '';
+        btn.textContent = `⏳ ${lastStatus || 'pending'}…`;
+        if (st.status === 'completed') {
+          if (st.conclusion !== 'success') {
+            throw new Error('Workflow KO : ' + (st.conclusion || 'unknown'));
+          }
+          break;
+        }
+      }
+      await new Promise(res => setTimeout(res, POLL_MS));
+    }
+    if (Date.now() - t0 >= TIMEOUT_MS) {
+      throw new Error('⏱️ Délai dépassé — vérifier GitHub Actions');
+    }
+    if (!runId) throw new Error('run_id introuvable');
+
+    // 3) Récupère l'artifact (proxy worker).
+    btn.textContent = '⏳ Téléchargement…';
+    const ra = await fetch(`${API_URL}/map-a0/artifact/${runId}?token=${encodeURIComponent(authToken)}`, {
+      headers: { 'Authorization': `Bearer ${authToken}` },
+    });
+    if (!ra.ok) throw new Error('GET artifact : HTTP ' + ra.status);
+    const art = await ra.json();
+    if (!art.download_url) throw new Error('Aucun artifact disponible');
+
+    // 4) Ouvre dans un nouvel onglet (le download_url contient deja le token).
+    window.open(art.download_url, '_blank');
+    showToast('✅ Téléchargement lancé');
+  } catch (e) {
+    console.error('[sctMapExportA0]', e);
+    showToast('❌ ' + (e.message || e), true);
+  } finally {
+    btn.disabled = false;
+    btn.textContent = oldText;
+  }
+}
+
 window.sctMapOpen = sctMapOpen;
 window.sctMapClose = sctMapClose;
 window.sctMapRegen = sctMapRegen;
+window.sctMapExportA0 = sctMapExportA0;
 
 // Memoire des Ilots ouverts cross-render. null = comportement par defaut
 // (tous Ilots fermes). Set vide = aucun Ilot ouvert (preservation user).

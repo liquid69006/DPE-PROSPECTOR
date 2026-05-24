@@ -700,6 +700,151 @@ async function handleRequest(request, env) {
       return json({ ok: true, ilot: obj.repartition[ilotId] });
     }
 
+    // ── /map-a0/* ── generation de carte A0 via GitHub Actions ───────
+    //  POST /map-a0/generate/:agence  -> declenche workflow
+    //  GET  /map-a0/status/:agence    -> dernier run du workflow
+    //  GET  /map-a0/artifact/:runId   -> meta + download_url (proxy)
+    //  GET  /map-a0/download/:runId   -> proxy streaming du ZIP artifact
+    //  Auth : requireAuth(agenceId) ; le proxy download accepte le token
+    //  en query (?token=jwt) pour permettre window.open() cote front.
+    //  Necessite env.GH_PAT (Cloudflare secret).
+    const ghHeaders = () => ({
+      "Authorization": `Bearer ${env.GH_PAT}`,
+      "Accept": "application/vnd.github+json",
+      "User-Agent": "dpe-prospector-api",
+    });
+    const GH_REPO = "liquid69006/DPE-PROSPECTOR";
+
+    const mapA0GenMatch = path.match(/^\/map-a0\/generate\/([a-z0-9-]+)$/);
+    if (mapA0GenMatch && method === "POST") {
+      const agenceId = mapA0GenMatch[1];
+      const [, authErr] = await requireAuth(agenceId);
+      if (authErr) return authErr;
+      if (!env.GH_PAT) return err("GH_PAT non configuré côté Worker", 500);
+      let body; try { body = await request.json(); } catch { return err("JSON invalide"); }
+
+      const ghResp = await fetch(
+        `https://api.github.com/repos/${GH_REPO}/actions/workflows/generate-map-a0.yml/dispatches`,
+        {
+          method: "POST",
+          headers: { ...ghHeaders(), "Content-Type": "application/json" },
+          body: JSON.stringify({
+            ref: "main",
+            inputs: {
+              repartition_json: JSON.stringify(body),
+              agence_id: agenceId,
+            },
+          }),
+        }
+      );
+      if (!ghResp.ok) {
+        const txt = await ghResp.text();
+        return err(`Échec GitHub Actions (${ghResp.status}) : ${txt}`, 502);
+      }
+      return json({ ok: true, message: "Workflow déclenché" });
+    }
+
+    const mapA0StatusMatch = path.match(/^\/map-a0\/status\/([a-z0-9-]+)$/);
+    if (mapA0StatusMatch && method === "GET") {
+      const agenceId = mapA0StatusMatch[1];
+      const [, authErr] = await requireAuth(agenceId);
+      if (authErr) return authErr;
+      if (!env.GH_PAT) return err("GH_PAT non configuré côté Worker", 500);
+
+      const ghResp = await fetch(
+        `https://api.github.com/repos/${GH_REPO}/actions/workflows/generate-map-a0.yml/runs?per_page=1`,
+        { headers: ghHeaders() }
+      );
+      if (!ghResp.ok) {
+        const txt = await ghResp.text();
+        return err(`Échec GitHub Actions (${ghResp.status}) : ${txt}`, 502);
+      }
+      const data = await ghResp.json();
+      const run = (data.workflow_runs || [])[0];
+      if (!run) return json({ status: "unknown", conclusion: null, run_id: null, artifact_url: null });
+      return json({
+        status: run.status,                   // queued | in_progress | completed
+        conclusion: run.conclusion,           // success | failure | null
+        run_id: run.id,
+        artifact_url: null,                   // a recup via /artifact/:runId
+      });
+    }
+
+    const mapA0ArtifactMatch = path.match(/^\/map-a0\/artifact\/(\d+)$/);
+    if (mapA0ArtifactMatch && method === "GET") {
+      // Auth : Authorization header OU ?token=... (UX window.open).
+      const urlObj = new URL(request.url);
+      const tokenQ = urlObj.searchParams.get("token");
+      const tokenH = (request.headers.get("Authorization") || "").replace(/^Bearer\s+/i, "");
+      const token = tokenQ || tokenH;
+      if (!token) return err("Token manquant", 401);
+      const payload = await verifyJwt(token, JWT_SECRET);
+      if (!payload) return err("Token invalide ou expiré", 401);
+      if (!env.GH_PAT) return err("GH_PAT non configuré côté Worker", 500);
+
+      const runId = mapA0ArtifactMatch[1];
+      const ghResp = await fetch(
+        `https://api.github.com/repos/${GH_REPO}/actions/runs/${runId}/artifacts`,
+        { headers: ghHeaders() }
+      );
+      if (!ghResp.ok) {
+        const txt = await ghResp.text();
+        return err(`Échec GitHub Actions (${ghResp.status}) : ${txt}`, 502);
+      }
+      const data = await ghResp.json();
+      const art = (data.artifacts || [])[0];
+      if (!art) return json({ download_url: null, message: "Aucun artifact" });
+      // URL proxy worker (avec token en query pour window.open).
+      const proxyUrl = `${urlObj.origin}/map-a0/download/${runId}?token=${encodeURIComponent(token)}`;
+      return json({
+        download_url: proxyUrl,
+        name: art.name,
+        size: art.size_in_bytes,
+        github_url: art.archive_download_url,
+      });
+    }
+
+    // Proxy streaming du ZIP artifact (necessite GH_PAT pour l'auth GitHub).
+    // Le token JWT est verifie via ?token=... (UX window.open cote front).
+    const mapA0DlMatch = path.match(/^\/map-a0\/download\/(\d+)$/);
+    if (mapA0DlMatch && method === "GET") {
+      const urlObj = new URL(request.url);
+      const token = urlObj.searchParams.get("token")
+                 || (request.headers.get("Authorization") || "").replace(/^Bearer\s+/i, "");
+      if (!token) return err("Token manquant", 401);
+      const payload = await verifyJwt(token, JWT_SECRET);
+      if (!payload) return err("Token invalide ou expiré", 401);
+      if (!env.GH_PAT) return err("GH_PAT non configuré côté Worker", 500);
+
+      const runId = mapA0DlMatch[1];
+      // 1) Recupere l'artifact ID (le 1er, on n'en uploade qu'un seul).
+      const listResp = await fetch(
+        `https://api.github.com/repos/${GH_REPO}/actions/runs/${runId}/artifacts`,
+        { headers: ghHeaders() }
+      );
+      if (!listResp.ok) return err(`Échec liste artifacts (${listResp.status})`, 502);
+      const lst = await listResp.json();
+      const art = (lst.artifacts || [])[0];
+      if (!art) return err("Aucun artifact disponible", 404);
+
+      // 2) Download le ZIP avec auth GH_PAT (suit la redirect signed URL).
+      const dlResp = await fetch(art.archive_download_url, {
+        headers: ghHeaders(),
+        redirect: "follow",
+      });
+      if (!dlResp.ok) return err(`Échec download (${dlResp.status})`, 502);
+
+      // 3) Pipe le ZIP au client.
+      return new Response(dlResp.body, {
+        status: 200,
+        headers: {
+          ...CORS,
+          "Content-Type": "application/zip",
+          "Content-Disposition": `attachment; filename="${art.name || `carte_a0_${runId}`}.zip"`,
+        },
+      });
+    }
+
     // ── POST /conseillers/:agence/create ── créer une session conseiller ──
     const consCreateMatch = path.match(/^\/conseillers\/([a-z0-9-]+)\/create$/);
     if (consCreateMatch && method === "POST") {
