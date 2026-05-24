@@ -116,6 +116,7 @@ def capture_html_to_png(html_path, png_path, w, h):
     from selenium import webdriver
     from selenium.webdriver.chrome.options import Options
     from selenium.webdriver.chrome.service import Service as ChromeService
+    from selenium.webdriver.support.ui import WebDriverWait
 
     opts = Options()
     opts.add_argument("--headless=new")
@@ -147,12 +148,39 @@ def capture_html_to_png(html_path, png_path, w, h):
     try:
         url = pathlib.Path(html_path).resolve().as_uri()
         driver.get(url)
-        # Laisser le temps aux tuiles CartoDB de charger (rendu vectoriel
-        # SVG des polygones est instantane, le bottleneck = tuiles).
-        time.sleep(10)
-        # Force la taille du viewport apres rendu.
-        driver.set_window_size(w, h)
-        time.sleep(2)
+
+        # Attente intelligente du rendu Leaflet (plus fiable que sleep fixe).
+        # 1) Leaflet initialise + au moins 10 tuiles chargees (carte demarree).
+        print("[INFO] Attente init Leaflet...", flush=True)
+        WebDriverWait(driver, 30).until(
+            lambda d: d.execute_script(
+                "return typeof window.L !== 'undefined' "
+                "&& document.querySelectorAll('.leaflet-tile-loaded').length > 10"
+            )
+        )
+        print("[OK] Leaflet pret", flush=True)
+
+        # 2) Tuiles majoritairement chargees (>=85 %, evite les trous).
+        print("[INFO] Attente chargement tuiles (>=85 %)...", flush=True)
+        WebDriverWait(driver, 60).until(
+            lambda d: d.execute_script("""
+              var imgs  = document.querySelectorAll('.leaflet-tile-loaded');
+              var total = document.querySelectorAll('.leaflet-tile').length;
+              return total > 0 && imgs.length >= total * 0.85;
+            """)
+        )
+        loaded = driver.execute_script(
+            "return document.querySelectorAll('.leaflet-tile-loaded').length;"
+        )
+        total = driver.execute_script(
+            "return document.querySelectorAll('.leaflet-tile').length;"
+        )
+        print(f"[OK] Tuiles {loaded}/{total}", flush=True)
+
+        # 3) Buffer final pour le rendu SVG des polygones (instantane mais
+        # le compositor du navigateur a besoin d'un dernier frame).
+        time.sleep(3)
+
         # CDP screenshot : permet de capturer au-dela du viewport visible.
         try:
             result = driver.execute_cdp_cmd("Page.captureScreenshot", {

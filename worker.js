@@ -708,8 +708,11 @@ async function handleRequest(request, env) {
     //  Auth : requireAuth(agenceId) ; le proxy download accepte le token
     //  en query (?token=jwt) pour permettre window.open() cote front.
     //  Necessite env.GH_PAT (Cloudflare secret).
+    // Auth GitHub : "token <PAT>" pour les PAT classiques (compatible avec
+    // tous les endpoints REST + artifacts/zip). "Bearer" cassait le download
+    // d'artifact (401 sur archive_download_url).
     const ghHeaders = () => ({
-      "Authorization": `Bearer ${env.GH_PAT}`,
+      "Authorization": `token ${env.GH_PAT}`,
       "Accept": "application/vnd.github+json",
       "User-Agent": "dpe-prospector-api",
     });
