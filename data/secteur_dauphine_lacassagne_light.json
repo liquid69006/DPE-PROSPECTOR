@@ -1703,6 +1703,147 @@
         }
       ],
       "delta_parc_dedup": -63
+    },
+    "_correctif_vague4_dl": {
+      "date": "2026-05-24T17:15:40Z",
+      "pattern": "Vague 4 DL : 6 fixes simples REBIND/RE-FUSE univoques + 4 disambig #immat",
+      "fixes": [
+        {
+          "id": "F1",
+          "tag": "316pb_314pb",
+          "src": "316|RUE|PAUL BERT",
+          "ancre": "314|RUE|PAUL BERT",
+          "immat": "AH0111229"
+        },
+        {
+          "id": "F2",
+          "tag": "3pehu_30philippe",
+          "src": "3|RUE|MARCEL PEHU",
+          "ancre": "30|RUE|ST PHILIPPE",
+          "immat": "AC3393907"
+        },
+        {
+          "id": "F3",
+          "tag": "7sisley_aprim",
+          "src": "7|RUE|PROFESSEUR PAUL SISLEY",
+          "ancre": "7|RUE|PROFESSEUR PAUL SISLEY #AI9420605",
+          "immat": "AI9420605"
+        },
+        {
+          "id": "F4",
+          "tag": "9montbr_privilege_c",
+          "src": "9|RUE|MONTBRILLANT",
+          "ancre": "9|RUE|MONTBRILLANT #AB6220503",
+          "immat": "AB6220503"
+        },
+        {
+          "id": "F5",
+          "tag": "5montbr_parmilleux",
+          "src": "5|RUE|MONTBRILLANT",
+          "ancre": "5|RUE|MONTBRILLANT #AA9380684",
+          "immat": "AA9380684"
+        },
+        {
+          "id": "F6",
+          "tag": "3bara_bara",
+          "src": "3|RUE|BARA",
+          "ancre": "3|RUE|BARA #AE6121685",
+          "immat": "AE6121685"
+        }
+      ],
+      "log": [
+        {
+          "op": "REBIND",
+          "cle": "316|RUE|PAUL BERT",
+          "cible": "314|RUE|PAUL BERT",
+          "old_cible": "318|RUE|PAUL BERT",
+          "old_bgid": "bdnb-bg-JFRZ-XJTQ-L9ZQ"
+        },
+        {
+          "op": "LABEL",
+          "cle": "314|RUE|PAUL BERT",
+          "label": "314 RUE PAUL BERT (sources fusees) / 316 RUE PAUL BERT",
+          "sources": [
+            "316|RUE|PAUL BERT"
+          ]
+        },
+        {
+          "op": "REBIND",
+          "cle": "3|RUE|MARCEL PEHU",
+          "cible": "30|RUE|ST PHILIPPE",
+          "old_cible": "23|RUE|ST MAXIMIN",
+          "old_bgid": "bdnb-bg-GMWN-9ZYS-LQGQ"
+        },
+        {
+          "op": "LABEL",
+          "cle": "30|RUE|ST PHILIPPE",
+          "label": "30 RUE ST PHILIPPE (sources fusees) / 3 RUE MARCEL PEHU",
+          "sources": [
+            "3|RUE|MARCEL PEHU"
+          ]
+        },
+        {
+          "op": "REBIND",
+          "cle": "7|RUE|PROFESSEUR PAUL SISLEY",
+          "cible": "7|RUE|PROFESSEUR PAUL SISLEY #AI9420605",
+          "old_cible": "7B|RUE|PROFESSEUR PAUL SISLEY",
+          "old_bgid": "bdnb-bg-68CY-P7TQ-TZ2P"
+        },
+        {
+          "op": "LABEL",
+          "cle": "7|RUE|PROFESSEUR PAUL SISLEY #AI9420605",
+          "label": "7 RUE PROFESSEUR PAUL SISLEY #AI9420605 (sources fusees) / 7 RUE PROFESSEUR PAUL SISLEY",
+          "sources": [
+            "7|RUE|PROFESSEUR PAUL SISLEY"
+          ]
+        },
+        {
+          "op": "REBIND",
+          "cle": "9|RUE|MONTBRILLANT",
+          "cible": "9|RUE|MONTBRILLANT #AB6220503",
+          "old_cible": "9B|RUE|MONTBRILLANT",
+          "old_bgid": "bdnb-bg-9MYW-M2VT-GSQE"
+        },
+        {
+          "op": "LABEL",
+          "cle": "9|RUE|MONTBRILLANT #AB6220503",
+          "label": "9 RUE MONTBRILLANT #AB6220503 (sources fusees) / 9 RUE MONTBRILLANT",
+          "sources": [
+            "9|RUE|MONTBRILLANT"
+          ]
+        },
+        {
+          "op": "REBIND",
+          "cle": "5|RUE|MONTBRILLANT",
+          "cible": "5|RUE|MONTBRILLANT #AA9380684",
+          "old_cible": "5B|RUE|MONTBRILLANT",
+          "old_bgid": "bdnb-bg-EDS8-9W4U-U4UB"
+        },
+        {
+          "op": "LABEL",
+          "cle": "5|RUE|MONTBRILLANT #AA9380684",
+          "label": "5 RUE MONTBRILLANT #AA9380684 (sources fusees) / 5 RUE MONTBRILLANT",
+          "sources": [
+            "5|RUE|MONTBRILLANT"
+          ]
+        },
+        {
+          "op": "RE-FUSE",
+          "cle": "3|RUE|BARA",
+          "cible": "3|RUE|BARA #AE6121685",
+          "old_cible": null,
+          "old_bgid": "bdnb-bg-1LHG-5G1W-QJ9J"
+        },
+        {
+          "op": "LABEL",
+          "cle": "3|RUE|BARA #AE6121685",
+          "label": "3 RUE BARA #AE6121685 (sources fusees) / 3 RUE BARA",
+          "sources": [
+            "3|RUE|BARA"
+          ]
+        }
+      ],
+      "delta_parc_dedup": -32
     }
   },
   "iris": [
@@ -16477,8 +16618,8 @@
       "classe_dpe": "D",
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
-      "batiment_groupe_id": "bdnb-bg-9MYW-M2VT-GSQE",
-      "_bdnb_match": "immat",
+      "batiment_groupe_id": "bdnb-bg-ZVE8-JEVU-TZ7Q",
+      "_bdnb_match": "correctif_v4_9montbr_privilege_c_rebind",
       "ventes_par_an_logement": {
         "2021": 1,
         "2022": 1,
@@ -16493,7 +16634,7 @@
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "_fusion_auto": true,
-      "_fusion_cible": "9B|RUE|MONTBRILLANT",
+      "_fusion_cible": "9|RUE|MONTBRILLANT #AB6220503",
       "_ilot": "76"
     },
     {
@@ -17807,7 +17948,11 @@
       "nb_lots_habitation": 27,
       "taux_rotation": 11.1,
       "classement_rotation": "Très actif",
-      "_ilot": "67"
+      "_ilot": "67",
+      "_fusion_auto_label": "30 RUE ST PHILIPPE (sources fusees) / 3 RUE MARCEL PEHU",
+      "_fusion_auto_sources": [
+        "3|RUE|MARCEL PEHU"
+      ]
     },
     {
       "cle": "14|RUE|BARA",
@@ -19517,7 +19662,11 @@
       "nb_lots_habitation": 38,
       "taux_rotation": 3.7,
       "classement_rotation": "Très actif",
-      "_ilot": "53"
+      "_ilot": "53",
+      "_fusion_auto_label": "314 RUE PAUL BERT (sources fusees) / 316 RUE PAUL BERT",
+      "_fusion_auto_sources": [
+        "316|RUE|PAUL BERT"
+      ]
     },
     {
       "cle": "35|RUE|ANTOINE CHARIAL",
@@ -27584,8 +27733,8 @@
       "classe_dpe": "E",
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
-      "batiment_groupe_id": "bdnb-bg-JFRZ-XJTQ-L9ZQ",
-      "_bdnb_match": "num_voie",
+      "batiment_groupe_id": "bdnb-bg-MLQ3-6L3N-HFMK",
+      "_bdnb_match": "correctif_v4_316pb_314pb_rebind",
       "_fusion_auto_label": "316/318 RUE PAUL BERT",
       "_fusion_auto_sources": null,
       "ventes_par_an_logement": {
@@ -27599,7 +27748,7 @@
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "_fusion_auto": true,
-      "_fusion_cible": "318|RUE|PAUL BERT",
+      "_fusion_cible": "314|RUE|PAUL BERT",
       "_ilot": "53"
     },
     {
@@ -29497,10 +29646,10 @@
       "classe_dpe": "D",
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
-      "batiment_groupe_id": "bdnb-bg-GMWN-9ZYS-LQGQ",
-      "_bdnb_match": "num_voie",
+      "batiment_groupe_id": "bdnb-bg-A83M-3CFY-N648",
+      "_bdnb_match": "correctif_v4_3pehu_30philippe_rebind",
       "_fusion_auto": true,
-      "_fusion_cible": "23|RUE|ST MAXIMIN",
+      "_fusion_cible": "30|RUE|ST PHILIPPE",
       "ventes_par_an_logement": {
         "2021": 3,
         "2024": 1
@@ -49828,8 +49977,8 @@
       "classe_dpe": "D",
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
-      "batiment_groupe_id": "bdnb-bg-1LHG-5G1W-QJ9J",
-      "_bdnb_match": "immat",
+      "batiment_groupe_id": "bdnb-bg-4EZ3-GBS9-XGWY",
+      "_bdnb_match": "correctif_v4_3bara_bara_rebind",
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
@@ -49837,7 +49986,9 @@
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
-      "_ilot": "75"
+      "_ilot": "75",
+      "_fusion_auto": true,
+      "_fusion_cible": "3|RUE|BARA #AE6121685"
     },
     {
       "cle": "3|RUE|CARRY",
@@ -54651,8 +54802,8 @@
       "classe_dpe": "C",
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
-      "batiment_groupe_id": "bdnb-bg-EDS8-9W4U-U4UB",
-      "_bdnb_match": "immat",
+      "batiment_groupe_id": "bdnb-bg-J4G1-U13J-EJGH",
+      "_bdnb_match": "correctif_v4_5montbr_parmilleux_rebind",
       "ventes_par_an_logement": {
         "2022": 1,
         "2023": 2
@@ -54664,7 +54815,7 @@
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "_fusion_auto": true,
-      "_fusion_cible": "5B|RUE|MONTBRILLANT",
+      "_fusion_cible": "5|RUE|MONTBRILLANT #AA9380684",
       "_ilot": "74"
     },
     {
@@ -57282,10 +57433,10 @@
       "classe_dpe": "C",
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
-      "batiment_groupe_id": "bdnb-bg-68CY-P7TQ-TZ2P",
-      "_bdnb_match": "immat",
+      "batiment_groupe_id": "bdnb-bg-XMZC-EM72-55Q1",
+      "_bdnb_match": "correctif_v4_7sisley_aprim_rebind",
       "_fusion_auto": true,
-      "_fusion_cible": "7B|RUE|PROFESSEUR PAUL SISLEY",
+      "_fusion_cible": "7|RUE|PROFESSEUR PAUL SISLEY #AI9420605",
       "ventes_par_an_logement": {
         "2021": 1,
         "2023": 1
@@ -59389,7 +59540,11 @@
       "nb_lots_habitation": 14,
       "taux_rotation": 7.1,
       "classement_rotation": "Très actif",
-      "_ilot": "74"
+      "_ilot": "74",
+      "_fusion_auto_label": "5 RUE MONTBRILLANT #AA9380684 (sources fusees) / 5 RUE MONTBRILLANT",
+      "_fusion_auto_sources": [
+        "5|RUE|MONTBRILLANT"
+      ]
     },
     {
       "cle": "41|RUE|DAUPHINE",
@@ -59541,7 +59696,11 @@
       "nb_lots_habitation": 28,
       "taux_rotation": 10.7,
       "classement_rotation": "Très actif",
-      "_ilot": "76"
+      "_ilot": "76",
+      "_fusion_auto_label": "9 RUE MONTBRILLANT #AB6220503 (sources fusees) / 9 RUE MONTBRILLANT",
+      "_fusion_auto_sources": [
+        "9|RUE|MONTBRILLANT"
+      ]
     },
     {
       "cle": "225|RUE|PAUL BERT",
@@ -60376,7 +60535,11 @@
       "nb_lots_habitation": 12,
       "taux_rotation": 0.0,
       "classement_rotation": "Figé",
-      "_ilot": "75"
+      "_ilot": "75",
+      "_fusion_auto_label": "3 RUE BARA #AE6121685 (sources fusees) / 3 RUE BARA",
+      "_fusion_auto_sources": [
+        "3|RUE|BARA"
+      ]
     },
     {
       "cle": "76|RUE|ETIENNE RICHERAND",
@@ -60748,7 +60911,11 @@
       "nb_lots_habitation": 34,
       "taux_rotation": 1.2,
       "classement_rotation": "Modéré",
-      "_ilot": "74"
+      "_ilot": "74",
+      "_fusion_auto_label": "7 RUE PROFESSEUR PAUL SISLEY #AI9420605 (sources fusees) / 7 RUE PROFESSEUR PAUL SISLEY",
+      "_fusion_auto_sources": [
+        "7|RUE|PROFESSEUR PAUL SISLEY"
+      ]
     },
     {
       "cle": "202|AVENUE|FELIX FAURE",
