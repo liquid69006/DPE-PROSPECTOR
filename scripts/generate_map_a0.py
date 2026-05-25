@@ -120,21 +120,15 @@ def main():
     # Fond OSM CartoDB Positron via contextily. crs='EPSG:4326' :
     # axe en lat/lng, contextily reprojette les tuiles Mercator
     # (EPSG:3857) automatiquement vers le plan lat/lng.
-    # Source = PositronRetina (tuiles @2x 512px) pour eviter le flou
-    # quand contextily etire des tuiles 256px standard sur une figure
-    # A0 200 DPI. Fallback TileProvider manuel si PositronRetina absent
-    # (entries dans xyzservices/contextily varient selon versions).
-    try:
-        source = ctx.providers.CartoDB.PositronRetina
-        print('[OK] Source : ctx.providers.CartoDB.PositronRetina')
-    except AttributeError:
-        source = ctx.TileProvider({
-            'url': 'https://a.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png',
-            'max_zoom': 19,
-            'attribution': '',
-            'name': 'CartoDB.PositronRetina',
-        })
-        print('[OK] Source : TileProvider manuel @2x (PositronRetina absent)')
+    # Source = URL template directe vers les tuiles CartoDB @2x
+    # (512px au lieu de 256px). contextily accepte une URL template
+    # comme source, plus simple et plus portable que les providers
+    # nommes qui varient selon les versions de xyzservices.
+    source = (
+        "https://a.basemaps.cartocdn.com"
+        "/light_all/{z}/{x}/{y}@2x.png"
+    )
+    print(f'[OK] Source : {source}')
 
     # zoom=16 : noms de rues tres lisibles pour impression A0.
     # Fallback zoom=15 si zoom=16 echoue (timeout, tuile manquante).
