@@ -2462,14 +2462,18 @@ function sctGenHaversine(lat1, lng1, lat2, lng2) {
 }
 
 // Seuils de zonage par rapport a l'adresse de l'agence (haversine, m) :
-//   proche    : <  300 m
-//   moyenne   : 300-600 m
-//   lointaine : >  600 m
-// Updated 2026-05-24 (anciens seuils : 200 / 500).
+//   proche    : <  500 m
+//   moyenne   : 500-750 m
+//   lointaine : >  750 m
+// [r7.4 2026-05-25] Elargis 300/600 -> 500/750 : resoud le desequilibre
+// structurel zone proche (DL : ratio max 1.59 -> aucun >1.30 avec
+// 500/750, redistribue 21 ilots lointaine->moyenne et 16 moyenne->proche
+// sur le secteur dauphine-lacassagne).
+// Historique : 200/500 (init) -> 300/600 (2026-05-24) -> 500/750 (2026-05-25).
 function sctGenZoneOf(distM) {
   if (distM == null) return 'lointaine';
-  if (distM < 300) return 'proche';
-  if (distM <= 600) return 'moyenne';
+  if (distM < 500) return 'proche';
+  if (distM <= 750) return 'moyenne';
   return 'lointaine';
 }
 
@@ -2975,7 +2979,7 @@ const SCT_GEN_TOL_TOTAL = 0.05;   // sctGenBalance : equilibre total +/-5%
 // Tolerance par zone (independante) : zone proche plus souple car
 // effectif d'ilots typiquement plus faible que moyenne/lointaine
 // (geometrie radiale autour de l'agence).
-const SCT_GEN_TOL_ZONE_PROCHE    = 0.50;
+const SCT_GEN_TOL_ZONE_PROCHE    = 0.20;
 const SCT_GEN_TOL_ZONE_MOYENNE   = 0.20;
 const SCT_GEN_TOL_ZONE_LOINTAINE = 0.20;
 const SCT_GEN_ZONE_DEGRAD_LIMIT        = 0.35;  // contrainte balance VERT : move/swap
@@ -3395,7 +3399,7 @@ function sctGenRenderTable() {
   // Summary 4 niveaux (toutes valeurs en ventes/an a l'affichage).
   summary.innerHTML = `<b style="color:var(--text);">Moyenne :</b> ${sctGenPerYear(meanT)} ventes/an · `
     + `<b>Tol. totale ±5% :</b> ±${sctGenPerYear(tolT)} · `
-    + `<b>Quota Z-proche :</b> ${sctGenPerYear(quotas.proche)} ±50% · `
+    + `<b>Quota Z-proche :</b> ${sctGenPerYear(quotas.proche)} ±20% · `
     + `<b>Z-moy :</b> ${sctGenPerYear(quotas.moyenne)} ±20% · `
     + `<b>Z-loin :</b> ${sctGenPerYear(quotas.lointaine)} ±20% · `
     + `<b>Mode :</b> ${secteurStrict ? 'ventes strictes' : 'ventes brutes'}`;
@@ -3422,9 +3426,9 @@ function sctGenRenderTable() {
        + '<thead><tr style="color:var(--text2);font-weight:700;background:#1f2937;">'
        + '<th style="text-align:left;padding:10px 10px;background:#1f2937;border-bottom:2px solid var(--border);">Secteur</th>'
        + '<th style="text-align:left;padding:10px 10px;background:#1f2937;border-bottom:2px solid var(--border);">Îlots</th>'
-       + '<th style="text-align:center;padding:10px 6px;background:#1f2937;border-bottom:2px solid var(--border);" title="Ventes/an des ilots a < 300 m de l\'agence">Proche/an</th>'
-       + '<th style="text-align:center;padding:10px 6px;background:#1f2937;border-bottom:2px solid var(--border);" title="Ventes/an des ilots a 300-600 m de l\'agence">Moyenne/an</th>'
-       + '<th style="text-align:center;padding:10px 6px;background:#1f2937;border-bottom:2px solid var(--border);" title="Ventes/an des ilots a > 600 m de l\'agence">Lointaine/an</th>'
+       + '<th style="text-align:center;padding:10px 6px;background:#1f2937;border-bottom:2px solid var(--border);" title="Ventes/an des ilots a < 500 m de l\'agence">Proche/an</th>'
+       + '<th style="text-align:center;padding:10px 6px;background:#1f2937;border-bottom:2px solid var(--border);" title="Ventes/an des ilots a 500-750 m de l\'agence">Moyenne/an</th>'
+       + '<th style="text-align:center;padding:10px 6px;background:#1f2937;border-bottom:2px solid var(--border);" title="Ventes/an des ilots a > 750 m de l\'agence">Lointaine/an</th>'
        + '<th style="text-align:center;padding:10px 6px;background:#1f2937;border-bottom:2px solid var(--border);">Ventes/an</th>'
        + '<th style="text-align:center;padding:10px 6px;background:#1f2937;border-bottom:2px solid var(--border);">Équilibre</th>'
        + '</tr></thead></table>';
@@ -3454,7 +3458,7 @@ function sctGenRenderTable() {
     const balCell =
         `<div style="display:flex;flex-direction:column;gap:3px;align-items:flex-start;">`
       + balDot(inT,  'T',       `Total ±5% (cible : ${sctGenPerYear(meanT)} ventes/an, secteur : ${sctGenPerYear(sc.total)})`)
-      + balDot(inZp, 'Z-proche', `Zone proche ±50% (quota : ${sctGenPerYear(quotas.proche)}, secteur : ${sctGenPerYear(sc.zones.proche || 0)})`)
+      + balDot(inZp, 'Z-proche', `Zone proche ±20% (quota : ${sctGenPerYear(quotas.proche)}, secteur : ${sctGenPerYear(sc.zones.proche || 0)})`)
       + balDot(inZm, 'Z-moy',    `Zone moyenne ±20% (quota : ${sctGenPerYear(quotas.moyenne)}, secteur : ${sctGenPerYear(sc.zones.moyenne || 0)})`)
       + balDot(inZl, 'Z-loin',   `Zone lointaine ±20% (quota : ${sctGenPerYear(quotas.lointaine)}, secteur : ${sctGenPerYear(sc.zones.lointaine || 0)})`)
       + `</div>`;
@@ -3548,7 +3552,7 @@ function sctGenRenderTable() {
       : `<span style="color:#e67e22;">${ko_label.replace('{n}', count)}</span>`;
   let bilanHtml =
       bItem(outT,  'Total ✓',     'Total : {n} hors ±5%')    + ' &nbsp;|&nbsp; '
-    + bItem(outZp, 'Z-proche ✓',  'Z-proche : {n} hors ±50%') + ' &nbsp;|&nbsp; '
+    + bItem(outZp, 'Z-proche ✓',  'Z-proche : {n} hors ±20%') + ' &nbsp;|&nbsp; '
     + bItem(outZm, 'Z-moy ✓',     'Z-moy : {n} hors ±20%')    + ' &nbsp;|&nbsp; '
     + bItem(outZl, 'Z-loin ✓',    'Z-loin : {n} hors ±20%');
   // Warnings couverture (passe 0) : zones insuffisamment representees.
