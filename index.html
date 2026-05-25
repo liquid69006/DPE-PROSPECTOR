@@ -2574,18 +2574,134 @@ function sctGenScoreSecteur(secId) {
   return { secId, total, zones: z, score: allZones ? total : total * 0.9 };
 }
 
-// Pre-affectation des N ilots les PLUS LOURDS (non-locked) avant le
-// round-robin. Le top-N est distribue un par secteur avec la meme
-// logique gloutonne dispersee que sctGenRoundRobin (centroide moyen
-// le plus eloigne). But : garantir que la charge maximale est
-// equirepartie a la base, le round-robin remplit ensuite les ilots
-// moyens autour. Reduit l'amplitude max-min et ameliore la
-// convergence de sctGenBalance.
+// [REFACTOR 2026-05-25 r7] DISTRIBUTION PAR QUOTA DE ZONES
+// ─────────────────────────────────────────────────────────────────────
+// Algorithme allocation : pour chaque zone (proche/moyenne/lointaine)
+// independamment, calcul du quota par secteur (= sum ventes zone / N)
+// puis distribution gloutonne dispersee (round-robin glouton sur les
+// ilots tries DESC par ventes, secteur cible = celui avec le zoneSum
+// minimum ET centroide moyen le plus eloigne).
 //
-// Difference vs locked : les preassigned sont RECALCULES a chaque
-// sctGenStart/sctGenRegen (Fisher-Yates sur l'ordre des secteurs
-// applique aussi a la pre-affectation -> variabilite preservee).
-function sctGenPreAssignHeavy() {
+// Avantages vs ancien pipeline (sctGenPreAssignHeavy + sctGenRoundRobin) :
+//   - Repartition intra-zone equilibree d'office (chaque secteur recoit
+//     son quota +/-20% par zone, et non un melange aleatoire de zones).
+//   - Plus de "pre-affectation des heavy" + round-robin general : 1 seul
+//     parcours par zone, complexite O(N_ilots * log N_secteurs).
+//   - Tolere les zones a effectif < N_secteurs (les ilots vont aux
+//     secteurs les plus deficitaires).
+//   - Locked et Fisher-Yates conserves comme avant.
+//
+// Quotas stockes dans sctGenState._quotas pour usage par sctGenBalance
+// (contrainte zone-degradation) et sctGenRenderTable (indicateurs UI).
+function sctGenDistribByZone() {
+  const N = sctGenState.N;
+  if (N <= 0) return;
+  const ilotMap = {}; for (const i of sctGenState.ilots) ilotMap[i.ilotId] = i;
+  const old = sctGenState.repartition || {};
+  const newRep = {};
+
+  // 1) Preservation des locked (les preassigned du tour precedent NE
+  //    SONT PLUS preserves dans ce refactor -- pre-affectation
+  //    supprimee).
+  for (const [iid, v] of Object.entries(old)) {
+    if (v && v.locked && v.conseillerId) {
+      newRep[iid] = { conseillerId: v.conseillerId, locked: true };
+    }
+  }
+
+  // 2) Shuffle Fisher-Yates de l'ordre des secteurs (tie-breaker
+  //    stable + variabilite entre regenerations).
+  const secOrder = Array.from({ length: N }, (_, i) => i + 1);
+  for (let i = secOrder.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [secOrder[i], secOrder[j]] = [secOrder[j], secOrder[i]];
+  }
+
+  // 3) Index des ilots par zone (locked exclus, deja places).
+  const ZONES = ['proche', 'moyenne', 'lointaine'];
+  const ilotsByZone = { proche: [], moyenne: [], lointaine: [] };
+  for (const ilot of sctGenState.ilots) {
+    if (newRep[ilot.ilotId]) continue;
+    const zk = ilotsByZone[ilot.zone] ? ilot.zone : 'lointaine';
+    ilotsByZone[zk].push(ilot);
+  }
+
+  // 4) ETAPE 1 - Calcul quotas par zone (en tenant compte des locked
+  //    deja places dans chaque zone).
+  const quotas = {};
+  for (const zk of ZONES) {
+    let totalZone = ilotsByZone[zk].reduce((s, i) => s + (i.nb_ventes || 0), 0);
+    for (const [iid, v] of Object.entries(newRep)) {
+      const il = ilotMap[iid];
+      if (il && il.zone === zk) totalZone += (il.nb_ventes || 0);
+    }
+    quotas[zk] = totalZone / N;
+  }
+  sctGenState._quotas = quotas;
+  console.log('[sctGen] quotas/zone :', JSON.stringify(quotas));
+
+  // 5) ETAPE 2 - Distribution INDEPENDANTE par zone.
+  for (const zk of ZONES) {
+    // Bookkeeping par secteur pour CETTE zone.
+    const zoneSums = {};
+    const centSumZone = {};
+    for (let i = 1; i <= N; i++) {
+      zoneSums['sec-' + i] = 0;
+      centSumZone['sec-' + i] = { lat: 0, lng: 0, n: 0 };
+    }
+    // Init avec locked deja places dans cette zone.
+    for (const [iid, v] of Object.entries(newRep)) {
+      const il = ilotMap[iid];
+      if (!il || il.zone !== zk) continue;
+      zoneSums[v.conseillerId] = (zoneSums[v.conseillerId] || 0) + (il.nb_ventes || 0);
+      if (il.centroide_lat != null) {
+        const cs = centSumZone[v.conseillerId];
+        if (cs) { cs.lat += il.centroide_lat; cs.lng += il.centroide_lng; cs.n++; }
+      }
+    }
+
+    // Tri DESC par nb_ventes -- les ilots les plus lourds en premier.
+    const sortedZone = [...ilotsByZone[zk]].sort((a, b) => (b.nb_ventes || 0) - (a.nb_ventes || 0));
+
+    // Greedy : pour chaque ilot, secteur avec zoneSums min ET centroide
+    // moyen le PLUS ELOIGNE (Infinity si secteur vide pour cette zone).
+    for (const ilot of sortedZone) {
+      let minSum = Infinity;
+      for (const sid of Object.keys(zoneSums)) if (zoneSums[sid] < minSum) minSum = zoneSums[sid];
+      const candidates = secOrder
+        .map(n => 'sec-' + n)
+        .filter(sid => zoneSums[sid] === minSum);
+      let bestSid = candidates[0];
+      let bestDist = -Infinity;
+      for (const sid of candidates) {
+        const cs = centSumZone[sid];
+        let dist;
+        if (!cs || cs.n === 0) dist = Infinity;
+        else if (ilot.centroide_lat == null) dist = 0;
+        else {
+          dist = sctGenHaversine(ilot.centroide_lat, ilot.centroide_lng,
+                                 cs.lat / cs.n, cs.lng / cs.n);
+          if (dist == null) dist = 0;
+        }
+        if (dist > bestDist) { bestDist = dist; bestSid = sid; }
+      }
+      newRep[ilot.ilotId] = { conseillerId: bestSid, locked: false };
+      zoneSums[bestSid] += (ilot.nb_ventes || 0);
+      if (ilot.centroide_lat != null) {
+        const cs = centSumZone[bestSid];
+        cs.lat += ilot.centroide_lat;
+        cs.lng += ilot.centroide_lng;
+        cs.n++;
+      }
+    }
+  }
+
+  sctGenState.repartition = newRep;
+}
+
+// [DEPRECATED -- conserve pour compatibilite descendante temporaire,
+// plus appele par sctGenStart/sctGenRegen post-refactor r7]
+function sctGenPreAssignHeavyDeprecated() {
   const N = sctGenState.N;
   if (N <= 0) return;
   const ilotMap = {}; for (const i of sctGenState.ilots) ilotMap[i.ilotId] = i;
@@ -2670,18 +2786,10 @@ function sctGenPreAssignHeavy() {
   console.log(`[sctGen] pre-affectation : ${heavy.length} ilot(s) lourd(s) sur ${N} secteur(s)`);
 }
 
-// Distribution gloutonne DISPERSEE des ilots sur N secteurs.
-// [FIX 2026-05-25] Remplace le round-robin strict par un choix glouton :
-// pour chaque ilot (tri DESC par ventes en amont), on selectionne le
-// secteur ayant le MOINS d'ilots deja affectes, puis parmi ceux-ci
-// celui dont le CENTROIDE MOYEN est le PLUS ELOIGNE du centroide de
-// l'ilot courant (un secteur vide a une distance "infinie" -> toujours
-// prioritaire).
-// Le shuffle Fisher-Yates de l'ordre des secteurs sert de tie-breaker
-// stable (cas typique : iteration 1, tous les secteurs sont vides).
-// Les ilots locked ET preassigned sont preserves (les preassigned
-// proviennent de sctGenPreAssignHeavy(), appelee en amont).
-function sctGenRoundRobin() {
+// [DEPRECATED 2026-05-25 r7] Distribution gloutonne SANS quota zone --
+// remplace par sctGenDistribByZone() qui calibre par quotas/zone.
+// Conserve en cas de fallback ou debug, plus appele par sctGenStart/Regen.
+function sctGenRoundRobinDeprecated() {
   const N = sctGenState.N;
   if (N <= 0) return;
   const ilotMap = {}; for (const i of sctGenState.ilots) ilotMap[i.ilotId] = i;
@@ -2862,10 +2970,12 @@ function sctGenEnsureZoneCoverage() {
   }
 }
 
-// Tolerances par niveau (sctGenBalance 2 passes + indicateurs UI).
-const SCT_GEN_TOL_TOTAL = 0.08;   // passe 1 : equilibre total des secteurs
-const SCT_GEN_TOL_PM    = 0.10;   // passe 2 : equilibre proche+moyenne
-const SCT_GEN_MAX_ITER  = 100;    // par passe (50 -> 100 pour plus de chance de convergence)
+// Tolerances par niveau (refactor r7 quota-zones).
+const SCT_GEN_TOL_TOTAL = 0.05;   // sctGenBalance : equilibre total +/-5%
+const SCT_GEN_TOL_ZONE  = 0.20;   // distribution par zone : +/-20%
+const SCT_GEN_ZONE_DEGRAD_LIMIT = 0.25;  // contrainte balance : move/swap ne degrade
+                                          // pas les zones de plus de 25% du quota
+const SCT_GEN_MAX_ITER  = 100;    // iterations max sctGenBalance
 
 // Penalite proximite (passes 1 ET 2) : malus 3 paliers selon la distance
 // min entre l'ilot candidat et un ilot deja dans minS.
@@ -2894,17 +3004,22 @@ function sctGenProxMalus(ilot, peers) {
   return 1;
 }
 
-// Equilibrage en 2 passes sequentielles :
-//   Passe 1 : total des ventes par secteur (tol +/-5%, malus proximite).
-//   Passe 2 : ventes des zones proche+moyenne (tol +/-10%), avec
-//             contrainte : preserver l'enveloppe totale de la passe 1.
-// Chaque passe : 50 iters max, arret anticipe si tolerance atteinte.
-// La couverture stricte P/M/L par secteur est assuree par la passe 0
-// (sctGenEnsureZoneCoverage), executee avant sctGenBalance().
+// [REFACTOR r7 2026-05-25] Equilibrage en 1 PASSE UNIQUE :
+//   Total ventes par secteur (tol +/-5%, malus proximite),
+//   AVEC CONTRAINTE : chaque move/swap ne doit pas degrader les zones
+//   du secteur source OU destination de plus de
+//   SCT_GEN_ZONE_DEGRAD_LIMIT (=25%) du quota zone (calcule en amont
+//   par sctGenDistribByZone).
+// Cette contrainte preserve la distribution par quota de zones tout
+// en cherchant l'equilibre total sous-tolerance 5%.
+// La passe 2 P+M est supprimee (le quota-par-zone amont la rend
+// inutile : chaque secteur a deja son quota proche/moyenne +/-20%).
 function sctGenBalance() {
   const N = sctGenState.N;
   if (N <= 0) return;
   const ilotMap = {}; for (const i of sctGenState.ilots) ilotMap[i.ilotId] = i;
+  const quotas = sctGenState._quotas || { proche: 0, moyenne: 0, lointaine: 0 };
+  const ZONES = ['proche', 'moyenne', 'lointaine'];
 
   // Helpers locaux ---------------------------------------------------
   const computeScores = () => {
@@ -2912,26 +3027,36 @@ function sctGenBalance() {
     for (let i = 1; i <= N; i++) out.push(sctGenScoreSecteur('sec-' + i));
     return out;
   };
-  const pmOf = s => s.zones.proche + s.zones.moyenne;
-  // Cle servant a indexer scores par secId (utile pour relire post-move).
-  const byId = arr => { const m = {}; for (const s of arr) m[s.secId] = s; return m; };
 
-  // ── PASSE 1 : equilibre total (tol +/-5%, malus proximite) ────────
-  // Strategies envisagees a chaque iter : MOVE (deplacer 1 ilot de maxS
-  // vers minS) ou SWAP (echanger 2 ilots entre maxS et minS). Le swap
-  // est limite aux 10 ilots les plus lourds de chaque secteur pour
-  // controler la complexite (O(N) -> O(100) au lieu de O(N^2)).
+  // Contrainte zone-degradation : un secteur ne doit pas voir sa
+  // zone Z s'eloigner du quota_Z de plus de DEGRAD_LIMIT*quota_Z apres
+  // le move (ou apres le swap, double check sur l'ilot A entrant et
+  // l'ilot B sortant, et symetriquement cote source).
+  // sign = +1 si secteur RECOIT ilot, -1 si secteur PERD ilot.
+  const wouldDegrade = (secScore, ilot, sign) => {
+    if (!ilot) return false;
+    const zk = ilot.zone;
+    if (!ZONES.includes(zk)) return false;
+    const q = quotas[zk] || 0;
+    if (q === 0) return false;
+    const newZoneSum = (secScore.zones[zk] || 0) + sign * (ilot.nb_ventes || 0);
+    return Math.abs(newZoneSum - q) > SCT_GEN_ZONE_DEGRAD_LIMIT * q;
+  };
+
   const SCT_GEN_SWAP_TOP_K = 10;
   for (let iter = 0; iter < SCT_GEN_MAX_ITER; iter++) {
     const scores = computeScores();
     const mean = scores.reduce((s,x) => s + x.total, 0) / N;
     const tol = mean * SCT_GEN_TOL_TOTAL;
     let maxS = scores[0], minS = scores[0];
-    for (const s of scores) { if (s.total > maxS.total) maxS = s; if (s.total < minS.total) minS = s; }
+    for (const s of scores) {
+      if (s.total > maxS.total) maxS = s;
+      if (s.total < minS.total) minS = s;
+    }
     if ((maxS.total - mean) <= tol && (mean - minS.total) <= tol) break;
 
     // Precalcul ilots de maxS / minS (non-locked) pour swap candidates,
-    // sous-listes des avec centroide_lat pour le malus proximite.
+    // sous-listes avec centroide_lat pour le malus proximite.
     const maxIlots = [];
     const minIlots = [];
     const minSIlots = [];
@@ -2948,25 +3073,28 @@ function sctGenBalance() {
     const minTop = minIlots.slice(0, SCT_GEN_SWAP_TOP_K);
 
     let bestGain = 0;
-    let bestAction = null;                              // {type:'move',iid} | {type:'swap',aIid,bIid}
+    let bestAction = null;
     const curDiff = maxS.total - minS.total;
 
-    // MOVE : pour chaque ilot non-locked de maxS, tester deplacement.
+    // MOVE : pour chaque ilot non-locked de maxS, tester deplacement
+    // sous contrainte zone-degradation (max perd / min recoit).
     for (const ilot of maxIlots) {
+      if (wouldDegrade(maxS, ilot, -1)) continue;
+      if (wouldDegrade(minS, ilot, +1)) continue;
       const newDiff = Math.abs((maxS.total - ilot.nb_ventes) - (minS.total + ilot.nb_ventes));
       let gain = curDiff - newDiff;
       gain *= sctGenProxMalus(ilot, minSIlots);
       if (gain > bestGain) { bestGain = gain; bestAction = { type: 'move', iid: ilot.ilotId }; }
     }
 
-    // SWAP : (A in maxTop, B in minTop) tels que A.ventes > B.ventes
-    // (sinon le swap deteriore l'ecart). newDiff = |curDiff - 2*(A-B)|.
-    // Malus proximite applique a A (le nouvel arrivant de minS) vs
-    // minSIlots restants (approximation : on garde B dans la liste,
-    // simplification mineure -- B part en maxS donc malus surestime).
+    // SWAP : (A in maxTop, B in minTop) tels que A.ventes > B.ventes.
+    // Double contrainte zone-degradation : maxS perd A et recoit B,
+    // minS recoit A et perd B (4 verifs par paire).
     for (const A of maxTop) {
       for (const B of minTop) {
         if ((A.nb_ventes || 0) <= (B.nb_ventes || 0)) continue;
+        if (wouldDegrade(maxS, A, -1) || wouldDegrade(maxS, B, +1)) continue;
+        if (wouldDegrade(minS, A, +1) || wouldDegrade(minS, B, -1)) continue;
         const delta = (A.nb_ventes || 0) - (B.nb_ventes || 0);
         const newDiff = Math.abs(curDiff - 2 * delta);
         let gain = curDiff - newDiff;
@@ -2986,59 +3114,6 @@ function sctGenBalance() {
       sctGenState.repartition[bestAction.bIid].conseillerId = maxS.secId;
     }
   }
-
-  // ── Snapshot de l'enveloppe totale apres passe 1 (contrainte pour
-  //    passes 2 et 3 : aucun move ne doit faire sortir un secteur
-  //    de cette enveloppe). On capture mean + tol GELES.
-  const scoresAfterP1 = computeScores();
-  const meanTotal = scoresAfterP1.reduce((s,x) => s + x.total, 0) / N;
-  const tolTotal = meanTotal * SCT_GEN_TOL_TOTAL;
-
-  // ── PASSE 2 : equilibre P+M (tol +/-10%, contrainte total +/-5%) ──
-  for (let iter = 0; iter < SCT_GEN_MAX_ITER; iter++) {
-    const scores = computeScores();
-    const mean = scores.reduce((s,x) => s + pmOf(x), 0) / N;
-    const tol = mean * SCT_GEN_TOL_PM;
-    if (mean === 0) break;                           // aucune vente P+M
-    let maxS = scores[0], minS = scores[0];
-    for (const s of scores) { if (pmOf(s) > pmOf(maxS)) maxS = s; if (pmOf(s) < pmOf(minS)) minS = s; }
-    if ((pmOf(maxS) - mean) <= tol && (mean - pmOf(minS)) <= tol) break;
-
-    // [FIX 2026-05-25] Precalcul ilots de minS pour le malus proximite
-    // (applique aussi en passe 2 -- avant uniquement en passe 1).
-    const minSIlots = [];
-    for (const [iid, v] of Object.entries(sctGenState.repartition)) {
-      if (v && v.conseillerId === minS.secId) {
-        const o = ilotMap[iid];
-        if (o && o.centroide_lat != null) minSIlots.push(o);
-      }
-    }
-
-    let bestGain = 0, bestIid = null;
-    const curDiff = pmOf(maxS) - pmOf(minS);
-    for (const [iid, v] of Object.entries(sctGenState.repartition)) {
-      if (!v || v.locked || v.conseillerId !== maxS.secId) continue;
-      const ilot = ilotMap[iid]; if (!ilot) continue;
-      if (ilot.zone !== 'proche' && ilot.zone !== 'moyenne') continue;
-      // Contrainte : le move ne doit pas faire sortir maxS ou minS de
-      // l'enveloppe totale +/-5% (gelee apres passe 1).
-      const newMaxTotal = maxS.total - ilot.nb_ventes;
-      const newMinTotal = minS.total + ilot.nb_ventes;
-      if (Math.abs(newMaxTotal - meanTotal) > tolTotal) continue;
-      if (Math.abs(newMinTotal - meanTotal) > tolTotal) continue;
-      const newDiff = Math.abs((pmOf(maxS) - ilot.nb_ventes) - (pmOf(minS) + ilot.nb_ventes));
-      let gain = curDiff - newDiff;
-      gain *= sctGenProxMalus(ilot, minSIlots);
-      if (gain > bestGain) { bestGain = gain; bestIid = iid; }
-    }
-    if (!bestIid) break;
-    sctGenState.repartition[bestIid].conseillerId = minS.secId;
-  }
-
-  // [FIX 2026-05-24 r6] Passe 3 (equilibre par zone +/-20%) supprimee :
-  // l'enveloppe T + P+M suffit en pratique, et la couverture stricte
-  // P/M/L par secteur est deja assuree par la passe 0
-  // (sctGenEnsureZoneCoverage).
 }
 
 // Construit la liste conseillers à partir de N (préserve noms personnalisés
@@ -3170,16 +3245,14 @@ async function sctGenStart() {
     const v = sctGenState.repartition[iid];
     if (!v || !validIds.has(v.conseillerId)) delete sctGenState.repartition[iid];
   }
-  // [FIX 2026-05-26] Pre-affectation des N ilots les plus lourds AVANT
-  // le round-robin : garantit que la charge max est equirepartie a la
-  // base. Reduit l'amplitude max-min et la pression sur sctGenBalance.
-  sctGenPreAssignHeavy();
-  sctGenRoundRobin();
-  // [FIX 2026-05-24] try/catch global : empeche le bouton de rester
-  // disable sur une exception (ex ilotEffectif undefined, mutation
-  // secteurData inattendue). Log console F12 pour diag.
-  // [FIX 2026-05-24 r5] Passe 0 (couverture zones) avant les 3 passes
-  // d'equilibrage.
+  // [REFACTOR r7 2026-05-26] Pipeline algo en 3 etapes :
+  //   1. sctGenDistribByZone : quota/zone + distribution gloutonne
+  //      dispersee independante par zone (proche/moyenne/lointaine).
+  //   2. sctGenEnsureZoneCoverage : garantit >=1 ilot/zone/secteur
+  //      (passe 0 conservee, complemente le quota si zone < N ilots).
+  //   3. sctGenBalance : 1 passe (total +/-5% via move/swap) sous
+  //      contrainte zone-degradation +/-25%.
+  sctGenDistribByZone();
   try {
     sctGenEnsureZoneCoverage();
     sctGenBalance();
@@ -3192,16 +3265,14 @@ async function sctGenStart() {
 }
 
 function sctGenRegen() {
-  // [FIX 2026-05-24 r5] sctGenRoundRobin shuffle Fisher-Yates l'ordre
-  // des secteurs -> chaque Regen explore un optimum local different.
-  // Le patron peut cliquer plusieurs fois pour comparer.
+  // [REFACTOR r7] Fisher-Yates dans sctGenDistribByZone -> chaque Regen
+  // explore un optimum local different par zone.
   if (!sctGenState.ilots || !sctGenState.ilots.length) {
     showToast('⚠️ Aucun îlot — lance d\'abord Générer', true);
     return;
   }
   try {
-    sctGenPreAssignHeavy();
-    sctGenRoundRobin();
+    sctGenDistribByZone();
     sctGenEnsureZoneCoverage();
     sctGenBalance();
     sctGenRenderTable();
@@ -3223,16 +3294,24 @@ function sctGenShowResult() {
 
 function sctGenRenderTable() {
   const ilotMap = {}; for (const i of sctGenState.ilots) ilotMap[i.ilotId] = i;
-  // 1) calc scores + moyennes/tolerances pour les 3 niveaux (T, P+M, Z)
+  // [REFACTOR r7] calc scores + moyennes pour 4 indicateurs :
+  //   T (+/-5%), Z-proche (+/-20%), Z-moyenne (+/-20%), Z-lointaine (+/-20%)
   const scores = sctGenState.conseillers.map(c => sctGenScoreSecteur(c.id));
   const Nsc = Math.max(1, scores.length);
-  const pmOf = s => s.zones.proche + s.zones.moyenne;
-  // Total
   const meanT = scores.reduce((s,x) => s + x.total, 0) / Nsc;
   const tolT  = meanT * SCT_GEN_TOL_TOTAL;
-  // Proche + Moyenne
-  const meanPM = scores.reduce((s,x) => s + pmOf(x), 0) / Nsc;
-  const tolPM  = meanPM * SCT_GEN_TOL_PM;
+  // Quotas par zone : prioritairement issus de sctGenDistribByZone
+  // (etape 1), fallback recalcul depuis les scores actuels.
+  const quotas = sctGenState._quotas || {
+    proche:    scores.reduce((s,x) => s + (x.zones.proche || 0),    0) / Nsc,
+    moyenne:   scores.reduce((s,x) => s + (x.zones.moyenne || 0),   0) / Nsc,
+    lointaine: scores.reduce((s,x) => s + (x.zones.lointaine || 0), 0) / Nsc,
+  };
+  const tolZ = {
+    proche:    quotas.proche    * SCT_GEN_TOL_ZONE,
+    moyenne:   quotas.moyenne   * SCT_GEN_TOL_ZONE,
+    lointaine: quotas.lointaine * SCT_GEN_TOL_ZONE,
+  };
 
   // 2) regroupe îlots par secteur
   const bySec = {}; for (const c of sctGenState.conseillers) bySec[c.id] = [];
@@ -3245,10 +3324,12 @@ function sctGenRenderTable() {
   // 3) render
   const summary = document.getElementById('sct-gen-summary');
   const bilan = document.getElementById('sct-gen-bilan');
-  // Summary multi-niveaux (toutes valeurs en ventes/an a l'affichage).
+  // Summary 4 niveaux (toutes valeurs en ventes/an a l'affichage).
   summary.innerHTML = `<b style="color:var(--text);">Moyenne :</b> ${sctGenPerYear(meanT)} ventes/an · `
-    + `<b>Tol. totale ±8% :</b> ±${sctGenPerYear(tolT)} · `
-    + `<b>P+M ±10% :</b> ±${sctGenPerYear(tolPM)} · `
+    + `<b>Tol. totale ±5% :</b> ±${sctGenPerYear(tolT)} · `
+    + `<b>Quota Z-proche :</b> ${sctGenPerYear(quotas.proche)} ±20% · `
+    + `<b>Z-moy :</b> ${sctGenPerYear(quotas.moyenne)} ±20% · `
+    + `<b>Z-loin :</b> ${sctGenPerYear(quotas.lointaine)} ±20% · `
     + `<b>Mode :</b> ${secteurStrict ? 'ventes strictes' : 'ventes brutes'}`;
 
   // [FIX 2026-05-24 r4] Table splitee en 2 sous-tables avec colgroup
@@ -3283,7 +3364,7 @@ function sctGenRenderTable() {
   let html = `<table style="${TBL_STYLE}">` + COLGROUP + '<tbody>';
 
   // Compteurs hors-tolerance par niveau (pour bilan global).
-  let outT = 0, outPM = 0;
+  let outT = 0, outZp = 0, outZm = 0, outZl = 0;
   // Helper rendu indicateur (point + label, vert si ok, orange sinon).
   const balDot = (ok, lbl, tip) =>
       `<span title="${tip}" style="display:inline-flex;align-items:center;gap:3px;font-size:10px;color:var(--text2);white-space:nowrap;">`
@@ -3292,16 +3373,22 @@ function sctGenRenderTable() {
 
   for (const c of sctGenState.conseillers) {
     const sc = scores.find(s => s.secId === c.id) || { total:0, zones:{proche:0,moyenne:0,lointaine:0} };
-    // Verifs des 2 niveaux : T (total +/-5%) et P+M (+/-10%).
-    const inT  = Math.abs(sc.total  - meanT)  <= tolT;
-    const inPM = Math.abs(pmOf(sc)  - meanPM) <= tolPM;
-    if (!inT) outT++;
-    if (!inPM) outPM++;
+    // Verifs des 4 niveaux : T (+/-5%) + Z-proche/moy/loin (+/-20%).
+    const inT  = Math.abs(sc.total - meanT) <= tolT;
+    const inZp = (quotas.proche    > 0) ? Math.abs((sc.zones.proche    || 0) - quotas.proche)    <= tolZ.proche    : true;
+    const inZm = (quotas.moyenne   > 0) ? Math.abs((sc.zones.moyenne   || 0) - quotas.moyenne)   <= tolZ.moyenne   : true;
+    const inZl = (quotas.lointaine > 0) ? Math.abs((sc.zones.lointaine || 0) - quotas.lointaine) <= tolZ.lointaine : true;
+    if (!inT)  outT++;
+    if (!inZp) outZp++;
+    if (!inZm) outZm++;
+    if (!inZl) outZl++;
     const swatch = `<span style="display:inline-block;width:14px;height:14px;border-radius:3px;border:1px solid #00000033;${sctGenSwatchCss(sctGenState.conseillers.indexOf(c))}"></span>`;
     const balCell =
         `<div style="display:flex;flex-direction:column;gap:3px;align-items:flex-start;">`
-      + balDot(inT,  'T',   `Total ±8% — passe 1 (cible : ${sctGenPerYear(meanT)} ventes/an, secteur : ${sctGenPerYear(sc.total)})`)
-      + balDot(inPM, 'P+M', `Proche+Moyenne ±10% — passe 2 (cible : ${sctGenPerYear(meanPM)}, secteur : ${sctGenPerYear(pmOf(sc))})`)
+      + balDot(inT,  'T',       `Total ±5% (cible : ${sctGenPerYear(meanT)} ventes/an, secteur : ${sctGenPerYear(sc.total)})`)
+      + balDot(inZp, 'Z-proche', `Zone proche ±20% (quota : ${sctGenPerYear(quotas.proche)}, secteur : ${sctGenPerYear(sc.zones.proche || 0)})`)
+      + balDot(inZm, 'Z-moy',    `Zone moyenne ±20% (quota : ${sctGenPerYear(quotas.moyenne)}, secteur : ${sctGenPerYear(sc.zones.moyenne || 0)})`)
+      + balDot(inZl, 'Z-loin',   `Zone lointaine ±20% (quota : ${sctGenPerYear(quotas.lointaine)}, secteur : ${sctGenPerYear(sc.zones.lointaine || 0)})`)
       + `</div>`;
 
     // [FIX 2026-05-24 r3] Groupement par zone + drag&drop natif.
@@ -3386,14 +3473,16 @@ function sctGenRenderTable() {
   document.getElementById('sct-gen-table-header').innerHTML = headerHtml;
   document.getElementById('sct-gen-table-body').innerHTML = html;
 
-  // Bilan multi-niveaux : 2 indicateurs T / P+M + warnings couverture.
+  // Bilan multi-niveaux : 4 indicateurs T / Z-proche / Z-moy / Z-loin.
   const bItem = (count, ok_label, ko_label) =>
     count === 0
       ? `<span style="color:#16a34a;">${ok_label}</span>`
       : `<span style="color:#e67e22;">${ko_label.replace('{n}', count)}</span>`;
   let bilanHtml =
-      bItem(outT,  'Total ✓',  'Total : {n} hors ±8%') + ' &nbsp;|&nbsp; '
-    + bItem(outPM, 'P+M ✓',    'P+M : {n} hors ±10%');
+      bItem(outT,  'Total ✓',     'Total : {n} hors ±5%')    + ' &nbsp;|&nbsp; '
+    + bItem(outZp, 'Z-proche ✓',  'Z-proche : {n} hors ±20%') + ' &nbsp;|&nbsp; '
+    + bItem(outZm, 'Z-moy ✓',     'Z-moy : {n} hors ±20%')    + ' &nbsp;|&nbsp; '
+    + bItem(outZl, 'Z-loin ✓',    'Z-loin : {n} hors ±20%');
   // Warnings couverture (passe 0) : zones insuffisamment representees.
   const warns = (sctGenState._coverageWarnings || []);
   if (warns.length) {
