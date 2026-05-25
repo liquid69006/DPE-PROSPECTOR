@@ -2479,8 +2479,18 @@ async function sctGenGeocode(adresse) {
 function sctGenComputeIlots() {
   if (!secteurData || !secteurData.adresses) return [];
   const ANS = ['2021', '2022', '2023', '2024', '2025'];
+  // useStrict : force le mode "logement strict" pour le calcul de la
+  // repartition (sctGen + Export A0) des que les donnees logement sont
+  // disponibles dans secteurData.adresses, INDEPENDAMMENT du toggle UI
+  // (secteurStrict). Le toggle reste effectif pour le rendu dashboard
+  // (vpaOf l.3806) mais l'algo de repartition doit etre stable :
+  // sinon un user qui toggle OFF avant Export A0 obtient un PNG calcule
+  // sur les mutations brutes (commerce + tertiaire), ce qui fausse la
+  // distribution des ilots.
+  const useStrict = secteurData.adresses.some(a => a.ventes_par_an_logement);
+  console.log('[sctGen] mode:', useStrict ? 'strict' : 'brut');
   const sumVpa = a => {
-    if (secteurStrict && a.ventes_par_an_logement) {
+    if (useStrict && a.ventes_par_an_logement) {
       if (typeof a.nb_ventes_logement === 'number') return a.nb_ventes_logement;
       let s = 0; for (const y of ANS) s += (a.ventes_par_an_logement[y] || 0); return s;
     }
