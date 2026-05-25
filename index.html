@@ -2578,13 +2578,23 @@ function sctGenScoreSecteur(secId) {
   return { secId, total, zones: z, score: allZones ? total : total * 0.9 };
 }
 
-// [REFACTOR 2026-05-25 r7] DISTRIBUTION PAR QUOTA DE ZONES
+// [REFACTOR 2026-05-25 r7 / r7.5] DISTRIBUTION PAR QUOTA DE ZONES
 // ─────────────────────────────────────────────────────────────────────
 // Algorithme allocation : pour chaque zone (proche/moyenne/lointaine)
 // independamment, calcul du quota par secteur (= sum ventes zone / N)
 // puis distribution gloutonne dispersee (round-robin glouton sur les
 // ilots tries DESC par ventes, secteur cible = celui avec le zoneSum
-// minimum ET centroide moyen le plus eloigne).
+// minimum ET centroide GLOBAL le plus eloigne).
+//
+// [r7.5] Le bookkeeping centSumGlobal est PARTAGE entre les 3 boucles
+// de zones (vs centSumZone reinitialise par zone avant r7.5). Permet
+// la coordination geographique inter-zones : si l'ilot 74 (zone
+// moyenne, 712m est de l'agence) est place dans le secteur S_A, le
+// centSumGlobal de S_A se decale vers l'est ; quand vient le tour de
+// distribuer l'ilot 76 (zone lointaine, 235m de 74), le critere
+// "centroide global le plus eloigne" envoie 76 vers un AUTRE secteur,
+// pas le meme. Resout le regroupement systematique observe sur des
+// paires d'ilots proches (235m) appartenant a des zones differentes.
 //
 // Avantages vs ancien pipeline (sctGenPreAssignHeavy + sctGenRoundRobin) :
 //   - Repartition intra-zone equilibree d'office (chaque secteur recoit
@@ -2593,6 +2603,7 @@ function sctGenScoreSecteur(secId) {
 //     parcours par zone, complexite O(N_ilots * log N_secteurs).
 //   - Tolere les zones a effectif < N_secteurs (les ilots vont aux
 //     secteurs les plus deficitaires).
+//   - [r7.5] Dispersion geographique inter-zones via centSumGlobal.
 //   - Locked et Fisher-Yates conserves comme avant.
 //
 // Quotas stockes dans sctGenState._quotas pour usage par sctGenBalance
@@ -2644,31 +2655,48 @@ function sctGenDistribByZone() {
   sctGenState._quotas = quotas;
   console.log('[sctGen] quotas/zone :', JSON.stringify(quotas));
 
-  // 5) ETAPE 2 - Distribution INDEPENDANTE par zone.
+  // 5a) [REFACTOR r7.5 2026-05-25] Bookkeeping CENTROIDE GLOBAL partage
+  //     entre les 3 zones (proche/moyenne/lointaine). Avant r7.5, le
+  //     centroide etait par-zone et reinitialise a chaque boucle, ce qui
+  //     creait un risque d'amalgame inter-zones : ex. ilots 74 (moyenne,
+  //     centroide 45.75127, 4.86952) et 76 (lointaine, 45.75009, 4.87204)
+  //     -- seulement 235m entre eux -- pouvaient tomber dans le meme
+  //     secteur car les 2 distributions zone-par-zone partaient toutes
+  //     deux d'un bookkeeping vierge sans coordination geographique.
+  //     Avec centSumGlobal, le secteur qui recoit 74 voit son centroide
+  //     deplace vers l'est, donc la distribution zone lointaine choisira
+  //     un AUTRE secteur pour 76 (plus eloigne du barycentre actuel).
+  const centSumGlobal = {};
+  for (let i = 1; i <= N; i++) {
+    centSumGlobal['sec-' + i] = { lat: 0, lng: 0, n: 0 };
+  }
+  // Init avec locked deja places (toutes zones confondues).
+  for (const [iid, v] of Object.entries(newRep)) {
+    const il = ilotMap[iid];
+    if (!il || il.centroide_lat == null) continue;
+    const cs = centSumGlobal[v.conseillerId];
+    if (cs) { cs.lat += il.centroide_lat; cs.lng += il.centroide_lng; cs.n++; }
+  }
+
+  // 5b) ETAPE 2 - Distribution PAR ZONE (zoneSums local) mais critere
+  //     de dispersion GLOBAL (centSumGlobal partage entre zones).
   for (const zk of ZONES) {
-    // Bookkeeping par secteur pour CETTE zone.
+    // zoneSums : bookkeeping local a la zone (pour le quota +/-20%).
     const zoneSums = {};
-    const centSumZone = {};
-    for (let i = 1; i <= N; i++) {
-      zoneSums['sec-' + i] = 0;
-      centSumZone['sec-' + i] = { lat: 0, lng: 0, n: 0 };
-    }
-    // Init avec locked deja places dans cette zone.
+    for (let i = 1; i <= N; i++) zoneSums['sec-' + i] = 0;
+    // Init zoneSums avec locked deja places dans cette zone.
     for (const [iid, v] of Object.entries(newRep)) {
       const il = ilotMap[iid];
       if (!il || il.zone !== zk) continue;
       zoneSums[v.conseillerId] = (zoneSums[v.conseillerId] || 0) + (il.nb_ventes || 0);
-      if (il.centroide_lat != null) {
-        const cs = centSumZone[v.conseillerId];
-        if (cs) { cs.lat += il.centroide_lat; cs.lng += il.centroide_lng; cs.n++; }
-      }
     }
 
     // Tri DESC par nb_ventes -- les ilots les plus lourds en premier.
     const sortedZone = [...ilotsByZone[zk]].sort((a, b) => (b.nb_ventes || 0) - (a.nb_ventes || 0));
 
-    // Greedy : pour chaque ilot, secteur avec zoneSums min ET centroide
-    // moyen le PLUS ELOIGNE (Infinity si secteur vide pour cette zone).
+    // Greedy : pour chaque ilot, secteur avec zoneSums min (quota zone)
+    // ET centroide GLOBAL le PLUS ELOIGNE de l'ilot (dispersion
+    // inter-zones). Secteur globalement vide -> distance Infinity.
     for (const ilot of sortedZone) {
       let minSum = Infinity;
       for (const sid of Object.keys(zoneSums)) if (zoneSums[sid] < minSum) minSum = zoneSums[sid];
@@ -2678,9 +2706,9 @@ function sctGenDistribByZone() {
       let bestSid = candidates[0];
       let bestDist = -Infinity;
       for (const sid of candidates) {
-        const cs = centSumZone[sid];
+        const cs = centSumGlobal[sid];
         let dist;
-        if (!cs || cs.n === 0) dist = Infinity;
+        if (!cs || cs.n === 0) dist = Infinity;       // secteur globalement vide
         else if (ilot.centroide_lat == null) dist = 0;
         else {
           dist = sctGenHaversine(ilot.centroide_lat, ilot.centroide_lng,
@@ -2689,10 +2717,11 @@ function sctGenDistribByZone() {
         }
         if (dist > bestDist) { bestDist = dist; bestSid = sid; }
       }
+      // Affectation + update zoneSums (local) + centSumGlobal (partage).
       newRep[ilot.ilotId] = { conseillerId: bestSid, locked: false };
       zoneSums[bestSid] += (ilot.nb_ventes || 0);
       if (ilot.centroide_lat != null) {
-        const cs = centSumZone[bestSid];
+        const cs = centSumGlobal[bestSid];
         cs.lat += ilot.centroide_lat;
         cs.lng += ilot.centroide_lng;
         cs.n++;
