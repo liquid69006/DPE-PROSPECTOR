@@ -25,32 +25,11 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: 🌐 Google Chrome
-        # Le snap chromium-browser livré par défaut sur ubuntu-latest
-        # (Ubuntu 24.04) casse en headless ("DevToolsActivePort file
-        # doesn't exist"). On installe le paquet .deb officiel Google
-        # Chrome qui fonctionne bien en CI.
-        run: |
-          wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-          echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
-          sudo apt-get update -q
-          sudo apt-get install -y google-chrome-stable
-          google-chrome --version
-
-      - name: 🔧 ChromeDriver
-        # Chromedriver depuis Chrome for Testing (chrome-for-testing-public)
-        # pour matcher EXACTEMENT la version de google-chrome-stable installee.
-        # Le chromedriver du snap chromium n'est PAS compatible avec le .deb Chrome.
-        run: |
-          CHROME_VERSION=$(google-chrome-stable --version | grep -oP '\d+\.\d+\.\d+')
-          wget -q "https://storage.googleapis.com/chrome-for-testing-public/${CHROME_VERSION}.0/linux64/chromedriver-linux64.zip"
-          unzip -q chromedriver-linux64.zip
-          sudo mv chromedriver-linux64/chromedriver /usr/local/bin/chromedriver
-          sudo chmod +x /usr/local/bin/chromedriver
-          chromedriver --version
-
       - name: 📦 Dépendances
-        run: pip install folium pillow requests selenium
+        # matplotlib seul suffit : on genere le PNG directement en Python,
+        # sans Chrome/Selenium/Leaflet. shapely & requests gardes pour
+        # extensibilite (calculs geom + appels API eventuels).
+        run: pip install matplotlib shapely requests
 
       - name: 🗺️ Générer carte A0
         run: python scripts/generate_map_a0.py
