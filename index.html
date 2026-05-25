@@ -4748,7 +4748,11 @@ function renderSecteur() {
     const bg = a.batiment_groupe_id || null;
     const cp = coproByCle[a.cle];
     const im = cp ? (cp.numero_immatriculation || cp.cle_adresse || a.cle) : null;
-    const lots = (cp && cp.nb_lots_habitation > 0) ? cp.nb_lots_habitation : 0;
+    // Override per-adresse (ex: copro a cheval sur 2 communes, DVF disponible
+    // d'un seul cote -> on ramene les lots habitation a la portion visible).
+    const lots = (a._nb_lots_habitation_override != null)
+      ? a._nb_lots_habitation_override
+      : ((cp && cp.nb_lots_habitation > 0) ? cp.nb_lots_habitation : 0);
     if (bg && im && lots > 0) {
       if (immatBg[im] == null) immatBg[im] = bg;
       (bgRncLots[immatBg[im]] = bgRncLots[immatBg[im]] || {})[im] = lots;
@@ -4887,7 +4891,9 @@ function renderSecteur() {
         ANS.forEach(y => { effV[y] = ((vpaOf(a) || {})[y] || 0)
           + (mi ? (mi.ventes[y] || 0) : 0) + (am ? (am.ventes[y] || 0) : 0); });
         const effTot = ANS.reduce((s, y) => s + effV[y], 0);
-        const lots = (rnc && cp.nb_lots_habitation != null) ? cp.nb_lots_habitation : null;
+        const lots = (a._nb_lots_habitation_override != null)
+          ? a._nb_lots_habitation_override
+          : ((rnc && cp.nb_lots_habitation != null) ? cp.nb_lots_habitation : null);
         // Taux/colonne affichés : RNC -> lots copro ; hors-RNC -> nb_log_bdnb
         // UNIQUEMENT si bâti résidentiel (tertiaire/inconnu -> —, cohérent
         // avec la base parc du header/IRIS).
@@ -4923,7 +4929,12 @@ function renderSecteur() {
         } else if (rnc) {
           const im = cp.numero_immatriculation || cp.cle_adresse || a.cle;
           if (immatBg[im]) { lgtKey = 'bg:' + immatBg[im]; lgtVal = bgValue[immatBg[im]] || 0; }
-          else { lgtKey = 'rnc:' + im; lgtVal = (cp.nb_lots_habitation > 0 ? cp.nb_lots_habitation : 0); }
+          else {
+            lgtKey = 'rnc:' + im;
+            lgtVal = (a._nb_lots_habitation_override != null)
+              ? a._nb_lots_habitation_override
+              : (cp.nb_lots_habitation > 0 ? cp.nb_lots_habitation : 0);
+          }
         } else if (usageResid(a) && a.nb_log_bdnb > 0) {
           // hors-RNC résidentiel SANS bgid -> clé adresse
           // mono qualifié -> lgtVal=1 (au lieu de nb_log_bdnb)
