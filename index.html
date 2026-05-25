@@ -2972,9 +2972,16 @@ function sctGenEnsureZoneCoverage() {
 
 // Tolerances par niveau (refactor r7 quota-zones).
 const SCT_GEN_TOL_TOTAL = 0.05;   // sctGenBalance : equilibre total +/-5%
-const SCT_GEN_TOL_ZONE  = 0.20;   // distribution par zone : +/-20%
-const SCT_GEN_ZONE_DEGRAD_LIMIT = 0.25;  // contrainte balance : move/swap ne degrade
-                                          // pas les zones de plus de 25% du quota
+// Tolerance par zone (independante) : zone proche plus souple car
+// effectif d'ilots typiquement plus faible que moyenne/lointaine
+// (geometrie radiale autour de l'agence).
+const SCT_GEN_TOL_ZONE_PROCHE    = 0.30;
+const SCT_GEN_TOL_ZONE_MOYENNE   = 0.20;
+const SCT_GEN_TOL_ZONE_LOINTAINE = 0.20;
+const SCT_GEN_ZONE_DEGRAD_LIMIT  = 0.35;  // contrainte balance : move/swap ne degrade
+                                          // pas les zones de plus de 35% du quota
+                                          // (assoupli pour laisser plus de latitude
+                                          // a l'equilibrage total)
 const SCT_GEN_MAX_ITER  = 100;    // iterations max sctGenBalance
 
 // Penalite proximite (passes 1 ET 2) : malus 3 paliers selon la distance
@@ -3008,7 +3015,7 @@ function sctGenProxMalus(ilot, peers) {
 //   Total ventes par secteur (tol +/-5%, malus proximite),
 //   AVEC CONTRAINTE : chaque move/swap ne doit pas degrader les zones
 //   du secteur source OU destination de plus de
-//   SCT_GEN_ZONE_DEGRAD_LIMIT (=25%) du quota zone (calcule en amont
+//   SCT_GEN_ZONE_DEGRAD_LIMIT (=35%) du quota zone (calcule en amont
 //   par sctGenDistribByZone).
 // Cette contrainte preserve la distribution par quota de zones tout
 // en cherchant l'equilibre total sous-tolerance 5%.
@@ -3308,9 +3315,9 @@ function sctGenRenderTable() {
     lointaine: scores.reduce((s,x) => s + (x.zones.lointaine || 0), 0) / Nsc,
   };
   const tolZ = {
-    proche:    quotas.proche    * SCT_GEN_TOL_ZONE,
-    moyenne:   quotas.moyenne   * SCT_GEN_TOL_ZONE,
-    lointaine: quotas.lointaine * SCT_GEN_TOL_ZONE,
+    proche:    quotas.proche    * SCT_GEN_TOL_ZONE_PROCHE,
+    moyenne:   quotas.moyenne   * SCT_GEN_TOL_ZONE_MOYENNE,
+    lointaine: quotas.lointaine * SCT_GEN_TOL_ZONE_LOINTAINE,
   };
 
   // 2) regroupe îlots par secteur
@@ -3327,7 +3334,7 @@ function sctGenRenderTable() {
   // Summary 4 niveaux (toutes valeurs en ventes/an a l'affichage).
   summary.innerHTML = `<b style="color:var(--text);">Moyenne :</b> ${sctGenPerYear(meanT)} ventes/an · `
     + `<b>Tol. totale ±5% :</b> ±${sctGenPerYear(tolT)} · `
-    + `<b>Quota Z-proche :</b> ${sctGenPerYear(quotas.proche)} ±20% · `
+    + `<b>Quota Z-proche :</b> ${sctGenPerYear(quotas.proche)} ±30% · `
     + `<b>Z-moy :</b> ${sctGenPerYear(quotas.moyenne)} ±20% · `
     + `<b>Z-loin :</b> ${sctGenPerYear(quotas.lointaine)} ±20% · `
     + `<b>Mode :</b> ${secteurStrict ? 'ventes strictes' : 'ventes brutes'}`;
@@ -3386,7 +3393,7 @@ function sctGenRenderTable() {
     const balCell =
         `<div style="display:flex;flex-direction:column;gap:3px;align-items:flex-start;">`
       + balDot(inT,  'T',       `Total ±5% (cible : ${sctGenPerYear(meanT)} ventes/an, secteur : ${sctGenPerYear(sc.total)})`)
-      + balDot(inZp, 'Z-proche', `Zone proche ±20% (quota : ${sctGenPerYear(quotas.proche)}, secteur : ${sctGenPerYear(sc.zones.proche || 0)})`)
+      + balDot(inZp, 'Z-proche', `Zone proche ±30% (quota : ${sctGenPerYear(quotas.proche)}, secteur : ${sctGenPerYear(sc.zones.proche || 0)})`)
       + balDot(inZm, 'Z-moy',    `Zone moyenne ±20% (quota : ${sctGenPerYear(quotas.moyenne)}, secteur : ${sctGenPerYear(sc.zones.moyenne || 0)})`)
       + balDot(inZl, 'Z-loin',   `Zone lointaine ±20% (quota : ${sctGenPerYear(quotas.lointaine)}, secteur : ${sctGenPerYear(sc.zones.lointaine || 0)})`)
       + `</div>`;
@@ -3480,7 +3487,7 @@ function sctGenRenderTable() {
       : `<span style="color:#e67e22;">${ko_label.replace('{n}', count)}</span>`;
   let bilanHtml =
       bItem(outT,  'Total ✓',     'Total : {n} hors ±5%')    + ' &nbsp;|&nbsp; '
-    + bItem(outZp, 'Z-proche ✓',  'Z-proche : {n} hors ±20%') + ' &nbsp;|&nbsp; '
+    + bItem(outZp, 'Z-proche ✓',  'Z-proche : {n} hors ±30%') + ' &nbsp;|&nbsp; '
     + bItem(outZm, 'Z-moy ✓',     'Z-moy : {n} hors ±20%')    + ' &nbsp;|&nbsp; '
     + bItem(outZl, 'Z-loin ✓',    'Z-loin : {n} hors ±20%');
   // Warnings couverture (passe 0) : zones insuffisamment representees.
