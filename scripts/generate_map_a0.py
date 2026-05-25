@@ -40,7 +40,7 @@ COULEURS = {
 
 A0_W_IN = 33.1  # A0 portrait en pouces
 A0_H_IN = 46.8
-DPI = 150       # 150 DPI -> qualite suffisante pour impression murale
+DPI = 200       # 200 DPI -> 6614 x 9354 px, bon compromis taille/qualite imprimeur
 
 
 def parse_kml(path):
@@ -120,15 +120,28 @@ def main():
     # Fond OSM CartoDB Positron via contextily. crs='EPSG:4326' :
     # axe en lat/lng, contextily reprojette les tuiles Mercator
     # (EPSG:3857) automatiquement vers le plan lat/lng.
-    print('[INFO] Fetch tuiles OSM (CartoDB Positron)...')
-    ctx.add_basemap(
-        ax,
-        crs='EPSG:4326',
-        source=ctx.providers.CartoDB.Positron,
-        zoom='auto',
-        attribution=False,
-    )
-    print('[OK] Fond OSM ajoute')
+    # zoom=16 : noms de rues tres lisibles pour impression A0.
+    # Fallback zoom=15 si zoom=16 echoue (timeout, tuile manquante).
+    print('[INFO] Fetch tuiles OSM (CartoDB Positron, zoom=16)...')
+    try:
+        ctx.add_basemap(
+            ax,
+            crs='EPSG:4326',
+            source=ctx.providers.CartoDB.Positron,
+            zoom=16,
+            attribution=False,
+        )
+        print('[OK] Fond OSM ajoute (zoom=16)')
+    except Exception as exc:
+        print(f'[WARN] zoom=16 KO ({exc}), fallback zoom=15...')
+        ctx.add_basemap(
+            ax,
+            crs='EPSG:4326',
+            source=ctx.providers.CartoDB.Positron,
+            zoom=15,
+            attribution=False,
+        )
+        print('[OK] Fond OSM ajoute (zoom=15)')
 
     # Passe 2 : dessiner les polygones PAR-DESSUS le fond (ordre
     # d'ajout = ordre de zorder par defaut, donc polygones au-dessus).
@@ -151,16 +164,17 @@ def main():
           linewidth=1.5, alpha=0.75)
         ax.add_collection(patch)
 
-        # Numero d'ilot au centroide (fontsize 10 pour lisibilite A0)
+        # Numero d'ilot au centroide. Texte noir gras 14pt sans bbox :
+        # le fond blanc derriere les chiffres masquait le contexte OSM ;
+        # sans bbox, l'oeil lit le numero ET la rue dessous.
         cx = sum(lngs) / len(lngs)
         cy = sum(lats) / len(lats)
         ax.text(cx, cy, ilot_id,
-          ha='center', va='center',
-          fontsize=10, fontweight='bold',
-          color='#222222',
-          bbox=dict(boxstyle='round,pad=0.1',
-                    facecolor='white',
-                    edgecolor='none', alpha=0.6))
+            ha='center', va='center',
+            fontsize=14,
+            fontweight='bold',
+            color='black',
+            zorder=5)
 
     # Marker agence
     AGENCE_COORDS = {
