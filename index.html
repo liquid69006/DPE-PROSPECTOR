@@ -775,6 +775,11 @@ td{padding:11px 14px;vertical-align:middle;}
         style="padding:7px 14px;border:1px solid var(--border);border-radius:6px;
                background:var(--surface2);color:var(--text);font-size:13px;
                cursor:pointer;white-space:nowrap;">🏢 Mono</button>
+      <button id="secteur-copronni-btn" onclick="secteurToggleCoproNI()"
+        title="N'afficher que les adresses HORS-RNC qualifiées 'Copropriété non immatriculée' (qualification posée manuellement). Cumulable avec les autres filtres."
+        style="padding:7px 14px;border:1px solid var(--border);border-radius:6px;
+               background:var(--surface2);color:var(--text);font-size:13px;
+               cursor:pointer;white-space:nowrap;">🏘️ Copro NI</button>
       <button id="secteur-aqualif-btn" onclick="secteurToggleAQualif()"
         title="N'afficher que les adresses HORS-RNC sans qualification posee (as.type vide). Cumulable avec les autres filtres."
         style="padding:7px 14px;border:1px solid var(--border);border-radius:6px;
@@ -2184,6 +2189,18 @@ function secteurToggleMono() {
   renderSecteur();
 }
 window.secteurToggleMono = secteurToggleMono;
+let secteurCoproNI = false;         // filtre "Copro non immat." (toggle, qualif manuelle = copro_non_immat)
+function secteurToggleCoproNI() {
+  secteurCoproNI = !secteurCoproNI;
+  const b = document.getElementById('secteur-copronni-btn');
+  if (b) {
+    b.style.background = secteurCoproNI ? 'var(--orange)' : 'var(--surface2)';
+    b.style.color = secteurCoproNI ? '#fff' : 'var(--text)';
+    b.style.borderColor = secteurCoproNI ? 'var(--orange)' : 'var(--border)';
+  }
+  renderSecteur();
+}
+window.secteurToggleCoproNI = secteurToggleCoproNI;
 let secteurAQualif = false;         // filtre "A qualifier" (toggle, qualif manuelle vide)
 function secteurAQualifBtnSync() {
   const b = document.getElementById('secteur-aqualif-btn');
@@ -4038,7 +4055,7 @@ function renderSecteur() {
   window.ilotEffectif = ilotEffectif;
 
   // (refactor 2026-05-24 : suppression du groupement IRIS top-level. Les
-  // filtres secteurNoLog/HrActif/Mono/AQualif sont appliques en bloc dans
+  // filtres secteurNoLog/HrActif/Mono/CoproNI/AQualif sont appliques en bloc dans
   // la passe parIlot ci-dessous. La constante ILOT_IRIS_STICKY est conservee
   // mais devient sans effet -- le code peut etre nettoye dans un futur commit.)
   let html = '';
@@ -4125,6 +4142,11 @@ function renderSecteur() {
       const horsRnc = !coproByCle[a.cle] && !a.numero_immatriculation;
       const as = secteurAssign[a.cle] || {};
       if (!(horsRnc && as.type === 'mono')) return;
+    }
+    if (secteurCoproNI) {
+      const horsRnc = !coproByCle[a.cle] && !a.numero_immatriculation;
+      const as = secteurAssign[a.cle] || {};
+      if (!(horsRnc && as.type === 'copro_non_immat')) return;
     }
     if (secteurAQualif) {
       const horsRnc = !coproByCle[a.cle] && !a.numero_immatriculation;
