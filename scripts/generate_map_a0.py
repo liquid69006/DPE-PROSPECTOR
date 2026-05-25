@@ -11,10 +11,12 @@ Sortie : output/carte_a0.png (artifact uploade par le workflow).
 Notes :
   - Aspect ratio corrige : set_aspect(1/cos(lat_center)) pour eviter
     la distortion est-ouest en lat/lng a 45 deg.
-  - Fond CartoDB Positron via contextily (crs='EPSG:4326', reproj
-    automatique des tuiles Mercator vers le plan lat/lng).
+  - Fond CartoDB en double couche (crs='EPSG:4326', reproj auto
+    des tuiles Mercator vers le plan lat/lng) :
+      1. light_nolabels (base : rues + batiments sans noms)
+      2. light_only_labels (overlay : noms de rues au-dessus des
+         polygones de prospection, sinon les couleurs masqueraient).
   - L'ilot 82 (27 av. Lacassagne) n'a pas de polygone KML : ignore.
-  - Les Placemark 'X' sont ignores (hors secteur).
 """
 import math
 import os
@@ -117,44 +119,53 @@ def main():
     ax.set_ylim(min(all_lats) - lat_margin,
                 max(all_lats) + lat_margin)
 
-    # Fond OSM CartoDB Positron via contextily. crs='EPSG:4326' :
-    # axe en lat/lng, contextily reprojette les tuiles Mercator
-    # (EPSG:3857) automatiquement vers le plan lat/lng.
-    # Source = URL template directe vers les tuiles CartoDB @2x
-    # (512px au lieu de 256px). contextily accepte une URL template
-    # comme source, plus simple et plus portable que les providers
-    # nommes qui varient selon les versions de xyzservices.
-    source = (
+    # Fond OSM CartoDB en double couche via contextily.
+    # 1. BASE = light_nolabels : rues, batiments, parcs sans texte.
+    # 2. (apres polygones) OVERLAY = light_only_labels : noms de
+    #    rues par-dessus les polygones colories.
+    # URLs @2x = tuiles 512px (vs 256px standard) pour eviter le
+    # flou a 200 DPI sur figure A0.
+    base_url = (
         "https://a.basemaps.cartocdn.com"
-        "/light_all/{z}/{x}/{y}@2x.png"
+        "/light_nolabels/{z}/{x}/{y}@2x.png"
     )
-    print(f'[OK] Source : {source}')
+    labels_url = (
+        "https://a.basemaps.cartocdn.com"
+        "/light_only_labels/{z}/{x}/{y}@2x.png"
+    )
 
     # zoom=16 : noms de rues tres lisibles pour impression A0.
     # Fallback zoom=15 si zoom=16 echoue (timeout, tuile manquante).
-    print('[INFO] Fetch tuiles OSM (zoom=16)...')
+    print('[INFO] Fetch tuiles OSM base (zoom=16)...')
     try:
         ctx.add_basemap(
             ax,
             crs='EPSG:4326',
-            source=source,
+            source=base_url,
             zoom=16,
             attribution=False,
+            zorder=1,
         )
-        print('[OK] Fond OSM ajoute (zoom=16)')
+        used_zoom = 16
+        print('[OK] Fond OSM base ajoute (zoom=16)')
     except Exception as exc:
         print(f'[WARN] zoom=16 KO ({exc}), fallback zoom=15...')
         ctx.add_basemap(
             ax,
             crs='EPSG:4326',
-            source=source,
+            source=base_url,
             zoom=15,
             attribution=False,
+            zorder=1,
         )
-        print('[OK] Fond OSM ajoute (zoom=15)')
+        used_zoom = 15
+        print('[OK] Fond OSM base ajoute (zoom=15)')
 
-    # Passe 2 : dessiner les polygones PAR-DESSUS le fond (ordre
-    # d'ajout = ordre de zorder par defaut, donc polygones au-dessus).
+    # Passe 2 : dessiner les polygones (zorder=2) au-dessus de la base
+    # OSM (zorder=1). Alpha 0.60 : laisse voir les rues/batiments
+    # dessous, sera complete par le 2e basemap labels (zorder=3) qui
+    # ajoute les noms par-dessus les couleurs.
+    centroids = []
     for ilot_id, coords in polygones.items():
         if not coords:
             continue
@@ -171,20 +182,40 @@ def main():
                           closed=True)
         patch = PatchCollection([poly],
           facecolor=couleur, edgecolor='white',
-          linewidth=1.5, alpha=0.75)
+          linewidth=1.5, alpha=0.60, zorder=2)
         ax.add_collection(patch)
 
-        # Numero d'ilot au centroide. Texte noir gras 14pt sans bbox :
-        # le fond blanc derriere les chiffres masquait le contexte OSM ;
-        # sans bbox, l'oeil lit le numero ET la rue dessous.
+        # Centroide memo (les numeros sont dessines APRES l'overlay
+        # labels OSM, pour rester au-dessus de tout).
         cx = sum(lngs) / len(lngs)
         cy = sum(lats) / len(lats)
+        centroids.append((cx, cy, ilot_id))
+
+    # Overlay labels OSM (zorder=3) par-dessus les polygones :
+    # les noms de rues restent visibles malgre la coloration.
+    print(f'[INFO] Overlay labels OSM (zoom={used_zoom})...')
+    try:
+        ctx.add_basemap(
+            ax,
+            crs='EPSG:4326',
+            source=labels_url,
+            zoom=used_zoom,
+            attribution=False,
+            zorder=3,
+        )
+        print('[OK] Overlay labels ajoute')
+    except Exception as exc:
+        print(f'[WARN] Overlay labels KO ({exc}) : carte sans noms de rues')
+
+    # Numeros d'ilots au centroide (zorder=4, au-dessus de l'overlay
+    # labels OSM pour rester lisibles).
+    for cx, cy, ilot_id in centroids:
         ax.text(cx, cy, ilot_id,
             ha='center', va='center',
             fontsize=26,
             fontweight='bold',
             color='black',
-            zorder=5)
+            zorder=4)
 
     # Marker agence
     AGENCE_COORDS = {
