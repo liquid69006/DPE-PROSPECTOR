@@ -1,16 +1,17 @@
-"""generate_map_a0.py -- Carte A0 print-ready (300 DPI portrait).
+"""generate_map_a0.py -- Carte A0 print-ready (150 DPI portrait).
 
 Lit REPARTITION_JSON et AGENCE_ID en env (passes par le workflow GitHub
 Actions). Parse les 3 KML de data/kml/, applique KML_REMAP, genere une
-carte folium (Positron) avec polygones colories selon la repartition,
-puis capture en PNG via selenium / chromium headless a 9933x14043
-(A0 300 DPI portrait).
+carte folium SANS fond tuile (fond blanc + polygones colories + numero
+d'ilot au centroide), puis capture en PNG via selenium / chromium
+headless a 4961x7016 (A0 150 DPI portrait).
 
 Sortie : output/carte_a0.png (artifact uploade par le workflow).
 
 Notes :
-  - Si le dimensionnement 9933x14043 OOM en CI, baisser a 4961x7016
-    (A0 150 DPI). 16 GB de RAM theorique sur runner ubuntu-latest.
+  - Pas de tuiles : c'est une carte de prospection, les polygones
+    colories + le numero d'ilot suffisent pour l'orientation.
+    Bonus : suppression du probleme de tiles non chargees en headless.
   - L'ilot 82 (27 av. Lacassagne) n'a pas de polygone KML : ignore.
   - Les Placemark 'X' sont ignores (hors secteur).
 """
@@ -111,10 +112,12 @@ def capture_html_to_png(html_path, png_path, w, h):
     """Capture une page HTML locale en PNG via Google Chrome headless.
 
     Strategie CI (ubuntu-latest 24.04) :
-      - google-chrome (paquet .deb officiel) au lieu de chromium-browser
-        snap qui casse en headless ("DevToolsActivePort file doesn't
-        exist").
-      - chromedriver depuis chromium-driver apt (compatible CDP).
+      - google-chrome-stable (paquet .deb officiel) detecte via PATH.
+      - chromedriver depuis chrome-for-testing-public en /usr/local/bin
+        (match exact version pour eviter incompat snap chromium).
+
+    Sans fond tuile : seule l'init Leaflet + le rendu SVG des polygones
+    sont a attendre, plus de WebDriverWait tiles ni scroll-trick.
     """
     from selenium import webdriver
     from selenium.webdriver.chrome.options import Options
@@ -158,81 +161,24 @@ def capture_html_to_png(html_path, png_path, w, h):
         url = pathlib.Path(html_path).resolve().as_uri()
         driver.get(url)
 
-        # Attente intelligente du rendu Leaflet (plus fiable que sleep fixe).
-        # 1) Leaflet initialise + au moins 10 tuiles chargees (carte demarree).
-        print("[INFO] Attente init Leaflet...", flush=True)
+        # Attente Leaflet initialise + polygones SVG presents. Sans
+        # fond tuile, c'est la seule chose a attendre : pas de tile load,
+        # pas de scroll, pas de zoom force. Le rendu SVG des polygones
+        # est quasi instantane une fois la map prete.
+        print("[INFO] Attente init Leaflet + polygones SVG...", flush=True)
         WebDriverWait(driver, 30).until(
             lambda d: d.execute_script(
                 "return typeof window.L !== 'undefined' "
-                "&& document.querySelectorAll('.leaflet-tile-loaded').length > 10"
+                "&& document.querySelectorAll('path.leaflet-interactive').length > 0"
             )
         )
-        print("[OK] Leaflet pret", flush=True)
+        polys = driver.execute_script(
+            "return document.querySelectorAll('path.leaflet-interactive').length;"
+        )
+        print(f"[OK] Leaflet pret ({polys} polygones SVG)", flush=True)
 
-        # 2) Force un resize pour que Leaflet recharge les tuiles a la
-        # bonne resolution apres set_window_size + fit_bounds applique.
-        driver.execute_script("window.dispatchEvent(new Event('resize'));")
+        # Buffer rendu SVG (le compositor a besoin d'un dernier frame).
         time.sleep(2)
-
-        # 3) Zoom +1 cran pour un cadrage plus serre sur les polygones
-        # (fit_bounds tend a laisser un peu trop de marge). Folium expose
-        # la map sous un nom alea (map_<hash>), donc on la cherche par
-        # introspection des proprietes window.
-        print("[INFO] Zoom +1 (cadrage serre)...", flush=True)
-        driver.execute_script("""
-          var map = Object.values(window).find(
-            v => v && v._leaflet_id !== undefined
-          );
-          if (!map) {
-            // Fallback : chercher dans les proprietes window.
-            for (var k in window) {
-              try {
-                if (window[k] && window[k].fitBounds) {
-                  map = window[k]; break;
-                }
-              } catch(e) {}
-            }
-          }
-          if (map) {
-            map.zoomIn(1);
-          }
-        """)
-        time.sleep(1)
-
-        # 4) Scroll dans toutes les directions pour forcer Leaflet a
-        # charger les tuiles hors viewport initial (en headless A0,
-        # la plupart des tuiles sont hors ecran au depart).
-        print("[INFO] Scroll force chargement tuiles...", flush=True)
-        driver.execute_script("""
-          window.scrollTo(0, 0);
-          window.scrollTo(document.body.scrollWidth, 0);
-          window.scrollTo(0, document.body.scrollHeight);
-          window.scrollTo(0, 0);
-        """)
-        time.sleep(5)
-
-        # 5) Tuiles majoritairement chargees (>=70 %, certaines tuiles
-        # en bordure ne se chargent jamais en headless ; 70 % suffit
-        # pour un rendu propre).
-        print("[INFO] Attente chargement tuiles (>=70 %)...", flush=True)
-        WebDriverWait(driver, 90).until(
-            lambda d: d.execute_script("""
-              var imgs  = document.querySelectorAll('.leaflet-tile-loaded');
-              var total = document.querySelectorAll('.leaflet-tile').length;
-              return total > 0 && imgs.length >= total * 0.70;
-            """)
-        )
-        loaded = driver.execute_script(
-            "return document.querySelectorAll('.leaflet-tile-loaded').length;"
-        )
-        total = driver.execute_script(
-            "return document.querySelectorAll('.leaflet-tile').length;"
-        )
-        print(f"[OK] Tuiles {loaded}/{total}", flush=True)
-
-        # 6) Buffer final pour le rendu SVG des polygones (instantane mais
-        # le compositor du navigateur a besoin d'un dernier frame).
-        time.sleep(3)
 
         # CDP screenshot : permet de capturer au-dela du viewport visible.
         try:
@@ -309,17 +255,29 @@ def main():
                 all_lngs.append(lng)
     center = (sum(all_lats) / len(all_lats), sum(all_lngs) / len(all_lngs))
 
-    # Carte folium (Positron, aligne avec sctMap UI). zoom_start ecrase
-    # par fit_bounds plus bas.
+    # Carte folium SANS fond tuile : les polygones colories + numeros
+    # d'ilots suffisent pour une carte de prospection imprimee, et on
+    # se debarrasse du probleme de chargement des tuiles en headless.
+    # prefer_canvas=True : rendu Canvas plus rapide que SVG pour les
+    # polygones (mais on garde les markers DivIcon en HTML par-dessus).
     m = folium.Map(
         location=center,
         zoom_start=14,
-        tiles="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
-        attr="&copy; OpenStreetMap contributors &copy; CARTO",
-        max_zoom=19,
+        tiles=None,
+        prefer_canvas=True,
     )
 
-    # Polygones colories.
+    # Fond blanc CSS (sans tuiles, le container Leaflet est gris par defaut).
+    folium.Element("""
+      <style>
+        .leaflet-container {
+          background: #ffffff !important;
+        }
+      </style>
+    """).add_to(m.get_root().header)
+
+    # Polygones colories + numero d'ilot en texte au centroide.
+    # Sans fond de carte, le numero est essentiel pour l'orientation.
     for ilot_id, rings in ilot_rings.items():
         rep = repartition.get(str(ilot_id))
         if rep and rep.get("conseillerId"):
@@ -331,7 +289,13 @@ def main():
             color = "#888888"
             nom = "non affecté"
             affected = False
-        tooltip = f"Îlot {ilot_id} — {nom}"
+        tooltip_text = f"Îlot {ilot_id} — {nom}"
+        # Tooltip sticky (suit le curseur) plutot que fige au centre.
+        tooltip = folium.Tooltip(tooltip_text, sticky=True)
+        # Centroide moyenne arithmetique de tous les points de l'ilot
+        # (tous rings confondus). Approximation suffisante pour placer
+        # le numero d'ilot ; les polygones DL sont quasi convexes.
+        ilot_lats, ilot_lngs = [], []
         for ring in rings:
             folium.Polygon(
                 locations=ring,
@@ -341,6 +305,25 @@ def main():
                 fill_color=color,
                 fill_opacity=0.65 if affected else 0.20,
                 tooltip=tooltip,
+            ).add_to(m)
+            for (lat, lng) in ring:
+                ilot_lats.append(lat)
+                ilot_lngs.append(lng)
+        if ilot_lats:
+            centroid_lat = sum(ilot_lats) / len(ilot_lats)
+            centroid_lng = sum(ilot_lngs) / len(ilot_lngs)
+            folium.Marker(
+                [centroid_lat, centroid_lng],
+                icon=folium.DivIcon(
+                    html=(
+                        f'<div style="font-size:10px;font-weight:bold;'
+                        f'color:#333;text-align:center;'
+                        f'text-shadow:1px 1px 0 #fff,-1px -1px 0 #fff,'
+                        f'1px -1px 0 #fff,-1px 1px 0 #fff;">{ilot_id}</div>'
+                    ),
+                    icon_size=(30, 15),
+                    icon_anchor=(15, 7),
+                ),
             ).add_to(m)
 
     # Marker agence (si coordonnees connues).
@@ -356,7 +339,8 @@ def main():
     # on rajoute/retire des ilots, et tient compte de l'aspect ratio A0.
     sw = [min(all_lats), min(all_lngs)]
     ne = [max(all_lats), max(all_lngs)]
-    m.fit_bounds([sw, ne], padding=[20, 20])
+    # Padding 5 px : sans fond de carte, pas besoin de marge contextuelle.
+    m.fit_bounds([sw, ne], padding=[5, 5])
 
     # Sortie : HTML puis PNG.
     OUT_DIR.mkdir(parents=True, exist_ok=True)
