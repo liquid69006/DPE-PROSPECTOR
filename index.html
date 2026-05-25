@@ -786,10 +786,20 @@ td{padding:11px 14px;vertical-align:middle;}
                background:var(--surface2);color:var(--text);font-size:13px;
                cursor:pointer;white-space:nowrap;">❓ À qualifier</button>
       <button id="secteur-gen-btn" onclick="sctGenOpen()"
-        title="Générer automatiquement N secteurs équilibrés : couverture zones (passe 0) + total ±8% + proche+moyenne ±10%."
+        title="Générer automatiquement N secteurs équilibrés (quotas par zone + équilibrage total ±5%)."
         style="padding:7px 14px;border:1px solid #BEAF87;border-radius:6px;
                background:#1f2937;color:#BEAF87;font-size:13px;font-weight:600;
                cursor:pointer;white-space:nowrap;">⚡ Générer secteurs</button>
+      <button id="secteur-genlock-btn" onclick="sctGenToggleLockSettings()"
+        title="Verrouiller la répartition (empêche la régénération accidentelle)."
+        style="padding:7px 10px;border:1px solid var(--border);border-radius:6px;
+               background:var(--surface2);color:var(--text);font-size:14px;
+               cursor:pointer;white-space:nowrap;">🔓</button>
+      <button id="secteur-reattrib-btn" onclick="sctAttribOpen()"
+        title="Attribuer les secteurs générés aux conseillers (équilibrage ventes/an)."
+        style="display:none;padding:7px 14px;border:1px solid #BEAF87;border-radius:6px;
+               background:#1f2937;color:#BEAF87;font-size:13px;font-weight:600;
+               cursor:pointer;white-space:nowrap;">🔄 Réattribuer secteurs</button>
     </div>
     <div id="secteur-colhead" style="display:none;position:sticky;top:0;z-index:5;
          background:var(--surface);border-bottom:2px solid var(--border);
@@ -943,6 +953,57 @@ td{padding:11px 14px;vertical-align:middle;}
       </div>
     </div>
   </div><!-- /section-secteur -->
+</div>
+
+<!-- ════════════════════════════════════════════════════════════════
+     REATTRIBUTION SECTEURS -> CONSEILLERS — modale 2 etapes
+     Step 1 : tableau secteur x conseiller (dropdown manuel)
+     Step 2 : equilibrage greedy + recap par conseiller
+════════════════════════════════════════════════════════════════ -->
+<div id="sct-attrib-overlay" style="display:none;position:fixed;inset:0;
+     background:rgba(0,0,0,0.7);z-index:9999;align-items:center;justify-content:center;">
+  <div style="background:var(--surface);color:var(--text);width:min(820px,95vw);
+              max-height:90vh;border-radius:12px;display:flex;flex-direction:column;
+              box-shadow:0 12px 48px rgba(0,0,0,0.5);">
+    <!-- Header -->
+    <div style="padding:18px 24px;border-bottom:1px solid var(--border);display:flex;
+                justify-content:space-between;align-items:center;">
+      <div>
+        <div style="font-weight:700;font-size:16px;color:#BEAF87;">🔄 Réattribution des secteurs</div>
+        <div id="sct-attrib-subtitle" style="color:var(--text2);font-size:12px;margin-top:2px;">Étape 1 — Attribution manuelle</div>
+      </div>
+      <button onclick="sctAttribClose()" title="Fermer"
+        style="background:transparent;color:var(--text2);border:none;font-size:22px;cursor:pointer;">✕</button>
+    </div>
+    <!-- Step 1 : tableau attribution manuelle -->
+    <div id="sct-attrib-step1" style="padding:18px 24px;flex:1;overflow-y:auto;">
+      <div style="color:var(--text2);font-size:13px;margin-bottom:12px;line-height:1.5;">
+        Pré-attribuez manuellement certains secteurs aux conseillers, ou laissez
+        sur <i>« — Non attribué — »</i> pour que l'algorithme les distribue
+        automatiquement (équilibrage par ventes/an).
+      </div>
+      <div id="sct-attrib-step1-table" style="margin-top:8px;"></div>
+    </div>
+    <!-- Step 2 : recap apres equilibrage -->
+    <div id="sct-attrib-step2" style="display:none;padding:18px 24px;flex:1;overflow-y:auto;">
+      <div id="sct-attrib-step2-summary" style="color:var(--text);font-size:13px;margin-bottom:12px;"></div>
+      <div id="sct-attrib-step2-table" style="margin-top:8px;"></div>
+    </div>
+    <!-- Footer actions -->
+    <div style="padding:14px 24px;border-top:1px solid var(--border);display:flex;
+                justify-content:space-between;gap:10px;">
+      <button id="sct-attrib-back-btn" onclick="sctAttribBack()" style="display:none;
+              padding:8px 16px;background:transparent;color:var(--text2);
+              border:1px solid var(--border);border-radius:6px;cursor:pointer;font-size:13px;">← Modifier</button>
+      <div style="flex:1;"></div>
+      <button id="sct-attrib-next-btn" onclick="sctAttribBalance()"
+              style="padding:8px 18px;background:#1f2937;color:#BEAF87;border:1px solid #BEAF87;
+                     border-radius:6px;cursor:pointer;font-size:13px;font-weight:600;">Équilibrer les non attribués →</button>
+      <button id="sct-attrib-save-btn" onclick="sctAttribSave()" style="display:none;
+              padding:8px 18px;background:#16a34a;color:#fff;border:none;border-radius:6px;
+              cursor:pointer;font-size:13px;font-weight:700;">💾 Sauvegarder</button>
+    </div>
+  </div>
 </div>
 
 <!-- ════════════════════════════════════════════════════════════════
@@ -2276,6 +2337,10 @@ async function loadSecteurData() {
   secteurStrictBtnSync();           // bouton "Ventes strictes" ON par défaut
   secteurHrActifBtnSync();          // bouton "Hors-RNC actifs" ON par defaut
   secteurAQualifBtnSync();          // bouton "A qualifier" sync (OFF par defaut)
+  // [Feature 1] Hydrate l'etat verrou depuis localStorage + sync bouton.
+  if (typeof sctGenLockedLoad === 'function') sctGenLockedLoad();
+  // [Feature 2] Detecte si une repartition existe -> affiche bouton Reattribuer.
+  if (typeof sctAttribUpdateBtnVisibility === 'function') sctAttribUpdateBtnVisibility();
   // [PERF] Lance light + SCI EN PARALLELE. Light bloque le 1er render ;
   // SCI charge en arriere-plan -> 2eme render leger des qu'index pret.
   const lightPromise = fetch(`${GITHUB_RAW}/data/${secFile}?v=${CACHE_VERSION}`);
@@ -2448,6 +2513,7 @@ const sctGenState = {
   conseillers: [],       // [{id,nom,couleur,kind}]
   ilots: [],             // [{ilotId, nb_ventes, lat, lng, dist, zone, adresses}]
   repartition: {},       // { ilotId: { conseillerId, locked } }
+  saved: false,          // [Feature 2] true des qu'une repartition KV existe (cf sctAttribUpdateBtnVisibility)
 };
 
 // Distance haversine en mètres (formule classique R=6371008).
@@ -3770,8 +3836,317 @@ async function sctGenSave() {
       }),
     });
     if (!r.ok) throw new Error('HTTP ' + r.status);
+    sctGenState.saved = true;
     showToast('✅ Répartition enregistrée');
     sctGenClose();
+    // [Feature 1] Proposer le verrouillage apres save reussi.
+    setTimeout(() => {
+      if (!sctGenLocked && confirm('Voulez-vous verrouiller la répartition (empêche la régénération accidentelle) ?')) {
+        sctGenLocked = true;
+        sctGenLockedSave();
+        sctGenLockedBtnSync();
+      }
+    }, 250);
+    // [Feature 2] Le bouton "Réattribuer secteurs" devient visible.
+    if (typeof sctAttribUpdateBtnVisibility === 'function') sctAttribUpdateBtnVisibility();
+  } catch (e) {
+    showToast('⚠️ Échec enregistrement : ' + e.message, true);
+  }
+}
+
+// ════════════════════════════════════════════════════════════════
+// FEATURE 1 — CADENAS sur "⚡ Générer secteurs"
+// ════════════════════════════════════════════════════════════════
+// Etat persiste localStorage cle = sctGen_locked_<agenceId>.
+// Quand cadenas FERME : bouton Générer disabled + grisé.
+// Confirmation de deverrouillage explicite.
+let sctGenLocked = false;
+
+function sctGenLockKey() {
+  try {
+    const [, secId] = secteurResolve();
+    return secId ? 'sctGen_locked_' + secId : null;
+  } catch { return null; }
+}
+
+function sctGenLockedLoad() {
+  const k = sctGenLockKey();
+  if (!k) return;
+  sctGenLocked = (localStorage.getItem(k) === 'true');
+  sctGenLockedBtnSync();
+}
+
+function sctGenLockedSave() {
+  const k = sctGenLockKey();
+  if (k) localStorage.setItem(k, sctGenLocked ? 'true' : 'false');
+}
+
+function sctGenLockedBtnSync() {
+  const lockBtn = document.getElementById('secteur-genlock-btn');
+  const genBtn  = document.getElementById('secteur-gen-btn');
+  if (lockBtn) {
+    lockBtn.textContent = sctGenLocked ? '🔒' : '🔓';
+    lockBtn.title = sctGenLocked
+      ? 'Verrouillé — cliquer pour déverrouiller la répartition'
+      : 'Cliquer pour verrouiller la répartition actuelle';
+    lockBtn.style.background = sctGenLocked ? 'var(--orange)' : 'var(--surface2)';
+    lockBtn.style.color = sctGenLocked ? '#fff' : 'var(--text)';
+    lockBtn.style.borderColor = sctGenLocked ? 'var(--orange)' : 'var(--border)';
+  }
+  if (genBtn) {
+    genBtn.disabled = sctGenLocked;
+    genBtn.style.opacity = sctGenLocked ? '0.5' : '1';
+    genBtn.style.cursor = sctGenLocked ? 'not-allowed' : 'pointer';
+    if (sctGenLocked) {
+      genBtn.title = 'Répartition verrouillée — cliquer 🔒 pour déverrouiller';
+    } else {
+      genBtn.title = 'Générer automatiquement N secteurs équilibrés (quotas par zone + équilibrage total ±5%).';
+    }
+  }
+}
+
+function sctGenToggleLockSettings() {
+  if (sctGenLocked) {
+    if (!confirm('Déverrouiller la répartition ? La régénération effacera la répartition actuelle.')) return;
+    sctGenLocked = false;
+  } else {
+    sctGenLocked = true;
+  }
+  sctGenLockedSave();
+  sctGenLockedBtnSync();
+}
+
+// ════════════════════════════════════════════════════════════════
+// FEATURE 2 — REATTRIBUTION DES SECTEURS AUX CONSEILLERS
+// ════════════════════════════════════════════════════════════════
+// Modale 2 etapes : (1) attribution manuelle dropdown, (2) equilibrage
+// greedy par ventes/an. Stocke en KV /secteur-attribution/:agence.
+const sctAttribState = {
+  attribution: {},     // {secId: conseillerId|null}
+  conseillers: [],     // [{id, nom}]
+  sectorVentes: {},    // {secId: ventes_5ans}
+};
+
+// Detection visibilite du bouton "🔄 Réattribuer" : visible des qu'une
+// repartition est sauvegardee en KV (presence de repartition[X]).
+async function sctAttribUpdateBtnVisibility() {
+  const btn = document.getElementById('secteur-reattrib-btn');
+  if (!btn) return;
+  try {
+    const [, secId] = secteurResolve();
+    if (!secId) { btn.style.display = 'none'; return; }
+    const r = await fetch(`${API_URL}/secteur-repartition/${secId}`, {
+      headers: { 'Authorization': `Bearer ${authToken}` } });
+    if (!r.ok) { btn.style.display = 'none'; return; }
+    const j = await r.json();
+    const hasRep = j && j.repartition && Object.keys(j.repartition).length > 0
+                && Array.isArray(j.conseillers) && j.conseillers.length > 0;
+    if (hasRep) sctGenState.saved = true;
+    btn.style.display = hasRep ? 'inline-flex' : 'none';
+  } catch { btn.style.display = 'none'; }
+}
+
+async function sctAttribOpen() {
+  // 1) Charger conseillers + repartition depuis KV
+  try {
+    const [, secId] = secteurResolve();
+    if (!secId) { showToast('⚠️ Agence non détectée', true); return; }
+    const rRep = await fetch(`${API_URL}/secteur-repartition/${secId}`, {
+      headers: { 'Authorization': `Bearer ${authToken}` } });
+    if (!rRep.ok) throw new Error('HTTP ' + rRep.status);
+    const rep = await rRep.json();
+    if (!rep || !Array.isArray(rep.conseillers) || !rep.conseillers.length) {
+      showToast('⚠️ Aucune répartition trouvée — utilisez d\'abord ⚡ Générer secteurs', true);
+      return;
+    }
+    sctAttribState.conseillers = rep.conseillers;
+    // Calcul des ventes/secteur depuis la repartition + sctGenState.ilots
+    const ventesBySec = {};
+    for (const c of rep.conseillers) ventesBySec[c.id] = 0;
+    // sctGenState.ilots peut etre vide si on n'a pas re-ouvert la modale
+    // Generer ; on reconstruit a partir de secteurData.
+    const ilots = (sctGenState.ilots && sctGenState.ilots.length)
+                  ? sctGenState.ilots
+                  : sctGenComputeIlots();
+    const ilotMap = {}; for (const i of ilots) ilotMap[i.ilotId] = i;
+    for (const [iid, v] of Object.entries(rep.repartition || {})) {
+      if (!v || !v.conseillerId) continue;
+      const il = ilotMap[iid]; if (!il) continue;
+      ventesBySec[v.conseillerId] = (ventesBySec[v.conseillerId] || 0) + (il.nb_ventes || 0);
+    }
+    sctAttribState.sectorVentes = ventesBySec;
+    // 2) Charger attribution existante (KV separe)
+    const rAttr = await fetch(`${API_URL}/secteur-attribution/${secId}`, {
+      headers: { 'Authorization': `Bearer ${authToken}` } });
+    if (rAttr.ok) {
+      const att = await rAttr.json();
+      sctAttribState.attribution = (att && typeof att.attribution === 'object') ? att.attribution : {};
+    } else {
+      sctAttribState.attribution = {};
+    }
+    // 3) Render step 1
+    sctAttribRenderStep1();
+    document.getElementById('sct-attrib-overlay').style.display = 'flex';
+    document.getElementById('sct-attrib-step1').style.display = 'block';
+    document.getElementById('sct-attrib-step2').style.display = 'none';
+    document.getElementById('sct-attrib-back-btn').style.display = 'none';
+    document.getElementById('sct-attrib-next-btn').style.display = 'inline-block';
+    document.getElementById('sct-attrib-save-btn').style.display = 'none';
+    document.getElementById('sct-attrib-subtitle').textContent = 'Étape 1 — Attribution manuelle';
+  } catch (e) {
+    showToast('⚠️ Erreur chargement : ' + e.message, true);
+  }
+}
+
+function sctAttribClose() {
+  document.getElementById('sct-attrib-overlay').style.display = 'none';
+}
+
+function sctAttribBack() {
+  document.getElementById('sct-attrib-step1').style.display = 'block';
+  document.getElementById('sct-attrib-step2').style.display = 'none';
+  document.getElementById('sct-attrib-back-btn').style.display = 'none';
+  document.getElementById('sct-attrib-next-btn').style.display = 'inline-block';
+  document.getElementById('sct-attrib-save-btn').style.display = 'none';
+  document.getElementById('sct-attrib-subtitle').textContent = 'Étape 1 — Attribution manuelle';
+}
+
+function sctAttribRenderStep1() {
+  const div = document.getElementById('sct-attrib-step1-table');
+  const conseillers = sctAttribState.conseillers || [];
+  const attribution = sctAttribState.attribution || {};
+  const ventes = sctAttribState.sectorVentes || {};
+  let html = '<table style="width:100%;border-collapse:separate;border-spacing:0;font-size:13px;">'
+    + '<thead><tr style="color:var(--text2);font-weight:600;background:#1f2937;">'
+    + '<th style="text-align:left;padding:8px 10px;border-bottom:2px solid var(--border);">Secteur</th>'
+    + '<th style="text-align:center;padding:8px 10px;border-bottom:2px solid var(--border);">Ventes/an</th>'
+    + '<th style="text-align:left;padding:8px 10px;border-bottom:2px solid var(--border);">Conseiller</th>'
+    + '</tr></thead><tbody>';
+  for (const c of conseillers) {
+    const v5 = ventes[c.id] || 0;
+    const currentAttrib = attribution[c.id] || '';
+    let optionsHtml = '<option value="">— Non attribué —</option>';
+    for (const cc of conseillers) {
+      const sel = currentAttrib === cc.id ? ' selected' : '';
+      optionsHtml += `<option value="${esc(cc.id)}"${sel}>${esc(cc.nom)}</option>`;
+    }
+    html += `<tr style="vertical-align:middle;">`
+      + `<td style="padding:8px 10px;border-top:1px solid var(--border);">${esc(c.nom)}</td>`
+      + `<td style="text-align:center;padding:8px 10px;border-top:1px solid var(--border);">${(v5/5).toFixed(1)}</td>`
+      + `<td style="padding:8px 10px;border-top:1px solid var(--border);">`
+      + `<select onchange="sctAttribSetAssign('${esc(c.id)}', this.value)" `
+      + `style="background:#1f2937;color:#fff;border:1px solid #4b5563;border-radius:4px;padding:4px 6px;font-size:12px;width:100%;">`
+      + optionsHtml + '</select></td></tr>';
+  }
+  html += '</tbody></table>';
+  div.innerHTML = html;
+}
+
+function sctAttribSetAssign(secId, conseillerId) {
+  if (conseillerId) sctAttribState.attribution[secId] = conseillerId;
+  else delete sctAttribState.attribution[secId];
+}
+
+function sctAttribBalance() {
+  // Algo greedy : pour chaque secteur non-attribue (tri DESC par ventes),
+  // assigner au conseiller avec total ventes minimum.
+  const conseillers = sctAttribState.conseillers || [];
+  const attribution = { ...sctAttribState.attribution };
+  const ventes = sctAttribState.sectorVentes || {};
+
+  // Total ventes deja affectees a chaque conseiller (depuis l'attribution
+  // manuelle de l'etape 1).
+  const totauxConseiller = {};
+  for (const c of conseillers) totauxConseiller[c.id] = 0;
+  for (const [secId, cid] of Object.entries(attribution)) {
+    if (totauxConseiller[cid] !== undefined) {
+      totauxConseiller[cid] += (ventes[secId] || 0);
+    }
+  }
+  // Secteurs non attribues, tries DESC par ventes (lourds en premier).
+  const nonAttribues = conseillers.filter(c => !attribution[c.id])
+    .sort((a, b) => (ventes[b.id] || 0) - (ventes[a.id] || 0));
+  // Distribution greedy : a chaque secteur, le conseiller avec total min.
+  for (const sec of nonAttribues) {
+    let minTotal = Infinity, bestCid = conseillers[0]?.id;
+    for (const c of conseillers) {
+      if (totauxConseiller[c.id] < minTotal) { minTotal = totauxConseiller[c.id]; bestCid = c.id; }
+    }
+    attribution[sec.id] = bestCid;
+    totauxConseiller[bestCid] += (ventes[sec.id] || 0);
+  }
+  sctAttribState.attribution = attribution;
+  sctAttribRenderStep2(totauxConseiller);
+}
+
+function sctAttribRenderStep2(totauxConseiller) {
+  const conseillers = sctAttribState.conseillers || [];
+  const attribution = sctAttribState.attribution || {};
+  const ventes = sctAttribState.sectorVentes || {};
+  const nC = conseillers.length || 1;
+  const meanV = (Object.values(totauxConseiller).reduce((s,v) => s+v, 0)) / nC;
+  const meanPerYear = meanV / 5;
+  // Regroupement par conseiller
+  const byCons = {};
+  for (const c of conseillers) byCons[c.id] = { nom: c.nom, secteurs: [], total: 0 };
+  for (const [secId, cid] of Object.entries(attribution)) {
+    if (!byCons[cid]) continue;
+    const secNom = (conseillers.find(c => c.id === secId) || {}).nom || secId;
+    byCons[cid].secteurs.push(secNom);
+    byCons[cid].total += (ventes[secId] || 0);
+  }
+  // Rendu tableau
+  let outOfTol = 0;
+  let html = '<table style="width:100%;border-collapse:separate;border-spacing:0;font-size:13px;">'
+    + '<thead><tr style="color:var(--text2);font-weight:600;background:#1f2937;">'
+    + '<th style="text-align:left;padding:8px 10px;border-bottom:2px solid var(--border);">Conseiller</th>'
+    + '<th style="text-align:left;padding:8px 10px;border-bottom:2px solid var(--border);">Secteurs attribués</th>'
+    + '<th style="text-align:center;padding:8px 10px;border-bottom:2px solid var(--border);">Ventes/an</th>'
+    + '<th style="text-align:center;padding:8px 10px;border-bottom:2px solid var(--border);">Écart</th>'
+    + '</tr></thead><tbody>';
+  for (const cid of Object.keys(byCons)) {
+    const e = byCons[cid];
+    const vpy = e.total / 5;
+    const ecart = meanPerYear > 0 ? ((vpy - meanPerYear) / meanPerYear * 100) : 0;
+    const inTol = Math.abs(ecart) <= 20;
+    if (!inTol) outOfTol++;
+    const color = inTol ? '#16a34a' : '#e67e22';
+    html += `<tr style="vertical-align:middle;">`
+      + `<td style="padding:8px 10px;border-top:1px solid var(--border);">${esc(e.nom)}</td>`
+      + `<td style="padding:8px 10px;border-top:1px solid var(--border);font-size:11px;color:var(--text2);">${e.secteurs.map(esc).join(', ') || '<i>(aucun)</i>'}</td>`
+      + `<td style="text-align:center;padding:8px 10px;border-top:1px solid var(--border);font-weight:600;">${vpy.toFixed(1)}</td>`
+      + `<td style="text-align:center;padding:8px 10px;border-top:1px solid var(--border);color:${color};font-weight:600;">${ecart >= 0 ? '+' : ''}${ecart.toFixed(0)}%</td>`
+      + '</tr>';
+  }
+  html += '</tbody></table>';
+  const summary = outOfTol === 0
+    ? `<span style="color:#16a34a;font-weight:600;">✓ Tous les conseillers dans ±20% (moyenne ${meanPerYear.toFixed(1)} ventes/an)</span>`
+    : `<span style="color:#e67e22;font-weight:600;">⚠ ${outOfTol} conseiller(s) hors ±20%</span> <span style="color:var(--text2);">— moyenne ${meanPerYear.toFixed(1)} ventes/an</span>`;
+  document.getElementById('sct-attrib-step2-summary').innerHTML = summary;
+  document.getElementById('sct-attrib-step2-table').innerHTML = html;
+  document.getElementById('sct-attrib-step1').style.display = 'none';
+  document.getElementById('sct-attrib-step2').style.display = 'block';
+  document.getElementById('sct-attrib-back-btn').style.display = 'inline-block';
+  document.getElementById('sct-attrib-next-btn').style.display = 'none';
+  document.getElementById('sct-attrib-save-btn').style.display = 'inline-block';
+  document.getElementById('sct-attrib-subtitle').textContent = 'Étape 2 — Résultat de l\'équilibrage';
+}
+
+async function sctAttribSave() {
+  try {
+    const [, secId] = secteurResolve();
+    if (!secId) { showToast('⚠️ Agence non détectée', true); return; }
+    const r = await fetch(`${API_URL}/secteur-attribution/${secId}`, {
+      method: 'POST',
+      headers: { 'Authorization': `Bearer ${authToken}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        conseillers: sctAttribState.conseillers,
+        attribution: sctAttribState.attribution,
+      }),
+    });
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    showToast('✅ Attribution enregistrée');
+    sctAttribClose();
   } catch (e) {
     showToast('⚠️ Échec enregistrement : ' + e.message, true);
   }
@@ -3791,6 +4166,15 @@ window.sctGenDragEnter = sctGenDragEnter;
 window.sctGenDragLeave = sctGenDragLeave;
 window.sctGenDrop = sctGenDrop;
 window.sctGenRenameSecteur = sctGenRenameSecteur;
+// [Feature 1] Cadenas sur Generer secteurs.
+window.sctGenToggleLockSettings = sctGenToggleLockSettings;
+// [Feature 2] Reattribution secteurs -> conseillers.
+window.sctAttribOpen     = sctAttribOpen;
+window.sctAttribClose    = sctAttribClose;
+window.sctAttribBack     = sctAttribBack;
+window.sctAttribBalance  = sctAttribBalance;
+window.sctAttribSave     = sctAttribSave;
+window.sctAttribSetAssign = sctAttribSetAssign;
 
 // ════════════════════════════════════════════════════════════════════
 //  CARTE SECTEURS (sctMap)
