@@ -1,27 +1,33 @@
-"""generate_map_a0.py -- Carte A0 print-ready (matplotlib).
+"""generate_map_a0.py -- Carte A0 print-ready (matplotlib + contextily).
 
 Lit REPARTITION_JSON et AGENCE_ID en env (passes par le workflow GitHub
 Actions). Parse les 3 KML de data/kml/, applique KML_REMAP, genere
 directement un PNG A0 portrait (33.1 x 46.8 in @ 150 DPI) via
-matplotlib, sans HTML/Leaflet/Selenium intermediaires.
+matplotlib + fond OSM (CartoDB Positron) via contextily, sans HTML
+ni Selenium.
 
 Sortie : output/carte_a0.png (artifact uploade par le workflow).
 
 Notes :
-  - Pas de fond de carte tuile : carte de prospection a polygones
-    colories + numero d'ilot au centroide. Fond blanc.
+  - Aspect ratio corrige : set_aspect(1/cos(lat_center)) pour eviter
+    la distortion est-ouest en lat/lng a 45 deg.
+  - Fond CartoDB Positron via contextily (crs='EPSG:4326', reproj
+    automatique des tuiles Mercator vers le plan lat/lng).
   - L'ilot 82 (27 av. Lacassagne) n'a pas de polygone KML : ignore.
   - Les Placemark 'X' sont ignores (hors secteur).
-  - Aspect 'equal' : lng/lat traites comme un plan cartesien. A 45 deg
-    de latitude, distortion est-ouest de ~30 % (acceptable pour une
-    carte de quartier ; passer en projection si zone plus etendue).
 """
-import os, json, xml.etree.ElementTree as ET
+import math
+import os
+import json
+import xml.etree.ElementTree as ET
+from pathlib import Path
+
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 from matplotlib.patches import Polygon as MplPolygon
 from matplotlib.collections import PatchCollection
-from pathlib import Path
+
+import contextily as ctx
 
 KML_REMAP = {'3A': '3', '3B': '13'}
 
@@ -35,6 +41,7 @@ COULEURS = {
 A0_W_IN = 33.1  # A0 portrait en pouces
 A0_H_IN = 46.8
 DPI = 150       # 150 DPI -> qualite suffisante pour impression murale
+
 
 def parse_kml(path):
     """Retourne dict {ilot_id: [(lng, lat), ...]}"""
@@ -60,6 +67,7 @@ def parse_kml(path):
             result[name] = coords
     return result
 
+
 def main():
     rep_raw = os.environ['REPARTITION_JSON']
     agence_id = os.environ.get('AGENCE_ID', '')
@@ -74,18 +82,56 @@ def main():
         polygones.update(parse_kml(kml_file))
     print(f"[OK] {len(polygones)} polygones KML charges")
 
+    # Passe 1 : collecter tous les points pour calculer bounds globaux
+    # AVANT de creer la figure (on a besoin de lat_center pour aspect).
+    all_lngs, all_lats = [], []
+    for coords in polygones.values():
+        for lng, lat in coords:
+            all_lngs.append(lng)
+            all_lats.append(lat)
+    if not all_lngs:
+        raise SystemExit('[FATAL] Aucun polygone KML utilisable')
+
+    # Bounds + marge 5 %
+    lng_margin = (max(all_lngs) - min(all_lngs)) * 0.05
+    lat_margin = (max(all_lats) - min(all_lats)) * 0.05
+
     # Creer la figure A0
     fig, ax = plt.subplots(1, 1,
       figsize=(A0_W_IN, A0_H_IN), dpi=DPI)
     ax.set_facecolor('white')
     fig.patch.set_facecolor('white')
-    ax.set_aspect('equal')
+
+    # Aspect ratio geographique : 1 degre lng = cos(lat) degre lat.
+    # set_aspect(1/cos(lat)) compense la distortion est-ouest sur un
+    # plan lat/lng (sinon le secteur apparait ecrase verticalement).
+    lat_center = (min(all_lats) + max(all_lats)) / 2
+    lng_correction = math.cos(math.radians(lat_center))
+    ax.set_aspect(1 / lng_correction)
     ax.axis('off')
 
-    # Calculer bounds globaux
-    all_lngs, all_lats = [], []
+    # set_xlim/set_ylim AVANT add_basemap : contextily a besoin de
+    # l'extent pour calculer le niveau de zoom des tuiles a fetcher.
+    ax.set_xlim(min(all_lngs) - lng_margin,
+                max(all_lngs) + lng_margin)
+    ax.set_ylim(min(all_lats) - lat_margin,
+                max(all_lats) + lat_margin)
 
-    # Dessiner les polygones
+    # Fond OSM CartoDB Positron via contextily. crs='EPSG:4326' :
+    # axe en lat/lng, contextily reprojette les tuiles Mercator
+    # (EPSG:3857) automatiquement vers le plan lat/lng.
+    print('[INFO] Fetch tuiles OSM (CartoDB Positron)...')
+    ctx.add_basemap(
+        ax,
+        crs='EPSG:4326',
+        source=ctx.providers.CartoDB.Positron,
+        zoom='auto',
+        attribution=False,
+    )
+    print('[OK] Fond OSM ajoute')
+
+    # Passe 2 : dessiner les polygones PAR-DESSUS le fond (ordre
+    # d'ajout = ordre de zorder par defaut, donc polygones au-dessus).
     for ilot_id, coords in polygones.items():
         if not coords:
             continue
@@ -97,8 +143,6 @@ def main():
 
         lngs = [p[0] for p in coords]
         lats = [p[1] for p in coords]
-        all_lngs.extend(lngs)
-        all_lats.extend(lats)
 
         poly = MplPolygon(list(zip(lngs, lats)),
                           closed=True)
@@ -107,26 +151,16 @@ def main():
           linewidth=1.5, alpha=0.75)
         ax.add_collection(patch)
 
-        # Numero d'ilot au centroide
+        # Numero d'ilot au centroide (fontsize 10 pour lisibilite A0)
         cx = sum(lngs) / len(lngs)
         cy = sum(lats) / len(lats)
         ax.text(cx, cy, ilot_id,
           ha='center', va='center',
-          fontsize=6, fontweight='bold',
+          fontsize=10, fontweight='bold',
           color='#222222',
           bbox=dict(boxstyle='round,pad=0.1',
                     facecolor='white',
                     edgecolor='none', alpha=0.6))
-
-    # Fit bounds avec marge 5 %
-    lng_margin = lat_margin = 0
-    if all_lngs and all_lats:
-        lng_margin = (max(all_lngs) - min(all_lngs)) * 0.05
-        lat_margin = (max(all_lats) - min(all_lats)) * 0.05
-        ax.set_xlim(min(all_lngs) - lng_margin,
-                    max(all_lngs) + lng_margin)
-        ax.set_ylim(min(all_lats) - lat_margin,
-                    max(all_lats) + lat_margin)
 
     # Marker agence
     AGENCE_COORDS = {
@@ -163,6 +197,7 @@ def main():
                 facecolor='white')
     plt.close(fig)
     print(f"[OK] PNG sauve : {png_path}")
+
 
 if __name__ == '__main__':
     main()

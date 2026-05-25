@@ -26,10 +26,10 @@ jobs:
           python-version: "3.11"
 
       - name: 📦 Dépendances
-        # matplotlib seul suffit : on genere le PNG directement en Python,
-        # sans Chrome/Selenium/Leaflet. shapely & requests gardes pour
+        # matplotlib pour le rendu + contextily pour le fond OSM
+        # (CartoDB Positron). shapely & requests gardes pour
         # extensibilite (calculs geom + appels API eventuels).
-        run: pip install matplotlib shapely requests
+        run: pip install matplotlib shapely requests contextily
 
       - name: 🗺️ Générer carte A0
         run: python scripts/generate_map_a0.py
