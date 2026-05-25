@@ -3923,9 +3923,19 @@ function sctGenToggleLockSettings() {
 // greedy par ventes/an. Stocke en KV /secteur-attribution/:agence.
 const sctAttribState = {
   attribution: {},     // {secId: conseillerId|null}
-  conseillers: [],     // [{id, nom}]
+  conseillers: [],     // [{id, nom}] -- LISTE DES SECTEURS (sec-1, sec-2...) avec leur nom personnalise
+  conseillersReels: [],// [{id, nom}] -- VRAIS conseillers de l'agence (KV conseillers:<agence>), source du dropdown
   sectorVentes: {},    // {secId: ventes_5ans}
 };
+
+// Normalise un prenom en id stable : minuscules, sans accents, espaces -> tirets.
+// "Gerald" -> "gerald" ; "A attribuer" -> "a-attribuer".
+function sctAttribSlug(nom) {
+  // ̀-ͯ = bloc Combining Diacritical Marks (suppr. accents post-NFD).
+  return String(nom || '').toLowerCase()
+    .normalize('NFD').replace(new RegExp('[\\u0300-\\u036f]', 'g'), '')
+    .replace(/\s+/g, '-');
+}
 
 // Detection visibilite du bouton "🔄 Réattribuer" : visible des qu'une
 // repartition est sauvegardee en KV (presence de repartition[X]).
@@ -3970,6 +3980,23 @@ async function sctAttribOpen() {
       return;
     }
     sctAttribState.conseillers = conseillersSrc;
+    // [FIX] Source du dropdown = vraie liste des conseillers de l'agence
+    // (KV conseillers:<agence>), distincte des secteurs (sec-1, sec-2...).
+    // GET /conseillers/:agenceId -> {conseillers:["Gerald","Philippe",...]}.
+    // Transforme en [{id,nom}] et exclut "A attribuer" (placeholder).
+    try {
+      const rCons = await fetch(`${API_URL}/conseillers/${agenceId}`, {
+        headers: { 'Authorization': `Bearer ${authToken}` } });
+      if (!rCons.ok) throw new Error('HTTP ' + rCons.status);
+      const consData = await rCons.json();
+      const noms = Array.isArray(consData.conseillers) ? consData.conseillers : [];
+      sctAttribState.conseillersReels = noms
+        .filter(n => sctAttribSlug(n) !== 'a-attribuer')
+        .map(n => ({ id: sctAttribSlug(n), nom: n }));
+    } catch (e) {
+      sctAttribState.conseillersReels = [];
+      showToast('⚠️ Liste conseillers indisponible : ' + e.message, true);
+    }
     // Calcul des ventes/secteur depuis la repartition + sctGenState.ilots
     const ventesBySec = {};
     for (const c of rep.conseillers) ventesBySec[c.id] = 0;
@@ -4023,7 +4050,8 @@ function sctAttribBack() {
 
 function sctAttribRenderStep1() {
   const div = document.getElementById('sct-attrib-step1-table');
-  const conseillers = sctAttribState.conseillers || [];
+  const conseillers = sctAttribState.conseillers || [];     // secteurs (lignes)
+  const conseillersReels = sctAttribState.conseillersReels || []; // dropdown
   const attribution = sctAttribState.attribution || {};
   const ventes = sctAttribState.sectorVentes || {};
   // [FIX r7.8] Affichage : libelle 'Secteur N — <nom>' pour distinguer
@@ -4047,10 +4075,11 @@ function sctAttribRenderStep1() {
     const numSec = (c.id || '').replace(/^sec-/, '') || (idx + 1);
     const libelleSecteur = `${swatch}<span style="vertical-align:middle;">Secteur ${esc(String(numSec))} — <b>${esc(c.nom)}</b></span>`;
     let optionsHtml = '<option value="">— Non attribué —</option>';
-    conseillers.forEach((cc, ccIdx) => {
+    // [FIX] Options du dropdown = vrais conseillers (conseillersReels),
+    // pas les secteurs (conseillers). "A attribuer" exclu cote sctAttribOpen.
+    conseillersReels.forEach((cc) => {
       const sel = currentAttrib === cc.id ? ' selected' : '';
-      const numCc = (cc.id || '').replace(/^sec-/, '') || (ccIdx + 1);
-      optionsHtml += `<option value="${esc(cc.id)}"${sel}>${esc(cc.nom)} (S${esc(String(numCc))})</option>`;
+      optionsHtml += `<option value="${esc(cc.id)}"${sel}>${esc(cc.nom)}</option>`;
     });
     html += `<tr style="vertical-align:middle;">`
       + `<td style="padding:8px 10px;border-top:1px solid var(--border);">${libelleSecteur}</td>`
