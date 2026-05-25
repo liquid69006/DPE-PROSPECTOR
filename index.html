@@ -2578,23 +2578,25 @@ function sctGenScoreSecteur(secId) {
   return { secId, total, zones: z, score: allZones ? total : total * 0.9 };
 }
 
-// [REFACTOR 2026-05-25 r7 / r7.5] DISTRIBUTION PAR QUOTA DE ZONES
+// [REFACTOR 2026-05-25 r7 / r7.5 / r7.6] DISTRIBUTION PAR QUOTA DE ZONES
 // ─────────────────────────────────────────────────────────────────────
 // Algorithme allocation : pour chaque zone (proche/moyenne/lointaine)
 // independamment, calcul du quota par secteur (= sum ventes zone / N)
-// puis distribution gloutonne dispersee (round-robin glouton sur les
-// ilots tries DESC par ventes, secteur cible = celui avec le zoneSum
-// minimum ET centroide GLOBAL le plus eloigne).
+// puis distribution gloutonne avec 3 criteres hierarchiques :
+//   [r7.6] 0. EXCLUSION priorite max : globalSum[sid] <= mean*(1+TOL_TOTAL)
+//             empeche un secteur deja sature en total de recevoir
+//             d'autres ilots (fallback : tous si tous overload).
+//          1. zoneSums[sid] minimum -- equilibre quota zone +/-20%.
+//          2. centSumGlobal[sid] le PLUS ELOIGNE -- dispersion geo
+//             inter-zones [r7.5].
 //
-// [r7.5] Le bookkeeping centSumGlobal est PARTAGE entre les 3 boucles
-// de zones (vs centSumZone reinitialise par zone avant r7.5). Permet
-// la coordination geographique inter-zones : si l'ilot 74 (zone
-// moyenne, 712m est de l'agence) est place dans le secteur S_A, le
-// centSumGlobal de S_A se decale vers l'est ; quand vient le tour de
-// distribuer l'ilot 76 (zone lointaine, 235m de 74), le critere
-// "centroide global le plus eloigne" envoie 76 vers un AUTRE secteur,
-// pas le meme. Resout le regroupement systematique observe sur des
-// paires d'ilots proches (235m) appartenant a des zones differentes.
+// [r7.5] centSumGlobal PARTAGE entre les 3 boucles de zones (vs
+//        centSumZone reinitialise par zone). Permet la coordination
+//        geographique inter-zones (resout amalgame 74-76 a 235m).
+//
+// [r7.6] globalSum PARTAGE + seuil overload : empeche les ilots
+//        moyens/lointains lourds de tomber dans un secteur deja
+//        plein de zone proche (resout desequilibre +/-5% structurel).
 //
 // Avantages vs ancien pipeline (sctGenPreAssignHeavy + sctGenRoundRobin) :
 //   - Repartition intra-zone equilibree d'office (chaque secteur recoit
@@ -2655,28 +2657,41 @@ function sctGenDistribByZone() {
   sctGenState._quotas = quotas;
   console.log('[sctGen] quotas/zone :', JSON.stringify(quotas));
 
-  // 5a) [REFACTOR r7.5 2026-05-25] Bookkeeping CENTROIDE GLOBAL partage
-  //     entre les 3 zones (proche/moyenne/lointaine). Avant r7.5, le
-  //     centroide etait par-zone et reinitialise a chaque boucle, ce qui
-  //     creait un risque d'amalgame inter-zones : ex. ilots 74 (moyenne,
-  //     centroide 45.75127, 4.86952) et 76 (lointaine, 45.75009, 4.87204)
-  //     -- seulement 235m entre eux -- pouvaient tomber dans le meme
-  //     secteur car les 2 distributions zone-par-zone partaient toutes
-  //     deux d'un bookkeeping vierge sans coordination geographique.
-  //     Avec centSumGlobal, le secteur qui recoit 74 voit son centroide
-  //     deplace vers l'est, donc la distribution zone lointaine choisira
-  //     un AUTRE secteur pour 76 (plus eloigne du barycentre actuel).
+  // 5a) [r7.5] Bookkeeping CENTROIDE GLOBAL partage entre les 3 zones.
+  //     Coordonne la dispersion geographique inter-zones (resout
+  //     l'amalgame 74-76 a 235m, anciennement aleatoire).
   const centSumGlobal = {};
   for (let i = 1; i <= N; i++) {
     centSumGlobal['sec-' + i] = { lat: 0, lng: 0, n: 0 };
   }
-  // Init avec locked deja places (toutes zones confondues).
   for (const [iid, v] of Object.entries(newRep)) {
     const il = ilotMap[iid];
     if (!il || il.centroide_lat == null) continue;
     const cs = centSumGlobal[v.conseillerId];
     if (cs) { cs.lat += il.centroide_lat; cs.lng += il.centroide_lng; cs.n++; }
   }
+
+  // 5b) [REFACTOR r7.6 2026-05-25] Bookkeeping GLOBAL_SUM (charge totale
+  //     par secteur, toutes zones confondues) + seuil de SURCHARGE
+  //     (mean * (1 + TOL_TOTAL)) au-dessus duquel un secteur devient
+  //     INELIGIBLE pour recevoir d'autres ilots (critere 0, priorite max
+  //     dans la selection greedy par zone).
+  //     But : empecher un secteur deja riche en zone proche de continuer
+  //     a recevoir des ilots lourds des zones moyenne/lointaine, qui
+  //     creerait un desequilibre total +/-5% irrecuperable par
+  //     sctGenBalance en aval.
+  //     Fallback : si tous les secteurs sont overload, on ignore le
+  //     filtre (les ilots restants doivent bien etre places).
+  const globalSum = {};
+  for (let i = 1; i <= N; i++) globalSum['sec-' + i] = 0;
+  for (const [iid, v] of Object.entries(newRep)) {
+    const il = ilotMap[iid];
+    if (!il) continue;
+    globalSum[v.conseillerId] = (globalSum[v.conseillerId] || 0) + (il.nb_ventes || 0);
+  }
+  const meanTotal = (quotas.proche || 0) + (quotas.moyenne || 0) + (quotas.lointaine || 0);
+  const overloadThreshold = meanTotal * (1 + SCT_GEN_TOL_TOTAL);
+  console.log(`[sctGen] meanTotal=${meanTotal.toFixed(1)} overloadThreshold=${overloadThreshold.toFixed(1)} (mean*${1+SCT_GEN_TOL_TOTAL})`);
 
   // 5b) ETAPE 2 - Distribution PAR ZONE (zoneSums local) mais critere
   //     de dispersion GLOBAL (centSumGlobal partage entre zones).
@@ -2694,15 +2709,27 @@ function sctGenDistribByZone() {
     // Tri DESC par nb_ventes -- les ilots les plus lourds en premier.
     const sortedZone = [...ilotsByZone[zk]].sort((a, b) => (b.nb_ventes || 0) - (a.nb_ventes || 0));
 
-    // Greedy : pour chaque ilot, secteur avec zoneSums min (quota zone)
-    // ET centroide GLOBAL le PLUS ELOIGNE de l'ilot (dispersion
-    // inter-zones). Secteur globalement vide -> distance Infinity.
+    // Greedy 3 criteres hierarchiques :
+    //   [r7.6] 0. EXCLUSION : globalSum[sid] <= overloadThreshold
+    //             (priorite max ; fallback : tous si tous overload).
+    //          1. zoneSums[sid] minimum (quota zone +/-20%).
+    //          2. centSumGlobal[sid] le plus ELOIGNE (dispersion geo).
     for (const ilot of sortedZone) {
-      let minSum = Infinity;
-      for (const sid of Object.keys(zoneSums)) if (zoneSums[sid] < minSum) minSum = zoneSums[sid];
-      const candidates = secOrder
+      // Critere 0 : eligibles = secteurs non-overload
+      let eligible = secOrder
         .map(n => 'sec-' + n)
-        .filter(sid => zoneSums[sid] === minSum);
+        .filter(sid => globalSum[sid] <= overloadThreshold);
+      if (eligible.length === 0) {
+        // Fallback : tous les secteurs sont overload (sortie de tolerance
+        // collective inattendue) -- on ignore le critere 0 pour eviter
+        // d'echouer le placement, le surcharge sera traite par balance.
+        eligible = secOrder.map(n => 'sec-' + n);
+      }
+      // Critere 1 : zoneSums min PARMI eligibles.
+      let minSum = Infinity;
+      for (const sid of eligible) if (zoneSums[sid] < minSum) minSum = zoneSums[sid];
+      const candidates = eligible.filter(sid => zoneSums[sid] === minSum);
+      // Critere 2 : centSumGlobal le plus eloigne PARMI candidates.
       let bestSid = candidates[0];
       let bestDist = -Infinity;
       for (const sid of candidates) {
@@ -2717,9 +2744,11 @@ function sctGenDistribByZone() {
         }
         if (dist > bestDist) { bestDist = dist; bestSid = sid; }
       }
-      // Affectation + update zoneSums (local) + centSumGlobal (partage).
+      // Affectation + update zoneSums (local) + centSumGlobal (partage)
+      //                + globalSum (partage, r7.6).
       newRep[ilot.ilotId] = { conseillerId: bestSid, locked: false };
-      zoneSums[bestSid] += (ilot.nb_ventes || 0);
+      zoneSums[bestSid]  += (ilot.nb_ventes || 0);
+      globalSum[bestSid] += (ilot.nb_ventes || 0);
       if (ilot.centroide_lat != null) {
         const cs = centSumGlobal[bestSid];
         cs.lat += ilot.centroide_lat;
