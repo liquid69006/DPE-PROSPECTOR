@@ -3107,7 +3107,28 @@ function sctGenBalance() {
   };
 
   const SCT_GEN_SWAP_TOP_K = 10;
+
+  // [TRACE r7.5+] Instrumentation : log filtrables par prefix
+  // '[sctGenBalance]' dans DevTools console. Toggle via
+  // sctGenState._traceBalance = false pour desactiver.
+  const TRACE = sctGenState._traceBalance !== false;
+  const traceLog = (...args) => { if (TRACE) console.log('[sctGenBalance]', ...args); };
+  const traceMoves = [];           // historique pour console.table final
+  const traceStart = (typeof performance !== 'undefined' ? performance.now() : Date.now());
+  if (TRACE) {
+    const initScores = computeScores();
+    const initMean = initScores.reduce((s,x) => s + x.total, 0) / N;
+    const initMaxV = Math.max(...initScores.map(s => s.total));
+    const initMinV = Math.min(...initScores.map(s => s.total));
+    const initDiffPct = initMean > 0 ? ((initMaxV - initMinV) / initMean * 100) : 0;
+    traceLog(`START N=${N} mean=${initMean.toFixed(1)} max=${initMaxV} min=${initMinV} diff=${(initMaxV-initMinV).toFixed(1)} (${initDiffPct.toFixed(1)}%)`);
+    traceLog('  quotas:', JSON.stringify(quotas));
+  }
+
+  let lastIter = 0;
+  let stopReason = 'max_iter';
   for (let iter = 0; iter < SCT_GEN_MAX_ITER; iter++) {
+    lastIter = iter;
     const scores = computeScores();
     const mean = scores.reduce((s,x) => s + x.total, 0) / N;
     const tol = mean * SCT_GEN_TOL_TOTAL;
@@ -3116,7 +3137,10 @@ function sctGenBalance() {
       if (s.total > maxS.total) maxS = s;
       if (s.total < minS.total) minS = s;
     }
-    if ((maxS.total - mean) <= tol && (mean - minS.total) <= tol) break;
+    if ((maxS.total - mean) <= tol && (mean - minS.total) <= tol) {
+      stopReason = `converged (max-min=${(maxS.total-minS.total).toFixed(1)} <= 2*tol=${(2*tol).toFixed(1)})`;
+      break;
+    }
 
     // Precalcul ilots de maxS / minS (non-locked) pour swap candidates,
     // sous-listes avec centroide_lat pour le malus proximite.
@@ -3207,13 +3231,41 @@ function sctGenBalance() {
       }
     }
 
-    if (!bestAction) break;
+    if (!bestAction) {
+      stopReason = `no_action (curDiff=${curDiff.toFixed(1)}, tol=${tol.toFixed(1)}, srcZoneOk=${srcZoneOk})`;
+      break;
+    }
     if (bestAction.type === 'move') {
+      const il = ilotMap[bestAction.iid] || {};
       sctGenState.repartition[bestAction.iid].conseillerId = minS.secId;
+      if (TRACE) {
+        traceLog(`iter ${iter} MOVE ilot ${bestAction.iid} (z=${il.zone}, v=${il.nb_ventes||0}) ${maxS.secId}->${minS.secId} | gain=${bestGain.toFixed(1)} | srcZoneOk=${srcZoneOk} degradLim=${degradLimit}`);
+        traceMoves.push({ iter, type:'move', ilot: bestAction.iid, zone: il.zone, ventes: il.nb_ventes||0, from: maxS.secId, to: minS.secId, gain: +bestGain.toFixed(1), srcZoneOk, degradLim: degradLimit });
+      }
     } else {
+      const ilA = ilotMap[bestAction.aIid] || {};
+      const ilB = ilotMap[bestAction.bIid] || {};
       sctGenState.repartition[bestAction.aIid].conseillerId = minS.secId;
       sctGenState.repartition[bestAction.bIid].conseillerId = maxS.secId;
+      if (TRACE) {
+        traceLog(`iter ${iter} SWAP A=${bestAction.aIid}(z=${ilA.zone},v=${ilA.nb_ventes||0}) <-> B=${bestAction.bIid}(z=${ilB.zone},v=${ilB.nb_ventes||0}) | ${maxS.secId}<->${minS.secId} | gain=${bestGain.toFixed(1)} | srcZoneOk=${srcZoneOk} degradLim=${degradLimit}`);
+        traceMoves.push({ iter, type:'swap', ilotA: bestAction.aIid, zA: ilA.zone, vA: ilA.nb_ventes||0, ilotB: bestAction.bIid, zB: ilB.zone, vB: ilB.nb_ventes||0, secMax: maxS.secId, secMin: minS.secId, gain: +bestGain.toFixed(1), srcZoneOk, degradLim: degradLimit });
+      }
     }
+  }
+
+  // [TRACE r7.5+] Summary final : nb moves/swaps + diff final + table.
+  if (TRACE) {
+    const endScores = computeScores();
+    const endMean = endScores.reduce((s,x) => s + x.total, 0) / N;
+    const endMaxV = Math.max(...endScores.map(s => s.total));
+    const endMinV = Math.min(...endScores.map(s => s.total));
+    const endDiffPct = endMean > 0 ? ((endMaxV - endMinV) / endMean * 100) : 0;
+    const elapsed = ((typeof performance !== 'undefined' ? performance.now() : Date.now()) - traceStart);
+    const nMove = traceMoves.filter(m => m.type === 'move').length;
+    const nSwap = traceMoves.filter(m => m.type === 'swap').length;
+    traceLog(`END iter=${lastIter+1}/${SCT_GEN_MAX_ITER} stop=${stopReason} | ${nMove} move + ${nSwap} swap | max=${endMaxV} min=${endMinV} diff=${(endMaxV-endMinV).toFixed(1)} (${endDiffPct.toFixed(1)}%) | ${elapsed.toFixed(0)}ms`);
+    if (traceMoves.length) console.table(traceMoves);
   }
 }
 
