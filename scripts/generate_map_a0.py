@@ -44,8 +44,11 @@ AGENCE_COORDS = {
     "dauphine-lacassagne": (45.75685, 4.86502),
 }
 
-# A0 portrait @ 300 DPI : 841 mm x 1189 mm.
-A0_W, A0_H = 9933, 14043
+# A0 portrait @ 150 DPI : 841 mm x 1189 mm (4961 x 7016 px).
+# 300 DPI (9933 x 14043) OOM les runners GitHub + tuiles trop fines en
+# headless. 150 DPI suffit pour impression murale A0 : polygones SVG
+# restent nets, seul le fond de carte est legerement moins detaille.
+A0_W, A0_H = 4961, 7016
 
 # Couleurs par defaut (sec-1..8), aligne sur SCT_GEN_COLORS de index.html.
 DEFAULT_COLORS = [
@@ -171,7 +174,44 @@ def capture_html_to_png(html_path, png_path, w, h):
         driver.execute_script("window.dispatchEvent(new Event('resize'));")
         time.sleep(2)
 
-        # 3) Tuiles majoritairement chargees (>=70 %, certaines tuiles
+        # 3) Zoom +1 cran pour un cadrage plus serre sur les polygones
+        # (fit_bounds tend a laisser un peu trop de marge). Folium expose
+        # la map sous un nom alea (map_<hash>), donc on la cherche par
+        # introspection des proprietes window.
+        print("[INFO] Zoom +1 (cadrage serre)...", flush=True)
+        driver.execute_script("""
+          var map = Object.values(window).find(
+            v => v && v._leaflet_id !== undefined
+          );
+          if (!map) {
+            // Fallback : chercher dans les proprietes window.
+            for (var k in window) {
+              try {
+                if (window[k] && window[k].fitBounds) {
+                  map = window[k]; break;
+                }
+              } catch(e) {}
+            }
+          }
+          if (map) {
+            map.zoomIn(1);
+          }
+        """)
+        time.sleep(1)
+
+        # 4) Scroll dans toutes les directions pour forcer Leaflet a
+        # charger les tuiles hors viewport initial (en headless A0,
+        # la plupart des tuiles sont hors ecran au depart).
+        print("[INFO] Scroll force chargement tuiles...", flush=True)
+        driver.execute_script("""
+          window.scrollTo(0, 0);
+          window.scrollTo(document.body.scrollWidth, 0);
+          window.scrollTo(0, document.body.scrollHeight);
+          window.scrollTo(0, 0);
+        """)
+        time.sleep(5)
+
+        # 5) Tuiles majoritairement chargees (>=70 %, certaines tuiles
         # en bordure ne se chargent jamais en headless ; 70 % suffit
         # pour un rendu propre).
         print("[INFO] Attente chargement tuiles (>=70 %)...", flush=True)
@@ -190,7 +230,7 @@ def capture_html_to_png(html_path, png_path, w, h):
         )
         print(f"[OK] Tuiles {loaded}/{total}", flush=True)
 
-        # 4) Buffer final pour le rendu SVG des polygones (instantane mais
+        # 6) Buffer final pour le rendu SVG des polygones (instantane mais
         # le compositor du navigateur a besoin d'un dernier frame).
         time.sleep(3)
 
