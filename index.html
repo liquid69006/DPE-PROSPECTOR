@@ -3955,11 +3955,21 @@ async function sctAttribOpen() {
       headers: { 'Authorization': `Bearer ${authToken}` } });
     if (!rRep.ok) throw new Error('HTTP ' + rRep.status);
     const rep = await rRep.json();
-    if (!rep || !Array.isArray(rep.conseillers) || !rep.conseillers.length) {
+    // [FIX r7.8] Source conseillers : preferer sctGenState.conseillers
+    // (peut contenir des renommages en RAM non encore sauves), sinon
+    // fallback sur la liste sauvegardee en KV (rep.conseillers).
+    let conseillersSrc = [];
+    if (Array.isArray(sctGenState.conseillers) && sctGenState.conseillers.length) {
+      conseillersSrc = sctGenState.conseillers;
+    } else if (Array.isArray(rep.conseillers) && rep.conseillers.length) {
+      conseillersSrc = rep.conseillers;
+      // Hydrate sctGenState pour usage ulterieur (palette + noms).
+      sctGenState.conseillers = rep.conseillers;
+    } else {
       showToast('⚠️ Aucune répartition trouvée — utilisez d\'abord ⚡ Générer secteurs', true);
       return;
     }
-    sctAttribState.conseillers = rep.conseillers;
+    sctAttribState.conseillers = conseillersSrc;
     // Calcul des ventes/secteur depuis la repartition + sctGenState.ilots
     const ventesBySec = {};
     for (const c of rep.conseillers) ventesBySec[c.id] = 0;
@@ -4016,28 +4026,40 @@ function sctAttribRenderStep1() {
   const conseillers = sctAttribState.conseillers || [];
   const attribution = sctAttribState.attribution || {};
   const ventes = sctAttribState.sectorVentes || {};
+  // [FIX r7.8] Affichage : libelle 'Secteur N — <nom>' pour distinguer
+  // visuellement le secteur (sec-1, sec-2...) de son nom personnalise
+  // (Robin, Gerald...). Dropdown contient les memes entrees -- le user
+  // peut reattribuer librement un secteur a un autre conseiller.
   let html = '<table style="width:100%;border-collapse:separate;border-spacing:0;font-size:13px;">'
     + '<thead><tr style="color:var(--text2);font-weight:600;background:#1f2937;">'
     + '<th style="text-align:left;padding:8px 10px;border-bottom:2px solid var(--border);">Secteur</th>'
     + '<th style="text-align:center;padding:8px 10px;border-bottom:2px solid var(--border);">Ventes/an</th>'
     + '<th style="text-align:left;padding:8px 10px;border-bottom:2px solid var(--border);">Conseiller</th>'
     + '</tr></thead><tbody>';
-  for (const c of conseillers) {
+  conseillers.forEach((c, idx) => {
     const v5 = ventes[c.id] || 0;
     const currentAttrib = attribution[c.id] || '';
+    // [FIX r7.8] Swatch couleur identique a la carte Leaflet
+    // (sctGenSwatchCss gere les types 'solid' et 'stripe').
+    const swatch = `<span style="display:inline-block;width:12px;height:12px;border-radius:3px;`
+      + `border:1px solid #00000033;${sctGenSwatchCss(idx)};margin-right:8px;vertical-align:middle;"></span>`;
+    // Numero de secteur (sec-N) extrait de l'id pour clarte.
+    const numSec = (c.id || '').replace(/^sec-/, '') || (idx + 1);
+    const libelleSecteur = `${swatch}<span style="vertical-align:middle;">Secteur ${esc(String(numSec))} — <b>${esc(c.nom)}</b></span>`;
     let optionsHtml = '<option value="">— Non attribué —</option>';
-    for (const cc of conseillers) {
+    conseillers.forEach((cc, ccIdx) => {
       const sel = currentAttrib === cc.id ? ' selected' : '';
-      optionsHtml += `<option value="${esc(cc.id)}"${sel}>${esc(cc.nom)}</option>`;
-    }
+      const numCc = (cc.id || '').replace(/^sec-/, '') || (ccIdx + 1);
+      optionsHtml += `<option value="${esc(cc.id)}"${sel}>${esc(cc.nom)} (S${esc(String(numCc))})</option>`;
+    });
     html += `<tr style="vertical-align:middle;">`
-      + `<td style="padding:8px 10px;border-top:1px solid var(--border);">${esc(c.nom)}</td>`
+      + `<td style="padding:8px 10px;border-top:1px solid var(--border);">${libelleSecteur}</td>`
       + `<td style="text-align:center;padding:8px 10px;border-top:1px solid var(--border);">${(v5/5).toFixed(1)}</td>`
       + `<td style="padding:8px 10px;border-top:1px solid var(--border);">`
       + `<select onchange="sctAttribSetAssign('${esc(c.id)}', this.value)" `
       + `style="background:#1f2937;color:#fff;border:1px solid #4b5563;border-radius:4px;padding:4px 6px;font-size:12px;width:100%;">`
       + optionsHtml + '</select></td></tr>';
-  }
+  });
   html += '</tbody></table>';
   div.innerHTML = html;
 }
