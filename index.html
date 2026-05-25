@@ -2978,10 +2978,15 @@ const SCT_GEN_TOL_TOTAL = 0.05;   // sctGenBalance : equilibre total +/-5%
 const SCT_GEN_TOL_ZONE_PROCHE    = 0.50;
 const SCT_GEN_TOL_ZONE_MOYENNE   = 0.20;
 const SCT_GEN_TOL_ZONE_LOINTAINE = 0.20;
-const SCT_GEN_ZONE_DEGRAD_LIMIT  = 0.35;  // contrainte balance : move/swap ne degrade
-                                          // pas les zones de plus de 35% du quota
-                                          // (assoupli pour laisser plus de latitude
-                                          // a l'equilibrage total)
+const SCT_GEN_ZONE_DEGRAD_LIMIT        = 0.35;  // contrainte balance VERT : move/swap
+                                                // ne degrade pas les zones de plus de
+                                                // 35% du quota (secteur source dans
+                                                // ses tolerances pour les 3 zones).
+const SCT_GEN_ZONE_DEGRAD_LIMIT_ORANGE = 0.50;  // contrainte balance ORANGE : 50%
+                                                // (secteur source deja hors-tolerance
+                                                // sur >=1 zone -- on accepte plus de
+                                                // marge MAIS on conserve la contrainte
+                                                // absolue zone>0 sur le destination).
 const SCT_GEN_MAX_ITER  = 100;    // iterations max sctGenBalance
 
 // Penalite proximite (passes 1 ET 2) : malus 3 paliers selon la distance
@@ -3013,15 +3018,16 @@ function sctGenProxMalus(ilot, peers) {
 
 // [REFACTOR r7 2026-05-25] Equilibrage en 1 PASSE UNIQUE :
 //   Total ventes par secteur (tol +/-5%, malus proximite),
-//   AVEC CONTRAINTE CONDITIONNELLE [r7.2] : chaque move/swap ne doit
-//   pas degrader les zones du secteur source OU destination de plus de
-//   SCT_GEN_ZONE_DEGRAD_LIMIT (=35%) du quota -- MAIS uniquement
-//   lorsque le secteur source est DEJA dans sa tolerance pour TOUTES
-//   ses zones (vert sur les indicateurs UI). Si le secteur source
-//   est deja hors-tolerance sur au moins une zone (orange), la
-//   contrainte est ignoree et le move est autorise librement, pour
-//   permettre a l'algorithme de reduire l'ecart total +/-5% sans
-//   etre bloque par une zone deja degradee structurellement.
+//   AVEC CONTRAINTE GRADUEE [r7.3] sur zone-degradation :
+//   - Si secteur SOURCE (maxS) VERT sur toutes zones :
+//       DEGRAD_LIMIT = 0.35 (conservateur).
+//   - Si secteur SOURCE ORANGE sur >=1 zone :
+//       DEGRAD_LIMIT = 0.50 (plus souple) +
+//       contrainte absolue : aucune zone du secteur destination
+//       (minS) ne doit tomber a 0 apres le move/swap.
+//   La graduation permet a l'algo de converger sur le total +/-5%
+//   meme quand certaines zones sont structurellement degradees,
+//   tout en preservant la couverture multi-zone du destination.
 // La passe 2 P+M est supprimee (le quota-par-zone amont la rend
 // inutile : chaque secteur a deja son quota proche/moyenne +/-20%).
 function sctGenBalance() {
@@ -3039,18 +3045,32 @@ function sctGenBalance() {
   };
 
   // Contrainte zone-degradation : un secteur ne doit pas voir sa
-  // zone Z s'eloigner du quota_Z de plus de DEGRAD_LIMIT*quota_Z apres
+  // zone Z s'eloigner du quota_Z de plus de `limit`*quota_Z apres
   // le move (ou apres le swap, double check sur l'ilot A entrant et
   // l'ilot B sortant, et symetriquement cote source).
   // sign = +1 si secteur RECOIT ilot, -1 si secteur PERD ilot.
-  const wouldDegrade = (secScore, ilot, sign) => {
+  // `limit` parametre [r7.3] : 0.35 si source vert / 0.50 si orange.
+  const wouldDegrade = (secScore, ilot, sign, limit) => {
     if (!ilot) return false;
     const zk = ilot.zone;
     if (!ZONES.includes(zk)) return false;
     const q = quotas[zk] || 0;
     if (q === 0) return false;
     const newZoneSum = (secScore.zones[zk] || 0) + sign * (ilot.nb_ventes || 0);
-    return Math.abs(newZoneSum - q) > SCT_GEN_ZONE_DEGRAD_LIMIT * q;
+    return Math.abs(newZoneSum - q) > limit * q;
+  };
+
+  // [r7.3] Contrainte absolue zone>0 sur le secteur destination :
+  // calcule l'etat zone post-move/swap et refuse si une zone devient
+  // <= 0. Active uniquement quand source orange (DEGRAD_LIMIT=0.50)
+  // pour empecher qu'un secteur perde toute representation d'une zone.
+  const wouldKeepZonesNonZero = (sec, deltaByZone) => {
+    for (const zk of ZONES) {
+      const before = sec.zones[zk] || 0;
+      const delta  = deltaByZone[zk] || 0;
+      if (before + delta <= 0) return false;
+    }
+    return true;
   };
 
   const SCT_GEN_SWAP_TOP_K = 10;
@@ -3086,17 +3106,15 @@ function sctGenBalance() {
     let bestAction = null;
     const curDiff = maxS.total - minS.total;
 
-    // [REFACTOR r7.2] Contrainte zone-degradation CONDITIONNELLE :
-    // - Si le secteur SOURCE (maxS) est deja dans sa tolerance pour
-    //   TOUTES ses zones (proche/moyenne/lointaine), on applique la
-    //   contrainte DEGRAD_LIMIT normalement -> le move ne doit pas
-    //   degrader ni maxS ni minS au-dela de +/-35%.
-    // - Sinon (maxS deja hors-tolerance sur au moins une zone), on
-    //   considere le secteur deja degrade et on AUTORISE le move
-    //   librement (pas de contrainte zone-degradation) -- l'objectif
-    //   est de reduire l'ecart total +/-5% en priorite.
-    // Le secteur source (maxS) = celui qui PERD l'ilot ; logique
-    //   symetrique en SWAP pour les ilots A (perd maxS) et B (gagne maxS).
+    // [REFACTOR r7.3] Contrainte zone-degradation GRADUEE :
+    // - Si maxS (source) est dans sa tolerance pour TOUTES ses zones
+    //   (proche/moyenne/lointaine), DEGRAD_LIMIT = 0.35 (conservateur).
+    // - Si maxS est hors-tolerance sur >=1 zone (deja "orange"),
+    //   DEGRAD_LIMIT = 0.50 (assoupli pour laisser l'algo converger)
+    //   MAIS on ajoute une contrainte absolue : aucune zone du secteur
+    //   destination (minS) ne doit tomber a 0 apres le move/swap.
+    //   But : empecher la perte de couverture multi-zone par un move
+    //   opportuniste lors d'un equilibrage permissif.
     const tolPerZone = {
       proche:    (quotas.proche    || 0) * SCT_GEN_TOL_ZONE_PROCHE,
       moyenne:   (quotas.moyenne   || 0) * SCT_GEN_TOL_ZONE_MOYENNE,
@@ -3108,13 +3126,21 @@ function sctGenBalance() {
       return Math.abs((sec.zones[zk] || 0) - q) <= tolPerZone[zk];
     };
     const srcZoneOk = ZONES.every(zk => inZoneTol(maxS, zk));
+    const degradLimit = srcZoneOk
+      ? SCT_GEN_ZONE_DEGRAD_LIMIT
+      : SCT_GEN_ZONE_DEGRAD_LIMIT_ORANGE;
 
     // MOVE : pour chaque ilot non-locked de maxS, tester deplacement.
-    // Contrainte zone-degradation appliquee SEULEMENT si srcZoneOk.
+    // Contrainte zone-degradation toujours active, avec limit graduee
+    // selon srcZoneOk. Si !srcZoneOk -> contrainte absolue zone>0 sur
+    // minS (verification supplementaire post-move).
     for (const ilot of maxIlots) {
-      if (srcZoneOk) {
-        if (wouldDegrade(maxS, ilot, -1)) continue;
-        if (wouldDegrade(minS, ilot, +1)) continue;
+      if (wouldDegrade(maxS, ilot, -1, degradLimit)) continue;
+      if (wouldDegrade(minS, ilot, +1, degradLimit)) continue;
+      if (!srcZoneOk) {
+        // minS recoit l'ilot : delta = +ilot.ventes sur ilot.zone.
+        const dMin = {}; dMin[ilot.zone] = (ilot.nb_ventes || 0);
+        if (!wouldKeepZonesNonZero(minS, dMin)) continue;
       }
       const newDiff = Math.abs((maxS.total - ilot.nb_ventes) - (minS.total + ilot.nb_ventes));
       let gain = curDiff - newDiff;
@@ -3123,14 +3149,19 @@ function sctGenBalance() {
     }
 
     // SWAP : (A in maxTop, B in minTop) tels que A.ventes > B.ventes.
-    // Contrainte zone-degradation appliquee SEULEMENT si srcZoneOk
-    // (4 verifs : maxS perd A et recoit B, minS recoit A et perd B).
+    // 4 verifs wouldDegrade avec limit graduee + contrainte absolue
+    // zone>0 sur minS si !srcZoneOk (minS perd B, gagne A -- delta
+    // -B sur B.zone, +A sur A.zone).
     for (const A of maxTop) {
       for (const B of minTop) {
         if ((A.nb_ventes || 0) <= (B.nb_ventes || 0)) continue;
-        if (srcZoneOk) {
-          if (wouldDegrade(maxS, A, -1) || wouldDegrade(maxS, B, +1)) continue;
-          if (wouldDegrade(minS, A, +1) || wouldDegrade(minS, B, -1)) continue;
+        if (wouldDegrade(maxS, A, -1, degradLimit) || wouldDegrade(maxS, B, +1, degradLimit)) continue;
+        if (wouldDegrade(minS, A, +1, degradLimit) || wouldDegrade(minS, B, -1, degradLimit)) continue;
+        if (!srcZoneOk) {
+          const dMin = {};
+          dMin[A.zone] = (dMin[A.zone] || 0) + (A.nb_ventes || 0);
+          dMin[B.zone] = (dMin[B.zone] || 0) - (B.nb_ventes || 0);
+          if (!wouldKeepZonesNonZero(minS, dMin)) continue;
         }
         const delta = (A.nb_ventes || 0) - (B.nb_ventes || 0);
         const newDiff = Math.abs(curDiff - 2 * delta);
