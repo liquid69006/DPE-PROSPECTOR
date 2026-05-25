@@ -2522,6 +2522,12 @@ function sctGenComputeIlots() {
     return 0;
   };
   const byIlot = {};
+  // [REFACTOR r7.7 2026-05-25] Exclusion ventes adresses social/bureaux :
+  // les adresses taguees secteurAssign.type in {social, bureaux} sont
+  // considerees hors-champ marche logement marchand (cf getEffectiveLog
+  // qui retourne deja 0 pour le parc). Coherence affichage/calcul.
+  // Compteur diagnostique : nombre de ventes exclues + nb adresses.
+  let exclVentes = 0, exclAdresses = 0;
   for (const a of secteurData.adresses) {
     const iid = ilotEffectif(a);
     if (iid == null) continue;                  // non assigné -> ignore
@@ -2531,11 +2537,20 @@ function sctGenComputeIlots() {
       ilotId: key, nb_ventes: 0, _slat:0, _slng:0, _nll:0, adresses: [],
     };
     const o = byIlot[key];
-    o.nb_ventes += sumVpa(a);
+    const tg = (secteurAssign[a.cle] || {}).type;
+    if (tg !== 'social' && tg !== 'bureaux') {
+      o.nb_ventes += sumVpa(a);
+    } else {
+      exclVentes  += sumVpa(a);
+      exclAdresses++;
+    }
     if (typeof a.latitude === 'number' && typeof a.longitude === 'number') {
       o._slat += a.latitude; o._slng += a.longitude; o._nll++;
     }
     o.adresses.push(a);
+  }
+  if (exclAdresses) {
+    console.log(`[sctGen] ventes exclues (social/bureaux) : ${exclVentes} ventes sur ${exclAdresses} adresse(s)`);
   }
   const list = [];
   for (const k of Object.keys(byIlot)) {
