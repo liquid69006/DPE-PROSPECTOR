@@ -63398,6 +63398,7 @@
       "classe_dpe": "D",
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
+      "usage_principal_bdnb": "Résidentiel collectif",
       "batiment_groupe_id": "bdnb-bg-MRRH-JJD1-BBW5",
       "_bdnb_match": "num_voie",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
