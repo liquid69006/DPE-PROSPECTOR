@@ -2557,6 +2557,102 @@ function sctGenScoreSecteur(secId) {
   return { secId, total, zones: z, score: allZones ? total : total * 0.9 };
 }
 
+// Pre-affectation des N ilots les PLUS LOURDS (non-locked) avant le
+// round-robin. Le top-N est distribue un par secteur avec la meme
+// logique gloutonne dispersee que sctGenRoundRobin (centroide moyen
+// le plus eloigne). But : garantir que la charge maximale est
+// equirepartie a la base, le round-robin remplit ensuite les ilots
+// moyens autour. Reduit l'amplitude max-min et ameliore la
+// convergence de sctGenBalance.
+//
+// Difference vs locked : les preassigned sont RECALCULES a chaque
+// sctGenStart/sctGenRegen (Fisher-Yates sur l'ordre des secteurs
+// applique aussi a la pre-affectation -> variabilite preservee).
+function sctGenPreAssignHeavy() {
+  const N = sctGenState.N;
+  if (N <= 0) return;
+  const ilotMap = {}; for (const i of sctGenState.ilots) ilotMap[i.ilotId] = i;
+  const rep = sctGenState.repartition || (sctGenState.repartition = {});
+
+  // 1) Purge des preassigned du tour precedent (les locked sont gardes).
+  for (const iid of Object.keys(rep)) {
+    const v = rep[iid];
+    if (v && v.preassigned && !v.locked) delete rep[iid];
+  }
+
+  // 2) Top N ilots non-locked, tri DESC par nb_ventes (sctGenComputeIlots
+  //    tri deja la liste DESC, donc on prend les premiers non-locked).
+  const heavy = [];
+  for (const ilot of sctGenState.ilots) {
+    const v = rep[ilot.ilotId];
+    if (v && v.locked) continue;
+    heavy.push(ilot);
+    if (heavy.length >= N) break;
+  }
+  if (!heavy.length) return;
+
+  // 3) Shuffle Fisher-Yates de l'ordre des secteurs (tie-breaker stable,
+  //    varie entre regenerations).
+  const secOrder = Array.from({ length: N }, (_, i) => i + 1);
+  for (let i = secOrder.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [secOrder[i], secOrder[j]] = [secOrder[j], secOrder[i]];
+  }
+
+  // 4) Bookkeeping initial : counts + centSum INCLUSIFS des locked
+  //    deja en place (pour eviter d'envoyer un heavy juste a cote d'un
+  //    locked du meme secteur).
+  const counts = {};
+  const centSum = {};
+  for (let i = 1; i <= N; i++) {
+    counts['sec-' + i] = 0;
+    centSum['sec-' + i] = { lat: 0, lng: 0, n: 0 };
+  }
+  for (const [iid, v] of Object.entries(rep)) {
+    if (!v || !v.locked || !v.conseillerId) continue;
+    counts[v.conseillerId] = (counts[v.conseillerId] || 0) + 1;
+    const ilot = ilotMap[iid];
+    if (ilot && ilot.centroide_lat != null) {
+      const cs = centSum[v.conseillerId];
+      if (cs) { cs.lat += ilot.centroide_lat; cs.lng += ilot.centroide_lng; cs.n++; }
+    }
+  }
+
+  // 5) Distribution gloutonne dispersee : ilot le plus lourd -> secteur
+  //    avec count min ET centroide moyen le PLUS ELOIGNE (Infinity si
+  //    vide). Meme logique que sctGenRoundRobin.
+  for (const ilot of heavy) {
+    let minCount = Infinity;
+    for (const sid of Object.keys(counts)) if (counts[sid] < minCount) minCount = counts[sid];
+    const candidates = secOrder
+      .map(n => 'sec-' + n)
+      .filter(sid => counts[sid] === minCount);
+    let bestSid = candidates[0];
+    let bestDist = -Infinity;
+    for (const sid of candidates) {
+      const cs = centSum[sid];
+      let dist;
+      if (!cs || cs.n === 0) dist = Infinity;
+      else if (ilot.centroide_lat == null) dist = 0;
+      else {
+        dist = sctGenHaversine(ilot.centroide_lat, ilot.centroide_lng,
+                               cs.lat / cs.n, cs.lng / cs.n);
+        if (dist == null) dist = 0;
+      }
+      if (dist > bestDist) { bestDist = dist; bestSid = sid; }
+    }
+    rep[ilot.ilotId] = { conseillerId: bestSid, locked: false, preassigned: true };
+    counts[bestSid]++;
+    if (ilot.centroide_lat != null) {
+      const cs = centSum[bestSid];
+      cs.lat += ilot.centroide_lat;
+      cs.lng += ilot.centroide_lng;
+      cs.n++;
+    }
+  }
+  console.log(`[sctGen] pre-affectation : ${heavy.length} ilot(s) lourd(s) sur ${N} secteur(s)`);
+}
+
 // Distribution gloutonne DISPERSEE des ilots sur N secteurs.
 // [FIX 2026-05-25] Remplace le round-robin strict par un choix glouton :
 // pour chaque ilot (tri DESC par ventes en amont), on selectionne le
@@ -2566,7 +2662,8 @@ function sctGenScoreSecteur(secId) {
 // prioritaire).
 // Le shuffle Fisher-Yates de l'ordre des secteurs sert de tie-breaker
 // stable (cas typique : iteration 1, tous les secteurs sont vides).
-// Les ilots locked sont preserves et comptes dans le bookkeeping initial.
+// Les ilots locked ET preassigned sont preserves (les preassigned
+// proviennent de sctGenPreAssignHeavy(), appelee en amont).
 function sctGenRoundRobin() {
   const N = sctGenState.N;
   if (N <= 0) return;
@@ -2574,9 +2671,15 @@ function sctGenRoundRobin() {
   const old = sctGenState.repartition || {};
   const newRep = {};
 
-  // 1) Preservation des locked (tels quels).
+  // 1) Preservation des locked ET des preassigned (poses par
+  //    sctGenPreAssignHeavy juste avant l'appel).
   for (const [iid, v] of Object.entries(old)) {
-    if (v && v.locked && v.conseillerId) newRep[iid] = { conseillerId: v.conseillerId, locked: true };
+    if (!v || !v.conseillerId) continue;
+    if (v.locked) {
+      newRep[iid] = { conseillerId: v.conseillerId, locked: true };
+    } else if (v.preassigned) {
+      newRep[iid] = { conseillerId: v.conseillerId, locked: false, preassigned: true };
+    }
   }
 
   // 2) Shuffle Fisher-Yates de l'ordre des secteurs (tie-breaker).
@@ -2745,7 +2848,7 @@ function sctGenEnsureZoneCoverage() {
 // Tolerances par niveau (sctGenBalance 2 passes + indicateurs UI).
 const SCT_GEN_TOL_TOTAL = 0.08;   // passe 1 : equilibre total des secteurs
 const SCT_GEN_TOL_PM    = 0.10;   // passe 2 : equilibre proche+moyenne
-const SCT_GEN_MAX_ITER  = 50;     // par passe
+const SCT_GEN_MAX_ITER  = 100;    // par passe (50 -> 100 pour plus de chance de convergence)
 
 // Penalite proximite (passes 1 ET 2) : malus 3 paliers selon la distance
 // min entre l'ilot candidat et un ilot deja dans minS.
@@ -2797,6 +2900,11 @@ function sctGenBalance() {
   const byId = arr => { const m = {}; for (const s of arr) m[s.secId] = s; return m; };
 
   // ── PASSE 1 : equilibre total (tol +/-5%, malus proximite) ────────
+  // Strategies envisagees a chaque iter : MOVE (deplacer 1 ilot de maxS
+  // vers minS) ou SWAP (echanger 2 ilots entre maxS et minS). Le swap
+  // est limite aux 10 ilots les plus lourds de chaque secteur pour
+  // controler la complexite (O(N) -> O(100) au lieu de O(N^2)).
+  const SCT_GEN_SWAP_TOP_K = 10;
   for (let iter = 0; iter < SCT_GEN_MAX_ITER; iter++) {
     const scores = computeScores();
     const mean = scores.reduce((s,x) => s + x.total, 0) / N;
@@ -2805,28 +2913,61 @@ function sctGenBalance() {
     for (const s of scores) { if (s.total > maxS.total) maxS = s; if (s.total < minS.total) minS = s; }
     if ((maxS.total - mean) <= tol && (mean - minS.total) <= tol) break;
 
-    // Precalcul ilots deja dans minS (verif proximite).
+    // Precalcul ilots de maxS / minS (non-locked) pour swap candidates,
+    // sous-listes des avec centroide_lat pour le malus proximite.
+    const maxIlots = [];
+    const minIlots = [];
     const minSIlots = [];
     for (const [iid, v] of Object.entries(sctGenState.repartition)) {
-      if (v && v.conseillerId === minS.secId) {
-        const o = ilotMap[iid];
-        if (o && o.centroide_lat != null) minSIlots.push(o);
+      if (!v) continue;
+      const o = ilotMap[iid]; if (!o) continue;
+      if (v.conseillerId === maxS.secId && !v.locked) maxIlots.push(o);
+      if (v.conseillerId === minS.secId && !v.locked) minIlots.push(o);
+      if (v.conseillerId === minS.secId && o.centroide_lat != null) minSIlots.push(o);
+    }
+    maxIlots.sort((a, b) => (b.nb_ventes || 0) - (a.nb_ventes || 0));
+    minIlots.sort((a, b) => (b.nb_ventes || 0) - (a.nb_ventes || 0));
+    const maxTop = maxIlots.slice(0, SCT_GEN_SWAP_TOP_K);
+    const minTop = minIlots.slice(0, SCT_GEN_SWAP_TOP_K);
+
+    let bestGain = 0;
+    let bestAction = null;                              // {type:'move',iid} | {type:'swap',aIid,bIid}
+    const curDiff = maxS.total - minS.total;
+
+    // MOVE : pour chaque ilot non-locked de maxS, tester deplacement.
+    for (const ilot of maxIlots) {
+      const newDiff = Math.abs((maxS.total - ilot.nb_ventes) - (minS.total + ilot.nb_ventes));
+      let gain = curDiff - newDiff;
+      gain *= sctGenProxMalus(ilot, minSIlots);
+      if (gain > bestGain) { bestGain = gain; bestAction = { type: 'move', iid: ilot.ilotId }; }
+    }
+
+    // SWAP : (A in maxTop, B in minTop) tels que A.ventes > B.ventes
+    // (sinon le swap deteriore l'ecart). newDiff = |curDiff - 2*(A-B)|.
+    // Malus proximite applique a A (le nouvel arrivant de minS) vs
+    // minSIlots restants (approximation : on garde B dans la liste,
+    // simplification mineure -- B part en maxS donc malus surestime).
+    for (const A of maxTop) {
+      for (const B of minTop) {
+        if ((A.nb_ventes || 0) <= (B.nb_ventes || 0)) continue;
+        const delta = (A.nb_ventes || 0) - (B.nb_ventes || 0);
+        const newDiff = Math.abs(curDiff - 2 * delta);
+        let gain = curDiff - newDiff;
+        gain *= sctGenProxMalus(A, minSIlots);
+        if (gain > bestGain) {
+          bestGain = gain;
+          bestAction = { type: 'swap', aIid: A.ilotId, bIid: B.ilotId };
+        }
       }
     }
 
-    let bestGain = 0, bestIid = null;
-    const curDiff = maxS.total - minS.total;
-    for (const [iid, v] of Object.entries(sctGenState.repartition)) {
-      if (!v || v.locked || v.conseillerId !== maxS.secId) continue;
-      const ilot = ilotMap[iid]; if (!ilot) continue;
-      const newDiff = Math.abs((maxS.total - ilot.nb_ventes) - (minS.total + ilot.nb_ventes));
-      let gain = curDiff - newDiff;
-      // Malus proximite 3 paliers (helper).
-      gain *= sctGenProxMalus(ilot, minSIlots);
-      if (gain > bestGain) { bestGain = gain; bestIid = iid; }
+    if (!bestAction) break;
+    if (bestAction.type === 'move') {
+      sctGenState.repartition[bestAction.iid].conseillerId = minS.secId;
+    } else {
+      sctGenState.repartition[bestAction.aIid].conseillerId = minS.secId;
+      sctGenState.repartition[bestAction.bIid].conseillerId = maxS.secId;
     }
-    if (!bestIid) break;
-    sctGenState.repartition[bestIid].conseillerId = minS.secId;
   }
 
   // ── Snapshot de l'enveloppe totale apres passe 1 (contrainte pour
@@ -3012,6 +3153,10 @@ async function sctGenStart() {
     const v = sctGenState.repartition[iid];
     if (!v || !validIds.has(v.conseillerId)) delete sctGenState.repartition[iid];
   }
+  // [FIX 2026-05-26] Pre-affectation des N ilots les plus lourds AVANT
+  // le round-robin : garantit que la charge max est equirepartie a la
+  // base. Reduit l'amplitude max-min et la pression sur sctGenBalance.
+  sctGenPreAssignHeavy();
   sctGenRoundRobin();
   // [FIX 2026-05-24] try/catch global : empeche le bouton de rester
   // disable sur une exception (ex ilotEffectif undefined, mutation
@@ -3038,6 +3183,7 @@ function sctGenRegen() {
     return;
   }
   try {
+    sctGenPreAssignHeavy();
     sctGenRoundRobin();
     sctGenEnsureZoneCoverage();
     sctGenBalance();
