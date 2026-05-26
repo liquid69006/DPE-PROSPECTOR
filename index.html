@@ -780,6 +780,11 @@ td{padding:11px 14px;vertical-align:middle;}
         style="padding:7px 14px;border:1px solid var(--border);border-radius:6px;
                background:var(--surface2);color:var(--text);font-size:13px;
                cursor:pointer;white-space:nowrap;">🏘️ Copro NI</button>
+      <button id="secteur-mixte-btn" onclick="secteurToggleMixte()"
+        title="N'afficher que les adresses HORS-RNC qualifiées 'Mixte' (social + marchand). Cumulable."
+        style="padding:7px 14px;border:1px solid var(--border);border-radius:6px;
+               background:var(--surface2);color:var(--text);font-size:13px;
+               cursor:pointer;white-space:nowrap;">🔀 Mixte</button>
       <button id="secteur-aqualif-btn" onclick="secteurToggleAQualif()"
         title="N'afficher que les adresses HORS-RNC sans qualification posee (as.type vide). Cumulable avec les autres filtres."
         style="padding:7px 14px;border:1px solid var(--border);border-radius:6px;
@@ -2267,6 +2272,18 @@ function secteurToggleCoproNI() {
   renderSecteur();
 }
 window.secteurToggleCoproNI = secteurToggleCoproNI;
+let secteurMixte = false;           // filtre "Mixte" (toggle, qualif manuelle = mixte)
+function secteurToggleMixte() {
+  secteurMixte = !secteurMixte;
+  const b = document.getElementById('secteur-mixte-btn');
+  if (b) {
+    b.style.background = secteurMixte ? '#7c3aed' : 'var(--surface2)';
+    b.style.color = secteurMixte ? '#fff' : 'var(--text)';
+    b.style.borderColor = secteurMixte ? '#7c3aed' : 'var(--border)';
+  }
+  renderSecteur();
+}
+window.secteurToggleMixte = secteurToggleMixte;
 let secteurAQualif = false;         // filtre "A qualifier" (toggle, qualif manuelle vide)
 function secteurAQualifBtnSync() {
   const b = document.getElementById('secteur-aqualif-btn');
@@ -2442,11 +2459,17 @@ function secteurSave() {
 const ROT_COLOR = { 'Tres actif': '#16a34a', 'Très actif': '#16a34a',
   'Actif': '#2563eb', 'Modere': '#d97706', 'Modéré': '#d97706', 'Fige': '#6b7280', 'Figé': '#6b7280' };
 const TYPE_OPTS = [['', '— type —'], ['copro_non_immat', 'Copropriété non immatriculée'],
+  ['mixte', '🔀 Mixte (social + marchand)'],
   ['mono', 'Mono-propriété'], ['social', 'Logements sociaux'],
   ['bureaux', 'Bureaux'], ['non_qualifie', 'Non qualifié']];
 // Etiquettes courtes pour badge (rendu compact apres qualification posee)
 const TYPE_LABELS = { copro_non_immat: 'Copro non immat.', mono: 'Monopropriété',
-  social: 'Logements sociaux', bureaux: 'Bureaux', non_qualifie: 'Non qualifié' };
+  social: 'Logements sociaux', bureaux: 'Bureaux', non_qualifie: 'Non qualifié',
+  mixte: '🔀 Mixte' };
+// Couleurs badge par type (override le gris par defaut). null = style standard.
+const TYPE_BADGE_COLORS = {
+  mixte: { bg: '#4c1d95', border: '#7c3aed', fg: '#ddd6fe' }, // violet
+};
 
 // Sticky IRIS pour ilots a la frontiere IRIS (audit 2026-05-24).
 // 15 ilots avec 1-2 adresses "deviantes" IRIS-wise -> on force l'IRIS
@@ -4737,6 +4760,8 @@ function renderSecteur() {
     const as = secteurAssign[a.cle] || {};
     if (as.type === 'mono') return 1;
     if (as.type === 'social' || as.type === 'bureaux') return 0;
+    // mixte : retourne nb_log_bdnb (parc total, comme copro_non_immat)
+    // L'affichage colonne distingue marchand vs total (cf logCell)
     return a.nb_log_bdnb;
   };
 
@@ -4889,6 +4914,11 @@ function renderSecteur() {
       const horsRnc = !coproByCle[a.cle] && !a.numero_immatriculation;
       const as = secteurAssign[a.cle] || {};
       if (!(horsRnc && as.type === 'copro_non_immat')) return;
+    }
+    if (secteurMixte) {
+      const horsRnc = !coproByCle[a.cle] && !a.numero_immatriculation;
+      const as = secteurAssign[a.cle] || {};
+      if (!(horsRnc && as.type === 'mixte')) return;
     }
     if (secteurAQualif) {
       const horsRnc = !coproByCle[a.cle] && !a.numero_immatriculation;
@@ -5052,10 +5082,12 @@ function renderSecteur() {
         if (!rnc) {
           if (as.type && TYPE_LABELS[as.type]) {
             const lbl = TYPE_LABELS[as.type];
+            const tc = TYPE_BADGE_COLORS[as.type]
+              || { bg: '#1f2937', border: '#4b5563', fg: '#cbd5e1' };
             typeSel = `<span class="sct-typecell" data-cle="${esc(a.cle)}" `
               + `style="display:inline-flex;align-items:center;gap:3px;flex:none;">`
               + `<span title="Qualification : ${esc(lbl)}" `
-              + `  style="background:#1f2937;color:#cbd5e1;border:1px solid #4b5563;`
+              + `  style="background:${tc.bg};color:${tc.fg};border:1px solid ${tc.border};`
               + `border-radius:9px;font-size:10px;font-weight:600;padding:1px 7px;`
               + `white-space:nowrap;">${esc(lbl)}</span>`
               + `<button onclick="secteurEditType(this)" title="Modifier la qualification" `
@@ -5151,6 +5183,14 @@ function renderSecteur() {
           logCell = `<span title="Monopropriete qualifiee (BDNB ${a.nb_log_bdnb} log)" `
             + `style="color:var(--text2);">1 `
             + `<small style="opacity:.7;">(${a.nb_log_bdnb})</small></span>`;
+        } else if (as.type === 'mixte'
+            && a.nb_log_bdnb != null && a.nb_log_bdnb > 0) {
+          const marchand = (a.nb_log_marchand != null) ? a.nb_log_marchand : a.nb_log_bdnb;
+          const nsoc = (a.nb_lots_sociaux != null) ? a.nb_lots_sociaux : 0;
+          logCell = `<span title="Mixte : ${marchand} logements marchands sur ${a.nb_log_bdnb} BDNB`
+            + ` (dont ~${nsoc} sociaux estimes via MAJIC HLM/public)" `
+            + `style="color:#c4b5fd;">${marchand} `
+            + `<small style="opacity:.7;">(sur ${a.nb_log_bdnb})</small></span>`;
         } else if (as.type === 'social' || as.type === 'bureaux') {
           const lbl = TYPE_LABELS[as.type] || as.type;
           if (a.nb_log_bdnb != null && a.nb_log_bdnb > 0) {
