@@ -4926,17 +4926,22 @@ function renderSecteur() {
       if (!(horsRnc && (!as.type || as.type === ''))) return;
     }
     if (filterSansVentes) {
-      // 1. Type : copro RNC immatriculee OU qualif manuelle copro_non_immat
-      const isCoproRnc = !!coproByCle[a.cle];
       const asSv = secteurAssign[a.cle] || {};
+      // 1. EXCLURE explicitement social / bureaux / mono (hors champ marche
+      //    marchand : ces tags neutralisent getEffectiveLog a 0)
+      if (asSv.type === 'social' || asSv.type === 'bureaux' || asSv.type === 'mono') return;
+      // 2. Type valide : copro RNC (coproByCle OU numero_immatriculation orphelin)
+      //    OU qualif manuelle copro_non_immat OU mixte
+      const isCoproRnc = !!coproByCle[a.cle] || !!a.numero_immatriculation;
       const isCoproNI = asSv.type === 'copro_non_immat';
-      if (!(isCoproRnc || isCoproNI)) return;
-      // 2. 0 vente logement strict sur 5 ans (own + fused agreges)
+      const isMixte   = asSv.type === 'mixte';
+      if (!(isCoproRnc || isCoproNI || isMixte)) return;
+      // 3. 0 vente logement strict sur 5 ans (own + fused agreges)
       const ownN = a.nb_ventes_logement || 0;
       const ownVpa = a.ventes_par_an_logement || {};
       if (ownN > 0) return;
       if (ownVpa && Object.values(ownVpa).some(v => v > 0)) return;
-      // Fused : mergedInto (manuel) + autoMerged (BDNB) - ventes deja agregees
+      // 4. Fused : mergedInto (manuel) + autoMerged (BDNB) - ventes deja agregees
       const mi = (isCoproRnc && mergedInto[a.cle]) ? mergedInto[a.cle] : null;
       const am = autoMerged[a.cle] || null;
       if (mi && Object.values(mi.ventes || {}).some(v => v > 0)) return;

@@ -62440,15 +62440,15 @@
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
-      "_fusion_auto_sources": [
-        "30|RUE|PROFESSEUR PAUL SISLEY"
-      ],
+      "_fusion_auto_sources": null,
       "_fusion_auto_label": null,
       "numero_immatriculation": "AC7505134",
       "nb_lots_habitation": 43,
       "taux_rotation": 0.0,
       "classement_rotation": "Figé",
-      "_ilot": "67"
+      "_ilot": "67",
+      "_fusion_auto": true,
+      "_fusion_cible": "30|RUE|PROFESSEUR PAUL SISLEY"
     },
     {
       "cle": "34|RUE|ST PHILIPPE",
