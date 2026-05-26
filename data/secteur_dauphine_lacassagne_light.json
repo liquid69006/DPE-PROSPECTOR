@@ -67243,6 +67243,49 @@
       "_fusion_cible": "16|RUE|ST VICTORIEN",
       "_dvf_capture": true,
       "_ilot": "23"
+    },
+    {
+      "cle": "50|AVENUE|LACASSAGNE",
+      "adresse": "50 AVENUE LACASSAGNE",
+      "longitude": 4.869262,
+      "latitude": 45.753092,
+      "code_iris": "693830601",
+      "_coord_source": "moyenne_49_51_voisins",
+      "dans_majic": false,
+      "sci_proprietaire": "non",
+      "sci_nom": "",
+      "sci_siren": "",
+      "syndic": "",
+      "_syndic_src": "",
+      "ventes_par_an": {
+        "2021": 18
+      },
+      "nb_ventes_total": 18,
+      "nb_log_bdnb": 15,
+      "annee_construction": 2025,
+      "classe_dpe": null,
+      "type_batiment": "appartement",
+      "type_chauffage": null,
+      "batiment_groupe_id": null,
+      "_bdnb_match": "cherrypick_elixir_vefa",
+      "_injection_indice": "elixir_50_lacassagne_vefa",
+      "ventes_par_an_logement": {
+        "2021": 5
+      },
+      "nb_ventes_logement": 5,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Fige",
+      "_taux_logement_src": "cherrypick_vefa_neutralise",
+      "usage_principal_bdnb": "Residentiel collectif",
+      "_usage_bdnb_src": "cherrypick",
+      "numero_immatriculation": null,
+      "nb_lots_habitation": null,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Fige",
+      "_fusion_auto": null,
+      "_fusion_cible": null,
+      "_ilot": "58",
+      "_note": "Programme ELIXIR Bati-Lyon, VEFA en cours, immat RNC a venir"
     }
   ],
   "dvf_orphans_excluded": [
@@ -67257,12 +67300,6 @@
       "raison": "acces_parking_non_residentiel",
       "n_dvf_logement": 1,
       "n_dvf_total": 2
-    },
-    {
-      "cle": "50|AVENUE|LACASSAGNE",
-      "raison": "vefa_programme_neuf_elixir",
-      "n_dvf_logement": 5,
-      "n_dvf_total": 18
     },
     {
       "cle": "28|RUE|DAUPHINE",
