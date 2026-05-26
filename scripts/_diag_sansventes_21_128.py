@@ -50,6 +50,10 @@ DVF = Path(r"C:\Users\Station 5\dvf_dauphine_lacassagne.json")
 
 API = "https://dpe-prospector-api.yann-bufferne.workers.dev"
 TOKEN = os.environ.get("DPE_JWT") or ""
+if not TOKEN:
+    print("[abort] env var DPE_JWT absente. Set DPE_JWT avant le run "
+          "(cf scripts/sign_jwt_dpe.py).", file=sys.stderr)
+    sys.exit(1)
 UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
       "(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36")
 ANS = ("2021", "2022", "2023", "2024", "2025")
