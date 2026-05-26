@@ -16008,7 +16008,7 @@
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "_fusion_auto": true,
-      "_fusion_cible": "61 RUE ANTOINE CHARIAL / 106 RUE BARABAN",
+      "_fusion_cible": "61|RUE|ANTOINE CHARIAL",
       "_ilot": "35"
     },
     {
