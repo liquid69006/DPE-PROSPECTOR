@@ -1513,6 +1513,108 @@
     },
     "2|RUE|DAUPHINE": {
       "type": "social"
+    },
+    "1|RUE|VILLETTE": {
+      "type": "mono"
+    },
+    "10|RUE|JEAN RENOIR": {
+      "type": "social"
+    },
+    "128|RUE|ANTOINE CHARIAL": {
+      "type": "social"
+    },
+    "12|RUE|ST SIDOINE": {
+      "type": "social"
+    },
+    "14|RUE|DOCTEUR REBATEL": {
+      "type": "mixte"
+    },
+    "14|RUE|ROPOSTE": {
+      "type": "mono"
+    },
+    "191|AVENUE|FELIX FAURE": {
+      "type": "social"
+    },
+    "20B|AVENUE|LACASSAGNE": {
+      "type": "social"
+    },
+    "20|RUE|FREDERIC MISTRAL": {
+      "type": "mono"
+    },
+    "22|RUE|ST ANTOINE": {
+      "type": "social"
+    },
+    "23|RUE|METALLURGIE": {
+      "type": "mixte"
+    },
+    "251|RUE|PAUL BERT": {
+      "type": "mono"
+    },
+    "256|COURS|LAFAYETTE": {
+      "type": "bureaux"
+    },
+    "272|RUE|PAUL BERT": {
+      "type": "social"
+    },
+    "28|RUE|ETIENNE RICHERAND": {
+      "type": "social"
+    },
+    "2|RUE|BARA": {
+      "type": "bureaux"
+    },
+    "30|RUE|ANTOINE CHARIAL": {
+      "type": "bureaux"
+    },
+    "336|RUE|PAUL BERT": {
+      "type": "bureaux"
+    },
+    "35|RUE|ST ANTOINE": {
+      "type": "social"
+    },
+    "39|RUE|DAUPHINE": {
+      "type": "mixte"
+    },
+    "3|RUE|FRANCOIS GILLET": {
+      "type": "mono"
+    },
+    "3|RUE|NAZARETH": {
+      "type": "mixte"
+    },
+    "41|AVENUE|LACASSAGNE": {
+      "type": "mono"
+    },
+    "52|RUE|ETIENNE RICHERAND": {
+      "type": "mixte"
+    },
+    "56|RUE|MAURICE FLANDIN": {
+      "type": "mixte"
+    },
+    "59|COURS|ALBERT THOMAS": {
+      "type": "social"
+    },
+    "59|RUE|BARABAN": {
+      "type": "social"
+    },
+    "5|COURS|ALBERT THOMAS": {
+      "type": "bureaux"
+    },
+    "66|AVENUE|LACASSAGNE": {
+      "type": "social"
+    },
+    "77|RUE|ETIENNE RICHERAND": {
+      "type": "mixte"
+    },
+    "79|RUE|DAUPHINE": {
+      "type": "bureaux"
+    },
+    "7|COURS|ALBERT THOMAS": {
+      "type": "mixte"
+    },
+    "8|RUE|FRANCOIS GILLET": {
+      "type": "mixte"
+    },
+    "99|RUE|BARABAN": {
+      "type": "bureaux"
     }
   },
   "fusions": {
