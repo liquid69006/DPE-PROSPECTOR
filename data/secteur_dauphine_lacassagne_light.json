@@ -14566,9 +14566,7 @@
       "nb_lots_habitation": 117,
       "taux_rotation": 5.0,
       "classement_rotation": "Très actif",
-      "_fusion_auto_sources": [
-        "13B|RUE|DAUPHINE"
-      ],
+      "_fusion_auto_sources": null,
       "_fusion_auto_label": "13B/14 RUE DAUPHINE",
       "_correctif_refuse_indice": "fix_refuse_bgid_20suff_dl_2026-05-23",
       "_ilot": "65"
@@ -14619,7 +14617,8 @@
       "taux_rotation": 4.4,
       "classement_rotation": "Très actif",
       "_fusion_auto_sources": [
-        "22|AVENUE|GEORGES POMPIDOU"
+        "22|AVENUE|GEORGES POMPIDOU",
+        "20|AVENUE|GEORGES POMPIDOU"
       ],
       "_fusion_auto_label": "22 POMPIDOU / 19 ANTOINE CHARIAL (IVORY PARK)",
       "_ilot": "43"
@@ -15992,9 +15991,7 @@
       "batiment_groupe_id": "bdnb-bg-8NJL-4XAJ-TVQA",
       "_bdnb_match": "correctif_106baraban_re_fuse",
       "_fusion_auto_label": "106/116 RUE BARABAN",
-      "_fusion_auto_sources": [
-        "116|RUE|BARABAN"
-      ],
+      "_fusion_auto_sources": null,
       "ventes_par_an_logement": {
         "2021": 2,
         "2022": 6,
@@ -18023,7 +18020,8 @@
       "_fusion_auto_label": "14/16 RUE BARA",
       "_fusion_auto_sources": [
         "16|RUE|BARA",
-        "8|RUE|DOCTEUR REBATEL"
+        "8|RUE|DOCTEUR REBATEL",
+        "2|RUE|DOCTEUR REBATEL"
       ],
       "ventes_par_an_logement": {
         "2022": 0,
@@ -19280,7 +19278,8 @@
       "_fusion_auto_label": "24/26 RUE CITE / 21B RUE CLAUDIUS PIONCHON",
       "_fusion_auto_sources": [
         "26|RUE|CITE",
-        "21|RUE|CLAUDIUS PIONCHON"
+        "21|RUE|CLAUDIUS PIONCHON",
+        "26B|RUE|CITE"
       ],
       "ventes_par_an_logement": {
         "2021": 2,
@@ -21034,9 +21033,7 @@
       "batiment_groupe_id": "bdnb-bg-47D6-WCMM-3V8Y",
       "_bdnb_match": "correctif_5ensdl_f2_thesee_re_fuse",
       "_fusion_auto_label": "123/125 RUE DAUPHINE",
-      "_fusion_auto_sources": [
-        "123|RUE|DAUPHINE"
-      ],
+      "_fusion_auto_sources": null,
       "ventes_par_an_logement": {
         "2024": 3
       },
@@ -21787,7 +21784,7 @@
       "batiment_groupe_id": "bdnb-bg-PQ7B-SZQ8-13LS",
       "_bdnb_match": "num_voie",
       "_fusion_auto": true,
-      "_fusion_cible": "22|AVENUE|GEORGES POMPIDOU",
+      "_fusion_cible": "19|RUE|ANTOINE CHARIAL",
       "ventes_par_an_logement": {
         "2021": 1,
         "2022": 3,
@@ -25726,7 +25723,8 @@
       "_bdnb_match": "immat",
       "_fusion_auto_label": "14/16 RUE ESPERANCE",
       "_fusion_auto_sources": [
-        "16|RUE|ESPERANCE"
+        "16|RUE|ESPERANCE",
+        "14B|RUE|ESPERANCE"
       ],
       "ventes_par_an_logement": {
         "2021": 1,
@@ -26719,7 +26717,8 @@
       "_ilot": "84",
       "_fusion_auto_label": "21 RUE MAURICE FLANDIN (SDC 21 MAURICE FLANDIN) / 10 RUE RIBOUD",
       "_fusion_auto_sources": [
-        "10|RUE|RIBOUD"
+        "10|RUE|RIBOUD",
+        "12|RUE|RIBOUD"
       ]
     },
     {
@@ -26964,7 +26963,9 @@
       "_fusion_auto_label": "24-24B AVENUE LACASSAGNE (BRICKS 2) / 20 AVENUE LACASSAGNE",
       "_fusion_auto_sources": [
         "20|AVENUE|LACASSAGNE",
-        "24||ET 24 BIS AVENUE LACASSAGNE"
+        "24B|AVENUE|LACASSAGNE",
+        "24||ET 24 BIS AVENUE LACASSAGNE",
+        "26|AVENUE|LACASSAGNE"
       ],
       "ventes_par_an_logement": {
         "2023": 1
@@ -26975,8 +26976,8 @@
       "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
-      "_fusion_auto": true,
-      "_fusion_cible": "24||ET 24 BIS AVENUE LACASSAGNE",
+      "_fusion_auto": null,
+      "_fusion_cible": null,
       "_ilot": "54"
     },
     {
@@ -29471,7 +29472,6 @@
       "_fusion_auto_label": "93/93B/94/96 RUE BELLECOMBE",
       "_fusion_auto_sources": [
         "93|RUE|BELLECOMBE",
-        "93B|RUE|BELLECOMBE",
         "96|RUE|BELLECOMBE"
       ],
       "ventes_par_an_logement": {
@@ -30210,7 +30210,7 @@
       "batiment_groupe_id": "bdnb-bg-5NH2-EJ2E-JZXH",
       "_bdnb_match": "num_voie",
       "_fusion_auto": true,
-      "_fusion_cible": "57|RUE|BARABAN",
+      "_fusion_cible": "59|RUE|BARABAN",
       "ventes_par_an_logement": {
         "2024": 0
       },
@@ -32125,7 +32125,7 @@
       "batiment_groupe_id": "bdnb-bg-NP5T-JZFB-UVR7",
       "_bdnb_match": "num_voie",
       "_fusion_auto": true,
-      "_fusion_cible": "125|RUE|DAUPHINE",
+      "_fusion_cible": "228|AVENUE|FELIX FAURE",
       "ventes_par_an_logement": {
         "2025": 1
       },
@@ -32601,9 +32601,7 @@
       "nb_lots_habitation": 11,
       "taux_rotation": 9.1,
       "classement_rotation": "Très actif",
-      "_fusion_auto_sources": [
-        "14B|RUE|ESPERANCE"
-      ],
+      "_fusion_auto_sources": null,
       "_fusion_auto_label": "14B/15 RUE ESPERANCE",
       "_correctif_refuse_indice": "fix_refuse_bgid_20suff_dl_2026-05-23",
       "_ilot": "32"
@@ -34127,7 +34125,8 @@
       "_fusion_auto_label": "228/230 AV FELIX FAURE / 125 RUE DAUPHINE",
       "_fusion_auto_sources": [
         "230|AVENUE|FELIX FAURE",
-        "125|RUE|DAUPHINE"
+        "125|RUE|DAUPHINE",
+        "123|RUE|DAUPHINE"
       ],
       "ventes_par_an_logement": {
         "2023": 1,
@@ -39158,9 +39157,7 @@
       "batiment_groupe_id": "bdnb-bg-VVS2-CGZ5-FN7Y",
       "_bdnb_match": "correctif_v3_10_riboud_flandin_re_fuse",
       "_fusion_auto_label": "10/12 RUE RIBOUD",
-      "_fusion_auto_sources": [
-        "12|RUE|RIBOUD"
-      ],
+      "_fusion_auto_sources": null,
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
@@ -39495,7 +39492,9 @@
         "9|RUE|DAUPHINE",
         "9B|RUE|DAUPHINE",
         "11B|RUE|DAUPHINE",
-        "13|RUE|DAUPHINE"
+        "13|RUE|DAUPHINE",
+        "15B|RUE|DAUPHINE",
+        "13B|RUE|DAUPHINE"
       ],
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
@@ -39822,7 +39821,7 @@
       "batiment_groupe_id": "bdnb-bg-8NJL-4XAJ-TVQA",
       "_bdnb_match": "num_voie",
       "_fusion_auto": true,
-      "_fusion_cible": "106|RUE|BARABAN",
+      "_fusion_cible": "61|RUE|ANTOINE CHARIAL",
       "ventes_par_an_logement": {
         "2021": 0,
         "2023": 0
@@ -40108,7 +40107,7 @@
       "batiment_groupe_id": "bdnb-bg-ZS47-TD9J-M4FB",
       "_bdnb_match": "num_voie",
       "_fusion_auto": true,
-      "_fusion_cible": "10|RUE|RIBOUD",
+      "_fusion_cible": "21|RUE|MAURICE FLANDIN",
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
@@ -40177,7 +40176,8 @@
       "_fusion_auto_sources": [
         "14|RUE|ST EUSEBE",
         "15|RUE|ST EUSEBE",
-        "137|RUE|ANTOINE CHARIAL"
+        "137|RUE|ANTOINE CHARIAL",
+        "15|IMPASSE|ST EUSEBE"
       ],
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
@@ -42200,9 +42200,7 @@
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Tertiaire",
       "_usage_bdnb_src": "snapshot",
-      "_fusion_auto_sources": [
-        "15B|RUE|DAUPHINE"
-      ],
+      "_fusion_auto_sources": null,
       "_fusion_auto_label": "15/15B RUE DAUPHINE",
       "_correctif_refuse_indice": "fix_refuse_bgid_20suff_dl_2026-05-23",
       "_ilot": "62"
@@ -42616,8 +42614,7 @@
       "_fusion_auto_label": "149/151/155/198B AVENUE FELIX FAURE",
       "_fusion_auto_sources": [
         "149|AVENUE|FELIX FAURE",
-        "151|AVENUE|FELIX FAURE",
-        "198B|AVENUE|FELIX FAURE"
+        "151|AVENUE|FELIX FAURE"
       ],
       "_correctif_refuse_indice": "fix_refuse_bgid_20suff_dl_2026-05-23",
       "_ilot": "55"
@@ -43372,7 +43369,9 @@
         "154|AVENUE|FELIX FAURE",
         "156|AVENUE|FELIX FAURE",
         "158|AVENUE|FELIX FAURE",
-        "160|AVENUE|FELIX FAURE"
+        "160|AVENUE|FELIX FAURE",
+        "162B|AVENUE|FELIX FAURE",
+        "198B|AVENUE|FELIX FAURE"
       ],
       "_ilot": "56"
     },
@@ -44783,7 +44782,7 @@
       "batiment_groupe_id": "bdnb-bg-P2DG-Q47U-658U",
       "_bdnb_match": "num_voie",
       "_fusion_auto": true,
-      "_fusion_cible": "8|RUE|DOCTEUR REBATEL",
+      "_fusion_cible": "14|RUE|BARA",
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
@@ -48516,7 +48515,7 @@
       "batiment_groupe_id": "bdnb-bg-WLXU-6YKR-D8DU",
       "_bdnb_match": "immat",
       "_fusion_auto": true,
-      "_fusion_cible": "24||ET 24 BIS AVENUE LACASSAGNE",
+      "_fusion_cible": "24|AVENUE|LACASSAGNE",
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
@@ -52894,7 +52893,8 @@
       "_fusion_auto_sources": [
         "6|RUE|TERNOIS",
         "18|RUE|ST ANTOINE",
-        "93|RUE|BELLECOMBE"
+        "93|RUE|BELLECOMBE",
+        "93B|RUE|BELLECOMBE"
       ],
       "ventes_par_an_logement": {
         "2022": 1
@@ -56172,7 +56172,9 @@
       "_fusion_auto_label": "57/59 RUE BARABAN / 10 RUE ST VICTORIEN",
       "_fusion_auto_sources": [
         "57|RUE|BARABAN",
-        "10|RUE|ST VICTORIEN"
+        "10|RUE|ST VICTORIEN",
+        "81|RUE|BARABAN",
+        "93|RUE|BARABAN"
       ],
       "numero_immatriculation": "AH9240847",
       "nb_lots_habitation": 61,
@@ -59169,7 +59171,7 @@
       "batiment_groupe_id": "bdnb-bg-5NH2-EJ2E-JZXH",
       "_bdnb_match": "immat",
       "_fusion_auto": true,
-      "_fusion_cible": "57|RUE|BARABAN",
+      "_fusion_cible": "59|RUE|BARABAN",
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
@@ -59741,7 +59743,9 @@
       "_ilot": "76",
       "_fusion_auto_label": "9 RUE MONTBRILLANT #AB6220503 (sources fusees) / 9 RUE MONTBRILLANT",
       "_fusion_auto_sources": [
-        "9|RUE|MONTBRILLANT"
+        "9|RUE|MONTBRILLANT",
+        "9Q|RUE|MONTBRILLANT",
+        "9T|RUE|MONTBRILLANT"
       ]
     },
     {
@@ -60621,7 +60625,8 @@
       "taux_rotation": 0.5,
       "classement_rotation": "Figé",
       "_fusion_auto_sources": [
-        "9|RUE|GABILLOT"
+        "9|RUE|GABILLOT",
+        "9B|RUE|GABILLOT"
       ],
       "_fusion_auto_label": "9 GABILLOT / 76 ETIENNE RICHERAND (LE SAINTE ANNE)",
       "_ilot": "46"
@@ -62029,10 +62034,7 @@
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
-      "_fusion_auto_sources": [
-        "24|AVENUE|LACASSAGNE",
-        "26|AVENUE|LACASSAGNE"
-      ],
+      "_fusion_auto_sources": null,
       "_fusion_auto_label": null,
       "numero_immatriculation": null,
       "nb_lots_habitation": 64,
@@ -62225,7 +62227,9 @@
       "classement_rotation": "Fige",
       "_fusion_auto_label": "61 RUE ANTOINE CHARIAL / 106 RUE BARABAN",
       "_fusion_auto_sources": [
-        "106|RUE|BARABAN"
+        "106|RUE|BARABAN",
+        "116|RUE|BARABAN",
+        "130B|RUE|BARABAN"
       ],
       "_ilot": "35"
     },
@@ -62672,7 +62676,7 @@
       "batiment_groupe_id": "bdnb-bg-8NJL-4XAJ-TVQA",
       "_bdnb_match": "num_voie",
       "_fusion_auto": true,
-      "_fusion_cible": "106|RUE|BARABAN",
+      "_fusion_cible": "61|RUE|ANTOINE CHARIAL",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
       "_correctif_propagation_indice": "fix_propag_immat_21suff_dl_2026-05-23",
       "_ilot": "35"
@@ -62708,7 +62712,8 @@
       "_fusion_auto": true,
       "_fusion_auto_target": "11|RUE|DAUPHINE",
       "_fusion_auto_source": "manual_2026-05-23_13bdauph_hbm",
-      "_ilot": "62"
+      "_ilot": "62",
+      "_fusion_cible": "11|RUE|DAUPHINE"
     },
     {
       "cle": "14B|RUE|ESPERANCE",
@@ -62741,7 +62746,8 @@
       "_fusion_auto": true,
       "_fusion_auto_target": "14|RUE|ESPERANCE",
       "_fusion_auto_source": "manual_2026-05-23_14besp_emeraude",
-      "_ilot": "33"
+      "_ilot": "33",
+      "_fusion_cible": "14|RUE|ESPERANCE"
     },
     {
       "cle": "15B|RUE|CLAUDIUS PIONCHON",
@@ -62841,7 +62847,7 @@
       "batiment_groupe_id": "bdnb-bg-AUY1-RMZ8-PAUT",
       "_bdnb_match": "num_voie",
       "_fusion_auto": true,
-      "_fusion_cible": "13|RUE|DAUPHINE",
+      "_fusion_cible": "11|RUE|DAUPHINE",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
       "_ilot": "62"
     },
@@ -62903,7 +62909,7 @@
       "batiment_groupe_id": "bdnb-bg-V431-EBHY-Y74D",
       "_bdnb_match": "num_voie",
       "_fusion_auto": true,
-      "_fusion_cible": "156|AVENUE|FELIX FAURE",
+      "_fusion_cible": "162|AVENUE|FELIX FAURE",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
       "_ilot": "55"
     },
@@ -63078,7 +63084,7 @@
       "batiment_groupe_id": "bdnb-bg-YTPF-DAGN-K1LQ",
       "_bdnb_match": "num_voie",
       "_fusion_auto": true,
-      "_fusion_cible": "182|AVENUE|FELIX FAURE",
+      "_fusion_cible": "9|RUE|METALLURGIE",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
       "_ilot": "59"
     },
@@ -63219,7 +63225,7 @@
       "batiment_groupe_id": "bdnb-bg-V431-EBHY-Y74D",
       "_bdnb_match": "num_voie",
       "_fusion_auto": true,
-      "_fusion_cible": "156|AVENUE|FELIX FAURE",
+      "_fusion_cible": "162|AVENUE|FELIX FAURE",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
       "_ilot": "55"
     },
@@ -63541,7 +63547,8 @@
       "_fusion_auto": true,
       "_fusion_auto_target": "26|RUE|CITE",
       "_fusion_auto_source": "manual_2026-05-23_26bcite_cambronne",
-      "_ilot": "24"
+      "_ilot": "24",
+      "_fusion_cible": "24|RUE|CITE"
     },
     {
       "cle": "27B|RUE|DAUPHINE",
@@ -64952,7 +64959,7 @@
       "batiment_groupe_id": "bdnb-bg-KVDR-XPSM-PDB5",
       "_bdnb_match": "num_voie",
       "_fusion_auto": true,
-      "_fusion_cible": "93|RUE|BELLECOMBE",
+      "_fusion_cible": "4|RUE|TERNOIS",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
       "_ilot": "2"
     },
@@ -65019,7 +65026,7 @@
       "batiment_groupe_id": "bdnb-bg-QGFJ-1RLT-6ZEN",
       "_bdnb_match": "num_voie",
       "_fusion_auto": true,
-      "_fusion_cible": "9|RUE|GABILLOT",
+      "_fusion_cible": "76|RUE|ETIENNE RICHERAND",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
       "_ilot": "46"
     },
@@ -65093,7 +65100,7 @@
       "batiment_groupe_id": "bdnb-bg-9MYW-M2VT-GSQE",
       "_bdnb_match": "num_voie",
       "_fusion_auto": true,
-      "_fusion_cible": "9|RUE|MONTBRILLANT",
+      "_fusion_cible": "9|RUE|MONTBRILLANT #AB6220503",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
       "_correctif_propagation_indice": "fix_propag_immat_21suff_dl_2026-05-23",
       "_ilot": "76"
@@ -65128,7 +65135,7 @@
       "batiment_groupe_id": "bdnb-bg-9MYW-M2VT-GSQE",
       "_bdnb_match": "num_voie",
       "_fusion_auto": true,
-      "_fusion_cible": "9|RUE|MONTBRILLANT",
+      "_fusion_cible": "9|RUE|MONTBRILLANT #AB6220503",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
       "_correctif_propagation_indice": "fix_propag_immat_21suff_dl_2026-05-23",
       "_ilot": "76"
@@ -65202,7 +65209,7 @@
       "_injection_bdnb_orphelin": "fix_bdnb_orphelin_dl_2026-05-23",
       "_iris_dist_m": 9.2,
       "_fusion_auto": true,
-      "_fusion_cible": "15|RUE|ST EUSEBE",
+      "_fusion_cible": "12|RUE|ST EUSEBE",
       "_correctif_doublon_eusebe": "fix_doublon_15_st_eusebe_2026-05-23",
       "_ilot": "33"
     },
