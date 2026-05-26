@@ -1969,6 +1969,16 @@
       "delta_parc_ui_attendu": 0,
       "delta_hr_actifs_attendu": -4,
       "delta_filtre_sansventes_attendu": -7
+    },
+    "_correctif_132_baraban": {
+      "date": "2026-05-26T20:11:48Z",
+      "pattern": "ECLATEMENT faux-matching make_light bgid (pattern 11 BARA)",
+      "autorite": "BAN api-adresse 69383_0645_00132 housenumber score 0.9761 -> BDNB rel_batiment_groupe_adresse LE6X-UMGS-VDM1 (parcelle DS0046 distincte de 133 BARABAN parcelles DP0060+DP0101)",
+      "ops": "RE-POINT bgid 2VY3-48EC -> LE6X-UMGS-VDM1 + annee 1890 -> 1780",
+      "old_bgid": "bdnb-bg-W5E1-2VY3-48EC",
+      "new_bgid": "bdnb-bg-LE6X-UMGS-VDM1",
+      "parcelle": "69383000DS0046",
+      "note": "ancre isolee, pas de fusion vers 253 PAUL BERT (autre BAN officielle du bati selon BDNB l_libelle_adr) sur consigne user"
     }
   },
   "iris": [
@@ -41363,12 +41373,12 @@
       "ventes_par_an": {},
       "nb_ventes_total": 0,
       "nb_log_bdnb": 16,
-      "annee_construction": 1890,
+      "annee_construction": 1780,
       "classe_dpe": "D",
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
-      "batiment_groupe_id": "bdnb-bg-W5E1-2VY3-48EC",
-      "_bdnb_match": "num_voie",
+      "batiment_groupe_id": "bdnb-bg-LE6X-UMGS-VDM1",
+      "_bdnb_match": "correctif_132baraban_re_point",
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
