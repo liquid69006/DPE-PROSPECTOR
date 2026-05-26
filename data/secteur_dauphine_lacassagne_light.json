@@ -20156,7 +20156,7 @@
       "type_chauffage": "reseau de chaleur",
       "batiment_groupe_id": "bdnb-bg-9B3F-ZKT4-JZ9V",
       "_bdnb_match": "immat",
-      "_fusion_auto_label": "61-63-65-67-69 RUE BARABAN / 10-12-14 RUE LOUIS JASSERON",
+      "_fusion_auto_label": "61/63/65/67/69 RUE BARABAN / 10/12/14 RUE LOUIS JASSERON",
       "_fusion_auto_sources": [
         "63|RUE|BARABAN",
         "65|RUE|BARABAN",
