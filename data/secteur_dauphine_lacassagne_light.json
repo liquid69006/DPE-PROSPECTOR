@@ -15222,9 +15222,9 @@
       "taux_rotation": 9.0,
       "classement_rotation": "Très actif",
       "_ilot": "76",
-      "nb_lots_sociaux": 2,
+      "nb_lots_sociaux": 6,
       "nb_lots_sociaux_brut": 2,
-      "nb_log_marchand": 41
+      "nb_log_marchand": 37
     },
     {
       "cle": "30|RUE|JEANNE HACHETTE",
@@ -16223,9 +16223,9 @@
       "_fusion_auto": true,
       "_fusion_cible": "23|RUE|METALLURGIE",
       "_ilot": "59",
-      "nb_lots_sociaux": 4,
+      "nb_lots_sociaux": 18,
       "nb_lots_sociaux_brut": 4,
-      "nb_log_marchand": 31
+      "nb_log_marchand": 17
     },
     {
       "cle": "22|AVENUE|GEORGES POMPIDOU",
@@ -16888,9 +16888,9 @@
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "_ilot": "54",
-      "nb_lots_sociaux": 4,
+      "nb_lots_sociaux": 7,
       "nb_lots_sociaux_brut": 4,
-      "nb_log_marchand": 20
+      "nb_log_marchand": 17
     },
     {
       "cle": "18|RUE|LOUIS JASSERON",
@@ -17518,9 +17518,9 @@
       "taux_rotation": 2.0,
       "classement_rotation": "Actif",
       "_ilot": "17",
-      "nb_lots_sociaux": 1,
+      "nb_lots_sociaux": 2,
       "nb_lots_sociaux_brut": 1,
-      "nb_log_marchand": 97
+      "nb_log_marchand": 96
     },
     {
       "cle": "48|RUE|ST MAXIMIN",
@@ -17893,9 +17893,9 @@
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "_ilot": "39",
-      "nb_lots_sociaux": 46,
+      "nb_lots_sociaux": 87,
       "nb_lots_sociaux_brut": 46,
-      "nb_log_marchand": 73
+      "nb_log_marchand": 32
     },
     {
       "cle": "8|RUE|FRANCOIS GILLET",
@@ -17943,9 +17943,9 @@
       "classement_rotation": "Modéré",
       "_correctif_refuse_indice": "fix_refuse_bgid_20suff_dl_2026-05-23",
       "_ilot": "26",
-      "nb_lots_sociaux": 9,
+      "nb_lots_sociaux": 22,
       "nb_lots_sociaux_brut": 9,
-      "nb_log_marchand": 43
+      "nb_log_marchand": 30
     },
     {
       "cle": "11|RUE|ESPERANCE",
@@ -19938,9 +19938,9 @@
       "_usage_bdnb_src": "snapshot",
       "_fusion_auto_sources": null,
       "_ilot": "11",
-      "nb_lots_sociaux": 133,
+      "nb_lots_sociaux": 150,
       "nb_lots_sociaux_brut": 133,
-      "nb_log_marchand": 31
+      "nb_log_marchand": 14
     },
     {
       "cle": "4|RUE|STE ANNE DE BARABAN",
@@ -20329,9 +20329,9 @@
       "classement_rotation": "Figé",
       "_correctif_refuse_indice": "fix_refuse_bgid_20suff_dl_2026-05-23",
       "_ilot": "75",
-      "nb_lots_sociaux": 35,
+      "nb_lots_sociaux": 56,
       "nb_lots_sociaux_brut": 35,
-      "nb_log_marchand": 34
+      "nb_log_marchand": 13
     },
     {
       "cle": "7|RUE|FRANCOIS GILLET",
@@ -20518,9 +20518,9 @@
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "_ilot": "40",
-      "nb_lots_sociaux": 5,
+      "nb_lots_sociaux": 29,
       "nb_lots_sociaux_brut": 5,
-      "nb_log_marchand": 36
+      "nb_log_marchand": 12
     },
     {
       "cle": "9|AVENUE|LACASSAGNE",
@@ -21071,9 +21071,9 @@
       "_fusion_auto": true,
       "_fusion_cible": "11|AVENUE|LACASSAGNE",
       "_ilot": "48",
-      "nb_lots_sociaux": 4,
+      "nb_lots_sociaux": 8,
       "nb_lots_sociaux_brut": 4,
-      "nb_log_marchand": 25
+      "nb_log_marchand": 21
     },
     {
       "cle": "125|RUE|DAUPHINE",
@@ -22674,9 +22674,9 @@
       "taux_rotation": 3.9,
       "classement_rotation": "Très actif",
       "_ilot": "29",
-      "nb_lots_sociaux": 2,
+      "nb_lots_sociaux": 9,
       "nb_lots_sociaux_brut": 2,
-      "nb_log_marchand": 51
+      "nb_log_marchand": 44
     },
     {
       "cle": "3|RUE|MAURICE FLANDIN",
@@ -23147,9 +23147,9 @@
       "taux_rotation": 5.6,
       "classement_rotation": "Très actif",
       "_ilot": "25",
-      "nb_lots_sociaux": 10,
+      "nb_lots_sociaux": 30,
       "nb_lots_sociaux_brut": 10,
-      "nb_log_marchand": 26
+      "nb_log_marchand": 6
     },
     {
       "cle": "4|RUE|ST PHILIPPE",
@@ -23681,9 +23681,9 @@
       "taux_rotation": 35.0,
       "classement_rotation": "Très actif",
       "_ilot": "18",
-      "nb_lots_sociaux": 7,
+      "nb_lots_sociaux": 12,
       "nb_lots_sociaux_brut": 7,
-      "nb_log_marchand": 24
+      "nb_log_marchand": 19
     },
     {
       "cle": "6|AVENUE|LACASSAGNE",
@@ -23911,9 +23911,9 @@
       "taux_rotation": 5.4,
       "classement_rotation": "Très actif",
       "_ilot": "32",
-      "nb_lots_sociaux": 3,
+      "nb_lots_sociaux": 13,
       "nb_lots_sociaux_brut": 3,
-      "nb_log_marchand": 23
+      "nb_log_marchand": 13
     },
     {
       "cle": "67|RUE|ETIENNE RICHERAND",
@@ -24002,9 +24002,9 @@
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "_ilot": "32",
-      "nb_lots_sociaux": 3,
+      "nb_lots_sociaux": 13,
       "nb_lots_sociaux_brut": 3,
-      "nb_log_marchand": 23
+      "nb_log_marchand": 13
     },
     {
       "cle": "7|COURS|ALBERT THOMAS",
@@ -24054,9 +24054,9 @@
       "taux_rotation": 2.0,
       "classement_rotation": "Actif",
       "_ilot": "68",
-      "nb_lots_sociaux": 56,
+      "nb_lots_sociaux": 81,
       "nb_lots_sociaux_brut": 56,
-      "nb_log_marchand": 95
+      "nb_log_marchand": 70
     },
     {
       "cle": "7|RUE|METALLURGIE",
@@ -24243,9 +24243,9 @@
       "_fusion_auto": true,
       "_fusion_cible": "12|RUE|ST SIDOINE",
       "_ilot": "11",
-      "nb_lots_sociaux": 133,
+      "nb_lots_sociaux": 150,
       "nb_lots_sociaux_brut": 133,
-      "nb_log_marchand": 31
+      "nb_log_marchand": 14
     },
     {
       "cle": "8|RUE|NAZARETH",
@@ -24328,9 +24328,9 @@
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "_ilot": "39",
-      "nb_lots_sociaux": 46,
+      "nb_lots_sociaux": 87,
       "nb_lots_sociaux_brut": 46,
-      "nb_log_marchand": 73
+      "nb_log_marchand": 32
     },
     {
       "cle": "9|RUE|DAVID",
@@ -25438,9 +25438,9 @@
       "taux_rotation": 0.4,
       "classement_rotation": "Figé",
       "_ilot": "11",
-      "nb_lots_sociaux": 133,
+      "nb_lots_sociaux": 150,
       "nb_lots_sociaux_brut": 133,
-      "nb_log_marchand": 31
+      "nb_log_marchand": 14
     },
     {
       "cle": "13|AVENUE|GEORGES POMPIDOU",
@@ -26200,9 +26200,9 @@
       "_fusion_cible": "22|RUE|ST ANTOINE",
       "_fusion_auto_sources": null,
       "_ilot": "9",
-      "nb_lots_sociaux": 57,
+      "nb_lots_sociaux": 101,
       "nb_lots_sociaux_brut": 57,
-      "nb_log_marchand": 58
+      "nb_log_marchand": 14
     },
     {
       "cle": "166|AVENUE|FELIX FAURE",
@@ -26836,9 +26836,9 @@
         "10|RUE|RIBOUD",
         "12|RUE|RIBOUD"
       ],
-      "nb_lots_sociaux": 2,
+      "nb_lots_sociaux": 5,
       "nb_lots_sociaux_brut": 2,
-      "nb_log_marchand": 25
+      "nb_log_marchand": 22
     },
     {
       "cle": "224|AVENUE|FELIX FAURE",
@@ -28882,9 +28882,9 @@
       "taux_rotation": 2.9,
       "classement_rotation": "Actif",
       "_ilot": "73",
-      "nb_lots_sociaux": 1,
+      "nb_lots_sociaux": 3,
       "nb_lots_sociaux_brut": 1,
-      "nb_log_marchand": 27
+      "nb_log_marchand": 25
     },
     {
       "cle": "6|RUE|ST EUSEBE",
@@ -30048,9 +30048,9 @@
       "taux_rotation": 1.5,
       "classement_rotation": "Modéré",
       "_ilot": "40",
-      "nb_lots_sociaux": 5,
+      "nb_lots_sociaux": 29,
       "nb_lots_sociaux_brut": 5,
-      "nb_log_marchand": 36
+      "nb_log_marchand": 12
     },
     {
       "cle": "33|AVENUE|LACASSAGNE",
@@ -30366,9 +30366,9 @@
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "_ilot": "35",
-      "nb_lots_sociaux": 1,
+      "nb_lots_sociaux": 3,
       "nb_lots_sociaux_brut": 1,
-      "nb_log_marchand": 17
+      "nb_log_marchand": 15
     },
     {
       "cle": "4|RUE|MEYNIS",
@@ -31952,9 +31952,9 @@
         "12|RUE|MOISSONNIER"
       ],
       "_ilot": "54",
-      "nb_lots_sociaux": 4,
+      "nb_lots_sociaux": 7,
       "nb_lots_sociaux_brut": 4,
-      "nb_log_marchand": 20
+      "nb_log_marchand": 17
     },
     {
       "cle": "11|COURS|ALBERT THOMAS",
@@ -32675,9 +32675,9 @@
       "_fusion_auto": true,
       "_fusion_cible": "12|RUE|ST SIDOINE",
       "_ilot": "11",
-      "nb_lots_sociaux": 133,
+      "nb_lots_sociaux": 150,
       "nb_lots_sociaux_brut": 133,
-      "nb_log_marchand": 31
+      "nb_log_marchand": 14
     },
     {
       "cle": "147|RUE|BARABAN",
@@ -33228,9 +33228,9 @@
       "taux_rotation": 3.5,
       "classement_rotation": "Très actif",
       "_ilot": "66",
-      "nb_lots_sociaux": 3,
+      "nb_lots_sociaux": 10,
       "nb_lots_sociaux_brut": 3,
-      "nb_log_marchand": 14
+      "nb_log_marchand": 7
     },
     {
       "cle": "17|RUE|ST VICTORIEN",
@@ -33859,9 +33859,9 @@
       "usage_principal_bdnb": "Tertiaire",
       "_usage_bdnb_src": "snapshot",
       "_ilot": "11",
-      "nb_lots_sociaux": 133,
+      "nb_lots_sociaux": 150,
       "nb_lots_sociaux_brut": 133,
-      "nb_log_marchand": 31
+      "nb_log_marchand": 14
     },
     {
       "cle": "20|RUE|ST VICTORIEN",
@@ -34408,9 +34408,9 @@
       "taux_rotation": 2.2,
       "classement_rotation": "Actif",
       "_ilot": "59",
-      "nb_lots_sociaux": 4,
+      "nb_lots_sociaux": 18,
       "nb_lots_sociaux_brut": 4,
-      "nb_log_marchand": 31
+      "nb_log_marchand": 17
     },
     {
       "cle": "23|RUE|MONTBRILLANT",
@@ -34681,9 +34681,9 @@
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "_ilot": "9",
-      "nb_lots_sociaux": 57,
+      "nb_lots_sociaux": 185,
       "nb_lots_sociaux_brut": 57,
-      "nb_log_marchand": 154
+      "nb_log_marchand": 26
     },
     {
       "cle": "24|RUE|ST ANTOINE",
@@ -34892,9 +34892,9 @@
       "taux_rotation": 1.4,
       "classement_rotation": "Modéré",
       "_ilot": "49",
-      "nb_lots_sociaux": 4,
+      "nb_lots_sociaux": 11,
       "nb_lots_sociaux_brut": 4,
-      "nb_log_marchand": 12
+      "nb_log_marchand": 5
     },
     {
       "cle": "25|RUE|ROGER BRECHAN",
@@ -35310,9 +35310,9 @@
       "taux_rotation": 0.0,
       "classement_rotation": "Fige",
       "_ilot": "51",
-      "nb_lots_sociaux": 18,
+      "nb_lots_sociaux": 27,
       "nb_lots_sociaux_brut": 18,
-      "nb_log_marchand": 9
+      "nb_log_marchand": 0
     },
     {
       "cle": "277|RUE|PAUL BERT",
@@ -35355,9 +35355,9 @@
       "_fusion_cible": "76|RUE|ANTOINE CHARIAL",
       "_fusion_auto_sources": null,
       "_ilot": "39",
-      "nb_lots_sociaux": 46,
+      "nb_lots_sociaux": 87,
       "nb_lots_sociaux_brut": 46,
-      "nb_log_marchand": 73
+      "nb_log_marchand": 32
     },
     {
       "cle": "28|RUE|BARABAN",
@@ -36777,9 +36777,9 @@
       "taux_rotation": 5.3,
       "classement_rotation": "Très actif",
       "_ilot": "63",
-      "nb_lots_sociaux": 2,
+      "nb_lots_sociaux": 5,
       "nb_lots_sociaux_brut": 2,
-      "nb_log_marchand": 17
+      "nb_log_marchand": 14
     },
     {
       "cle": "40|RUE|ST MAXIMIN",
@@ -37695,9 +37695,9 @@
       "taux_rotation": 0.8,
       "classement_rotation": "Figé",
       "_ilot": "73",
-      "nb_lots_sociaux": 36,
+      "nb_lots_sociaux": 45,
       "nb_lots_sociaux_brut": 36,
-      "nb_log_marchand": 36
+      "nb_log_marchand": 27
     },
     {
       "cle": "6|RUE|METALLURGIE",
@@ -37903,9 +37903,9 @@
       "taux_rotation": 1.7,
       "classement_rotation": "Modéré",
       "_ilot": "63",
-      "nb_lots_sociaux": 1,
+      "nb_lots_sociaux": 5,
       "nb_lots_sociaux_brut": 1,
-      "nb_log_marchand": 44
+      "nb_log_marchand": 40
     },
     {
       "cle": "69|COURS|ALBERT THOMAS",
@@ -38069,9 +38069,9 @@
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "_ilot": "63",
-      "nb_lots_sociaux": 1,
+      "nb_lots_sociaux": 5,
       "nb_lots_sociaux_brut": 1,
-      "nb_log_marchand": 44
+      "nb_log_marchand": 40
     },
     {
       "cle": "72|RUE|MAURICE FLANDIN",
@@ -38360,9 +38360,9 @@
       "taux_rotation": 5.3,
       "classement_rotation": "Très actif",
       "_ilot": "81",
-      "nb_lots_sociaux": 3,
+      "nb_lots_sociaux": 7,
       "nb_lots_sociaux_brut": 3,
-      "nb_log_marchand": 25
+      "nb_log_marchand": 21
     },
     {
       "cle": "8|RUE|CARRY",
@@ -40124,9 +40124,9 @@
       "taux_rotation": 0.0,
       "classement_rotation": "Figé",
       "_ilot": "40",
-      "nb_lots_sociaux": 6,
+      "nb_lots_sociaux": 25,
       "nb_lots_sociaux_brut": 6,
-      "nb_log_marchand": 19
+      "nb_log_marchand": 0
     },
     {
       "cle": "118|RUE|BARABAN",
@@ -41109,9 +41109,9 @@
       "usage_principal_bdnb": "Tertiaire",
       "_usage_bdnb_src": "snapshot",
       "_ilot": "11",
-      "nb_lots_sociaux": 133,
+      "nb_lots_sociaux": 150,
       "nb_lots_sociaux_brut": 133,
-      "nb_log_marchand": 31
+      "nb_log_marchand": 14
     },
     {
       "cle": "13|RUE|TERNOIS",
@@ -41288,9 +41288,9 @@
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "_ilot": "47",
-      "nb_lots_sociaux": 1,
+      "nb_lots_sociaux": 5,
       "nb_lots_sociaux_brut": 1,
-      "nb_log_marchand": 15
+      "nb_log_marchand": 11
     },
     {
       "cle": "133|RUE|BARABAN",
@@ -41332,9 +41332,9 @@
       "taux_rotation": 2.5,
       "classement_rotation": "Actif",
       "_ilot": "47",
-      "nb_lots_sociaux": 1,
+      "nb_lots_sociaux": 5,
       "nb_lots_sociaux_brut": 1,
-      "nb_log_marchand": 15
+      "nb_log_marchand": 11
     },
     {
       "cle": "134|RUE|ANTOINE CHARIAL",
@@ -42034,9 +42034,9 @@
       "taux_rotation": 0.0,
       "classement_rotation": "Figé",
       "_ilot": "61",
-      "nb_lots_sociaux": 2,
+      "nb_lots_sociaux": 6,
       "nb_lots_sociaux_brut": 2,
-      "nb_log_marchand": 10
+      "nb_log_marchand": 6
     },
     {
       "cle": "142|RUE|ANTOINE CHARIAL",
@@ -42224,9 +42224,9 @@
       "taux_rotation": 2.9,
       "classement_rotation": "Actif",
       "_ilot": "49",
-      "nb_lots_sociaux": 2,
+      "nb_lots_sociaux": 5,
       "nb_lots_sociaux_brut": 2,
-      "nb_log_marchand": 13
+      "nb_log_marchand": 10
     },
     {
       "cle": "149|RUE|BARABAN",
@@ -42586,9 +42586,9 @@
       "usage_principal_bdnb": "Tertiaire",
       "_usage_bdnb_src": "snapshot",
       "_ilot": "11",
-      "nb_lots_sociaux": 133,
+      "nb_lots_sociaux": 150,
       "nb_lots_sociaux_brut": 133,
-      "nb_log_marchand": 31
+      "nb_log_marchand": 14
     },
     {
       "cle": "15|RUE|TERNOIS",
@@ -42733,9 +42733,9 @@
       "_fusion_auto": true,
       "_fusion_cible": "155|AVENUE|FELIX FAURE",
       "_ilot": "55",
-      "nb_lots_sociaux": 22,
+      "nb_lots_sociaux": 61,
       "nb_lots_sociaux_brut": 22,
-      "nb_log_marchand": 45
+      "nb_log_marchand": 6
     },
     {
       "cle": "152|AVENUE|FELIX FAURE",
@@ -42949,9 +42949,9 @@
       ],
       "_correctif_refuse_indice": "fix_refuse_bgid_20suff_dl_2026-05-23",
       "_ilot": "55",
-      "nb_lots_sociaux": 22,
+      "nb_lots_sociaux": 61,
       "nb_lots_sociaux_brut": 22,
-      "nb_log_marchand": 45
+      "nb_log_marchand": 6
     },
     {
       "cle": "155|RUE|BARABAN",
@@ -43531,9 +43531,9 @@
       "_usage_bdnb_src": "snapshot",
       "_fusion_auto_sources": null,
       "_ilot": "11",
-      "nb_lots_sociaux": 133,
+      "nb_lots_sociaux": 150,
       "nb_lots_sociaux_brut": 133,
-      "nb_log_marchand": 31
+      "nb_log_marchand": 14
     },
     {
       "cle": "16|RUE|STE ANNE DE BARABAN",
@@ -44458,9 +44458,9 @@
       "_usage_bdnb_src": "snapshot",
       "_fusion_auto_sources": null,
       "_ilot": "11",
-      "nb_lots_sociaux": 133,
+      "nb_lots_sociaux": 150,
       "nb_lots_sociaux_brut": 133,
-      "nb_log_marchand": 31
+      "nb_log_marchand": 14
     },
     {
       "cle": "18|RUE|TURBIL",
@@ -46565,9 +46565,9 @@
       "taux_rotation": 5.9,
       "classement_rotation": "Très actif",
       "_ilot": "53",
-      "nb_lots_sociaux": 1,
+      "nb_lots_sociaux": 4,
       "nb_lots_sociaux_brut": 1,
-      "nb_log_marchand": 26
+      "nb_log_marchand": 23
     },
     {
       "cle": "218|AVENUE|FELIX FAURE",
@@ -47017,9 +47017,9 @@
       "taux_rotation": 0.2,
       "classement_rotation": "Figé",
       "_ilot": "9",
-      "nb_lots_sociaux": 57,
+      "nb_lots_sociaux": 101,
       "nb_lots_sociaux_brut": 57,
-      "nb_log_marchand": 58
+      "nb_log_marchand": 14
     },
     {
       "cle": "22|RUE|ST EUSEBE",
@@ -47252,9 +47252,9 @@
       "taux_rotation": 0.0,
       "classement_rotation": "Figé",
       "_ilot": "53",
-      "nb_lots_sociaux": 4,
+      "nb_lots_sociaux": 7,
       "nb_lots_sociaux_brut": 4,
-      "nb_log_marchand": 3
+      "nb_log_marchand": 0
     },
     {
       "cle": "227|RUE|PAUL BERT",
@@ -48029,9 +48029,9 @@
       "taux_rotation": 0.0,
       "classement_rotation": "Figé",
       "_ilot": "36",
-      "nb_lots_sociaux": 6,
+      "nb_lots_sociaux": 7,
       "nb_lots_sociaux_brut": 6,
-      "nb_log_marchand": 3
+      "nb_log_marchand": 2
     },
     {
       "cle": "24|RUE|GABILLOT",
@@ -49695,9 +49695,9 @@
       "_fusion_cible": "76|RUE|ANTOINE CHARIAL",
       "_fusion_auto_sources": null,
       "_ilot": "39",
-      "nb_lots_sociaux": 46,
+      "nb_lots_sociaux": 87,
       "nb_lots_sociaux_brut": 46,
-      "nb_log_marchand": 73
+      "nb_log_marchand": 32
     },
     {
       "cle": "28|RUE|DOCTEUR REBATEL",
@@ -52493,9 +52493,9 @@
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "_ilot": "62",
-      "nb_lots_sociaux": 2,
+      "nb_lots_sociaux": 4,
       "nb_lots_sociaux_brut": 2,
-      "nb_log_marchand": 18
+      "nb_log_marchand": 16
     },
     {
       "cle": "35|RUE|ST MAXIMIN",
@@ -52676,9 +52676,9 @@
       "taux_rotation": 1.1,
       "classement_rotation": "Modéré",
       "_ilot": "62",
-      "nb_lots_sociaux": 2,
+      "nb_lots_sociaux": 4,
       "nb_lots_sociaux_brut": 2,
-      "nb_log_marchand": 18
+      "nb_log_marchand": 16
     },
     {
       "cle": "36|RUE|JEANNE HACHETTE",
@@ -54204,9 +54204,9 @@
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "_ilot": "20",
-      "nb_lots_sociaux": 2,
+      "nb_lots_sociaux": 6,
       "nb_lots_sociaux_brut": 2,
-      "nb_log_marchand": 4
+      "nb_log_marchand": 0
     },
     {
       "cle": "43|RUE|GUILLOUD",
@@ -54862,9 +54862,9 @@
       "taux_rotation": 0.0,
       "classement_rotation": "Figé",
       "_ilot": "74",
-      "nb_lots_sociaux": 3,
+      "nb_lots_sociaux": 5,
       "nb_lots_sociaux_brut": 3,
-      "nb_log_marchand": 13
+      "nb_log_marchand": 11
     },
     {
       "cle": "48|RUE|GANDOLIERE",
@@ -56904,9 +56904,9 @@
       "_usage_bdnb_src": "snapshot",
       "_fusion_auto_sources": null,
       "_ilot": "11",
-      "nb_lots_sociaux": 133,
+      "nb_lots_sociaux": 150,
       "nb_lots_sociaux_brut": 133,
-      "nb_log_marchand": 31
+      "nb_log_marchand": 14
     },
     {
       "cle": "6|RUE|COMBET DESCOMBES",
@@ -57423,9 +57423,9 @@
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "_ilot": "73",
-      "nb_lots_sociaux": 36,
+      "nb_lots_sociaux": 45,
       "nb_lots_sociaux_brut": 36,
-      "nb_log_marchand": 36
+      "nb_log_marchand": 27
     },
     {
       "cle": "63|RUE|STE ANNE DE BARABAN",
@@ -57723,9 +57723,9 @@
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "_ilot": "75",
-      "nb_lots_sociaux": 35,
+      "nb_lots_sociaux": 56,
       "nb_lots_sociaux_brut": 35,
-      "nb_log_marchand": 34
+      "nb_log_marchand": 13
     },
     {
       "cle": "68|RUE|ETIENNE RICHERAND",
@@ -58347,9 +58347,9 @@
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "_ilot": "18",
-      "nb_lots_sociaux": 7,
+      "nb_lots_sociaux": 12,
       "nb_lots_sociaux_brut": 7,
-      "nb_log_marchand": 24
+      "nb_log_marchand": 19
     },
     {
       "cle": "75|RUE|VILLETTE",
@@ -58554,9 +58554,9 @@
       "classement_rotation": "Figé",
       "_correctif_refuse_indice": "fix_refuse_bgid_20suff_dl_2026-05-23",
       "_ilot": "39",
-      "nb_lots_sociaux": 46,
+      "nb_lots_sociaux": 87,
       "nb_lots_sociaux_brut": 46,
-      "nb_log_marchand": 73
+      "nb_log_marchand": 32
     },
     {
       "cle": "76|RUE|BARABAN",
@@ -58588,9 +58588,9 @@
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "_ilot": "35",
-      "nb_lots_sociaux": 1,
+      "nb_lots_sociaux": 3,
       "nb_lots_sociaux_brut": 1,
-      "nb_log_marchand": 17
+      "nb_log_marchand": 15
     },
     {
       "cle": "76|RUE|DAUPHINE",
@@ -59091,9 +59091,9 @@
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "_ilot": "39",
-      "nb_lots_sociaux": 46,
+      "nb_lots_sociaux": 87,
       "nb_lots_sociaux_brut": 46,
-      "nb_log_marchand": 73
+      "nb_log_marchand": 32
     },
     {
       "cle": "81|RUE|ETIENNE RICHERAND",
@@ -59916,9 +59916,9 @@
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "_ilot": "35",
-      "nb_lots_sociaux": 1,
+      "nb_lots_sociaux": 3,
       "nb_lots_sociaux_brut": 1,
-      "nb_log_marchand": 17
+      "nb_log_marchand": 15
     },
     {
       "cle": "93|RUE|VILLETTE",
@@ -62945,9 +62945,9 @@
       "usage_principal_bdnb": "Residentiel collectif",
       "_usage_bdnb_src": "correctif_doublon_c",
       "_ilot": "55",
-      "nb_lots_sociaux": 22,
+      "nb_lots_sociaux": 61,
       "nb_lots_sociaux_brut": 22,
-      "nb_log_marchand": 45
+      "nb_log_marchand": 6
     },
     {
       "cle": "61|RUE|ANTOINE CHARIAL",
@@ -63681,9 +63681,9 @@
       "_fusion_cible": "162|AVENUE|FELIX FAURE",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
       "_ilot": "55",
-      "nb_lots_sociaux": 22,
+      "nb_lots_sociaux": 61,
       "nb_lots_sociaux_brut": 22,
-      "nb_log_marchand": 45
+      "nb_log_marchand": 6
     },
     {
       "cle": "177B|AVENUE|FELIX FAURE",
@@ -63934,9 +63934,9 @@
       ],
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
       "_ilot": "55",
-      "nb_lots_sociaux": 22,
+      "nb_lots_sociaux": 61,
       "nb_lots_sociaux_brut": 22,
-      "nb_log_marchand": 45
+      "nb_log_marchand": 6
     },
     {
       "cle": "191B|AVENUE|FELIX FAURE",
@@ -64003,9 +64003,9 @@
       "_fusion_cible": "162|AVENUE|FELIX FAURE",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
       "_ilot": "55",
-      "nb_lots_sociaux": 22,
+      "nb_lots_sociaux": 61,
       "nb_lots_sociaux_brut": 22,
-      "nb_log_marchand": 45
+      "nb_log_marchand": 6
     },
     {
       "cle": "19B|RUE|ST ANTOINE",
@@ -64738,9 +64738,9 @@
       ],
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
       "_ilot": "20",
-      "nb_lots_sociaux": 2,
+      "nb_lots_sociaux": 6,
       "nb_lots_sociaux_brut": 2,
-      "nb_log_marchand": 4
+      "nb_log_marchand": 0
     },
     {
       "cle": "48B|RUE|ST ANTOINE",
@@ -65209,9 +65209,9 @@
       "_fusion_cible": "66|AVENUE|LACASSAGNE",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
       "_ilot": "75",
-      "nb_lots_sociaux": 35,
+      "nb_lots_sociaux": 56,
       "nb_lots_sociaux_brut": 35,
-      "nb_log_marchand": 34
+      "nb_log_marchand": 13
     },
     {
       "cle": "6B|RUE|STE ANNE DE BARABAN",
@@ -65350,9 +65350,9 @@
       "_fusion_cible": "76|RUE|ANTOINE CHARIAL",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
       "_ilot": "39",
-      "nb_lots_sociaux": 46,
+      "nb_lots_sociaux": 87,
       "nb_lots_sociaux_brut": 46,
-      "nb_log_marchand": 73
+      "nb_log_marchand": 32
     },
     {
       "cle": "7B|COURS|ALBERT THOMAS",
@@ -65571,9 +65571,9 @@
       "_fusion_cible": "76|RUE|ANTOINE CHARIAL",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
       "_ilot": "39",
-      "nb_lots_sociaux": 46,
+      "nb_lots_sociaux": 87,
       "nb_lots_sociaux_brut": 46,
-      "nb_log_marchand": 73
+      "nb_log_marchand": 32
     },
     {
       "cle": "81B|RUE|ETIENNE RICHERAND",
@@ -65759,9 +65759,9 @@
       "_bdnb_match": "num_voie",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
       "_ilot": "26",
-      "nb_lots_sociaux": 9,
+      "nb_lots_sociaux": 22,
       "nb_lots_sociaux_brut": 9,
-      "nb_log_marchand": 43
+      "nb_log_marchand": 30
     },
     {
       "cle": "93B|RUE|BELLECOMBE",
