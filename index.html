@@ -785,6 +785,11 @@ td{padding:11px 14px;vertical-align:middle;}
         style="padding:7px 14px;border:1px solid var(--border);border-radius:6px;
                background:var(--surface2);color:var(--text);font-size:13px;
                cursor:pointer;white-space:nowrap;">❓ À qualifier</button>
+      <button id="secteur-sansventes-btn" onclick="secteurToggleSansVentes()"
+        title="N'afficher que les copros (RNC immatriculées ou copro_non_immat) sans aucune vente logement sur 5 ans (mode strict). Cumulable avec les autres filtres."
+        style="padding:7px 14px;border:1px solid var(--border);border-radius:6px;
+               background:var(--surface2);color:var(--text);font-size:13px;
+               cursor:pointer;white-space:nowrap;">🔇 Sans ventes</button>
       <button id="secteur-gen-btn" onclick="sctGenOpen()"
         title="Générer automatiquement N secteurs équilibrés (quotas par zone + équilibrage total ±5%)."
         style="padding:7px 14px;border:1px solid #BEAF87;border-radius:6px;
@@ -2277,6 +2282,18 @@ function secteurToggleAQualif() {
   renderSecteur();
 }
 window.secteurToggleAQualif = secteurToggleAQualif;
+let filterSansVentes = false;       // filtre "Sans ventes" (toggle, copro RNC + copro_non_immat sans vente log 5 ans)
+function secteurToggleSansVentes() {
+  filterSansVentes = !filterSansVentes;
+  const b = document.getElementById('secteur-sansventes-btn');
+  if (b) {
+    b.style.background = filterSansVentes ? 'var(--orange)' : 'var(--surface2)';
+    b.style.color = filterSansVentes ? '#fff' : 'var(--text)';
+    b.style.borderColor = filterSansVentes ? 'var(--orange)' : 'var(--border)';
+  }
+  renderSecteur();
+}
+window.secteurToggleSansVentes = secteurToggleSansVentes;
 let sctFusSrc = null, sctFusPick = null;   // etat de la modale de rapprochement
 
 // Parse adresse_bien SCI Prospector ('163 RUE PAUL BERT 69003') ->
@@ -4877,6 +4894,23 @@ function renderSecteur() {
       const horsRnc = !coproByCle[a.cle] && !a.numero_immatriculation;
       const as = secteurAssign[a.cle] || {};
       if (!(horsRnc && (!as.type || as.type === ''))) return;
+    }
+    if (filterSansVentes) {
+      // 1. Type : copro RNC immatriculee OU qualif manuelle copro_non_immat
+      const isCoproRnc = !!coproByCle[a.cle];
+      const asSv = secteurAssign[a.cle] || {};
+      const isCoproNI = asSv.type === 'copro_non_immat';
+      if (!(isCoproRnc || isCoproNI)) return;
+      // 2. 0 vente logement strict sur 5 ans (own + fused agreges)
+      const ownN = a.nb_ventes_logement || 0;
+      const ownVpa = a.ventes_par_an_logement || {};
+      if (ownN > 0) return;
+      if (ownVpa && Object.values(ownVpa).some(v => v > 0)) return;
+      // Fused : mergedInto (manuel) + autoMerged (BDNB) - ventes deja agregees
+      const mi = (isCoproRnc && mergedInto[a.cle]) ? mergedInto[a.cle] : null;
+      const am = autoMerged[a.cle] || null;
+      if (mi && Object.values(mi.ventes || {}).some(v => v > 0)) return;
+      if (am && Object.values(am.ventes || {}).some(v => v > 0)) return;
     }
     const ilot = ilotEffectif(a);
     let k;
