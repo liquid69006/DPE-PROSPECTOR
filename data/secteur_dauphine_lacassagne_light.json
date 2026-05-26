@@ -17386,7 +17386,7 @@
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "_fusion_auto": true,
-      "_fusion_cible": "153 RUE BARABAN / 44 RUE TURBIL",
+      "_fusion_cible": "153|RUE|BARABAN",
       "_ilot": "50"
     },
     {
@@ -17682,7 +17682,7 @@
       "taux_rotation": null,
       "classement_rotation": null,
       "_fusion_auto": true,
-      "_fusion_cible": "57/59 RUE BARABAN / 10 RUE ST VICTORIEN",
+      "_fusion_cible": "59|RUE|BARABAN",
       "_ilot": "22"
     },
     {
@@ -21006,7 +21006,7 @@
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "_fusion_auto": true,
-      "_fusion_cible": "11 AVENUE LACASSAGNE / 12 RUE MOISSONNIER",
+      "_fusion_cible": "11|AVENUE|LACASSAGNE",
       "_ilot": "48"
     },
     {
@@ -21172,7 +21172,7 @@
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "_fusion_auto": true,
-      "_fusion_cible": "238/240 AVENUE FELIX FAURE / 139 RUE DAUPHINE",
+      "_fusion_cible": "238|AVENUE|FELIX FAURE",
       "_ilot": "61"
     },
     {
@@ -24542,7 +24542,7 @@
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "_fusion_auto": true,
-      "_fusion_cible": "46/48/50/52 AVENUE GEORGES POMPIDOU",
+      "_fusion_cible": "46|AVENUE|GEORGES POMPIDOU",
       "_ilot": "22"
     },
     {
@@ -24843,7 +24843,7 @@
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "_fusion_auto": true,
-      "_fusion_cible": "46/48/50/52 AVENUE GEORGES POMPIDOU",
+      "_fusion_cible": "46|AVENUE|GEORGES POMPIDOU",
       "_ilot": "29"
     },
     {
@@ -25070,7 +25070,7 @@
       "usage_principal_bdnb": "Tertiaire",
       "_usage_bdnb_src": "snapshot",
       "_fusion_auto": true,
-      "_fusion_cible": "59 RUE BARABAN / 10 RUE ST VICTORIEN",
+      "_fusion_cible": "59|RUE|BARABAN",
       "_ilot": "22"
     },
     {
@@ -28787,7 +28787,7 @@
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "_fusion_auto": true,
-      "_fusion_cible": "6/8 RUE ST EUSEBE",
+      "_fusion_cible": "8|RUE|ST EUSEBE",
       "_ilot": "37"
     },
     {
@@ -31085,7 +31085,7 @@
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "_fusion_auto": true,
-      "_fusion_cible": "46/48/50/52 AVENUE GEORGES POMPIDOU",
+      "_fusion_cible": "46|AVENUE|GEORGES POMPIDOU",
       "_ilot": "29"
     },
     {
@@ -33766,7 +33766,7 @@
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "_fusion_auto": true,
-      "_fusion_cible": "24/26 RUE CITE / 21B RUE CLAUDIUS PIONCHON",
+      "_fusion_cible": "24|RUE|CITE",
       "_ilot": "24"
     },
     {
@@ -40723,7 +40723,7 @@
       "usage_principal_bdnb": "Tertiaire",
       "_usage_bdnb_src": "snapshot",
       "_fusion_auto": true,
-      "_fusion_cible": "7/9/11/13 RUE DAUPHINE",
+      "_fusion_cible": "11|RUE|DAUPHINE",
       "_ilot": "62"
     },
     {
@@ -42335,7 +42335,7 @@
       "batiment_groupe_id": "bdnb-bg-AVBW-59S6-3RB7",
       "_bdnb_match": "correctif_doublon_c_re_point",
       "_fusion_auto": true,
-      "_fusion_cible": "150/152/154/156/158/160/162 AVENUE FELIX FAURE",
+      "_fusion_cible": "162|AVENUE|FELIX FAURE",
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
@@ -42414,7 +42414,7 @@
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "_fusion_auto": true,
-      "_fusion_cible": "149/151/155 AVENUE FELIX FAURE",
+      "_fusion_cible": "155|AVENUE|FELIX FAURE",
       "_ilot": "55"
     },
     {
@@ -42440,7 +42440,7 @@
       "batiment_groupe_id": "bdnb-bg-AVBW-59S6-3RB7",
       "_bdnb_match": "correctif_doublon_c_re_point",
       "_fusion_auto": true,
-      "_fusion_cible": "150/152/154/156/158/160/162 AVENUE FELIX FAURE",
+      "_fusion_cible": "162|AVENUE|FELIX FAURE",
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
@@ -42543,7 +42543,7 @@
       "batiment_groupe_id": "bdnb-bg-AVBW-59S6-3RB7",
       "_bdnb_match": "correctif_doublon_c_re_point",
       "_fusion_auto": true,
-      "_fusion_cible": "150/152/154/156/158/160/162 AVENUE FELIX FAURE",
+      "_fusion_cible": "162|AVENUE|FELIX FAURE",
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
@@ -42683,7 +42683,7 @@
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "_fusion_auto": true,
-      "_fusion_cible": "150/152/154/156/158/160/162 AVENUE FELIX FAURE",
+      "_fusion_cible": "162|AVENUE|FELIX FAURE",
       "_ilot": "56"
     },
     {
@@ -42740,7 +42740,7 @@
       "batiment_groupe_id": "bdnb-bg-AVBW-59S6-3RB7",
       "_bdnb_match": "correctif_doublon_c_re_point",
       "_fusion_auto": true,
-      "_fusion_cible": "150/152/154/156/158/160/162 AVENUE FELIX FAURE",
+      "_fusion_cible": "162|AVENUE|FELIX FAURE",
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
@@ -43298,7 +43298,7 @@
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "_fusion_auto": true,
-      "_fusion_cible": "150/152/154/156/158/160/162 AVENUE FELIX FAURE",
+      "_fusion_cible": "162|AVENUE|FELIX FAURE",
       "_ilot": "56"
     },
     {
@@ -45693,7 +45693,7 @@
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "_fusion_auto": true,
-      "_fusion_cible": "270 COURS LAFAYETTE / 21 RUE ST ANTOINE",
+      "_fusion_cible": "270|COURS|LAFAYETTE",
       "_ilot": "9"
     },
     {
@@ -62180,7 +62180,7 @@
       "batiment_groupe_id": "bdnb-bg-V431-EBHY-Y74D",
       "_bdnb_match": "correctif_doublon_c_inject",
       "_fusion_auto": true,
-      "_fusion_cible": "149/151/155 AVENUE FELIX FAURE",
+      "_fusion_cible": "155|AVENUE|FELIX FAURE",
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
