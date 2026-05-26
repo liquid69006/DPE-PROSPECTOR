@@ -22454,7 +22454,8 @@
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "_fusion_auto_sources": [
-        "4|RUE|MARCEL PEHU"
+        "4|RUE|MARCEL PEHU",
+        "6|RUE|MARCEL PEHU"
       ],
       "_fusion_auto_label": null,
       "numero_immatriculation": "AC2574101",
@@ -67630,6 +67631,95 @@
       "_fusion_cible": null,
       "_ilot": "50",
       "_note": "Mini copro sans immat RNC, indexee via BDNB live parcelle 69383000DP0092"
+    },
+    {
+      "cle": "6|RUE|MARCEL PEHU",
+      "adresse": "6 RUE MARCEL PEHU",
+      "longitude": 4.867241,
+      "latitude": 45.75012,
+      "code_iris": "693830603",
+      "_coord_source": "clone_ancre:28|RUE|ST PHILIPPE",
+      "dans_majic": false,
+      "sci_proprietaire": "non",
+      "sci_nom": "",
+      "sci_siren": "",
+      "syndic": "",
+      "_syndic_src": "",
+      "ventes_par_an": {
+        "2021": 1,
+        "2022": 1
+      },
+      "nb_ventes_total": 2,
+      "nb_log_bdnb": 0,
+      "annee_construction": 2002,
+      "classe_dpe": null,
+      "type_batiment": "appartement",
+      "type_chauffage": null,
+      "batiment_groupe_id": "bdnb-bg-SA1E-6TZ4-AJGZ",
+      "_bdnb_match": "dvf_capture_pehu_cluster_dome",
+      "_injection_indice": "capture_dvf_pehu_les_domes",
+      "ventes_par_an_logement": {
+        "2021": 1,
+        "2022": 1
+      },
+      "nb_ventes_logement": 2,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Fige",
+      "_taux_logement_src": "dvf_capture",
+      "usage_principal_bdnb": "Résidentiel collectif",
+      "_usage_bdnb_src": "clone_ancre",
+      "numero_immatriculation": null,
+      "nb_lots_habitation": null,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Fige",
+      "_fusion_auto": true,
+      "_fusion_cible": "28|RUE|ST PHILIPPE",
+      "_dvf_capture": true,
+      "_ilot": "66",
+      "_note": "Capture DVF rattachee a 28 ST PHILIPPE (LES DOMES SAINT PHILIPPE I AC2574101, cluster meme bgid)"
+    },
+    {
+      "cle": "75|RUE|BARABAN",
+      "adresse": "75 RUE BARABAN",
+      "longitude": 4.868138,
+      "latitude": 45.760185,
+      "code_iris": "693830404",
+      "_coord_source": "clone_voisin:73|RUE|BARABAN",
+      "dans_majic": false,
+      "sci_proprietaire": "non",
+      "sci_nom": "",
+      "sci_siren": "",
+      "syndic": "",
+      "_syndic_src": "",
+      "ventes_par_an": {
+        "2021": 1
+      },
+      "nb_ventes_total": 1,
+      "nb_log_bdnb": 3,
+      "annee_construction": 2000,
+      "classe_dpe": null,
+      "type_batiment": "appartement",
+      "type_chauffage": null,
+      "batiment_groupe_id": "bdnb-bg-GAXX-956Y-WWVY",
+      "_bdnb_match": "cherrypick_bdnb_parcelle_dz0035",
+      "_injection_indice": "75_baraban_mini_copro_non_immat",
+      "ventes_par_an_logement": {
+        "2021": 1
+      },
+      "nb_ventes_logement": 1,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Fige",
+      "_taux_logement_src": "cherrypick_copronni",
+      "usage_principal_bdnb": "Residentiel collectif",
+      "_usage_bdnb_src": "cherrypick_user_override",
+      "numero_immatriculation": null,
+      "nb_lots_habitation": null,
+      "taux_rotation": 0.0,
+      "classement_rotation": "Fige",
+      "_fusion_auto": null,
+      "_fusion_cible": null,
+      "_ilot": "22",
+      "_note": "Mini copro 3 lots arriere-cour 73 BARABAN (parcelle commune DZ0035/0119, bgid distinct du 47C8 LES TROIS SOLEILS), pas dimmat RNC (sous seuil)"
     }
   ],
   "dvf_orphans_excluded": [
@@ -67652,12 +67742,6 @@
       "n_dvf_total": 3
     },
     {
-      "cle": "75|RUE|BARABAN",
-      "raison": "a_verifier_impasse_meunier",
-      "n_dvf_logement": 1,
-      "n_dvf_total": 1
-    },
-    {
       "cle": "71|RUE|PAUL BERT",
       "raison": "hors_secteur_agence",
       "n_dvf_logement": 4,
@@ -67668,6 +67752,14 @@
       "raison": "hors_secteur_agence",
       "n_dvf_logement": 1,
       "n_dvf_total": 1
+    },
+    {
+      "cle": "2|RUE|FREDERIC MISTRAL",
+      "raison": "hors_secteur_villeurbanne_erreur_dvf_commune",
+      "n_dvf_logement": 1,
+      "n_dvf_total": 3,
+      "nb_log_bdnb": 0,
+      "_note": "BDNB+BAN: 69266 Villeurbanne (code INSEE 69266). DVF: notaire saisi 69003 Lyon 3 par erreur. Bati entierement Villeurbanne, hors secteur DL."
     }
   ]
 }
