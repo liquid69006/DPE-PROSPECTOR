@@ -105,12 +105,37 @@ def main():
     for m in M:
         mut_idx[(numof(m.get("No voie")), toks(m.get("Voie")))].append(m)
 
-    n_rel = n_unrel = n_delta = 0
+    # GARDE IMMUTABILITE (2026-05-26) : ne pas ecraser les adresses dont
+    # _taux_logement_src signale une valeur autoritative deja propre :
+    #   - strict_btq_post_logement : correction strict B/T/Q (filtre Dep
+    #     manuel via DVF Apt+Mai uniquement, plus juste que jointure loose)
+    #   - cherrypick_vefa_5lots, cherrypick_vefa_neutralise : overrides
+    #     manuels VEFA (1 transaction bloc vs N lots)
+    #   - copie_sans_dependance : deja propre (jointure fiable + 0 Dep)
+    # Permet de stabiliser les corrections manuelles a travers futurs reruns.
+    SOURCES_IMMUABLES = {
+        'strict_btq_post_logement',
+        'cherrypick_vefa_5lots',
+        'cherrypick_vefa_neutralise',
+        'copie_sans_dependance',
+    }
+
+    n_rel = n_unrel = n_delta = n_immut = 0
     tot_stored = tot_log = 0
     reclass = collections.Counter()
     sample = []
 
     for a in la:
+        # Garde immutabilite : preserver les sources protegees
+        existing_src = a.get("_taux_logement_src")
+        is_immut = existing_src in SOURCES_IMMUABLES
+        if is_immut:
+            n_immut += 1
+            # Compteurs reflechissent l'etat reel (valeurs existantes, non recomputees)
+            tot_stored += (a.get("nb_ventes_total") or 0)
+            tot_log += (a.get("nb_ventes_logement") or 0)
+            continue
+
         cle = a.get("cle")
         vpa = a.get("ventes_par_an") or {}
         stored = a.get("nb_ventes_total") or 0
@@ -181,6 +206,7 @@ def main():
     print(f"Mode                              : "
           f"{'APPLY' if apply else 'DRY-RUN'}")
     print(f"Adresses                          : {len(la)}")
+    print(f"  immutables (skip)               : {n_immut}  (strict_*/cherrypick_*/copie_sans_dependance)")
     print(f"  jointure fiable                 : {n_rel}")
     print(f"    dont delta dependance applique : {n_delta}")
     print(f"  jointure incertaine (intacte+flag): {n_unrel}")
