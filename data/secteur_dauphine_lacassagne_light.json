@@ -1915,6 +1915,60 @@
       },
       "delta_parc_ui_attendu": "-6 (11 BARA 36->30) ; 13 ST VIC + 2 RIBOUD parc-neutres",
       "delta_hr_actifs_ui_attendu": "-2 (13 ST VIC + 2 RIBOUD sortent en FA)"
+    },
+    "_correctif_hlm_fuse_batch2": {
+      "date": "2026-05-26T20:03:03Z",
+      "pattern": "Batch 2 fantomes BGD_PARTAGE post-diag-sansventes-21-128 (terrain confirme user)",
+      "autorite": "Confirmation terrain user + diag _diag_sansventes_21_128.py (BGD_PARTAGE 4/8 retenus apres tri terrain)",
+      "kv_social": [
+        "31|RUE|DAUPHINE",
+        "23|RUE|DAUPHINE",
+        "35|RUE|DAUPHINE"
+      ],
+      "fuses": [
+        {
+          "src": "42|RUE|ST ANTOINE",
+          "tgt": "41|RUE|ST ANTOINE",
+          "label": "39/41 RUE ST ANTOINE / 42 RUE ST ANTOINE",
+          "sources": [
+            "39|RUE|ST ANTOINE",
+            "42|RUE|ST ANTOINE"
+          ]
+        },
+        {
+          "src": "129|AVENUE|FELIX FAURE",
+          "tgt": "138|AVENUE|FELIX FAURE",
+          "label": "138 AVENUE FELIX FAURE / 129 AVENUE FELIX FAURE",
+          "sources": [
+            "129|AVENUE|FELIX FAURE"
+          ]
+        },
+        {
+          "src": "7|RUE|CARRY",
+          "tgt": "5|RUE|CARRY",
+          "label": "5 RUE CARRY / 7 RUE CARRY",
+          "sources": [
+            "7|RUE|CARRY"
+          ]
+        },
+        {
+          "src": "17|RUE|METALLURGIE",
+          "tgt": "21|RUE|METALLURGIE",
+          "label": "21 RUE METALLURGIE / 17 RUE METALLURGIE",
+          "sources": [
+            "17|RUE|METALLURGIE"
+          ]
+        }
+      ],
+      "notes": {
+        "42_st_antoine": "39 deja FA->41 ; 42 rattachee directement a 41 (pas de chaine, 39+42 fanenent dans 41)",
+        "129_138_felix_faure": "meme bgid JKBL-KRG6 ; 138 immat AB2812469",
+        "7_5_carry": "bgid different (YECQ vs 984W) ; pure FA ; bgid YECQ reste anchored via 6 CARRY",
+        "17_21_metallurgie": "bgid different (C8ML vs D7S5) ; pure FA ; bgid C8ML reste anchored via 18 METAL"
+      },
+      "delta_parc_ui_attendu": 0,
+      "delta_hr_actifs_attendu": -4,
+      "delta_filtre_sansventes_attendu": -7
     }
   },
   "iris": [
@@ -28552,9 +28606,10 @@
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-576W-T8B7-57ET",
       "_bdnb_match": "num_voie",
-      "_fusion_auto_label": "39/41 RUE ST ANTOINE",
+      "_fusion_auto_label": "39/41 RUE ST ANTOINE / 42 RUE ST ANTOINE",
       "_fusion_auto_sources": [
-        "39|RUE|ST ANTOINE"
+        "39|RUE|ST ANTOINE",
+        "42|RUE|ST ANTOINE"
       ],
       "ventes_par_an_logement": {
         "2021": 0,
@@ -40880,7 +40935,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-QNDY-JKBL-KRG6",
-      "_bdnb_match": "num_voie",
+      "_bdnb_match": "correctif_hlm_fuse_batch2_re_fuse",
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
@@ -40888,7 +40943,9 @@
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
-      "_ilot": "55"
+      "_ilot": "55",
+      "_fusion_auto": true,
+      "_fusion_cible": "138|AVENUE|FELIX FAURE"
     },
     {
       "cle": "13|RUE|CLAUDIUS PIONCHON",
@@ -41572,7 +41629,11 @@
       "nb_lots_habitation": 19,
       "taux_rotation": 2.1,
       "classement_rotation": "Actif",
-      "_ilot": "55"
+      "_ilot": "55",
+      "_fusion_auto_label": "138 AVENUE FELIX FAURE / 129 AVENUE FELIX FAURE",
+      "_fusion_auto_sources": [
+        "129|AVENUE|FELIX FAURE"
+      ]
     },
     {
       "cle": "14|AVENUE|GEORGES POMPIDOU",
@@ -43952,7 +44013,7 @@
       "type_batiment": "maison",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-P6SW-C8ML-QMSG",
-      "_bdnb_match": "num_voie",
+      "_bdnb_match": "correctif_hlm_fuse_batch2_re_fuse",
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
@@ -43960,7 +44021,9 @@
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
-      "_ilot": "59"
+      "_ilot": "59",
+      "_fusion_auto": true,
+      "_fusion_cible": "21|RUE|METALLURGIE"
     },
     {
       "cle": "17|RUE|MONTBRILLANT",
@@ -46085,7 +46148,11 @@
       "_ilot": "59",
       "nb_lots_sociaux": 34,
       "nb_lots_sociaux_brut": 58,
-      "nb_log_marchand": 0
+      "nb_log_marchand": 0,
+      "_fusion_auto_label": "21 RUE METALLURGIE / 17 RUE METALLURGIE",
+      "_fusion_auto_sources": [
+        "17|RUE|METALLURGIE"
+      ]
     },
     {
       "cle": "21|RUE|DAUPHINE",
@@ -54094,7 +54161,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-576W-T8B7-57ET",
-      "_bdnb_match": "num_voie",
+      "_bdnb_match": "correctif_hlm_fuse_batch2_re_fuse",
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
@@ -54102,7 +54169,9 @@
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
-      "_ilot": "13"
+      "_ilot": "13",
+      "_fusion_auto": true,
+      "_fusion_cible": "41|RUE|ST ANTOINE"
     },
     {
       "cle": "42|RUE|STE ANNE DE BARABAN",
@@ -55370,7 +55439,11 @@
       "_ilot": "61",
       "nb_lots_sociaux": 34,
       "nb_lots_sociaux_brut": 70,
-      "nb_log_marchand": 0
+      "nb_log_marchand": 0,
+      "_fusion_auto_label": "5 RUE CARRY / 7 RUE CARRY",
+      "_fusion_auto_sources": [
+        "7|RUE|CARRY"
+      ]
     },
     {
       "cle": "5|RUE|COMBET DESCOMBES",
@@ -57888,7 +57961,7 @@
       "type_batiment": "appartement",
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-FW4B-YECQ-FPCT",
-      "_bdnb_match": "num_voie",
+      "_bdnb_match": "correctif_hlm_fuse_batch2_re_fuse",
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
@@ -57896,7 +57969,9 @@
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
-      "_ilot": "59"
+      "_ilot": "59",
+      "_fusion_auto": true,
+      "_fusion_cible": "5|RUE|CARRY"
     },
     {
       "cle": "7|RUE|AUBIGNY",
