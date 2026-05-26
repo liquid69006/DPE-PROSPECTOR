@@ -204,11 +204,25 @@ def main():
         print("DRY-RUN : aucun fichier modifie. --apply pour ecrire "
               "(champs *_logement AJOUTES, originaux intacts).")
         return
-    if BAK.exists():
-        print(f"ABORT : backup {BAK.name} existe deja.")
-        return
-    BAK.write_text(json.dumps(light, ensure_ascii=False, indent=2),
-                   encoding="utf-8")
+    # IDEMPOTENCE (fix root cause 2026-05-26) : autoriser les reruns en
+    # preservant le backup initial .pretauxlog.bak et en creant un backup
+    # horodate supplementaire .pretauxlog.<YYYYMMDD-HHMMSS>.bak. Necessaire
+    # car les fixes manuels ajoutent des cles au light apres la 1ere exec ;
+    # sans rerun les nouvelles cles restent sans champs *_logement (cf bug
+    # B/T/Q 36 adresses, fix-logement-rerun.md).
+    import datetime
+    if not BAK.exists():
+        BAK.write_text(json.dumps(light, ensure_ascii=False, indent=2),
+                       encoding="utf-8")
+        print(f"Backup INITIAL : {BAK.name}")
+    else:
+        # Rerun : creer un backup horodate pour traceabilite
+        stamp = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+        BAK2 = ROOT / "data" / f"secteur_{SECTEUR}_light.json.pretauxlog.{stamp}.bak"
+        # Lit le light actuel (pre-modif) pour le backup horodate
+        BAK2.write_text(LIGHT.read_text(encoding="utf-8"), encoding="utf-8")
+        print(f"Backup RERUN : {BAK2.name}")
+        print(f"(Backup initial preserve : {BAK.name})")
     meta = light.setdefault("metadata", {})
     meta["_correctif_taux_logement"] = (
         f"Champs ADDITIFS ventes_par_an_logement / nb_ventes_logement / "

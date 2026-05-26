@@ -85,7 +85,7 @@
     "_correctif_invisible_insecteur": "1 adresses injectées (bgid in-secteur présent au snapshot sous immat jumelle, _bdnb_match=immat_live_fix).",
     "_correctif_horsrnc": "30 adresses injectees (copros invisibles cat. A/B2 detectees par passe inverse hors-RNC ; lien live many-to-many ; _bdnb_match=immat_horsrnc_fix). Delta parc REEL +149 lgts (22479->22628, verifie via renderSecteur : 0 double-rendu, dedup cle bg: ; l'estimation dry-run +35 sous-evaluait).",
     "_correctif_doublon": "1 ligne adresse a cle exacte dupliquee supprimee (20|RUE|ST VICTORIEN : squelette BAN redondant, adresse=None, sans syndic, meme bgid bdnb-bg-H6H4-644T-6NRG que la ligne riche conservee). HYGIENE DE DONNEE PURE : 0 impact sur les agregats rendus (verifie renderSecteur : fusedSrc est keye par cle, donc le cle duplique etait deja entierement absorbe par la ligne _fusion_auto->16 ; aucun double-comptage n'existait reellement). light 1239->1238 adresses, agregats header inchanges (979 adr / 527 RNC / 22628 lgts / 813,4 v/an).",
-    "_correctif_taux_logement": "Champs ADDITIFS ventes_par_an_logement / nb_ventes_logement / taux_rotation_logement / classement_rotation_logement / _taux_logement_src ajoutes (340 adr avec delta dependance, 56 adr jointure incertaine = copie intacte+flag). `ventes_par_an`/`nb_ventes_total` NON modifies (autoritatifs). Ventes strictes 2780 vs 4067 (-31.6%). Dashboard inchange (lit toujours ventes_par_an) ; bascule = modif index.html separee.",
+    "_correctif_taux_logement": "Champs ADDITIFS ventes_par_an_logement / nb_ventes_logement / taux_rotation_logement / classement_rotation_logement / _taux_logement_src ajoutes (347 adr avec delta dependance, 107 adr jointure incertaine = copie intacte+flag). `ventes_par_an`/`nb_ventes_total` NON modifies (autoritatifs). Ventes strictes 3166 vs 4502 (-29.7%). Dashboard inchange (lit toujours ventes_par_an) ; bascule = modif index.html separee.",
     "_correctif_usage_bdnb": "Champs ADDITIFS usage_principal_bdnb (valeur snapshot bdnb_dauphine_lacassagne.json:usage_principal_bdnb_open, jointure batiment_groupe_id) + _usage_bdnb_src ajoutes ; 1238 adr renseignees, 0 sans bgid/snapshot (null). Aucun champ existant modifie. Dashboard inchange (index.html ne lit pas encore usage_principal_bdnb) ; regle d'affichage logements residentiel/tertiaire = modif index.html separee.",
     "_correctif_meynis": "Adresse DVF fantome 10 RUE MEYNIS (parcelle DN0005, bati tertiaire) rattachee chirurgicalement a la copro RESIDENCE PAULINE AA8066532 @ 10 PASSAGE MEYNIS (parcelle DT0052, bgid WDLN-W7EH-5BGA) : _fusion_auto -> 10|PASSAGE|MEYNIS, ses 10 ventes DVF (7 strictes) relocalisees au rendu. Source-of-truth = ALIAS_RNC dans make_light.py. Parc inchange (src etait Tertiaire->0 ; copro deja comptee 27 lots). 2 enregistrements touches, aucun autre champ modifie.",
     "_correctif_guilloud": "Copro RNC '39-43 RUE GUILLOUD' (30 lots), doublement immatriculee AB9349846 (2018) / AJ0217901 'LE GUILLOUD' (re-immat 2025, REGIE DU LYONNAIS ; light retient AJ0217901 @ cle 39). 39/41/43 partagent le bgid YTPJ-Q2XB-2DEF ; la fusion RNC agrege {39,43} (nom/compl) et consomme les bornes, laissant 41 (entree mediane jamais listee au RNC) isole. 41 RUE GUILLOUD rattachee chirurgicalement comme secondaire auto de 39 (miroir exact du frere 43) : champs autoritatifs (bgid/nb_log_bdnb/_bdnb_match/usage/ventes) INCHANGES. Au rendu : 2 ventes (2 strictes) relocalisees sous AJ0217901, 41 sort des 'hors-RNC actifs'. PARC STRICTEMENT INCHANGE (41 partage deja le bgid de la copro -> deja dedupe aux 30 lots RNC, PIPELINE 6). 39._fusion_auto_sources -> ['41','43'], label '39/41/43 RUE GUILLOUD'. Source-of-truth = FUSION_RNC_EXTRA_NUMS dans make_light.py. 2 enregistrements touches.",
@@ -14419,8 +14419,8 @@
         "2025": 1
       },
       "nb_ventes_logement": 1,
-      "taux_rotation_logement": null,
-      "classement_rotation_logement": "",
+      "taux_rotation_logement": 0.1,
+      "classement_rotation_logement": "Figé",
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
@@ -14879,8 +14879,8 @@
         "2025": 0
       },
       "nb_ventes_logement": 3,
-      "taux_rotation_logement": 1.7,
-      "classement_rotation_logement": "Modéré",
+      "taux_rotation_logement": 0.7,
+      "classement_rotation_logement": "Figé",
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
@@ -15928,7 +15928,7 @@
         "2025": 1
       },
       "nb_ventes_logement": 4,
-      "taux_rotation_logement": 2.3,
+      "taux_rotation_logement": 1.1,
       "classement_rotation_logement": "Modéré",
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
@@ -16265,7 +16265,7 @@
         "2025": 3
       },
       "nb_ventes_logement": 10,
-      "taux_rotation_logement": 5.4,
+      "taux_rotation_logement": 5.6,
       "classement_rotation_logement": "Très actif",
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
@@ -17703,7 +17703,7 @@
         "2025": 0
       },
       "nb_ventes_logement": 22,
-      "taux_rotation_logement": 7.2,
+      "taux_rotation_logement": 24.4,
       "classement_rotation_logement": "Très actif",
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
@@ -18260,8 +18260,8 @@
         "2025": 0
       },
       "nb_ventes_logement": 2,
-      "taux_rotation_logement": null,
-      "classement_rotation_logement": "",
+      "taux_rotation_logement": 0.8,
+      "classement_rotation_logement": "Figé",
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
@@ -19931,8 +19931,8 @@
         "2025": 2
       },
       "nb_ventes_logement": 7,
-      "taux_rotation_logement": null,
-      "classement_rotation_logement": "",
+      "taux_rotation_logement": 0.9,
+      "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Tertiaire",
       "_usage_bdnb_src": "snapshot",
@@ -20467,8 +20467,8 @@
         "2025": 2
       },
       "nb_ventes_logement": 5,
-      "taux_rotation_logement": 4.0,
-      "classement_rotation_logement": "Actif",
+      "taux_rotation_logement": 5.6,
+      "classement_rotation_logement": "Très actif",
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
@@ -20835,8 +20835,8 @@
         "2025": 0
       },
       "nb_ventes_logement": 7,
-      "taux_rotation_logement": null,
-      "classement_rotation_logement": "",
+      "taux_rotation_logement": 5.2,
+      "classement_rotation_logement": "Très actif",
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
@@ -22575,8 +22575,8 @@
         "2025": 1
       },
       "nb_ventes_logement": 6,
-      "taux_rotation_logement": 120.0,
-      "classement_rotation_logement": "Très actif",
+      "taux_rotation_logement": 1.2,
+      "classement_rotation_logement": "Modéré",
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
@@ -24235,8 +24235,8 @@
         "2025": 2
       },
       "nb_ventes_logement": 9,
-      "taux_rotation_logement": null,
-      "classement_rotation_logement": "",
+      "taux_rotation_logement": 1.1,
+      "classement_rotation_logement": "Modéré",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Tertiaire",
       "_usage_bdnb_src": "snapshot",
@@ -25302,8 +25302,8 @@
         "2025": 0
       },
       "nb_ventes_logement": 1,
-      "taux_rotation_logement": 10.0,
-      "classement_rotation_logement": "Très actif",
+      "taux_rotation_logement": 0.2,
+      "classement_rotation_logement": "Figé",
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
@@ -26191,8 +26191,8 @@
         "2025": 1
       },
       "nb_ventes_logement": 4,
-      "taux_rotation_logement": 1.3,
-      "classement_rotation_logement": "Modéré",
+      "taux_rotation_logement": 0.7,
+      "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
@@ -26600,8 +26600,8 @@
         "2025": 1
       },
       "nb_ventes_logement": 6,
-      "taux_rotation_logement": 3.4,
-      "classement_rotation_logement": "Actif",
+      "taux_rotation_logement": 1.6,
+      "classement_rotation_logement": "Modéré",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
@@ -27168,7 +27168,7 @@
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
       "classement_rotation_logement": "Figé",
-      "_taux_logement_src": "patch_btq_post_make_light",
+      "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "_fusion_auto_sources": [
@@ -27644,8 +27644,8 @@
         "2025": 1
       },
       "nb_ventes_logement": 12,
-      "taux_rotation_logement": 18.5,
-      "classement_rotation_logement": "Très actif",
+      "taux_rotation_logement": 1.1,
+      "classement_rotation_logement": "Modéré",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
@@ -27823,8 +27823,8 @@
         "2025": 0
       },
       "nb_ventes_logement": 4,
-      "taux_rotation_logement": 80.0,
-      "classement_rotation_logement": "Très actif",
+      "taux_rotation_logement": 0.8,
+      "classement_rotation_logement": "Figé",
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
@@ -27867,8 +27867,8 @@
         "2025": 1
       },
       "nb_ventes_logement": 3,
-      "taux_rotation_logement": 4.0,
-      "classement_rotation_logement": "Actif",
+      "taux_rotation_logement": 5.5,
+      "classement_rotation_logement": "Très actif",
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
@@ -28743,8 +28743,8 @@
         "2025": 1
       },
       "nb_ventes_logement": 4,
-      "taux_rotation_logement": 2.5,
-      "classement_rotation_logement": "Actif",
+      "taux_rotation_logement": 2.0,
+      "classement_rotation_logement": "Modéré",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
@@ -31690,8 +31690,8 @@
         "2025": 1
       },
       "nb_ventes_logement": 2,
-      "taux_rotation_logement": 20.0,
-      "classement_rotation_logement": "Très actif",
+      "taux_rotation_logement": 0.5,
+      "classement_rotation_logement": "Figé",
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
@@ -31898,8 +31898,8 @@
         "2025": 0
       },
       "nb_ventes_logement": 2,
-      "taux_rotation_logement": 0.5,
-      "classement_rotation_logement": "Figé",
+      "taux_rotation_logement": 1.1,
+      "classement_rotation_logement": "Modéré",
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
@@ -32029,8 +32029,8 @@
         "2025": 1
       },
       "nb_ventes_logement": 5,
-      "taux_rotation_logement": 7.7,
-      "classement_rotation_logement": "Très actif",
+      "taux_rotation_logement": 1.4,
+      "classement_rotation_logement": "Modéré",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
@@ -32324,8 +32324,8 @@
         "2024": 0
       },
       "nb_ventes_logement": 2,
-      "taux_rotation_logement": null,
-      "classement_rotation_logement": "",
+      "taux_rotation_logement": 1.0,
+      "classement_rotation_logement": "Modéré",
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
@@ -33429,8 +33429,8 @@
         "2024": 1
       },
       "nb_ventes_logement": 3,
-      "taux_rotation_logement": 1.4,
-      "classement_rotation_logement": "Modéré",
+      "taux_rotation_logement": 0.8,
+      "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
@@ -34180,8 +34180,8 @@
         "2024": 1
       },
       "nb_ventes_logement": 4,
-      "taux_rotation_logement": 2.2,
-      "classement_rotation_logement": "Modéré",
+      "taux_rotation_logement": 0.7,
+      "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
@@ -35300,7 +35300,7 @@
         "2024": 1
       },
       "nb_ventes_logement": 3,
-      "taux_rotation_logement": 2.2,
+      "taux_rotation_logement": 1.7,
       "classement_rotation_logement": "Modéré",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
@@ -35346,7 +35346,7 @@
         "2025": 0
       },
       "nb_ventes_logement": 1,
-      "taux_rotation_logement": 0.7,
+      "taux_rotation_logement": 0.2,
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
@@ -36679,8 +36679,8 @@
         "2025": 1
       },
       "nb_ventes_logement": 4,
-      "taux_rotation_logement": 2.5,
-      "classement_rotation_logement": "Actif",
+      "taux_rotation_logement": 2.4,
+      "classement_rotation_logement": "Modéré",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
@@ -36723,8 +36723,8 @@
         "2025": 0
       },
       "nb_ventes_logement": 2,
-      "taux_rotation_logement": 0.7,
-      "classement_rotation_logement": "Figé",
+      "taux_rotation_logement": 1.5,
+      "classement_rotation_logement": "Modéré",
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
@@ -37141,8 +37141,8 @@
         "2025": 1
       },
       "nb_ventes_logement": 4,
-      "taux_rotation_logement": 40.0,
-      "classement_rotation_logement": "Très actif",
+      "taux_rotation_logement": 1.7,
+      "classement_rotation_logement": "Modéré",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
@@ -37731,8 +37731,8 @@
         "2025": 1
       },
       "nb_ventes_logement": 3,
-      "taux_rotation_logement": 2.9,
-      "classement_rotation_logement": "Actif",
+      "taux_rotation_logement": 0.7,
+      "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
@@ -38431,8 +38431,8 @@
         "2024": 0
       },
       "nb_ventes_logement": 0,
-      "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Figé",
+      "taux_rotation_logement": null,
+      "classement_rotation_logement": "",
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Tertiaire",
       "_usage_bdnb_src": "correctif_doublon_b",
@@ -38743,8 +38743,8 @@
         "2025": 0
       },
       "nb_ventes_logement": 5,
-      "taux_rotation_logement": 5.6,
-      "classement_rotation_logement": "Très actif",
+      "taux_rotation_logement": 4.0,
+      "classement_rotation_logement": "Actif",
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
@@ -39665,8 +39665,8 @@
         "2021": 2
       },
       "nb_ventes_logement": 2,
-      "taux_rotation_logement": 13.3,
-      "classement_rotation_logement": "Très actif",
+      "taux_rotation_logement": 0.5,
+      "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
@@ -40529,8 +40529,8 @@
         "2023": 0
       },
       "nb_ventes_logement": 0,
-      "taux_rotation_logement": null,
-      "classement_rotation_logement": "",
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Figé",
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
@@ -49686,8 +49686,8 @@
         "2023": 1
       },
       "nb_ventes_logement": 1,
-      "taux_rotation_logement": 3.3,
-      "classement_rotation_logement": "Actif",
+      "taux_rotation_logement": 0.2,
+      "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
@@ -51107,7 +51107,7 @@
         "2021": 1
       },
       "nb_ventes_logement": 1,
-      "taux_rotation_logement": 0.4,
+      "taux_rotation_logement": 0.5,
       "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
@@ -51697,7 +51697,7 @@
         "2022": 1
       },
       "nb_ventes_logement": 2,
-      "taux_rotation_logement": 2.5,
+      "taux_rotation_logement": 2.9,
       "classement_rotation_logement": "Actif",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
@@ -55074,8 +55074,8 @@
         "2023": 2
       },
       "nb_ventes_logement": 3,
-      "taux_rotation_logement": 30.0,
-      "classement_rotation_logement": "Très actif",
+      "taux_rotation_logement": 1.2,
+      "classement_rotation_logement": "Modéré",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
@@ -55772,8 +55772,8 @@
         "2021": 3
       },
       "nb_ventes_logement": 3,
-      "taux_rotation_logement": 3.3,
-      "classement_rotation_logement": "Actif",
+      "taux_rotation_logement": 0.5,
+      "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
@@ -56816,8 +56816,8 @@
         "2022": 11
       },
       "nb_ventes_logement": 11,
-      "taux_rotation_logement": null,
-      "classement_rotation_logement": "",
+      "taux_rotation_logement": 3.6,
+      "classement_rotation_logement": "Actif",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Tertiaire",
       "_usage_bdnb_src": "snapshot",
@@ -56897,8 +56897,8 @@
         "2023": 1
       },
       "nb_ventes_logement": 2,
-      "taux_rotation_logement": null,
-      "classement_rotation_logement": "",
+      "taux_rotation_logement": 0.2,
+      "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Tertiaire",
       "_usage_bdnb_src": "snapshot",
@@ -57309,8 +57309,8 @@
         "2021": 2
       },
       "nb_ventes_logement": 2,
-      "taux_rotation_logement": 6.7,
-      "classement_rotation_logement": "Très actif",
+      "taux_rotation_logement": 1.0,
+      "classement_rotation_logement": "Modéré",
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "bdnb_enrich",
@@ -58030,8 +58030,8 @@
         "2023": 2
       },
       "nb_ventes_logement": 5,
-      "taux_rotation_logement": 5.6,
-      "classement_rotation_logement": "Très actif",
+      "taux_rotation_logement": 1.9,
+      "classement_rotation_logement": "Modéré",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
@@ -58765,8 +58765,8 @@
         "2022": 1
       },
       "nb_ventes_logement": 2,
-      "taux_rotation_logement": 1.9,
-      "classement_rotation_logement": "Modéré",
+      "taux_rotation_logement": 0.5,
+      "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
@@ -59599,8 +59599,8 @@
         "2023": 1
       },
       "nb_ventes_logement": 3,
-      "taux_rotation_logement": 2.2,
-      "classement_rotation_logement": "Modéré",
+      "taux_rotation_logement": 4.6,
+      "classement_rotation_logement": "Actif",
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
@@ -60989,12 +60989,12 @@
       "batiment_groupe_id": "bdnb-bg-S25R-PXBG-LUHS",
       "_bdnb_match": "immat_fix",
       "ventes_par_an_logement": {
-        "2023": 1
+        "2023": 2
       },
-      "nb_ventes_logement": 1,
-      "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Figé",
-      "_taux_logement_src": "patch_btq_post_make_light",
+      "nb_ventes_logement": 2,
+      "taux_rotation_logement": 2.7,
+      "classement_rotation_logement": "Actif",
+      "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "numero_immatriculation": "AD2824753",
@@ -61408,14 +61408,15 @@
       "batiment_groupe_id": "bdnb-bg-XQQB-985E-JE7E",
       "_bdnb_match": "immat_fix",
       "ventes_par_an_logement": {
-        "2025": 2,
-        "2021": 1,
-        "2023": 2
+        "2021": 2,
+        "2022": 0,
+        "2023": 4,
+        "2025": 2
       },
-      "nb_ventes_logement": 5,
-      "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Figé",
-      "_taux_logement_src": "patch_btq_post_make_light",
+      "nb_ventes_logement": 8,
+      "taux_rotation_logement": 5.9,
+      "classement_rotation_logement": "Très actif",
+      "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "numero_immatriculation": "AE9778358",
@@ -61597,7 +61598,7 @@
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
       "classement_rotation_logement": "Figé",
-      "_taux_logement_src": "patch_btq_post_make_light",
+      "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "numero_immatriculation": "AH8962904",
@@ -61631,12 +61632,12 @@
       "batiment_groupe_id": "bdnb-bg-98F1-PF95-4B2M",
       "_bdnb_match": "immat_fix",
       "ventes_par_an_logement": {
-        "2023": 1
+        "2023": 3
       },
-      "nb_ventes_logement": 1,
-      "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Figé",
-      "_taux_logement_src": "patch_btq_post_make_light",
+      "nb_ventes_logement": 3,
+      "taux_rotation_logement": 20.0,
+      "classement_rotation_logement": "Très actif",
+      "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "numero_immatriculation": "AI2203271",
@@ -62068,14 +62069,15 @@
       "batiment_groupe_id": "bdnb-bg-YAR9-LWKG-N28H",
       "_bdnb_match": "immat_horsrnc_fix",
       "ventes_par_an_logement": {
-        "2024": 2,
-        "2025": 2,
-        "2021": 1
+        "2024": 4,
+        "2025": 5,
+        "2021": 1,
+        "2023": 1
       },
-      "nb_ventes_logement": 5,
-      "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Figé",
-      "_taux_logement_src": "patch_btq_post_make_light",
+      "nb_ventes_logement": 11,
+      "taux_rotation_logement": 7.3,
+      "classement_rotation_logement": "Très actif",
+      "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "numero_immatriculation": "AB0217901",
@@ -62272,12 +62274,12 @@
       "_bdnb_match": "immat_horsrnc_fix",
       "ventes_par_an_logement": {
         "2021": 1,
-        "2022": 1
+        "2022": 3
       },
-      "nb_ventes_logement": 2,
-      "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Figé",
-      "_taux_logement_src": "patch_btq_post_make_light",
+      "nb_ventes_logement": 4,
+      "taux_rotation_logement": 1.6,
+      "classement_rotation_logement": "Modéré",
+      "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "numero_immatriculation": "AB5872536",
@@ -62318,14 +62320,14 @@
       "batiment_groupe_id": "bdnb-bg-9MYW-M2VT-GSQE",
       "_bdnb_match": "immat_horsrnc_fix",
       "ventes_par_an_logement": {
-        "2025": 1,
-        "2021": 2,
-        "2022": 1
+        "2025": 2,
+        "2021": 4,
+        "2022": 2
       },
-      "nb_ventes_logement": 4,
-      "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Figé",
-      "_taux_logement_src": "patch_btq_post_make_light",
+      "nb_ventes_logement": 8,
+      "taux_rotation_logement": 2.7,
+      "classement_rotation_logement": "Actif",
+      "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "_fusion_auto_sources": [
@@ -62444,15 +62446,15 @@
       "batiment_groupe_id": "bdnb-bg-MXAK-H6X5-46X1",
       "_bdnb_match": "immat_horsrnc_fix",
       "ventes_par_an_logement": {
-        "2024": 2,
-        "2021": 5,
-        "2022": 2,
-        "2023": 2
+        "2024": 7,
+        "2021": 14,
+        "2022": 8,
+        "2023": 8
       },
-      "nb_ventes_logement": 11,
-      "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Figé",
-      "_taux_logement_src": "patch_btq_post_make_light",
+      "nb_ventes_logement": 37,
+      "taux_rotation_logement": 12.5,
+      "classement_rotation_logement": "Très actif",
+      "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "numero_immatriculation": "AC5748488",
@@ -62953,7 +62955,7 @@
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-ULHW-P9KF-JSGH",
       "_bdnb_match": "immat_inject_pattern_suffren",
-      "_taux_logement_src": "filtre_habitation",
+      "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "bdnb_enrich",
       "_fusion_auto_sources": [
@@ -62990,7 +62992,7 @@
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Fige",
+      "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Residentiel collectif",
       "_usage_bdnb_src": "correctif_doublon_c",
@@ -63024,7 +63026,7 @@
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Fige",
+      "classement_rotation_logement": "Figé",
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "clone_106baraban",
@@ -63073,7 +63075,15 @@
       "_fusion_auto": true,
       "_fusion_cible": "10|RUE|MONTBRILLANT",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
-      "_ilot": "77"
+      "_ilot": "77",
+      "ventes_par_an_logement": {
+        "2021": 2,
+        "2025": 1
+      },
+      "nb_ventes_logement": 3,
+      "taux_rotation_logement": 0.8,
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_jointure_incertaine"
     },
     {
       "cle": "10B|RUE|FREDERIC MISTRAL",
@@ -63110,7 +63120,16 @@
       "_fusion_cible": "10|RUE|FREDERIC MISTRAL",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
       "_correctif_propagation_indice": "fix_propag_immat_21suff_dl_2026-05-23",
-      "_ilot": "32"
+      "_ilot": "32",
+      "ventes_par_an_logement": {
+        "2022": 2,
+        "2024": 1,
+        "2025": 1
+      },
+      "nb_ventes_logement": 4,
+      "taux_rotation_logement": 2.8,
+      "classement_rotation_logement": "Actif",
+      "_taux_logement_src": "copie_jointure_incertaine"
     },
     {
       "cle": "10T|RUE|MONTBRILLANT",
@@ -63148,7 +63167,18 @@
       "_fusion_auto": true,
       "_fusion_cible": "10|RUE|MONTBRILLANT",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
-      "_ilot": "77"
+      "_ilot": "77",
+      "ventes_par_an_logement": {
+        "2021": 1,
+        "2022": 1,
+        "2023": 1,
+        "2024": 1,
+        "2025": 1
+      },
+      "nb_ventes_logement": 5,
+      "taux_rotation_logement": 1.4,
+      "classement_rotation_logement": "Modéré",
+      "_taux_logement_src": "copie_jointure_incertaine"
     },
     {
       "cle": "11B|RUE|DAUPHINE",
@@ -63189,7 +63219,12 @@
       "_ilot": "62",
       "nb_lots_sociaux": 51,
       "nb_lots_sociaux_brut": 213,
-      "nb_log_marchand": 52
+      "nb_log_marchand": 52,
+      "ventes_par_an_logement": {},
+      "nb_ventes_logement": 0,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance"
     },
     {
       "cle": "11B|RUE|PROFESSEUR PAUL SISLEY",
@@ -63228,7 +63263,18 @@
       "_fusion_cible": "7B|RUE|PROFESSEUR PAUL SISLEY",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
       "_correctif_propagation_indice": "fix_propag_immat_21suff_dl_2026-05-23",
-      "_ilot": "74"
+      "_ilot": "74",
+      "ventes_par_an_logement": {
+        "2021": 2,
+        "2022": 3,
+        "2023": 2,
+        "2024": 0,
+        "2025": 1
+      },
+      "nb_ventes_logement": 8,
+      "taux_rotation_logement": 0.7,
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "filtre_habitation"
     },
     {
       "cle": "11B|RUE|ST MAXIMIN",
@@ -63261,7 +63307,14 @@
       "_bdnb_match": "num_voie",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
       "_correctif_propagation_indice": "fix_propag_immat_21suff_dl_2026-05-23",
-      "_ilot": "67"
+      "_ilot": "67",
+      "ventes_par_an_logement": {
+        "2021": 0
+      },
+      "nb_ventes_logement": 0,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "filtre_habitation"
     },
     {
       "cle": "121A|RUE|ANTOINE CHARIAL",
@@ -63298,7 +63351,12 @@
       ],
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
       "_correctif_propagation_indice": "fix_propag_immat_21suff_dl_2026-05-23",
-      "_ilot": "39"
+      "_ilot": "39",
+      "ventes_par_an_logement": {},
+      "nb_ventes_logement": 0,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance"
     },
     {
       "cle": "121B|RUE|ANTOINE CHARIAL",
@@ -63331,7 +63389,12 @@
       "_fusion_cible": "121A|RUE|ANTOINE CHARIAL",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
       "_correctif_propagation_indice": "fix_propag_immat_21suff_dl_2026-05-23",
-      "_ilot": "39"
+      "_ilot": "39",
+      "ventes_par_an_logement": {},
+      "nb_ventes_logement": 0,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance"
     },
     {
       "cle": "121C|RUE|ANTOINE CHARIAL",
@@ -63364,7 +63427,12 @@
       "_fusion_cible": "121A|RUE|ANTOINE CHARIAL",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
       "_correctif_propagation_indice": "fix_propag_immat_21suff_dl_2026-05-23",
-      "_ilot": "39"
+      "_ilot": "39",
+      "ventes_par_an_logement": {},
+      "nb_ventes_logement": 0,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance"
     },
     {
       "cle": "121D|RUE|ANTOINE CHARIAL",
@@ -63397,7 +63465,12 @@
       "_fusion_cible": "121A|RUE|ANTOINE CHARIAL",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
       "_correctif_propagation_indice": "fix_propag_immat_21suff_dl_2026-05-23",
-      "_ilot": "39"
+      "_ilot": "39",
+      "ventes_par_an_logement": {},
+      "nb_ventes_logement": 0,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance"
     },
     {
       "cle": "12B|RUE|DAVID",
@@ -63427,7 +63500,12 @@
       "batiment_groupe_id": "bdnb-bg-WK61-5RHS-UH4N",
       "_bdnb_match": "num_voie",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
-      "_ilot": "58"
+      "_ilot": "58",
+      "ventes_par_an_logement": {},
+      "nb_ventes_logement": 0,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance"
     },
     {
       "cle": "12B|RUE|GUILLOUD",
@@ -63456,7 +63534,12 @@
       "batiment_groupe_id": "bdnb-bg-HZKH-DKDL-A563",
       "_bdnb_match": "num_voie",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
-      "_ilot": "73"
+      "_ilot": "73",
+      "ventes_par_an_logement": {},
+      "nb_ventes_logement": 0,
+      "taux_rotation_logement": null,
+      "classement_rotation_logement": "",
+      "_taux_logement_src": "copie_jointure_incertaine"
     },
     {
       "cle": "130B|RUE|BARABAN",
@@ -63489,7 +63572,12 @@
       "_fusion_cible": "61|RUE|ANTOINE CHARIAL",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
       "_correctif_propagation_indice": "fix_propag_immat_21suff_dl_2026-05-23",
-      "_ilot": "35"
+      "_ilot": "35",
+      "ventes_par_an_logement": {},
+      "nb_ventes_logement": 0,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance"
     },
     {
       "cle": "13B|RUE|DAUPHINE",
@@ -63526,7 +63614,12 @@
       "_fusion_cible": "11|RUE|DAUPHINE",
       "nb_lots_sociaux": 58,
       "nb_lots_sociaux_brut": 213,
-      "nb_log_marchand": 59
+      "nb_log_marchand": 59,
+      "ventes_par_an_logement": {},
+      "nb_ventes_logement": 0,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance"
     },
     {
       "cle": "14B|RUE|ESPERANCE",
@@ -63560,7 +63653,12 @@
       "_fusion_auto_target": "14|RUE|ESPERANCE",
       "_fusion_auto_source": "manual_2026-05-23_14besp_emeraude",
       "_ilot": "33",
-      "_fusion_cible": "14|RUE|ESPERANCE"
+      "_fusion_cible": "14|RUE|ESPERANCE",
+      "ventes_par_an_logement": {},
+      "nb_ventes_logement": 0,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_jointure_incertaine"
     },
     {
       "cle": "15B|RUE|CLAUDIUS PIONCHON",
@@ -63597,7 +63695,12 @@
       "_ilot": "24",
       "nb_lots_sociaux": 44,
       "nb_lots_sociaux_brut": 356,
-      "nb_log_marchand": 0
+      "nb_log_marchand": 0,
+      "ventes_par_an_logement": {},
+      "nb_ventes_logement": 0,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance"
     },
     {
       "cle": "15B|RUE|MONTBRILLANT",
@@ -63633,7 +63736,16 @@
       "_fusion_auto": true,
       "_fusion_cible": "15|RUE|MONTBRILLANT",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
-      "_ilot": "76"
+      "_ilot": "76",
+      "ventes_par_an_logement": {
+        "2021": 1,
+        "2024": 1,
+        "2025": 1
+      },
+      "nb_ventes_logement": 3,
+      "taux_rotation_logement": 2.0,
+      "classement_rotation_logement": "Modéré",
+      "_taux_logement_src": "copie_jointure_incertaine"
     },
     {
       "cle": "15B|RUE|DAUPHINE",
@@ -63665,7 +63777,12 @@
       "_fusion_auto": true,
       "_fusion_cible": "11|RUE|DAUPHINE",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
-      "_ilot": "62"
+      "_ilot": "62",
+      "ventes_par_an_logement": {},
+      "nb_ventes_logement": 0,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance"
     },
     {
       "cle": "15T|RUE|DAUPHINE",
@@ -63698,7 +63815,12 @@
       "_ilot": "62",
       "nb_lots_sociaux": 50,
       "nb_lots_sociaux_brut": 316,
-      "nb_log_marchand": 51
+      "nb_log_marchand": 51,
+      "ventes_par_an_logement": {},
+      "nb_ventes_logement": 0,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance"
     },
     {
       "cle": "162B|AVENUE|FELIX FAURE",
@@ -63733,7 +63855,12 @@
       "_ilot": "55",
       "nb_lots_sociaux": 61,
       "nb_lots_sociaux_brut": 22,
-      "nb_log_marchand": 6
+      "nb_log_marchand": 6,
+      "ventes_par_an_logement": {},
+      "nb_ventes_logement": 0,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance"
     },
     {
       "cle": "177B|AVENUE|FELIX FAURE",
@@ -63770,7 +63897,17 @@
       "_fusion_auto": true,
       "_fusion_cible": "177|AVENUE|FELIX FAURE",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
-      "_ilot": "51"
+      "_ilot": "51",
+      "ventes_par_an_logement": {
+        "2021": 1,
+        "2022": 1,
+        "2023": 1,
+        "2025": 1
+      },
+      "nb_ventes_logement": 4,
+      "taux_rotation_logement": 0.9,
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_jointure_incertaine"
     },
     {
       "cle": "177T|AVENUE|FELIX FAURE",
@@ -63807,7 +63944,17 @@
       "_fusion_auto": true,
       "_fusion_cible": "177|AVENUE|FELIX FAURE",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
-      "_ilot": "51"
+      "_ilot": "51",
+      "ventes_par_an_logement": {
+        "2021": 3,
+        "2022": 1,
+        "2024": 1,
+        "2025": 2
+      },
+      "nb_ventes_logement": 7,
+      "taux_rotation_logement": 9.3,
+      "classement_rotation_logement": "Très actif",
+      "_taux_logement_src": "copie_jointure_incertaine"
     },
     {
       "cle": "17B|RUE|CLAUDIUS PIONCHON",
@@ -63841,7 +63988,12 @@
         "17|RUE|CLAUDIUS PIONCHON"
       ],
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
-      "_ilot": "24"
+      "_ilot": "24",
+      "ventes_par_an_logement": {},
+      "nb_ventes_logement": 0,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance"
     },
     {
       "cle": "17B|RUE|ST EUSEBE",
@@ -63871,7 +64023,12 @@
       "batiment_groupe_id": "bdnb-bg-LK7X-LXHQ-XLJ9",
       "_bdnb_match": "num_voie",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
-      "_ilot": "33"
+      "_ilot": "33",
+      "ventes_par_an_logement": {},
+      "nb_ventes_logement": 0,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance"
     },
     {
       "cle": "182B|AVENUE|FELIX FAURE",
@@ -63908,7 +64065,17 @@
       "_fusion_auto": true,
       "_fusion_cible": "9|RUE|METALLURGIE",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
-      "_ilot": "59"
+      "_ilot": "59",
+      "ventes_par_an_logement": {
+        "2021": 2,
+        "2022": 1,
+        "2023": 1,
+        "2024": 1
+      },
+      "nb_ventes_logement": 5,
+      "taux_rotation_logement": 2.0,
+      "classement_rotation_logement": "Modéré",
+      "_taux_logement_src": "copie_jointure_incertaine"
     },
     {
       "cle": "183B|AVENUE|FELIX FAURE",
@@ -63943,7 +64110,15 @@
       "_fusion_auto": true,
       "_fusion_cible": "183|AVENUE|FELIX FAURE",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
-      "_ilot": "51"
+      "_ilot": "51",
+      "ventes_par_an_logement": {
+        "2021": 4,
+        "2025": 1
+      },
+      "nb_ventes_logement": 5,
+      "taux_rotation_logement": 3.3,
+      "classement_rotation_logement": "Actif",
+      "_taux_logement_src": "copie_jointure_incertaine"
     },
     {
       "cle": "185T|AVENUE|FELIX FAURE",
@@ -63986,7 +64161,18 @@
       "_ilot": "55",
       "nb_lots_sociaux": 61,
       "nb_lots_sociaux_brut": 22,
-      "nb_log_marchand": 6
+      "nb_log_marchand": 6,
+      "ventes_par_an_logement": {
+        "2021": 4,
+        "2022": 2,
+        "2023": 1,
+        "2024": 1,
+        "2025": 3
+      },
+      "nb_ventes_logement": 11,
+      "taux_rotation_logement": 3.3,
+      "classement_rotation_logement": "Actif",
+      "_taux_logement_src": "copie_jointure_incertaine"
     },
     {
       "cle": "191B|AVENUE|FELIX FAURE",
@@ -64020,7 +64206,14 @@
       "_fusion_cible": "191|AVENUE|FELIX FAURE",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
       "_correctif_propagation_indice": "fix_propag_immat_21suff_dl_2026-05-23",
-      "_ilot": "52"
+      "_ilot": "52",
+      "ventes_par_an_logement": {
+        "2022": 1
+      },
+      "nb_ventes_logement": 1,
+      "taux_rotation_logement": null,
+      "classement_rotation_logement": "",
+      "_taux_logement_src": "copie_jointure_incertaine"
     },
     {
       "cle": "198B|AVENUE|FELIX FAURE",
@@ -64055,7 +64248,12 @@
       "_ilot": "55",
       "nb_lots_sociaux": 61,
       "nb_lots_sociaux_brut": 22,
-      "nb_log_marchand": 6
+      "nb_log_marchand": 6,
+      "ventes_par_an_logement": {},
+      "nb_ventes_logement": 0,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance"
     },
     {
       "cle": "19B|RUE|ST ANTOINE",
@@ -64091,7 +64289,17 @@
       "_bdnb_match": "num_voie",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
       "_correctif_propagation_indice": "fix_propag_immat_21suff_dl_2026-05-23",
-      "_ilot": "13"
+      "_ilot": "13",
+      "ventes_par_an_logement": {
+        "2021": 3,
+        "2023": 2,
+        "2024": 1,
+        "2025": 1
+      },
+      "nb_ventes_logement": 7,
+      "taux_rotation_logement": 3.5,
+      "classement_rotation_logement": "Actif",
+      "_taux_logement_src": "copie_jointure_incertaine"
     },
     {
       "cle": "20B|AVENUE|LACASSAGNE",
@@ -64129,7 +64337,12 @@
       ],
       "nb_lots_sociaux": 86,
       "nb_lots_sociaux_brut": 98,
-      "nb_log_marchand": 11
+      "nb_log_marchand": 11,
+      "ventes_par_an_logement": {},
+      "nb_ventes_logement": 0,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_jointure_incertaine"
     },
     {
       "cle": "21B|RUE|CLAUDIUS PIONCHON",
@@ -64168,7 +64381,17 @@
         "21|RUE|CLAUDIUS PIONCHON"
       ],
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
-      "_ilot": "24"
+      "_ilot": "24",
+      "ventes_par_an_logement": {
+        "2021": 1,
+        "2022": 2,
+        "2023": 0,
+        "2025": 0
+      },
+      "nb_ventes_logement": 3,
+      "taux_rotation_logement": 1.7,
+      "classement_rotation_logement": "Modéré",
+      "_taux_logement_src": "filtre_habitation"
     },
     {
       "cle": "23B|RUE|DAUPHINE",
@@ -64202,7 +64425,12 @@
         "23|RUE|DAUPHINE"
       ],
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
-      "_ilot": "62"
+      "_ilot": "62",
+      "ventes_par_an_logement": {},
+      "nb_ventes_logement": 0,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance"
     },
     {
       "cle": "24B|AVENUE|LACASSAGNE",
@@ -64236,7 +64464,14 @@
       "_fusion_auto": true,
       "_fusion_cible": "24|AVENUE|LACASSAGNE",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
-      "_ilot": "54"
+      "_ilot": "54",
+      "ventes_par_an_logement": {
+        "2025": 2
+      },
+      "nb_ventes_logement": 2,
+      "taux_rotation_logement": 0.6,
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance"
     },
     {
       "cle": "24B|RUE|CITE",
@@ -64273,12 +64508,17 @@
       "_bdnb_match": "num_voie",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
       "_ilot": "24",
-      "nb_ventes_logement": 2,
+      "nb_ventes_logement": 15,
       "ventes_par_an_logement": {
-        "2024": 1,
-        "2022": 1
+        "2024": 3,
+        "2025": 2,
+        "2021": 2,
+        "2022": 6,
+        "2023": 2
       },
-      "_taux_logement_src": "patch_btq_post_make_light"
+      "_taux_logement_src": "copie_jointure_incertaine",
+      "taux_rotation_logement": 20.0,
+      "classement_rotation_logement": "Très actif"
     },
     {
       "cle": "252A|RUE|PAUL BERT",
@@ -64320,14 +64560,17 @@
       "nb_lots_sociaux": 7,
       "nb_lots_sociaux_brut": 28,
       "nb_log_marchand": 0,
-      "nb_ventes_logement": 6,
+      "nb_ventes_logement": 11,
       "ventes_par_an_logement": {
-        "2025": 1,
-        "2021": 1,
+        "2024": 1,
+        "2025": 2,
+        "2021": 2,
         "2022": 3,
-        "2023": 1
+        "2023": 3
       },
-      "_taux_logement_src": "patch_btq_post_make_light"
+      "_taux_logement_src": "copie_jointure_incertaine",
+      "taux_rotation_logement": 31.4,
+      "classement_rotation_logement": "Très actif"
     },
     {
       "cle": "25B|RUE|DAUPHINE",
@@ -64359,7 +64602,12 @@
       "_fusion_auto": true,
       "_fusion_cible": "59|RUE|DAUPHINE",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
-      "_ilot": "57"
+      "_ilot": "57",
+      "ventes_par_an_logement": {},
+      "nb_ventes_logement": 0,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance"
     },
     {
       "cle": "26B|RUE|CITE",
@@ -64396,7 +64644,15 @@
       "_fusion_auto_target": "26|RUE|CITE",
       "_fusion_auto_source": "manual_2026-05-23_26bcite_cambronne",
       "_ilot": "24",
-      "_fusion_cible": "24|RUE|CITE"
+      "_fusion_cible": "24|RUE|CITE",
+      "ventes_par_an_logement": {
+        "2022": 2,
+        "2023": 2
+      },
+      "nb_ventes_logement": 4,
+      "taux_rotation_logement": 1.9,
+      "classement_rotation_logement": "Modéré",
+      "_taux_logement_src": "copie_jointure_incertaine"
     },
     {
       "cle": "27B|RUE|DAUPHINE",
@@ -64428,7 +64684,12 @@
       "_fusion_auto": true,
       "_fusion_cible": "59|RUE|DAUPHINE",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
-      "_ilot": "57"
+      "_ilot": "57",
+      "ventes_par_an_logement": {},
+      "nb_ventes_logement": 0,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance"
     },
     {
       "cle": "28B|RUE|CLAUDIUS PIONCHON",
@@ -64467,7 +64728,18 @@
       "_ilot": "23",
       "nb_lots_sociaux": 61,
       "nb_lots_sociaux_brut": 82,
-      "nb_log_marchand": 0
+      "nb_log_marchand": 0,
+      "ventes_par_an_logement": {
+        "2021": 0,
+        "2022": 0,
+        "2023": 1,
+        "2024": 1,
+        "2025": 0
+      },
+      "nb_ventes_logement": 2,
+      "taux_rotation_logement": 0.7,
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "filtre_habitation"
     },
     {
       "cle": "29B|RUE|DAUPHINE",
@@ -64499,7 +64771,12 @@
       "_fusion_auto": true,
       "_fusion_cible": "59|RUE|DAUPHINE",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
-      "_ilot": "57"
+      "_ilot": "57",
+      "ventes_par_an_logement": {},
+      "nb_ventes_logement": 0,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance"
     },
     {
       "cle": "2A|PLACE|FRANCFORT",
@@ -64536,7 +64813,12 @@
       "_ilot": "16",
       "nb_lots_sociaux": 191,
       "nb_lots_sociaux_brut": 204,
-      "nb_log_marchand": 1
+      "nb_log_marchand": 1,
+      "ventes_par_an_logement": {},
+      "nb_ventes_logement": 0,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance"
     },
     {
       "cle": "2B|RUE|DAUPHINE",
@@ -64572,7 +64854,12 @@
       "_ilot": "68",
       "nb_lots_sociaux": 21,
       "nb_lots_sociaux_brut": 56,
-      "nb_log_marchand": 18
+      "nb_log_marchand": 18,
+      "ventes_par_an_logement": {},
+      "nb_ventes_logement": 0,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance"
     },
     {
       "cle": "31B|RUE|DAUPHINE",
@@ -64604,7 +64891,12 @@
       "_fusion_auto": true,
       "_fusion_cible": "59|RUE|DAUPHINE",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
-      "_ilot": "57"
+      "_ilot": "57",
+      "ventes_par_an_logement": {},
+      "nb_ventes_logement": 0,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance"
     },
     {
       "cle": "33B|RUE|DAUPHINE",
@@ -64636,7 +64928,12 @@
       "_fusion_auto": true,
       "_fusion_cible": "59|RUE|DAUPHINE",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
-      "_ilot": "57"
+      "_ilot": "57",
+      "ventes_par_an_logement": {},
+      "nb_ventes_logement": 0,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance"
     },
     {
       "cle": "34B|RUE|STE ANNE DE BARABAN",
@@ -64669,7 +64966,12 @@
         "34|RUE|STE ANNE DE BARABAN"
       ],
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
-      "_ilot": "34"
+      "_ilot": "34",
+      "ventes_par_an_logement": {},
+      "nb_ventes_logement": 0,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance"
     },
     {
       "cle": "35B|RUE|DAUPHINE",
@@ -64701,7 +65003,12 @@
       "_fusion_auto": true,
       "_fusion_cible": "59|RUE|DAUPHINE",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
-      "_ilot": "57"
+      "_ilot": "57",
+      "ventes_par_an_logement": {},
+      "nb_ventes_logement": 0,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance"
     },
     {
       "cle": "36B|RUE|ST ANTOINE",
@@ -64738,7 +65045,17 @@
       "_fusion_auto": true,
       "_fusion_cible": "36|RUE|ST ANTOINE",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
-      "_ilot": "8"
+      "_ilot": "8",
+      "ventes_par_an_logement": {
+        "2021": 2,
+        "2022": 4,
+        "2023": 1,
+        "2025": 1
+      },
+      "nb_ventes_logement": 8,
+      "taux_rotation_logement": 3.8,
+      "classement_rotation_logement": "Actif",
+      "_taux_logement_src": "copie_jointure_incertaine"
     },
     {
       "cle": "37B|RUE|DAUPHINE",
@@ -64767,7 +65084,12 @@
       "batiment_groupe_id": "bdnb-bg-7ZB9-NRPJ-XM7B",
       "_bdnb_match": "num_voie",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
-      "_ilot": "57"
+      "_ilot": "57",
+      "ventes_par_an_logement": {},
+      "nb_ventes_logement": 0,
+      "taux_rotation_logement": null,
+      "classement_rotation_logement": "",
+      "_taux_logement_src": "copie_sans_dependance"
     },
     {
       "cle": "43B|RUE|ETIENNE RICHERAND",
@@ -64804,7 +65126,12 @@
       "_ilot": "20",
       "nb_lots_sociaux": 6,
       "nb_lots_sociaux_brut": 2,
-      "nb_log_marchand": 0
+      "nb_log_marchand": 0,
+      "ventes_par_an_logement": {},
+      "nb_ventes_logement": 0,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance"
     },
     {
       "cle": "48B|RUE|ST ANTOINE",
@@ -64834,7 +65161,12 @@
       "batiment_groupe_id": "bdnb-bg-L63S-C2GU-MF9Y",
       "_bdnb_match": "num_voie",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
-      "_ilot": "7"
+      "_ilot": "7",
+      "ventes_par_an_logement": {},
+      "nb_ventes_logement": 0,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_jointure_incertaine"
     },
     {
       "cle": "49B|RUE|STE ANNE DE BARABAN",
@@ -64871,7 +65203,12 @@
       "_ilot": "30",
       "nb_lots_sociaux": 30,
       "nb_lots_sociaux_brut": 506,
-      "nb_log_marchand": 0
+      "nb_log_marchand": 0,
+      "ventes_par_an_logement": {},
+      "nb_ventes_logement": 0,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance"
     },
     {
       "cle": "4B|RUE|DAVID",
@@ -64909,7 +65246,17 @@
       "_fusion_cible": "8|RUE|DAVID",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
       "_correctif_propagation_indice": "fix_propag_immat_21suff_dl_2026-05-23",
-      "_ilot": "58"
+      "_ilot": "58",
+      "ventes_par_an_logement": {
+        "2021": 0,
+        "2022": 0,
+        "2023": 0,
+        "2025": 0
+      },
+      "nb_ventes_logement": 0,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "filtre_habitation"
     },
     {
       "cle": "53A|RUE|DAUPHINE",
@@ -64941,7 +65288,12 @@
       "_fusion_auto": true,
       "_fusion_cible": "59|RUE|DAUPHINE",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
-      "_ilot": "57"
+      "_ilot": "57",
+      "ventes_par_an_logement": {},
+      "nb_ventes_logement": 0,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance"
     },
     {
       "cle": "53B|RUE|DAUPHINE",
@@ -64973,7 +65325,12 @@
       "_fusion_auto": true,
       "_fusion_cible": "59|RUE|DAUPHINE",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
-      "_ilot": "57"
+      "_ilot": "57",
+      "ventes_par_an_logement": {},
+      "nb_ventes_logement": 0,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance"
     },
     {
       "cle": "55A|RUE|DAUPHINE",
@@ -65005,7 +65362,12 @@
       "_fusion_auto": true,
       "_fusion_cible": "59|RUE|DAUPHINE",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
-      "_ilot": "57"
+      "_ilot": "57",
+      "ventes_par_an_logement": {},
+      "nb_ventes_logement": 0,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance"
     },
     {
       "cle": "55B|RUE|DAUPHINE",
@@ -65038,7 +65400,12 @@
       "_ilot": "57",
       "nb_lots_sociaux": 108,
       "nb_lots_sociaux_brut": 218,
-      "nb_log_marchand": 0
+      "nb_log_marchand": 0,
+      "ventes_par_an_logement": {},
+      "nb_ventes_logement": 0,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance"
     },
     {
       "cle": "55C|RUE|DAUPHINE",
@@ -65070,7 +65437,12 @@
       "_fusion_auto": true,
       "_fusion_cible": "59|RUE|DAUPHINE",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
-      "_ilot": "57"
+      "_ilot": "57",
+      "ventes_par_an_logement": {},
+      "nb_ventes_logement": 0,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance"
     },
     {
       "cle": "55D|RUE|DAUPHINE",
@@ -65102,7 +65474,12 @@
       "_fusion_auto": true,
       "_fusion_cible": "59|RUE|DAUPHINE",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
-      "_ilot": "57"
+      "_ilot": "57",
+      "ventes_par_an_logement": {},
+      "nb_ventes_logement": 0,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance"
     },
     {
       "cle": "58T|AVENUE|LACASSAGNE",
@@ -65131,7 +65508,12 @@
       "batiment_groupe_id": "bdnb-bg-DTCN-VVLR-K83L",
       "_bdnb_match": "num_voie",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
-      "_ilot": "75"
+      "_ilot": "75",
+      "ventes_par_an_logement": {},
+      "nb_ventes_logement": 0,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_jointure_incertaine"
     },
     {
       "cle": "5B|COURS|ALBERT THOMAS",
@@ -65165,7 +65547,15 @@
       "_fusion_auto": true,
       "_fusion_cible": "5|COURS|ALBERT THOMAS",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
-      "_ilot": "68"
+      "_ilot": "68",
+      "ventes_par_an_logement": {
+        "2023": 1,
+        "2024": 1
+      },
+      "nb_ventes_logement": 2,
+      "taux_rotation_logement": null,
+      "classement_rotation_logement": "",
+      "_taux_logement_src": "copie_jointure_incertaine"
     },
     {
       "cle": "5B|PLACE|FERRANDIERE",
@@ -65201,7 +65591,12 @@
       "_ilot": "23",
       "nb_lots_sociaux": 56,
       "nb_lots_sociaux_brut": 136,
-      "nb_log_marchand": 57
+      "nb_log_marchand": 57,
+      "ventes_par_an_logement": {},
+      "nb_ventes_logement": 0,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance"
     },
     {
       "cle": "64B|AVENUE|LACASSAGNE",
@@ -65236,7 +65631,12 @@
       "_ilot": "75",
       "nb_lots_sociaux": 10,
       "nb_lots_sociaux_brut": 35,
-      "nb_log_marchand": 2
+      "nb_log_marchand": 2,
+      "ventes_par_an_logement": {},
+      "nb_ventes_logement": 0,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_jointure_incertaine"
     },
     {
       "cle": "66B|AVENUE|LACASSAGNE",
@@ -65275,7 +65675,16 @@
       "_ilot": "75",
       "nb_lots_sociaux": 56,
       "nb_lots_sociaux_brut": 35,
-      "nb_log_marchand": 13
+      "nb_log_marchand": 13,
+      "ventes_par_an_logement": {
+        "2022": 1,
+        "2024": 1,
+        "2025": 2
+      },
+      "nb_ventes_logement": 4,
+      "taux_rotation_logement": 1.2,
+      "classement_rotation_logement": "Modéré",
+      "_taux_logement_src": "copie_jointure_incertaine"
     },
     {
       "cle": "6B|RUE|STE ANNE DE BARABAN",
@@ -65311,13 +65720,15 @@
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
       "_correctif_propagation_indice": "fix_propag_immat_21suff_dl_2026-05-23",
       "_ilot": "35",
-      "nb_ventes_logement": 4,
+      "nb_ventes_logement": 8,
       "ventes_par_an_logement": {
-        "2021": 1,
-        "2022": 1,
-        "2023": 2
+        "2021": 2,
+        "2022": 2,
+        "2023": 4
       },
-      "_taux_logement_src": "patch_btq_post_make_light"
+      "_taux_logement_src": "copie_jointure_incertaine",
+      "taux_rotation_logement": 5.5,
+      "classement_rotation_logement": "Très actif"
     },
     {
       "cle": "74B|RUE|MAURICE FLANDIN",
@@ -65356,7 +65767,16 @@
       "_ilot": "16",
       "nb_lots_sociaux": 20,
       "nb_lots_sociaux_brut": 25,
-      "nb_log_marchand": 16
+      "nb_log_marchand": 16,
+      "ventes_par_an_logement": {
+        "2021": 0,
+        "2022": 0,
+        "2024": 0
+      },
+      "nb_ventes_logement": 0,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "filtre_habitation"
     },
     {
       "cle": "77B|RUE|ETIENNE RICHERAND",
@@ -65386,7 +65806,12 @@
       "batiment_groupe_id": "bdnb-bg-A9W3-76DP-6DM5",
       "_bdnb_match": "num_voie",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
-      "_ilot": "47"
+      "_ilot": "47",
+      "ventes_par_an_logement": {},
+      "nb_ventes_logement": 0,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_jointure_incertaine"
     },
     {
       "cle": "78B|RUE|ANTOINE CHARIAL",
@@ -65423,7 +65848,14 @@
       "_ilot": "39",
       "nb_lots_sociaux": 87,
       "nb_lots_sociaux_brut": 46,
-      "nb_log_marchand": 32
+      "nb_log_marchand": 32,
+      "ventes_par_an_logement": {
+        "2022": 1
+      },
+      "nb_ventes_logement": 1,
+      "taux_rotation_logement": 0.2,
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_jointure_incertaine"
     },
     {
       "cle": "7B|COURS|ALBERT THOMAS",
@@ -65462,7 +65894,17 @@
       "_ilot": "68",
       "_fusion_auto": true,
       "_fusion_cible": "5|COURS|ALBERT THOMAS",
-      "_detach_immat_ex": "AG8595613"
+      "_detach_immat_ex": "AG8595613",
+      "ventes_par_an_logement": {
+        "2021": 2,
+        "2022": 4,
+        "2023": 1,
+        "2025": 2
+      },
+      "nb_ventes_logement": 9,
+      "taux_rotation_logement": 1.2,
+      "classement_rotation_logement": "Modéré",
+      "_taux_logement_src": "copie_jointure_incertaine"
     },
     {
       "cle": "7B|RUE|MONTBRILLANT",
@@ -65500,7 +65942,17 @@
       "_ilot": "74",
       "nb_lots_sociaux": 15,
       "nb_lots_sociaux_brut": 15,
-      "nb_log_marchand": 0
+      "nb_log_marchand": 0,
+      "ventes_par_an_logement": {
+        "2021": 3,
+        "2022": 2,
+        "2023": 7,
+        "2024": 5
+      },
+      "nb_ventes_logement": 17,
+      "taux_rotation_logement": 22.7,
+      "classement_rotation_logement": "Très actif",
+      "_taux_logement_src": "copie_jointure_incertaine"
     },
     {
       "cle": "7B|RUE|DAUPHINE",
@@ -65535,7 +65987,12 @@
       "_ilot": "62",
       "nb_lots_sociaux": 51,
       "nb_lots_sociaux_brut": 213,
-      "nb_log_marchand": 52
+      "nb_log_marchand": 52,
+      "ventes_par_an_logement": {},
+      "nb_ventes_logement": 0,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance"
     },
     {
       "cle": "7B|RUE|GABILLOT",
@@ -65569,7 +66026,14 @@
       "_fusion_auto": true,
       "_fusion_cible": "7|RUE|GABILLOT",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
-      "_ilot": "46"
+      "_ilot": "46",
+      "ventes_par_an_logement": {
+        "2025": 1
+      },
+      "nb_ventes_logement": 1,
+      "taux_rotation_logement": 0.7,
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_jointure_incertaine"
     },
     {
       "cle": "7T|RUE|MONTBRILLANT",
@@ -65606,7 +66070,16 @@
       "_ilot": "74",
       "nb_lots_sociaux": 37,
       "nb_lots_sociaux_brut": 76,
-      "nb_log_marchand": 0
+      "nb_log_marchand": 0,
+      "ventes_par_an_logement": {
+        "2021": 1,
+        "2022": 2,
+        "2023": 1
+      },
+      "nb_ventes_logement": 4,
+      "taux_rotation_logement": 2.2,
+      "classement_rotation_logement": "Modéré",
+      "_taux_logement_src": "copie_jointure_incertaine"
     },
     {
       "cle": "80B|RUE|ANTOINE CHARIAL",
@@ -65644,7 +66117,15 @@
       "_ilot": "39",
       "nb_lots_sociaux": 87,
       "nb_lots_sociaux_brut": 46,
-      "nb_log_marchand": 32
+      "nb_log_marchand": 32,
+      "ventes_par_an_logement": {
+        "2021": 2,
+        "2022": 1
+      },
+      "nb_ventes_logement": 3,
+      "taux_rotation_logement": 0.5,
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_jointure_incertaine"
     },
     {
       "cle": "81B|RUE|ETIENNE RICHERAND",
@@ -65678,7 +66159,12 @@
         "83|RUE|ETIENNE RICHERAND"
       ],
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
-      "_ilot": "47"
+      "_ilot": "47",
+      "ventes_par_an_logement": {},
+      "nb_ventes_logement": 0,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance"
     },
     {
       "cle": "84B|RUE|DAUPHINE",
@@ -65719,7 +66205,17 @@
       "_ilot": "74",
       "nb_lots_sociaux": 60,
       "nb_lots_sociaux_brut": 84,
-      "nb_log_marchand": 0
+      "nb_log_marchand": 0,
+      "ventes_par_an_logement": {
+        "2022": 3,
+        "2023": 7,
+        "2024": 4,
+        "2025": 4
+      },
+      "nb_ventes_logement": 18,
+      "taux_rotation_logement": 6.0,
+      "classement_rotation_logement": "Très actif",
+      "_taux_logement_src": "copie_jointure_incertaine"
     },
     {
       "cle": "8B|RUE|DAVID",
@@ -65758,7 +66254,18 @@
       "_fusion_cible": "8|RUE|DAVID",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
       "_correctif_propagation_indice": "fix_propag_immat_21suff_dl_2026-05-23",
-      "_ilot": "58"
+      "_ilot": "58",
+      "ventes_par_an_logement": {
+        "2021": 2,
+        "2022": 4,
+        "2023": 1,
+        "2024": 1,
+        "2025": 1
+      },
+      "nb_ventes_logement": 9,
+      "taux_rotation_logement": 5.5,
+      "classement_rotation_logement": "Très actif",
+      "_taux_logement_src": "copie_sans_dependance"
     },
     {
       "cle": "8B|RUE|NAZARETH",
@@ -65795,13 +66302,15 @@
       "_fusion_cible": "8T|RUE|NAZARETH",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
       "_ilot": "28",
-      "nb_ventes_logement": 8,
+      "nb_ventes_logement": 24,
       "ventes_par_an_logement": {
-        "2025": 2,
-        "2022": 2,
-        "2023": 4
+        "2025": 6,
+        "2022": 6,
+        "2023": 12
       },
-      "_taux_logement_src": "patch_btq_post_make_light"
+      "_taux_logement_src": "copie_jointure_incertaine",
+      "taux_rotation_logement": 9.6,
+      "classement_rotation_logement": "Très actif"
     },
     {
       "cle": "8B|RUE|FRANCOIS GILLET",
@@ -65839,7 +66348,17 @@
       "_ilot": "26",
       "nb_lots_sociaux": 22,
       "nb_lots_sociaux_brut": 9,
-      "nb_log_marchand": 30
+      "nb_log_marchand": 30,
+      "ventes_par_an_logement": {
+        "2021": 2,
+        "2022": 3,
+        "2023": 2,
+        "2024": 4
+      },
+      "nb_ventes_logement": 11,
+      "taux_rotation_logement": 4.2,
+      "classement_rotation_logement": "Actif",
+      "_taux_logement_src": "copie_jointure_incertaine"
     },
     {
       "cle": "93B|RUE|BELLECOMBE",
@@ -65874,7 +66393,15 @@
       "_fusion_auto": true,
       "_fusion_cible": "4|RUE|TERNOIS",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
-      "_ilot": "2"
+      "_ilot": "2",
+      "ventes_par_an_logement": {
+        "2022": 2,
+        "2023": 2
+      },
+      "nb_ventes_logement": 4,
+      "taux_rotation_logement": 1.0,
+      "classement_rotation_logement": "Modéré",
+      "_taux_logement_src": "copie_jointure_incertaine"
     },
     {
       "cle": "9B|RUE|DAUPHINE",
@@ -65909,7 +66436,12 @@
       "_ilot": "62",
       "nb_lots_sociaux": 51,
       "nb_lots_sociaux_brut": 213,
-      "nb_log_marchand": 52
+      "nb_log_marchand": 52,
+      "ventes_par_an_logement": {},
+      "nb_ventes_logement": 0,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance"
     },
     {
       "cle": "9B|RUE|GABILLOT",
@@ -65944,7 +66476,15 @@
       "_fusion_auto": true,
       "_fusion_cible": "76|RUE|ETIENNE RICHERAND",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
-      "_ilot": "46"
+      "_ilot": "46",
+      "ventes_par_an_logement": {
+        "2021": 1,
+        "2023": 1
+      },
+      "nb_ventes_logement": 2,
+      "taux_rotation_logement": 1.5,
+      "classement_rotation_logement": "Modéré",
+      "_taux_logement_src": "filtre_habitation"
     },
     {
       "cle": "9B|RUE|PROFESSEUR PAUL SISLEY",
@@ -65981,7 +66521,16 @@
       "_fusion_cible": "7B|RUE|PROFESSEUR PAUL SISLEY",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
       "_correctif_propagation_indice": "fix_propag_immat_21suff_dl_2026-05-23",
-      "_ilot": "74"
+      "_ilot": "74",
+      "ventes_par_an_logement": {
+        "2021": 2,
+        "2023": 6,
+        "2024": 2
+      },
+      "nb_ventes_logement": 10,
+      "taux_rotation_logement": 0.9,
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_jointure_incertaine"
     },
     {
       "cle": "9Q|RUE|MONTBRILLANT",
@@ -66019,7 +66568,17 @@
       "_fusion_cible": "9|RUE|MONTBRILLANT #AB6220503",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
       "_correctif_propagation_indice": "fix_propag_immat_21suff_dl_2026-05-23",
-      "_ilot": "76"
+      "_ilot": "76",
+      "ventes_par_an_logement": {
+        "2021": 4,
+        "2022": 2,
+        "2024": 1,
+        "2025": 2
+      },
+      "nb_ventes_logement": 9,
+      "taux_rotation_logement": 3.1,
+      "classement_rotation_logement": "Actif",
+      "_taux_logement_src": "copie_jointure_incertaine"
     },
     {
       "cle": "9T|RUE|MONTBRILLANT",
@@ -66054,7 +66613,14 @@
       "_fusion_cible": "9|RUE|MONTBRILLANT #AB6220503",
       "_injection_indice": "cherrypick_indice_de_repetition_2026-05-23",
       "_correctif_propagation_indice": "fix_propag_immat_21suff_dl_2026-05-23",
-      "_ilot": "76"
+      "_ilot": "76",
+      "ventes_par_an_logement": {
+        "2022": 1
+      },
+      "nb_ventes_logement": 1,
+      "taux_rotation_logement": 0.3,
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_jointure_incertaine"
     },
     {
       "cle": "6|RUE|24 FEVRIER 1848",
@@ -66083,8 +66649,8 @@
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Aucune vente",
-      "_taux_logement_src": "bdnb_orphelin_no_dvf",
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "bdnb_orphelin_pass",
       "_injection_bdnb_orphelin": "fix_bdnb_orphelin_dl_2026-05-23",
@@ -66118,8 +66684,8 @@
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Aucune vente",
-      "_taux_logement_src": "bdnb_orphelin_no_dvf",
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "bdnb_orphelin_pass",
       "_injection_bdnb_orphelin": "fix_bdnb_orphelin_dl_2026-05-23",
@@ -66156,8 +66722,8 @@
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Aucune vente",
-      "_taux_logement_src": "bdnb_orphelin_no_dvf",
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "bdnb_orphelin_pass",
       "_injection_bdnb_orphelin": "fix_bdnb_orphelin_dl_2026-05-23",
@@ -66191,8 +66757,8 @@
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Aucune vente",
-      "_taux_logement_src": "bdnb_orphelin_no_dvf",
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "bdnb_orphelin_pass",
       "_injection_bdnb_orphelin": "fix_bdnb_orphelin_dl_2026-05-23",
@@ -66226,8 +66792,8 @@
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Aucune vente",
-      "_taux_logement_src": "bdnb_orphelin_no_dvf",
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "bdnb_orphelin_pass",
       "_injection_bdnb_orphelin": "fix_bdnb_orphelin_dl_2026-05-23",
@@ -66261,8 +66827,8 @@
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Aucune vente",
-      "_taux_logement_src": "bdnb_orphelin_no_dvf",
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "bdnb_orphelin_pass",
       "_injection_bdnb_orphelin": "fix_bdnb_orphelin_dl_2026-05-23",
@@ -66296,8 +66862,8 @@
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Aucune vente",
-      "_taux_logement_src": "bdnb_orphelin_no_dvf",
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "bdnb_orphelin_pass",
       "_injection_bdnb_orphelin": "fix_bdnb_orphelin_dl_2026-05-23",
@@ -66331,8 +66897,8 @@
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Aucune vente",
-      "_taux_logement_src": "bdnb_orphelin_no_dvf",
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "bdnb_orphelin_pass",
       "_injection_bdnb_orphelin": "fix_bdnb_orphelin_dl_2026-05-23",
@@ -66366,8 +66932,8 @@
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Aucune vente",
-      "_taux_logement_src": "bdnb_orphelin_no_dvf",
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "bdnb_orphelin_pass",
       "_injection_bdnb_orphelin": "fix_bdnb_orphelin_dl_2026-05-23",
@@ -66401,8 +66967,8 @@
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Aucune vente",
-      "_taux_logement_src": "bdnb_orphelin_no_dvf",
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "bdnb_orphelin_pass",
       "_injection_bdnb_orphelin": "fix_bdnb_orphelin_dl_2026-05-23",
@@ -66436,8 +67002,8 @@
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Aucune vente",
-      "_taux_logement_src": "bdnb_orphelin_no_dvf",
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "bdnb_orphelin_pass",
       "_injection_bdnb_orphelin": "fix_bdnb_orphelin_dl_2026-05-23",
@@ -66471,8 +67037,8 @@
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Aucune vente",
-      "_taux_logement_src": "bdnb_orphelin_no_dvf",
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "bdnb_orphelin_pass",
       "_injection_bdnb_orphelin": "fix_bdnb_orphelin_dl_2026-05-23",
@@ -66506,8 +67072,8 @@
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Aucune vente",
-      "_taux_logement_src": "bdnb_orphelin_no_dvf",
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "bdnb_orphelin_pass",
       "_injection_bdnb_orphelin": "fix_bdnb_orphelin_dl_2026-05-23",
@@ -66541,8 +67107,8 @@
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Aucune vente",
-      "_taux_logement_src": "bdnb_orphelin_no_dvf",
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "bdnb_orphelin_pass",
       "_injection_bdnb_orphelin": "fix_bdnb_orphelin_dl_2026-05-23",
@@ -66576,8 +67142,8 @@
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Aucune vente",
-      "_taux_logement_src": "bdnb_orphelin_no_dvf",
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "bdnb_orphelin_pass",
       "_injection_bdnb_orphelin": "fix_bdnb_orphelin_dl_2026-05-23",
@@ -66611,8 +67177,8 @@
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Aucune vente",
-      "_taux_logement_src": "bdnb_orphelin_no_dvf",
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "bdnb_orphelin_pass",
       "_injection_bdnb_orphelin": "fix_bdnb_orphelin_dl_2026-05-23",
@@ -66646,8 +67212,8 @@
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Aucune vente",
-      "_taux_logement_src": "bdnb_orphelin_no_dvf",
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "bdnb_orphelin_pass",
       "_injection_bdnb_orphelin": "fix_bdnb_orphelin_dl_2026-05-23",
@@ -66681,8 +67247,8 @@
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Aucune vente",
-      "_taux_logement_src": "bdnb_orphelin_no_dvf",
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "bdnb_orphelin_pass",
       "_injection_bdnb_orphelin": "fix_bdnb_orphelin_dl_2026-05-23",
@@ -66716,8 +67282,8 @@
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Aucune vente",
-      "_taux_logement_src": "bdnb_orphelin_no_dvf",
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "bdnb_orphelin_pass",
       "_injection_bdnb_orphelin": "fix_bdnb_orphelin_dl_2026-05-23",
@@ -66751,8 +67317,8 @@
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Aucune vente",
-      "_taux_logement_src": "bdnb_orphelin_no_dvf",
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "bdnb_orphelin_pass",
       "_injection_bdnb_orphelin": "fix_bdnb_orphelin_dl_2026-05-23",
@@ -66786,8 +67352,8 @@
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Aucune vente",
-      "_taux_logement_src": "bdnb_orphelin_no_dvf",
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "bdnb_orphelin_pass",
       "_injection_bdnb_orphelin": "fix_bdnb_orphelin_dl_2026-05-23",
@@ -66821,8 +67387,8 @@
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Aucune vente",
-      "_taux_logement_src": "bdnb_orphelin_no_dvf",
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "bdnb_orphelin_pass",
       "_injection_bdnb_orphelin": "fix_bdnb_orphelin_dl_2026-05-23",
@@ -66856,8 +67422,8 @@
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Aucune vente",
-      "_taux_logement_src": "bdnb_orphelin_no_dvf",
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "bdnb_orphelin_pass",
       "_injection_bdnb_orphelin": "fix_bdnb_orphelin_dl_2026-05-23",
@@ -66891,8 +67457,8 @@
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Aucune vente",
-      "_taux_logement_src": "bdnb_orphelin_no_dvf",
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "bdnb_orphelin_pass",
       "_injection_bdnb_orphelin": "fix_bdnb_orphelin_dl_2026-05-23",
@@ -66931,8 +67497,8 @@
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Aucune vente",
-      "_taux_logement_src": "bdnb_orphelin_no_dvf",
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "bdnb_orphelin_pass",
       "_injection_bdnb_orphelin": "fix_bdnb_orphelin_dl_2026-05-23",
@@ -66966,8 +67532,8 @@
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Aucune vente",
-      "_taux_logement_src": "bdnb_orphelin_no_dvf",
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "bdnb_orphelin_pass",
       "_injection_bdnb_orphelin": "fix_bdnb_orphelin_dl_2026-05-23",
@@ -67001,8 +67567,8 @@
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Aucune vente",
-      "_taux_logement_src": "bdnb_orphelin_no_dvf",
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "bdnb_orphelin_pass",
       "_injection_bdnb_orphelin": "fix_bdnb_orphelin_dl_2026-05-23",
@@ -67036,8 +67602,8 @@
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Aucune vente",
-      "_taux_logement_src": "bdnb_orphelin_no_dvf",
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "bdnb_orphelin_pass",
       "_injection_bdnb_orphelin": "fix_bdnb_orphelin_dl_2026-05-23",
@@ -67076,8 +67642,8 @@
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Aucune vente",
-      "_taux_logement_src": "bdnb_orphelin_no_dvf",
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "bdnb_orphelin_pass",
       "_injection_bdnb_orphelin": "fix_bdnb_orphelin_dl_2026-05-23",
@@ -67111,8 +67677,8 @@
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Aucune vente",
-      "_taux_logement_src": "bdnb_orphelin_no_dvf",
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "bdnb_orphelin_pass",
       "_injection_bdnb_orphelin": "fix_bdnb_orphelin_dl_2026-05-23",
@@ -67151,8 +67717,8 @@
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Aucune vente",
-      "_taux_logement_src": "bdnb_orphelin_no_dvf",
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "bdnb_orphelin_pass",
       "_injection_bdnb_orphelin": "fix_bdnb_orphelin_dl_2026-05-23",
@@ -67186,8 +67752,8 @@
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Aucune vente",
-      "_taux_logement_src": "bdnb_orphelin_no_dvf",
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "bdnb_orphelin_pass",
       "_injection_bdnb_orphelin": "fix_bdnb_orphelin_dl_2026-05-23",
@@ -67221,8 +67787,8 @@
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Aucune vente",
-      "_taux_logement_src": "bdnb_orphelin_no_dvf",
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "bdnb_orphelin_pass",
       "_injection_bdnb_orphelin": "fix_bdnb_orphelin_dl_2026-05-23",
@@ -67256,8 +67822,8 @@
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Aucune vente",
-      "_taux_logement_src": "bdnb_orphelin_no_dvf",
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "bdnb_orphelin_pass",
       "_injection_bdnb_orphelin": "fix_bdnb_orphelin_dl_2026-05-23",
@@ -67291,8 +67857,8 @@
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Aucune vente",
-      "_taux_logement_src": "bdnb_orphelin_no_dvf",
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "bdnb_orphelin_pass",
       "_injection_bdnb_orphelin": "fix_bdnb_orphelin_dl_2026-05-23",
@@ -67326,8 +67892,8 @@
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Aucune vente",
-      "_taux_logement_src": "bdnb_orphelin_no_dvf",
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "bdnb_orphelin_pass",
       "_injection_bdnb_orphelin": "fix_bdnb_orphelin_dl_2026-05-23",
@@ -67361,8 +67927,8 @@
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Aucune vente",
-      "_taux_logement_src": "bdnb_orphelin_no_dvf",
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "bdnb_orphelin_pass",
       "_injection_bdnb_orphelin": "fix_bdnb_orphelin_dl_2026-05-23",
@@ -67396,8 +67962,8 @@
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Aucune vente",
-      "_taux_logement_src": "bdnb_orphelin_no_dvf",
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "bdnb_orphelin_pass",
       "_injection_bdnb_orphelin": "fix_bdnb_orphelin_dl_2026-05-23",
@@ -67431,8 +67997,8 @@
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Aucune vente",
-      "_taux_logement_src": "bdnb_orphelin_no_dvf",
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "bdnb_orphelin_pass",
       "_injection_bdnb_orphelin": "fix_bdnb_orphelin_dl_2026-05-23",
@@ -67466,8 +68032,8 @@
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Aucune vente",
-      "_taux_logement_src": "bdnb_orphelin_no_dvf",
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "bdnb_orphelin_pass",
       "_injection_bdnb_orphelin": "fix_bdnb_orphelin_dl_2026-05-23",
@@ -67498,9 +68064,9 @@
       "_bdnb_match": "correctif_6megas_lafayette_baraban_inject_label",
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
-      "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Fige",
-      "_taux_logement_src": "copie_inject",
+      "taux_rotation_logement": null,
+      "classement_rotation_logement": "",
+      "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_ilot": "8",
       "_fusion_auto": true,
@@ -67530,9 +68096,9 @@
       "_bdnb_match": "correctif_12megas_hermitage_inject_label",
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
-      "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Fige",
-      "_taux_logement_src": "copie_inject",
+      "taux_rotation_logement": null,
+      "classement_rotation_logement": "",
+      "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_ilot": "80",
       "_fusion_auto": true,
@@ -67562,9 +68128,9 @@
       "_bdnb_match": "correctif_12megas_carre_st_antoine_inject_label",
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
-      "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Fige",
-      "_taux_logement_src": "copie_inject",
+      "taux_rotation_logement": null,
+      "classement_rotation_logement": "",
+      "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_ilot": "4",
       "_fusion_auto": true,
@@ -67594,9 +68160,9 @@
       "_bdnb_match": "correctif_12megas_horizon_monplaisir_inject_label",
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
-      "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Fige",
-      "_taux_logement_src": "copie_inject",
+      "taux_rotation_logement": null,
+      "classement_rotation_logement": "",
+      "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_ilot": "75",
       "_fusion_auto": true,
@@ -67626,9 +68192,9 @@
       "_bdnb_match": "correctif_12megas_closerie_tilleuls_ii_inject_label",
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
-      "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Fige",
-      "_taux_logement_src": "copie_inject",
+      "taux_rotation_logement": null,
+      "classement_rotation_logement": "",
+      "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_ilot": "26",
       "_fusion_auto": true,
@@ -67658,9 +68224,9 @@
       "_bdnb_match": "correctif_12megas_closerie_tilleuls_ii_inject_label",
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
-      "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Fige",
-      "_taux_logement_src": "copie_inject",
+      "taux_rotation_logement": null,
+      "classement_rotation_logement": "",
+      "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_ilot": "26",
       "_fusion_auto": true,
@@ -67690,9 +68256,9 @@
       "_bdnb_match": "correctif_12megas_jardins_president_ext_inject_label",
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
-      "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Fige",
-      "_taux_logement_src": "copie_inject",
+      "taux_rotation_logement": null,
+      "classement_rotation_logement": "",
+      "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Tertiaire",
       "_ilot": "41",
       "_fusion_auto": true,
@@ -67723,8 +68289,8 @@
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Fige",
-      "_taux_logement_src": "copie_inject",
+      "classement_rotation_logement": "Figé",
+      "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_ilot": "80",
       "numero_immatriculation": "AA2505634",
@@ -67766,9 +68332,9 @@
       "_bdnb_match": "correctif_v3_jardin_clair_inject_label",
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
-      "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Fige",
-      "_taux_logement_src": "copie_inject",
+      "taux_rotation_logement": null,
+      "classement_rotation_logement": "",
+      "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_ilot": "60",
       "_fusion_auto": true,
@@ -67798,9 +68364,9 @@
       "_bdnb_match": "correctif_v3_saint_germain_inject_label",
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
-      "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Fige",
-      "_taux_logement_src": "copie_inject",
+      "taux_rotation_logement": null,
+      "classement_rotation_logement": "",
+      "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_ilot": "51",
       "_fusion_auto": true,
@@ -67830,9 +68396,9 @@
       "_bdnb_match": "correctif_v3_duo_ii_inject_label",
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
-      "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Fige",
-      "_taux_logement_src": "copie_inject",
+      "taux_rotation_logement": null,
+      "classement_rotation_logement": "",
+      "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_ilot": "40",
       "_fusion_auto": true,
@@ -67862,9 +68428,9 @@
       "_bdnb_match": "correctif_v3_sisley_inject_30b_label",
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
-      "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Fige",
-      "_taux_logement_src": "copie_inject",
+      "taux_rotation_logement": null,
+      "classement_rotation_logement": "",
+      "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_ilot": "67",
       "_fusion_auto": true,
@@ -67896,13 +68462,13 @@
       "batiment_groupe_id": "bdnb-bg-JB13-2VYZ-PKZ3",
       "_bdnb_match": "dvf_capture_orphan",
       "ventes_par_an_logement": {
-        "2021": 2,
-        "2022": 1
+        "2021": 4,
+        "2022": 2
       },
-      "nb_ventes_logement": 3,
-      "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Fige",
-      "_taux_logement_src": "dvf_capture",
+      "nb_ventes_logement": 6,
+      "taux_rotation_logement": null,
+      "classement_rotation_logement": "",
+      "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "clone_dvf_capture",
       "_fusion_auto": true,
@@ -67937,13 +68503,14 @@
       "batiment_groupe_id": "bdnb-bg-NNSJ-BQ2K-5R55",
       "_bdnb_match": "dvf_capture_orphan",
       "ventes_par_an_logement": {
-        "2021": 1,
-        "2022": 1
+        "2021": 3,
+        "2022": 3,
+        "2023": 1
       },
-      "nb_ventes_logement": 2,
-      "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Fige",
-      "_taux_logement_src": "dvf_capture",
+      "nb_ventes_logement": 7,
+      "taux_rotation_logement": null,
+      "classement_rotation_logement": "",
+      "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "clone_dvf_capture",
       "_fusion_auto": true,
@@ -67978,12 +68545,12 @@
       "_bdnb_match": "dvf_capture_orphan",
       "ventes_par_an_logement": {
         "2024": 2,
-        "2021": 1
+        "2021": 2
       },
-      "nb_ventes_logement": 3,
-      "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Fige",
-      "_taux_logement_src": "dvf_capture",
+      "nb_ventes_logement": 4,
+      "taux_rotation_logement": null,
+      "classement_rotation_logement": "",
+      "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "clone_dvf_capture",
       "_fusion_auto": true,
@@ -68016,12 +68583,12 @@
       "batiment_groupe_id": "bdnb-bg-7R6B-ZBKX-MFX5",
       "_bdnb_match": "dvf_capture_orphan",
       "ventes_par_an_logement": {
-        "2021": 2
+        "2021": 6
       },
-      "nb_ventes_logement": 2,
-      "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Fige",
-      "_taux_logement_src": "dvf_capture",
+      "nb_ventes_logement": 6,
+      "taux_rotation_logement": null,
+      "classement_rotation_logement": "",
+      "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "clone_dvf_capture",
       "_fusion_auto": true,
@@ -68055,13 +68622,13 @@
       "batiment_groupe_id": "bdnb-bg-1W6K-XSG2-ZEU3",
       "_bdnb_match": "dvf_capture_orphan",
       "ventes_par_an_logement": {
-        "2021": 1,
-        "2022": 2
+        "2021": 2,
+        "2022": 5
       },
-      "nb_ventes_logement": 3,
-      "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Fige",
-      "_taux_logement_src": "dvf_capture",
+      "nb_ventes_logement": 7,
+      "taux_rotation_logement": null,
+      "classement_rotation_logement": "",
+      "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "clone_dvf_capture",
       "_fusion_auto": true,
@@ -68094,12 +68661,12 @@
       "batiment_groupe_id": "bdnb-bg-1S26-6Z44-7FFM",
       "_bdnb_match": "dvf_capture_orphan",
       "ventes_par_an_logement": {
-        "2022": 1
+        "2022": 2
       },
-      "nb_ventes_logement": 1,
-      "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Fige",
-      "_taux_logement_src": "dvf_capture",
+      "nb_ventes_logement": 2,
+      "taux_rotation_logement": null,
+      "classement_rotation_logement": "",
+      "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Tertiaire",
       "_usage_bdnb_src": "clone_dvf_capture",
       "_fusion_auto": true,
@@ -68132,12 +68699,12 @@
       "batiment_groupe_id": "bdnb-bg-H6H4-644T-6NRG",
       "_bdnb_match": "dvf_capture_orphan",
       "ventes_par_an_logement": {
-        "2025": 1
+        "2025": 3
       },
-      "nb_ventes_logement": 1,
-      "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Fige",
-      "_taux_logement_src": "dvf_capture",
+      "nb_ventes_logement": 3,
+      "taux_rotation_logement": null,
+      "classement_rotation_logement": "",
+      "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "clone_dvf_capture",
       "_fusion_auto": true,
@@ -68171,12 +68738,12 @@
       "_bdnb_match": "cherrypick_elixir_vefa",
       "_injection_indice": "elixir_50_lacassagne_vefa",
       "ventes_par_an_logement": {
-        "2021": 5
+        "2021": 18
       },
-      "nb_ventes_logement": 5,
-      "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Fige",
-      "_taux_logement_src": "cherrypick_vefa_neutralise",
+      "nb_ventes_logement": 18,
+      "taux_rotation_logement": 24.0,
+      "classement_rotation_logement": "Très actif",
+      "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Residentiel collectif",
       "_usage_bdnb_src": "cherrypick",
       "numero_immatriculation": null,
@@ -68214,12 +68781,12 @@
       "_bdnb_match": "cherrypick_mono_maison_isolee",
       "_injection_indice": "mono_dvf_orphan_voisin",
       "ventes_par_an_logement": {
-        "2021": 1
+        "2021": 2
       },
-      "nb_ventes_logement": 1,
-      "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Fige",
-      "_taux_logement_src": "cherrypick_mono",
+      "nb_ventes_logement": 2,
+      "taux_rotation_logement": 40.0,
+      "classement_rotation_logement": "Très actif",
+      "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Residentiel individuel",
       "_usage_bdnb_src": "cherrypick",
       "numero_immatriculation": null,
@@ -68257,12 +68824,12 @@
       "_bdnb_match": "cherrypick_mono_maison_isolee",
       "_injection_indice": "mono_dvf_orphan_voisin",
       "ventes_par_an_logement": {
-        "2021": 1
+        "2021": 2
       },
-      "nb_ventes_logement": 1,
-      "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Fige",
-      "_taux_logement_src": "cherrypick_mono",
+      "nb_ventes_logement": 2,
+      "taux_rotation_logement": 40.0,
+      "classement_rotation_logement": "Très actif",
+      "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Residentiel individuel",
       "_usage_bdnb_src": "cherrypick",
       "numero_immatriculation": null,
@@ -68303,9 +68870,9 @@
         "2021": 1
       },
       "nb_ventes_logement": 1,
-      "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Fige",
-      "_taux_logement_src": "cherrypick_mono",
+      "taux_rotation_logement": 20.0,
+      "classement_rotation_logement": "Très actif",
+      "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Residentiel individuel",
       "_usage_bdnb_src": "cherrypick",
       "numero_immatriculation": null,
@@ -68343,12 +68910,12 @@
       "_bdnb_match": "cherrypick_mono_maison_isolee",
       "_injection_indice": "mono_dvf_orphan_voisin",
       "ventes_par_an_logement": {
-        "2021": 1
+        "2021": 2
       },
-      "nb_ventes_logement": 1,
-      "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Fige",
-      "_taux_logement_src": "cherrypick_mono",
+      "nb_ventes_logement": 2,
+      "taux_rotation_logement": 40.0,
+      "classement_rotation_logement": "Très actif",
+      "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Residentiel individuel",
       "_usage_bdnb_src": "cherrypick",
       "numero_immatriculation": null,
@@ -68386,12 +68953,12 @@
       "_bdnb_match": "cherrypick_mono_maison_isolee",
       "_injection_indice": "mono_dvf_orphan_voisin",
       "ventes_par_an_logement": {
-        "2021": 1
+        "2021": 3
       },
-      "nb_ventes_logement": 1,
-      "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Fige",
-      "_taux_logement_src": "cherrypick_mono",
+      "nb_ventes_logement": 3,
+      "taux_rotation_logement": 60.0,
+      "classement_rotation_logement": "Très actif",
+      "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Residentiel individuel",
       "_usage_bdnb_src": "cherrypick",
       "numero_immatriculation": null,
@@ -68432,9 +68999,9 @@
         "2022": 1
       },
       "nb_ventes_logement": 1,
-      "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Fige",
-      "_taux_logement_src": "cherrypick_mono",
+      "taux_rotation_logement": 20.0,
+      "classement_rotation_logement": "Très actif",
+      "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Residentiel individuel",
       "_usage_bdnb_src": "cherrypick",
       "numero_immatriculation": null,
@@ -68472,12 +69039,12 @@
       "_bdnb_match": "cherrypick_bdnb_parcelle_query",
       "_injection_indice": "manquante_indexation_bdnb_live",
       "ventes_par_an_logement": {
-        "2023": 2
+        "2023": 3
       },
-      "nb_ventes_logement": 2,
-      "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Fige",
-      "_taux_logement_src": "cherrypick_copronni",
+      "nb_ventes_logement": 3,
+      "taux_rotation_logement": 60.0,
+      "classement_rotation_logement": "Très actif",
+      "_taux_logement_src": "copie_jointure_incertaine",
       "usage_principal_bdnb": "Residentiel individuel",
       "_usage_bdnb_src": "bdnb_api_live",
       "numero_immatriculation": null,
@@ -68515,12 +69082,12 @@
       "_bdnb_match": "cherrypick_bdnb_parcelle_query",
       "_injection_indice": "manquante_indexation_bdnb_live",
       "ventes_par_an_logement": {
-        "2022": 1
+        "2022": 2
       },
-      "nb_ventes_logement": 1,
-      "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Fige",
-      "_taux_logement_src": "cherrypick_copronni",
+      "nb_ventes_logement": 2,
+      "taux_rotation_logement": 20.0,
+      "classement_rotation_logement": "Très actif",
+      "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Residentiel collectif",
       "_usage_bdnb_src": "bdnb_api_live",
       "numero_immatriculation": null,
@@ -68563,9 +69130,9 @@
         "2022": 1
       },
       "nb_ventes_logement": 2,
-      "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Fige",
-      "_taux_logement_src": "dvf_capture",
+      "taux_rotation_logement": null,
+      "classement_rotation_logement": "",
+      "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "clone_ancre",
       "numero_immatriculation": null,
@@ -68607,9 +69174,9 @@
         "2021": 1
       },
       "nb_ventes_logement": 1,
-      "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Fige",
-      "_taux_logement_src": "cherrypick_copronni",
+      "taux_rotation_logement": 6.7,
+      "classement_rotation_logement": "Très actif",
+      "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Residentiel collectif",
       "_usage_bdnb_src": "cherrypick_user_override",
       "numero_immatriculation": null,
