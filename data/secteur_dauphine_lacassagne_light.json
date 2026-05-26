@@ -33265,7 +33265,7 @@
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "_fusion_auto": true,
-      "_fusion_cible": "4/6 RUE TERNOIS / 93 RUE BELLECOMBE / 18 RUE ST ANTOINE",
+      "_fusion_cible": "4|RUE|TERNOIS",
       "_ilot": "10"
     },
     {
