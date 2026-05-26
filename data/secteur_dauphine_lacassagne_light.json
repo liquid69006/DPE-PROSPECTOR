@@ -16945,7 +16945,8 @@
       "_bdnb_match": "immat",
       "_fusion_auto_label": "185/187 AVENUE FELIX FAURE",
       "_fusion_auto_sources": [
-        "187|AVENUE|FELIX FAURE"
+        "187|AVENUE|FELIX FAURE",
+        "185B|AVENUE|FELIX FAURE"
       ],
       "ventes_par_an_logement": {
         "2021": 4,
@@ -20371,7 +20372,10 @@
       "nb_lots_habitation": 13,
       "taux_rotation": 29.2,
       "classement_rotation": "Très actif",
-      "_ilot": "60"
+      "_ilot": "60",
+      "_fusion_auto_sources": [
+        "19|RUE|DAVID"
+      ]
     },
     {
       "cle": "8|RUE|DOCTEUR REBATEL",
@@ -29173,7 +29177,8 @@
       "_ilot": "13",
       "_fusion_auto_label": "8 RUE ETIENNE RICHERAND (LE RICHERAND) / 31 RUE ST ANTOINE",
       "_fusion_auto_sources": [
-        "31|RUE|ST ANTOINE"
+        "31|RUE|ST ANTOINE",
+        "8B|RUE|ETIENNE RICHERAND"
       ]
     },
     {
@@ -29603,7 +29608,8 @@
       "_fusion_auto_label": "16/20 RUE ST VICTORIEN",
       "_fusion_auto_sources": [
         "17|RUE|ST VICTORIEN",
-        "20|RUE|ST VICTORIEN"
+        "20|RUE|ST VICTORIEN",
+        "20|RUE|SAINT VICTORIEN"
       ],
       "ventes_par_an_logement": {
         "2021": 1,
@@ -44998,7 +45004,10 @@
       "nb_lots_habitation": 20,
       "taux_rotation": 2.0,
       "classement_rotation": "Actif",
-      "_ilot": "70"
+      "_ilot": "70",
+      "_fusion_auto_sources": [
+        "18|RUE|TUILIERS"
+      ]
     },
     {
       "cle": "20|RUE|DAUPHINE",
@@ -60367,7 +60376,10 @@
       "nb_lots_habitation": 22,
       "taux_rotation": 0.0,
       "classement_rotation": "Figé",
-      "_ilot": "61"
+      "_ilot": "61",
+      "_fusion_auto_sources": [
+        "97T|RUE|DAUPHINE"
+      ]
     },
     {
       "cle": "80|RUE|DAUPHINE",
@@ -60769,7 +60781,10 @@
       "nb_lots_habitation": 4,
       "taux_rotation": 0.0,
       "classement_rotation": "Figé",
-      "_ilot": "53"
+      "_ilot": "53",
+      "_fusion_auto_sources": [
+        "332|RUE|PAUL BERT"
+      ]
     },
     {
       "cle": "83|RUE|DAUPHINE",
@@ -66953,6 +66968,325 @@
       "_ilot": "67",
       "_fusion_auto": true,
       "_fusion_cible": "30|RUE|PROFESSEUR PAUL SISLEY"
+    },
+    {
+      "cle": "185B|AVENUE|FELIX FAURE",
+      "adresse": "185B AVENUE FELIX FAURE",
+      "longitude": 4.869639,
+      "latitude": 45.755,
+      "code_iris": "693830502",
+      "_coord_source": "clone_dvf_capture",
+      "dans_majic": false,
+      "sci_proprietaire": "non",
+      "sci_nom": "",
+      "sci_siren": "",
+      "syndic": "",
+      "_syndic_src": "",
+      "ventes_par_an": {
+        "2021": 4,
+        "2022": 2
+      },
+      "nb_ventes_total": 6,
+      "nb_log_bdnb": 0,
+      "annee_construction": null,
+      "classe_dpe": null,
+      "type_batiment": "appartement",
+      "type_chauffage": null,
+      "batiment_groupe_id": "bdnb-bg-JB13-2VYZ-PKZ3",
+      "_bdnb_match": "dvf_capture_orphan",
+      "ventes_par_an_logement": {
+        "2021": 2,
+        "2022": 1
+      },
+      "nb_ventes_logement": 3,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Fige",
+      "_taux_logement_src": "dvf_capture",
+      "usage_principal_bdnb": "Résidentiel collectif",
+      "_usage_bdnb_src": "clone_dvf_capture",
+      "_fusion_auto": true,
+      "_fusion_cible": "185|AVENUE|FELIX FAURE",
+      "_dvf_capture": true,
+      "_ilot": "51"
+    },
+    {
+      "cle": "97T|RUE|DAUPHINE",
+      "adresse": "97T RUE DAUPHINE",
+      "longitude": 4.872491,
+      "latitude": 45.754028,
+      "code_iris": "693830601",
+      "_coord_source": "clone_dvf_capture",
+      "dans_majic": false,
+      "sci_proprietaire": "non",
+      "sci_nom": "",
+      "sci_siren": "",
+      "syndic": "",
+      "_syndic_src": "",
+      "ventes_par_an": {
+        "2021": 3,
+        "2022": 3,
+        "2023": 1
+      },
+      "nb_ventes_total": 7,
+      "nb_log_bdnb": 0,
+      "annee_construction": null,
+      "classe_dpe": null,
+      "type_batiment": "appartement",
+      "type_chauffage": null,
+      "batiment_groupe_id": "bdnb-bg-NNSJ-BQ2K-5R55",
+      "_bdnb_match": "dvf_capture_orphan",
+      "ventes_par_an_logement": {
+        "2021": 1,
+        "2022": 1
+      },
+      "nb_ventes_logement": 2,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Fige",
+      "_taux_logement_src": "dvf_capture",
+      "usage_principal_bdnb": "Résidentiel collectif",
+      "_usage_bdnb_src": "clone_dvf_capture",
+      "_fusion_auto": true,
+      "_fusion_cible": "97B|RUE|DAUPHINE",
+      "_dvf_capture": true,
+      "_ilot": "61"
+    },
+    {
+      "cle": "8B|RUE|ETIENNE RICHERAND",
+      "adresse": "8B RUE ETIENNE RICHERAND",
+      "longitude": 4.866876,
+      "latitude": 45.76318,
+      "code_iris": "693830401",
+      "_coord_source": "clone_dvf_capture",
+      "dans_majic": false,
+      "sci_proprietaire": "non",
+      "sci_nom": "",
+      "sci_siren": "",
+      "syndic": "",
+      "_syndic_src": "",
+      "ventes_par_an": {
+        "2024": 2,
+        "2021": 2
+      },
+      "nb_ventes_total": 4,
+      "nb_log_bdnb": 0,
+      "annee_construction": null,
+      "classe_dpe": null,
+      "type_batiment": "appartement",
+      "type_chauffage": null,
+      "batiment_groupe_id": "bdnb-bg-4QVP-WA8R-HHUX",
+      "_bdnb_match": "dvf_capture_orphan",
+      "ventes_par_an_logement": {
+        "2024": 2,
+        "2021": 1
+      },
+      "nb_ventes_logement": 3,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Fige",
+      "_taux_logement_src": "dvf_capture",
+      "usage_principal_bdnb": "Résidentiel collectif",
+      "_usage_bdnb_src": "clone_dvf_capture",
+      "_fusion_auto": true,
+      "_fusion_cible": "8|RUE|ETIENNE RICHERAND",
+      "_dvf_capture": true,
+      "_ilot": "13"
+    },
+    {
+      "cle": "18|RUE|TUILIERS",
+      "adresse": "18 RUE TUILIERS",
+      "longitude": 4.865561,
+      "latitude": 45.748625,
+      "code_iris": "693830602",
+      "_coord_source": "clone_dvf_capture",
+      "dans_majic": false,
+      "sci_proprietaire": "non",
+      "sci_nom": "",
+      "sci_siren": "",
+      "syndic": "",
+      "_syndic_src": "",
+      "ventes_par_an": {
+        "2021": 6
+      },
+      "nb_ventes_total": 6,
+      "nb_log_bdnb": 0,
+      "annee_construction": null,
+      "classe_dpe": null,
+      "type_batiment": "appartement",
+      "type_chauffage": null,
+      "batiment_groupe_id": "bdnb-bg-7R6B-ZBKX-MFX5",
+      "_bdnb_match": "dvf_capture_orphan",
+      "ventes_par_an_logement": {
+        "2021": 2
+      },
+      "nb_ventes_logement": 2,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Fige",
+      "_taux_logement_src": "dvf_capture",
+      "usage_principal_bdnb": "Résidentiel collectif",
+      "_usage_bdnb_src": "clone_dvf_capture",
+      "_fusion_auto": true,
+      "_fusion_cible": "20|RUE|TUILIERS",
+      "_dvf_capture": true,
+      "_ilot": "70"
+    },
+    {
+      "cle": "332|RUE|PAUL BERT",
+      "adresse": "332 RUE PAUL BERT",
+      "longitude": 4.875377,
+      "latitude": 45.755656,
+      "code_iris": "693830502",
+      "_coord_source": "clone_dvf_capture",
+      "dans_majic": false,
+      "sci_proprietaire": "non",
+      "sci_nom": "",
+      "sci_siren": "",
+      "syndic": "",
+      "_syndic_src": "",
+      "ventes_par_an": {
+        "2021": 2,
+        "2022": 5
+      },
+      "nb_ventes_total": 7,
+      "nb_log_bdnb": 0,
+      "annee_construction": null,
+      "classe_dpe": null,
+      "type_batiment": "appartement",
+      "type_chauffage": null,
+      "batiment_groupe_id": "bdnb-bg-1W6K-XSG2-ZEU3",
+      "_bdnb_match": "dvf_capture_orphan",
+      "ventes_par_an_logement": {
+        "2021": 1,
+        "2022": 2
+      },
+      "nb_ventes_logement": 3,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Fige",
+      "_taux_logement_src": "dvf_capture",
+      "usage_principal_bdnb": "Résidentiel collectif",
+      "_usage_bdnb_src": "clone_dvf_capture",
+      "_fusion_auto": true,
+      "_fusion_cible": "233|AVENUE|FELIX FAURE",
+      "_dvf_capture": true,
+      "_ilot": "53"
+    },
+    {
+      "cle": "19|RUE|DAVID",
+      "adresse": "19 RUE DAVID",
+      "longitude": 4.870598,
+      "latitude": 45.75326,
+      "code_iris": "693830601",
+      "_coord_source": "clone_dvf_capture",
+      "dans_majic": false,
+      "sci_proprietaire": "non",
+      "sci_nom": "",
+      "sci_siren": "",
+      "syndic": "",
+      "_syndic_src": "",
+      "ventes_par_an": {
+        "2022": 3
+      },
+      "nb_ventes_total": 3,
+      "nb_log_bdnb": 0,
+      "annee_construction": null,
+      "classe_dpe": null,
+      "type_batiment": "maison",
+      "type_chauffage": null,
+      "batiment_groupe_id": "bdnb-bg-1S26-6Z44-7FFM",
+      "_bdnb_match": "dvf_capture_orphan",
+      "ventes_par_an_logement": {
+        "2022": 1
+      },
+      "nb_ventes_logement": 1,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Fige",
+      "_taux_logement_src": "dvf_capture",
+      "usage_principal_bdnb": "Tertiaire",
+      "_usage_bdnb_src": "clone_dvf_capture",
+      "_fusion_auto": true,
+      "_fusion_cible": "79|RUE|DAUPHINE",
+      "_dvf_capture": true,
+      "_ilot": "60"
+    },
+    {
+      "cle": "20|RUE|SAINT VICTORIEN",
+      "adresse": "20 RUE SAINT VICTORIEN",
+      "longitude": 4.870223,
+      "latitude": 45.761457,
+      "code_iris": "693830404",
+      "_coord_source": "clone_dvf_capture",
+      "dans_majic": false,
+      "sci_proprietaire": "non",
+      "sci_nom": "",
+      "sci_siren": "",
+      "syndic": "",
+      "_syndic_src": "",
+      "ventes_par_an": {
+        "2025": 3
+      },
+      "nb_ventes_total": 3,
+      "nb_log_bdnb": 0,
+      "annee_construction": null,
+      "classe_dpe": null,
+      "type_batiment": "immeuble",
+      "type_chauffage": null,
+      "batiment_groupe_id": "bdnb-bg-H6H4-644T-6NRG",
+      "_bdnb_match": "dvf_capture_orphan",
+      "ventes_par_an_logement": {
+        "2025": 1
+      },
+      "nb_ventes_logement": 1,
+      "taux_rotation_logement": 0.0,
+      "classement_rotation_logement": "Fige",
+      "_taux_logement_src": "dvf_capture",
+      "usage_principal_bdnb": "Résidentiel collectif",
+      "_usage_bdnb_src": "clone_dvf_capture",
+      "_fusion_auto": true,
+      "_fusion_cible": "16|RUE|ST VICTORIEN",
+      "_dvf_capture": true,
+      "_ilot": "23"
+    }
+  ],
+  "dvf_orphans_excluded": [
+    {
+      "cle": "2B|RUE|DAHLIAS",
+      "raison": "erreur_saisie_dvf",
+      "n_dvf_logement": 3,
+      "n_dvf_total": 9
+    },
+    {
+      "cle": "64|RUE|STE ANNE DE BARABAN",
+      "raison": "acces_parking_non_residentiel",
+      "n_dvf_logement": 1,
+      "n_dvf_total": 2
+    },
+    {
+      "cle": "50|AVENUE|LACASSAGNE",
+      "raison": "vefa_programme_neuf_elixir",
+      "n_dvf_logement": 5,
+      "n_dvf_total": 18
+    },
+    {
+      "cle": "28|RUE|DAUPHINE",
+      "raison": "maison_individuelle",
+      "n_dvf_logement": 1,
+      "n_dvf_total": 3
+    },
+    {
+      "cle": "75|RUE|BARABAN",
+      "raison": "a_verifier_impasse_meunier",
+      "n_dvf_logement": 1,
+      "n_dvf_total": 1
+    },
+    {
+      "cle": "71|RUE|PAUL BERT",
+      "raison": "hors_secteur_agence",
+      "n_dvf_logement": 4,
+      "n_dvf_total": 4
+    },
+    {
+      "cle": "59|RUE|PAUL BERT",
+      "raison": "hors_secteur_agence",
+      "n_dvf_logement": 1,
+      "n_dvf_total": 1
     }
   ]
 }
