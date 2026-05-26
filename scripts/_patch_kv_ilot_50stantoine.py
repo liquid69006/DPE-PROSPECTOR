@@ -18,10 +18,9 @@ KV    = os.path.join(ROOT, '_kv_assign_dl.json')
 
 API   = 'https://dpe-prospector-api.yann-bufferne.workers.dev'
 AGENCE = 'dauphine-lacassagne'
-JWT = ('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2VuY2UiOiJkYXVwaGluZS1sYWNh'
-       'c3NhZ25lIiwiYWdlbmNlcyI6WyJkYXVwaGluZS1sYWNhc3NhZ25lIl0sInJvbGUiOiJw'
-       'YXRyb24iLCJleHAiOjE3Nzk3NDUxMzE5MTF9.fbgCNCX-mr3iktSfTUnfUZoGl6ZpYKkYK'
-       'xSpVim4Ay8')
+JWT = os.environ.get("DPE_JWT") or ""
+if not JWT:
+    sys.exit("  [abort] env var DPE_JWT absente. Set DPE_JWT avant le run.")
 
 TARGET_CLE   = '50|RUE|ST ANTOINE'
 TARGET_ILOT  = 7

@@ -61,9 +61,9 @@ KV_LOCAL = ROOT / "data" / "_kv_assign_dl.json"
 
 API = "https://dpe-prospector-api.yann-bufferne.workers.dev"
 AGENCE = "dauphine-lacassagne"
-JWT = ("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9."
-       "eyJhZ2VuY2UiOiJkYXVwaGluZS1sYWNhc3NhZ25lIiwiYWdlbmNlcyI6WyJkYXVwaGluZS1sYWNhc3NhZ25lIl0sInJvbGUiOiJwYXRyb24iLCJleHAiOjE3Nzk4MzExOTM0NDV9."
-       "VwaMO5jqFtDtZ4L_5SACyom2ehgmSJ-kauLhFwA55pE")
+JWT = os.environ.get("DPE_JWT") or ""
+if not JWT:
+    sys.exit("  [abort] env var DPE_JWT absente. Set DPE_JWT avant le run.")
 UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
       "(KHTML, like Gecko) Chrome/131.0.0.0 Safari/531.36")
 

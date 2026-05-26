@@ -49,9 +49,7 @@ LIGHT = ROOT / "data" / "secteur_dauphine_lacassagne_light.json"
 DVF = Path(r"C:\Users\Station 5\dvf_dauphine_lacassagne.json")
 
 API = "https://dpe-prospector-api.yann-bufferne.workers.dev"
-TOKEN = ("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9."
-         "eyJhZ2VuY2UiOiJkYXVwaGluZS1sYWNhc3NhZ25lIiwiYWdlbmNlcyI6WyJkYXVwaGluZS1sYWNhc3NhZ25lIl0sInJvbGUiOiJwYXRyb24iLCJleHAiOjE3Nzk4MzExOTM0NDV9."
-         "VwaMO5jqFtDtZ4L_5SACyom2ehgmSJ-kauLhFwA55pE")
+TOKEN = os.environ.get("DPE_JWT") or ""
 UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
       "(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36")
 ANS = ("2021", "2022", "2023", "2024", "2025")
