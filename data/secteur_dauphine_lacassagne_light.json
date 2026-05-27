@@ -1979,6 +1979,35 @@
       "new_bgid": "bdnb-bg-LE6X-UMGS-VDM1",
       "parcelle": "69383000DS0046",
       "note": "ancre isolee, pas de fusion vers 253 PAUL BERT (autre BAN officielle du bati selon BDNB l_libelle_adr) sur consigne user"
+    },
+    "_correctif_orphan_recovery_dl": {
+      "date": "2026-05-26T21:46:56Z",
+      "pattern": "Rattachement additif DVF orphelines (suffix B/T/Q ou ortho), VEFA exclues et mises en pending",
+      "cles_patches": [
+        "42|RUE|ST MAXIMIN",
+        "10|PASSAGE|MEYNIS",
+        "20T|RUE|GUILLOUD",
+        "97B|RUE|DAUPHINE",
+        "5B|RUE|MEYNIS"
+      ],
+      "cles_exclues": [
+        {
+          "cle": "7B|RUE|PROFESSEUR PAUL SISLEY",
+          "raison": "0 true orphans (toutes doublons ou free)"
+        },
+        {
+          "cle": "21A|RUE|STE ANNE DE BARABAN",
+          "raison": "0 true orphans (toutes doublons ou free)"
+        },
+        {
+          "cle": "252B|RUE|PAUL BERT",
+          "raison": "0 true orphans (toutes doublons ou free)"
+        }
+      ],
+      "mutations_ajoutees_total": 15,
+      "vefa_pending": 3,
+      "vefa_pending_file": "data\\_vefa_pending_dl.json",
+      "verification": "anti-doublon official_id == orphan_id, exclu si official_id matche autre cle light ; VEFA (mut multi-lots) exclues, traitement cherrypick_vefa_* ulterieur"
     }
   },
   "iris": [
@@ -60316,11 +60345,16 @@
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-WDLN-W7EH-5BGA",
       "_bdnb_match": "immat_fix",
-      "ventes_par_an_logement": {},
-      "nb_ventes_logement": 0,
-      "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Figé",
-      "_taux_logement_src": "copie_jointure_incertaine",
+      "ventes_par_an_logement": {
+        "2021": 2,
+        "2022": 2,
+        "2023": 1,
+        "2024": 2
+      },
+      "nb_ventes_logement": 7,
+      "taux_rotation_logement": 5.2,
+      "classement_rotation_logement": "Très actif",
+      "_taux_logement_src": "orphan_suffix_btq_recovery",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "_fusion_auto_sources": [
@@ -61221,11 +61255,13 @@
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-NNSJ-BQ2K-5R55",
       "_bdnb_match": "immat_fix",
-      "ventes_par_an_logement": {},
-      "nb_ventes_logement": 0,
-      "taux_rotation_logement": 0.0,
+      "ventes_par_an_logement": {
+        "2023": 1
+      },
+      "nb_ventes_logement": 1,
+      "taux_rotation_logement": 0.9,
       "classement_rotation_logement": "Figé",
-      "_taux_logement_src": "copie_jointure_incertaine",
+      "_taux_logement_src": "orphan_suffix_btq_recovery",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "numero_immatriculation": "AD5115928",
@@ -62233,11 +62269,13 @@
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-212B-J3A4-DL3G",
       "_bdnb_match": "immat_horsrnc_fix",
-      "ventes_par_an_logement": {},
-      "nb_ventes_logement": 0,
-      "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Figé",
-      "_taux_logement_src": "copie_jointure_incertaine",
+      "ventes_par_an_logement": {
+        "2021": 3
+      },
+      "nb_ventes_logement": 3,
+      "taux_rotation_logement": 1.9,
+      "classement_rotation_logement": "Modéré",
+      "_taux_logement_src": "orphan_suffix_btq_recovery",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "_fusion_auto_sources": [
@@ -62487,11 +62525,14 @@
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-BRNB-KK97-9XY7",
       "_bdnb_match": "immat_horsrnc_fix",
-      "ventes_par_an_logement": {},
-      "nb_ventes_logement": 0,
-      "taux_rotation_logement": 0.0,
-      "classement_rotation_logement": "Figé",
-      "_taux_logement_src": "copie_jointure_incertaine",
+      "ventes_par_an_logement": {
+        "2022": 1,
+        "2024": 1
+      },
+      "nb_ventes_logement": 2,
+      "taux_rotation_logement": 4.4,
+      "classement_rotation_logement": "Actif",
+      "_taux_logement_src": "orphan_suffix_btq_recovery",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
       "_fusion_auto_sources": [
@@ -68403,11 +68444,13 @@
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-MYUH-YTYU-45YJ",
       "_bdnb_match": "correctif_12megas_saint_marc_i_inject_ancre",
-      "ventes_par_an_logement": {},
-      "nb_ventes_logement": 0,
-      "taux_rotation_logement": 0.0,
+      "ventes_par_an_logement": {
+        "2021": 2
+      },
+      "nb_ventes_logement": 2,
+      "taux_rotation_logement": 0.6,
       "classement_rotation_logement": "Figé",
-      "_taux_logement_src": "copie_jointure_incertaine",
+      "_taux_logement_src": "orphan_suffix_btq_recovery",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_ilot": "80",
       "numero_immatriculation": "AA2505634",

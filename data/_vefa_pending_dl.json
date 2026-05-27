@@ -1,0 +1,52 @@
+{
+  "_meta": {
+    "generated_at": "2026-05-26T21:46:56Z",
+    "secteur": "dauphine-lacassagne",
+    "source": "fix_orphan_recovery_dl.py apply",
+    "purpose": "VEFA candidates EXCLUES du nb_ventes_logement du batch orphan_suffix_btq_recovery. A traiter ulterieurement par cherrypick_vefa_* (verifier valeur fonciere / surface Carrez, decision 5lots / neutralise / vraie multi-vente)."
+  },
+  "candidates": [
+    {
+      "cle_light": "20T|RUE|GUILLOUD",
+      "date_mutation": "10/06/2022",
+      "no_disposition": "000001",
+      "valeur_fonciere": "871700,00",
+      "nb_lots_dvf": 2,
+      "annee": "2022",
+      "type_local_rep": "Appartement",
+      "lots_dvf": [
+        "Appartement",
+        "Appartement"
+      ],
+      "raison": "VEFA candidate (multi-lots same mutation) - traitement cherrypick_vefa_* ulterieur"
+    },
+    {
+      "cle_light": "20T|RUE|GUILLOUD",
+      "date_mutation": "23/10/2023",
+      "no_disposition": "000001",
+      "valeur_fonciere": "579750,00",
+      "nb_lots_dvf": 2,
+      "annee": "2023",
+      "type_local_rep": "Appartement",
+      "lots_dvf": [
+        "Appartement",
+        "Appartement"
+      ],
+      "raison": "VEFA candidate (multi-lots same mutation) - traitement cherrypick_vefa_* ulterieur"
+    },
+    {
+      "cle_light": "5B|RUE|MEYNIS",
+      "date_mutation": "21/06/2021",
+      "no_disposition": "000001",
+      "valeur_fonciere": "196000,00",
+      "nb_lots_dvf": 2,
+      "annee": "2021",
+      "type_local_rep": "Appartement",
+      "lots_dvf": [
+        "Appartement",
+        "Appartement"
+      ],
+      "raison": "VEFA candidate (multi-lots same mutation) - traitement cherrypick_vefa_* ulterieur"
+    }
+  ]
+}

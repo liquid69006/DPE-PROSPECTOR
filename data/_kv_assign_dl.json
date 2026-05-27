@@ -770,7 +770,7 @@
       "type": "copro_non_immat"
     },
     "25|RUE|ETIENNE RICHERAND": {
-      "type": "copro_non_immat"
+      "type": "cible_0vente_active"
     },
     "27|RUE|AUBIGNY": {
       "type": "mono"
@@ -809,7 +809,7 @@
       "type": "social"
     },
     "71|RUE|BARABAN": {
-      "type": "copro_non_immat"
+      "type": "cible_0vente_active"
     },
     "7|PLACE|FERRANDIERE": {
       "type": "copro_non_immat"
@@ -818,7 +818,7 @@
       "type": "mono"
     },
     "17|RUE|ST EUSEBE": {
-      "type": "copro_non_immat"
+      "type": "cible_0vente_active"
     },
     "21|RUE|ST EUSEBE": {
       "type": "social"
@@ -827,7 +827,7 @@
       "type": "social"
     },
     "22|RUE|STE ANNE DE BARABAN": {
-      "type": "copro_non_immat"
+      "type": "cible_0vente_active"
     },
     "23|RUE|ST EUSEBE": {
       "type": "social"
@@ -845,16 +845,16 @@
       "type": "mono"
     },
     "4|RUE|ESPERANCE": {
-      "type": "copro_non_immat"
+      "type": "cible_0vente_isolee"
     },
     "51|RUE|STE ANNE DE BARABAN": {
-      "type": "copro_non_immat"
+      "type": "cible_0vente_active"
     },
     "65|RUE|STE ANNE DE BARABAN": {
-      "type": "copro_non_immat"
+      "type": "cible_0vente_active"
     },
     "76|RUE|BARABAN": {
-      "type": "copro_non_immat"
+      "type": "cible_0vente_active"
     },
     "132|RUE|BARABAN": {
       "type": "social"
@@ -875,13 +875,13 @@
       "type": "mono"
     },
     "75|RUE|MAURICE FLANDIN": {
-      "type": "copro_non_immat"
+      "type": "cible_0vente_active"
     },
     "81|RUE|ETIENNE RICHERAND": {
-      "type": "copro_non_immat"
+      "type": "cible_0vente_active"
     },
     "135|RUE|BARABAN": {
-      "type": "copro_non_immat"
+      "type": "cible_0vente_active"
     },
     "225|AVENUE|FELIX FAURE": {
       "type": "mono"
@@ -902,7 +902,7 @@
       "type": "social"
     },
     "9|RUE|TURBIL": {
-      "type": "copro_non_immat"
+      "type": "cible_0vente_active"
     },
     "129|AVENUE|FELIX FAURE": {
       "type": "copro_non_immat"
@@ -917,13 +917,13 @@
       "type": "copro_non_immat"
     },
     "222|AVENUE|FELIX FAURE": {
-      "type": "copro_non_immat"
+      "type": "cible_0vente_active"
     },
     "47|AVENUE|LACASSAGNE": {
       "type": "mono"
     },
     "51|AVENUE|LACASSAGNE": {
-      "type": "copro_non_immat"
+      "type": "cible_0vente_active"
     },
     "7|RUE|CARRY": {
       "type": "copro_non_immat"
@@ -977,7 +977,7 @@
       "type": "mono"
     },
     "11|RUE|BARA": {
-      "type": "copro_non_immat"
+      "type": "cible_0vente_active"
     },
     "14|RUE|PREVOYANTS DE L AVENIR": {
       "type": "mono"
@@ -1100,7 +1100,7 @@
       "type": "copro_non_immat"
     },
     "37B|RUE|DAUPHINE": {
-      "type": "copro_non_immat"
+      "type": "cible_0vente_active"
     },
     "74B|RUE|MAURICE FLANDIN": {
       "type": "copro_non_immat"
@@ -1133,113 +1133,112 @@
       "type": "copro_non_immat"
     },
     "11|RUE|MOISSONNIER": {
-      "type": "copro_non_immat",
-      "ilot": 49
+      "type": "cible_0vente_active"
     },
     "147|AVENUE|FELIX FAURE": {
-      "type": "copro_non_immat"
+      "type": "cible_0vente_active"
     },
     "161|AVENUE|FELIX FAURE": {
-      "type": "copro_non_immat"
+      "type": "cible_0vente_isolee"
     },
     "16|RUE|NAZARETH": {
-      "type": "copro_non_immat"
+      "type": "cible_0vente_active"
     },
     "174|AVENUE|FELIX FAURE": {
-      "type": "copro_non_immat"
+      "type": "cible_0vente_active"
     },
     "18|RUE|DAVID": {
-      "type": "copro_non_immat"
+      "type": "cible_0vente_active"
     },
     "1|RUE|CONVENTION": {
-      "type": "copro_non_immat"
+      "type": "cible_0vente_isolee"
     },
     "214B|RUE|PAUL BERT": {
-      "type": "copro_non_immat"
+      "type": "cible_0vente_active"
     },
     "214|RUE|PAUL BERT": {
-      "type": "copro_non_immat"
+      "type": "cible_0vente_active"
     },
     "22|RUE|CLAUDIUS PIONCHON": {
-      "type": "copro_non_immat"
+      "type": "cible_0vente_active"
     },
     "22|RUE|FREDERIC MISTRAL": {
-      "type": "copro_non_immat"
+      "type": "cible_0vente_active"
     },
     "237|RUE|PAUL BERT": {
-      "type": "copro_non_immat"
+      "type": "cible_0vente_isolee"
     },
     "238|RUE|PAUL BERT": {
-      "type": "copro_non_immat"
+      "type": "cible_0vente_isolee"
     },
     "250|RUE|PAUL BERT": {
-      "type": "copro_non_immat"
+      "type": "cible_0vente_active"
     },
     "258|COURS|LAFAYETTE": {
-      "type": "copro_non_immat"
+      "type": "cible_0vente_active"
     },
     "26|RUE|BARABAN": {
-      "type": "copro_non_immat"
+      "type": "cible_0vente_active"
     },
     "27|RUE|ETIENNE RICHERAND": {
-      "type": "copro_non_immat"
+      "type": "cible_0vente_active"
     },
     "28|RUE|TURBIL": {
-      "type": "copro_non_immat"
+      "type": "cible_0vente_active"
     },
     "290|COURS|LAFAYETTE": {
-      "type": "copro_non_immat"
+      "type": "cible_0vente_isolee"
     },
     "2B|RUE|ST MAXIMIN": {
-      "type": "copro_non_immat"
+      "type": "cible_0vente_active"
     },
     "317|RUE|PAUL BERT": {
-      "type": "copro_non_immat"
+      "type": "cible_0vente_active"
     },
     "318|COURS|LAFAYETTE": {
-      "type": "copro_non_immat"
+      "type": "cible_0vente_active"
     },
     "355|RUE|PAUL BERT": {
-      "type": "copro_non_immat"
+      "type": "cible_0vente_isolee"
     },
     "359|RUE|PAUL BERT": {
-      "type": "copro_non_immat"
+      "type": "cible_0vente_isolee"
     },
     "35|RUE|STE ANNE DE BARABAN": {
-      "type": "copro_non_immat"
+      "type": "cible_0vente_isolee"
     },
     "361|RUE|PAUL BERT": {
-      "type": "copro_non_immat"
+      "type": "cible_0vente_isolee"
     },
     "38|RUE|TURBIL": {
-      "type": "copro_non_immat"
+      "type": "cible_0vente_active"
     },
     "46|RUE|ST ANTOINE": {
-      "type": "copro_non_immat"
+      "type": "cible_0vente_active"
     },
     "47|RUE|STE ANNE DE BARABAN": {
-      "type": "copro_non_immat"
+      "type": "cible_0vente_isolee"
     },
     "4|RUE|ST MAXIMIN": {
-      "type": "copro_non_immat"
+      "type": "cible_0vente_active"
     },
     "61|RUE|DAUPHINE": {
-      "type": "copro_non_immat"
+      "type": "cible_0vente_active"
     },
     "63|RUE|DAUPHINE": {
-      "type": "copro_non_immat"
+      "type": "cible_0vente_active"
     },
     "6|RUE|24 FEVRIER 1848": {
-      "type": "copro_non_immat"
+      "type": "cible_0vente_isolee"
     },
     "6|RUE|ETIENNE RICHERAND": {
-      "type": "copro_non_immat"
+      "type": "cible_0vente_active"
     },
     "85|RUE|DAUPHINE": {
-      "type": "copro_non_immat"
+      "type": "cible_0vente_active"
     },
     "9|RUE|VILLETTE": {
-      "type": "copro_non_immat"
+      "type": "cible_0vente_isolee"
     },
     "5B|PLACE|FERRANDIERE": {
       "type": "social"
@@ -1615,6 +1614,204 @@
     },
     "99|RUE|BARABAN": {
       "type": "bureaux"
+    },
+    "7|RUE|FRANCOIS GILLET": {
+      "type": "cible_0vente_active"
+    },
+    "19|RUE|MONTBRILLANT": {
+      "type": "cible_0vente_active"
+    },
+    "280|COURS|LAFAYETTE": {
+      "type": "cible_0vente_active"
+    },
+    "1|RUE|TURBIL": {
+      "type": "cible_0vente_active"
+    },
+    "10|RUE|DAVID": {
+      "type": "cible_0vente_active"
+    },
+    "10|RUE|NAZARETH": {
+      "type": "cible_0vente_active"
+    },
+    "12|RUE|ESPERANCE": {
+      "type": "cible_0vente_active"
+    },
+    "121|RUE|BARABAN": {
+      "type": "cible_0vente_active"
+    },
+    "141|RUE|ANTOINE CHARIAL": {
+      "type": "cible_0vente_active"
+    },
+    "16|RUE|DAUPHINE": {
+      "type": "cible_0vente_active"
+    },
+    "16|RUE|ST EUSEBE": {
+      "type": "cible_0vente_active"
+    },
+    "17|RUE|DAVID": {
+      "type": "cible_0vente_active"
+    },
+    "196|AVENUE|FELIX FAURE": {
+      "type": "cible_0vente_active"
+    },
+    "198|AVENUE|FELIX FAURE": {
+      "type": "cible_0vente_active"
+    },
+    "2|RUE|STE ANNE DE BARABAN": {
+      "type": "cible_0vente_active"
+    },
+    "20|RUE|ROGER BRECHAN": {
+      "type": "cible_0vente_active"
+    },
+    "200|AVENUE|FELIX FAURE": {
+      "type": "cible_0vente_active"
+    },
+    "211|RUE|PAUL BERT": {
+      "type": "cible_0vente_active"
+    },
+    "213|AVENUE|FELIX FAURE": {
+      "type": "cible_0vente_active"
+    },
+    "22|RUE|MAURICE FLANDIN": {
+      "type": "cible_0vente_active"
+    },
+    "232|COURS|LAFAYETTE": {
+      "type": "cible_0vente_active"
+    },
+    "24|RUE|TURBIL": {
+      "type": "cible_0vente_active"
+    },
+    "243|RUE|PAUL BERT": {
+      "type": "cible_0vente_active"
+    },
+    "271|RUE|PAUL BERT": {
+      "type": "cible_0vente_active"
+    },
+    "3|RUE|TURBIL": {
+      "type": "cible_0vente_active"
+    },
+    "30|RUE|DAUPHINE": {
+      "type": "cible_0vente_active"
+    },
+    "308|COURS|LAFAYETTE": {
+      "type": "cible_0vente_active"
+    },
+    "43|RUE|DAUPHINE": {
+      "type": "cible_0vente_active"
+    },
+    "45|AVENUE|LACASSAGNE": {
+      "type": "cible_0vente_active"
+    },
+    "45|RUE|DAUPHINE": {
+      "type": "cible_0vente_active"
+    },
+    "51|RUE|MAURICE FLANDIN": {
+      "type": "cible_0vente_active"
+    },
+    "54|RUE|ST ANTOINE": {
+      "type": "cible_0vente_active"
+    },
+    "60|AVENUE|LACASSAGNE": {
+      "type": "cible_0vente_active"
+    },
+    "256|RUE|PAUL BERT": {
+      "type": "cible_0vente_active"
+    },
+    "10|RUE|DAHLIAS": {
+      "type": "cible_0vente_active"
+    },
+    "41|RUE|DAUPHINE": {
+      "type": "cible_0vente_active"
+    },
+    "43B|RUE|DAUPHINE": {
+      "type": "cible_0vente_active"
+    },
+    "45B|RUE|DAUPHINE": {
+      "type": "cible_0vente_active"
+    },
+    "32|RUE|DOCTEUR REBATEL": {
+      "type": "cible_0vente_active"
+    },
+    "351|RUE|PAUL BERT": {
+      "type": "cible_0vente_active"
+    },
+    "62|RUE|STE ANNE DE BARABAN": {
+      "type": "cible_0vente_active"
+    },
+    "60B|AVENUE|LACASSAGNE": {
+      "type": "cible_0vente_active"
+    },
+    "34|RUE|DOCTEUR REBATEL": {
+      "type": "cible_0vente_active"
+    },
+    "11|RUE|GABILLOT": {
+      "type": "cible_0vente_active"
+    },
+    "45B|AVENUE|LACASSAGNE": {
+      "type": "cible_0vente_active"
+    },
+    "80|RUE|DAUPHINE": {
+      "type": "cible_0vente_active"
+    },
+    "151|RUE|ANTOINE CHARIAL": {
+      "type": "cible_0vente_active"
+    },
+    "3B|RUE|BARA": {
+      "type": "cible_0vente_active"
+    },
+    "51B|AVENUE|LACASSAGNE": {
+      "type": "cible_0vente_active"
+    },
+    "11B|RUE|ST MAXIMIN": {
+      "type": "cible_0vente_active"
+    },
+    "14|RUE|FRANCOIS GILLET": {
+      "type": "cible_0vente_isolee"
+    },
+    "15|RUE|VILLETTE": {
+      "type": "cible_0vente_isolee"
+    },
+    "299|RUE|PAUL BERT": {
+      "type": "cible_0vente_isolee"
+    },
+    "38|AVENUE|GEORGES POMPIDOU": {
+      "type": "cible_0vente_isolee"
+    },
+    "50|RUE|STE ANNE DE BARABAN": {
+      "type": "cible_0vente_isolee"
+    },
+    "53|RUE|MAURICE FLANDIN": {
+      "type": "cible_0vente_isolee"
+    },
+    "55|RUE|ST ANTOINE": {
+      "type": "cible_0vente_isolee"
+    },
+    "83|COURS|ALBERT THOMAS": {
+      "type": "cible_0vente_isolee"
+    },
+    "225|RUE|PAUL BERT": {
+      "type": "cible_0vente_isolee"
+    },
+    "6|RUE|FREDERIC MISTRAL": {
+      "type": "cible_0vente_isolee"
+    },
+    "7|RUE|ESPERANCE": {
+      "type": "cible_0vente_isolee"
+    },
+    "19|RUE|ROPOSTE": {
+      "type": "cible_0vente_isolee"
+    },
+    "58|RUE|STE ANNE DE BARABAN": {
+      "type": "cible_0vente_isolee"
+    },
+    "3|RUE|BARA #AE6121685": {
+      "type": "cible_0vente_isolee"
+    },
+    "5||PTR ST EUSEBE": {
+      "type": "cible_0vente_isolee"
+    },
+    "3|RUE|ESPERANCE": {
+      "type": "cible_0vente_isolee"
     }
   },
   "fusions": {
