@@ -1,0 +1,251 @@
+{
+  "_meta": {
+    "generated_at": "2026-05-27T07:09:50Z",
+    "secteur": "dauphine-lacassagne",
+    "purpose": "Protect these cles from being re-tagged 'social' by future MAJIC-only scans (PM-only heuristic). DVF mutations or social_pct_corrige confirm they are NOT pure HLM social.",
+    "rule": "Si une cle figure ici, le scan MAJIC ne doit PAS lui auto-attribuer 'social'. Le tag manuel (_qualif_source='dvf_decollect') prevaut.",
+    "last_cleanup": {
+      "date": "2026-05-27T07:42:42Z",
+      "removed": [
+        "2B|RUE|DAUPHINE"
+      ],
+      "reason": "FA-source 0 own vente : pas un vrai reclassement, retire de la liste pour eviter double-tracking"
+    }
+  },
+  "overrides": [
+    {
+      "cle": "12|RUE|ST SIDOINE",
+      "previous_tag": "social",
+      "new_tag": "mixte",
+      "qualif_source": "dvf_decollect",
+      "social_pct_corrige": 26.7,
+      "mut_apt_per_year": 7.0,
+      "reason": "pct<60 + mut>=2/an"
+    },
+    {
+      "cle": "59|RUE|BARABAN",
+      "previous_tag": "social",
+      "new_tag": "mixte",
+      "qualif_source": "dvf_decollect",
+      "social_pct_corrige": 40.5,
+      "mut_apt_per_year": 6.6,
+      "reason": "pct<60 + mut>=2/an"
+    },
+    {
+      "cle": "28|RUE|ETIENNE RICHERAND",
+      "previous_tag": "social",
+      "new_tag": "mixte",
+      "qualif_source": "dvf_decollect",
+      "social_pct_corrige": 100.7,
+      "mut_apt_per_year": 6.2,
+      "reason": "mut>=2/an"
+    },
+    {
+      "cle": "11|RUE|TERNOIS",
+      "previous_tag": "social",
+      "new_tag": "copro_non_immat",
+      "qualif_source": "dvf_decollect",
+      "social_pct_corrige": null,
+      "mut_apt_per_year": 6.2,
+      "reason": "mut>=2/an"
+    },
+    {
+      "cle": "84|RUE|DAUPHINE",
+      "previous_tag": "social",
+      "new_tag": "mixte",
+      "qualif_source": "dvf_decollect",
+      "social_pct_corrige": 69.5,
+      "mut_apt_per_year": 5.2,
+      "reason": "mut>=2/an"
+    },
+    {
+      "cle": "84B|RUE|DAUPHINE",
+      "previous_tag": "social",
+      "new_tag": "mixte",
+      "qualif_source": "dvf_decollect",
+      "social_pct_corrige": null,
+      "mut_apt_per_year": 5.2,
+      "reason": "mut>=2/an"
+    },
+    {
+      "cle": "2|RUE|DAUPHINE",
+      "previous_tag": "social",
+      "new_tag": "mixte",
+      "qualif_source": "dvf_decollect",
+      "social_pct_corrige": 73.6,
+      "mut_apt_per_year": 4.8,
+      "reason": "mut>=2/an"
+    },
+    {
+      "cle": "22|RUE|ST ANTOINE",
+      "previous_tag": "social",
+      "new_tag": "mixte",
+      "qualif_source": "dvf_decollect",
+      "social_pct_corrige": 20.2,
+      "mut_apt_per_year": 4.8,
+      "reason": "pct<60 + mut>=2/an"
+    },
+    {
+      "cle": "191|AVENUE|FELIX FAURE",
+      "previous_tag": "social",
+      "new_tag": "mixte",
+      "qualif_source": "dvf_decollect",
+      "social_pct_corrige": 21.5,
+      "mut_apt_per_year": 3.6,
+      "reason": "pct<60 + mut>=2/an"
+    },
+    {
+      "cle": "10|RUE|JEAN RENOIR",
+      "previous_tag": "social",
+      "new_tag": "mixte",
+      "qualif_source": "dvf_decollect",
+      "social_pct_corrige": 55.6,
+      "mut_apt_per_year": 3.4,
+      "reason": "pct<60 + mut>=2/an"
+    },
+    {
+      "cle": "128|RUE|ANTOINE CHARIAL",
+      "previous_tag": "social",
+      "new_tag": "mixte",
+      "qualif_source": "dvf_decollect",
+      "social_pct_corrige": 19.9,
+      "mut_apt_per_year": 3.0,
+      "reason": "pct<60 + mut>=2/an"
+    },
+    {
+      "cle": "24|RUE|CLAUDIUS PIONCHON",
+      "previous_tag": "social",
+      "new_tag": "mixte",
+      "qualif_source": "dvf_decollect",
+      "social_pct_corrige": 77.3,
+      "mut_apt_per_year": 2.4,
+      "reason": "mut>=2/an"
+    },
+    {
+      "cle": "14|AVENUE|GEORGES POMPIDOU",
+      "previous_tag": "social",
+      "new_tag": "copro_non_immat",
+      "qualif_source": "dvf_decollect",
+      "social_pct_corrige": null,
+      "mut_apt_per_year": 2.4,
+      "reason": "mut>=2/an"
+    },
+    {
+      "cle": "28B|RUE|CLAUDIUS PIONCHON",
+      "previous_tag": "social",
+      "new_tag": "mixte",
+      "qualif_source": "dvf_decollect",
+      "social_pct_corrige": null,
+      "mut_apt_per_year": 2.4,
+      "reason": "mut>=2/an"
+    },
+    {
+      "cle": "28|RUE|CLAUDIUS PIONCHON",
+      "previous_tag": "social",
+      "new_tag": "copro_non_immat",
+      "qualif_source": "dvf_decollect",
+      "social_pct_corrige": null,
+      "mut_apt_per_year": 2.4,
+      "reason": "mut>=2/an"
+    },
+    {
+      "cle": "26|RUE|CLAUDIUS PIONCHON",
+      "previous_tag": "social",
+      "new_tag": "copro_non_immat",
+      "qualif_source": "dvf_decollect",
+      "social_pct_corrige": null,
+      "mut_apt_per_year": 2.4,
+      "reason": "mut>=2/an"
+    },
+    {
+      "cle": "35|RUE|ST ANTOINE",
+      "previous_tag": "social",
+      "new_tag": "mixte",
+      "qualif_source": "dvf_decollect",
+      "social_pct_corrige": 0.0,
+      "mut_apt_per_year": 2.4,
+      "reason": "pct<60 + mut>=2/an"
+    },
+    {
+      "cle": "20B|AVENUE|LACASSAGNE",
+      "previous_tag": "social",
+      "new_tag": "mixte",
+      "qualif_source": "dvf_decollect",
+      "social_pct_corrige": 52.1,
+      "mut_apt_per_year": 1.8,
+      "reason": "pct<60"
+    },
+    {
+      "cle": "66|AVENUE|LACASSAGNE",
+      "previous_tag": "social",
+      "new_tag": "mixte",
+      "qualif_source": "dvf_decollect",
+      "social_pct_corrige": 30.4,
+      "mut_apt_per_year": 1.0,
+      "reason": "pct<60"
+    },
+    {
+      "cle": "272|RUE|PAUL BERT",
+      "previous_tag": "social",
+      "new_tag": "mixte",
+      "qualif_source": "dvf_decollect",
+      "social_pct_corrige": 25.4,
+      "mut_apt_per_year": 0.6,
+      "reason": "pct<60"
+    },
+    {
+      "cle": "97|RUE|DAUPHINE",
+      "previous_tag": "social",
+      "new_tag": "mixte",
+      "qualif_source": "dvf_decollect",
+      "social_pct_corrige": 0.0,
+      "mut_apt_per_year": 0.4,
+      "reason": "pct<60"
+    },
+    {
+      "cle": "59|COURS|ALBERT THOMAS",
+      "previous_tag": "social",
+      "new_tag": "mixte",
+      "qualif_source": "dvf_decollect",
+      "social_pct_corrige": 25.7,
+      "mut_apt_per_year": 0.2,
+      "reason": "pct<60"
+    },
+    {
+      "cle": "22|RUE|ESPERANCE",
+      "previous_tag": "social",
+      "new_tag": "mixte",
+      "qualif_source": "dvf_decollect",
+      "social_pct_corrige": 0.0,
+      "mut_apt_per_year": 0.2,
+      "reason": "pct<60"
+    },
+    {
+      "cle": "24|RUE|FREDERIC MISTRAL",
+      "previous_tag": "social",
+      "new_tag": "mixte",
+      "qualif_source": "dvf_decollect",
+      "social_pct_corrige": 20.0,
+      "mut_apt_per_year": 0.0,
+      "reason": "pct<60"
+    },
+    {
+      "cle": "117|RUE|BARABAN",
+      "previous_tag": "social",
+      "new_tag": "mixte",
+      "qualif_source": "dvf_decollect",
+      "social_pct_corrige": 15.2,
+      "mut_apt_per_year": 0.0,
+      "reason": "pct<60"
+    },
+    {
+      "cle": "227|AVENUE|FELIX FAURE",
+      "previous_tag": "social",
+      "new_tag": "mixte",
+      "qualif_source": "dvf_decollect",
+      "social_pct_corrige": 0.0,
+      "mut_apt_per_year": 0.0,
+      "reason": "pct<60"
+    }
+  ]
+}
