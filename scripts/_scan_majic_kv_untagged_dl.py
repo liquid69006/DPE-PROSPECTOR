@@ -25,6 +25,7 @@ Mode : --dry (display only, defaut)   ou   --apply (POST KV atomique)
 import argparse
 import json
 import os
+import re
 import sys
 import urllib.error
 import urllib.request
@@ -41,6 +42,8 @@ ROOT = Path(r"C:\Users\Station 5\DPE-PROSPECTOR")
 LIGHT = ROOT / "data" / "secteur_dauphine_lacassagne_light.json"
 KV_LOCAL = ROOT / "data" / "_kv_assign_dl.json"
 ENRICH = ROOT / "data" / "_enrich_majic_dl_full.json"
+OVERRIDES = ROOT / "data" / "_social_overrides_dl.json"
+DVF = Path(r"C:\Users\Station 5\dvf_dauphine_lacassagne.json")
 MAJIC = r"C:\Users\Station 5\majic_locaux2_2025.parquet"
 
 API = "https://dpe-prospector-api.yann-bufferne.workers.dev"
@@ -111,6 +114,89 @@ def classify_siren(gp_lib, denomination, forme):
     return "AUTRE"
 
 
+# ---------- Normalisation voie (pour DVF adresse exacte) ----------
+_ABBR_VOIE = {"SAINT": "ST", "SAINTE": "STE",
+              "DOCTEUR": "DR", "PROFESSEUR": "PR"}
+_ART_VOIE = {"DU", "DE", "DES", "LA", "LE", "LES", "L", "D", "A",
+             "AU", "AUX", "ET", "BIS", "TER"}
+
+
+def toks(s):
+    s = (s or "").upper().replace("'", " ")
+    return tuple(sorted(_ABBR_VOIE.get(t, t)
+                        for t in re.split(r"[^A-Z0-9]+", s)
+                        if t and t not in _ART_VOIE))
+
+
+def parse_cle(cle):
+    """ 'NUM[B/T/A...]|TYPE|VOIE' -> (num_int, suffix_upper, voie_toks). """
+    parts = (cle or "").split("|")
+    if len(parts) != 3:
+        return None
+    m = re.match(r"^(\d+)([A-Z]*)$", parts[0].strip().upper())
+    if not m:
+        return None
+    return int(m.group(1)), m.group(2), toks(parts[2])
+
+
+def build_dvf_exact_index():
+    """Indexe les mutations Apt+Maison par (num_int, B/T/Q, voie_toks).
+    Renvoie un dict pour lookup O(1) ; mutations distinctes via dedup
+    par (Date, No disposition, Valeur fonciere)."""
+    dvf = json.loads(DVF.read_text(encoding="utf-8"))
+    idx = defaultdict(list)
+    for m in dvf:
+        if str(m.get("Code type local") or "").strip() not in ("1", "2"):
+            continue
+        nv = (m.get("No voie") or "").strip()
+        if not nv:
+            continue
+        try:
+            nv_int = int(nv)
+        except (TypeError, ValueError):
+            continue
+        btq = (m.get("B/T/Q") or "").strip().upper()
+        vt = toks(m.get("Voie") or "")
+        if not vt:
+            continue
+        idx[(nv_int, btq, vt)].append(m)
+    return idx
+
+
+def mut_apt_an_exact(cle, dvf_idx):
+    """Mutations Apt+Maison /an a l'ADRESSE EXACTE du cle.
+    Jamais a la parcelle : evite le biais quand la parcelle contient
+    plusieurs batiments (HLM + prive voisin).
+    Pour une FA-source legit avec own_ventes > 0 (ex 84B), DVF a des
+    rows avec son suffixe -> match.
+    Pour une cle sans suffixe (ex 28), seules les rows avec B/T/Q vide
+    matchent : '28' ne capture PAS '28B' (isolation stricte par cle)."""
+    parsed = parse_cle(cle)
+    if not parsed:
+        return 0.0
+    num, suffix, vt = parsed
+    seen = set()
+    for m in dvf_idx.get((num, suffix, vt), []):
+        sig = (m.get("Date mutation"), m.get("No disposition"),
+               m.get("Valeur fonciere"))
+        seen.add(sig)
+    return len(seen) / 5.0
+
+
+def load_overrides():
+    """Charge _social_overrides_dl.json -> dict {cle: ov_info}.
+    Vide si fichier absent."""
+    if not OVERRIDES.exists():
+        return {}
+    try:
+        ov = json.loads(OVERRIDES.read_text(encoding="utf-8"))
+        return {o["cle"]: o for o in ov.get("overrides", [])
+                if o.get("cle")}
+    except Exception as e:
+        print(f"  [warn] _social_overrides_dl.json illisible : {e}")
+        return {}
+
+
 # ---------- Main ----------
 def main():
     parser = argparse.ArgumentParser()
@@ -131,21 +217,49 @@ def main():
     enrich = json.loads(ENRICH.read_text(encoding="utf-8"))
     enrich_by_cle = {r["cle"]: r for r in enrich["results"]}
 
+    # Charge overrides (filet anti-regression : ces cles ne doivent
+    # JAMAIS etre re-taguees social par un recalcul automatique)
+    overrides_by_cle = load_overrides()
+
+    # Charge + indexe DVF (pour signal anti faux-positif social)
+    dvf_idx = build_dvf_exact_index()
+
     print(f"  light adresses     : {len(ad)}")
     print(f"  KV local assigns   : {len(assigns)}")
     print(f"  enrich majic rows  : {len(enrich_by_cle)}")
+    print(f"  social overrides   : {len(overrides_by_cle)} cles protegees "
+          f"(dvf_decollect)")
+    print(f"  dvf adresses uniques indexees : {len(dvf_idx)}")
 
-    # 2. Candidates : exclude FA + already-tagged
+    # 2. Candidates : raffinement FA-source a 2 conditions
+    # - EXCLURE si _fusion_auto=True AND own_ventes==0 (facade fictive,
+    #   DVF n'utilise pas son suffixe : ex 11 DAUPHINE 25B/27B/.../55D,
+    #   2B DAUPHINE). Les inclure introduirait le biais parcelle-vs-cle.
+    # - GARDER si _fusion_auto=True AND own_ventes>0 (FA-source legit,
+    #   DVF reconnait son suffixe : ex 84B DAUPHINE 9 ventes propres).
+    # - Skip les cles deja taggees (pas de re-tag).
     candidates = []
+    n_excl_fa_phantom = 0
+    n_fa_legit_kept = 0
+    n_excl_already_tagged = 0
     for a in ad:
         cle = a.get("cle") or ""
-        if a.get("_fusion_auto"):
+        is_fa = bool(a.get("_fusion_auto"))
+        own_vlog = int(a.get("nb_ventes_logement") or 0)
+        if is_fa and own_vlog == 0:
+            n_excl_fa_phantom += 1
             continue
+        if is_fa and own_vlog > 0:
+            n_fa_legit_kept += 1
         t = ((assigns.get(cle) or {}).get("type")) or ""
         if t:
+            n_excl_already_tagged += 1
             continue
         candidates.append(a)
-    print(f"  candidates total   : {len(candidates)} (exclus FA + deja taggees)")
+    print(f"  exclus FA fictive (own=0)    : {n_excl_fa_phantom}")
+    print(f"  FA legit incluses (own>0)    : {n_fa_legit_kept}")
+    print(f"  exclus deja taggees           : {n_excl_already_tagged}")
+    print(f"  candidates total              : {len(candidates)}")
 
     # 3. Collect parcelles (from enrich cache when possible)
     needed_parcels = set()
@@ -254,15 +368,49 @@ def main():
         else:
             top_all = None
 
-        # Classification
+        # Signal DVF : mutations Apt+Maison /an a l'adresse EXACTE
+        # (pas a la parcelle, isolation stricte par cle).
+        mut_an_exact = mut_apt_an_exact(cle, dvf_idx)
+
+        # Classification - ORDRE STRICT :
+        #   1. Override (priorite ABSOLUE, decision manuelle validee
+        #      DVF/terrain, prime sur TOUT y compris Tertiaire)
+        #   2. Tertiaire (usage BDNB)
+        #   3. social (HLM majoritaire) MAIS bascule mixte si DVF
+        #      decollect (mut/an >= 2)
+        #   4. mixte (HLM minoritaire 20-60%)
+        #   5. mono (1 SIREN prive >= 80% PM ET BDNB)
+        #   6. - (laisser)
         has_emphy_hlm = emphy_hlm_lots > 0
-        if usage == "Tertiaire":
+        if cle in overrides_by_cle:
+            # PRIORITE ABSOLUE : override manuel valide (dvf_decollect).
+            # Ne JAMAIS retaguer social, et conserver le tag override
+            # quel que soit le signal MAJIC ou l'usage BDNB.
+            ov_info = overrides_by_cle[cle]
+            reco = ov_info.get("new_tag") or "mixte"
+            mut_str = ov_info.get("mut_apt_per_year")
+            reason = (f"PROTECTED by _social_overrides_dl.json "
+                      f"(_qualif_source=dvf_decollect"
+                      + (f", was mut/an={mut_str}" if mut_str is not None
+                         else "")
+                      + ")")
+        elif usage == "Tertiaire":
             reco = "bureaux"
             reason = "usage_principal_bdnb=Tertiaire"
         elif has_emphy_hlm or social_pct >= 60:
-            reco = "social"
-            reason = (f"Emphyteote HLM ({emphy_hlm_lots}/{emphy_lots})"
-                      if has_emphy_hlm else f"social_pct={social_pct}%")
+            if mut_an_exact >= 2.0:
+                # Signal DVF : decollectivisation active = pas social pur
+                # (PP invisibles MAJIC LOCAUX 2 par RGPD)
+                reco = "mixte"
+                reason = (f"social_pct={social_pct}% MAIS mut/an="
+                          f"{mut_an_exact:.2f} >= 2 "
+                          f"(decollectivisation DVF, PP invisibles MAJIC)")
+            else:
+                reco = "social"
+                reason = (f"Emphyteote HLM ({emphy_hlm_lots}/{emphy_lots})"
+                          if has_emphy_hlm
+                          else f"social_pct={social_pct}% (mut/an="
+                               f"{mut_an_exact:.2f} < 2)")
         elif 20 <= social_pct < 60:
             reco = "mixte"
             reason = f"social_pct={social_pct}%"
@@ -301,6 +449,8 @@ def main():
             "top_prive": fmt_owner(top_p[0], top_p[1]) if top_p else "-",
             "top_prive_pct": top_p_pct,
             "top_prive_pct_bdnb": top_p_pct_bdnb,
+            "mut_an_exact": mut_an_exact,
+            "is_protected": cle in overrides_by_cle,
             "reco": reco,
             "reason": reason,
             "has_emphy_hlm": has_emphy_hlm,
@@ -322,16 +472,19 @@ def main():
     print()
 
     # 8. Tableau pre-patch
-    print("=" * 156)
+    print("=" * 168)
     print("TABLEAU PRE-PATCH - tri nb_log_bdnb DESC (recommandations uniquement)")
-    print("=" * 156)
+    print("=" * 168)
     print(f"  {'#':>3} {'cle':32s} {'nb_log':>6} {'usage':22s} "
-          f"{'RNC':3s} {'lots':>5} {'soc%':>6} {'reco':8s} {'top owner':54s} {'reason'}")
-    print("  " + "-" * 154)
+          f"{'RNC':3s} {'lots':>5} {'soc%':>6} {'mut/an':>6} {'prot':4s} "
+          f"{'reco':8s} {'top owner':54s} {'reason'}")
+    print("  " + "-" * 166)
     for i, r in enumerate(proposed, 1):
+        prot_flag = "*" if r.get("is_protected") else " "
         print(f"  {i:>3} {r['cle']:32s} {r['bdnb']:>6} {r['usage']:22s} "
               f"{'oui' if r['is_rnc'] else 'non':3s} {r['majic_lots_tot']:>5} "
-              f"{r['social_pct']:>5.1f}% {r['reco']:8s} {r['top_all']:54s} {r['reason']}")
+              f"{r['social_pct']:>5.1f}% {r['mut_an_exact']:>5.2f}  {prot_flag:>3s}  "
+              f"{r['reco']:8s} {r['top_all']:54s} {r['reason']}")
 
     # 9. Apply ? Non par defaut.
     if not args.apply:
