@@ -127,6 +127,18 @@ const AGENCES_CONFIG = {
   },
 };
 
+// ══════════════════════════════════════════════════════
+//  AGENCES COMPOSITES (cle MSB dediee + agregation SCI)
+//  agenceId -> [agenceIds_sources_de_SCI]
+//  Note : duplique sci_agences de AGENCES_CONFIG ci-dessus pour
+//  usage dans /msb-backfill (table dediee plus simple a etendre).
+// ══════════════════════════════════════════════════════
+
+const COMPOSITE_AGENCES = {
+  'lopez': ['motte-picquet', 'pernety'],
+  'bagot': ['houlgate',      'villers'],
+};
+
 const ADMIN_EMAIL    = "ybufferne@century21.fr";
 const TOKEN_TTL_MS   = 24 * 60 * 60 * 1000;      // 24h
 const RESET_TTL_MS   =      60 * 60 * 1000;       // 1h
@@ -1353,12 +1365,17 @@ async function handleRequest(request, env) {
       if (!Number.isFinite(max)    || max    < 1) max    = 8000;
       if (max > 8000) max = 8000;
 
-      // 1. Charger les SCI agence depuis GitHub Raw
-      const sciUrl  = `https://raw.githubusercontent.com/liquid69006/DPE-PROSPECTOR/main/data/${agenceId}-sci.json`;
-      const sciResp = await fetch(sciUrl);
-      if (!sciResp.ok) return err(`Impossible de charger ${agenceId}-sci.json (HTTP ${sciResp.status})`, 502);
-      const sciJson = await sciResp.json();
-      const allSci  = Array.isArray(sciJson.sci) ? sciJson.sci : [];
+      // 1. Charger les SCI : un seul fichier si agence simple, ou fusion
+      //    de plusieurs fichiers si agence composite (lopez, bagot).
+      const sourceAgenceIds = COMPOSITE_AGENCES[agenceId] || [agenceId];
+      const allSci = [];
+      for (const srcAg of sourceAgenceIds) {
+        const sciUrl  = `https://raw.githubusercontent.com/liquid69006/DPE-PROSPECTOR/main/data/${srcAg}-sci.json`;
+        const sciResp = await fetch(sciUrl);
+        if (!sciResp.ok) return err(`Impossible de charger ${srcAg}-sci.json (HTTP ${sciResp.status})`, 502);
+        const sciJson = await sciResp.json();
+        if (Array.isArray(sciJson.sci)) allSci.push(...sciJson.sci);
+      }
 
       // 2. Index nom_normalise -> Set<siren> (collisions = multiple_match)
       const normSciName = function(s) {
