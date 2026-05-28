@@ -1,0 +1,382 @@
+{
+  "_meta": {
+    "purpose": "registre des tags MP herites pre-pipeline. Chaque entree devra etre re-auditee via le futur pipeline secteur-agnostique (port DL->MP).",
+    "secteur": "motte-picquet",
+    "n_entries": 73,
+    "qualif_source": "terrain_manual_legacy",
+    "qualif_date": "pre_2026_pipeline",
+    "type_distribution": {
+      "mono": 42,
+      "copro_non_immat": 1,
+      "bureaux": 29,
+      "social": 1
+    }
+  },
+  "entries": [
+    {
+      "cle": "101|QUAI|JACQUES CHIRAC",
+      "type_legacy": "bureaux",
+      "a_reauditer": true
+    },
+    {
+      "cle": "102|BOULEVARD|GRENELLE",
+      "type_legacy": "bureaux",
+      "a_reauditer": true
+    },
+    {
+      "cle": "10|RUE|COMMERCE",
+      "type_legacy": "mono",
+      "a_reauditer": true
+    },
+    {
+      "cle": "10|RUE|GRAMME",
+      "type_legacy": "mono",
+      "a_reauditer": true
+    },
+    {
+      "cle": "111|BOULEVARD|GRENELLE",
+      "type_legacy": "mono",
+      "a_reauditer": true
+    },
+    {
+      "cle": "11|AVENUE|CHARLES FLOQUET",
+      "type_legacy": "bureaux",
+      "a_reauditer": true
+    },
+    {
+      "cle": "11|BOULEVARD|GRENELLE",
+      "type_legacy": "mono",
+      "a_reauditer": true
+    },
+    {
+      "cle": "11|RUE|AVRE",
+      "type_legacy": "bureaux",
+      "a_reauditer": true
+    },
+    {
+      "cle": "11|RUE|JUGE",
+      "type_legacy": "bureaux",
+      "a_reauditer": true
+    },
+    {
+      "cle": "12|RUE|TIPHAINE",
+      "type_legacy": "bureaux",
+      "a_reauditer": true
+    },
+    {
+      "cle": "132|BOULEVARD|GRENELLE",
+      "type_legacy": "mono",
+      "a_reauditer": true
+    },
+    {
+      "cle": "134|BOULEVARD|GRENELLE",
+      "type_legacy": "mono",
+      "a_reauditer": true
+    },
+    {
+      "cle": "13|RUE|JUGE",
+      "type_legacy": "bureaux",
+      "a_reauditer": true
+    },
+    {
+      "cle": "140|BOULEVARD|GRENELLE",
+      "type_legacy": "mono",
+      "a_reauditer": true
+    },
+    {
+      "cle": "141|AVENUE|SUFFREN",
+      "type_legacy": "mono",
+      "a_reauditer": true
+    },
+    {
+      "cle": "142|BOULEVARD|GRENELLE",
+      "type_legacy": "bureaux",
+      "a_reauditer": true
+    },
+    {
+      "cle": "147|AVENUE|SUFFREN",
+      "type_legacy": "mono",
+      "a_reauditer": true
+    },
+    {
+      "cle": "14|RUE|CHASSELOUP LAUBAT",
+      "type_legacy": "mono",
+      "a_reauditer": true
+    },
+    {
+      "cle": "14|RUE|TIPHAINE",
+      "type_legacy": "mono",
+      "a_reauditer": true
+    },
+    {
+      "cle": "15|AVENUE|CHARLES FLOQUET",
+      "type_legacy": "bureaux",
+      "a_reauditer": true
+    },
+    {
+      "cle": "15|RUE|AVRE",
+      "type_legacy": "bureaux",
+      "a_reauditer": true
+    },
+    {
+      "cle": "15|RUE|FREMICOURT",
+      "type_legacy": "bureaux",
+      "a_reauditer": true
+    },
+    {
+      "cle": "15|RUE|LETELLIER",
+      "type_legacy": "mono",
+      "a_reauditer": true
+    },
+    {
+      "cle": "166|BOULEVARD|GRENELLE",
+      "type_legacy": "bureaux",
+      "a_reauditer": true
+    },
+    {
+      "cle": "16|RUE|VIOLET",
+      "type_legacy": "mono",
+      "a_reauditer": true
+    },
+    {
+      "cle": "1|RUE|COMMERCE",
+      "type_legacy": "mono",
+      "a_reauditer": true
+    },
+    {
+      "cle": "1|RUE|LOURMEL",
+      "type_legacy": "mono",
+      "a_reauditer": true
+    },
+    {
+      "cle": "1|RUE|SOUDAN",
+      "type_legacy": "social",
+      "a_reauditer": true
+    },
+    {
+      "cle": "20|RUE|EDGAR FAURE",
+      "type_legacy": "mono",
+      "a_reauditer": true
+    },
+    {
+      "cle": "21|ALLEE|MARGUERITE YOURCENAR",
+      "type_legacy": "bureaux",
+      "a_reauditer": true
+    },
+    {
+      "cle": "21|AVENUE|CHARLES FLOQUET",
+      "type_legacy": "mono",
+      "a_reauditer": true
+    },
+    {
+      "cle": "25|RUE|COMMERCE",
+      "type_legacy": "bureaux",
+      "a_reauditer": true
+    },
+    {
+      "cle": "26|BOULEVARD|GARIBALDI",
+      "type_legacy": "copro_non_immat",
+      "a_reauditer": true
+    },
+    {
+      "cle": "2|RUE|BUENOS AIRES",
+      "type_legacy": "mono",
+      "a_reauditer": true
+    },
+    {
+      "cle": "2|RUE|CEPRE",
+      "type_legacy": "mono",
+      "a_reauditer": true
+    },
+    {
+      "cle": "2|RUE|CHAMPFLEURY",
+      "type_legacy": "mono",
+      "a_reauditer": true
+    },
+    {
+      "cle": "31|RUE|COMMERCE",
+      "type_legacy": "bureaux",
+      "a_reauditer": true
+    },
+    {
+      "cle": "35|AVENUE|CHARLES FLOQUET",
+      "type_legacy": "bureaux",
+      "a_reauditer": true
+    },
+    {
+      "cle": "39|AVENUE|SUFFREN",
+      "type_legacy": "mono",
+      "a_reauditer": true
+    },
+    {
+      "cle": "3|AVENUE|OCTAVE GREARD",
+      "type_legacy": "bureaux",
+      "a_reauditer": true
+    },
+    {
+      "cle": "3|RUE|BARTHELEMY",
+      "type_legacy": "mono",
+      "a_reauditer": true
+    },
+    {
+      "cle": "3|RUE|PONDICHERY",
+      "type_legacy": "bureaux",
+      "a_reauditer": true
+    },
+    {
+      "cle": "42|BOULEVARD|GARIBALDI",
+      "type_legacy": "mono",
+      "a_reauditer": true
+    },
+    {
+      "cle": "45|RUE|FREMICOURT",
+      "type_legacy": "mono",
+      "a_reauditer": true
+    },
+    {
+      "cle": "47|RUE|LETELLIER",
+      "type_legacy": "mono",
+      "a_reauditer": true
+    },
+    {
+      "cle": "4|RUE|BUENOS AIRES",
+      "type_legacy": "mono",
+      "a_reauditer": true
+    },
+    {
+      "cle": "4|RUE|EDGAR FAURE",
+      "type_legacy": "mono",
+      "a_reauditer": true
+    },
+    {
+      "cle": "4|RUE|FREMICOURT",
+      "type_legacy": "bureaux",
+      "a_reauditer": true
+    },
+    {
+      "cle": "51|RUE|FEDERATION",
+      "type_legacy": "mono",
+      "a_reauditer": true
+    },
+    {
+      "cle": "55|AVENUE|SUFFREN",
+      "type_legacy": "mono",
+      "a_reauditer": true
+    },
+    {
+      "cle": "55|RUE|FEDERATION",
+      "type_legacy": "mono",
+      "a_reauditer": true
+    },
+    {
+      "cle": "59|AVENUE|SEGUR",
+      "type_legacy": "bureaux",
+      "a_reauditer": true
+    },
+    {
+      "cle": "59|RUE|COMMERCE",
+      "type_legacy": "mono",
+      "a_reauditer": true
+    },
+    {
+      "cle": "5|RUE|AVRE",
+      "type_legacy": "bureaux",
+      "a_reauditer": true
+    },
+    {
+      "cle": "5|RUE|CAMBRONNE",
+      "type_legacy": "mono",
+      "a_reauditer": true
+    },
+    {
+      "cle": "66|AVENUE|MOTTE PICQUET",
+      "type_legacy": "mono",
+      "a_reauditer": true
+    },
+    {
+      "cle": "6|IMPASSE|GRISEL",
+      "type_legacy": "mono",
+      "a_reauditer": true
+    },
+    {
+      "cle": "6|RUE|BARTHELEMY",
+      "type_legacy": "mono",
+      "a_reauditer": true
+    },
+    {
+      "cle": "6|RUE|CEPRE",
+      "type_legacy": "mono",
+      "a_reauditer": true
+    },
+    {
+      "cle": "6|RUE|CHASSELOUP LAUBAT",
+      "type_legacy": "bureaux",
+      "a_reauditer": true
+    },
+    {
+      "cle": "71|QUAI|JACQUES CHIRAC",
+      "type_legacy": "mono",
+      "a_reauditer": true
+    },
+    {
+      "cle": "74|BOULEVARD|GRENELLE",
+      "type_legacy": "mono",
+      "a_reauditer": true
+    },
+    {
+      "cle": "7|RUE|GAL DE LARMINAT",
+      "type_legacy": "bureaux",
+      "a_reauditer": true
+    },
+    {
+      "cle": "83|BOULEVARD|GRENELLE",
+      "type_legacy": "mono",
+      "a_reauditer": true
+    },
+    {
+      "cle": "85|BOULEVARD|GRENELLE",
+      "type_legacy": "bureaux",
+      "a_reauditer": true
+    },
+    {
+      "cle": "89|RUE|FONDARY",
+      "type_legacy": "bureaux",
+      "a_reauditer": true
+    },
+    {
+      "cle": "8|AVENUE|CHARLES FLOQUET",
+      "type_legacy": "mono",
+      "a_reauditer": true
+    },
+    {
+      "cle": "8|RUE|CROIX NIVERT",
+      "type_legacy": "mono",
+      "a_reauditer": true
+    },
+    {
+      "cle": "8|RUE|EDGAR FAURE",
+      "type_legacy": "bureaux",
+      "a_reauditer": true
+    },
+    {
+      "cle": "8|RUE|MARIO NIKIS",
+      "type_legacy": "bureaux",
+      "a_reauditer": true
+    },
+    {
+      "cle": "9|AVENUE|CHARLES FLOQUET",
+      "type_legacy": "bureaux",
+      "a_reauditer": true
+    },
+    {
+      "cle": "9|RUE|HUMBLOT",
+      "type_legacy": "bureaux",
+      "a_reauditer": true
+    },
+    {
+      "cle": "9|RUE|LOURMEL",
+      "type_legacy": "mono",
+      "a_reauditer": true
+    }
+  ]
+}
