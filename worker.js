@@ -1195,6 +1195,23 @@ async function handleRequest(request, env) {
         const postageVal = postage_type || 'ecopli';
         const bothVal    = (both_sides === true || both_sides === 'true');
 
+        // [DEBUG] Trace clef MSB avant la requete HTTP (clef + Authorization
+        // masquees au milieu). Visible via `wrangler tail` ou Cloudflare
+        // Workers Logs. Cle: 5 premiers + 4 derniers caracteres. Header
+        // Authorization: 10 premiers + 6 derniers caracteres.
+        const _keyLen     = msbKey ? msbKey.length : 0;
+        const _keyMasked  = (_keyLen > 9)
+          ? msbKey.slice(0, 5) + '...' + msbKey.slice(-4)
+          : '(short_key)';
+        const _authHeader = 'Basic ' + btoa(msbKey + ':');
+        const _authLen    = _authHeader.length;
+        const _authMasked = (_authLen > 16)
+          ? _authHeader.slice(0, 10) + '***' + _authHeader.slice(-6)
+          : _authHeader;
+        console.log('[MSB] agence=' + agenceId
+          + ' key=' + _keyMasked + ' keyLen=' + _keyLen
+          + ' auth=' + _authMasked + ' authLen=' + _authLen);
+
         let msbResp;
         if (docx_base64) {
           // MSB exige multipart/form-data quand source_file_type = 'file'
@@ -1283,6 +1300,39 @@ async function handleRequest(request, env) {
       } while (cursor);
 
       return ok({ dates });
+    }
+
+    // ── GET /msb-history/:agence ── diagnostic temporaire ─────────────────
+    // Liste les courriers MSB envoyés (route GET https://api.mysendingbox.fr/letters).
+    // Retourne le JSON MSB brut pour identifier le nom exact du champ mode/live.
+    // Params: ?limit=N (defaut 25, cap 100) &offset=N (defaut 0).
+    const mhMatch = path.match(/^\/msb-history\/([a-z0-9-]+)$/);
+    if (mhMatch && method === 'GET') {
+      const agenceId = mhMatch[1];
+      const [, authErr] = await requireAuth(agenceId);
+      if (authErr) return authErr;
+
+      const msbKey = await env.DPE_KV.get(`msb_key:${agenceId}`);
+      if (!msbKey) return err('Cle API MySendingBox non configuree', 400);
+
+      const u = new URL(request.url);
+      let limit  = parseInt(u.searchParams.get('limit')  || '25', 10);
+      let offset = parseInt(u.searchParams.get('offset') || '0',  10);
+      if (!Number.isFinite(limit)  || limit  < 1) limit  = 25;
+      if (limit > 100) limit = 100;
+      if (!Number.isFinite(offset) || offset < 0) offset = 0;
+
+      try {
+        const msbResp = await fetch(
+          `https://api.mysendingbox.fr/letters?limit=${limit}&offset=${offset}`,
+          { headers: { 'Authorization': 'Basic ' + btoa(msbKey + ':') } }
+        );
+        const msbData = await msbResp.json();
+        if (!msbResp.ok) return err(`MSB ${msbResp.status}: ${JSON.stringify(msbData).slice(0, 400)}`, 502);
+        return ok(msbData);
+      } catch (e) {
+        return err('Erreur reseau MySendingBox', 502);
+      }
     }
 
         // ── /lib/:file ── proxy GitHub Raw pour libs JS (évite CSP sandbox) ──
