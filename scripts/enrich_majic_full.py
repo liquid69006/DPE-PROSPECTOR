@@ -19,27 +19,12 @@ import argparse, json, sys, time, urllib.parse, urllib.request, re
 from pathlib import Path
 from collections import defaultdict, Counter
 
+from secteur_config import load_secteur, slugs  # source unique de verite
+
 sys.stdout.reconfigure(encoding="utf-8") if hasattr(sys.stdout, "reconfigure") else None
 
-ROOT = Path(r"C:\Users\Station 5\DPE-PROSPECTOR")
+ROOT = Path(__file__).resolve().parent.parent
 MAJIC = r"C:\Users\Station 5\majic_locaux2_2025.parquet"
-
-SECTEUR_CFG = {
-    "dauphine_lacassagne": {
-        "light": "secteur_dauphine_lacassagne_light.json",
-        "cache_bg": "_bgid_parcelle_dl.json",
-        "short": "dl", "dep": "69", "code_commune": "383",
-        "rnc_dep_prefix": "69123383",      # prefix RNC parcelle
-        "bdnb_dep_prefix": "69383000",     # prefix BDNB parcelle
-    },
-    "motte_picquet": {
-        "light": "secteur_motte_picquet_light.json",
-        "cache_bg": "_bgid_parcelle_mp.json",
-        "short": "mp", "dep": "75", "code_commune": "115",
-        "rnc_dep_prefix": "75056115",
-        "bdnb_dep_prefix": "75115000",
-    },
-}
 
 
 def norm_voie(s):
@@ -91,15 +76,17 @@ def fetch_bdnb_parcelles_batch(bgids, cache_bg, throttle=0.05):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--secteur", required=True, choices=list(SECTEUR_CFG.keys()))
+    parser.add_argument("--secteur", required=True,
+                        choices=slugs() + ["dauphine_lacassagne", "motte_picquet"],
+                        help="slug secteur (tiret ; underscore accepte en back-compat)")
     parser.add_argument("--skip-bdnb-completion", action="store_true",
                         help="Ne pas completer le cache bgid_parcelle via live BDNB")
     args = parser.parse_args()
 
-    cfg = SECTEUR_CFG[args.secteur]
-    light_path = ROOT / "data" / cfg["light"]
-    cache_bg_path = ROOT / "data" / cfg["cache_bg"]
-    out_path = ROOT / "data" / f"_enrich_majic_{cfg['short']}_full.json"
+    cfg = load_secteur(args.secteur)
+    light_path = cfg.light
+    cache_bg_path = cfg.cache_bg
+    out_path = cfg.enrich_majic
 
     print("=" * 80)
     print(f"  enrich_majic_full.py PHASE 2 - {args.secteur}")
@@ -146,12 +133,12 @@ def main():
 
     # MAJIC bulk read filtre dep+commune
     print()
-    print(f"  [BULK] MAJIC read dep={cfg['dep']} commune={cfg['code_commune']}...")
+    print(f"  [BULK] MAJIC read dep={cfg.dep} commune={','.join(cfg.code_commune)}...")
     import pyarrow.parquet as pq
     t_majic = time.time()
     tbl = pq.read_table(MAJIC, filters=[
-        ("departement","=",cfg["dep"]),
-        ("code_commune","=",cfg["code_commune"]),
+        ("departement","=",cfg.dep),
+        ("code_commune","in",cfg.code_commune),   # LISTE (multi-commune: MP=115+107)
     ])
     df = tbl.to_pandas()
     print(f"  [OK] {len(df)} lots MAJIC PM lus en {time.time()-t_majic:.1f}s")
@@ -160,10 +147,11 @@ def main():
     df["addr"] = df.apply(fmt_addr, axis=1)
     df["nom_voie_norm"] = df["nom_voie"].apply(norm_voie)
 
-    # Groupby par (section, numero_parcelle)
+    # Groupby par (commune, section, numero_parcelle) ; prefixe BDNB par commune
+    _pref_by_commune = cfg.pref_by_commune()   # DL: {'383':'69383000'}
     by_parc = {}
-    for (sec, plan), sub in df.groupby(["section","numero_parcelle"]):
-        key = f"{cfg['bdnb_dep_prefix']}{sec}{str(int(plan)).zfill(4)}"
+    for (cc, sec, plan), sub in df.groupby(["code_commune","section","numero_parcelle"]):
+        key = f"{_pref_by_commune[str(cc)]}{sec}{str(int(plan)).zfill(4)}"
         by_parc[key] = sub
 
     print(f"  [OK] {len(by_parc)} parcelles distinctes indexees")

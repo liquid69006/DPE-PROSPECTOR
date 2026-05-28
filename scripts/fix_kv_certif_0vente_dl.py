@@ -36,6 +36,7 @@ Procedure :
      - re-GET 3 temoins
      - maj cache local
 """
+import argparse
 import json
 import os
 import random
@@ -47,23 +48,35 @@ from collections import Counter, defaultdict
 from datetime import datetime
 from pathlib import Path
 
+from secteur_config import load_secteur  # source unique de verite
+
 os.environ.setdefault("PYTHONUTF8", "1")
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8")
 
-ROOT = Path(r"C:\Users\Station 5\DPE-PROSPECTOR")
-LIGHT = ROOT / "data" / "secteur_dauphine_lacassagne_light.json"
-KV_LOCAL = ROOT / "data" / "_kv_assign_dl.json"
-ENRICH = ROOT / "data" / "_enrich_majic_dl_full.json"
-DVF = Path(r"C:\Users\Station 5\dvf_dauphine_lacassagne.json")
-KV_BAK = ROOT / "data" / "_kv_assign_dl.pre_certif_0vente.bak"
+ROOT = Path(__file__).resolve().parent.parent
 
 API = "https://dpe-prospector-api.yann-bufferne.workers.dev"
-AGENCE = "dauphine-lacassagne"
 UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
       "(KHTML, like Gecko) Chrome/131.0.0.0 Safari/531.36")
-ANS = ("2021", "2022", "2023", "2024", "2025")
+ANS = ("2021", "2022", "2023", "2024", "2025")   # fenetre DVF, commune tous secteurs
 JWT = os.environ.get("DPE_JWT") or ""
+
+# Globals secteur-dependants : peuples par _init_secteur() depuis secteurs.json.
+LIGHT = KV_LOCAL = ENRICH = DVF = KV_BAK = AGENCE = None
+CFG = None
+HLM_NEEDLES = PUBLIC_NON_HLM = ()
+
+
+def _init_secteur(slug):
+    global LIGHT, KV_LOCAL, ENRICH, DVF, KV_BAK, AGENCE, CFG
+    global HLM_NEEDLES, PUBLIC_NON_HLM
+    CFG = load_secteur(slug)
+    LIGHT, KV_LOCAL, ENRICH = CFG.light, CFG.kv_local, CFG.enrich_majic
+    DVF, AGENCE = CFG.dvf_path, CFG.slug
+    KV_BAK = ROOT / "data" / f"_kv_assign_{CFG.short}.pre_certif_0vente.bak"
+    HLM_NEEDLES, PUBLIC_NON_HLM = CFG.hlm_needles, CFG.public_non_hlm
+    return CFG
 
 # Helpers normalisation
 ABBR = {"SAINT": "ST", "SAINTE": "STE", "DOCTEUR": "DR", "PROFESSEUR": "PR"}
@@ -88,24 +101,8 @@ def parse_cle(cle):
     return int(m.group(1)), m.group(2), p[1], toks(p[2])
 
 
-HLM_NEEDLES = (
-    "HABITAT", "HLM", "GRANDLYON", "ALLIADE", "BATIGERE",
-    "CDC HABITAT", "FONCIERE D'HABITAT", "IMMOBILIERE RHONE",
-    "ALPES ISERE", "SACVL", "OPAC", "ESH", "FONCIERE HABITAT",
-    "ADOMA", "ERILIA", "IN'LI", "INLI", "DYNACITE", "3F RESIDENCES",
-    "ICF", "FONDATION ARALIS", "OPH ", " OPH",
-    "OFFICE PUBLIC DE L HABITAT", "OFFICE PUBLIC DE L'HABITAT",
-)
-PUBLIC_NON_HLM = (
-    "COMMUNE DE LYON", "METROPOLE DE LYON", "DEPARTEMENT DU RHONE",
-    "REGION AUVERGNE", "REGION RHONE", "ETAT ", "ETAT,",
-    "HOSPICES CIVILS", "CENTRE HOSPITALIER",
-    "COMMUNAUTE URBAINE", "GRAND LYON", "DIRECTION DE L IMMOBILIER",
-    "SEM ", "FONCIERE VESTA", "FONCIERE PIERRE",
-    "CENTRE REGIONAL OEUVRES", "CROUS",
-    "ASSOCIATION DIOCESAINE", "FONDATION", "ITINOVA",
-    "INSTITUT NATIONAL", "INSTITUT DE FRANCE",
-)
+# HLM_NEEDLES / PUBLIC_NON_HLM : peuples par _init_secteur() depuis
+# secteurs.json[<slug>].metier (hlm_needles / public_non_hlm).
 
 
 def is_hlm(d):
@@ -136,10 +133,17 @@ def kv_req(method, path, body=None):
 
 
 def main():
-    do_apply = (len(sys.argv) > 1 and sys.argv[1].lower() == "apply")
+    parser = argparse.ArgumentParser()
+    parser.add_argument("mode_pos", nargs="?", default="",
+                        help="'apply' pour POSTer (defaut: dry-run)")
+    parser.add_argument("--secteur", default="dauphine-lacassagne",
+                        help="slug secteur (defaut: dauphine-lacassagne)")
+    args = parser.parse_args()
+    cfg = _init_secteur(args.secteur)
+    do_apply = (args.mode_pos.lower() == "apply")
     mode = "APPLY" if do_apply else "DRY-RUN"
     print("=" * 78)
-    print(f"TAG CIBLES 0-VENTE CERTIFIEES DL  ({mode})")
+    print(f"TAG CIBLES 0-VENTE CERTIFIEES {cfg.short.upper()}  ({mode})")
     print("=" * 78)
 
     # 1. GET KV live
@@ -312,8 +316,12 @@ def main():
     # sont DEJA mixte = OK. Pour le batch CIBLE 0-vente : on les EXCLUE
     # (comme le filtre 3 le faisait) sauf 141 DAUPHINE qu'on traite a
     # part (retrait du tag mixte fantome + tagging cible).
-    SPECIAL_141 = "141|RUE|DAUPHINE"
-    SPECIAL_227FF = "227|AVENUE|FELIX FAURE"
+    # Cas speciaux TERRAIN propres a DL (decisions humaines Yann) : guardes
+    # par CFG.is_dl pour ne JAMAIS contaminer un autre secteur (ex : Avenue
+    # Felix Faure existe aussi a Paris 15e / MP). Non-DL -> None -> tous les
+    # usages aval (== SPECIAL_141, get(SPECIAL_141)) no-opent naturellement.
+    SPECIAL_141 = "141|RUE|DAUPHINE" if CFG.is_dl else None
+    SPECIAL_227FF = "227|AVENUE|FELIX FAURE" if CFG.is_dl else None
     pop3 = []
     excluded_filter3 = []
     for a in pop2:
@@ -345,7 +353,7 @@ def main():
             "ASSOCIATION DE L'HOTEL SOCIAL = asso de droit prive, "
             "4 lots PM minoritaires, le reste PP : copro classique."
         ),
-    }
+    } if CFG.is_dl else {}
 
     # Sous-classification : COPRO_ABSENTE_DVF / MONO / COPRO_FIGEE
     copro_absente = []

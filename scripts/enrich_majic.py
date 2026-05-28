@@ -24,9 +24,11 @@ import argparse, json, sys, time
 from pathlib import Path
 from collections import defaultdict, Counter
 
+from secteur_config import load_secteur, slugs  # source unique de verite
+
 sys.stdout.reconfigure(encoding="utf-8") if hasattr(sys.stdout, "reconfigure") else None
 
-ROOT = Path(r"C:\Users\Station 5\DPE-PROSPECTOR")
+ROOT = Path(__file__).resolve().parent.parent
 MAJIC = r"C:\Users\Station 5\majic_locaux2_2025.parquet"
 
 
@@ -140,17 +142,19 @@ def analyse_parcelle(df, cible_cle):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--secteur", required=True,
-                        choices=["dauphine_lacassagne", "motte_picquet"])
+                        choices=slugs() + ["dauphine_lacassagne", "motte_picquet"],
+                        help="slug secteur (tiret ; underscore accepte en back-compat)")
     parser.add_argument("--mode", default="hr_actifs",
                         choices=["hr_actifs", "all"])
     parser.add_argument("--limit", type=int, default=0,
                         help="Limite N adresses (0 = pas de limite)")
     args = parser.parse_args()
 
-    sct = args.secteur
-    short = "dl" if sct == "dauphine_lacassagne" else "mp"
-    light_path = ROOT / "data" / f"secteur_{sct}_light.json"
-    cache_bg_path = ROOT / "data" / f"_bgid_parcelle_{short}.json"
+    sct = args.secteur                          # forme brute conservee (affichage/payload)
+    cfg = load_secteur(sct)
+    short = cfg.short
+    light_path = cfg.light
+    cache_bg_path = cfg.cache_bg
     out_path = ROOT / "data" / f"_enrich_majic_{short}.json"
 
     print("=" * 80)

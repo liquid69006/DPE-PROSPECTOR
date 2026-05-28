@@ -34,24 +34,38 @@ from pathlib import Path
 
 import pyarrow.parquet as pq
 
+from secteur_config import load_secteur  # source unique de verite (data/secteurs.json)
+
 os.environ.setdefault("PYTHONUTF8", "1")
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8")
 
-ROOT = Path(r"C:\Users\Station 5\DPE-PROSPECTOR")
-LIGHT = ROOT / "data" / "secteur_dauphine_lacassagne_light.json"
-KV_LOCAL = ROOT / "data" / "_kv_assign_dl.json"
-ENRICH = ROOT / "data" / "_enrich_majic_dl_full.json"
-OVERRIDES = ROOT / "data" / "_social_overrides_dl.json"
-DVF = Path(r"C:\Users\Station 5\dvf_dauphine_lacassagne.json")
-MAJIC = r"C:\Users\Station 5\majic_locaux2_2025.parquet"
+ROOT = Path(__file__).resolve().parent.parent
+MAJIC = r"C:\Users\Station 5\majic_locaux2_2025.parquet"   # source nationale, tous secteurs
 
 API = "https://dpe-prospector-api.yann-bufferne.workers.dev"
-AGENCE = "dauphine-lacassagne"
 # JWT lu depuis env DPE_JWT, requis uniquement en mode --apply.
 JWT = os.environ.get("DPE_JWT") or ""
 UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
       "(KHTML, like Gecko) Chrome/131.0.0.0 Safari/531.36")
+
+# Globals secteur-dependants : peuples par _init_secteur() depuis secteurs.json.
+LIGHT = KV_LOCAL = ENRICH = OVERRIDES = DVF = AGENCE = None
+DEP = None                               # scalaire (1 secteur = 1 dep)
+CODE_COMMUNE = BDNB_PREFIX = None        # LISTES (multi-commune)
+SOCIAL_PCT_MIN = MUT_PER_YEAR_MIN = None
+
+
+def _init_secteur(slug):
+    global LIGHT, KV_LOCAL, ENRICH, OVERRIDES, DVF, AGENCE
+    global DEP, CODE_COMMUNE, BDNB_PREFIX, SOCIAL_PCT_MIN, MUT_PER_YEAR_MIN
+    cfg = load_secteur(slug)
+    LIGHT, KV_LOCAL, ENRICH = cfg.light, cfg.kv_local, cfg.enrich_majic
+    OVERRIDES, DVF, AGENCE  = cfg.social_overrides, cfg.dvf_path, cfg.slug
+    DEP = cfg.dep
+    CODE_COMMUNE, BDNB_PREFIX = cfg.code_commune, cfg.bdnb_dep_prefix
+    SOCIAL_PCT_MIN, MUT_PER_YEAR_MIN = cfg.social_pct_min, cfg.mut_apt_per_year_min
+    return cfg
 
 
 # ---------- Helpers ----------
@@ -200,13 +214,16 @@ def load_overrides():
 # ---------- Main ----------
 def main():
     parser = argparse.ArgumentParser()
+    parser.add_argument("--secteur", default="dauphine-lacassagne",
+                        help="slug secteur (defaut: dauphine-lacassagne)")
     parser.add_argument("--apply", action="store_true",
                         help="POST KV atomique apres affichage")
     args = parser.parse_args()
+    cfg = _init_secteur(args.secteur)
 
     # 1. Inputs
     print("=" * 78)
-    print("SCAN MAJIC KV UNTAGGED DL")
+    print(f"SCAN MAJIC KV UNTAGGED {cfg.short.upper()}")
     print("=" * 78)
 
     doc = json.loads(LIGHT.read_text(encoding="utf-8"))
@@ -279,13 +296,15 @@ def main():
     print(f"  sections MAJIC     : {len(sections)} ({sections[:8]}{'...' if len(sections) > 8 else ''})")
     print(f"  MAJIC parquet query global...")
     tbl = pq.read_table(MAJIC, filters=[
-        ("departement", "=", "69"),
-        ("code_commune", "=", "383"),
+        ("departement", "=", DEP),
+        ("code_commune", "in", CODE_COMMUNE),      # LISTE (multi-commune: MP=115+107)
         ("section", "in", sections),
     ])
     df = tbl.to_pandas()
-    # Filter to relevant parcelles
-    df["_parc"] = ("69383000" + df["section"].astype(str)
+    # Filter to relevant parcelles ; prefixe BDNB resolu PAR COMMUNE
+    _pref_by_commune = dict(zip(CODE_COMMUNE, BDNB_PREFIX))   # DL: {'383':'69383000'}
+    df["_parc"] = (df["code_commune"].astype(str).map(_pref_by_commune)
+                   + df["section"].astype(str)
                    + df["numero_parcelle"].apply(lambda x: f"{int(x):04d}"))
     df = df[df["_parc"].isin(needed_parcels)].copy()
     # Exclude syndic/mandataire (only Proprietaire + Emphyteote count)
@@ -397,8 +416,8 @@ def main():
         elif usage == "Tertiaire":
             reco = "bureaux"
             reason = "usage_principal_bdnb=Tertiaire"
-        elif has_emphy_hlm or social_pct >= 60:
-            if mut_an_exact >= 2.0:
+        elif has_emphy_hlm or social_pct >= SOCIAL_PCT_MIN:
+            if mut_an_exact >= MUT_PER_YEAR_MIN:
                 # Signal DVF : decollectivisation active = pas social pur
                 # (PP invisibles MAJIC LOCAUX 2 par RGPD)
                 reco = "mixte"
@@ -411,7 +430,7 @@ def main():
                           if has_emphy_hlm
                           else f"social_pct={social_pct}% (mut/an="
                                f"{mut_an_exact:.2f} < 2)")
-        elif 20 <= social_pct < 60:
+        elif 20 <= social_pct < SOCIAL_PCT_MIN:
             reco = "mixte"
             reason = f"social_pct={social_pct}%"
         elif top_p and top_p_pct >= 80 and top_p_pct_bdnb >= 80:
