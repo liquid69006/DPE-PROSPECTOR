@@ -129,3 +129,112 @@ Tout autre cas reste **hors-RNC orphelin** jusqu'à signalement terrain.
 - **Mémoire** : chaque pattern majeur ou décision méthodologique est
   également documentée dans `memory/` (slug-kebab.md) avec lien index
   dans `MEMORY.md`
+
+## §5. Principe directeur — les overrides sont des entrées sacrées
+
+⚠️ **Les overrides (`data/_social_overrides_*.json`) sont des ENTRÉES
+du pipeline, JAMAIS des sorties recalculées.**
+
+Ils encodent des arbitrages terrain humains (validés par Yann) qui
+priment sur tout calcul automatique. Aucun outil du pipeline ne doit
+les régénérer, les écraser ou les « corriger » : il les LIT et les
+applique par-dessus le résultat auto. Toute exécution qui modifierait
+un override est un bug à corriger, pas un résultat à committer.
+
+Corollaire : la reproductibilité (cf. §7, étape 5) se mesure sur
+`résultat auto + overrides appliqués`, jamais sur le seul calcul brut.
+
+## §6. Pièges génériques de qualification (chantier DL, mai 2026)
+
+Cinq pièges identifiés pendant la qualification du secteur
+Dauphiné-Lacassagne. Ils sont **secteur-agnostiques** : tout outil de
+qualification (DL, MP, futurs secteurs) doit les neutraliser.
+
+### Piège 1 — MAJIC LOCAUX 2 exclut les personnes physiques (RGPD)
+
+`social_pct` est **surévalué** : MAJIC LOCAUX 2 n'expose pas les
+propriétaires personnes physiques (RGPD), donc une copro
+décollectivisée (lots revendus à des particuliers) paraît massivement
+détenue par des personnes morales.
+
+**Antidote** : croiser avec DVF. Si `mut/an ≥ 2` sur l'adresse exacte
+→ **ne pas tagger social**, même si `social_pct ≥ 60 %` : une rotation
+soutenue signe une copro privée en cours de décollectivisation.
+(Seuils déjà encodés : `secteurs.json[<slug>].metier.seuils` =
+`social_pct_min: 60`, `mut_apt_per_year_min: 2`.)
+
+**Cas de référence** : **28 ÉTIENNE RICHERAND** (« Charial ») — MAJIC
+dit **98,4 % social**, mais **6,2 mut/an** = décollectivisation → en
+réalité **copro privée majoritaire**.
+
+### Piège 2 — FA-source (façade fictive) à 0 vente propre
+
+Une façade fictive (`_fusion_auto=True`) sans vente propre ne doit
+**pas** se voir attribuer les mutations de sa parcelle : ce sont les
+ventes d'autres bâtiments, comptées en double.
+
+**Antidote** : guard à 2 conditions.
+- `FA && own_ventes == 0` → **skip** (ne rien compter).
+- `FA && own_ventes > 0` → **traiter normalement** (ex. 84B DAUPHINE).
+
+**Cas de référence** : **11 façades fictives RUE DU DAUPHINÉ**
+(suffixes B/A/C/D sur les n° 25 à 55, toutes fusionnées vers le
+**59 RUE DU DAUPHINÉ**) + **2B DAUPHINÉ** (façade du **2 RUE DU
+DAUPHINÉ**). Toutes à 0 vente propre, ventes réelles portées par les
+ancres 59 et 2.
+
+### Piège 3 — DVF rate les suffixes B/T/Q dans certains lots
+
+DVF ne rattache pas toujours les suffixes (B/T/Q) au bon lot →
+**ventes orphelines** invisibles à l'adresse.
+
+**Antidote** : récupérer par **élargissement de clé** (recherche des
+mutations suffixées), avec **garde-fou anti-doublon** obligatoire pour
+ne pas re-compter une vente déjà rattachée.
+
+### Piège 4 — bgid mal snappés (light vs BAN autoritaire)
+
+Quand `make_light` snappe une adresse sur un `batiment_groupe_id`
+différent de celui que désigne BAN, l'adresse est rattachée au
+**mauvais bâtiment** → ses ventes deviennent invisibles.
+
+**Antidote** : détection **automatisable** (comparaison bgid light vs
+bgid BAN-autoritaire) → alimente la pile orange. **Correction =
+arbitrage manuel** (pattern Cambronne/Sisley, jamais auto).
+
+**Cas de référence** : **12 ESPÉRANCE**.
+
+### Piège 5 — le nom d'un propriétaire ne dit pas sa nature juridique
+
+Tagger « social » sur la base du **libellé** du propriétaire produit
+des faux positifs.
+
+**Antidote** : filtrer sur la **forme juridique** (HLM / OPH / ESH /
+OPAC…), pas sur le libellé. Les needles `metier.hlm_needles` /
+`public_non_hlm` doivent viser des formes/entités, pas des mots
+vagues.
+
+**Cas de référence** : **« ASSOCIATION DE L'HÔTEL SOCIAL »**
+(227 FÉLIX FAURE) = **association privée prospectable**, PAS du social
+malgré le mot « social » dans le nom.
+
+## §7. Plan chantier — Pipeline secteur-agnostique
+
+Objectif : un pipeline de qualification **paramétré par secteur**
+(via `data/secteurs.json[<slug>]`), validé sur DL avant tout scan MP.
+
+| Étape | Statut | Contenu |
+|---|---|---|
+| **1. Config par secteur** | ✅ **FAIT** | `data/secteurs.json` (chemins, géo, needles, seuils par slug) |
+| **2. Modulariser les outils** | à faire | Paramétrer les outils réutilisables existants (scan, certif, enrich, fixes génériques) pour lire `secteurs.json[<slug>]` **au lieu de DL/MP en dur**. Pas de réécriture — juste paramétrage. |
+| **3. Coder les 2 détecteurs manquants** | à faire | (a) **bgid suspects** (piège 4) ; (b) **noms ambigus** (piège 5). Tous deux alimentent la pile **orange « à arbitrer »**. |
+| **4. Tri 3 piles + rapport** | à faire | 🟢 **verte** = certifié auto · 🟠 **orange** = à arbitrer · 🔴 **rouge** = anomalies données. Produit un **rapport par secteur** + tag dashboard `a_arbitrer`. |
+| **5. VALIDATION sur DL** | à faire | **Banc d'essai** : le pipeline doit **reproduire l'état KV DL actuel à l'identique** (résultats auto **+ overrides préservés**, cf. §5). ⛔ **NE PAS scanner MP tant que DL n'est pas reproductible.** |
+| **6. Scan MP** | bloqué par §5 | À n'exécuter **qu'après** étape 5 réussie **ET** constitution des **needles parisiennes** (cf. `secteurs.json[motte-picquet].metier._TODO`). |
+
+**Sortie attendue de l'étape 6 (MP)** :
+- MP **qualifié à 100 %** : **1014 untagged scannés** + **73 legacy
+  ré-audités**.
+- **3 piles** produites (verte / orange / rouge).
+- **Pile orange arbitrée par Yann** (les arbitrages deviennent des
+  overrides — entrées sacrées, cf. §5).
