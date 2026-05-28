@@ -1270,8 +1270,15 @@ async function handleRequest(request, env) {
 
         // Tracer uniquement les envois réels (clé live), jamais les tests.
         // MSB renvoie mode: "live"|"test" (string), pas live_mode: bool.
+        // Schema agrege : 1 cle JSON par agence (read-modify-write).
+        // Race condition theorique si 2 envois MSB simultanes ; acceptable
+        // car la boucle d'envoi cote front est sequentielle.
         if (msbData.mode === 'live' && siren) {
-          await env.DPE_KV.put(`dernierCourrier:${agenceId}:${siren}`, new Date().toISOString());
+          const mapKey = `dernierCourrierMap:${agenceId}`;
+          const raw   = await env.DPE_KV.get(mapKey);
+          const map   = raw ? JSON.parse(raw) : {};
+          map[siren]  = new Date().toISOString();
+          await env.DPE_KV.put(mapKey, JSON.stringify(map));
         }
 
         return ok({ id: msbData._id, status: msbData.status?.name, live_mode: msbData.mode === 'live', file_for_corus: msbData.file_for_corus, file: msbData.file });
@@ -1287,19 +1294,8 @@ async function handleRequest(request, env) {
       const [, authErr] = await requireAuth(agenceId);
       if (authErr) return authErr;
 
-      const prefix = `dernierCourrier:${agenceId}:`;
-      const dates  = {};
-      let cursor;
-      do {
-        const listed = await env.DPE_KV.list({ prefix, cursor });
-        for (const k of listed.keys) {
-          const siren = k.name.slice(prefix.length);
-          const v = await env.DPE_KV.get(k.name);
-          if (v) dates[siren] = v;
-        }
-        cursor = listed.list_complete ? null : listed.cursor;
-      } while (cursor);
-
+      const raw   = await env.DPE_KV.get(`dernierCourrierMap:${agenceId}`);
+      const dates = raw ? JSON.parse(raw) : {};
       return ok({ dates });
     }
 
@@ -1338,8 +1334,8 @@ async function handleRequest(request, env) {
 
     // ── POST /msb-backfill/:agence ── reconstitution KV historique ────────
     // Parse les envois MSB live, matche par to.name -> sci_siren via
-    // denomination normalisee, ecrit dernierCourrier:{agence}:{siren} pour
-    // les SIRENs absents ou avec une date plus ancienne.
+    // denomination normalisee, merge dans dernierCourrierMap:{agence} pour
+    // les SIRENs absents ou avec une date plus ancienne (1 put final).
     // Params: ?offset=N (default 0) &max=N (default 8000, cap 8000)
     const mbMatch = path.match(/^\/msb-backfill\/([a-z0-9-]+)$/);
     if (mbMatch && method === 'POST') {
@@ -1430,39 +1426,22 @@ async function handleRequest(request, env) {
         if (letters.length < pageLimit) break; // fin pagination MSB
       }
 
-      // 4. Lister les cles dernierCourrier deja presentes (eviter clobber)
-      const existing = new Set();
-      const prefix   = `dernierCourrier:${agenceId}:`;
-      let cursor;
-      do {
-        const listed = await env.DPE_KV.list({ prefix, cursor });
-        for (const k of listed.keys) existing.add(k.name.slice(prefix.length));
-        cursor = listed.list_complete ? null : listed.cursor;
-      } while (cursor);
-
-      // 5. Decider qui ecrire : absent OU date plus recente
+      // 4. Merge dans le map agrege et ecrire en un seul put
+      const mapKey = `dernierCourrierMap:${agenceId}`;
+      const raw    = await env.DPE_KV.get(mapKey);
+      const map    = raw ? JSON.parse(raw) : {};
+      let kvWrites = 0;
       let skippedStaler = 0;
-      const toWrite = [];
       for (const [siren, dt] of bestPerSiren) {
-        if (!existing.has(siren)) {
-          toWrite.push([siren, dt]);
+        const cur = map[siren];
+        if (!cur || dt > cur) {
+          map[siren] = dt;
+          kvWrites++;
         } else {
-          const cur = await env.DPE_KV.get(`dernierCourrier:${agenceId}:${siren}`);
-          if (!cur || dt > cur) toWrite.push([siren, dt]);
-          else skippedStaler++;
+          skippedStaler++;
         }
       }
-
-      // 6. Ecrire en parallele par batches de 50
-      let kvWrites = 0;
-      const BATCH  = 50;
-      for (let i = 0; i < toWrite.length; i += BATCH) {
-        const slice = toWrite.slice(i, i + BATCH);
-        await Promise.all(slice.map(([siren, dt]) =>
-          env.DPE_KV.put(`dernierCourrier:${agenceId}:${siren}`, dt)
-        ));
-        kvWrites += slice.length;
-      }
+      if (kvWrites > 0) await env.DPE_KV.put(mapKey, JSON.stringify(map));
 
       return ok({
         processed,
@@ -1475,6 +1454,69 @@ async function handleRequest(request, env) {
         unique_sirens_matched:  bestPerSiren.size,
         kv_writes:              kvWrites,
         sample_unmatched:       sampleUnmatched,
+      });
+    }
+
+    // ── POST /migrate-dernierCourrier/:agence ── ancien schema -> map ─────
+    // Lit les cles dernierCourrier:{agence}:* (1 cle par siren) et agrege
+    // dans l'objet JSON dernierCourrierMap:{agence}. NE SUPPRIME PAS les
+    // anciennes cles (nettoyage manuel ulterieur).
+    // Idempotent : relancer ecrase la map avec les memes valeurs.
+    // Pagination via cursor KV list pour rester sous 1000 subrequests.
+    // Params:
+    //   ?cursor=XXX  (optionnel, cursor renvoye par l'appel precedent)
+    //   ?max=N       (default 700, cap 1000) -- cles a migrer par appel
+    const migMatch = path.match(/^\/migrate-dernierCourrier\/([a-z0-9-]+)$/);
+    if (migMatch && method === 'POST') {
+      const agenceId = migMatch[1];
+      const [, authErr] = await requireAuth(agenceId);
+      if (authErr) return authErr;
+
+      const u = new URL(request.url);
+      const cursorIn = u.searchParams.get('cursor') || undefined;
+      let max = parseInt(u.searchParams.get('max') || '700', 10);
+      if (!Number.isFinite(max) || max < 1) max = 700;
+      if (max > 1000) max = 1000;
+
+      const prefix = `dernierCourrier:${agenceId}:`;
+      const mapKey = `dernierCourrierMap:${agenceId}`;
+
+      // 1. Lister une page de cles (jusqu'a max)
+      const listed = await env.DPE_KV.list({ prefix, limit: max, cursor: cursorIn });
+      const keys   = listed.keys.map(k => k.name);
+
+      // 2. Get parallele par batch 100
+      const BATCH = 100;
+      const pairs = [];
+      for (let i = 0; i < keys.length; i += BATCH) {
+        const slice  = keys.slice(i, i + BATCH);
+        const values = await Promise.all(slice.map(k => env.DPE_KV.get(k)));
+        slice.forEach((k, idx) => {
+          if (values[idx]) pairs.push([k.slice(prefix.length), values[idx]]);
+        });
+      }
+
+      // 3. Read-modify-write la map cible
+      const raw = await env.DPE_KV.get(mapKey);
+      const map = raw ? JSON.parse(raw) : {};
+      let written = 0;
+      for (const [siren, dt] of pairs) {
+        const cur = map[siren];
+        if (!cur || dt > cur) { map[siren] = dt; written++; }
+      }
+      if (written > 0) await env.DPE_KV.put(mapKey, JSON.stringify(map));
+
+      // 4. Sample 3 entrees pour controle
+      const sample = Object.fromEntries(Object.entries(map).slice(0, 3));
+
+      return ok({
+        agence:        agenceId,
+        old_keys_read: keys.length,
+        written,
+        map_total:     Object.keys(map).length,
+        next_cursor:   listed.list_complete ? null : listed.cursor,
+        list_complete: listed.list_complete,
+        sample,
       });
     }
 
