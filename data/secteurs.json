@@ -1,0 +1,168 @@
+{
+  "_meta": {
+    "purpose": "Source unique de config pipeline par secteur (chemins, geo, needles metier). Le worker.js (AGENCES_CONFIG) reste separe pour la securite / auth. Tout outil pipeline doit lire ce fichier via --secteur <slug>.",
+    "version": "1.0",
+    "format_note": "Polygones au format [lat, lng] (convention zones_example.json + frontend Leaflet).",
+    "geo_lists_note": "Les champs geo.code_commune, geo.bdnb_dep_prefix, geo.rnc_dep_prefix et geo.codes_postaux sont en LISTES pour supporter les secteurs multi-communes/multi-arrondissements (ex : motte-picquet = 15e + 7e ; futurs composites type lopez = motte-picquet + pernety). Un secteur mono garde une liste a 1 element pour homogeneite de format. Le champ geo.dep reste scalaire (un secteur appartient a un seul departement)."
+  },
+
+  "dauphine-lacassagne": {
+    "short": "dl",
+    "agence_slug": "dauphine-lacassagne",
+    "nom_affichage": "Century 21 Dauphiné-Lacassagne",
+
+    "geo": {
+      "dep": "69",
+      "code_commune":    ["383"],
+      "rnc_dep_prefix":  ["69123383"],
+      "bdnb_dep_prefix": ["69383000"],
+      "codes_postaux":   ["69003"],
+      "zones": [
+        {
+          "nom": "Dauphiné-Lacassagne",
+          "codes_postaux": ["69003"],
+          "polygone": [
+            [45.763666847297316, 4.860882903977199],
+            [45.74943467306812,  4.860095318969854],
+            [45.74553255509332,  4.871239646832663],
+            [45.7506712028316,   4.87391743586096],
+            [45.75278697910744,  4.869743235317657],
+            [45.75449053288179,  4.87364178110758],
+            [45.754847723046254, 4.87525633037356],
+            [45.75490267517603,  4.87616205313347],
+            [45.75833707592611,  4.876634604137479],
+            [45.758707127819065, 4.873773912182969],
+            [45.76058202973891,  4.874885840542078],
+            [45.761682107375805, 4.871798156197514],
+            [45.76371663644693,  4.870115856267233]
+          ]
+        },
+        {
+          "nom": "Montchat",
+          "codes_postaux": ["69003"],
+          "polygone": [
+            [45.752807471686765, 4.8696556919393],
+            [45.750648569367286, 4.873968991938966],
+            [45.74554776311837,  4.8712261737505],
+            [45.74309361037359,  4.878425233301357],
+            [45.74276386559836,  4.878697742930143],
+            [45.74164596308222,  4.884055610780678],
+            [45.739037436828085, 4.892083206597164],
+            [45.74349477437073,  4.89467820901416],
+            [45.746809758539996, 4.89646416496484],
+            [45.74891686986501,  4.896869278651252],
+            [45.751589171037665, 4.8975505195815],
+            [45.752963814591624, 4.8984527035141525],
+            [45.75343915074612,  4.896685159480938],
+            [45.75400441009205,  4.893941783846714],
+            [45.75409433718764,  4.892339947067768],
+            [45.75431055205931,  4.887625722940868],
+            [45.75424631868333,  4.8851585260613035],
+            [45.75438763201271,  4.883096391355906],
+            [45.75499142129863,  4.878401352518125],
+            [45.75499142129863,  4.877296637497693],
+            [45.754901495648596, 4.875437033880047],
+            [45.75461887123453,  4.874092963938381]
+          ]
+        }
+      ]
+    },
+
+    "paths": {
+      "light":            "data/secteur_dauphine_lacassagne_light.json",
+      "kv_local":         "data/_kv_assign_dl.json",
+      "social_overrides": "data/_social_overrides_dl.json",
+      "enrich_majic":     "data/_enrich_majic_dl_full.json",
+      "cache_bg":         "data/_bgid_parcelle_dl.json",
+      "dvf_path":         "C:\\Users\\Station 5\\dvf_dauphine_lacassagne.json"
+    },
+
+    "metier": {
+      "hlm_needles": [
+        "HABITAT", "HLM", "GRANDLYON", "ALLIADE", "BATIGERE",
+        "CDC HABITAT", "FONCIERE D'HABITAT", "IMMOBILIERE RHONE",
+        "ALPES ISERE", "SACVL", "OPAC", "ESH", "FONCIERE HABITAT",
+        "ADOMA", "ERILIA", "IN'LI", "INLI", "DYNACITE", "3F RESIDENCES",
+        "ICF", "FONDATION ARALIS", "OPH ", " OPH",
+        "OFFICE PUBLIC DE L HABITAT", "OFFICE PUBLIC DE L'HABITAT"
+      ],
+      "public_non_hlm": [
+        "COMMUNE DE LYON", "METROPOLE DE LYON", "DEPARTEMENT DU RHONE",
+        "REGION AUVERGNE", "REGION RHONE", "ETAT ", "ETAT,",
+        "HOSPICES CIVILS", "CENTRE HOSPITALIER",
+        "COMMUNAUTE URBAINE", "GRAND LYON", "DIRECTION DE L IMMOBILIER",
+        "SEM ", "FONCIERE VESTA", "FONCIERE PIERRE",
+        "CENTRE REGIONAL OEUVRES", "CROUS",
+        "ASSOCIATION DIOCESAINE", "FONDATION", "ITINOVA",
+        "INSTITUT NATIONAL", "INSTITUT DE FRANCE"
+      ],
+      "seuils": {
+        "social_pct_min": 60,
+        "mut_apt_per_year_min": 2
+      }
+    }
+  },
+
+  "motte-picquet": {
+    "short": "mp",
+    "agence_slug": "motte-picquet",
+    "nom_affichage": "Century 21 La Motte Picquet",
+
+    "geo": {
+      "dep": "75",
+      "code_commune":    ["115", "107"],
+      "rnc_dep_prefix":  ["75056115", "75056107"],
+      "bdnb_dep_prefix": ["75115000", "75107000"],
+      "codes_postaux":   ["75015", "75007"],
+      "zones": [
+        {
+          "nom": "La Motte Picquet",
+          "codes_postaux": ["75015"],
+          "polygone": [
+            [48.858212582706386, 2.2919554253710714],
+            [48.856952634233494, 2.2896801769585124],
+            [48.85478031976254,  2.288511642485929],
+            [48.850805399376725, 2.292457843674356],
+            [48.8496157598249,   2.291454218604912],
+            [48.84866281657736,  2.293952595524104],
+            [48.84800174990906,  2.2934111591970066],
+            [48.84704019051094,  2.2958899665836725],
+            [48.84455035317086,  2.293763412154931],
+            [48.84373898272662,  2.2958638752571403],
+            [48.84522433760975,  2.2976129460604113],
+            [48.84627754551093,  2.2992186401748427],
+            [48.84619269907435,  2.2994764999140784],
+            [48.847705772284996, 2.301539377824639],
+            [48.84535836812293,  2.3020336089902003],
+            [48.84651794296795,  2.3062453180571936],
+            [48.84510382370922,  2.311144653094374],
+            [48.84732397307732,  2.3116173959486446],
+            [48.849643004886815, 2.3078999180480366],
+            [48.84791788169778,  2.306137876499264],
+            [48.851171517835695, 2.3009375396059966],
+            [48.85190677573294,  2.3019474902492334]
+          ]
+        }
+      ]
+    },
+
+    "paths": {
+      "light":            "data/secteur_motte_picquet_light.json",
+      "kv_local":         "data/_kv_assign_mp.json",
+      "social_overrides": "data/_social_overrides_mp.json",
+      "enrich_majic":     "data/_enrich_majic_mp_full.json",
+      "cache_bg":         "data/_bgid_parcelle_mp.json",
+      "dvf_path":         "C:\\Users\\Station 5\\dvf_motte_picquet.json"
+    },
+
+    "metier": {
+      "_TODO": "Needles parisiennes a constituer avant scan MP (Paris Habitat, RIVP, Elogie-Siemp, EFIDIS, ICF, Antin Residences, IDF Habitat, Batigere Ile de France, Toit et Joie, Immobiliere 3F...). NE PAS reutiliser les needles lyonnaises - elles ne captureront pas les bailleurs sociaux parisiens et le scan social MP retournera des faux negatifs systematiques. NB : couverture MP = 75115 (969 adresses, 75.9%) + 75107 (153 adresses, 12.0%) - les needles parisiennes doivent capter les bailleurs presents sur les 2 arrondissements.",
+      "hlm_needles": [],
+      "public_non_hlm": [],
+      "seuils": {
+        "social_pct_min": 60,
+        "mut_apt_per_year_min": 2
+      }
+    }
+  }
+}
