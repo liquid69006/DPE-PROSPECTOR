@@ -1269,11 +1269,12 @@ async function handleRequest(request, env) {
         if (!msbResp.ok) return err(`MSB ${msbResp.status}: ${JSON.stringify(msbData)}`, 502);
 
         // Tracer uniquement les envois réels (clé live), jamais les tests.
-        if (msbData.live_mode === true && siren) {
+        // MSB renvoie mode: "live"|"test" (string), pas live_mode: bool.
+        if (msbData.mode === 'live' && siren) {
           await env.DPE_KV.put(`dernierCourrier:${agenceId}:${siren}`, new Date().toISOString());
         }
 
-        return ok({ id: msbData._id, status: msbData.status?.name, live_mode: msbData.live_mode === true, file_for_corus: msbData.file_for_corus, file: msbData.file });
+        return ok({ id: msbData._id, status: msbData.status?.name, live_mode: msbData.mode === 'live', file_for_corus: msbData.file_for_corus, file: msbData.file });
       } catch(e) {
         return err('Erreur réseau MySendingBox', 502);
       }
