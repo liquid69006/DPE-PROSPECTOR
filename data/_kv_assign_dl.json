@@ -1500,12 +1500,10 @@
       "type": "mono"
     },
     "227|AVENUE|FELIX FAURE": {
-      "type": "mixte",
-      "_qualif_source": "dvf_decollect",
-      "_qualif_date": "2026-05-27T07:09:50Z",
-      "_social_pct_corrige": 0,
-      "_mut_apt_per_year": 0,
-      "_previous_tag": "social"
+      "type": "cible_0vente_active",
+      "_qualif_source": "ultime_scan_certif",
+      "_qualif_date": "2026-05-28T06:28:38Z",
+      "_qualif_note": "terrain override : ASSO DE L'HOTEL SOCIAL = asso de droit prive (NI mono NI social) ; remplace _qualif_source=dvf_decollect anterieur"
     },
     "71|RUE|DAUPHINE": {
       "type": "mono"
@@ -1534,10 +1532,15 @@
       "type": "mono"
     },
     "141|RUE|DAUPHINE": {
-      "type": "mixte"
+      "type": "cible_0vente_active",
+      "_qualif_source": "ultime_scan_certif",
+      "_qualif_date": "2026-05-28T06:28:38Z",
+      "_qualif_note": "retrait tag 'mixte' fantome sans qualif_source pre-existant"
     },
     "48|AVENUE|LACASSAGNE": {
-      "type": "mixte"
+      "type": "cible_0vente_active",
+      "_qualif_source": "ultime_scan_certif",
+      "_qualif_date": "2026-05-28T06:28:38Z"
     },
     "2|RUE|DAUPHINE": {
       "type": "mixte",

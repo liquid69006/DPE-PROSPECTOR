@@ -5,11 +5,11 @@
     "purpose": "Protect these cles from being re-tagged 'social' by future MAJIC-only scans (PM-only heuristic). DVF mutations or social_pct_corrige confirm they are NOT pure HLM social.",
     "rule": "Si une cle figure ici, le scan MAJIC ne doit PAS lui auto-attribuer 'social'. Le tag manuel (_qualif_source='dvf_decollect') prevaut.",
     "last_cleanup": {
-      "date": "2026-05-27T07:42:42Z",
+      "date": "2026-05-28T06:28:38Z",
       "removed": [
-        "2B|RUE|DAUPHINE"
+        "227|AVENUE|FELIX FAURE"
       ],
-      "reason": "FA-source 0 own vente : pas un vrai reclassement, retire de la liste pour eviter double-tracking"
+      "reason": "terrain override : asso prive non social, deplace en cible 0-vente certifiee"
     }
   },
   "overrides": [
@@ -235,15 +235,6 @@
       "new_tag": "mixte",
       "qualif_source": "dvf_decollect",
       "social_pct_corrige": 15.2,
-      "mut_apt_per_year": 0.0,
-      "reason": "pct<60"
-    },
-    {
-      "cle": "227|AVENUE|FELIX FAURE",
-      "previous_tag": "social",
-      "new_tag": "mixte",
-      "qualif_source": "dvf_decollect",
-      "social_pct_corrige": 0.0,
       "mut_apt_per_year": 0.0,
       "reason": "pct<60"
     }
