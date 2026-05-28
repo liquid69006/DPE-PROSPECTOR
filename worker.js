@@ -1336,6 +1336,148 @@ async function handleRequest(request, env) {
       }
     }
 
+    // ── POST /msb-backfill/:agence ── reconstitution KV historique ────────
+    // Parse les envois MSB live, matche par to.name -> sci_siren via
+    // denomination normalisee, ecrit dernierCourrier:{agence}:{siren} pour
+    // les SIRENs absents ou avec une date plus ancienne.
+    // Params: ?offset=N (default 0) &max=N (default 8000, cap 8000)
+    const mbMatch = path.match(/^\/msb-backfill\/([a-z0-9-]+)$/);
+    if (mbMatch && method === 'POST') {
+      const agenceId = mbMatch[1];
+      const [, authErr] = await requireAuth(agenceId);
+      if (authErr) return authErr;
+
+      const msbKey = await env.DPE_KV.get(`msb_key:${agenceId}`);
+      if (!msbKey) return err('Cle API MySendingBox non configuree', 400);
+
+      const u = new URL(request.url);
+      let offset = parseInt(u.searchParams.get('offset') || '0',    10);
+      let max    = parseInt(u.searchParams.get('max')    || '8000', 10);
+      if (!Number.isFinite(offset) || offset < 0) offset = 0;
+      if (!Number.isFinite(max)    || max    < 1) max    = 8000;
+      if (max > 8000) max = 8000;
+
+      // 1. Charger les SCI agence depuis GitHub Raw
+      const sciUrl  = `https://raw.githubusercontent.com/liquid69006/DPE-PROSPECTOR/main/data/${agenceId}-sci.json`;
+      const sciResp = await fetch(sciUrl);
+      if (!sciResp.ok) return err(`Impossible de charger ${agenceId}-sci.json (HTTP ${sciResp.status})`, 502);
+      const sciJson = await sciResp.json();
+      const allSci  = Array.isArray(sciJson.sci) ? sciJson.sci : [];
+
+      // 2. Index nom_normalise -> Set<siren> (collisions = multiple_match)
+      const normSciName = function(s) {
+        return (s || '')
+          .toUpperCase()
+          .normalize('NFD').replace(/[̀-ͯ]/g, '')
+          .replace(/^SOCIETE CIVILE IMMOBILIERE\s+/, '')
+          .replace(/^SCI\s+/, '')
+          .replace(/^SC\s+/, '')
+          .replace(/\s+/g, ' ')
+          .trim();
+      };
+      const nameToSirens = new Map();
+      for (const s of allSci) {
+        if (!s.sci_siren) continue;
+        const k = normSciName(s.sci_nom);
+        if (!k) continue;
+        let set = nameToSirens.get(k);
+        if (!set) { set = new Set(); nameToSirens.set(k, set); }
+        set.add(s.sci_siren);
+      }
+
+      // 3. Pagination MSB sequentielle, agregation in-memory
+      const PAGE = 100;
+      let processed = 0, matched = 0;
+      let skippedNoMatch = 0, skippedMultipleMatch = 0;
+      let skippedNotLive = 0, skippedNoDate = 0;
+      const sampleUnmatched = [];
+      const bestPerSiren = new Map(); // siren -> ISO max
+
+      while (processed < max) {
+        const pageLimit = Math.min(PAGE, max - processed);
+        const msbResp = await fetch(
+          `https://api.mysendingbox.fr/letters?limit=${pageLimit}&offset=${offset + processed}`,
+          { headers: { 'Authorization': 'Basic ' + btoa(msbKey + ':') } }
+        );
+        if (!msbResp.ok) {
+          const t = await msbResp.text();
+          return err(`MSB ${msbResp.status}: ${t.slice(0, 300)}`, 502);
+        }
+        const data    = await msbResp.json();
+        const letters = Array.isArray(data.letters) ? data.letters : [];
+        if (letters.length === 0) break;
+
+        for (const L of letters) {
+          processed++;
+          if (L.mode !== 'live') { skippedNotLive++; continue; }
+          const name = L.to && L.to.name;
+          const k    = normSciName(name);
+          if (!k) { skippedNoMatch++; continue; }
+          const set = nameToSirens.get(k);
+          if (!set || set.size === 0) {
+            skippedNoMatch++;
+            if (sampleUnmatched.length < 10) sampleUnmatched.push({ to_name: name, normalized: k });
+            continue;
+          }
+          if (set.size > 1) { skippedMultipleMatch++; continue; }
+          const dt = L.created_at;
+          if (!dt) { skippedNoDate++; continue; }
+          const siren = set.values().next().value;
+          matched++;
+          const cur = bestPerSiren.get(siren);
+          if (!cur || dt > cur) bestPerSiren.set(siren, dt);
+        }
+        if (letters.length < pageLimit) break; // fin pagination MSB
+      }
+
+      // 4. Lister les cles dernierCourrier deja presentes (eviter clobber)
+      const existing = new Set();
+      const prefix   = `dernierCourrier:${agenceId}:`;
+      let cursor;
+      do {
+        const listed = await env.DPE_KV.list({ prefix, cursor });
+        for (const k of listed.keys) existing.add(k.name.slice(prefix.length));
+        cursor = listed.list_complete ? null : listed.cursor;
+      } while (cursor);
+
+      // 5. Decider qui ecrire : absent OU date plus recente
+      let skippedStaler = 0;
+      const toWrite = [];
+      for (const [siren, dt] of bestPerSiren) {
+        if (!existing.has(siren)) {
+          toWrite.push([siren, dt]);
+        } else {
+          const cur = await env.DPE_KV.get(`dernierCourrier:${agenceId}:${siren}`);
+          if (!cur || dt > cur) toWrite.push([siren, dt]);
+          else skippedStaler++;
+        }
+      }
+
+      // 6. Ecrire en parallele par batches de 50
+      let kvWrites = 0;
+      const BATCH  = 50;
+      for (let i = 0; i < toWrite.length; i += BATCH) {
+        const slice = toWrite.slice(i, i + BATCH);
+        await Promise.all(slice.map(([siren, dt]) =>
+          env.DPE_KV.put(`dernierCourrier:${agenceId}:${siren}`, dt)
+        ));
+        kvWrites += slice.length;
+      }
+
+      return ok({
+        processed,
+        matched,
+        skipped_no_match:       skippedNoMatch,
+        skipped_multiple_match: skippedMultipleMatch,
+        skipped_not_live:       skippedNotLive,
+        skipped_no_date:        skippedNoDate,
+        skipped_staler:         skippedStaler,
+        unique_sirens_matched:  bestPerSiren.size,
+        kv_writes:              kvWrites,
+        sample_unmatched:       sampleUnmatched,
+      });
+    }
+
         // ── /lib/:file ── proxy GitHub Raw pour libs JS (évite CSP sandbox) ──
     const libMatch = path.match(/^\/lib\/([a-z0-9._-]+\.(?:js))$/);
     if (libMatch && method === "GET") {
