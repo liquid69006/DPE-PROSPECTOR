@@ -21,7 +21,10 @@ Usage (PowerShell 5.1) :
   Remove-Item Env:\WORKER_JWT_SECRET    # imperatif : enlever le secret
 
 Options :
-  --agence <id>    defaut : dauphine-lacassagne
+  --agence <id>    defaut : dauphine-lacassagne (slug racine du payload)
+  --agences <csv>  optionnel : liste CSV de slugs (override payload.agences)
+                   ex : --agences dauphine-lacassagne,motte-picquet,pernety
+                   si absent : payload.agences = [args.agence]
   --role <r>       defaut : patron
   --ttl-hours <h>  defaut : 24 (= TOKEN_TTL_MS worker)
 """
@@ -54,6 +57,10 @@ def sign_jwt(payload, secret):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--agence", default="dauphine-lacassagne")
+    ap.add_argument("--agences",
+                    help="Liste CSV de slugs (ex: dauphine-lacassagne,"
+                         "motte-picquet). Si fournie, override "
+                         "payload.agences. Sinon defaut = [--agence].")
     ap.add_argument("--role", default="patron")
     ap.add_argument("--ttl-hours", type=int, default=24)
     args = ap.parse_args()
@@ -64,9 +71,17 @@ def main():
                  "Set la avant le run (cf docstring du script).")
 
     exp_ms = int(time.time() * 1000) + args.ttl_hours * 3600 * 1000
+
+    # agences[] : si --agences fourni, parse CSV ; sinon defaut = [--agence]
+    if args.agences:
+        agences_list = [s.strip() for s in args.agences.split(",")
+                        if s.strip()]
+    else:
+        agences_list = [args.agence]
+
     payload = {
         "agence":   args.agence,
-        "agences":  [args.agence],
+        "agences":  agences_list,
         "role":     args.role,
         "exp":      exp_ms,
     }
@@ -80,6 +95,7 @@ def main():
     # Note d'info sur stderr (ne pollue pas le copier-coller du token)
     sys.stderr.write(
         f"\n[info] role={args.role}  agence={args.agence}  "
+        f"agences={agences_list}  "
         f"ttl={args.ttl_hours}h  exp_ms={exp_ms}\n"
         "[info] ce JWT n'est PAS ecrit sur disque. Copie-le maintenant.\n"
     )
