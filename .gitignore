@@ -4,3 +4,12 @@ __pycache__/
 *.csv
 *.bak
 .wrangler/
+
+# Map live SIREN -> date dernier courrier + backups (KV dumps locaux, ne pas committer)
+data/_dc_lopez*
+# Listes de relance generees (donnees nominatives)
+data/_sci_mp_a_relancer_*.csv
+# Exports MSB bruts deposes localement
+data/export_courrier_*.csv
+# Dump live des assignations SCI (statut/conseiller) + backups + merge
+data/_sci_assignments_lopez*.json
