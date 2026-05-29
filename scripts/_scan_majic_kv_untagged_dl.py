@@ -476,6 +476,10 @@ def main():
             "reco": reco,
             "reason": reason,
             "has_emphy_hlm": has_emphy_hlm,
+            "hlm_owners": sorted(
+                [{"denom": meta[k]["dn"], "lots": n}
+                 for k, n in owner_lots.items() if meta[k]["class"] == "HLM"],
+                key=lambda x: -x["lots"]),
         })
 
     rows.sort(key=lambda r: -r["bdnb"])
