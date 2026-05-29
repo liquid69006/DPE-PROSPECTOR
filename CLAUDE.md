@@ -175,6 +175,7 @@ Ces points sont **connus**, **acceptés en l'état**, et ne doivent **pas** êtr
 - Scripts `make_light_*.py` hors repo (générés localement à partir de sources DVF/RNC/BDNB brutes que Yann a en local)
 - Backups `.preX.bak` / `.backup_*` / `.bak.json` s'accumulent (volontaire, traçabilité)
 - Logs/diags/audits intermédiaires conservés dans `data/` (volontaire)
+- **Le `!` de Claude Code route en bash, pas en PowerShell.** Pour les commandes Windows-spécifiques (`Out-File`, `Remove-Item`, secrets Wrangler interactifs comme `load_jwt.ps1`), utiliser la session PowerShell directe — pas le `!` depuis Claude Code.
 - **Fallback JWT_SECRET silencieux** : `worker.js` ligne ~338 utilise `env.JWT_SECRET || "dev-secret-change-me"`. Si le secret n'est pas configuré en prod, le code ne crashe pas — c'est un piège silencieux à connaître mais accepté.
 
 ---

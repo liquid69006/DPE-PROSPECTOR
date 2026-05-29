@@ -225,12 +225,12 @@ Objectif : un pipeline de qualification **paramétré par secteur**
 
 | Étape | Statut | Contenu |
 |---|---|---|
-| **1. Config par secteur** | ✅ **FAIT** | `data/secteurs.json` (chemins, géo, needles, seuils par slug) |
-| **2. Modulariser les outils** | à faire | Paramétrer les outils réutilisables existants (scan, certif, enrich, fixes génériques) pour lire `secteurs.json[<slug>]` **au lieu de DL/MP en dur**. Pas de réécriture — juste paramétrage. |
-| **3. Coder les 2 détecteurs manquants** | à faire | (a) **bgid suspects** (piège 4) ; (b) **noms ambigus** (piège 5). Tous deux alimentent la pile **orange « à arbitrer »**. |
+| **1. Config par secteur** | ✅ **FAIT** (`d92abcf`) | `data/secteurs.json` (chemins, géo, needles, seuils par slug) |
+| **2. Modulariser les outils** | ✅ **FAIT** (`411390b`) | Les 4 moteurs (`_scan`, `fix_kv`, `enrich_full`, `enrich`) + helper `secteur_config.py` lisent `secteurs.json[<slug>]` via `--secteur`. Logique inchangée. |
+| **3. Coder les 2 détecteurs** | ✅ **FAIT** (`8e21d54`) | `_detect_bgid_suspects.py` (piège 4) + `_detect_noms_ambigus.py` (piège 5), read-only secteur-agnostiques, alimentent la pile **orange**. |
 | **4. Tri 3 piles + rapport** | à faire | 🟢 **verte** = certifié auto · 🟠 **orange** = à arbitrer · 🔴 **rouge** = anomalies données. Produit un **rapport par secteur** + tag dashboard `a_arbitrer`. |
 | **5. VALIDATION sur DL** | à faire | **Banc d'essai** : le pipeline doit **reproduire l'état KV DL actuel à l'identique** (résultats auto **+ overrides préservés**, cf. §5). ⛔ **NE PAS scanner MP tant que DL n'est pas reproductible.** |
-| **6. Scan MP** | bloqué par §5 | À n'exécuter **qu'après** étape 5 réussie **ET** constitution des **needles parisiennes** (cf. `secteurs.json[motte-picquet].metier._TODO`). |
+| **6. Scan MP** | 🔒 bloqué (§5 + needles) | À n'exécuter **qu'après** étape 5 réussie **ET** constitution des **needles parisiennes** (cf. `secteurs.json[motte-picquet].metier._TODO`). |
 
 **Sortie attendue de l'étape 6 (MP)** :
 - MP **qualifié à 100 %** : **1014 untagged scannés** + **73 legacy
