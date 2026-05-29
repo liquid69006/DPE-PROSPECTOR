@@ -27,6 +27,7 @@ import json
 import os
 import re
 import sys
+import time
 import urllib.error
 import urllib.request
 from collections import defaultdict
@@ -218,6 +219,8 @@ def main():
                         help="slug secteur (defaut: dauphine-lacassagne)")
     parser.add_argument("--apply", action="store_true",
                         help="POST KV atomique apres affichage")
+    parser.add_argument("--json", default=None,
+                        help="exporte rows[] (classification complete) vers ce chemin JSON")
     args = parser.parse_args()
     cfg = _init_secteur(args.secteur)
 
@@ -476,6 +479,15 @@ def main():
         })
 
     rows.sort(key=lambda r: -r["bdnb"])
+
+    # Export JSON additif (consomme par pipeline.py : pile verte + zones grises).
+    if args.json:
+        Path(args.json).write_text(json.dumps({
+            "secteur": cfg.slug, "short": cfg.short,
+            "generated_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+            "rows": rows,
+        }, ensure_ascii=False, indent=2), encoding="utf-8")
+        print(f"  [json] {len(rows)} rows -> {Path(args.json).name}")
 
     # 7. Resumes
     from collections import Counter
