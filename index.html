@@ -5582,6 +5582,10 @@ function renderRowSci(sci) {
   const actif   = sci.sci_active === 'oui';
   const zone    = sci.zone || '';
 
+  // Envoyabilité courrier : même règle que le gate MSB (cp + ville + rue).
+  const sgRow      = parseSiegeSocial(sci.siege_social);
+  const envoyable  = !!(sgRow.cp && sgRow.ville && sgRow.adresse && sgRow.adresse.trim());
+
   const statOpts = STATUTS_SCI.map(s=>`<option value="${s}"${statut===s?' selected':''}>${s}</option>`).join('');
   const consOpts = conseillers.map(c=>`<option value="${c}"${conseil===c?' selected':''}>${c||'—'}</option>`).join('');
 
@@ -5607,8 +5611,9 @@ function renderRowSci(sci) {
       <a href="${'https://www.pappers.fr/entreprise/' + (sci.sci_nom||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'') + (sci.sci_siren ? '-' + sci.sci_siren : '')}" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:2px;cursor:pointer;">${sci.sci_nom||'—'}</a>
       <small>${sci.sci_siren||''}</small>
     </td>
-    <td style="font-size:11px;color:var(--text2);max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="${sci.siege_social||''}">
-      ${sci.siege_social||'<span class="no-data">—</span>'}
+    <td style="font-size:11px;color:var(--text2);max-width:180px;" title="${envoyable ? (sci.siege_social||'') : 'Siège incomplet (CP + ville sans rue) — non envoyable par courrier'}">
+      <span style="display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${sci.siege_social||'<span class="no-data">—</span>'}</span>
+      ${envoyable ? '' : '<span style="display:inline-block;margin-top:2px;font-size:10px;font-weight:700;color:#b45309;background:#fef3c7;border-radius:4px;padding:1px 5px;">⚠ Siège incomplet — non envoyable</span>'}
     </td>
     <td>${renderDirigeant(sci.gerants, 0)}</td>
     <td>${renderDirigeant(sci.gerants, 1)}</td>
@@ -6038,7 +6043,9 @@ async function ouvrirApercuCourriers(sess, win) {
 
   const items = liste.map(sci => {
     const siege = parseSiegeSocial(sci.siege_social);
-    const valid = !!(siege.cp && siege.ville);
+    // Gate envoi MSB : exige aussi une rue (adresse non vide), sinon MSB rejette
+    // en 400 "to.address_line1 is required" (siège type "CP VILLE" sans rue).
+    const valid = !!(siege.cp && siege.ville && siege.adresse && siege.adresse.trim());
     return { sci, siege, valid };
   });
   const sendable   = items.filter(x => x.valid).length;

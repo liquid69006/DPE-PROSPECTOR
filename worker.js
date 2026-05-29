@@ -1203,6 +1203,11 @@ async function handleRequest(request, env) {
           address_postalcode: (from.zip_code     || '').slice(0, 10),
           address_country:    'France',
         };
+        // Garde-fou : ne pas appeler MSB si address_line1 vide (siège sans rue) —
+        // MSB renverrait 400 "to.address_line1 is required". On coupe en amont.
+        if (!toMSB.address_line1 || !toMSB.address_line1.trim()) {
+          return err(`SCI ${siren || '?'}: address_line1 vide, SCI non envoyée`, 400);
+        }
         const colorVal   = color || 'color';
         const postageVal = postage_type || 'ecopli';
         const bothVal    = (both_sides === true || both_sides === 'true');
