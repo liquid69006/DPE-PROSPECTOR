@@ -1290,12 +1290,19 @@ async function handleRequest(request, env) {
         // Schema agrege : 1 cle JSON par agence (read-modify-write).
         // Race condition theorique si 2 envois MSB simultanes ; acceptable
         // car la boucle d'envoi cote front est sequentielle.
+        // L'envoi MSB a réussi à ce stade (lettre créée + facturée). Le suivi KV
+        // ne doit JAMAIS faire échouer la réponse : sinon un throttle KV (free tier)
+        // transforme un envoi réussi en faux ❌ côté UI → renvois en double.
         if (msbData.mode === 'live' && siren) {
-          const mapKey = `dernierCourrierMap:${agenceId}`;
-          const raw   = await env.DPE_KV.get(mapKey);
-          const map   = raw ? JSON.parse(raw) : {};
-          map[siren]  = new Date().toISOString();
-          await env.DPE_KV.put(mapKey, JSON.stringify(map));
+          try {
+            const mapKey = `dernierCourrierMap:${agenceId}`;
+            const map = JSON.parse((await env.DPE_KV.get(mapKey)) || '{}');
+            map[siren] = new Date().toISOString();
+            await env.DPE_KV.put(mapKey, JSON.stringify(map));
+          } catch (kvErr) {
+            console.error(`[msb-send] PUT KV échec siren=${siren} agence=${agenceId}: ${kvErr.message}. Lettre ${msbData._id || '?'} DÉJÀ envoyée à MSB.`);
+            // Ne PAS rethrow : la lettre est partie, on renvoie quand même un succès.
+          }
         }
 
         return ok({ id: msbData._id, status: msbData.status?.name, live_mode: msbData.mode === 'live', file_for_corus: msbData.file_for_corus, file: msbData.file });
