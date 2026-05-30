@@ -58,7 +58,7 @@
       "type": "bureaux"
     },
     "55|RUE|VILLETTE": {
-      "type": "bureaux"
+      "type": "mixte"
     },
     "66|RUE|VILLETTE": {
       "type": "bureaux"
@@ -217,7 +217,7 @@
       "type": "bureaux"
     },
     "2|PLACE|FRANCFORT": {
-      "type": "bureaux"
+      "type": "social"
     },
     "12|RUE|AUBIGNY": {
       "type": "bureaux"
@@ -232,7 +232,7 @@
       "type": "bureaux"
     },
     "37|RUE|ETIENNE RICHERAND": {
-      "type": "bureaux"
+      "type": "social"
     },
     "42|AVENUE|GEORGES POMPIDOU": {
       "type": "bureaux"
@@ -244,7 +244,7 @@
       "type": "bureaux"
     },
     "32|AVENUE|GEORGES POMPIDOU": {
-      "type": "bureaux"
+      "type": "social"
     },
     "64|RUE|ETIENNE RICHERAND": {
       "type": "bureaux"
@@ -262,7 +262,7 @@
       "type": "bureaux"
     },
     "13|RUE|ST SIDOINE": {
-      "type": "bureaux"
+      "type": "social"
     },
     "25|RUE|CITE": {
       "type": "bureaux"
@@ -352,7 +352,7 @@
       "type": "bureaux"
     },
     "305|RUE|PAUL BERT": {
-      "type": "bureaux"
+      "type": "social"
     },
     "7|RUE|MEYNIS": {
       "type": "bureaux"
@@ -382,7 +382,7 @@
       "type": "bureaux"
     },
     "8|RUE|JEAN RENOIR": {
-      "type": "bureaux"
+      "type": "social"
     },
     "8|RUE|ST THEODORE": {
       "type": "bureaux"
