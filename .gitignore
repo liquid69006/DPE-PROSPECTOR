@@ -13,3 +13,11 @@ data/_sci_mp_a_relancer_*.csv
 data/export_courrier_*.csv
 # Dump live des assignations SCI (statut/conseiller) + backups + merge
 data/_sci_assignments_lopez*.json
+# Dumps live de la map courriers (now/cleaned/backup) + reconciliation
+data/_dcmap_*.json
+data/_a_retirer_siren.json
+data/_a_garder_siren.json
+data/_stale_siren_lopez.json
+# Sorties banc d'essai reconciliation (regenerables via _scan --ignore-kv)
+data/_scan_rows_full_*.json
+data/_reconcile_*.json
