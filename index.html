@@ -5594,6 +5594,7 @@ function renderRowSci(sci) {
   const dirigeants  = (sci.gerants||[]).map(g=>(g.nom||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'')).join(' ');
 
   return `<tr
+    data-sci-id="${id}"
     data-zone="${zone}"
     data-actif="${sci.sci_active||'oui'}"
     data-statut="${statut}"
@@ -5812,7 +5813,7 @@ function filtrerSciPourCourrier() {
   let liste = seulementVisibles
     ? [...document.querySelectorAll('#sci-tbody tr')]
         .filter(tr => tr.style.display !== 'none')
-        .map(tr => allSci.find(s => s.sci_nom === tr.dataset.sciNom))
+        .map(tr => allSci.find(s => (s.sci_siren || s.parcelle) === tr.dataset.sciId))
         .filter(Boolean)
     : [...allSci];
   if (exclInactives)   liste = liste.filter(s => s.sci_active === 'oui');
@@ -6270,6 +6271,7 @@ async function demarrerEnvoiMSBApercu(sess, items, win, today) {
 
   const sendable = items.filter(x => x.valid).length;
   let ok = 0, err = 0, skip = 0;
+  const sirensEnvoyes = new Set();   // D3 : 1 envoi max par SIREN (anti-doublon homonyme)
   let firstValidSkipped = false;
 
   for (let i = 0; i < items.length; i++) {
@@ -6283,13 +6285,24 @@ async function demarrerEnvoiMSBApercu(sess, items, win, today) {
       continue;
     }
 
+    const sirenIt = it.sci.sci_siren || it.sci.parcelle;   // D3 : identité unique
+
     // Le 1er SCI valide a déjà été envoyé lors de la génération de l'aperçu.
     if (!firstValidSkipped && it.valid) {
       firstValidSkipped = true;
+      if (sirenIt) sirensEnvoyes.add(sirenIt);   // l'aperçu a déjà consommé ce SIREN
       skip++;
       if (chip) { chip.textContent = '✅ Envoyé (aperçu)'; chip.className = 'sheet-status ok'; }
       continue;
     }
+
+    // D3 : ne jamais réexpédier au même SIREN dans le même batch.
+    if (sirenIt && sirensEnvoyes.has(sirenIt)) {
+      skip++;
+      if (chip) { chip.textContent = '⏭ Doublon SIREN ignoré'; chip.className = 'sheet-status warn'; }
+      continue;
+    }
+    if (sirenIt) sirensEnvoyes.add(sirenIt);
 
     if (chip) { chip.textContent = '⏳ Envoi…'; chip.className = 'sheet-status pending'; }
 
@@ -6353,6 +6366,15 @@ async function demarrerEnvoiMSBApercu(sess, items, win, today) {
       `✅ Terminé — ${ok} envoyés, ${err} erreurs` + (skip ? `, ${skip} ignorés` : '');
   }
   if (ok > 0) showToast(`✅ ${ok} courriers envoyés via MySendingBox`);
+
+  // D1 : rafraîchir les dates « dernier courrier » du tableau principal sans F5.
+  try {
+    const dcR = await fetch(`${API_URL}/dernierCourrier/${sess.agence}`, {
+      headers: { 'Authorization': `Bearer ${sess.token}` },
+    });
+    if (dcR.ok) derniersCourriers = (await dcR.json()).dates || derniersCourriers;
+  } catch (_) {}
+  renderTableSci();
 }
 
 async function genererCourrier() {
