@@ -255,6 +255,15 @@
       "social_pct_corrige": 47.4,
       "mut_apt_per_year": 0.0,
       "reason": "copro non immatriculee au RNC ; vocabulaire que le scan MAJIC/usage ne peut pas produire (override-only) -> force copro_non_immat vs auto mixte"
+    },
+    {
+      "cle": "3|PLACE|STE ANNE",
+      "previous_tag": "bureaux",
+      "new_tag": "social",
+      "qualif_source": "terrain_medico_social",
+      "social_pct_corrige": 0.0,
+      "mut_apt_per_year": 0.0,
+      "reason": "operateur medico-social ITINOVA ; owner public soc 0% mais caractere social confirme terrain -> force social (cf. 15 DAVID)"
     }
   ]
 }
