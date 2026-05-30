@@ -60,13 +60,40 @@ SOCIAL_PCT_MIN = MUT_PER_YEAR_MIN = None
 def _init_secteur(slug):
     global LIGHT, KV_LOCAL, ENRICH, OVERRIDES, DVF, AGENCE
     global DEP, CODE_COMMUNE, BDNB_PREFIX, SOCIAL_PCT_MIN, MUT_PER_YEAR_MIN
+    global HLM_NEEDLE_RE, PUBLIC_NEEDLE_RE
     cfg = load_secteur(slug)
     LIGHT, KV_LOCAL, ENRICH = cfg.light, cfg.kv_local, cfg.enrich_majic
     OVERRIDES, DVF, AGENCE  = cfg.social_overrides, cfg.dvf_path, cfg.slug
     DEP = cfg.dep
     CODE_COMMUNE, BDNB_PREFIX = cfg.code_commune, cfg.bdnb_dep_prefix
     SOCIAL_PCT_MIN, MUT_PER_YEAR_MIN = cfg.social_pct_min, cfg.mut_apt_per_year_min
+    # Needles HLM secteur (secteurs.json[metier.hlm_needles]). Matching par
+    # LIMITE DE MOT (\b...\b) et NON sous-chaine nue : evite les faux positifs
+    # type "adoma" dans CADOMAT/VECADOMAX ou "oph" dans SOPHIE/CLAUNOPHI.
+    # Repli gracieux sur None si absent/vide (ex MP _TODO) -> is_hlm_social
+    # retombe sur les seules sous-chaines hardcodees, sans crash.
+    HLM_NEEDLE_RE = _compile_needles(getattr(cfg, "hlm_needles", None))
+    # Idem pour les owners publics non-HLM (SEM, Departement, Foncieres
+    # publiques, Hospices, CROUS...). Meme repli gracieux None.
+    PUBLIC_NEEDLE_RE = _compile_needles(getattr(cfg, "public_non_hlm", None))
     return cfg
+
+
+def _compile_needles(needles):
+    """Compile une alternation \\b(...)\\b a partir des needles (strip+lower,
+    dedup). Renvoie None si aucune needle exploitable."""
+    cleaned = sorted({n.strip().lower()
+                      for n in (needles or ()) if n and n.strip()})
+    if not cleaned:
+        return None
+    return re.compile(r"\b(?:" + "|".join(re.escape(n) for n in cleaned)
+                      + r")\b")
+
+
+# Defaut module-level : si _init_secteur pas encore appele (import direct des
+# helpers), pas de needle -> comportement historique.
+HLM_NEEDLE_RE = None
+PUBLIC_NEEDLE_RE = None
 
 
 # ---------- Helpers ----------
@@ -78,24 +105,39 @@ def is_hlm_social(gp_lib, denomination, forme):
     g = normalize_gp(gp_lib)
     d = normalize_gp(denomination)
     f = normalize_gp(forme)
+    # Sous-chaines hardcodees historiques (conservees telles quelles).
     if "office hlm" in g or " hlm" in g or g.startswith("hlm"):
         return True
     if " hlm " in d or "hlm-" in d or "habitat" in d or "logement social" in d:
         return True
     if "office public" in f or "office hlm" in f:
         return True
+    # UNION : needles HLM du secteur (secteurs.json), matching \b...\b. Capte
+    # les bailleurs dont le nom ne contient pas "habitat/hlm" (ADOMA, IN'LI,
+    # OPH, SACVL, ERILIA...). Repli gracieux : HLM_NEEDLE_RE=None si non config.
+    if HLM_NEEDLE_RE is not None:
+        if HLM_NEEDLE_RE.search(f"{d} {g} {f}"):
+            return True
     return False
 
 
-def is_public(gp_lib, forme):
+def is_public(gp_lib, forme, denomination=""):
     g = normalize_gp(gp_lib)
     f = normalize_gp(forme)
+    d = normalize_gp(denomination)
+    # Sous-chaines hardcodees historiques (conservees telles quelles).
     if "etablissements publics" in g or u"établissements publics" in g:
         return True
     if "collectivit" in f or "publique" in f or "etat" in g:
         return True
     if "metropole" in normalize_gp(forme) or "commune" in g:
         return True
+    # UNION : needles public-non-HLM du secteur (secteurs.json), matching
+    # \b...\b. Capte SEM / Departement / Foncieres publiques / Hospices...
+    # dont le nom est dans la DENOMINATION. Repli gracieux : None si non config.
+    if PUBLIC_NEEDLE_RE is not None:
+        if PUBLIC_NEEDLE_RE.search(f"{d} {g} {f}"):
+            return True
     return False
 
 
@@ -120,7 +162,7 @@ def is_pp(gp_lib):
 def classify_siren(gp_lib, denomination, forme):
     if is_hlm_social(gp_lib, denomination, forme):
         return "HLM"
-    if is_public(gp_lib, forme):
+    if is_public(gp_lib, forme, denomination):
         return "PUBLIC"
     if is_pp(gp_lib):
         return "PP"
@@ -221,6 +263,12 @@ def main():
                         help="POST KV atomique apres affichage")
     parser.add_argument("--json", default=None,
                         help="exporte rows[] (classification complete) vers ce chemin JSON")
+    parser.add_argument("--ignore-kv", action="store_true",
+                        help="banc d'essai tag-aveugle : ne PAS skipper les cles "
+                             "deja taggees en KV, re-deriver reco pour TOUTES "
+                             "(defaut OFF = comportement historique inchange). "
+                             "A utiliser avec --json vers un fichier DEDIE "
+                             "(ex _scan_rows_full.json), jamais l'export pipeline.")
     args = parser.parse_args()
     cfg = _init_secteur(args.secteur)
 
@@ -272,7 +320,7 @@ def main():
         if is_fa and own_vlog > 0:
             n_fa_legit_kept += 1
         t = ((assigns.get(cle) or {}).get("type")) or ""
-        if t:
+        if t and not args.ignore_kv:
             n_excl_already_tagged += 1
             continue
         candidates.append(a)
@@ -389,6 +437,11 @@ def main():
             top_all = max(owner_lots.items(), key=lambda x: x[1])
         else:
             top_all = None
+        # Classe du proprietaire DOMINANT (top owner) - sert au garde-fou
+        # Tertiaire ci-dessous. On teste le TOP owner, pas "any owner present"
+        # (un immeuble de bureaux prive avec 1 lot social ne doit pas etre
+        # neutralise).
+        top_all_class = meta[top_all[0]]["class"] if top_all else None
 
         # Signal DVF : mutations Apt+Maison /an a l'adresse EXACTE
         # (pas a la parcelle, isolation stricte par cle).
@@ -416,7 +469,17 @@ def main():
                       + (f", was mut/an={mut_str}" if mut_str is not None
                          else "")
                       + ")")
-        elif usage == "Tertiaire":
+        elif usage == "Tertiaire" and not (
+                social_pct >= SOCIAL_PCT_MIN
+                or has_emphy_hlm
+                or top_all_class == "HLM"):
+            # Garde-fou : usage BDNB=Tertiaire (RDC commercial) ne doit pas
+            # masquer une forte propriete sociale. On ne classe PAS bureaux si
+            # soc>=min OU emphyteote HLM (freeholder prive, bailleur HLM) OU
+            # proprietaire DOMINANT HLM -> on laisse retomber dans la cascade
+            # owner (social/mixte/-). NB : owner PUBLIC seul n'est PAS un signal
+            # social (une mairie/hopital en Tertiaire = vrais bureaux) -> exclu
+            # du garde-fou pour ne pas degrader de vrais bureaux administratifs.
             reco = "bureaux"
             reason = "usage_principal_bdnb=Tertiaire"
         elif has_emphy_hlm or social_pct >= SOCIAL_PCT_MIN:
