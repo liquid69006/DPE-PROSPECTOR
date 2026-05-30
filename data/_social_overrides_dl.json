@@ -2,8 +2,8 @@
   "_meta": {
     "generated_at": "2026-05-27T07:09:50Z",
     "secteur": "dauphine-lacassagne",
-    "purpose": "Protect these cles from being re-tagged 'social' by future MAJIC-only scans (PM-only heuristic). DVF mutations or social_pct_corrige confirm they are NOT pure HLM social.",
-    "rule": "Si une cle figure ici, le scan MAJIC ne doit PAS lui auto-attribuer 'social'. Le tag manuel (_qualif_source='dvf_decollect') prevaut.",
+    "purpose": "Overrides terrain (entrees sacrees) : forcent le tag humain valide sur ces cles, prioritaire sur tout recalcul auto. Inclut downgrade social->non-social (dvf_decollect : mutations DVF ou social_pct_corrige confirment non-social) ET corrections terrain (medico-social, copro_non_immat) que le scan MAJIC/usage ne peut pas produire.",
+    "rule": "Si une cle figure ici, le scan applique son new_tag quel que soit le sens (downgrade/upgrade/lateral) et le signal MAJIC/usage. Le tag manuel prevaut.",
     "last_cleanup": {
       "date": "2026-05-28T06:28:38Z",
       "removed": [
@@ -237,6 +237,24 @@
       "social_pct_corrige": 15.2,
       "mut_apt_per_year": 0.0,
       "reason": "pct<60"
+    },
+    {
+      "cle": "15|RUE|DAVID",
+      "previous_tag": "mixte",
+      "new_tag": "social",
+      "qualif_source": "terrain_medico_social",
+      "social_pct_corrige": 42.9,
+      "mut_apt_per_year": 0.2,
+      "reason": "bailleur medico-social Habitat & Humanisme (HLM) ; soc 42.9% sous le seuil 60 mais caractere social confirme terrain -> force social (upgrade vs auto mixte)"
+    },
+    {
+      "cle": "8B|RUE|FRANCOIS GILLET",
+      "previous_tag": "mixte",
+      "new_tag": "copro_non_immat",
+      "qualif_source": "terrain_copro_non_immat",
+      "social_pct_corrige": 47.4,
+      "mut_apt_per_year": 0.0,
+      "reason": "copro non immatriculee au RNC ; vocabulaire que le scan MAJIC/usage ne peut pas produire (override-only) -> force copro_non_immat vs auto mixte"
     }
   ]
 }
