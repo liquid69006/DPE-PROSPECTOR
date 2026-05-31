@@ -3505,9 +3505,14 @@ async function sctGenOpen() {
   document.getElementById('sct-gen-step2').style.display = 'none';
   document.getElementById('sct-gen-footer').style.display = 'none';
   document.getElementById('sct-gen-subtitle').textContent = 'Étape 1 — Configuration';
-  // Mode info (strict|brut)
+  // Mode info (strict|brut). Aligne sur le calcul reel de sctGenComputeIlots
+  // (useStrict = presence des donnees logement), PAS sur le toggle UI
+  // secteurStrict : la repartition gen/export est toujours strict des que
+  // ventes_par_an_logement existe, independamment du toggle dashboard.
   const modeInfo = document.getElementById('sct-gen-mode-info');
-  if (modeInfo) modeInfo.textContent = secteurStrict ? 'strictes' : 'brutes (toutes mutations)';
+  const _useStrict = !!(secteurData && secteurData.adresses
+    && secteurData.adresses.some(a => a.ventes_par_an_logement));
+  if (modeInfo) modeInfo.textContent = _useStrict ? 'strictes' : 'brutes (toutes mutations)';
 
   // Charge l'état existant en KV (pré-remplit adresse + N).
   try {
@@ -3686,7 +3691,9 @@ function sctGenRenderTable() {
     + `<b>Quota Z-proche :</b> ${sctGenPerYear(quotas.proche)} ±20% · `
     + `<b>Z-moy :</b> ${sctGenPerYear(quotas.moyenne)} ±20% · `
     + `<b>Z-loin :</b> ${sctGenPerYear(quotas.lointaine)} ±20% · `
-    + `<b>Mode :</b> ${secteurStrict ? 'ventes strictes' : 'ventes brutes'}`;
+    + `<b>Mode :</b> ${(secteurData && secteurData.adresses
+        && secteurData.adresses.some(a => a.ventes_par_an_logement))
+        ? 'ventes strictes' : 'ventes brutes'}`;
 
   // [FIX 2026-05-24 r4] Table splitee en 2 sous-tables avec colgroup
   // STRICTEMENT IDENTIQUE (table-layout:fixed) -> alignement parfait
@@ -4769,6 +4776,14 @@ function sctBadge(cls) {
     : '<span style="color:var(--text2);">—</span>';
 }
 
+// Normalise l'AFFICHAGE d'une adresse (uppercase + retire le code postal 5
+// chiffres et tout ce qui suit : ville/arrondissement). N'ALTERE PAS a.adresse :
+// le brut reste utilise par la recherche, le lien Maps et le title.
+function normalizeAdresseDisplay(adr) {
+  if (!adr) return '';
+  return String(adr).replace(/\s+\d{5}\b.*$/, '').toUpperCase();
+}
+
 function renderSecteur() {
   const d = secteurData, tree = document.getElementById('secteur-tree');
   if (!d) return;
@@ -5047,12 +5062,15 @@ function renderSecteur() {
         const hasAdr = a.adresse != null && String(a.adresse).trim() !== '';
         const adrTxt = hasAdr ? a.adresse
           : (a.cle ? a.cle.replace(/\|/g, ' ') : '(adresse inconnue)');
+        // affichage normalise (uppercase + sans code postal/commune) ; adrTxt
+        // brut conserve pour Maps / recherche / title.
+        const adrTxtDisp = normalizeAdresseDisplay(adrTxt);
         const flagGeo = hasAdr ? ''
           : ` <span style="color:var(--text2);font-size:10px;">(non géoc.)</span>`;
         const nomPerso = secteurNoms[a.cle];
         const autoLabel = a._fusion_auto_label || null;   // "139/141/143 RUE BARABAN"
         const dispNom = (nomPerso != null && String(nomPerso).trim() !== '')
-          ? String(nomPerso) : (autoLabel || adrTxt);
+          ? String(nomPerso) : (autoLabel || adrTxtDisp);
         const mi = (cp && mergedInto[a.cle]) ? mergedInto[a.cle] : null;
         const am = autoMerged[a.cle] || null;             // fusion auto BDNB
         const effV = {};
