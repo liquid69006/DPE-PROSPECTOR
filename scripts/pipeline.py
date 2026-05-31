@@ -66,6 +66,12 @@ def load_context(cfg):
     enrich = {r["cle"]: r for r in (load_json(cfg.enrich_majic, {}) or {}).get("results", [])}
     ov = load_json(cfg.social_overrides, {}) or {}
     override_cles = {x.get("cle") for x in ov.get("overrides", []) if x.get("cle")}
+    # M2 : cles nom_ambigu tranchees non-social (liste vide si fichier/chemin
+    # absent -> repli gracieux, secteur-agnostique).
+    nom_resolus = set()
+    if getattr(cfg, "nom_ambigu_resolus", None):
+        nom_resolus = {x.get("cle") for x in (load_json(cfg.nom_ambigu_resolus, []) or [])
+                       if x.get("cle")}
     detA = load_json(cfg.light.parent / f"_detect_bgid_suspects_{cfg.short}.json")
     detB = load_json(cfg.light.parent / f"_detect_noms_ambigus_{cfg.short}.json")
     if detA is None or detB is None:
@@ -76,7 +82,8 @@ def load_context(cfg):
     return {
         "adresses": light["adresses"], "by_cle": by_cle, "co_cles": co_cles,
         "assignments": kv.get("assignments", {}), "enrich": enrich,
-        "override_cles": override_cles, "detA": detA, "detB": detB,
+        "override_cles": override_cles, "nom_resolus": nom_resolus,
+        "detA": detA, "detB": detB,
     }
 
 
@@ -119,10 +126,18 @@ def build_pile_orange(ctx, by_cle, scan_rows, cfg):
     # noms ambigus
     for n in ctx["detB"].get("ambigus", []):
         cle = n["cle"]
+        kv_tag = (ctx["assignments"].get(cle) or {}).get("type")
+        # M1 : cle deja DECIDEE (tag KV pose, hors piles en attente) -> ne pas
+        # re-arbitrer (ex. 227 FELIX FAURE=cible_0vente, 14 FLANDIN=bureaux).
+        if kv_tag and kv_tag not in ("a_arbitrer", "a_completer"):
+            continue
+        # M2 : cle untagged mais explicitement tranchee non-social (liste resolus).
+        if cle in ctx.get("nom_resolus", set()):
+            continue
         lat, lon, adr = coords(cle)
         a_arbitrer.append({
             "cle": cle, "adresse": adr, "lat": lat, "lon": lon,
-            "current_kv_tag": (ctx["assignments"].get(cle) or {}).get("type"),
+            "current_kv_tag": kv_tag,
             "maps": maps_link(lat, lon, adr),
             "type": "nom_ambigu", "source": "detect_noms_ambigus",
             "data": {**{k: n.get(k) for k in

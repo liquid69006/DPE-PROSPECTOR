@@ -63,6 +63,11 @@ class SecteurConfig:
         self.light            = ROOT / p["light"]
         self.kv_local         = ROOT / p["kv_local"]
         self.social_overrides = ROOT / p["social_overrides"]
+        # Liste "resolus" nom_ambigu (cles tranchees non-social, exclues du
+        # re-flag). Optionnel : None si non configure (repli gracieux, pas de
+        # crash ; ex. secteur sans liste encore).
+        self.nom_ambigu_resolus = (ROOT / p["nom_ambigu_resolus"]
+                                    if p.get("nom_ambigu_resolus") else None)
         self.enrich_majic     = ROOT / p["enrich_majic"]
         self.cache_bg         = ROOT / p["cache_bg"]
         self.dvf_path         = Path(p["dvf_path"])         # deja absolu
