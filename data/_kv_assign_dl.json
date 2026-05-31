@@ -55,7 +55,7 @@
       "type": "bureaux"
     },
     "54|RUE|VILLETTE": {
-      "type": "bureaux"
+      "type": "social"
     },
     "55|RUE|VILLETTE": {
       "type": "mixte"
@@ -73,7 +73,7 @@
       "type": "bureaux"
     },
     "1|RUE|CARRY": {
-      "type": "social"
+      "type": "bureaux"
     },
     "127|AVENUE|FELIX FAURE": {
       "type": "social"
@@ -100,7 +100,7 @@
       "type": "bureaux"
     },
     "7|AVENUE|LACASSAGNE": {
-      "type": "social"
+      "type": "copro_non_immat"
     },
     "18|AVENUE|LACASSAGNE": {
       "type": "social"
@@ -274,7 +274,7 @@
       "type": "bureaux"
     },
     "121|RUE|ANTOINE CHARIAL": {
-      "type": "bureaux"
+      "type": "social"
     },
     "20|RUE|STE ANNE DE BARABAN": {
       "type": "bureaux"
@@ -713,10 +713,10 @@
       "type": "mono"
     },
     "10|RUE|PETITES SOEURS": {
-      "type": "social"
+      "type": "mono"
     },
     "17|RUE|DAUPHINE": {
-      "type": "social"
+      "type": "mono"
     },
     "2|RUE|VILLETTE": {
       "type": "copro_non_immat"
@@ -949,7 +949,7 @@
       "type": "social"
     },
     "31|RUE|DAUPHINE": {
-      "type": "social"
+      "type": "copro_non_immat"
     },
     "33|RUE|DAUPHINE": {
       "type": "mono"
