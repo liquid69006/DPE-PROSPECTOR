@@ -1909,6 +1909,150 @@
     },
     "3|RUE|ESPERANCE": {
       "type": "cible_0vente_isolee"
+    },
+    "130|RUE|ANTOINE CHARIAL": {
+      "type": "social"
+    },
+    "132|RUE|ANTOINE CHARIAL": {
+      "type": "social"
+    },
+    "136|RUE|ANTOINE CHARIAL": {
+      "type": "social"
+    },
+    "13|AVENUE|GEORGES POMPIDOU": {
+      "type": "social"
+    },
+    "13|RUE|DAHLIAS": {
+      "type": "mixte"
+    },
+    "14|RUE|ST SIDOINE": {
+      "type": "social"
+    },
+    "15|AVENUE|GEORGES POMPIDOU": {
+      "type": "social"
+    },
+    "15|RUE|ST VICTORIEN": {
+      "type": "social"
+    },
+    "166|RUE|BARABAN": {
+      "type": "social"
+    },
+    "16|RUE|ETIENNE RICHERAND": {
+      "type": "social"
+    },
+    "17|RUE|ST MAXIMIN": {
+      "type": "social"
+    },
+    "17|RUE|ST VICTORIEN": {
+      "type": "social"
+    },
+    "18|RUE|ETIENNE RICHERAND": {
+      "type": "social"
+    },
+    "18|RUE|ST SIDOINE": {
+      "type": "social"
+    },
+    "191B|AVENUE|FELIX FAURE": {
+      "type": "social"
+    },
+    "194|AVENUE|FELIX FAURE": {
+      "type": "mixte"
+    },
+    "20|RUE|ETIENNE RICHERAND": {
+      "type": "social"
+    },
+    "20|RUE|ST SIDOINE": {
+      "type": "social"
+    },
+    "219|AVENUE|FELIX FAURE": {
+      "type": "mixte"
+    },
+    "22|RUE|ETIENNE RICHERAND": {
+      "type": "social"
+    },
+    "24|RUE|ETIENNE RICHERAND": {
+      "type": "social"
+    },
+    "24|RUE|ST ANTOINE": {
+      "type": "social"
+    },
+    "24|RUE|ST MAXIMIN": {
+      "type": "mixte"
+    },
+    "252A|RUE|PAUL BERT": {
+      "type": "social"
+    },
+    "25|RUE|ST MAXIMIN": {
+      "type": "mixte"
+    },
+    "26|RUE|ST ANTOINE": {
+      "type": "social"
+    },
+    "277|RUE|PAUL BERT": {
+      "type": "social"
+    },
+    "279|RUE|PAUL BERT": {
+      "type": "social"
+    },
+    "30|RUE|ETIENNE RICHERAND": {
+      "type": "mixte"
+    },
+    "30|RUE|ST ANTOINE": {
+      "type": "social"
+    },
+    "4|RUE|CLAUDIUS PIONCHON": {
+      "type": "social"
+    },
+    "4|RUE|FRANCOIS GILLET": {
+      "type": "social"
+    },
+    "57|RUE|BARABAN": {
+      "type": "mixte"
+    },
+    "66B|AVENUE|LACASSAGNE": {
+      "type": "social"
+    },
+    "66|RUE|STE ANNE DE BARABAN": {
+      "type": "mixte"
+    },
+    "68|RUE|STE ANNE DE BARABAN": {
+      "type": "mixte"
+    },
+    "6|RUE|CLAUDIUS PIONCHON": {
+      "type": "social"
+    },
+    "6|RUE|TURBIL": {
+      "type": "social"
+    },
+    "76|RUE|ANTOINE CHARIAL": {
+      "type": "social"
+    },
+    "78B|RUE|ANTOINE CHARIAL": {
+      "type": "social"
+    },
+    "78|RUE|ANTOINE CHARIAL": {
+      "type": "social"
+    },
+    "80B|RUE|ANTOINE CHARIAL": {
+      "type": "social"
+    },
+    "80|RUE|ANTOINE CHARIAL": {
+      "type": "social"
+    },
+    "82|RUE|ANTOINE CHARIAL": {
+      "type": "social"
+    },
+    "84|RUE|ANTOINE CHARIAL": {
+      "type": "social"
+    },
+    "8|RUE|CLAUDIUS PIONCHON": {
+      "type": "social"
+    },
+    "8|RUE|TURBIL": {
+      "type": "social"
+    },
+    "9|COURS|ALBERT THOMAS": {
+      "type": "mixte"
     }
   },
   "fusions": {
