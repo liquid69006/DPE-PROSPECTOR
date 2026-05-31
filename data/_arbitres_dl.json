@@ -173,5 +173,65 @@
     "cle": "65|RUE|STE ANNE DE BARABAN",
     "verdict_revu": "confirmed",
     "date": "2026-05-31"
+  },
+  {
+    "cle": "121A|RUE|ANTOINE CHARIAL",
+    "verdict_revu": "indetermine",
+    "date": "2026-05-31"
+  },
+  {
+    "cle": "37|RUE|TURBIL",
+    "verdict_revu": "indetermine",
+    "date": "2026-05-31"
+  },
+  {
+    "cle": "16|AVENUE|GEORGES POMPIDOU",
+    "verdict_revu": "indetermine",
+    "date": "2026-05-31"
+  },
+  {
+    "cle": "2|RUE|FRANCOIS GILLET",
+    "verdict_revu": "indetermine",
+    "date": "2026-05-31"
+  },
+  {
+    "cle": "17|RUE|ST EUSEBE",
+    "verdict_revu": "indetermine",
+    "date": "2026-05-31"
+  },
+  {
+    "cle": "17B|RUE|ST EUSEBE",
+    "verdict_revu": "indetermine",
+    "date": "2026-05-31"
+  },
+  {
+    "cle": "53|RUE|VILLETTE",
+    "verdict_revu": "indetermine",
+    "date": "2026-05-31"
+  },
+  {
+    "cle": "47|RUE|GANDOLIERE",
+    "verdict_revu": "indetermine",
+    "date": "2026-05-31"
+  },
+  {
+    "cle": "76|RUE|BARABAN",
+    "verdict_revu": "indetermine",
+    "date": "2026-05-31"
+  },
+  {
+    "cle": "61|RUE|ANTOINE CHARIAL",
+    "verdict_revu": "indetermine",
+    "date": "2026-05-31"
+  },
+  {
+    "cle": "185T|AVENUE|FELIX FAURE",
+    "verdict_revu": "indetermine",
+    "date": "2026-05-31"
+  },
+  {
+    "cle": "43B|RUE|ETIENNE RICHERAND",
+    "verdict_revu": "indetermine",
+    "date": "2026-05-31"
   }
 ]

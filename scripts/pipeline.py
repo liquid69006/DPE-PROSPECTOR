@@ -129,6 +129,11 @@ def build_pile_orange(ctx, by_cle, scan_rows, cfg):
                                    "bgid_group_voisins", "cross_rnc", "score")}})
             a_arbitrer.append(base)
         elif s.get("verdict") in ("live_required", "live_indetermine"):
+            # Phase 2 gate (verdict-scope, manche C) : cle live_indetermine
+            # revue/acceptee -> hors a_completer -> tombe en verte. Calque du
+            # gate confirmed. detect.py INTOUCHE (S1/S2 detecte toujours).
+            if ctx.get("arbitres", {}).get(cle) == "indetermine":
+                continue
             base.update({"type": "bgid_" + s["verdict"], "source": "detect_bgid",
                          "data": {"signaux": s.get("signaux"),
                                   "bgid_light": s.get("bgid_light")}})
