@@ -142,16 +142,16 @@
       "type": "bureaux"
     },
     "52|RUE|BARABAN": {
-      "type": "social"
+      "type": "bureaux"
     },
     "25|RUE|ANTOINE CHARIAL": {
-      "type": "social"
+      "type": "bureaux"
     },
     "32|RUE|GENERAL MOUTON DUVERNET": {
       "type": "bureaux"
     },
     "102|RUE|ANTOINE CHARIAL": {
-      "type": "social"
+      "type": "bureaux"
     },
     "144|RUE|ANTOINE CHARIAL": {
       "type": "social"
@@ -163,7 +163,7 @@
       "type": "mono"
     },
     "289|RUE|PAUL BERT": {
-      "type": "social"
+      "type": "bureaux"
     },
     "15|RUE|DAUPHINE": {
       "type": "social"
@@ -172,7 +172,7 @@
       "type": "mono"
     },
     "36|AVENUE|LACASSAGNE": {
-      "type": "social"
+      "type": "bureaux"
     },
     "5|AVENUE|LACASSAGNE": {
       "type": "social"
