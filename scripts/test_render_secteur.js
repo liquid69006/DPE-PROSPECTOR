@@ -27,13 +27,18 @@ const slice = (a, b) => HTML.slice(a - 1, b).join("\n"); // lignes 1-based inclu
 // RESYNC 2026-05-19 : index.html avait ete edite (ajout sctClassAnnuel,
 // decalage ~+12 lignes) -> les anciennes plages (2046.. .) decoupaient
 // mid-statement (Unexpected token '.' sur window.secteurSetAssign).
-// Plages recalees sur la structure courante (3808 lignes).
+// RESYNC 2026-05-31 : rattrapage du refactor renderSecteur du 2026-05-24
+// (ilot top-level : suppression niveau IRIS, memoire secteurOpenIlot,
+// secteurCaptureOpenIlot(), window.ilotEffectif, filtres dropdown
+// Categorie/RNC/Ventes). Le test etait inexecutable depuis (plages 2148..
+// perimees + globals manquants). Plages recalees sur la structure courante
+// (6600+ lignes) ; stubs des nouveaux globals ajoutes dans runRender.
 const SRC = [
-  slice(2058, 2062),   // ROT_COLOR + TYPE_OPTS
-  slice(2084, 2086),   // esc
-  slice(2088, 2092),   // secteurNorm
-  slice(2105, 2146),   // sctTauxAnnuel..sctBadge (helpers de rendu, incl. sctClassAnnuel)
-  slice(2148, 2484),   // renderSecteur (parc RNC + hors-RNC résid. BDNB / strict / hr-actif / sctQ)
+  slice(2512, 2525),   // ROT_COLOR + TYPE_OPTS + TYPE_LABELS + TYPE_BADGE_COLORS
+  slice(4685, 4687),   // esc
+  slice(4689, 4693),   // secteurNorm
+  slice(4737, 4785),   // sctTauxAnnuel..sctClassAnnuel + SCTW + DPE_COLOR + sctDpe..normalizeAdresseDisplay
+  slice(4787, 5351),   // renderSecteur (parc / strict / hr-actif / sctQ)
 ].join("\n\n");
 
 function mkEl() {
@@ -58,11 +63,23 @@ function runRender(jsonPath, strict, search, hrActif) {
     secteurData,
     secteurFusions: {}, secteurNoms: {}, secteurAssign: {}, secteurNoLog: false,
     secteurStrict: !!strict,
-    secteurHrActif: !!hrActif,        // filtre "Hors-RNC actifs"
     secteurVille: process.env.SECTEUR === "motte_picquet" ? "Paris 15" : "Lyon 3",
+    // Globals introduits par le refactor renderSecteur 2026-05-24 (ilot
+    // top-level) : doivent exister dans le contexte sinon ReferenceError.
+    // Valeurs neutres = aucun filtre, etat ilots par defaut.
+    secteurCategoriesSelected: new Set(),
+    secteurLogement: "", secteurRncFilter: "", secteurVentes: "",
+    secteurOpenIlot: null, secteurSciByCle: {}, secteurFilteredCount: 0,
+    secteurCaptureOpenIlot: () => {},
+    window: {},                       // renderSecteur fait window.ilotEffectif = ...
     document: { getElementById: (id) => els[id] || mkEl() },
     console,
   };
+  // [REBASE 2026-05-31] "Hors-RNC actifs" n'est plus un toggle dedie
+  // (secteurHrActif supprime au refactor 2026-05-24) : il est porte par la
+  // combinaison des dropdowns RNC='hors-rnc' + Ventes='avec'. On mappe le
+  // parametre hrActif du test sur cette combinaison.
+  if (hrActif) { sandbox.secteurRncFilter = "hors-rnc"; sandbox.secteurVentes = "avec"; }
   vm.createContext(sandbox);
   let error = null;
   try {
@@ -111,10 +128,18 @@ const MARKERS = ["immat_fix", "immat_live_fix", "immat_horsrnc_fix"];
 const injRows = sd.adresses.filter(a => MARKERS.includes(a._bdnb_match));
 console.log("\n=== Lignes injectees rendues ===");
 check("au moins 1 ligne injectee", injRows.length >= 1);
-let nbVis = 0;
-for (const a of injRows) if (curHtml.includes(`data-cle="${a.cle}"`)) nbVis++;
-check(`toutes les lignes injectees rendues (${nbVis}/${injRows.length})`,
-  nbVis === injRows.length);
+// REBASE 2026-05-31 : une copro injectee peut depuis avoir ete FUSIONNEE
+// (relocalisee sous son ancre via _fusion_auto, cf rebase Montbrillant
+// 2026-05-19) -> plus rendue par sa propre ligne mais ventes/lots conserves
+// sur l'ancre. Invariant = chaque injectee est RENDUE OU FUSIONNEE (aucune
+// disparition silencieuse).
+let nbVis = 0, nbFused = 0;
+for (const a of injRows) {
+  if (curHtml.includes(`data-cle="${a.cle}"`)) nbVis++;
+  else if (a._fusion_auto && (a._fusion_cible || a._fusion_auto_target)) nbFused++;
+}
+check(`injectees rendues OU fusionnees (${nbVis} rendues + ${nbFused} fusionnees == ${injRows.length})`,
+  nbVis + nbFused === injRows.length);
 
 // B3 : test specifique Dauphine (cle '5|RUE|MONTBRILLANT' / immat
 // AA9380684) -> gate sur le secteur. Generique pour les autres.
@@ -283,23 +308,57 @@ if (mfn) {
 // 0), sinon rnc:immat, sinon adr:cle (résid. sans bgid). Tertiaire /
 // secondaire / dépendance / usage inconnu -> 0.
 console.log("\n=== Change 1 : parc RNC + hors-RNC résidentiel (header) ===");
-const cur2 = runRender(CUR);            // brut, sans filtre
+const cur2 = runRender(CUR);            // brut, sans filtre, assign vide
 const secL = lgt(cur2.els["secteur-resume"]._text || "");
+// REBASE 2026-05-31 : replique alignee sur la logique parc renderSecteur
+// post-refactor 2026-05-24 -> bgBdnbResid en 2 PASSES (Pass A = MAX
+// nb_log_bdnb hors mono/social/bureaux ; Pass B = fallback getEffectiveLog),
+// override _nb_lots_habitation_override, gate (rnc || getEffectiveLog>0) sur
+// le path bg:. L'ancienne replique single-pass divergeait (DL -95). assign
+// vide ici -> effLog = nb_log_bdnb et aucune exclusion mono/social/bureaux
+// active, mais la replique les modelise pour rester fidele si assign injecte.
 const RESID = { "Résidentiel collectif": 1, "Résidentiel individuel": 1 };
 const uResid = a => !!(a && RESID[a.usage_principal_bdnb]);
-const shown = (sd.adresses || []).filter(a => !(a._fusion_auto && a._fusion_cible));
+const ASG = {};   // assign vide dans le run cur2
+const effLog = a => {
+  const t = (ASG[a.cle] || {}).type;
+  if (t === "mono") return 1;
+  if (t === "social" || t === "bureaux") return 0;
+  return a.nb_log_bdnb;
+};
+const shown = (sd.adresses || []).filter(a =>
+  !(a._fusion_auto && (a._fusion_cible || a._fusion_auto_target)));
 const immatBg = {}, bgRnc = {}, bgResid = {};
+// Pass commune RNC : bgRncLots / immatBg (avec override)
 for (const a of shown) {
   const bg = a.batiment_groupe_id || null;
   const c = cbc[a.cle];
   const im = c ? (c.numero_immatriculation || c.cle_adresse || a.cle) : null;
-  const lots = (c && c.nb_lots_habitation > 0) ? c.nb_lots_habitation : 0;
+  const lots = (a._nb_lots_habitation_override != null)
+    ? a._nb_lots_habitation_override
+    : ((c && c.nb_lots_habitation > 0) ? c.nb_lots_habitation : 0);
   if (bg && im && lots > 0) {
     if (immatBg[im] == null) immatBg[im] = bg;
     (bgRnc[immatBg[im]] = bgRnc[immatBg[im]] || {})[im] = lots;
   }
-  if (bg && !c && uResid(a) && a.nb_log_bdnb > 0 && bgResid[bg] == null)
-    bgResid[bg] = a.nb_log_bdnb;
+}
+// Pass A bgBdnbResid : MAX nb_log_bdnb (hors-RNC resid, hors mono/social/bureaux)
+for (const a of shown) {
+  const bg = a.batiment_groupe_id || null;
+  const c = cbc[a.cle];
+  if (!bg || c || !uResid(a) || !(a.nb_log_bdnb > 0)) continue;
+  const t = (ASG[a.cle] || {}).type;
+  if (t === "mono" || t === "social" || t === "bureaux") continue;
+  if (bgResid[bg] == null || a.nb_log_bdnb > bgResid[bg]) bgResid[bg] = a.nb_log_bdnb;
+}
+// Pass B bgBdnbResid : fallback getEffectiveLog si Pass A n'a rien capte
+for (const a of shown) {
+  const bg = a.batiment_groupe_id || null;
+  const c = cbc[a.cle];
+  if (!bg || c || !uResid(a) || !(a.nb_log_bdnb > 0)) continue;
+  if (bgResid[bg] != null) continue;
+  const e = effLog(a);
+  if (e > 0) bgResid[bg] = e;
 }
 const bgVal = {};
 new Set(Object.keys(bgRnc).concat(Object.keys(bgResid))).forEach(bg => {
@@ -310,20 +369,26 @@ new Set(Object.keys(bgRnc).concat(Object.keys(bgResid))).forEach(bg => {
 const seen = new Set(); let expected = 0;
 for (const a of shown) {
   const c = cbc[a.cle];
+  const rnc = !!c;
   let k = null, v = 0;
-  if (a.batiment_groupe_id && bgVal[a.batiment_groupe_id] > 0) {
+  if (a.batiment_groupe_id && bgVal[a.batiment_groupe_id] > 0
+      && (rnc || effLog(a) > 0)) {
     k = "bg:" + a.batiment_groupe_id; v = bgVal[a.batiment_groupe_id] || 0;
-  } else if (c) {
+  } else if (rnc) {
     const im = c.numero_immatriculation || c.cle_adresse || a.cle;
     if (immatBg[im]) { k = "bg:" + immatBg[im]; v = bgVal[immatBg[im]] || 0; }
-    else { k = "rnc:" + im; v = (c.nb_lots_habitation > 0 ? c.nb_lots_habitation : 0); }
+    else {
+      k = "rnc:" + im;
+      v = (a._nb_lots_habitation_override != null)
+        ? a._nb_lots_habitation_override
+        : (c.nb_lots_habitation > 0 ? c.nb_lots_habitation : 0);
+    }
   } else if (uResid(a) && a.nb_log_bdnb > 0) {
-    k = "adr:" + a.cle; v = a.nb_log_bdnb;
+    k = "adr:" + a.cle; v = effLog(a);
   }
   if (k && v > 0 && !seen.has(k)) { seen.add(k); expected += v; }
 }
-console.log(`  secL=${secL}  attendu (réplique règle)=${expected}  `
-  + `écart=${secL - expected}`);
+console.log(`  secL=${secL}  attendu (réplique règle 2-passes)=${expected}  écart=${secL - expected}`);
 check(`secL > 0`, secL > 0);
 check(`secL == réplique EXACTE de la règle parc (${secL} == ${expected})`,
   secL === expected);
@@ -333,15 +398,21 @@ check(`secL == réplique EXACTE de la règle parc (${secL} == ${expected})`,
 // nb_ventes_logement > 0. Doit retourner des adresses pertinentes
 // (>0, < total, 0 RNC) et matcher le prédicat sur les 2 secteurs.
 console.log(`\n=== Change 2 : filtre Hors-RNC actifs (secteur=${SECTEUR}) ===`);
+// REBASE 2026-05-31 : "Hors-RNC actifs" n'est plus un toggle dedie
+// (secteurHrActif supprime au refactor 2026-05-24) -> runRender mappe le
+// param hrActif sur RNC='hors-rnc' + Ventes='avec'. Le predicat data suit :
+// non-fused & hors-RNC (!copro & !immat) & nb_ventes_logement>0. L'ancien
+// predicat exigeait nb_log_bdnb>1 (retire : le dropdown 'avec' ne filtre que
+// sur les ventes).
 const hr = runRender(CUR, false, "", true);
 const hrR = hr.els["secteur-resume"]._text || "";
 console.log("  resume hr-actif :", hrR);
 const rncN = s => { const m = /· (\d+) RNC ·/.exec(s); return m ? +m[1] : -1; };
 let predN = 0;
 (sd.adresses || []).forEach(a => {
-  if (a._fusion_auto && a._fusion_cible) return;
+  if (a._fusion_auto && (a._fusion_cible || a._fusion_auto_target)) return;
   const horsRnc = !cbc[a.cle] && !a.numero_immatriculation;
-  if (horsRnc && a.nb_ventes_logement > 0 && a.nb_log_bdnb > 1) predN++;
+  if (horsRnc && a.nb_ventes_logement > 0) predN++;
 });
 console.log(`  adresses filtrées=${adr(hrR)}  prédicat data=${predN}`
   + `  RNC affichées=${rncN(hrR)}`);
