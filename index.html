@@ -5117,22 +5117,21 @@ function renderSecteur() {
             + ` title="${esc(mi.count + ' adresse(s) fusionnée(s) : ' + mi.srcs.join(', ') + ' — cliquer pour défaire')}"`
             + ` style="background:#0ea5e9;color:#fff;padding:0 5px;border-radius:9px;font-size:10px;font-weight:700;cursor:pointer;">🔗${mi.count}</span>`
           : '';
-        const autoBadge = am
-          ? `<span title="${esc('Fusion auto BDNB (même bâtiment) — ' + am.count
-              + ' adresse(s) : ' + am.srcs.join(', '))}"`
-            + ` style="background:#7c3aed;color:#fff;padding:0 5px;border-radius:9px;font-size:10px;font-weight:700;">🏢${am.count}</span>`
-          : '';
+        // Etape 1bis : badge auto-fusion BDNB (icone violette) retire (inutilise,
+        // decalait la ligne). Pre-selection de l'ilot alignee sur le grouping de
+        // l'arbre : ilotEffectif(a) = as.ilot (KV) puis a._ilot (light, hors 'X').
+        const effIlot = ilotEffectif(a);
         const ilotSel = `<select onchange="secteurSetAssign('${esc(a.cle)}','ilot',this.value)" `
           + `style="background:#1f2937;color:#fff;border:1px solid #4b5563;border-radius:4px;font-size:11px;padding:1px 3px;width:54px;flex:none;">`
           + `<option value="">îlot…</option>`
           + Array.from({ length: 81 }, (_, n) => n + 1).map(n =>
-              `<option value="${n}"${as.ilot === n ? ' selected' : ''}>${n}</option>`).join('')
+              `<option value="${n}"${effIlot === n ? ' selected' : ''}>${n}</option>`).join('')
           + `</select>`;
-        // Qualification : visible pour TOUTES les adresses hors-RNC (BDNB ou non).
-        // Si une qualification est posee -> badge statique + crayon (re-edition).
-        // Sinon -> menu deroulant "— type —".
+        // Qualification : menu requalif visible pour TOUTES les adresses (RNC
+        // incluses, Etape 1 - gate '!rnc' retire). Si une qualif est posee ->
+        // badge statique + crayon ; sinon -> menu deroulant "— type —".
         let typeSel = '';
-        if (!rnc) {
+        if (true) {
           if (as.type && TYPE_LABELS[as.type]) {
             const lbl = TYPE_LABELS[as.type];
             const tc = TYPE_BADGE_COLORS[as.type]
@@ -5143,6 +5142,21 @@ function renderSecteur() {
               + `  style="background:${tc.bg};color:${tc.fg};border:1px solid ${tc.border};`
               + `border-radius:9px;font-size:10px;font-weight:600;padding:1px 7px;`
               + `white-space:nowrap;">${esc(lbl)}</span>`
+              + `<button onclick="secteurEditType(this)" title="Modifier la qualification" `
+              + `  style="background:transparent;border:none;color:var(--text2);`
+              + `cursor:pointer;font-size:11px;padding:0;">✏️</button>`
+              + `</span>`;
+          } else if (rnc) {
+            // Etape 1ter : badge implicite "Copropriete" pour copro RNC sans tag
+            // KV. PUREMENT VISUEL (aucune ecriture KV). Couleur sobre bleu-gris,
+            // distincte des tags-prospect. Le crayon ouvre le dropdown TYPE_OPTS
+            // habituel (secteurEditType inchange).
+            typeSel = `<span class="sct-typecell" data-cle="${esc(a.cle)}" `
+              + `style="display:inline-flex;align-items:center;gap:3px;flex:none;">`
+              + `<span title="Copropriété RNC immatriculée (qualification implicite, non saisie)" `
+              + `  style="background:#243447;color:#9fb3c8;border:1px solid #3d5570;`
+              + `border-radius:9px;font-size:10px;font-weight:600;padding:1px 7px;`
+              + `white-space:nowrap;">Copropriété</span>`
               + `<button onclick="secteurEditType(this)" title="Modifier la qualification" `
               + `  style="background:transparent;border:none;color:var(--text2);`
               + `cursor:pointer;font-size:11px;padding:0;">✏️</button>`
@@ -5213,7 +5227,7 @@ function renderSecteur() {
         const actions = `<button onclick="secteurRapprocher('${esc(a.cle)}')" title="Rapprocher d'une copropriété RNC" `
           + `style="background:transparent;border:1px solid #4b5563;color:#0ea5e9;border-radius:4px;`
           + `font-size:11px;padding:1px 5px;cursor:pointer;">🔗</button>`
-          + `${fusBadge}${autoBadge}${ilotSel}${typeSel}`;
+          + `${fusBadge}${ilotSel}${typeSel}`;
         // Syndic (RNC : raison sociale du représentant légal) ; "non connu" -> —
         const synNm = (a.syndic && !/^\s*non connu\s*$/i.test(a.syndic))
           ? String(a.syndic).trim() : '';
