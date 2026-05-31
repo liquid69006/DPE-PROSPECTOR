@@ -70,7 +70,7 @@
       "type": "bureaux"
     },
     "2|RUE|CARRY": {
-      "type": "mono"
+      "type": "bureaux"
     },
     "1|RUE|CARRY": {
       "type": "social"
@@ -85,7 +85,7 @@
       "type": "social"
     },
     "10|RUE|GANDOLIERE": {
-      "type": "mono"
+      "type": "bureaux"
     },
     "27|RUE|MAURICE FLANDIN": {
       "type": "bureaux"
@@ -154,13 +154,13 @@
       "type": "bureaux"
     },
     "144|RUE|ANTOINE CHARIAL": {
-      "type": "social"
+      "type": "bureaux"
     },
     "171|AVENUE|FELIX FAURE": {
       "type": "social"
     },
     "28|RUE|FREDERIC MISTRAL": {
-      "type": "mono"
+      "type": "bureaux"
     },
     "289|RUE|PAUL BERT": {
       "type": "bureaux"
@@ -169,7 +169,7 @@
       "type": "social"
     },
     "12|RUE|MONTBRILLANT": {
-      "type": "mono"
+      "type": "bureaux"
     },
     "36|AVENUE|LACASSAGNE": {
       "type": "bureaux"
@@ -805,10 +805,10 @@
       "type": "mono"
     },
     "23|RUE|LOUIS JASSERON": {
-      "type": "bureaux"
+      "type": "mono"
     },
     "27|RUE|LOUIS JASSERON": {
-      "type": "bureaux"
+      "type": "mono"
     },
     "5|PLACE|FERRANDIERE": {
       "type": "social"
@@ -862,7 +862,7 @@
       "type": "cible_0vente_active"
     },
     "132|RUE|BARABAN": {
-      "type": "social"
+      "type": "mixte"
     },
     "14|RUE|KIMMERLING": {
       "type": "copro_non_immat"
