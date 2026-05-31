@@ -315,6 +315,20 @@ secteurs.
   (`secteurFusions` manuel, `_fusion_auto` BDNB même bgid)
   **relocalisent** les ventes vers la copro **sans** toucher le
   parc (dédup `bg:bgid`) → conservation prouvée.
+- **« Strict » = MARCHE LIBRE** (refonte 2026-05-31) : l'agrégat
+  strict (header secteur, sous-total îlot, répartition `sctGen`,
+  modale génération/export) **exclut** les adresses taguées
+  `social` / `bureaux`, **jugé par le tag de l'ANCRE de fusion**
+  (jamais l'adresse brute fusionnée), et **fusion-aware partout**
+  (ventes des sources pliées sur l'ancre *avant* exclusion). Le
+  **brut** reste tout-inclus (gate `secteurStrict`). Les lignes
+  social/bureaux affichent leurs ventes **parenthésées** (hors-total,
+  ligne visible). Parc `secL` (dédup `bg:bgid`) **inchangé** —
+  orthogonal aux ventes. **Identité header == sctGen** : les fusions
+  manuelles vers une **ancre non-copro** sont pliées des 2 côtés mais
+  leurs ventes restent **non-redistribuées** (gate `cp` de
+  `renderSecteur`, l.5074 — répliqué dans `sctGen`) → DL = **578,4/an**
+  (vs 599,6 tout-inclus ; 1,8/an = 5+7 FLANDIN → 3 FLANDIN non-copro).
 - **Filtre « Hors-RNC actifs »** : `!coproByCle[cle]` &
   `!numero_immatriculation` & `nb_ventes_logement>0`.
 

@@ -33,12 +33,15 @@ const slice = (a, b) => HTML.slice(a - 1, b).join("\n"); // lignes 1-based inclu
 // Categorie/RNC/Ventes). Le test etait inexecutable depuis (plages 2148..
 // perimees + globals manquants). Plages recalees sur la structure courante
 // (6600+ lignes) ; stubs des nouveaux globals ajoutes dans runRender.
+// RESYNC 2026-05-31 (marche libre) : refonte "strict = MARCHE LIBRE"
+// (exclusion ancres social/bureaux, fusion-aware) -> sctGen alourdi (fold) +
+// renderSecteur deplace en 4817-5397. Plages re-recalees.
 const SRC = [
   slice(2512, 2525),   // ROT_COLOR + TYPE_OPTS + TYPE_LABELS + TYPE_BADGE_COLORS
-  slice(4685, 4687),   // esc
-  slice(4689, 4693),   // secteurNorm
-  slice(4737, 4785),   // sctTauxAnnuel..sctClassAnnuel + SCTW + DPE_COLOR + sctDpe..normalizeAdresseDisplay
-  slice(4787, 5351),   // renderSecteur (parc / strict / hr-actif / sctQ)
+  slice(4715, 4717),   // esc
+  slice(4719, 4723),   // secteurNorm
+  slice(4767, 4815),   // sctTauxAnnuel..sctClassAnnuel + SCTW + DPE_COLOR + sctDpe..normalizeAdresseDisplay
+  slice(4817, 5397),   // renderSecteur (parc / strict / hr-actif / sctQ / marche libre)
 ].join("\n\n");
 
 function mkEl() {
@@ -50,7 +53,7 @@ function mkEl() {
   };
 }
 
-function runRender(jsonPath, strict, search, hrActif) {
+function runRender(jsonPath, strict, search, hrActif, assign) {
   const secteurData = JSON.parse(fs.readFileSync(jsonPath, "utf8"));
   const searchEl = mkEl(); searchEl.value = search || "";
   const els = {
@@ -61,7 +64,9 @@ function runRender(jsonPath, strict, search, hrActif) {
   };
   const sandbox = {
     secteurData,
-    secteurFusions: {}, secteurNoms: {}, secteurAssign: {}, secteurNoLog: false,
+    // secteurAssign : par defaut {} (n'exerce PAS l'exclusion marche libre).
+    // Un fixture peuple (cf ASSIGN_DL) l'injecte pour le test marche libre.
+    secteurFusions: {}, secteurNoms: {}, secteurAssign: assign || {}, secteurNoLog: false,
     secteurStrict: !!strict,
     secteurVille: process.env.SECTEUR === "motte_picquet" ? "Paris 15" : "Lyon 3",
     // Globals introduits par le refactor renderSecteur 2026-05-24 (ilot
@@ -222,6 +227,42 @@ check(`lgts INCHANGES par le toggle (${lgt(curResume)} == ${lgt(sR)})`,
   lgt(sR) === lgt(curResume));
 check(`adresses INCHANGEES par le toggle (${adr(curResume)} == ${adr(sR)})`,
   adr(sR) === adr(curResume));
+
+// ── Strict = MARCHE LIBRE (exclusion ancres social/bureaux, fusion-aware) ──
+// 2026-05-31 : l'agregat strict (header/sous-total ilot) exclut les ANCRES
+// taguees social/bureaux (jamais l'adresse brute fusionnee), fusion-aware.
+// Le sandbox met secteurAssign:{} par defaut -> le toggle ci-dessus ne change
+// PAS (aucune exclusion) -> baselines venStrict/venBrut restent vertes. Pour
+// EXERCER l'exclusion on injecte un fixture peuple ciblant des cle reellement
+// presentes dans le light DL ET porteuses de ventes strictes (sinon "ML <
+// total" serait une egalite). 139 AV FELIX FAURE est l'ANCRE de fusion (141 FF
+// s'y plie) taguee mixte -> NON exclue, elle CONSERVE les ventes pliees
+// (verifie le critere "par ancre"). Le BRUT n'est jamais impacte (gate
+// secteurStrict cote index.html).
+if (DAUPH) {
+  const ASSIGN_DL = {
+    "27|AVENUE|LACASSAGNE":   { type: "social"  },  // ancre a fortes ventes -> exclue
+    "128|RUE|BARABAN":        { type: "bureaux" },  // ancre a fortes ventes -> exclue
+    "139|AVENUE|FELIX FAURE": { type: "mixte"   },  // ANCRE fusion (141 FF) -> NON exclue, garde ventes pliees
+  };
+  console.log("\n=== Strict = MARCHE LIBRE (fixture social/bureaux) ===");
+  const ml = runRender(CUR, true, "", false, ASSIGN_DL);
+  const mlR = ml.els["secteur-resume"]._text || "";
+  console.log("  strict total (assign vide) :", sR);
+  console.log("  strict marche libre        :", mlR);
+  check("renderSecteur() ne leve pas (marche libre)", !ml.error);
+  if (ml.error) console.log("  THROW:", ml.error.message);
+  // L'exclusion ne touche QUE l'agregat ventes : les lignes social/bureaux
+  // restent rendues (ventes parenthesees) -> meme nombre d'adresses.
+  check(`adresses INCHANGEES par l'exclusion marche libre (${adr(sR)} == ${adr(mlR)})`,
+    adr(mlR) === adr(sR));
+  // Ventes/an strictes : l'exclusion des ancres social/bureaux porteuses de
+  // ventes fait STRICTEMENT baisser l'agregat. (Parc secL : invariant verifie
+  // par Change 1 avec assign vide ; le tag social/bureaux zero-ifie deja la
+  // contribution parc, comportement existant hors-scope de cette comparaison.)
+  check(`ventes/an marche libre < strict total (${ven(mlR)} < ${ven(sR)})`,
+    ven(mlR) >= 0 && ven(mlR) < ven(sR));
+}
 
 // Nouveaux seuils de classement : 0–1 Figé · 1–2 Modéré · 2–3 Actif · >3 Très actif
 console.log("\n=== Seuils sctClassAnnuel (nouveaux) ===");

@@ -2680,6 +2680,34 @@ function sctGenComputeIlots() {
     }
     return 0;
   };
+  // [MARCHE LIBRE 2026-05-31] fusion-aware : plier les ventes des sources sur
+  // leur ANCRE, comme renderSecteur (l.4837-4867). 2 conventions de fusion :
+  //   - secteurFusions (KV manuel, src -> dst) : redistribuee SEULEMENT si
+  //     l'ancre est une copro (gate renderSecteur l.5074 `mi = cp && ...`) ;
+  //     sinon ventes de la source perdues (comportement dashboard actuel).
+  //   - _fusion_auto + (_fusion_cible | _fusion_auto_target) (auto BDNB) :
+  //     toujours redistribuee (cf `am`, non gate).
+  // Les sources sont ensuite ecartees de la boucle (continue) ; l'exclusion
+  // social/bureaux est jugee par le tag de l'ANCRE, jamais l'adresse brute.
+  const coproCle = {};
+  (secteurData.coproprietes || []).forEach(c => { if (c.cle_adresse) coproCle[c.cle_adresse] = true; });
+  const adrByCle = {};
+  secteurData.adresses.forEach(a => { adrByCle[a.cle] = a; });
+  const fusedSrc = {};            // srcCle -> true (source ecartee du comptage)
+  const foldedVpa = {};           // ancreCle -> ventes pliees des sources
+  Object.keys(secteurFusions || {}).forEach(src => {
+    const dst = secteurFusions[src];
+    if (!adrByCle[src] || !dst || src === dst) return;
+    fusedSrc[src] = true;
+    if (coproCle[dst]) foldedVpa[dst] = (foldedVpa[dst] || 0) + sumVpa(adrByCle[src]);
+  });
+  secteurData.adresses.forEach(a => {
+    const cible = a._fusion_cible || a._fusion_auto_target;
+    if (a._fusion_auto && cible && !fusedSrc[a.cle]) {
+      fusedSrc[a.cle] = true;
+      foldedVpa[cible] = (foldedVpa[cible] || 0) + sumVpa(a);
+    }
+  });
   const byIlot = {};
   // [REFACTOR r7.7 2026-05-25] Exclusion ventes adresses social/bureaux :
   // les adresses taguees secteurAssign.type in {social, bureaux} sont
@@ -2688,6 +2716,7 @@ function sctGenComputeIlots() {
   // Compteur diagnostique : nombre de ventes exclues + nb adresses.
   let exclVentes = 0, exclAdresses = 0;
   for (const a of secteurData.adresses) {
+    if (fusedSrc[a.cle]) continue;              // source fusionnee -> ventes pliees sur l'ancre
     const iid = ilotEffectif(a);
     if (iid == null) continue;                  // non assigné -> ignore
     if (a._ilot === 'X') continue;              // hors secteur -> ignore
@@ -2696,11 +2725,12 @@ function sctGenComputeIlots() {
       ilotId: key, nb_ventes: 0, _slat:0, _slng:0, _nll:0, adresses: [],
     };
     const o = byIlot[key];
-    const tg = (secteurAssign[a.cle] || {}).type;
+    const tg = (secteurAssign[a.cle] || {}).type;   // tag de l'ANCRE (source ecartee ci-dessus)
+    const vTot = sumVpa(a) + (foldedVpa[a.cle] || 0);
     if (tg !== 'social' && tg !== 'bureaux') {
-      o.nb_ventes += sumVpa(a);
+      o.nb_ventes += vTot;
     } else {
-      exclVentes  += sumVpa(a);
+      exclVentes  += vTot;
       exclAdresses++;
     }
     if (typeof a.latitude === 'number' && typeof a.longitude === 'number') {
@@ -5077,6 +5107,16 @@ function renderSecteur() {
         ANS.forEach(y => { effV[y] = ((vpaOf(a) || {})[y] || 0)
           + (mi ? (mi.ventes[y] || 0) : 0) + (am ? (am.ventes[y] || 0) : 0); });
         const effTot = ANS.reduce((s, y) => s + effV[y], 0);
+        // [MARCHE LIBRE 2026-05-31] exclusion par le tag de l'ANCRE de fusion :
+        // la boucle ne voit que les ancres (sources fusionnees ecartees plus
+        // bas), donc a.cle EST la cle d'ancre. effTot est deja fusion-aware
+        // (ventes des sources redistribuees l.5076-5079). Ce flag conditionne
+        // l'agregat ventes (header/sous-total) ET l'affichage des cellules
+        // ventes (parentheses). Le parc (secL/iloL) reste intact.
+        // GATE secteurStrict : le "marche libre" ne s'applique qu'au mode STRICT
+        // (toggle ON). Le BRUT reste tout-inclus (inchange) ; en brut _mlExcl
+        // est toujours false -> agregat ET cellules ventes inchanges.
+        const _mlExcl = secteurStrict && (as.type === 'social' || as.type === 'bureaux');
         const lots = (a._nb_lots_habitation_override != null)
           ? a._nb_lots_habitation_override
           : ((rnc && cp.nb_lots_habitation != null) ? cp.nb_lots_habitation : null);
@@ -5096,7 +5136,9 @@ function renderSecteur() {
         // copro RNC -> lots RNC ; hors-RNC résidentiel -> nb_log_bdnb ;
         // tertiaire / secondaire / dépendance / inconnu -> 0.
         // Même base à tous les niveaux -> header = Σ IRIS = Σ adresses.
-        iloAllV += effTot;
+        // [MARCHE LIBRE] exclut les ancres social/bureaux de l'agregat ventes
+        // (parc inchange : iloL/secL plus bas ne sont pas touches).
+        iloAllV += _mlExcl ? 0 : effTot;
         // Clé unifiée par bâtiment : RNC prioritaire, sinon bâti
         // résidentiel hors-RNC (nb_log_bdnb), sinon aucune contribution.
         // FIX bug #1 : une adresse hors-RNC qualifiee social/bureaux
@@ -5302,8 +5344,12 @@ function renderSecteur() {
           + sctCell(sctDpe(a.classe_dpe), SCTW.dpe, 'center')
           + sctCell(sciCell, SCTW.sci, 'left')
           + sctCell(logCell, SCTW.lots, 'center')
-          + ANS.map(y => sctCell(String(effV[y] || 0), SCTW.an, 'center')).join('')
-          + sctCell(`<b>${effTot}</b>`, SCTW.tot, 'center')
+          + ANS.map(y => sctCell(_mlExcl
+              ? `<span style="color:var(--text2);opacity:.6;">(${effV[y] || 0})</span>`
+              : String(effV[y] || 0), SCTW.an, 'center')).join('')
+          + sctCell(_mlExcl
+              ? `<span style="color:var(--text2);opacity:.6;" title="hors marché libre (social/bureaux)">(${effTot})</span>`
+              : `<b>${effTot}</b>`, SCTW.tot, 'center')
           + sctCell(taux != null ? taux + '%' : '<span style="color:var(--text2);">—</span>', SCTW.taux, 'center')
           + sctCell(sctBadge(cls), SCTW.cls, 'center')
           + sctAct(actions)
