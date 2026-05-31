@@ -2053,6 +2053,9 @@
     },
     "9|COURS|ALBERT THOMAS": {
       "type": "mixte"
+    },
+    "41|RUE|TURBIL": {
+      "type": "mixte"
     }
   },
   "fusions": {
