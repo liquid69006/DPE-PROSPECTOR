@@ -466,6 +466,33 @@ td{padding:11px 14px;vertical-align:middle;}
   #mobile-view{display:none;}
 }
 
+/* PR1 - barre de filtres Secteur (status + presets + dropdowns) */
+.sct-status-bar{display:none;align-items:center;flex-wrap:wrap;gap:8px;width:100%;
+  margin:2px 0;padding:6px 10px;background:var(--surface2);border:1px solid var(--border);
+  border-radius:6px;font-size:12px;color:var(--text2);}
+.sct-status-bar.active{display:flex;}
+.sct-status-count{font-weight:700;color:var(--text);}
+.sct-status-chip{background:rgba(190,175,135,.18);border:1px solid var(--border);
+  border-radius:10px;padding:1px 8px;color:var(--text);white-space:nowrap;}
+.sct-status-reset{margin-left:auto;cursor:pointer;color:var(--orange);
+  text-decoration:underline;text-underline-offset:2px;white-space:nowrap;}
+.sct-filter-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;width:100%;margin:2px 0;}
+.sct-preset-btn{padding:6px 12px;border:1px dashed var(--border);border-radius:14px;
+  background:var(--surface);color:var(--text2);font-size:12px;cursor:pointer;white-space:nowrap;}
+.sct-preset-btn:hover{border-color:var(--orange);color:var(--text);}
+.sct-dropdown{position:relative;flex:0 0 auto;}
+.sct-dropdown-btn{padding:7px 14px;border:1px solid var(--border);border-radius:6px;
+  background:var(--surface2);color:var(--text);font-size:13px;cursor:pointer;white-space:nowrap;}
+.sct-dropdown-btn.active{border-color:var(--orange);background:rgba(190,175,135,.18);}
+.sct-dropdown-panel{display:none;position:absolute;top:calc(100% + 4px);left:0;z-index:60;
+  min-width:210px;background:var(--surface);border:1px solid var(--border);border-radius:8px;
+  box-shadow:0 8px 24px rgba(0,0,0,.45);padding:6px;}
+.sct-dropdown-panel.open{display:block;}
+.sct-dropdown-option{display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:5px;
+  font-size:13px;color:var(--text);cursor:pointer;}
+.sct-dropdown-option:hover{background:var(--surface2);}
+.sct-dropdown-option input{accent-color:var(--orange);cursor:pointer;}
+
 </style>
   <script src="https://dpe-prospector-api.yann-bufferne.workers.dev/lib/pizzip.min.js"></script>
   <script src="https://dpe-prospector-api.yann-bufferne.workers.dev/lib/docxtemplater.min.js"></script>
@@ -747,6 +774,8 @@ td{padding:11px 14px;vertical-align:middle;}
         style="font-size:10px;color:var(--text2);opacity:.55;white-space:nowrap;">build&nbsp;2026-05-18·strict+seuils+nocache</span>
     </div>
     <div style="margin-bottom:12px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+      <!-- PR1 : status bar (au-dessus, separee, width:100% -> ligne propre) -->
+      <div id="sct-status-bar" class="sct-status-bar"></div>
       <div style="position:relative;flex:1;min-width:240px;max-width:420px;">
         <input id="secteur-search" type="text" autocomplete="off"
           placeholder="🔍 Rechercher une adresse…" oninput="secteurFilter()"
@@ -756,46 +785,56 @@ td{padding:11px 14px;vertical-align:middle;}
           style="position:absolute;right:8px;top:50%;transform:translateY(-50%);
                  cursor:pointer;color:var(--text2);font-size:14px;" title="Effacer">✕</span>
       </div>
-      <button id="secteur-nolog-btn" onclick="secteurToggleNoLog()"
-        title="N'afficher que les adresses sans logements connus (ni BDNB ni RNC)"
-        style="padding:7px 14px;border:1px solid var(--border);border-radius:6px;
-               background:var(--surface2);color:var(--text);font-size:13px;
-               cursor:pointer;white-space:nowrap;">🏠 Sans logements</button>
+      <!-- PR1 v3 : une seule row -> dropdowns, mode strict, presets, spacer, actions -->
+      <div class="sct-dropdown">
+        <button id="sct-dd-cat-btn" class="sct-dropdown-btn"
+          onclick="secteurDropdownToggle('cat')">Catégorie : toutes</button>
+        <div id="sct-dd-cat-panel" class="sct-dropdown-panel">
+          <label class="sct-dropdown-option"><input type="checkbox" value="social" onchange="secteurCatCheckbox(this)"> Social</label>
+          <label class="sct-dropdown-option"><input type="checkbox" value="mono" onchange="secteurCatCheckbox(this)"> Monopropriété</label>
+          <label class="sct-dropdown-option"><input type="checkbox" value="mixte" onchange="secteurCatCheckbox(this)"> Mixte</label>
+          <label class="sct-dropdown-option"><input type="checkbox" value="copro_rnc" onchange="secteurCatCheckbox(this)"> Copro RNC</label>
+          <label class="sct-dropdown-option"><input type="checkbox" value="copro_non_immat" onchange="secteurCatCheckbox(this)"> Copro non immat.</label>
+          <label class="sct-dropdown-option"><input type="checkbox" value="bureaux" onchange="secteurCatCheckbox(this)"> Bureaux</label>
+          <label class="sct-dropdown-option"><input type="checkbox" value="a_qualifier" onchange="secteurCatCheckbox(this)"> À qualifier</label>
+        </div>
+      </div>
+      <div class="sct-dropdown">
+        <button id="sct-dd-rnc-btn" class="sct-dropdown-btn"
+          onclick="secteurDropdownToggle('rnc')">RNC : toutes</button>
+        <div id="sct-dd-rnc-panel" class="sct-dropdown-panel">
+          <label class="sct-dropdown-option"><input type="radio" name="sct-rnc" value="toutes" checked onchange="secteurSetRnc(this.value)"> Toutes</label>
+          <label class="sct-dropdown-option"><input type="radio" name="sct-rnc" value="hors-rnc" onchange="secteurSetRnc(this.value)"> Hors-RNC</label>
+          <label class="sct-dropdown-option"><input type="radio" name="sct-rnc" value="rnc" onchange="secteurSetRnc(this.value)"> RNC</label>
+        </div>
+      </div>
+      <div class="sct-dropdown">
+        <button id="sct-dd-ventes-btn" class="sct-dropdown-btn"
+          onclick="secteurDropdownToggle('ventes')">Ventes : toutes</button>
+        <div id="sct-dd-ventes-panel" class="sct-dropdown-panel">
+          <label class="sct-dropdown-option"><input type="radio" name="sct-ventes" value="toutes" checked onchange="secteurSetVentes(this.value)"> Toutes</label>
+          <label class="sct-dropdown-option"><input type="radio" name="sct-ventes" value="avec" onchange="secteurSetVentes(this.value)"> Avec ventes</label>
+          <label class="sct-dropdown-option"><input type="radio" name="sct-ventes" value="sans" onchange="secteurSetVentes(this.value)"> Sans ventes</label>
+        </div>
+      </div>
+      <div class="sct-dropdown">
+        <button id="sct-dd-log-btn" class="sct-dropdown-btn"
+          onclick="secteurDropdownToggle('log')">Logement : avec logements</button>
+        <div id="sct-dd-log-panel" class="sct-dropdown-panel">
+          <label class="sct-dropdown-option"><input type="radio" name="sct-log" value="avec" checked onchange="secteurSetLogement(this.value)"> Avec logements</label>
+          <label class="sct-dropdown-option"><input type="radio" name="sct-log" value="sans" onchange="secteurSetLogement(this.value)"> Sans logements</label>
+        </div>
+      </div>
       <button id="secteur-strict-btn" onclick="secteurToggleStrict()"
         title="Ventes &quot;logement strict&quot; : exclut les mutations DVF dépendance/commerce seule (parkings, caves). Met à jour ventes/an, taux et classement de rotation."
         style="padding:7px 14px;border:1px solid var(--border);border-radius:6px;
                background:var(--surface2);color:var(--text);font-size:13px;
                cursor:pointer;white-space:nowrap;">📊 Ventes strictes</button>
-      <button id="secteur-hractif-btn" onclick="secteurToggleHrActif()"
-        title="N'afficher que les adresses HORS-RNC (non rattachées à une copropriété) ayant au moins 1 vente logement sur 5 ans — cibles de prospection prioritaires. Cumulable avec les autres filtres."
-        style="padding:7px 14px;border:1px solid var(--border);border-radius:6px;
-               background:var(--surface2);color:var(--text);font-size:13px;
-               cursor:pointer;white-space:nowrap;">🔍 Hors-RNC actifs</button>
-      <button id="secteur-mono-btn" onclick="secteurToggleMono()"
-        title="N'afficher que les adresses HORS-RNC qualifiées 'Monopropriété' (qualification posée manuellement)."
-        style="padding:7px 14px;border:1px solid var(--border);border-radius:6px;
-               background:var(--surface2);color:var(--text);font-size:13px;
-               cursor:pointer;white-space:nowrap;">🏢 Mono</button>
-      <button id="secteur-copronni-btn" onclick="secteurToggleCoproNI()"
-        title="N'afficher que les adresses HORS-RNC qualifiées 'Copropriété non immatriculée' (qualification posée manuellement). Cumulable avec les autres filtres."
-        style="padding:7px 14px;border:1px solid var(--border);border-radius:6px;
-               background:var(--surface2);color:var(--text);font-size:13px;
-               cursor:pointer;white-space:nowrap;">🏘️ Copro NI</button>
-      <button id="secteur-mixte-btn" onclick="secteurToggleMixte()"
-        title="N'afficher que les adresses HORS-RNC qualifiées 'Mixte' (social + marchand). Cumulable."
-        style="padding:7px 14px;border:1px solid var(--border);border-radius:6px;
-               background:var(--surface2);color:var(--text);font-size:13px;
-               cursor:pointer;white-space:nowrap;">🔀 Mixte</button>
-      <button id="secteur-aqualif-btn" onclick="secteurToggleAQualif()"
-        title="N'afficher que les adresses HORS-RNC sans qualification posee (as.type vide). Cumulable avec les autres filtres."
-        style="padding:7px 14px;border:1px solid var(--border);border-radius:6px;
-               background:var(--surface2);color:var(--text);font-size:13px;
-               cursor:pointer;white-space:nowrap;">❓ À qualifier</button>
-      <button id="secteur-sansventes-btn" onclick="secteurToggleSansVentes()"
-        title="N'afficher que les copros (RNC immatriculées ou copro_non_immat) sans aucune vente logement sur 5 ans (mode strict). Cumulable avec les autres filtres."
-        style="padding:7px 14px;border:1px solid var(--border);border-radius:6px;
-               background:var(--surface2);color:var(--text);font-size:13px;
-               cursor:pointer;white-space:nowrap;">🔇 Sans ventes</button>
+      <button class="sct-preset-btn" onclick="secteurApplyPreset('dormantes')"
+        title="Hors-RNC sans aucune vente logement sur 5 ans : zones dormantes">😴 Dormantes</button>
+      <button class="sct-preset-btn" onclick="secteurApplyPreset('qualifier')"
+        title="Hors-RNC sans qualification posée">❓ À qualifier</button>
+      <div style="flex:1 1 auto;"></div>
       <button id="secteur-gen-btn" onclick="sctGenOpen()"
         title="Générer automatiquement N secteurs équilibrés (quotas par zone + équilibrage total ±5%)."
         style="padding:7px 14px;border:1px solid #BEAF87;border-radius:6px;
@@ -2206,18 +2245,12 @@ let secteurData = null, secteurLoaded = false, secteurAssign = {}, secteurSaveTi
 let secteurFusions = {};            // { srcCle: dstCleAdresse }  (adresse DVF -> copro RNC)
 let secteurNoms = {};               // { cle: "nom personnalisé" }  (renommage inline)
 let secteurSciByCle = {};           // { cleAdresse: [{sci_nom,sci_siren,sci_active,...}] } via SCI Prospector
-let secteurNoLog = false;           // filtre "Sans logements" (toggle)
-function secteurToggleNoLog() {
-  secteurNoLog = !secteurNoLog;
-  const b = document.getElementById('secteur-nolog-btn');
-  if (b) {
-    b.style.background = secteurNoLog ? 'var(--orange)' : 'var(--surface2)';
-    b.style.color = secteurNoLog ? '#fff' : 'var(--text)';
-    b.style.borderColor = secteurNoLog ? 'var(--orange)' : 'var(--border)';
-  }
-  renderSecteur();
-}
-window.secteurToggleNoLog = secteurToggleNoLog;
+// PR1 - etat des 4 filtres dropdown (remplacent les 6 lentilles + sans-logements)
+let secteurCategoriesSelected = new Set();   // vide = toutes
+let secteurRncFilter   = 'toutes';           // 'toutes'|'hors-rnc'|'rnc'
+let secteurVentes      = 'toutes';           // 'toutes'|'avec'|'sans'
+let secteurLogement    = 'avec';             // 'avec'|'sans'
+let secteurFilteredCount = 0;                // MAJ par renderSecteur, lu par updateStatusBar
 let secteurStrict = true;           // mode "logement strict" par DEFAUT (toggle ON au chargement)
 let secteurVille = 'Lyon 3';        // ville pour le lien Google Maps (dynamique selon l'agence)
 function secteurStrictBtnSync() {   // reflète l'état du toggle sur le bouton
@@ -2234,84 +2267,104 @@ function secteurToggleStrict() {
   renderSecteur();
 }
 window.secteurToggleStrict = secteurToggleStrict;
-let secteurHrActif = false;         // filtre "Hors-RNC actifs" INACTIF par defaut (toggle)
-function secteurHrActifBtnSync() {  // reflete l'etat sur le bouton (clone secteurStrictBtnSync)
-  const b = document.getElementById('secteur-hractif-btn');
-  if (b) {
-    b.style.background = secteurHrActif ? 'var(--orange)' : 'var(--surface2)';
-    b.style.color = secteurHrActif ? '#fff' : 'var(--text)';
-    b.style.borderColor = secteurHrActif ? 'var(--orange)' : 'var(--border)';
-  }
+// ---- PR1 : libelles dropdown + accent (etat != defaut) ----
+function secteurSyncDropdownLabels() {
+  const setLbl = (id, txt) => { const b = document.getElementById(id); if (b) b.textContent = txt; };
+  const setActive = (id, on) => { const b = document.getElementById(id);
+    if (b) b.classList.toggle('active', !!on); };
+  const CAT_LABELS = { social: 'Social', mono: 'Monopropriete', mixte: 'Mixte',
+    copro_rnc: 'Copro RNC', copro_non_immat: 'Copro non immat.', bureaux: 'Bureaux',
+    a_qualifier: 'A qualifier' };
+  const n = secteurCategoriesSelected.size;
+  let catTxt = 'Categorie : toutes';
+  if (n === 1) catTxt = 'Categorie : ' + (CAT_LABELS[[...secteurCategoriesSelected][0]] || '?');
+  else if (n > 1) catTxt = 'Categorie : ' + n + ' selectionnees';
+  setLbl('sct-dd-cat-btn', catTxt); setActive('sct-dd-cat-btn', n > 0);
+  const RNC_LBL = { 'toutes': 'RNC : toutes', 'hors-rnc': 'RNC : hors-RNC', 'rnc': 'RNC : RNC' };
+  setLbl('sct-dd-rnc-btn', RNC_LBL[secteurRncFilter]); setActive('sct-dd-rnc-btn', secteurRncFilter !== 'toutes');
+  const V_LBL = { 'toutes': 'Ventes : toutes', 'avec': 'Ventes : avec ventes', 'sans': 'Ventes : sans ventes' };
+  setLbl('sct-dd-ventes-btn', V_LBL[secteurVentes]); setActive('sct-dd-ventes-btn', secteurVentes !== 'toutes');
+  const L_LBL = { 'avec': 'Logement : avec logements', 'sans': 'Logement : sans logements' };
+  setLbl('sct-dd-log-btn', L_LBL[secteurLogement]); setActive('sct-dd-log-btn', secteurLogement !== 'avec');
 }
-function secteurToggleHrActif() {
-  secteurHrActif = !secteurHrActif;
-  secteurHrActifBtnSync();
+function secteurAfterFilterChange() {
+  secteurSyncDropdownLabels();
   renderSecteur();
+  secteurUpdateStatusBar();
 }
-window.secteurToggleHrActif = secteurToggleHrActif;
-let secteurMono = false;            // filtre "Monopropriété" (toggle, qualif manuelle)
-function secteurToggleMono() {
-  secteurMono = !secteurMono;
-  const b = document.getElementById('secteur-mono-btn');
-  if (b) {
-    b.style.background = secteurMono ? 'var(--orange)' : 'var(--surface2)';
-    b.style.color = secteurMono ? '#fff' : 'var(--text)';
-    b.style.borderColor = secteurMono ? 'var(--orange)' : 'var(--border)';
+// ---- PR1 : setters (MAJ var + libelle + render + status bar) ----
+function secteurCatCheckbox(el) {
+  if (el.checked) secteurCategoriesSelected.add(el.value);
+  else secteurCategoriesSelected.delete(el.value);
+  secteurAfterFilterChange();
+}
+function secteurSetCategories(set) { secteurCategoriesSelected = new Set(set || []); secteurAfterFilterChange(); }
+function secteurSetRnc(val)      { secteurRncFilter = val || 'toutes'; secteurAfterFilterChange(); }
+function secteurSetVentes(val)   { secteurVentes = val || 'toutes'; secteurAfterFilterChange(); }
+function secteurSetLogement(val) { secteurLogement = val || 'avec'; secteurAfterFilterChange(); }
+window.secteurCatCheckbox = secteurCatCheckbox;
+window.secteurSetCategories = secteurSetCategories;
+window.secteurSetRnc = secteurSetRnc;
+window.secteurSetVentes = secteurSetVentes;
+window.secteurSetLogement = secteurSetLogement;
+function secteurResetFilters() {
+  secteurCategoriesSelected = new Set();
+  secteurRncFilter = 'toutes'; secteurVentes = 'toutes'; secteurLogement = 'avec';
+  document.querySelectorAll('#sct-dd-cat-panel input[type=checkbox]').forEach(c => { c.checked = false; });
+  const setRadio = (nm, v) => { const r = document.querySelector(
+    'input[name="' + nm + '"][value="' + v + '"]'); if (r) r.checked = true; };
+  setRadio('sct-rnc', 'toutes'); setRadio('sct-ventes', 'toutes'); setRadio('sct-log', 'avec');
+  secteurAfterFilterChange();
+}
+window.secteurResetFilters = secteurResetFilters;
+function secteurApplyPreset(name) {
+  secteurResetFilters();   // repart du defaut (resynchronise aussi le DOM)
+  if (name === 'dormantes')      { secteurRncFilter = 'hors-rnc'; secteurVentes = 'sans'; }
+  else if (name === 'qualifier') { secteurCategoriesSelected = new Set(['a_qualifier']); }
+  const setRadio = (nm, v) => { const r = document.querySelector(
+    'input[name="' + nm + '"][value="' + v + '"]'); if (r) r.checked = true; };
+  setRadio('sct-rnc', secteurRncFilter); setRadio('sct-ventes', secteurVentes);
+  document.querySelectorAll('#sct-dd-cat-panel input[type=checkbox]').forEach(c => {
+    c.checked = secteurCategoriesSelected.has(c.value); });
+  secteurAfterFilterChange();
+}
+window.secteurApplyPreset = secteurApplyPreset;
+function secteurUpdateStatusBar() {
+  const bar = document.getElementById('sct-status-bar');
+  if (!bar) return;
+  const chips = [];
+  if (secteurCategoriesSelected.size > 0) {
+    const C = { social: 'Social', mono: 'Mono', mixte: 'Mixte', copro_rnc: 'Copro RNC',
+      copro_non_immat: 'Copro NI', bureaux: 'Bureaux', a_qualifier: 'A qualifier' };
+    chips.push('Categorie: ' + [...secteurCategoriesSelected].map(c => C[c] || c).join(', '));
   }
-  renderSecteur();
+  if (secteurRncFilter !== 'toutes') chips.push('RNC: ' + (secteurRncFilter === 'hors-rnc' ? 'hors-RNC' : 'RNC'));
+  if (secteurVentes !== 'toutes') chips.push('Ventes: ' + (secteurVentes === 'avec' ? 'avec' : 'sans'));
+  if (secteurLogement !== 'avec') chips.push('Logement: sans');
+  const active = chips.length > 0;
+  let html = '<span class="sct-status-count">' + secteurFilteredCount + ' adresse(s)</span>';
+  chips.forEach(c => { html += ' <span class="sct-status-chip">' + c + '</span>'; });
+  if (active) html += '<span class="sct-status-reset" onclick="secteurResetFilters()">reinitialiser</span>';
+  bar.innerHTML = html;
+  bar.classList.toggle('active', active);   // cachee si zero filtre actif
 }
-window.secteurToggleMono = secteurToggleMono;
-let secteurCoproNI = false;         // filtre "Copro non immat." (toggle, qualif manuelle = copro_non_immat)
-function secteurToggleCoproNI() {
-  secteurCoproNI = !secteurCoproNI;
-  const b = document.getElementById('secteur-copronni-btn');
-  if (b) {
-    b.style.background = secteurCoproNI ? 'var(--orange)' : 'var(--surface2)';
-    b.style.color = secteurCoproNI ? '#fff' : 'var(--text)';
-    b.style.borderColor = secteurCoproNI ? 'var(--orange)' : 'var(--border)';
+window.secteurUpdateStatusBar = secteurUpdateStatusBar;
+// ---- PR1 : dropdowns (un seul panel ouvert, click-outside ferme) ----
+function secteurDropdownToggle(which) {
+  const panelId = { cat: 'sct-dd-cat-panel', rnc: 'sct-dd-rnc-panel',
+    ventes: 'sct-dd-ventes-panel', log: 'sct-dd-log-panel' }[which];
+  const panel = document.getElementById(panelId);
+  if (!panel) return;
+  const wasOpen = panel.classList.contains('open');
+  document.querySelectorAll('.sct-dropdown-panel.open').forEach(p => p.classList.remove('open'));
+  if (!wasOpen) panel.classList.add('open');
+}
+window.secteurDropdownToggle = secteurDropdownToggle;
+document.addEventListener('click', function (e) {
+  if (!e.target.closest('.sct-dropdown')) {
+    document.querySelectorAll('.sct-dropdown-panel.open').forEach(p => p.classList.remove('open'));
   }
-  renderSecteur();
-}
-window.secteurToggleCoproNI = secteurToggleCoproNI;
-let secteurMixte = false;           // filtre "Mixte" (toggle, qualif manuelle = mixte)
-function secteurToggleMixte() {
-  secteurMixte = !secteurMixte;
-  const b = document.getElementById('secteur-mixte-btn');
-  if (b) {
-    b.style.background = secteurMixte ? '#7c3aed' : 'var(--surface2)';
-    b.style.color = secteurMixte ? '#fff' : 'var(--text)';
-    b.style.borderColor = secteurMixte ? '#7c3aed' : 'var(--border)';
-  }
-  renderSecteur();
-}
-window.secteurToggleMixte = secteurToggleMixte;
-let secteurAQualif = false;         // filtre "A qualifier" (toggle, qualif manuelle vide)
-function secteurAQualifBtnSync() {
-  const b = document.getElementById('secteur-aqualif-btn');
-  if (b) {
-    b.style.background = secteurAQualif ? 'var(--orange)' : 'var(--surface2)';
-    b.style.color = secteurAQualif ? '#fff' : 'var(--text)';
-    b.style.borderColor = secteurAQualif ? 'var(--orange)' : 'var(--border)';
-  }
-}
-function secteurToggleAQualif() {
-  secteurAQualif = !secteurAQualif;
-  secteurAQualifBtnSync();
-  renderSecteur();
-}
-window.secteurToggleAQualif = secteurToggleAQualif;
-let filterSansVentes = false;       // filtre "Sans ventes" (toggle, copro RNC + copro_non_immat sans vente log 5 ans)
-function secteurToggleSansVentes() {
-  filterSansVentes = !filterSansVentes;
-  const b = document.getElementById('secteur-sansventes-btn');
-  if (b) {
-    b.style.background = filterSansVentes ? 'var(--orange)' : 'var(--surface2)';
-    b.style.color = filterSansVentes ? '#fff' : 'var(--text)';
-    b.style.borderColor = filterSansVentes ? 'var(--orange)' : 'var(--border)';
-  }
-  renderSecteur();
-}
-window.secteurToggleSansVentes = secteurToggleSansVentes;
+});
 let sctFusSrc = null, sctFusPick = null;   // etat de la modale de rapprochement
 
 // Parse adresse_bien SCI Prospector ('163 RUE PAUL BERT 69003') ->
@@ -2370,8 +2423,7 @@ async function loadSecteurData() {
   const tt = document.getElementById('secteur-titre');
   if (tt) tt.textContent = '🗺 Secteur Prospector — ' + secName;
   secteurStrictBtnSync();           // bouton "Ventes strictes" ON par défaut
-  secteurHrActifBtnSync();          // bouton "Hors-RNC actifs" ON par defaut
-  secteurAQualifBtnSync();          // bouton "A qualifier" sync (OFF par defaut)
+  secteurSyncDropdownLabels();      // PR1 : libelles/accents des 4 dropdowns au chargement
   // [Feature 1] Hydrate l'etat verrou depuis localStorage + sync bouton.
   if (typeof sctGenLockedLoad === 'function') sctGenLockedLoad();
   // [Feature 2] Detecte si une repartition existe -> affiche bouton Reattribuer.
@@ -4819,7 +4871,7 @@ function renderSecteur() {
   window.ilotEffectif = ilotEffectif;
 
   // (refactor 2026-05-24 : suppression du groupement IRIS top-level. Les
-  // filtres secteurNoLog/HrActif/Mono/CoproNI/AQualif sont appliques en bloc dans
+  // filtres dropdown (Categorie/RNC/Ventes/Logement) sont appliques en bloc dans
   // la passe parIlot ci-dessous. La constante ILOT_IRIS_STICKY est conservee
   // mais devient sans effet -- le code peut etre nettoye dans un futur commit.)
   let html = '';
@@ -4897,56 +4949,45 @@ function renderSecteur() {
   const parIlot = {};
   (d.adresses || []).forEach(a => {
     if (fusedSrc[a.cle]) return;
-    if (secteurNoLog) {
-      const cpx = coproByCle[a.cle];
-      const hasLog = (a.nb_log_bdnb > 0) || (cpx && cpx.nb_lots_habitation > 0);
-      if (hasLog) return;
+    // PR1 : bloc de filtrage dropdown (Logement / RNC / Ventes / Categorie).
+    if (secteurLogement === 'sans') {
+      const cp = coproByCle[a.cle];
+      if ((a.nb_log_bdnb > 0) || (cp && cp.nb_lots_habitation > 0)) return;
     }
-    if (secteurHrActif) {
-      const horsRnc = !coproByCle[a.cle] && !a.numero_immatriculation;
-      if (!(horsRnc && (a.nb_ventes_logement > 0) && (a.nb_log_bdnb > 1))) return;
+    if (secteurRncFilter === 'hors-rnc') {
+      if (coproByCle[a.cle] || a.numero_immatriculation) return;
+    } else if (secteurRncFilter === 'rnc') {
+      if (!coproByCle[a.cle] && !a.numero_immatriculation) return;
     }
-    if (secteurMono) {
-      const horsRnc = !coproByCle[a.cle] && !a.numero_immatriculation;
-      const as = secteurAssign[a.cle] || {};
-      if (!(horsRnc && as.type === 'mono')) return;
-    }
-    if (secteurCoproNI) {
-      const horsRnc = !coproByCle[a.cle] && !a.numero_immatriculation;
-      const as = secteurAssign[a.cle] || {};
-      if (!(horsRnc && as.type === 'copro_non_immat')) return;
-    }
-    if (secteurMixte) {
-      const horsRnc = !coproByCle[a.cle] && !a.numero_immatriculation;
-      const as = secteurAssign[a.cle] || {};
-      if (!(horsRnc && as.type === 'mixte')) return;
-    }
-    if (secteurAQualif) {
-      const horsRnc = !coproByCle[a.cle] && !a.numero_immatriculation;
-      const as = secteurAssign[a.cle] || {};
-      if (!(horsRnc && (!as.type || as.type === ''))) return;
-    }
-    if (filterSansVentes) {
-      const asSv = secteurAssign[a.cle] || {};
-      // 1. EXCLURE explicitement social / bureaux / mono (hors champ marche
-      //    marchand : ces tags neutralisent getEffectiveLog a 0)
-      if (asSv.type === 'social' || asSv.type === 'bureaux' || asSv.type === 'mono') return;
-      // 2. Type valide : copro RNC (coproByCle OU numero_immatriculation orphelin)
-      //    OU qualif manuelle copro_non_immat OU mixte
-      const isCoproRnc = !!coproByCle[a.cle] || !!a.numero_immatriculation;
-      const isCoproNI = asSv.type === 'copro_non_immat';
-      const isMixte   = asSv.type === 'mixte';
-      if (!(isCoproRnc || isCoproNI || isMixte)) return;
-      // 3. 0 vente logement strict sur 5 ans (own + fused agreges)
+    if (secteurVentes === 'avec') {
+      if (!(a.nb_ventes_logement > 0)) return;
+    } else if (secteurVentes === 'sans') {
+      // PORT du 0-vente de l'ancien filtre Sans-ventes (ex-bloc supprime) :
+      // ON CONSERVE le 0-vente propre (cond.3) + le 0-vente fusionne (cond.4).
+      // ON ABANDONNE les ex-conditions 1 (exclure social/bureaux/mono) et 2
+      // (type copro RNC / copro_non_immat / mixte) : desormais portees par les
+      // dropdowns Categorie + RNC (donc redondantes ici, retirees).
       const ownN = a.nb_ventes_logement || 0;
       const ownVpa = a.ventes_par_an_logement || {};
       if (ownN > 0) return;
       if (ownVpa && Object.values(ownVpa).some(v => v > 0)) return;
-      // 4. Fused : mergedInto (manuel) + autoMerged (BDNB) - ventes deja agregees
-      const mi = (isCoproRnc && mergedInto[a.cle]) ? mergedInto[a.cle] : null;
+      const mi = mergedInto[a.cle] || null;
       const am = autoMerged[a.cle] || null;
       if (mi && Object.values(mi.ventes || {}).some(v => v > 0)) return;
       if (am && Object.values(am.ventes || {}).some(v => v > 0)) return;
+    }
+    if (secteurCategoriesSelected.size > 0) {
+      const t = (secteurAssign[a.cle] || {}).type;
+      const isRnc = !!(coproByCle[a.cle] || a.numero_immatriculation);
+      let pass = false;
+      if (secteurCategoriesSelected.has('social') && t === 'social') pass = true;
+      if (!pass && secteurCategoriesSelected.has('mono') && t === 'mono') pass = true;
+      if (!pass && secteurCategoriesSelected.has('mixte') && t === 'mixte') pass = true;
+      if (!pass && secteurCategoriesSelected.has('copro_rnc') && isRnc) pass = true;
+      if (!pass && secteurCategoriesSelected.has('copro_non_immat') && t === 'copro_non_immat') pass = true;
+      if (!pass && secteurCategoriesSelected.has('bureaux') && t === 'bureaux') pass = true;
+      if (!pass && secteurCategoriesSelected.has('a_qualifier') && !t) pass = true;
+      if (!pass) return;
     }
     const ilot = ilotEffectif(a);
     let k;
@@ -4955,6 +4996,12 @@ function renderSecteur() {
     else k = 'Îlot non assigné';
     (parIlot[k] = parIlot[k] || []).push(a);
   });
+  // PR1 : nb d'adresses passant tous les filtres dropdown (hors recherche texte).
+  const totalFiltered = Object.values(parIlot).reduce((s, arr) => s + arr.length, 0);
+  secteurFilteredCount = totalFiltered;
+  if (typeof secteurUpdateStatusBar === 'function') secteurUpdateStatusBar();
+  // PR1 : auto-deplier si peu de resultats et pas d'etat memorise / recherche.
+  const autoOpen = (totalFiltered <= 50 && secteurOpenIlot === null && !sctQ);
   // Tri : 'hors secteur' et 'non assigné' toujours en bas, puis numerique asc.
   const ilotKeys = Object.keys(parIlot).sort((x, y) => {
     const xSpe = (x === 'Îlot hors secteur') || (x === 'Îlot non assigné');
@@ -5245,7 +5292,7 @@ function renderSecteur() {
       ? (nRow > 0)
       : (secteurOpenIlot != null
         ? secteurOpenIlot.has(ik)
-        : false);
+        : (autoOpen && nRow > 0));
     html += `<div class="sct-ilot-toplvl" style="margin-bottom:8px;border-top:2px solid var(--border);">`
       + `<div style="cursor:pointer;font-weight:700;padding:8px 0;background:rgba(190,175,135,.14);`
       + `display:flex;align-items:center;gap:10px;" onclick="secteurToggle('${idJ}')">`
