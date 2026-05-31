@@ -161,6 +161,8 @@ Français dominant (UI, commentaires métier, docstrings, commits). Anglais tol�
 
 **Règle absolue : dry-run avant toute modif non triviale** (cf. §4.6). Modifier seulement après validation explicite de Yann.
 
+**Pattern « manche » (qualification Secteur)** : une manche = une boucle atomique `fiche read-only → tag-coherence → re-tag KV (rituel 2 scripts, anti-drift) → commit`. Le détail (rituel KV, convention de nommage des scripts `_manche_*`, side-files par-agence) est dans `PIPELINE.md` §8-§9. **Anti-drift KV non négociable** : toujours `GET prod == backup` avant tout POST.
+
 ---
 
 ## 7. Pièges connus & limitations acceptées
@@ -189,6 +191,7 @@ Ces points sont **connus**, **acceptés en l'état**, et ne doivent **pas** êtr
 - Activer `test_render_secteur.js` dans un workflow CI
 - Documenter le workflow KV prod ↔ local (dumps `_kv_assign_*.json`)
 - **Cleanup migration KV `dernierCourrier:` → `dernierCourrierMap:`** : les ~1634 anciennes clés sont à supprimer manuellement plus tard (cf. commit 242df88)
+- **Migration `cible_0vente_*` → champ `as.cible` séparé** : aujourd'hui rangé dans `as.type`, alors que c'est un signal commercial orthogonal au type bâti (cf. `PIPELINE.md` §10 + roadmap jalon 5 §11.4)
 
 ---
 
@@ -213,7 +216,9 @@ Les secrets se gèrent via :
 
 | Fichier | À consulter pour |
 |---|---|
-| `PIPELINE.md` | Méthodologie pipeline data, patterns de correction terrain (Cambronne, Suffren, Disambig…), décisions rejetées (passe bgid-orphelin) |
+| `PIPELINE.md` | Méthodologie pipeline data, patterns de correction terrain (Cambronne, Suffren, Disambig…), décisions rejetées (passe bgid-orphelin), **méthodologie manche + rituel KV (§8), side-files par-agence (§9), insights archi (§10), roadmap jalon 5 (§11)** |
+| `data/PIPELINE.md` | Architecture `make_light` (hors dépôt) → chaîne des correctifs additifs, contrat non-destructif, règles de calcul `renderSecteur` |
+| `JOURNAL.md` | Journal de session daté (boucles de qualification, commits, insights, chantiers transférés) |
 | `README.md` | Vue produit, présentation de l'app |
 | `data/secteurs.json` | Config pipeline par secteur (chemins, needles, zones géo). **À éditer manuellement** — pas lu par le worker, voulu hors du code de prod |
 | `.github/workflows/*.yml` | Détail des workflows de déploiement et cron |

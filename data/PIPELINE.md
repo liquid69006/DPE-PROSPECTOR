@@ -318,6 +318,11 @@ secteurs.
 - **Filtre « Hors-RNC actifs »** : `!coproByCle[cle]` &
   `!numero_immatriculation` & `nb_ventes_logement>0`.
 
+> Pour la **qualification KV** d'un hors-RNC résidentiel (levier BDNB :
+> `nb_log_bdnb>1` + pas d'immat + 0 PM MAJIC = `copro_non_immat`) et la
+> distinction signal commercial `cible_0vente` vs type bâti, voir
+> `PIPELINE.md` (root) §10.
+
 ## 7. Vérification
 
 `scripts/test_render_secteur.js` **extrait la vraie `renderSecteur()`**

@@ -229,7 +229,7 @@ Objectif : un pipeline de qualification **paramétré par secteur**
 | **2. Modulariser les outils** | ✅ **FAIT** (`411390b`) | Les 4 moteurs (`_scan`, `fix_kv`, `enrich_full`, `enrich`) + helper `secteur_config.py` lisent `secteurs.json[<slug>]` via `--secteur`. Logique inchangée. |
 | **3. Coder les 2 détecteurs** | ✅ **FAIT** (`8e21d54`) | `_detect_bgid_suspects.py` (piège 4) + `_detect_noms_ambigus.py` (piège 5), read-only secteur-agnostiques, alimentent la pile **orange**. |
 | **4. Tri 3 piles + arbitrage** | ✅ **FAIT** (`9e5d581` + `4289706`) | `pipeline.py` agrège en 3 piles (🟢 verte certifié auto · 🟠 orange à arbitrer · 🔴 rouge anomalies données) → 4 fichiers `_pile_*`. `arbitre_pile_orange.py` = arbitrage conversationnel piloté par Claude (`--next`/`--decide`/`--preview-cle`). Tag KV `a_arbitrer` **préparé** (dry-run ; `--apply` réservé à l'étape 5). |
-| **5. VALIDATION sur DL** | à faire | **Banc d'essai** : le pipeline doit **reproduire l'état KV DL actuel à l'identique** (résultats auto **+ overrides préservés**, cf. §5). ⛔ **NE PAS scanner MP tant que DL n'est pas reproductible.** |
+| **5. VALIDATION sur DL** | ✅ **FAIT — jalon 4 scellé** (`b91a33b`, 2026-05-31) | **Banc d'essai réussi** : pipeline reproduit l'état KV DL (auto **+ overrides préservés**, cf. §5). **Toutes piles à 0** : `a_arbitrer=0`, `a_completer=0`, `rouge=0`. Détail état ci-dessous. |
 | **6. Scan MP** | 🔒 bloqué (§5 + needles) | À n'exécuter **qu'après** étape 5 réussie **ET** constitution des **needles parisiennes** (cf. `secteurs.json[motte-picquet].metier._TODO`). |
 
 **Sortie attendue de l'étape 6 (MP)** :
@@ -238,3 +238,120 @@ Objectif : un pipeline de qualification **paramétré par secteur**
 - **3 piles** produites (verte / orange / rouge).
 - **Pile orange arbitrée par Yann** (les arbitrages deviennent des
   overrides — entrées sacrées, cf. §5).
+
+### §7.1 État jalon 4 DL (scellé 2026-05-31)
+
+| Métrique | Valeur |
+|---|---|
+| Pile 🟠 `a_arbitrer` | **0** |
+| Pile `a_completer` (arbitres indéterminés) | **0** |
+| Pile 🔴 `rouge` (anomalies données) | **0** |
+| Pile 🟢 `verte` | **1385 adresses** |
+| `cible_0vente` résiduel | **70** (121 → 70, 51 reclassées vers le vrai type bâti en manches F/G) |
+| KV DL | **643 assignments · 6 fusions · 0 noms** |
+
+Boucle close : toutes les piles d'arbitrage à 0, DL reproductible. Voir
+`JOURNAL.md` (2026-05-31) pour le détail des 17 commits et les chantiers
+transférés au jalon 5 (§11).
+
+## §8. Méthodologie « manche »
+
+Une **manche** = une boucle de qualification atomique, validée Yann, qui
+fait passer une pile (ou un sous-ensemble) à 0. Boucle type :
+
+1. **Fiche read-only** (`scripts/_fiche_*` / `_audit_*`) : état des lieux
+   d'un lot de clés, aucune écriture.
+2. **Tag-coherence** : on vérifie que le tag KV proposé est cohérent avec
+   la donnée (BDNB / MAJIC / DVF).
+3. **Re-tag KV** via le **rituel KV** (ci-dessous), calque de la manche D.
+4. **Commit** dédié, avec les scripts `_manche_<X>_*` tracked.
+
+Cadre général (renvoi CLAUDE.md §4.6) : **Explore read-only → plan validé
+Yann → code → STOP avant commit**. Illustré par les manches D/E/F/G de la
+session 2026-05-31 (cf. `JOURNAL.md`).
+
+### §8.1 Rituel KV (anti-drift, 2 scripts)
+
+- **`_<manche>_backup_diff_<agence>.py`** — GET prod, **compare au backup
+  miroir local** (anti-drift : refuse de continuer si prod ≠ backup), puis
+  produit un **candidat type-only** (diff minimal des tags à poser).
+- **`_<manche>_post_<agence>.py`** — **1 seul POST** vers
+  `/secteur-assignments/<agence>`, **re-GET de vérification**, mise à jour
+  du miroir local.
+
+JWT obtenu via `load_jwt.ps1` (TTL 24 h, session PowerShell directe — pas
+le `!` Claude Code, cf. CLAUDE.md §7). **L'anti-drift est non négociable**
+(cf. §10, épisode 50 LACASSAGNE).
+
+### §8.2 Convention de nommage scripts manche
+
+- `_fiche_* / _audit_* / _diff_*` → **analyse locale, untracked** (scratch).
+- `_manche_<X>_<verbe>_<agence>.py` → **tracked**, committé avec la manche.
+- Backups `*_PRE_manche_*.HOLD.json` + `*_<manche>.candidate.json` →
+  **`.gitignore`** (scratch de travail, jamais committés).
+
+## §9. Side-files mécanismes (par-agence, secteur-agnostiques)
+
+Tous suivent le **même pattern de câblage** :
+
+```
+data/secteurs.json[<slug>].<field>
+   → secteur_config.py  self.<field>   (repli None si absent)
+   → loader pipeline    ctx["<field>"] (repli {} si None)
+   → gate cible dans    build_pile_<x>
+```
+
+Repli gracieux : une agence sans le champ → mécanisme **no-op** (rien ne
+casse). Validé DL d'abord, réutilisable MP/futurs secteurs.
+
+| Side-file | Rôle | Schéma | Gate |
+|---|---|---|---|
+| `_arbitres_<agence>.json` | **verdict-scope** : accepter une clé « comme revue » **sans modifier son tag KV** | `[{cle, verdict_revu, date}]` | `build_pile_orange` (branches `confirmed` + `live_indetermine`) |
+| `_cles_invalides_<agence>.json` | **deny-list** : clés malformées `parse_cle → None` irrécupérables (SDC pré-scission, etc.) | `[{cle, immat?, raison, note?, date}]` | `build_pile_rouge` (T3) |
+| `_bgid_resolus_<agence>.json` | **re-bind bgid** (manche II : override `bgid_ban`, garde-fous M1 & RNC-skip) | `{cle: bgid}` | `_detect_bgid_suspects.py` (S3) |
+| `_nom_ambigu_resolus_<agence>.json` | **re-bind nom ambigu** : clés tranchées non-social, ne plus ré-arbitrer | liste de clés résolues | `_detect_noms_ambigus.py` / `pipeline.py` |
+| `_social_overrides_<agence>.json` | **protection ré-écriture** des tags définitifs (entrées sacrées, cf. §5) | overrides terrain | appliqué par-dessus le calcul auto |
+
+⚠️ Le champ KV s'appelle **`nom_ambigu_resolus`** dans `secteurs.json`
+(pas `nom_resolus`). DL câble les 5 ; MP n'a aujourd'hui que
+`social_overrides`.
+
+## §10. Insights architecturaux (essentiels à mémoriser)
+
+- **MAJIC LOCAUX 2 = personnes morales seulement (RGPD)** : les copros
+  détenues par des personnes physiques (cas typique de l'ancien lyonnais)
+  sortent à **0 owner PM** → faux `NEEDS_TERRAIN`. Pattern récurrent
+  (renvoi §6 piège 1, qui en tire l'antidote DVF).
+- **Levier BDNB** : un bâti avec `nb_log_bdnb > 1` + **pas d'immat RNC**
+  + **0 PM MAJIC** = `copro_non_immat` **par définition** (copro de
+  personnes physiques). Ce n'est **pas** une heuristique : c'est
+  définitionnellement sain. Levier des manches F/G.
+- **`cible_0vente_*` est un SIGNAL COMMERCIAL** (scoring DVF « pas de
+  mutations récentes »), **PAS un type de bâti**. Confusion historique
+  (rangé dans `as.type`) → **à migrer vers un champ `as.cible` séparé**,
+  axe orthogonal au type (cf. §11.4).
+- **Anti-drift KV** : **TOUJOURS `GET prod == backup` AVANT tout POST**.
+  Épisode 50 AVENUE LACASSAGNE (session 2026-05-31) : tag manuel posé par
+  Yann via le dashboard → miroir local désynchronisé → l'anti-drift a
+  **bloqué la manche F à juste titre**. Sync miroir d'abord (`4c9703d`),
+  puis manche.
+- **`make_light*.py` est HORS-REPO** (poste Yann) : certains chantiers
+  (révision `_fusion_auto`, vérif définition `ventes_par_an_logement`)
+  restent **côté Yann**, pas exécutables depuis le repo (cf. `data/PIPELINE.md` §4).
+
+## §11. Roadmap jalon 5
+
+1. **Motte-Picquet — déploiement du pattern manche.** 3 clés malformées MP
+   déjà repérées (`LEON BOURGEOIS`, `FONDARY`, `GRENELLE`) → `cles_invalides` ;
+   `cible_0vente` de personnes physiques → reclasse via **levier BDNB** (§10) ;
+   `arbitres` si nécessaire. Prérequis : needles parisiennes (cf. §7 étape 6).
+2. **Révision `_fusion_auto` dans `make_light` (hors-repo).** ~625 façades
+   multi-entrées partageant un même `bgid` (DL) ne sont **pas** auto-fusionnées.
+   Critère proposé (à affiner) : **même bgid + même owner top1 MAJIC + même
+   nb_lots**. À étendre aux 5 secteurs.
+3. **Vérif définition `ventes_par_an_logement` (make_light vs Yann).**
+   Définition Yann : « mutation DVF contenant ≥ 1 lot habitation, comptée
+   même si le même appartement est vendu 3× en 5 ans = 3 ventes ». Lire
+   `make_light` à froid pour confirmer l'alignement.
+4. **Migration `cible_0vente_*` → champ `as.cible` séparé** (changement de
+   schéma KV), libérant `as.type` pour le **type bâti pur** (cf. §10).
