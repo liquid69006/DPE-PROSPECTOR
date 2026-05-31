@@ -406,7 +406,7 @@
       "type": "bureaux"
     },
     "11|RUE|ST MAXIMIN": {
-      "type": "bureaux"
+      "type": "copro_non_immat"
     },
     "19|RUE|TUILIERS": {
       "type": "bureaux"
@@ -979,7 +979,7 @@
       "type": "social"
     },
     "9|RUE|TUILIERS": {
-      "type": "mono"
+      "type": "copro_non_immat"
     },
     "11|RUE|BARA": {
       "type": "cible_0vente_active"
@@ -2056,6 +2056,9 @@
     },
     "41|RUE|TURBIL": {
       "type": "mixte"
+    },
+    "4|RUE|ETIENNE RICHERAND": {
+      "type": "social"
     }
   },
   "fusions": {
@@ -2063,7 +2066,8 @@
     "37|RUE|TURBIL": "35|RUE|TURBIL",
     "5|RUE|MAURICE FLANDIN": "3|RUE|MAURICE FLANDIN",
     "7|RUE|MAURICE FLANDIN": "3|RUE|MAURICE FLANDIN",
-    "11|RUE|TERNOIS": "28|RUE|ETIENNE RICHERAND"
+    "11|RUE|TERNOIS": "28|RUE|ETIENNE RICHERAND",
+    "9|RUE|TUILIERS": "11|RUE|ST MAXIMIN"
   },
   "noms": {}
 }
