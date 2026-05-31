@@ -814,7 +814,7 @@
       "type": "social"
     },
     "71|RUE|BARABAN": {
-      "type": "cible_0vente_active"
+      "type": "social"
     },
     "7|PLACE|FERRANDIERE": {
       "type": "copro_non_immat"
@@ -832,7 +832,7 @@
       "type": "social"
     },
     "22|RUE|STE ANNE DE BARABAN": {
-      "type": "cible_0vente_active"
+      "type": "social"
     },
     "23|RUE|ST EUSEBE": {
       "type": "social"
@@ -856,10 +856,10 @@
       "type": "cible_0vente_active"
     },
     "65|RUE|STE ANNE DE BARABAN": {
-      "type": "cible_0vente_active"
+      "type": "copro_non_immat"
     },
     "76|RUE|BARABAN": {
-      "type": "cible_0vente_active"
+      "type": "copro_non_immat"
     },
     "132|RUE|BARABAN": {
       "type": "mixte"
@@ -880,13 +880,13 @@
       "type": "mono"
     },
     "75|RUE|MAURICE FLANDIN": {
-      "type": "cible_0vente_active"
+      "type": "social"
     },
     "81|RUE|ETIENNE RICHERAND": {
       "type": "cible_0vente_active"
     },
     "135|RUE|BARABAN": {
-      "type": "cible_0vente_active"
+      "type": "social"
     },
     "225|AVENUE|FELIX FAURE": {
       "type": "mono"
@@ -922,13 +922,13 @@
       "type": "copro_non_immat"
     },
     "222|AVENUE|FELIX FAURE": {
-      "type": "cible_0vente_active"
+      "type": "mono"
     },
     "47|AVENUE|LACASSAGNE": {
       "type": "mono"
     },
     "51|AVENUE|LACASSAGNE": {
-      "type": "cible_0vente_active"
+      "type": "copro_non_immat"
     },
     "7|RUE|CARRY": {
       "type": "copro_non_immat"
@@ -1125,7 +1125,7 @@
       "type": "cible_0vente_active"
     },
     "1|RUE|CONVENTION": {
-      "type": "cible_0vente_isolee"
+      "type": "copro_non_immat"
     },
     "214B|RUE|PAUL BERT": {
       "type": "cible_0vente_active"
@@ -1203,7 +1203,7 @@
       "type": "cible_0vente_active"
     },
     "6|RUE|24 FEVRIER 1848": {
-      "type": "cible_0vente_isolee"
+      "type": "copro_non_immat"
     },
     "6|RUE|ETIENNE RICHERAND": {
       "type": "cible_0vente_active"
