@@ -94,9 +94,36 @@ def load_override_cles(cfg):
     return {x.get("cle") for x in o.get("overrides", []) if x.get("cle")}
 
 
+def load_bgid_resolus(cfg):
+    """Override light->bgid_ban autoritaire (manche II bgidB). {cle: bgid_ban}.
+    Repli gracieux : {} si non configure / fichier absent (secteur-agnostique,
+    comme nom_ambigu_resolus). Les cles _meta/_* sont ignorees."""
+    p = getattr(cfg, "bgid_resolus", None)
+    if not p or not p.exists():
+        return {}
+    d = json.loads(p.read_text(encoding="utf-8"))
+    return {k: v for k, v in d.items()
+            if not k.startswith("_") and isinstance(v, str)}
+
+
+def load_kv_tags(cfg):
+    """Tags KV locaux {cle: type} (miroir cfg.kv_local) pour le garde-fou M1.
+    Repli gracieux : {} si fichier absent."""
+    if not cfg.kv_local.exists():
+        return {}
+    kv = json.loads(cfg.kv_local.read_text(encoding="utf-8"))
+    return {c: (info or {}).get("type")
+            for c, info in (kv.get("assignments", {}) or {}).items()
+            if (info or {}).get("type")}
+
+
 # ---------- signaux offline ----------
-def signal_candidats(ad, enrich, cache_bg, override_cles):
+def signal_candidats(ad, enrich, cache_bg, override_cles,
+                     resolus=None, kv_tags=None, co_cles=None):
     """Retourne {cle: {signaux:set, bgid_light, voisins:set, statut}}."""
+    resolus = resolus or {}
+    kv_tags = kv_tags or {}
+    co_cles = co_cles or set()
     cand = {}
     per_voie = defaultdict(list)   # (type,voie) -> [(num,cle,bgid)]
     for a in ad:
@@ -154,10 +181,20 @@ def signal_candidats(ad, enrich, cache_bg, override_cles):
         cle = a.get("cle") or ""
         if not cle or cle in override_cles or cle in cand:
             continue
-        bg = a.get("batiment_groupe_id") or ""
+        # bgid effectif : override resolus (bgid_ban autoritaire) prioritaire
+        # sur le bgid light (perime/vide). manche II bgidB.
+        bg = resolus.get(cle) or a.get("batiment_groupe_id") or ""
         parcs = ((enrich.get(cle) or {}).get("parcelles_bdnb")
                  or cache_bg.get(bg) or [])
         if not bg or not parcs:
+            # (M1) bgid confirme (resolus) + decision KV posee -> ne plus
+            # flaguer malgre 0 parcelle (empty_confirmed type 10 ST MARC).
+            if cle in resolus and kv_tags.get(cle):
+                continue
+            # (RNC) copro RNC immatriculee -> ancree RNC, hors perimetre S3
+            # (n'est pas hors-RNC). Sort proprement, reste untagged (252B).
+            if a.get("numero_immatriculation") or cle in co_cles:
+                continue
             cand[cle] = {"signaux": {"bgid_absent_cache"}, "bgid_light": bg,
                          "voisins": set(), "statut": "live_required"}
     return cand
@@ -218,10 +255,15 @@ def main():
     enrich = load_enrich(cfg)
     cache_bg = load_cache_bg(cfg)
     override_cles = load_override_cles(cfg)
+    resolus = load_bgid_resolus(cfg)            # override light->bgid_ban (manche II)
+    kv_tags = load_kv_tags(cfg)                  # tags KV miroir (garde-fou M1)
+    co_cles = set(co_by_cle)                     # cles RNC (garde-fou RNC-skip)
     print(f"  adresses light : {len(ad)} | enrich : {len(enrich)} | "
-          f"overrides exclus : {len(override_cles)}")
+          f"overrides exclus : {len(override_cles)} | bgid_resolus : {len(resolus)}"
+          f" | kv_tags : {len(kv_tags)}")
 
-    cand = signal_candidats(ad, enrich, cache_bg, override_cles)
+    cand = signal_candidats(ad, enrich, cache_bg, override_cles,
+                            resolus=resolus, kv_tags=kv_tags, co_cles=co_cles)
     n_cand = sum(1 for c in cand.values() if c["statut"] == "candidat")
     n_live_req = sum(1 for c in cand.values() if c["statut"] == "live_required")
     print(f"  candidats offline : {n_cand} | live_required : {n_live_req}")

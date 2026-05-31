@@ -1,0 +1,17 @@
+{
+  "_meta": {
+    "description": "Override light->bgid_ban autoritaire (manche II bgidB DL). Source : rapport B0 _resolve_bgid_live_dl.json (entrees resolved avec bgid_ban). Consomme par _detect_bgid_suspects.py (S3) : bg effectif = resolus.get(cle) or light. Les 2 empty_confirmed (10 ST MARC / 127 FELIX FAURE) servent aussi de garde-fou M1 (bgid confirme + tag KV pose -> ne plus flaguer malgre 0 parcelle). 252B PAUL BERT n'y figure pas (pas de bgid_ban -> clear via RNC-skip immat).",
+    "input_tracke": true
+  },
+  "10|RUE|ST MARC": "bdnb-bg-FFBR-PB1L-5YFY",
+  "127|AVENUE|FELIX FAURE": "bdnb-bg-D1FS-8QT9-MCVX",
+  "15|RUE|PREVOYANTS DE L AVENIR": "bdnb-bg-82PE-26SU-3YE4",
+  "17|RUE|PREVOYANTS DE L AVENIR": "bdnb-bg-5DP9-VFVJ-NKTW",
+  "331|RUE|PAUL BERT": "bdnb-bg-JD5P-DNQX-XAPV",
+  "4|RUE|PREVOYANTS DE L AVENIR": "bdnb-bg-JRL5-UZ81-6REZ",
+  "50|AVENUE|LACASSAGNE": "bdnb-bg-HPSP-K133-X6Q5",
+  "7T|RUE|ST MAXIMIN": "bdnb-bg-WH8D-VD5V-4HSG",
+  "7|RUE|ST MAXIMIN": "bdnb-bg-WEDR-TS3Y-RS3Z",
+  "81|RUE|DAUPHINE": "bdnb-bg-L89U-KN3Y-RQ3A",
+  "9|RUE|TUILIERS": "bdnb-bg-29R7-3GSE-U5WB"
+}

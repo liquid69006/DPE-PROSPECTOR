@@ -68,6 +68,11 @@ class SecteurConfig:
         # crash ; ex. secteur sans liste encore).
         self.nom_ambigu_resolus = (ROOT / p["nom_ambigu_resolus"]
                                     if p.get("nom_ambigu_resolus") else None)
+        # Override light->bgid_ban autoritaire (manche II bgidB). Optionnel :
+        # None si non configure (repli gracieux, secteur-agnostique, comme
+        # nom_ambigu_resolus). Consomme par _detect_bgid_suspects.py (S3).
+        self.bgid_resolus = (ROOT / p["bgid_resolus"]
+                             if p.get("bgid_resolus") else None)
         self.enrich_majic     = ROOT / p["enrich_majic"]
         self.cache_bg         = ROOT / p["cache_bg"]
         self.dvf_path         = Path(p["dvf_path"])         # deja absolu
