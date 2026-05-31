@@ -2059,6 +2059,9 @@
     },
     "4|RUE|ETIENNE RICHERAND": {
       "type": "social"
+    },
+    "50|AVENUE|LACASSAGNE": {
+      "type": "copro_non_immat"
     }
   },
   "fusions": {
