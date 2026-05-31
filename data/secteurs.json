@@ -74,6 +74,7 @@
       "social_overrides": "data/_social_overrides_dl.json",
       "nom_ambigu_resolus": "data/_nom_ambigu_resolus_dl.json",
       "bgid_resolus":     "data/_bgid_resolus_dl.json",
+      "arbitres":         "data/_arbitres_dl.json",
       "enrich_majic":     "data/_enrich_majic_dl_full.json",
       "cache_bg":         "data/_bgid_parcelle_dl.json",
       "dvf_path":         "C:\\Users\\Station 5\\dvf_dauphine_lacassagne.json"

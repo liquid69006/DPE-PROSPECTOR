@@ -73,6 +73,9 @@ class SecteurConfig:
         # nom_ambigu_resolus). Consomme par _detect_bgid_suspects.py (S3).
         self.bgid_resolus = (ROOT / p["bgid_resolus"]
                              if p.get("bgid_resolus") else None)
+        # Cles bgid revues/acceptees par l'humain (Phase 2, gate verdict-scope
+        # cote pipeline). Optionnel : None si non configure (repli gracieux).
+        self.arbitres = (ROOT / p["arbitres"] if p.get("arbitres") else None)
         self.enrich_majic     = ROOT / p["enrich_majic"]
         self.cache_bg         = ROOT / p["cache_bg"]
         self.dvf_path         = Path(p["dvf_path"])         # deja absolu

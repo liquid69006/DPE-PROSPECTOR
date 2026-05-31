@@ -72,6 +72,12 @@ def load_context(cfg):
     if getattr(cfg, "nom_ambigu_resolus", None):
         nom_resolus = {x.get("cle") for x in (load_json(cfg.nom_ambigu_resolus, []) or [])
                        if x.get("cle")}
+    # Phase 2 : cles bgid revues/acceptees {cle: verdict_revu}. Repli gracieux {}
+    # si chemin/fichier absent (secteur-agnostique). Gate verdict-scope.
+    arbitres = {}
+    if getattr(cfg, "arbitres", None):
+        arbitres = {x["cle"]: x.get("verdict_revu")
+                    for x in (load_json(cfg.arbitres, []) or []) if x.get("cle")}
     detA = load_json(cfg.light.parent / f"_detect_bgid_suspects_{cfg.short}.json")
     detB = load_json(cfg.light.parent / f"_detect_noms_ambigus_{cfg.short}.json")
     if detA is None or detB is None:
@@ -83,6 +89,7 @@ def load_context(cfg):
         "adresses": light["adresses"], "by_cle": by_cle, "co_cles": co_cles,
         "assignments": kv.get("assignments", {}), "enrich": enrich,
         "override_cles": override_cles, "nom_resolus": nom_resolus,
+        "arbitres": arbitres,
         "detA": detA, "detB": detB,
     }
 
@@ -112,6 +119,10 @@ def build_pile_orange(ctx, by_cle, scan_rows, cfg):
                 "current_kv_tag": (ctx["assignments"].get(cle) or {}).get("type"),
                 "maps": maps_link(lat, lon, adr)}
         if s.get("verdict") == "confirmed":
+            # Phase 2 gate (verdict-scope) : cle revue/acceptee -> hors a_arbitrer
+            # -> tombe en verte. detect.py INTOUCHE (S1/S2 detecte toujours).
+            if ctx.get("arbitres", {}).get(cle) == "confirmed":
+                continue
             base.update({"type": "bgid_confirmed", "source": "detect_bgid",
                          "data": {k: s.get(k) for k in
                                   ("bgid_light", "bgid_ban", "signaux",
