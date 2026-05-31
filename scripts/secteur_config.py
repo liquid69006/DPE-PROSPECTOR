@@ -76,6 +76,10 @@ class SecteurConfig:
         # Cles bgid revues/acceptees par l'humain (Phase 2, gate verdict-scope
         # cote pipeline). Optionnel : None si non configure (repli gracieux).
         self.arbitres = (ROOT / p["arbitres"] if p.get("arbitres") else None)
+        # Deny-list cles invalides (T3 cle_malformee acceptees, manche E).
+        # Optionnel : None si non configure (repli gracieux), calque de arbitres.
+        self.cles_invalides = (ROOT / p["cles_invalides"]
+                               if p.get("cles_invalides") else None)
         self.enrich_majic     = ROOT / p["enrich_majic"]
         self.cache_bg         = ROOT / p["cache_bg"]
         self.dvf_path         = Path(p["dvf_path"])         # deja absolu

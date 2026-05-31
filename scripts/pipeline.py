@@ -78,6 +78,13 @@ def load_context(cfg):
     if getattr(cfg, "arbitres", None):
         arbitres = {x["cle"]: x.get("verdict_revu")
                     for x in (load_json(cfg.arbitres, []) or []) if x.get("cle")}
+    # Manche E : deny-list cles invalides (T3 malformees acceptees). {cle: raison}.
+    # Repli gracieux {} si chemin/fichier absent (secteur-agnostique).
+    cles_invalides = {}
+    if getattr(cfg, "cles_invalides", None):
+        cles_invalides = {x["cle"]: x.get("raison")
+                          for x in (load_json(cfg.cles_invalides, []) or [])
+                          if x.get("cle")}
     detA = load_json(cfg.light.parent / f"_detect_bgid_suspects_{cfg.short}.json")
     detB = load_json(cfg.light.parent / f"_detect_noms_ambigus_{cfg.short}.json")
     if detA is None or detB is None:
@@ -90,6 +97,7 @@ def load_context(cfg):
         "assignments": kv.get("assignments", {}), "enrich": enrich,
         "override_cles": override_cles, "nom_resolus": nom_resolus,
         "arbitres": arbitres,
+        "cles_invalides": cles_invalides,
         "detA": detA, "detB": detB,
     }
 
@@ -220,6 +228,10 @@ def build_pile_rouge(ctx):
     # T3 : cle malformee (num non extractible) cote light, KV ou coproprietes
     for cle in set(by_cle) | set(ctx["assignments"]) | set(ctx["co_cles"]):
         if cle and parse_cle(cle) is None:
+            # Manche E : deny-list -> cle malformee acceptee-comme-revue, exclue
+            # de la pile rouge (calque du gate arbitres). Repli {} = no-op.
+            if cle in ctx.get("cles_invalides", {}):
+                continue
             rouge["T3_cle_malformee"].append(cle)
     # T4 : override absent du light
     for cle in ctx["override_cles"]:
