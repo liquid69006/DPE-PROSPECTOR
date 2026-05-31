@@ -4986,7 +4986,7 @@ function renderSecteur() {
       if (!pass && secteurCategoriesSelected.has('copro_rnc') && isRnc) pass = true;
       if (!pass && secteurCategoriesSelected.has('copro_non_immat') && t === 'copro_non_immat') pass = true;
       if (!pass && secteurCategoriesSelected.has('bureaux') && t === 'bureaux') pass = true;
-      if (!pass && secteurCategoriesSelected.has('a_qualifier') && !t) pass = true;
+      if (!pass && secteurCategoriesSelected.has('a_qualifier') && !t && !isRnc) pass = true;
       if (!pass) return;
     }
     const ilot = ilotEffectif(a);
@@ -5146,8 +5146,9 @@ function renderSecteur() {
               + `  style="background:transparent;border:none;color:var(--text2);`
               + `cursor:pointer;font-size:11px;padding:0;">✏️</button>`
               + `</span>`;
-          } else if (rnc) {
-            // Etape 1ter : badge implicite "Copropriete" pour copro RNC sans tag
+          } else if (rnc || a.numero_immatriculation) {
+            // Etape 1ter (+ fix isRnc manche G) : badge implicite "Copropriete"
+            // pour copro RNC (coproByCle OU immat sur l'adresse) sans tag
             // KV. PUREMENT VISUEL (aucune ecriture KV). Couleur sobre bleu-gris,
             // distincte des tags-prospect. Le crayon ouvre le dropdown TYPE_OPTS
             // habituel (secteurEditType inchange).
