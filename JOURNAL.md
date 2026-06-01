@@ -5,6 +5,86 @@
 
 ---
 
+## 2026-06-01 — Strict = marché libre + hygiène fusion/immat (DL)
+
+Session post-jalon 4. Le chantier `_fusion_auto` (~625 façades) annoncé en
+priorité s'est révélé un faux départ (Baraban déjà fusionné ; ~625 = chiffre
+historique périmé). Le vrai sujet a émergé : la divergence header strict
+(597,8/an) vs répartition conseillers (568,4/an), tracée jusqu'au sens même de
+« strict ». Trois lots livrés : marché-libre, fusion S1, dé-association
+d'immats fantômes.
+
+### Repère unifié (cf. `data/PIPELINE.md` §6)
+
+| Vue | Valeur | Définition |
+|---|---|---|
+| Brut | **895,2/an** | toutes mutations (parking/commerce/social/bureaux inclus) — *inchangé* |
+| Strict / défaut | **578,4/an** | ventes ≥1 lot habitation **et** hors social/bureaux, jugé par tag d'**ancre**, fusion-aware — *repère unique partout* |
+
+Strict brut (Σ nb_ventes_logement/5) = 599,6/an ; l'écart jusqu'à 578,4 = les
+ventes en social/bureaux (par ancre) + 1,8/an de garde copro (FLANDIN).
+Σ ventes logement = 2998. Parc secL DL = 22 381 (inchangé sur tous les lots).
+
+### Commits (ordre chronologique)
+
+| Hash | Titre |
+|---|---|
+| `ff46cea` | chore(test): resync test_render_secteur sur refactor renderSecteur 2026-05-24 (plages slice, stubs globals, 3 assertions rebasées) |
+| `56253c9` | feat(secteur): strict = marché libre (578,4) — exclusion social/bureaux par ancre, fusion-aware, garde copro, cellules parenthésées |
+| `71f2ca3` | fix(dl): fusion S1 (3 façades même-bgid + immat déclaré BDNB), garde `l_libelle_adr` |
+| `4cf25a2` | fix(dl): dé-association immats fantômes 121A-D + 11B + garde anti-propagation |
+
+(+ répartition 10 secteurs re-générée sur la base 578,4, KV re-persisté ;
+backup `_kv_repartition_dl_backup`.)
+
+### Insights clés
+
+- **Strict = marché libre.** Header dashboard et répartition divergeaient pour
+  deux raisons cumulées : (a) le header n'excluait pas social/bureaux
+  (≈31/an), (b) `renderSecteur` est fusion-aware alors que `sctGen` ignorait
+  les fusions (≈12/an). Aligné : strict = marché libre, exclusion jugée **par
+  le tag de l'ancre** de fusion, fusion-aware partout → **578,4 unique**. Brut
+  reste « tout ».
+- **Garde copro FLANDIN.** Les fusions manuelles vers une ancre **non-copro**
+  ne redistribuent pas leurs ventes (garde copro de `renderSecteur`) → 578,4 et
+  non 580,2 (1,8/an, cas 5/7→3 FLANDIN, différé à un re-point copro ciblé).
+- **« ~625 façades » = fantôme historique.** Les `fix_fusion_*`/INJECT/RE-FUSE
+  empilés avaient déjà consolidé l'essentiel ; résiduel réel = 61 bgid éclatés
+  / 126 unités, dont S1 (même immat) = 5 groupes.
+- **Discriminant `l_libelle_adr`.** « Même immat » ne prouve « même copro » que
+  si le bgid **déclare le numéro**. Sinon = immat propagé par faux-matching
+  bgid. Verdict S1 : 3 vraies co-immat (6B→4 STE ANNE, 19B→19 ST ANTOINE,
+  28B→24 PIONCHON) / 2 fantômes (121 CHARIAL, 11B ST MAXIMIN).
+- **Immats fantômes = display-only.** Un immat/lots hérité via bgid sur une
+  ligne adresse est display-only (le parc lit les lots via `coproByCle`, pas la
+  ligne) → impact parc/ventes **NUL**. 23 adresses concernées (21 déjà masquées
+  par fusion). Cause racine : `make_light bdnb_par_voie` rayon 80 m
+  (faux-match bgid) + `_apply_propag_immat_21suff_dl.py` qui dénormalise
+  l'immat sur tout le bloc.
+- **Doublon d'îlot 121 CHARIAL.** Symptôme visible du bgid faux-matché : vrai
+  121 (bgid AX8P, îlot 34) vs phantom 121A-D (bgid G1YT = bâti 90-92, îlot 39).
+  Résolu par re-point AX8P. ⚠️ Piège évité : dé-fuser les impasses de l'Ordre
+  aurait ajouté +21 lgts (sous-fragments du même SDC 28 lots).
+
+### Gardes posées (anti-récidive)
+
+- `l_libelle_adr` à la **fusion** (`fix_fusion_s1_immat.py` + port make_light
+  table `DECLARED_S1`).
+- `bgid_declares()` / `BGID_DECLARED` à la **propagation**
+  (`_apply_propag_immat_21suff_dl.py`).
+- Cause source `make_light bdnb_par_voie` 80 m documentée pour traitement
+  ultérieur.
+
+### Chantiers ouverts (jalon 5)
+
+1. Vérif définition `ventes_par_an_logement` (make_light vs métier).
+2. Migration `cible_0vente_*` → `as.cible`.
+3. Déploiement **MP** (pattern manche complet).
+4. Re-point copro FLANDIN (5/7→3, micro-chantier, +1,8/an).
+5. Cause source des fantômes : faux-matching `make_light bdnb_par_voie` 80 m.
+
+---
+
 ## 2026-05-31 — Boucle jalon 4 DL (scellée)
 
 Boucle de qualification du secteur **Dauphiné-Lacassagne** : toutes les
