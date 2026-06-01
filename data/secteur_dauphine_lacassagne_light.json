@@ -2008,6 +2008,17 @@
       "vefa_pending": 3,
       "vefa_pending_file": "data\\_vefa_pending_dl.json",
       "verification": "anti-doublon official_id == orphan_id, exclu si official_id matche autre cle light ; VEFA (mut multi-lots) exclues, traitement cherrypick_vefa_* ulterieur"
+    },
+    "_correctif_fusion_s1": {
+      "desc": "Fusion S1 : suffixes meme-bgid + meme immat DECLARE par BDNB (garde l_libelle_adr). 3 groupes legitimes (QRF3/FUDZ/JTAL). Fantomes G1YT(121A-D)+VFY6(11B) EXCLUS -> de-association separee.",
+      "groupes": 3,
+      "unites_foldees": 3,
+      "ventes_relocalisees": 13,
+      "exclus_fantome": [
+        "11B|RUE|ST MAXIMIN",
+        "121A|RUE|ANTOINE CHARIAL"
+      ],
+      "parc_neutre": true
     }
   },
   "iris": [
@@ -20095,7 +20106,8 @@
       "_bdnb_match": "immat",
       "_fusion_auto_label": "4/6 RUE STE ANNE DE BARABAN",
       "_fusion_auto_sources": [
-        "6|RUE|STE ANNE DE BARABAN"
+        "6|RUE|STE ANNE DE BARABAN",
+        "6B|RUE|STE ANNE DE BARABAN"
       ],
       "ventes_par_an_logement": {
         "2021": 2,
@@ -21790,7 +21802,8 @@
       "_bdnb_match": "immat",
       "_fusion_auto_label": "17/19 RUE ST ANTOINE",
       "_fusion_auto_sources": [
-        "17|RUE|ST ANTOINE"
+        "17|RUE|ST ANTOINE",
+        "19B|RUE|ST ANTOINE"
       ],
       "ventes_par_an_logement": {
         "2024": 1,
@@ -48055,7 +48068,8 @@
       "_fusion_auto_label": "24/26/28 RUE CLAUDIUS PIONCHON",
       "_fusion_auto_sources": [
         "26|RUE|CLAUDIUS PIONCHON",
-        "28|RUE|CLAUDIUS PIONCHON"
+        "28|RUE|CLAUDIUS PIONCHON",
+        "28B|RUE|CLAUDIUS PIONCHON"
       ],
       "ventes_par_an_logement": {
         "2023": 6
@@ -64465,7 +64479,9 @@
       "nb_ventes_logement": 7,
       "taux_rotation_logement": 3.5,
       "classement_rotation_logement": "Actif",
-      "_taux_logement_src": "copie_jointure_incertaine"
+      "_taux_logement_src": "copie_jointure_incertaine",
+      "_fusion_auto": true,
+      "_fusion_cible": "19|RUE|ST ANTOINE"
     },
     {
       "cle": "20B|AVENUE|LACASSAGNE",
@@ -64901,7 +64917,9 @@
       "nb_ventes_logement": 2,
       "taux_rotation_logement": 0.7,
       "classement_rotation_logement": "Figé",
-      "_taux_logement_src": "filtre_habitation"
+      "_taux_logement_src": "filtre_habitation",
+      "_fusion_auto": true,
+      "_fusion_cible": "24|RUE|CLAUDIUS PIONCHON"
     },
     {
       "cle": "29B|RUE|DAUPHINE",
@@ -65889,7 +65907,9 @@
       },
       "_taux_logement_src": "strict_btq_post_logement",
       "taux_rotation_logement": 5.5,
-      "classement_rotation_logement": "Très actif"
+      "classement_rotation_logement": "Très actif",
+      "_fusion_auto": true,
+      "_fusion_cible": "4|RUE|STE ANNE DE BARABAN"
     },
     {
       "cle": "74B|RUE|MAURICE FLANDIN",
