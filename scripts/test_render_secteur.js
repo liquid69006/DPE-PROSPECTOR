@@ -36,12 +36,15 @@ const slice = (a, b) => HTML.slice(a - 1, b).join("\n"); // lignes 1-based inclu
 // RESYNC 2026-05-31 (marche libre) : refonte "strict = MARCHE LIBRE"
 // (exclusion ancres social/bureaux, fusion-aware) -> sctGen alourdi (fold) +
 // renderSecteur deplace en 4817-5397. Plages re-recalees.
+// RESYNC 2026-06-02 (toggle Montchat) : ajout secteurZone/secteurResolve
+// zone-aware + toggle header (~+49 lignes avant les blocs) -> renderSecteur
+// deplace en 4866-5446. Plages re-recalees.
 const SRC = [
-  slice(2512, 2525),   // ROT_COLOR + TYPE_OPTS + TYPE_LABELS + TYPE_BADGE_COLORS
-  slice(4715, 4717),   // esc
-  slice(4719, 4723),   // secteurNorm
-  slice(4767, 4815),   // sctTauxAnnuel..sctClassAnnuel + SCTW + DPE_COLOR + sctDpe..normalizeAdresseDisplay
-  slice(4817, 5397),   // renderSecteur (parc / strict / hr-actif / sctQ / marche libre)
+  slice(2562, 2575),   // ROT_COLOR + TYPE_OPTS + TYPE_LABELS + TYPE_BADGE_COLORS
+  slice(4765, 4767),   // esc
+  slice(4769, 4773),   // secteurNorm
+  slice(4817, 4865),   // sctTauxAnnuel..sctClassAnnuel + SCTW + DPE_COLOR + sctDpe..normalizeAdresseDisplay
+  slice(4867, 5447),   // renderSecteur (parc / strict / hr-actif / sctQ / marche libre)
 ].join("\n\n");
 
 function mkEl() {

@@ -763,6 +763,13 @@ td{padding:11px 14px;vertical-align:middle;}
   <div id="section-secteur" style="display:none;padding:14px 18px;">
     <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:12px;">
       <h2 id="secteur-titre" style="font-size:16px;margin:0;color:#BEAF87;">🗺 Secteur Prospector — Dauphiné-Lacassagne (Lyon 3e)</h2>
+      <!-- [MONTCHAT] toggle de zone Secteur (visible agence bufferné uniquement) -->
+      <span id="secteur-zone-toggle" style="display:none;align-items:center;border:1px solid #4b5563;border-radius:6px;overflow:hidden;">
+        <button id="szone-dl" type="button" onclick="secteurSetZone('dl')"
+          style="border:none;background:#BEAF87;color:#1a1a1a;font-weight:700;font-size:11px;padding:3px 9px;cursor:pointer;">Dauphiné-Lacassagne</button>
+        <button id="szone-mtc" type="button" onclick="secteurSetZone('montchat')"
+          style="border:none;background:transparent;color:var(--text2);font-weight:500;font-size:11px;padding:3px 9px;cursor:pointer;">Montchat</button>
+      </span>
       <span id="secteur-resume" style="font-size:12px;color:var(--text2);"></span>
       <span class="spacer" style="flex:1;"></span>
       <span style="font-size:11px;color:var(--text2);">Rotation :
@@ -2403,6 +2410,12 @@ function parseSciAdresseToCle(adresseBien) {
 // motte-picquet ET lopez (composite) partagent le secteur motte-picquet
 // -> meme KV secteur_assignments:motte-picquet (requireAuth autorise
 // lopez via dpe_agences). Dauphine inchange (id secteur == agence).
+// [MONTCHAT] Zone Secteur active pour l'agence bufferné (dauphine-lacassagne) :
+// 'dl' (defaut) ou 'montchat'. Pilote secteurResolve() -> light + namespace KV
+// + titre par zone. Gate a l'agence (cf secteurZoneSyncBtns). Aucune incidence
+// sur les autres agences (secteurResolve ne consulte la zone que pour DL).
+let secteurZone = 'dl';
+
 function secteurResolve() {
   // secteur_motte_picquet_light.json conditionne a l'agence
   // motte-picquet UNIQUEMENT (pas lopez : secteur_enabled=false cote
@@ -2413,7 +2426,43 @@ function secteurResolve() {
     'dauphine-lacassagne': ['secteur_dauphine_lacassagne_light.json', 'dauphine-lacassagne', 'Dauphiné-Lacassagne (Lyon 3e)', 'Lyon 3'],
     'motte-picquet':       ['secteur_motte_picquet_light.json',        'motte-picquet',        'Motte-Picquet (Paris 15e - 7e)', 'Paris 15'],
   };
+  // [MONTCHAT] toggle de zone intra-agence bufferné : namespace KV separe
+  // (idKV forge 'dauphine-lacassagne-montchat', regex worker [a-z0-9-]+ OK ;
+  // GET vide gracieux -> cles creees aux 1eres ecritures Phase 5).
+  if (agenceId === 'dauphine-lacassagne'
+      && typeof secteurZone !== 'undefined' && secteurZone === 'montchat') {
+    return ['secteur_montchat_light.json', 'dauphine-lacassagne-montchat', 'Montchat (Lyon 3e/8e)', 'Lyon 3'];
+  }
   return M[agenceId] || M['dauphine-lacassagne'];
+}
+
+// [MONTCHAT] Bascule de zone : reset l'etat de session lie a la zone puis
+// recharge tout (light + KV assignments + titre) via loadSecteurData().
+function secteurSetZone(z) {
+  if (z === secteurZone) return;
+  secteurZone = z;
+  secteurZoneSyncBtns();
+  // etat de session zone-dependant remis a zero avant rechargement
+  secteurAssign = {}; secteurFusions = {}; secteurNoms = {}; secteurSciByCle = {};
+  try { secteurOpenIlot = null; } catch (e) {}
+  try { if (typeof sctGenState === 'object' && sctGenState) { sctGenState.ilots = []; sctGenState.repartition = {}; } } catch (e) {}
+  loadSecteurData();
+}
+
+// [MONTCHAT] Affiche le toggle seulement pour l'agence bufferné et synchronise
+// l'etat actif des 2 boutons. Appele par loadSecteurData (a chaque entree mode
+// Secteur / rechargement de zone).
+function secteurZoneSyncBtns() {
+  const wrap = document.getElementById('secteur-zone-toggle');
+  if (!wrap) return;
+  wrap.style.display = (agenceId === 'dauphine-lacassagne') ? 'inline-flex' : 'none';
+  const dl = document.getElementById('szone-dl'), mtc = document.getElementById('szone-mtc');
+  if (dl && mtc) {
+    const on = '#BEAF87', onFg = '#1a1a1a', off = 'transparent', offFg = 'var(--text2)';
+    const active = (secteurZone === 'montchat') ? mtc : dl, idle = (secteurZone === 'montchat') ? dl : mtc;
+    active.style.background = on; active.style.color = onFg; active.style.fontWeight = '700';
+    idle.style.background = off; idle.style.color = offFg; idle.style.fontWeight = '500';
+  }
 }
 
 async function loadSecteurData() {
@@ -2422,6 +2471,7 @@ async function loadSecteurData() {
   secteurVille = secVille;           // pilote le lien Google Maps (dynamique)
   const tt = document.getElementById('secteur-titre');
   if (tt) tt.textContent = '🗺 Secteur Prospector — ' + secName;
+  secteurZoneSyncBtns();            // [MONTCHAT] affiche/sync le toggle de zone (gate agence)
   secteurStrictBtnSync();           // bouton "Ventes strictes" ON par défaut
   secteurSyncDropdownLabels();      // PR1 : libelles/accents des 4 dropdowns au chargement
   // [Feature 1] Hydrate l'etat verrou depuis localStorage + sync bouton.
