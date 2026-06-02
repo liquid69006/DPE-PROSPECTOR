@@ -1098,6 +1098,10 @@ td{padding:11px 14px;vertical-align:middle;}
         title="Génère / équilibre les secteurs de base (ancien wizard ⚡ Générer secteurs)."
         style="padding:7px 14px;border:1px solid var(--border);border-radius:6px;background:var(--surface2);
                color:var(--text);font-size:13px;font-weight:600;cursor:pointer;">⚡ Générer les secteurs</button>
+      <button onclick="sctUniSave()"
+        title="Enregistre les réattributions du panneau (KV secteur_uni ; ne touche pas les secteurs de base)."
+        style="padding:7px 14px;border:1px solid #16a34a;border-radius:6px;background:#16a34a;
+               color:#fff;font-size:13px;font-weight:600;cursor:pointer;">💾 Enregistrer</button>
       <div style="flex:1 1 auto;"></div>
       <button disabled title="Actif après enregistrement (phase B)"
         style="padding:7px 14px;border:1px solid var(--border);border-radius:6px;background:var(--surface2);
@@ -4569,6 +4573,35 @@ async function sctUniOpen() {
   // 6. Pool de vacants initial (tout a repartir).
   sctUniState.vacAssign = {};
   sctUniSyncVac();
+  // 7. Hydratation depuis secteur_uni (etat sauve du panneau), PRIORITAIRE sur
+  //    le seed secteur_attribution. Filtrage defensif (secN/conseiller/ilot
+  //    encore valides). La couleur suit le secteur attribue (baseSectors).
+  try {
+    const [, secId] = secteurResolve();
+    const ru = await fetch(`${API_URL}/secteur-uni/${secId}`, {
+      headers: { 'Authorization': `Bearer ${authToken}` } });
+    if (ru.ok) {
+      const u = await ru.json();
+      if (u && (u.attribution || u.vacants)) {
+        const att = {}; const used = new Set();
+        for (const [secN, cid] of Object.entries(u.attribution || {})) {
+          if (!cid) continue;
+          if (!sctUniState.baseSectors[secN]) continue;
+          if (!sctUniState.conseillers.some(c => c.id === cid)) continue;
+          if (used.has(cid)) continue;            // 1 base max / conseiller
+          att[secN] = cid; used.add(cid);
+        }
+        sctUniState.attribution = att;
+        sctUniState.vacAssign = {}; sctUniSyncVac();   // recalc pool selon att restauree
+        for (const [iid, cid] of Object.entries(u.vacants || {})) {
+          if (!cid) continue;
+          if (!(iid in sctUniState.vacAssign)) continue;   // plus dans le pool
+          if (!sctUniState.conseillers.some(c => c.id === cid)) continue;
+          sctUniState.vacAssign[iid] = cid;
+        }
+      }
+    }
+  } catch (e) { /* pas d'etat sauve : on garde le vierge */ }
   if (!sctUniState.conseillers.length) showToast('⚠️ Aucun conseiller réel (hors « À attribuer »)', true);
   else if (!Object.keys(sctUniState.baseSectors).length) showToast('ℹ️ Aucun secteur de base — lancez « Générer les secteurs »', true);
   sctUniRender();
@@ -4817,11 +4850,34 @@ function sctUniSetVac(iid, val) {
   sctUniState.vacAssign[iid] = (!val || val === '__none__') ? null : val;
   sctUniRender();
 }
+// Seule ecriture KV du panneau : POST /secteur-uni/<secId> (declenche par 💾).
+// N'ecrit PAS secteur_repartition (= secteurs de base, lecture seule).
+async function sctUniSave() {
+  if (!sctUniState.conseillers.length) { showToast('⚠️ Rien à enregistrer', true); return; }
+  try {
+    const [, secId] = secteurResolve();
+    const conseillers = sctUniState.conseillers.map(c => ({ id: c.id, nom: c.nom, couleur: sctUniEffColor(c.id) }));
+    const attribution = {};
+    for (const [secN, cid] of Object.entries(sctUniState.attribution)) if (cid) attribution[secN] = cid;
+    const vacants = {};
+    for (const [iid, cid] of Object.entries(sctUniState.vacAssign)) if (cid) vacants[iid] = cid;
+    const r = await fetch(`${API_URL}/secteur-uni/${secId}`, {
+      method: 'POST',
+      headers: { 'Authorization': `Bearer ${authToken}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ conseillers, attribution, vacants }),
+    });
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    showToast('✅ Réattributions enregistrées');
+  } catch (e) {
+    showToast('⚠️ Échec enregistrement : ' + (e.message || e), true);
+  }
+}
 window.sctUniOpen = sctUniOpen;
 window.sctUniClose = sctUniClose;
 window.sctUniRunBalance = sctUniRunBalance;
 window.sctUniSetBase = sctUniSetBase;
 window.sctUniSetVac = sctUniSetVac;
+window.sctUniSave = sctUniSave;
 
 let sctMapInstance = null;
 // Table de SECOURS (utilisee UNIQUEMENT si le fetch du manifeste echoue).
