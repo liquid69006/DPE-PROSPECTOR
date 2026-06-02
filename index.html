@@ -857,6 +857,11 @@ td{padding:11px 14px;vertical-align:middle;}
         style="display:none;padding:7px 14px;border:1px solid #BEAF87;border-radius:6px;
                background:#1f2937;color:#BEAF87;font-size:13px;font-weight:600;
                cursor:pointer;white-space:nowrap;">🔄 Réattribuer secteurs</button>
+      <button id="secteur-uni-btn" onclick="sctUniOpen()"
+        title="[BETA] Un conseiller = un secteur (phase A : a blanc, sans enregistrement)."
+        style="padding:7px 14px;border:1px solid #a78bfa;border-radius:6px;
+               background:#1f2937;color:#a78bfa;font-size:13px;font-weight:600;
+               cursor:pointer;white-space:nowrap;">🎯 Secteurs &amp; conseillers (beta)</button>
     </div>
     <div id="secteur-colhead" style="display:none;position:sticky;top:0;z-index:5;
          background:var(--surface);border-bottom:2px solid var(--border);
@@ -1060,6 +1065,51 @@ td{padding:11px 14px;vertical-align:middle;}
               padding:8px 18px;background:#16a34a;color:#fff;border:none;border-radius:6px;
               cursor:pointer;font-size:13px;font-weight:700;">💾 Sauvegarder</button>
     </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════════
+     [BETA] SECTEURS & CONSEILLERS — panneau unifie "1 conseiller = 1 secteur"
+     Phase A : a blanc, AUCUNE persistance (sctUni*).
+════════════════════════════════════════════════════════════════ -->
+<div id="sct-uni-overlay" style="display:none;position:fixed;inset:0;
+     background:rgba(0,0,0,0.7);z-index:9999;align-items:center;justify-content:center;">
+  <div style="background:var(--surface);color:var(--text);width:min(1200px,97vw);
+              max-height:92vh;border-radius:12px;display:flex;flex-direction:column;
+              box-shadow:0 12px 48px rgba(0,0,0,0.5);">
+    <div style="padding:16px 22px;border-bottom:1px solid var(--border);display:flex;
+                justify-content:space-between;align-items:center;gap:10px;">
+      <div>
+        <div style="font-weight:700;font-size:16px;color:#a78bfa;">🎯 Secteurs &amp; conseillers (beta)</div>
+        <div style="color:var(--text2);font-size:12px;margin-top:2px;">
+          1 conseiller = 1 secteur — phase A (à blanc, sans enregistrement)</div>
+      </div>
+      <button onclick="sctUniClose()" title="Fermer"
+        style="background:transparent;color:var(--text2);border:1px solid var(--border);
+               border-radius:6px;padding:6px 12px;cursor:pointer;font-size:13px;">✕ Fermer</button>
+    </div>
+    <div style="padding:10px 22px;border-bottom:1px solid var(--border);display:flex;
+                gap:8px;flex-wrap:wrap;align-items:center;">
+      <button onclick="sctUniRunBalance('all')"
+        title="Fige uniquement les îlots verrouillés, rebat tout le reste en équilibrant les ventes/an."
+        style="padding:7px 14px;border:1px solid #a78bfa;border-radius:6px;background:#1f2937;
+               color:#a78bfa;font-size:13px;font-weight:600;cursor:pointer;">⚖️ Tout rebattre</button>
+      <button onclick="sctUniRunBalance('vacants')"
+        title="Garde tous les îlots déjà attribués, ne distribue que les vacants."
+        style="padding:7px 14px;border:1px solid var(--border);border-radius:6px;background:var(--surface2);
+               color:var(--text);font-size:13px;font-weight:600;cursor:pointer;">➕ Réattribuer les vacants</button>
+      <div style="flex:1 1 auto;"></div>
+      <button disabled title="Actif après enregistrement (phase B)"
+        style="padding:7px 14px;border:1px solid var(--border);border-radius:6px;background:var(--surface2);
+               color:var(--text2);font-size:13px;cursor:not-allowed;opacity:.55;">🗺️ Voir la carte</button>
+      <button disabled title="Actif après enregistrement (phase B)"
+        style="padding:7px 14px;border:1px solid var(--border);border-radius:6px;background:var(--surface2);
+               color:var(--text2);font-size:13px;cursor:not-allowed;opacity:.55;">📥 Exporter A0</button>
+    </div>
+    <div id="sct-uni-cols" style="flex:1;overflow:auto;padding:16px 22px;display:flex;
+         gap:12px;align-items:flex-start;"></div>
+    <div style="padding:10px 22px;border-top:1px solid var(--border);font-size:11px;color:var(--text2);">
+      Phase A — aucune écriture KV. Verrou 🔒/🔓 par îlot ; menu déroulant pour déplacer un îlot ; couleur par conseiller.</div>
   </div>
 </div>
 
@@ -4427,6 +4477,242 @@ window.sctAttribSetAssign = sctAttribSetAssign;
 //  12. invalidateSize() apres affichage (sinon tuiles cassees).
 //  Fermeture : map.remove() + hide overlay.
 // ════════════════════════════════════════════════════════════════════
+
+// ════════════════════════════════════════════════════════════════════
+// [BETA] Panneau unifie "1 conseiller = 1 secteur" (sctUni*) — PHASE A.
+// A blanc : AUCUNE ecriture KV (GET /conseillers + GET /secteur-repartition
+// seulement). Reutilise sctGenComputeIlots() + sctGenBalance() qui operent
+// via sctGenState (snapshot/restore pour ne pas casser la feature sctGen).
+// sctGenBalance est couple aux ids 'sec-N' (computeScores boucle sec-1..N)
+// et ne (re)distribue que des ilots deja attribues -> on mappe les conseillers
+// reels sur sec-N et on amorce par un seed glouton avant l'equilibrage.
+// ════════════════════════════════════════════════════════════════════
+const sctUniState = {
+  conseillers: [],   // [{id, nom, couleur}]  (id = slug reel)
+  assign: {},        // { ilotId: { conseillerId|null, locked:false } }
+  ilots: [],         // [{ilotId, nb_ventes, zone, ...}] via sctGenComputeIlots
+  agence_lat: null,
+  agence_lng: null,
+};
+
+async function sctUniOpen() {
+  if (!secteurData || !secteurData.adresses) {
+    showToast('⚠️ Charge d\'abord les données du secteur', true); return;
+  }
+  const ov = document.getElementById('sct-uni-overlay');
+  if (ov) ov.style.display = 'flex';
+  // 1. Conseillers reels (exclut "A attribuer"), id = slug.
+  let noms = [];
+  try {
+    const rc = await fetch(`${API_URL}/conseillers/${agenceId}`, {
+      headers: { 'Authorization': `Bearer ${authToken}` } });
+    if (rc.ok) { const j = await rc.json(); noms = Array.isArray(j.conseillers) ? j.conseillers : []; }
+  } catch (e) { console.warn('[sctUni] GET conseillers KO :', e); }
+  const reels = noms.filter(n => sctAttribSlug(n) !== 'a-attribuer');
+  sctUniState.conseillers = reels.map((n, i) => ({
+    id: sctAttribSlug(n), nom: n,
+    couleur: SCT_GEN_COLORS[i % SCT_GEN_COLORS.length].c,
+  }));
+  // 2. agence_lat/lng en lecture seule depuis la repartition existante.
+  sctUniState.agence_lat = null; sctUniState.agence_lng = null;
+  try {
+    const [, secId] = secteurResolve();
+    const rr = await fetch(`${API_URL}/secteur-repartition/${secId}`, {
+      headers: { 'Authorization': `Bearer ${authToken}` } });
+    if (rr.ok) {
+      const j = await rr.json();
+      if (typeof j.agence_lat === 'number') { sctUniState.agence_lat = j.agence_lat; sctUniState.agence_lng = j.agence_lng; }
+    }
+  } catch (e) { /* agence absente : balance sans contrainte de zone */ }
+  // 3. Ilots + ventes/an (reutilise sctGenComputeIlots).
+  sctUniState.ilots = sctUniComputeIlots();
+  // 4. INIT : tous vacants (l'ancienne repartition sec-N est incompatible).
+  sctUniState.assign = {};
+  for (const il of sctUniState.ilots) sctUniState.assign[il.ilotId] = { conseillerId: null, locked: false };
+  if (!sctUniState.conseillers.length) showToast('⚠️ Aucun conseiller réel (hors « À attribuer »)', true);
+  sctUniRender();
+}
+
+function sctUniClose() { const ov = document.getElementById('sct-uni-overlay'); if (ov) ov.style.display = 'none'; }
+
+// Reutilise sctGenComputeIlots() en fournissant agence_lat/lng via sctGenState.
+function sctUniComputeIlots() {
+  const sLat = sctGenState.agence_lat, sLng = sctGenState.agence_lng;
+  sctGenState.agence_lat = sctUniState.agence_lat;
+  sctGenState.agence_lng = sctUniState.agence_lng;
+  let list = [];
+  try { list = sctGenComputeIlots() || []; }
+  finally { sctGenState.agence_lat = sLat; sctGenState.agence_lng = sLng; }
+  return list;
+}
+
+function sctUniTotals() {
+  const t = {}; for (const c of sctUniState.conseillers) t[c.id] = 0;
+  const byId = {}; for (const il of sctUniState.ilots) byId[il.ilotId] = il;
+  for (const [iid, a] of Object.entries(sctUniState.assign)) {
+    if (a && a.conseillerId && t[a.conseillerId] !== undefined) {
+      t[a.conseillerId] += (byId[iid] ? (byId[iid].nb_ventes || 0) : 0);
+    }
+  }
+  return t;
+}
+
+// mode 'all'     : ne fige QUE locked=true -> rebat tout le reste.
+// mode 'vacants' : fige tous les attribues -> ne distribue que les vacants.
+function sctUniRunBalance(mode) {
+  const cons = sctUniState.conseillers;
+  const N = cons.length;
+  if (N < 1) { showToast('⚠️ Aucun conseiller réel', true); return; }
+  if (!sctUniState.ilots.length) { showToast('⚠️ Aucun îlot', true); return; }
+  const idToSec = {}, secToId = {};
+  cons.forEach((c, i) => { const s = 'sec-' + (i + 1); idToSec[c.id] = s; secToId[s] = c.id; });
+  const byId = {}; for (const il of sctUniState.ilots) byId[il.ilotId] = il;
+
+  // Figes (gardent leur conseiller) vs Libres (a (re)distribuer).
+  const frozen = {}, free = [];
+  for (const il of sctUniState.ilots) {
+    const a = sctUniState.assign[il.ilotId] || { conseillerId: null, locked: false };
+    const isFrozen = (mode === 'all') ? (!!a.locked && a.conseillerId != null) : (a.conseillerId != null);
+    if (isFrozen) frozen[il.ilotId] = a.conseillerId; else free.push(il);
+  }
+  if (!free.length) { showToast('ℹ️ Aucun îlot à (re)distribuer', true); return; }
+
+  // SEED glouton : ilot libre le plus lourd -> conseiller au total min.
+  const seedTot = {}; for (const c of cons) seedTot[c.id] = 0;
+  for (const [iid, cid] of Object.entries(frozen)) {
+    if (seedTot[cid] !== undefined) seedTot[cid] += (byId[iid] ? (byId[iid].nb_ventes || 0) : 0);
+  }
+  const seededId = {};
+  free.slice().sort((a, b) => (b.nb_ventes || 0) - (a.nb_ventes || 0)).forEach(il => {
+    let best = cons[0].id, bestV = Infinity;
+    for (const c of cons) { if (seedTot[c.id] < bestV) { bestV = seedTot[c.id]; best = c.id; } }
+    seededId[il.ilotId] = best; seedTot[best] += (il.nb_ventes || 0);
+  });
+
+  // Repartition en espace sec-N pour sctGenBalance (locked = fige).
+  const rep = {};
+  for (const il of sctUniState.ilots) {
+    const iid = il.ilotId;
+    if (frozen[iid] != null) rep[iid] = { conseillerId: idToSec[frozen[iid]], locked: true };
+    else rep[iid] = { conseillerId: idToSec[seededId[iid]], locked: false };
+  }
+  // Quotas par zone (cible = somme zone / N) -> contrainte zone si agence presente.
+  const q = { proche: 0, moyenne: 0, lointaine: 0 };
+  for (const il of sctUniState.ilots) if (q[il.zone] !== undefined) q[il.zone] += (il.nb_ventes || 0);
+  for (const k of Object.keys(q)) q[k] = q[k] / N;
+
+  // Snapshot sctGenState (ne pas casser la feature sctGen).
+  const snap = {
+    N: sctGenState.N, conseillers: sctGenState.conseillers, ilots: sctGenState.ilots,
+    repartition: sctGenState.repartition, quotas: sctGenState._quotas,
+    lat: sctGenState.agence_lat, lng: sctGenState.agence_lng,
+  };
+  try {
+    sctGenState.N = N;
+    sctGenState.conseillers = cons.map((c, i) => ({ id: 'sec-' + (i + 1), nom: c.nom, couleur: c.couleur, kind: 'solid' }));
+    sctGenState.ilots = sctUniState.ilots;
+    sctGenState.repartition = rep;
+    sctGenState._quotas = q;
+    sctGenState.agence_lat = sctUniState.agence_lat;
+    sctGenState.agence_lng = sctUniState.agence_lng;
+    sctGenState._traceBalance = false;
+    sctGenBalance();   // optimise rep en place (espace sec-N)
+    // Remap sec-N -> conseiller reel ; preserve le lock UTILISATEUR.
+    for (const il of sctUniState.ilots) {
+      const iid = il.ilotId;
+      const r = sctGenState.repartition[iid];
+      const realId = (r && r.conseillerId) ? (secToId[r.conseillerId] || null) : null;
+      const prev = sctUniState.assign[iid] || { locked: false };
+      sctUniState.assign[iid] = { conseillerId: realId, locked: !!prev.locked };
+    }
+  } finally {
+    sctGenState.N = snap.N; sctGenState.conseillers = snap.conseillers; sctGenState.ilots = snap.ilots;
+    sctGenState.repartition = snap.repartition; sctGenState._quotas = snap.quotas;
+    sctGenState.agence_lat = snap.lat; sctGenState.agence_lng = snap.lng;
+  }
+  sctUniRender();
+  showToast(mode === 'all' ? '✅ Tout rebattu (équilibrage ventes/an)' : '✅ Vacants réattribués');
+}
+
+function sctUniPastille(il, conseiller) {
+  const iid = il.ilotId;
+  const a = sctUniState.assign[iid] || { conseillerId: null, locked: false };
+  const bg = conseiller ? conseiller.couleur : '#6b7280';
+  const lockIcon = a.locked ? '🔒' : '🔓';
+  const sel = `<select onchange="sctUniSetAssign('${esc(iid)}',this.value)" title="Déplacer l'îlot"`
+    + ` style="max-width:48px;background:transparent;color:#fff;border:none;font-size:10px;cursor:pointer;">`
+    + '<option value="">↦</option>'
+    + sctUniState.conseillers.map(c => `<option value="${esc(c.id)}"${a.conseillerId === c.id ? ' selected' : ''}>${esc(c.nom)}</option>`).join('')
+    + '<option value="__none__">Non attribué</option>'
+    + `</select>`;
+  return `<span title="Îlot ${esc(iid)} · ~${Math.round(il.nb_ventes || 0)} ventes/an"`
+    + ` style="display:inline-flex;align-items:center;gap:3px;background:${bg};color:#fff;`
+    + `border-radius:10px;padding:2px 6px;font-size:11px;font-weight:600;">`
+    + `${esc(iid)}`
+    + `<span onclick="sctUniToggleLock('${esc(iid)}')" style="cursor:pointer;" title="Verrouiller/déverrouiller">${lockIcon}</span>`
+    + sel + `</span>`;
+}
+
+function sctUniRender() {
+  const host = document.getElementById('sct-uni-cols');
+  if (!host) return;
+  const totals = sctUniTotals();
+  const groups = {}; for (const c of sctUniState.conseillers) groups[c.id] = [];
+  const vacants = [];
+  const order = sctUniState.ilots.slice().sort((a, b) => (parseInt(a.ilotId) || 0) - (parseInt(b.ilotId) || 0));
+  for (const il of order) {
+    const a = sctUniState.assign[il.ilotId] || { conseillerId: null };
+    if (a.conseillerId && groups[a.conseillerId]) groups[a.conseillerId].push(il);
+    else vacants.push(il);
+  }
+  let html = '';
+  for (const c of sctUniState.conseillers) {
+    const ils = groups[c.id];
+    html += `<div style="flex:0 0 230px;border:1px solid var(--border);border-radius:8px;overflow:hidden;display:flex;flex-direction:column;">`;
+    html += `<div style="padding:8px 10px;background:${c.couleur};color:#fff;font-weight:700;font-size:13px;">${esc(c.nom)}</div>`;
+    html += `<div style="padding:6px 8px;border-bottom:1px solid var(--border);">`
+      + `<select onchange="sctUniSetColor('${esc(c.id)}',this.value)" title="Couleur du conseiller"`
+      + ` style="width:100%;background:#1f2937;color:#fff;border:1px solid #4b5563;border-radius:4px;font-size:11px;padding:2px;">`
+      + SCT_GEN_COLORS.map(cc => `<option value="${cc.c}"${cc.c.toLowerCase() === c.couleur.toLowerCase() ? ' selected' : ''}>${esc(cc.label)}</option>`).join('')
+      + `</select></div>`;
+    html += `<div style="flex:1;overflow-y:auto;max-height:50vh;padding:6px;display:flex;flex-wrap:wrap;gap:4px;align-content:flex-start;">`;
+    for (const il of ils) html += sctUniPastille(il, c);
+    html += `</div>`;
+    html += `<div style="padding:6px 10px;border-top:1px solid var(--border);font-size:11px;color:var(--text2);">`
+      + `${ils.length} îlot(s) · ~ ${Math.round(totals[c.id] || 0)} ventes/an</div>`;
+    html += `</div>`;
+  }
+  html += `<div style="flex:0 0 230px;border:1px dashed var(--text2);border-radius:8px;overflow:hidden;display:flex;flex-direction:column;opacity:.92;">`;
+  html += `<div style="padding:8px 10px;background:#374151;color:#cbd5e1;font-weight:700;font-size:13px;">Non attribués</div>`;
+  html += `<div style="flex:1;overflow-y:auto;max-height:50vh;padding:6px;display:flex;flex-wrap:wrap;gap:4px;align-content:flex-start;">`;
+  for (const il of vacants) html += sctUniPastille(il, null);
+  html += `</div>`;
+  html += `<div style="padding:6px 10px;border-top:1px solid var(--text2);font-size:11px;color:var(--text2);">${vacants.length} îlot(s) vacant(s)</div>`;
+  html += `</div>`;
+  host.innerHTML = html;
+}
+
+function sctUniSetAssign(iid, val) {
+  if (!sctUniState.assign[iid]) sctUniState.assign[iid] = { conseillerId: null, locked: false };
+  sctUniState.assign[iid].conseillerId = (!val || val === '__none__') ? null : val;
+  sctUniRender();
+}
+function sctUniToggleLock(iid) {
+  if (!sctUniState.assign[iid]) sctUniState.assign[iid] = { conseillerId: null, locked: false };
+  sctUniState.assign[iid].locked = !sctUniState.assign[iid].locked;
+  sctUniRender();
+}
+function sctUniSetColor(cid, hex) {
+  const c = sctUniState.conseillers.find(x => x.id === cid);
+  if (c) c.couleur = hex;
+  sctUniRender();
+}
+window.sctUniOpen = sctUniOpen;
+window.sctUniClose = sctUniClose;
+window.sctUniRunBalance = sctUniRunBalance;
+window.sctUniSetAssign = sctUniSetAssign;
+window.sctUniToggleLock = sctUniToggleLock;
+window.sctUniSetColor = sctUniSetColor;
 
 let sctMapInstance = null;
 // Table de SECOURS (utilisee UNIQUEMENT si le fetch du manifeste echoue).
