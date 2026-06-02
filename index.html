@@ -4429,11 +4429,35 @@ window.sctAttribSetAssign = sctAttribSetAssign;
 // ════════════════════════════════════════════════════════════════════
 
 let sctMapInstance = null;
-const SCT_MAP_KML_FILES = [
-  'data/kml/Secteur_DL_-_new.kml',
-  'data/kml/Secteur_DL_-_raye.kml',
-  'data/kml/Secteur_DL_-_non_raye.kml',
-];
+// Table de SECOURS (utilisee UNIQUEMENT si le fetch du manifeste echoue).
+const SCT_MAP_KML_FALLBACK = {
+  'dauphine-lacassagne': {
+    dl: ['Secteur_DL_-_new.kml', 'Secteur_DL_-_raye.kml', 'Secteur_DL_-_non_raye.kml'],
+    montchat: ['Ilotage_Montchat.kml'],
+  },
+};
+let _sctKmlManifest = null;   // cache module : false = fetch tente et echoue.
+// Resout la liste des KML scopee par agenceId + secteurZone, prefixee 'data/kml/'.
+async function sctResolveKmlFiles() {
+  if (_sctKmlManifest === null) {
+    try {
+      const r = await fetch('data/kml_manifest.json');
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      _sctKmlManifest = await r.json();
+    } catch (e) {
+      console.warn('[sctResolveKmlFiles] manifeste KO, fallback en dur :', e.message || e);
+      _sctKmlManifest = false;
+    }
+  }
+  const zone = (typeof secteurZone !== 'undefined') ? secteurZone : 'dl';
+  let list = (_sctKmlManifest && _sctKmlManifest[agenceId] && _sctKmlManifest[agenceId][zone]) || null;
+  if (!list) {
+    if (_sctKmlManifest !== false) console.warn('[sctResolveKmlFiles] zone absente du manifeste, fallback :', agenceId, zone);
+    list = (SCT_MAP_KML_FALLBACK[agenceId] && SCT_MAP_KML_FALLBACK[agenceId][zone]) || [];
+  }
+  if (!list.length) console.warn('[sctResolveKmlFiles] liste KML vide pour', agenceId, zone);
+  return list.map(fn => 'data/kml/' + fn);
+}
 // Remapping : noms KML splits -> numero d'ilot logique dans repartition.
 // 3A et 3B correspondent au split historique de l'ilot 3.
 const SCT_MAP_KML_REMAP = { '3A': '3', '3B': '13' };
@@ -4460,10 +4484,11 @@ async function sctMapOpen() {
     attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
   }).addTo(sctMapInstance);
 
-  // 2. Fetch les 3 KML en parallele.
+  // 2. Resout les KML scopes a la zone active (manifeste) puis fetch en parallele.
   let texts;
   try {
-    texts = await Promise.all(SCT_MAP_KML_FILES.map(u =>
+    const kmlFiles = await sctResolveKmlFiles();
+    texts = await Promise.all(kmlFiles.map(u =>
       fetch(u).then(r => { if (!r.ok) throw new Error(u + ' : HTTP ' + r.status); return r.text(); })
     ));
   } catch (e) {
