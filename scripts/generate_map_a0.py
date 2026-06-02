@@ -73,15 +73,37 @@ def parse_kml(path):
 def main():
     rep_raw = os.environ['REPARTITION_JSON']
     agence_id = os.environ.get('AGENCE_ID', '')
+    # [ZONE] AGENCE_ID porte deja la zone via suffixe '-montchat' (secId front).
+    _SUF = '-montchat'
+    zone = 'montchat' if agence_id.endswith(_SUF) else 'dl'
+    base_agence = agence_id[:-len(_SUF)] if agence_id.endswith(_SUF) else agence_id
     data = json.loads(rep_raw)
     repartition = data['repartition']
     conseillers = {c['id']: c for c in data['conseillers']}
 
-    # Charger les 3 KML
+    # [ZONE] Charger les KML scopes a la zone via data/kml_manifest.json
+    # (fin du glob global qui melangeait DL + Montchat).
     kml_dir = Path('data/kml')
     polygones = {}
-    for kml_file in kml_dir.glob('*.kml'):
-        polygones.update(parse_kml(kml_file))
+    manifest = {}
+    try:
+        manifest = json.loads(Path('data/kml_manifest.json').read_text(encoding='utf-8'))
+    except Exception as e:
+        print(f"[WARN] manifeste illisible ({e})")
+    files = (manifest.get(base_agence, {}) or {}).get(zone)
+    if files:
+        loaded = []
+        for fn in files:
+            polygones.update(parse_kml(kml_dir / fn))
+            loaded.append(fn)
+        print(f"[INFO] zone={zone} base_agence={base_agence} kml={loaded}")
+    else:
+        print(f"[WARN] manifeste/zone absent (base_agence={base_agence} zone={zone}) -> fallback glob('*.kml')")
+        loaded = []
+        for kml_file in kml_dir.glob('*.kml'):
+            polygones.update(parse_kml(kml_file))
+            loaded.append(kml_file.name)
+        print(f"[INFO] zone={zone} base_agence={base_agence} kml={loaded}")
     print(f"[OK] {len(polygones)} polygones KML charges")
 
     # Passe 1 : collecter tous les points pour calculer bounds globaux
@@ -222,8 +244,8 @@ def main():
       'dauphine-lacassagne': (4.86502, 45.75685),
       'motte-picquet': (2.30, 48.85),
     }
-    if agence_id in AGENCE_COORDS:
-        lng_a, lat_a = AGENCE_COORDS[agence_id]
+    if base_agence in AGENCE_COORDS:
+        lng_a, lat_a = AGENCE_COORDS[base_agence]
         ax.plot(lng_a, lat_a, 'k*', markersize=15,
                 zorder=10)
         ax.text(lng_a, lat_a + lat_margin * 0.3,
