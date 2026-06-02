@@ -1249,7 +1249,7 @@ const GITHUB_RAW = 'https://raw.githubusercontent.com/liquid69006/dpe-prospector
 // JSON cote navigateur (sans cache-buster, les fetch dataset utilisent
 // le cache HTTP du raw.githubusercontent.com). Bump manuel pour
 // l'instant ; pourrait etre injecte par GitHub Actions a terme.
-const CACHE_VERSION = 'v20260528-certif-0vente-dl';
+const CACHE_VERSION = 'v20260602-bureaux-zero';
 
 const COULEURS_DPE = {A:'#009F6B',B:'#51B748',C:'#CADD43',D:'#F5E800',E:'#F0A800',F:'#E4581B',G:'#D7221F'};
 const TEXTE_DPE   = {C:'#111',D:'#111'};
@@ -4569,6 +4569,7 @@ function sctMapAddLegend() {
       if (iid == null) continue;
       const rep = sctGenState.repartition[String(iid)];
       if (!rep || !rep.conseillerId) continue;
+      if ((secteurAssign[a.cle] || {}).type === 'bureaux') continue;   // bureaux hors parc
       const n = +a.nb_lots_habitation;
       if (!Number.isFinite(n) || n <= 0) continue;
       lgtsBySec[rep.conseillerId] = (lgtsBySec[rep.conseillerId] || 0) + n;
@@ -4986,6 +4987,7 @@ function renderSecteur() {
   // Pass commune : bgRncLots / immatBg (RNC, ordre-stable car somme).
   (d.adresses || []).forEach(a => {
     if (fusedSrc[a.cle]) return;
+    if ((secteurAssign[a.cle] || {}).type === 'bureaux') return;   // bureaux hors parc RNC
     const bg = a.batiment_groupe_id || null;
     const cp = coproByCle[a.cle];
     const im = cp ? (cp.numero_immatriculation || cp.cle_adresse || a.cle) : null;
@@ -5200,11 +5202,11 @@ function renderSecteur() {
         // path bg: ; les adresses social/bureaux non-RNC chutent en bas
         // (lgtKey=null, 0 contribution iloL, comportement souhaite).
         let lgtKey = null, lgtVal = 0;
-        if (a.batiment_groupe_id && bgValue[a.batiment_groupe_id] > 0
+        if (as.type !== 'bureaux' && a.batiment_groupe_id && bgValue[a.batiment_groupe_id] > 0
             && (rnc || getEffectiveLog(a) > 0)) {
           lgtKey = 'bg:' + a.batiment_groupe_id;
           lgtVal = bgValue[a.batiment_groupe_id] || 0;
-        } else if (rnc) {
+        } else if (as.type !== 'bureaux' && rnc) {
           const im = cp.numero_immatriculation || cp.cle_adresse || a.cle;
           if (immatBg[im]) { lgtKey = 'bg:' + immatBg[im]; lgtVal = bgValue[immatBg[im]] || 0; }
           else {
@@ -5213,7 +5215,7 @@ function renderSecteur() {
               ? a._nb_lots_habitation_override
               : (cp.nb_lots_habitation > 0 ? cp.nb_lots_habitation : 0);
           }
-        } else if (usageResid(a) && a.nb_log_bdnb > 0) {
+        } else if (as.type !== 'bureaux' && usageResid(a) && a.nb_log_bdnb > 0) {
           // hors-RNC résidentiel SANS bgid -> clé adresse
           // mono qualifié -> lgtVal=1 (au lieu de nb_log_bdnb)
           lgtKey = 'adr:' + a.cle; lgtVal = getEffectiveLog(a);
@@ -5354,7 +5356,14 @@ function renderSecteur() {
         // hors-RNC residentiel -> X ; tertiaire/inconnu -> tiret.
         // (X = nb_log_bdnb original BDNB, conserve pour transparence.)
         let logCell;
-        if (lots != null) {
+        if (as.type === 'bureaux') {
+          // Bureaux : 0 logement marchand. (X) = lots RNC/BDNB d'origine (transparence).
+          const orig = (lots != null) ? lots : (a.nb_log_bdnb != null ? a.nb_log_bdnb : null);
+          logCell = (orig != null && orig > 0)
+            ? `<span title="Bureaux qualifié (${orig} lots ignorés)" style="color:var(--text2);">0 `
+              + `<small style="opacity:.7;">(${orig})</small></span>`
+            : `<span title="Bureaux qualifié" style="color:var(--text2);">0</span>`;
+        } else if (lots != null) {
           logCell = String(lots);
         } else if (as.type === 'mono'
             && a.nb_log_bdnb != null && a.nb_log_bdnb > 0) {
