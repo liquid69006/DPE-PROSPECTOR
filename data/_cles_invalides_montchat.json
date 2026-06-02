@@ -1,1 +1,9 @@
-[]
+[
+  {
+    "cle": "|RUE|CELLARD",
+    "immat": null,
+    "raison": "adresse_malformee_sans_donnee_irrecuperable",
+    "note": "Ligne adresse sans immat/bgid/coords/nb_log_bdnb. Aucun levier de rebind (num introuvable, bati non geolocalise). Irrecuperable.",
+    "date": "2026-06-02"
+  }
+]
