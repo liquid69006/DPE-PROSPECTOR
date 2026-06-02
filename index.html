@@ -1082,7 +1082,7 @@ td{padding:11px 14px;vertical-align:middle;}
       <div>
         <div style="font-weight:700;font-size:16px;color:#a78bfa;">🎯 Secteurs &amp; conseillers (beta)</div>
         <div style="color:var(--text2);font-size:12px;margin-top:2px;">
-          1 conseiller = 1 secteur — phase A (à blanc, sans enregistrement)</div>
+          Secteur de base (fixe) + vacants — phase A (à blanc, sans enregistrement)</div>
       </div>
       <button onclick="sctUniClose()" title="Fermer"
         style="background:transparent;color:var(--text2);border:1px solid var(--border);
@@ -1090,14 +1090,14 @@ td{padding:11px 14px;vertical-align:middle;}
     </div>
     <div style="padding:10px 22px;border-bottom:1px solid var(--border);display:flex;
                 gap:8px;flex-wrap:wrap;align-items:center;">
-      <button onclick="sctUniRunBalance('all')"
-        title="Fige uniquement les îlots verrouillés, rebat tout le reste en équilibrant les ventes/an."
+      <button onclick="sctUniRunBalance()"
+        title="Répartit le pool de vacants entre tous les conseillers (équilibre base + vacants). Les bases ne bougent jamais."
         style="padding:7px 14px;border:1px solid #a78bfa;border-radius:6px;background:#1f2937;
-               color:#a78bfa;font-size:13px;font-weight:600;cursor:pointer;">⚖️ Tout rebattre</button>
-      <button onclick="sctUniRunBalance('vacants')"
-        title="Garde tous les îlots déjà attribués, ne distribue que les vacants."
+               color:#a78bfa;font-size:13px;font-weight:600;cursor:pointer;">➕ Réattribuer les vacants</button>
+      <button onclick="sctGenOpen()"
+        title="Génère / équilibre les secteurs de base (ancien wizard ⚡ Générer secteurs)."
         style="padding:7px 14px;border:1px solid var(--border);border-radius:6px;background:var(--surface2);
-               color:var(--text);font-size:13px;font-weight:600;cursor:pointer;">➕ Réattribuer les vacants</button>
+               color:var(--text);font-size:13px;font-weight:600;cursor:pointer;">⚡ Générer les secteurs</button>
       <div style="flex:1 1 auto;"></div>
       <button disabled title="Actif après enregistrement (phase B)"
         style="padding:7px 14px;border:1px solid var(--border);border-radius:6px;background:var(--surface2);
@@ -4479,17 +4479,20 @@ window.sctAttribSetAssign = sctAttribSetAssign;
 // ════════════════════════════════════════════════════════════════════
 
 // ════════════════════════════════════════════════════════════════════
-// [BETA] Panneau unifie "1 conseiller = 1 secteur" (sctUni*) — PHASE A.
-// A blanc : AUCUNE ecriture KV (GET /conseillers + GET /secteur-repartition
-// seulement). Reutilise sctGenComputeIlots() + sctGenBalance() qui operent
-// via sctGenState (snapshot/restore pour ne pas casser la feature sctGen).
-// sctGenBalance est couple aux ids 'sec-N' (computeScores boucle sec-1..N)
-// et ne (re)distribue que des ilots deja attribues -> on mappe les conseillers
-// reels sur sec-N et on amorce par un seed glouton avant l'equilibrage.
+// [BETA] Panneau "Secteurs & conseillers" (sctUni*) — PHASE A.
+// Modele : SECTEUR DE BASE FIXE (sec-N de secteur_repartition, NON regenere
+// ici) attribue a UN conseiller + POOL DE VACANTS (ilots des secteurs non
+// attribues + ilots hors repartition, ex. 85) reparti entre TOUS via
+// sctGenBalance pour egaliser le TOTAL (base + vacants). Les bases ne bougent
+// jamais. AUCUNE ecriture KV : GET /conseillers + /secteur-repartition +
+// /secteur-attribution (lecture seule). Reutilise sctGenComputeIlots +
+// sctGenBalance (couples 'sec-N') via snapshot/restore de sctGenState.
 // ════════════════════════════════════════════════════════════════════
 const sctUniState = {
   conseillers: [],   // [{id, nom, couleur}]  (id = slug reel)
-  assign: {},        // { ilotId: { conseillerId|null, locked:false } }
+  baseSectors: {},   // { secN: { ilots:[ilotId], ventes:Number, nom:String } }
+  attribution: {},   // { secN -> conseillerId|null }  (1 base max / conseiller)
+  vacAssign: {},     // { ilotId -> conseillerId|null }  (ilots du pool seulement)
   ilots: [],         // [{ilotId, nb_ventes, zone, ...}] via sctGenComputeIlots
   agence_lat: null,
   agence_lng: null,
@@ -4513,23 +4516,59 @@ async function sctUniOpen() {
     id: sctAttribSlug(n), nom: n,
     couleur: SCT_GEN_COLORS[i % SCT_GEN_COLORS.length].c,
   }));
-  // 2. agence_lat/lng en lecture seule depuis la repartition existante.
+  // 2. secteur_repartition : agence_lat/lng + secteurs de base (sec-N + ilots).
+  let rep = {};
   sctUniState.agence_lat = null; sctUniState.agence_lng = null;
   try {
     const [, secId] = secteurResolve();
     const rr = await fetch(`${API_URL}/secteur-repartition/${secId}`, {
       headers: { 'Authorization': `Bearer ${authToken}` } });
-    if (rr.ok) {
-      const j = await rr.json();
-      if (typeof j.agence_lat === 'number') { sctUniState.agence_lat = j.agence_lat; sctUniState.agence_lng = j.agence_lng; }
-    }
-  } catch (e) { /* agence absente : balance sans contrainte de zone */ }
+    if (rr.ok) rep = (await rr.json()) || {};
+  } catch (e) { /* repartition absente */ }
+  if (typeof rep.agence_lat === 'number') { sctUniState.agence_lat = rep.agence_lat; sctUniState.agence_lng = rep.agence_lng; }
   // 3. Ilots + ventes/an (reutilise sctGenComputeIlots).
   sctUniState.ilots = sctUniComputeIlots();
-  // 4. INIT : tous vacants (l'ancienne repartition sec-N est incompatible).
-  sctUniState.assign = {};
-  for (const il of sctUniState.ilots) sctUniState.assign[il.ilotId] = { conseillerId: null, locked: false };
+  const byId = {}; for (const il of sctUniState.ilots) byId[il.ilotId] = il;
+  // 4. Secteurs de base depuis repartition{ilotId -> {conseillerId:secN}}.
+  const consMeta = {}; for (const c of (rep.conseillers || [])) consMeta[c.id] = c;
+  sctUniState.baseSectors = {};
+  for (const [iid, v] of Object.entries(rep.repartition || {})) {
+    if (!v || !v.conseillerId) continue;
+    const secN = v.conseillerId;
+    if (!sctUniState.baseSectors[secN]) {
+      sctUniState.baseSectors[secN] = { ilots: [], ventes: 0,
+        nom: (consMeta[secN] && consMeta[secN].nom) || secN };
+    }
+    sctUniState.baseSectors[secN].ilots.push(iid);
+  }
+  for (const secN of Object.keys(sctUniState.baseSectors)) {
+    const bs = sctUniState.baseSectors[secN];
+    bs.ventes = bs.ilots.reduce((s, iid) => s + (byId[iid] ? (byId[iid].nb_ventes || 0) : 0), 0);
+  }
+  // 5. Attribution : seed depuis secteur_attribution (1 base max / conseiller).
+  sctUniState.attribution = {};
+  try {
+    const [, secId] = secteurResolve();
+    const ra = await fetch(`${API_URL}/secteur-attribution/${secId}`, {
+      headers: { 'Authorization': `Bearer ${authToken}` } });
+    if (ra.ok) {
+      const att = await ra.json();
+      const map = (att && typeof att.attribution === 'object') ? att.attribution : {};
+      const used = new Set();
+      for (const [secN, cid] of Object.entries(map)) {
+        if (!cid) continue;
+        if (!sctUniState.baseSectors[secN]) continue;
+        if (!sctUniState.conseillers.some(c => c.id === cid)) continue;
+        if (used.has(cid)) continue;            // 1 base max / conseiller
+        sctUniState.attribution[secN] = cid; used.add(cid);
+      }
+    }
+  } catch (e) { /* pas d'attribution : on demarre vide */ }
+  // 6. Pool de vacants initial (tout a repartir).
+  sctUniState.vacAssign = {};
+  sctUniSyncVac();
   if (!sctUniState.conseillers.length) showToast('⚠️ Aucun conseiller réel (hors « À attribuer »)', true);
+  else if (!Object.keys(sctUniState.baseSectors).length) showToast('ℹ️ Aucun secteur de base — lancez « Générer les secteurs »', true);
   sctUniRender();
 }
 
@@ -4546,20 +4585,57 @@ function sctUniComputeIlots() {
   return list;
 }
 
-function sctUniTotals() {
-  const t = {}; for (const c of sctUniState.conseillers) t[c.id] = 0;
-  const byId = {}; for (const il of sctUniState.ilots) byId[il.ilotId] = il;
-  for (const [iid, a] of Object.entries(sctUniState.assign)) {
-    if (a && a.conseillerId && t[a.conseillerId] !== undefined) {
-      t[a.conseillerId] += (byId[iid] ? (byId[iid].nb_ventes || 0) : 0);
-    }
+// secN -> conseillerId pour les bases ATTRIBUEES (conseiller existant).
+function sctUniAttributedBases() {
+  const out = {};
+  for (const [secN, cid] of Object.entries(sctUniState.attribution)) {
+    if (!cid) continue;
+    if (!sctUniState.baseSectors[secN]) continue;
+    if (!sctUniState.conseillers.some(c => c.id === cid)) continue;
+    out[secN] = cid;
   }
+  return out;
+}
+// ilotId -> conseillerId pour tous les ilots des bases attribuees (FIXE).
+function sctUniBaseIlotMap() {
+  const m = {};
+  const bases = sctUniAttributedBases();
+  for (const [secN, cid] of Object.entries(bases)) {
+    for (const iid of sctUniState.baseSectors[secN].ilots) m[iid] = cid;
+  }
+  return m;
+}
+// Pool = ilots qui ne sont PAS dans une base attribuee.
+function sctUniPool() {
+  const base = sctUniBaseIlotMap();
+  return sctUniState.ilots.filter(il => !(il.ilotId in base));
+}
+// Aligne vacAssign sur le pool courant (purge hors-pool, defaut null).
+function sctUniSyncVac() {
+  const pool = sctUniPool();
+  const poolSet = new Set(pool.map(il => il.ilotId));
+  for (const iid of Object.keys(sctUniState.vacAssign)) if (!poolSet.has(iid)) delete sctUniState.vacAssign[iid];
+  for (const il of pool) if (!(il.ilotId in sctUniState.vacAssign)) sctUniState.vacAssign[il.ilotId] = null;
+}
+// base secN attribuee a un conseiller (ou null).
+function sctUniBaseOf(cid) {
+  for (const [secN, c] of Object.entries(sctUniState.attribution)) if (c === cid) return secN;
+  return null;
+}
+// Totaux { cid: {base, vac, tot} }.
+function sctUniTotals() {
+  const byId = {}; for (const il of sctUniState.ilots) byId[il.ilotId] = il;
+  const t = {}; for (const c of sctUniState.conseillers) t[c.id] = { base: 0, vac: 0, tot: 0 };
+  const baseMap = sctUniBaseIlotMap();
+  for (const [iid, cid] of Object.entries(baseMap)) if (t[cid]) t[cid].base += (byId[iid] ? (byId[iid].nb_ventes || 0) : 0);
+  for (const [iid, cid] of Object.entries(sctUniState.vacAssign)) if (cid && t[cid]) t[cid].vac += (byId[iid] ? (byId[iid].nb_ventes || 0) : 0);
+  for (const c of sctUniState.conseillers) t[c.id].tot = t[c.id].base + t[c.id].vac;
   return t;
 }
 
-// mode 'all'     : ne fige QUE locked=true -> rebat tout le reste.
-// mode 'vacants' : fige tous les attribues -> ne distribue que les vacants.
-function sctUniRunBalance(mode) {
+// "Reattribuer les vacants" : repartit TOUT le pool entre tous les conseillers
+// pour egaliser le TOTAL (base fixe + vacants). Les bases ne bougent jamais.
+function sctUniRunBalance() {
   const cons = sctUniState.conseillers;
   const N = cons.length;
   if (N < 1) { showToast('⚠️ Aucun conseiller réel', true); return; }
@@ -4568,40 +4644,32 @@ function sctUniRunBalance(mode) {
   cons.forEach((c, i) => { const s = 'sec-' + (i + 1); idToSec[c.id] = s; secToId[s] = c.id; });
   const byId = {}; for (const il of sctUniState.ilots) byId[il.ilotId] = il;
 
-  // Figes (gardent leur conseiller) vs Libres (a (re)distribuer).
-  const frozen = {}, free = [];
-  for (const il of sctUniState.ilots) {
-    const a = sctUniState.assign[il.ilotId] || { conseillerId: null, locked: false };
-    const isFrozen = (mode === 'all') ? (!!a.locked && a.conseillerId != null) : (a.conseillerId != null);
-    if (isFrozen) frozen[il.ilotId] = a.conseillerId; else free.push(il);
-  }
-  if (!free.length) { showToast('ℹ️ Aucun îlot à (re)distribuer', true); return; }
+  const baseMap = sctUniBaseIlotMap();          // ilotId -> conseiller (PINNED)
+  const pool = sctUniState.ilots.filter(il => !(il.ilotId in baseMap));
+  if (!pool.length) { showToast('ℹ️ Aucun îlot vacant à répartir', true); return; }
 
-  // SEED glouton : ilot libre le plus lourd -> conseiller au total min.
+  // SEED glouton : ilot du pool le plus lourd -> conseiller au total min
+  // (totaux initiaux = somme des bases fixes par conseiller).
   const seedTot = {}; for (const c of cons) seedTot[c.id] = 0;
-  for (const [iid, cid] of Object.entries(frozen)) {
-    if (seedTot[cid] !== undefined) seedTot[cid] += (byId[iid] ? (byId[iid].nb_ventes || 0) : 0);
-  }
+  for (const [iid, cid] of Object.entries(baseMap)) if (seedTot[cid] !== undefined) seedTot[cid] += (byId[iid] ? (byId[iid].nb_ventes || 0) : 0);
   const seededId = {};
-  free.slice().sort((a, b) => (b.nb_ventes || 0) - (a.nb_ventes || 0)).forEach(il => {
+  pool.slice().sort((a, b) => (b.nb_ventes || 0) - (a.nb_ventes || 0)).forEach(il => {
     let best = cons[0].id, bestV = Infinity;
     for (const c of cons) { if (seedTot[c.id] < bestV) { bestV = seedTot[c.id]; best = c.id; } }
     seededId[il.ilotId] = best; seedTot[best] += (il.nb_ventes || 0);
   });
 
-  // Repartition en espace sec-N pour sctGenBalance (locked = fige).
+  // Repartition scratch en espace sec-N : bases PINNED (locked), pool libre.
   const rep = {};
   for (const il of sctUniState.ilots) {
     const iid = il.ilotId;
-    if (frozen[iid] != null) rep[iid] = { conseillerId: idToSec[frozen[iid]], locked: true };
+    if (baseMap[iid]) rep[iid] = { conseillerId: idToSec[baseMap[iid]], locked: true };
     else rep[iid] = { conseillerId: idToSec[seededId[iid]], locked: false };
   }
-  // Quotas par zone (cible = somme zone / N) -> contrainte zone si agence presente.
   const q = { proche: 0, moyenne: 0, lointaine: 0 };
   for (const il of sctUniState.ilots) if (q[il.zone] !== undefined) q[il.zone] += (il.nb_ventes || 0);
   for (const k of Object.keys(q)) q[k] = q[k] / N;
 
-  // Snapshot sctGenState (ne pas casser la feature sctGen).
   const snap = {
     N: sctGenState.N, conseillers: sctGenState.conseillers, ilots: sctGenState.ilots,
     repartition: sctGenState.repartition, quotas: sctGenState._quotas,
@@ -4617,13 +4685,11 @@ function sctUniRunBalance(mode) {
     sctGenState.agence_lng = sctUniState.agence_lng;
     sctGenState._traceBalance = false;
     sctGenBalance();   // optimise rep en place (espace sec-N)
-    // Remap sec-N -> conseiller reel ; preserve le lock UTILISATEUR.
-    for (const il of sctUniState.ilots) {
-      const iid = il.ilotId;
-      const r = sctGenState.repartition[iid];
-      const realId = (r && r.conseillerId) ? (secToId[r.conseillerId] || null) : null;
-      const prev = sctUniState.assign[iid] || { locked: false };
-      sctUniState.assign[iid] = { conseillerId: realId, locked: !!prev.locked };
+    // Remap sec-N -> conseiller reel pour les ilots du POOL uniquement.
+    sctUniState.vacAssign = {};
+    for (const il of pool) {
+      const r = sctGenState.repartition[il.ilotId];
+      sctUniState.vacAssign[il.ilotId] = (r && r.conseillerId) ? (secToId[r.conseillerId] || null) : null;
     }
   } finally {
     sctGenState.N = snap.N; sctGenState.conseillers = snap.conseillers; sctGenState.ilots = snap.ilots;
@@ -4631,75 +4697,106 @@ function sctUniRunBalance(mode) {
     sctGenState.agence_lat = snap.lat; sctGenState.agence_lng = snap.lng;
   }
   sctUniRender();
-  showToast(mode === 'all' ? '✅ Tout rebattu (équilibrage ventes/an)' : '✅ Vacants réattribués');
+  showToast('✅ Vacants réattribués (équilibrage base + vacants)');
 }
 
-function sctUniPastille(il, conseiller) {
+// Pastille d'un ilot du POOL (move dropdown : conseiller / a repartir).
+function sctUniVacPastille(il) {
   const iid = il.ilotId;
-  const a = sctUniState.assign[iid] || { conseillerId: null, locked: false };
-  const bg = conseiller ? conseiller.couleur : '#6b7280';
-  const lockIcon = a.locked ? '🔒' : '🔓';
-  const sel = `<select onchange="sctUniSetAssign('${esc(iid)}',this.value)" title="Déplacer l'îlot"`
-    + ` style="max-width:48px;background:transparent;color:#fff;border:none;font-size:10px;cursor:pointer;">`
-    + '<option value="">↦</option>'
-    + sctUniState.conseillers.map(c => `<option value="${esc(c.id)}"${a.conseillerId === c.id ? ' selected' : ''}>${esc(c.nom)}</option>`).join('')
-    + '<option value="__none__">Non attribué</option>'
+  const cid = sctUniState.vacAssign[iid] || null;
+  const cons = cid ? sctUniState.conseillers.find(c => c.id === cid) : null;
+  const bg = cons ? cons.couleur : '#6b7280';
+  const sel = `<select onchange="sctUniSetVac('${esc(iid)}',this.value)" title="Déplacer l'îlot"`
+    + ` style="max-width:52px;background:transparent;color:#fff;border:none;font-size:10px;cursor:pointer;">`
+    + `<option value="__none__"${!cid ? ' selected' : ''}>↦</option>`
+    + sctUniState.conseillers.map(c => `<option value="${esc(c.id)}"${cid === c.id ? ' selected' : ''}>${esc(c.nom)}</option>`).join('')
     + `</select>`;
   return `<span title="Îlot ${esc(iid)} · ~${Math.round(il.nb_ventes || 0)} ventes/an"`
     + ` style="display:inline-flex;align-items:center;gap:3px;background:${bg};color:#fff;`
-    + `border-radius:10px;padding:2px 6px;font-size:11px;font-weight:600;">`
-    + `${esc(iid)}`
-    + `<span onclick="sctUniToggleLock('${esc(iid)}')" style="cursor:pointer;" title="Verrouiller/déverrouiller">${lockIcon}</span>`
-    + sel + `</span>`;
+    + `border-radius:10px;padding:2px 6px;font-size:11px;font-weight:600;">${esc(iid)}${sel}</span>`;
 }
 
 function sctUniRender() {
   const host = document.getElementById('sct-uni-cols');
   if (!host) return;
   const totals = sctUniTotals();
-  const groups = {}; for (const c of sctUniState.conseillers) groups[c.id] = [];
-  const vacants = [];
-  const order = sctUniState.ilots.slice().sort((a, b) => (parseInt(a.ilotId) || 0) - (parseInt(b.ilotId) || 0));
-  for (const il of order) {
-    const a = sctUniState.assign[il.ilotId] || { conseillerId: null };
-    if (a.conseillerId && groups[a.conseillerId]) groups[a.conseillerId].push(il);
-    else vacants.push(il);
-  }
+  const attributed = sctUniAttributedBases();        // secN -> cid (bases prises)
+  // pool groupe par conseiller (vacants recus) + non distribues.
+  const pool = sctUniPool();
+  const recus = {}; for (const c of sctUniState.conseillers) recus[c.id] = [];
+  const aRepartir = [];
+  pool.slice().sort((a, b) => (parseInt(a.ilotId) || 0) - (parseInt(b.ilotId) || 0)).forEach(il => {
+    const cid = sctUniState.vacAssign[il.ilotId] || null;
+    if (cid && recus[cid]) recus[cid].push(il); else aRepartir.push(il);
+  });
+  const secList = Object.keys(sctUniState.baseSectors).sort((a, b) =>
+    (parseInt(String(a).replace(/\D/g, '')) || 0) - (parseInt(String(b).replace(/\D/g, '')) || 0));
+
   let html = '';
   for (const c of sctUniState.conseillers) {
-    const ils = groups[c.id];
-    html += `<div style="flex:0 0 230px;border:1px solid var(--border);border-radius:8px;overflow:hidden;display:flex;flex-direction:column;">`;
+    const baseN = sctUniBaseOf(c.id);
+    const tt = totals[c.id] || { base: 0, vac: 0, tot: 0 };
+    html += `<div style="flex:0 0 240px;border:1px solid var(--border);border-radius:8px;overflow:hidden;display:flex;flex-direction:column;">`;
     html += `<div style="padding:8px 10px;background:${c.couleur};color:#fff;font-weight:700;font-size:13px;">${esc(c.nom)}</div>`;
     html += `<div style="padding:6px 8px;border-bottom:1px solid var(--border);">`
       + `<select onchange="sctUniSetColor('${esc(c.id)}',this.value)" title="Couleur du conseiller"`
       + ` style="width:100%;background:#1f2937;color:#fff;border:1px solid #4b5563;border-radius:4px;font-size:11px;padding:2px;">`
       + SCT_GEN_COLORS.map(cc => `<option value="${cc.c}"${cc.c.toLowerCase() === c.couleur.toLowerCase() ? ' selected' : ''}>${esc(cc.label)}</option>`).join('')
       + `</select></div>`;
-    html += `<div style="flex:1;overflow-y:auto;max-height:50vh;padding:6px;display:flex;flex-wrap:wrap;gap:4px;align-content:flex-start;">`;
-    for (const il of ils) html += sctUniPastille(il, c);
+    // Secteur de base (fixe)
+    html += `<div style="padding:6px 8px;border-bottom:1px solid var(--border);">`
+      + `<div style="font-size:10px;color:var(--text2);margin-bottom:3px;">Secteur de base (fixe)</div>`
+      + `<select onchange="sctUniSetBase('${esc(c.id)}',this.value)"`
+      + ` style="width:100%;background:#1f2937;color:#fff;border:1px solid #4b5563;border-radius:4px;font-size:11px;padding:2px;">`
+      + `<option value="">— aucun —</option>`
+      + secList.filter(secN => !attributed[secN] || attributed[secN] === c.id).map(secN => {
+          const bs = sctUniState.baseSectors[secN];
+          return `<option value="${esc(secN)}"${baseN === secN ? ' selected' : ''}>`
+            + `${esc(bs.nom)} · ${bs.ilots.length} îlots · ~${Math.round(bs.ventes)}/an</option>`;
+        }).join('')
+      + `</select>`;
+    if (baseN) {
+      const bs = sctUniState.baseSectors[baseN];
+      html += `<div style="margin-top:5px;background:${c.couleur}22;border:1px solid ${c.couleur};`
+        + `border-radius:6px;padding:4px 7px;font-size:11px;color:var(--text);">`
+        + `🔒 ${esc(bs.nom)} · ${bs.ilots.length} îlots · ~${Math.round(bs.ventes)} ventes/an</div>`;
+    }
+    html += `</div>`;
+    html += `<div style="padding:5px 8px 0;font-size:10px;color:var(--text2);">Vacants reçus</div>`;
+    html += `<div style="flex:1;overflow-y:auto;max-height:40vh;padding:4px 6px 6px;display:flex;flex-wrap:wrap;gap:4px;align-content:flex-start;">`;
+    for (const il of recus[c.id]) html += sctUniVacPastille(il);
     html += `</div>`;
     html += `<div style="padding:6px 10px;border-top:1px solid var(--border);font-size:11px;color:var(--text2);">`
-      + `${ils.length} îlot(s) · ~ ${Math.round(totals[c.id] || 0)} ventes/an</div>`;
+      + `Total ~ ${Math.round(tt.tot)} ventes/an <span style="opacity:.7;">(base ${Math.round(tt.base)} + vac ${Math.round(tt.vac)})</span></div>`;
     html += `</div>`;
   }
-  html += `<div style="flex:0 0 230px;border:1px dashed var(--text2);border-radius:8px;overflow:hidden;display:flex;flex-direction:column;opacity:.92;">`;
-  html += `<div style="padding:8px 10px;background:#374151;color:#cbd5e1;font-weight:700;font-size:13px;">Non attribués</div>`;
-  html += `<div style="flex:1;overflow-y:auto;max-height:50vh;padding:6px;display:flex;flex-wrap:wrap;gap:4px;align-content:flex-start;">`;
-  for (const il of vacants) html += sctUniPastille(il, null);
+  // Colonne "Vacants a repartir"
+  const vacTot = aRepartir.reduce((s, il) => s + (il.nb_ventes || 0), 0);
+  html += `<div style="flex:0 0 240px;border:1px dashed var(--text2);border-radius:8px;overflow:hidden;display:flex;flex-direction:column;opacity:.95;">`;
+  html += `<div style="padding:8px 10px;background:#374151;color:#cbd5e1;font-weight:700;font-size:13px;">Vacants à répartir</div>`;
+  html += `<div style="flex:1;overflow-y:auto;max-height:55vh;padding:6px;display:flex;flex-wrap:wrap;gap:4px;align-content:flex-start;">`;
+  for (const il of aRepartir) html += sctUniVacPastille(il);
   html += `</div>`;
-  html += `<div style="padding:6px 10px;border-top:1px solid var(--text2);font-size:11px;color:var(--text2);">${vacants.length} îlot(s) vacant(s)</div>`;
+  html += `<div style="padding:6px 10px;border-top:1px solid var(--text2);font-size:11px;color:var(--text2);">${aRepartir.length} îlot(s) · ~${Math.round(vacTot)} ventes/an</div>`;
   html += `</div>`;
   host.innerHTML = html;
 }
 
-function sctUniSetAssign(iid, val) {
-  if (!sctUniState.assign[iid]) sctUniState.assign[iid] = { conseillerId: null, locked: false };
-  sctUniState.assign[iid].conseillerId = (!val || val === '__none__') ? null : val;
+function sctUniSetBase(cid, secN) {
+  const old = sctUniBaseOf(cid);
+  if (old) delete sctUniState.attribution[old];     // 1 base max / conseiller
+  if (secN) {
+    if (sctUniState.attribution[secN] && sctUniState.attribution[secN] !== cid) {
+      showToast('⚠️ Ce secteur est déjà attribué', true); sctUniRender(); return;
+    }
+    sctUniState.attribution[secN] = cid;
+  }
+  sctUniSyncVac();
   sctUniRender();
 }
-function sctUniToggleLock(iid) {
-  if (!sctUniState.assign[iid]) sctUniState.assign[iid] = { conseillerId: null, locked: false };
-  sctUniState.assign[iid].locked = !sctUniState.assign[iid].locked;
+function sctUniSetVac(iid, val) {
+  if (!(iid in sctUniState.vacAssign)) return;       // pas un ilot du pool
+  sctUniState.vacAssign[iid] = (!val || val === '__none__') ? null : val;
   sctUniRender();
 }
 function sctUniSetColor(cid, hex) {
@@ -4710,8 +4807,8 @@ function sctUniSetColor(cid, hex) {
 window.sctUniOpen = sctUniOpen;
 window.sctUniClose = sctUniClose;
 window.sctUniRunBalance = sctUniRunBalance;
-window.sctUniSetAssign = sctUniSetAssign;
-window.sctUniToggleLock = sctUniToggleLock;
+window.sctUniSetBase = sctUniSetBase;
+window.sctUniSetVac = sctUniSetVac;
 window.sctUniSetColor = sctUniSetColor;
 
 let sctMapInstance = null;
