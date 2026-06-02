@@ -187,7 +187,6 @@ def main():
     # OSM (zorder=1). Alpha 0.60 : laisse voir les rues/batiments
     # dessous, sera complete par le 2e basemap labels (zorder=3) qui
     # ajoute les noms par-dessus les couleurs.
-    centroids = []
     for ilot_id, coords in polygones.items():
         if not coords:
             continue
@@ -207,12 +206,6 @@ def main():
           linewidth=1.5, alpha=0.60, zorder=2)
         ax.add_collection(patch)
 
-        # Centroide memo (les numeros sont dessines APRES l'overlay
-        # labels OSM, pour rester au-dessus de tout).
-        cx = sum(lngs) / len(lngs)
-        cy = sum(lats) / len(lats)
-        centroids.append((cx, cy, ilot_id))
-
     # Overlay labels OSM (zorder=3) par-dessus les polygones :
     # les noms de rues restent visibles malgre la coloration.
     print(f'[INFO] Overlay labels OSM (zoom={used_zoom})...')
@@ -229,15 +222,6 @@ def main():
     except Exception as exc:
         print(f'[WARN] Overlay labels KO ({exc}) : carte sans noms de rues')
 
-    # Numeros d'ilots au centroide (zorder=4, au-dessus de l'overlay
-    # labels OSM pour rester lisibles).
-    for cx, cy, ilot_id in centroids:
-        ax.text(cx, cy, ilot_id,
-            ha='center', va='center',
-            fontsize=26,
-            fontweight='bold',
-            color='black',
-            zorder=4)
 
     # Marker agence
     AGENCE_COORDS = {
