@@ -717,6 +717,38 @@ async function handleRequest(request, env) {
       return err("Méthode non supportée", 405);
     }
 
+    // ── /secteur-uni/:agence ── etat du panneau "Secteurs & conseillers" (beta) ─
+    // KV : secteur_uni:{agenceId} -> { conseillers:[{id,nom,couleur}],
+    //   attribution:{secN: conseillerId}, vacants:{ilotId: conseillerId},
+    //   updated_at }. GET renvoie {} si absent. POST ecrase tout. Pattern
+    // identique a /secteur-attribution. NE TOUCHE PAS secteur_repartition
+    // (= secteurs de base, source du panneau et de la carte).
+    const secteurUniMatch = path.match(/^\/secteur-uni\/([a-z0-9-]+)$/);
+    if (secteurUniMatch) {
+      const agenceId = secteurUniMatch[1];
+      const [, authErr] = await requireAuth(agenceId);
+      if (authErr) return authErr;
+      if (method === "GET") {
+        const raw = await env.DPE_KV.get(`secteur_uni:${agenceId}`);
+        return json(raw ? JSON.parse(raw) : {});
+      }
+      if (method === "POST") {
+        let body; try { body = await request.json(); } catch { return err("JSON invalide"); }
+        if (typeof body !== "object" || body === null) return err("body doit être un objet");
+        const payload = {
+          conseillers: Array.isArray(body.conseillers) ? body.conseillers : [],
+          attribution: (body.attribution && typeof body.attribution === "object") ? body.attribution : {},
+          vacants: (body.vacants && typeof body.vacants === "object") ? body.vacants : {},
+          updated_at: new Date().toISOString(),
+        };
+        await env.DPE_KV.put(`secteur_uni:${agenceId}`, JSON.stringify(payload));
+        return json({ ok: true, conseillers: payload.conseillers.length,
+                      attribution: Object.keys(payload.attribution).length,
+                      vacants: Object.keys(payload.vacants).length });
+      }
+      return err("Méthode non supportée", 405);
+    }
+
     // ── PATCH /secteur-repartition/:agence/ilot ── update partiel 1 îlot ──
     const secteurRepartIlotMatch = path.match(/^\/secteur-repartition\/([a-z0-9-]+)\/ilot$/);
     if (secteurRepartIlotMatch && method === "PATCH") {
