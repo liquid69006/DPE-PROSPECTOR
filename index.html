@@ -1107,12 +1107,14 @@ td{padding:11px 14px;vertical-align:middle;}
         style="padding:7px 12px;border:1px solid var(--border);border-radius:6px;background:transparent;
                color:var(--text2);font-size:13px;cursor:pointer;">↺ Réinitialiser</button>
       <div style="flex:1 1 auto;"></div>
-      <button disabled title="Actif après enregistrement (phase B)"
+      <button onclick="sctMapOpen()"
+        title="Carte des 10 secteurs de base (s'ouvre par-dessus ; fermer revient au panneau)."
         style="padding:7px 14px;border:1px solid var(--border);border-radius:6px;background:var(--surface2);
-               color:var(--text2);font-size:13px;cursor:not-allowed;opacity:.55;">🗺️ Voir la carte</button>
-      <button disabled title="Actif après enregistrement (phase B)"
+               color:var(--text);font-size:13px;cursor:pointer;">🗺️ Voir la carte</button>
+      <button onclick="sctMapExportA0()"
+        title="Exporte la carte A0 (PNG 300 DPI) des 10 secteurs de base via GitHub Actions."
         style="padding:7px 14px;border:1px solid var(--border);border-radius:6px;background:var(--surface2);
-               color:var(--text2);font-size:13px;cursor:not-allowed;opacity:.55;">📥 Exporter A0</button>
+               color:var(--text);font-size:13px;cursor:pointer;">📥 Exporter A0</button>
     </div>
     <div id="sct-uni-cols" style="flex:1;overflow-y:auto;overflow-x:hidden;padding:16px 22px;
          display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;
