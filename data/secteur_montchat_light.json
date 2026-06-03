@@ -126,7 +126,48 @@
       "parc_apres": 15877,
       "unfuse_42stisidore_cleanup": "42 srcs/label nettoyes (44 un-fuse, bgid distinct S5D6)"
     },
-    "_correctif_horsrnc_montchat": "29 adresses injectees (copros invisibles cat. A/B2 detectees par passe inverse hors-RNC Montchat ; lien live many-to-many _horsrnc_bdnb_live_montchat.json ; _bdnb_match=immat_horsrnc_fix ; delta parc ESTIME +24 lgts -- valider le reel via node scripts/test_render_secteur.js)."
+    "_correctif_horsrnc_montchat": "29 adresses injectees (copros invisibles cat. A/B2 detectees par passe inverse hors-RNC Montchat ; lien live many-to-many _horsrnc_bdnb_live_montchat.json ; _bdnb_match=immat_horsrnc_fix ; delta parc ESTIME +24 lgts -- valider le reel via node scripts/test_render_secteur.js).",
+    "_correctif_fuser_b2a_montchat": {
+      "desc": "FUSER B2a : doublons bgid hors-RNC fuses en secondaires vers leur copro RNC ancre, GARDE PARITE (meme voie+parite).",
+      "retenus": 19,
+      "cross_rue_ecartes": [
+        "20|RUE|BALME",
+        "11|RUE|GUY",
+        "7|RUE|DOC PAUL DIDAY",
+        "154|AVENUE|LACASSAGNE",
+        "14|RUE|DOCTEUR BONHOMME",
+        "5|RUE|LOUIS",
+        "96|BOULEVARD|PINEL",
+        "1|RUE|CONVENTION",
+        "1|RUE|JEAN MARC BERNARD",
+        "1|RUE|PROFESSEUR ROCHAIX",
+        "104B|BOULEVARD|PINEL",
+        "11|RUE|BARA",
+        "11|RUE|DOC PAUL DIDAY",
+        "115|COURS|ALBERT THOMAS",
+        "14|RUE|HARMONIE",
+        "14|RUE|FIOL",
+        "15|RUE|JEANNE D ARC",
+        "2|PLACE|RECONNAISSANCE",
+        "2|RUE|DOCTEUR REBATEL",
+        "2B|RUE|GERMAIN DAVID",
+        "3|RUE|BALTHAZAR",
+        "31T|RUE|FEUILLAT",
+        "34|COURS|DOCTEUR LONG",
+        "4|RUE|DOCTEUR BONHOMME",
+        "42|COURS|RICHARD VITTON",
+        "43|RUE|GUILLOUD",
+        "44|RUE|LOUIS",
+        "47|RUE|PROFESSEUR FLORENCE",
+        "4T|RUE|FEUILLAT",
+        "5|RUE|ST CHARLES",
+        "54|RUE|PROFESSEUR ROCHAIX",
+        "67|COURS|DOCTEUR LONG",
+        "9|RUE|EGLISE",
+        "9001|PLACE|CHATEAU"
+      ],
+      "parc_neutre": true
+    }
   },
   "iris": [
     {
@@ -13362,7 +13403,9 @@
       "_fusion_auto_sources": [
         "49|AVENUE|ROCKEFELLER",
         "53|AVENUE|ROCKEFELLER",
-        "51|AVENUE|ROCKEFELLER"
+        "51|AVENUE|ROCKEFELLER",
+        "47|AVENUE|ROCKEFELLER",
+        "45|AVENUE|ROCKEFELLER"
       ],
       "ventes_par_an_logement": {
         "2024": 1,
@@ -15890,8 +15933,8 @@
       "sci_proprietaire": "inconnu",
       "sci_nom": "",
       "sci_siren": "",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "RHONE SAONE HABITAT",
+      "_syndic_src": "rnc_grp",
       "numero_immatriculation": null,
       "nb_lots_habitation": null,
       "ventes_par_an": {
@@ -15909,9 +15952,6 @@
       "batiment_groupe_id": "bdnb-bg-CFNZ-KRDX-HE6X",
       "_bdnb_match": "num_voie",
       "_fusion_auto_label": "15/17 RUE HARMONIE",
-      "_fusion_auto_sources": [
-        "15|RUE|HARMONIE"
-      ],
       "ventes_par_an_logement": {
         "2024": 2,
         "2025": 1
@@ -15922,7 +15962,9 @@
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
-      "_ilot": "203"
+      "_ilot": "203",
+      "_fusion_auto": true,
+      "_fusion_cible": "11|RUE|HARMONIE"
     },
     {
       "cle": "1|RUE|DOMREMY",
@@ -17836,8 +17878,8 @@
       "sci_proprietaire": "non",
       "sci_nom": "",
       "sci_siren": "",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "GALYO",
+      "_syndic_src": "rnc_grp",
       "numero_immatriculation": null,
       "nb_lots_habitation": null,
       "ventes_par_an": {
@@ -17855,9 +17897,6 @@
       "batiment_groupe_id": "bdnb-bg-5621-U1V9-1UGG",
       "_bdnb_match": "num_voie",
       "_fusion_auto_label": "45/47 AVENUE ROCKEFELLER",
-      "_fusion_auto_sources": [
-        "47|AVENUE|ROCKEFELLER"
-      ],
       "ventes_par_an_logement": {
         "2024": 1,
         "2025": 2
@@ -17868,7 +17907,9 @@
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
-      "_ilot": "224"
+      "_ilot": "224",
+      "_fusion_auto": true,
+      "_fusion_cible": "43|AVENUE|ROCKEFELLER"
     },
     {
       "cle": "48|ROUTE|GENAS",
@@ -18445,7 +18486,7 @@
       "batiment_groupe_id": "bdnb-bg-7SNB-KK6E-1DLG",
       "_bdnb_match": "num_voie",
       "_fusion_auto": true,
-      "_fusion_cible": "9B|RUE|TRARIEUX",
+      "_fusion_cible": "7|RUE|TRARIEUX",
       "ventes_par_an_logement": {
         "2024": 2,
         "2025": 1
@@ -18892,7 +18933,8 @@
       "_bdnb_match": "immat",
       "_fusion_auto_label": "13/15 RUE FEUILLAT",
       "_fusion_auto_sources": [
-        "13|RUE|FEUILLAT"
+        "13|RUE|FEUILLAT",
+        "15B|RUE|FEUILLAT"
       ],
       "ventes_par_an_logement": {
         "2024": 1
@@ -19333,7 +19375,8 @@
       "_bdnb_match": "immat",
       "_fusion_auto_label": "6/8 RUE JULES VERNE",
       "_fusion_auto_sources": [
-        "8|RUE|JULES VERNE"
+        "8|RUE|JULES VERNE",
+        "14|RUE|JULES VERNE"
       ],
       "ventes_par_an_logement": {
         "2024": 1
@@ -20396,7 +20439,7 @@
       "batiment_groupe_id": "bdnb-bg-CFNZ-KRDX-HE6X",
       "_bdnb_match": "num_voie",
       "_fusion_auto": true,
-      "_fusion_cible": "17|RUE|HARMONIE",
+      "_fusion_cible": "11|RUE|HARMONIE",
       "ventes_par_an_logement": {
         "2025": 1
       },
@@ -20927,7 +20970,8 @@
       "_bdnb_match": "immat",
       "_fusion_auto_label": "19/21 RUE DOCTEUR REBATEL",
       "_fusion_auto_sources": [
-        "21|RUE|DOCTEUR REBATEL"
+        "21|RUE|DOCTEUR REBATEL",
+        "21T|RUE|DOCTEUR REBATEL"
       ],
       "ventes_par_an_logement": {
         "2024": 1,
@@ -21362,8 +21406,8 @@
       "sci_proprietaire": "oui",
       "sci_nom": "CLOVIS",
       "sci_siren": "820272573",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "REGIE EMERY",
+      "_syndic_src": "rnc_grp",
       "numero_immatriculation": null,
       "nb_lots_habitation": null,
       "ventes_par_an": {
@@ -21388,7 +21432,9 @@
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
-      "_ilot": "134"
+      "_ilot": "134",
+      "_fusion_auto": true,
+      "_fusion_cible": "23|RUE|JULIEN"
     },
     {
       "cle": "26|RUE|FEUILLAT",
@@ -27304,7 +27350,10 @@
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
-      "_ilot": "119"
+      "_ilot": "119",
+      "_fusion_auto_sources": [
+        "44B|RUE|ST ISIDORE"
+      ]
     },
     {
       "cle": "11|RUE|FEUILLAT",
@@ -27417,7 +27466,9 @@
       "_taux_logement_src": "filtre_habitation",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
-      "_ilot": "125"
+      "_ilot": "125",
+      "_fusion_auto": true,
+      "_fusion_cible": "13|RUE|JULIE"
     },
     {
       "cle": "2|IMPASSE|LUTIN",
@@ -30342,7 +30393,9 @@
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
-      "_ilot": "172"
+      "_ilot": "172",
+      "_fusion_auto": true,
+      "_fusion_cible": "201|AVENUE|LACASSAGNE"
     },
     {
       "cle": "206|AVENUE|LACASSAGNE",
@@ -30736,7 +30789,9 @@
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
-      "_ilot": "168"
+      "_ilot": "168",
+      "_fusion_auto": true,
+      "_fusion_cible": "28|COURS|DOCTEUR LONG"
     },
     {
       "cle": "26|RUE|JULIE",
@@ -32093,8 +32148,8 @@
       "sci_proprietaire": "oui",
       "sci_nom": "RAINBOW",
       "sci_siren": "890173826",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "CHOMETTE",
+      "_syndic_src": "rnc_grp",
       "numero_immatriculation": null,
       "nb_lots_habitation": null,
       "ventes_par_an": {
@@ -32119,7 +32174,9 @@
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
-      "_ilot": "107"
+      "_ilot": "107",
+      "_fusion_auto": true,
+      "_fusion_cible": "44|ROUTE|GENAS"
     },
     {
       "cle": "48|COURS|RICHARD VITTON",
@@ -33392,8 +33449,8 @@
       "sci_proprietaire": "oui",
       "sci_nom": "SCI LTJA",
       "sci_siren": "830993705",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "REGIE BAGNERES ET LEPINE",
+      "_syndic_src": "rnc_grp",
       "numero_immatriculation": null,
       "nb_lots_habitation": null,
       "ventes_par_an": {
@@ -33418,7 +33475,9 @@
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
-      "_ilot": "129"
+      "_ilot": "129",
+      "_fusion_auto": true,
+      "_fusion_cible": "71|COURS|DOCTEUR LONG"
     },
     {
       "cle": "73|COURS|RICHARD VITTON",
@@ -39078,8 +39137,8 @@
       "sci_proprietaire": "non",
       "sci_nom": "",
       "sci_siren": "",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "Identité non partagée en Open Data",
+      "_syndic_src": "rnic_live_grp",
       "numero_immatriculation": null,
       "nb_lots_habitation": null,
       "ventes_par_an": {},
@@ -39100,7 +39159,9 @@
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
-      "_ilot": "104"
+      "_ilot": "104",
+      "_fusion_auto": true,
+      "_fusion_cible": "13|RUE|GIRIE"
     },
     {
       "cle": "13B|RUE|ST ISIDORE",
@@ -39401,8 +39462,8 @@
       "sci_proprietaire": "non",
       "sci_nom": "",
       "sci_siren": "",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "REGIE FRANCOIS GOFFIN",
+      "_syndic_src": "rnc_grp",
       "numero_immatriculation": null,
       "nb_lots_habitation": null,
       "ventes_par_an": {},
@@ -39423,7 +39484,9 @@
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
-      "_ilot": "117"
+      "_ilot": "117",
+      "_fusion_auto": true,
+      "_fusion_cible": "6|RUE|JULES VERNE"
     },
     {
       "cle": "14|RUE|OMER LOUIS",
@@ -40842,8 +40905,8 @@
       "sci_proprietaire": "non",
       "sci_nom": "",
       "sci_siren": "",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "REGIE BAGNERES ET LEPINE",
+      "_syndic_src": "rnc_grp",
       "numero_immatriculation": null,
       "nb_lots_habitation": null,
       "ventes_par_an": {
@@ -40868,7 +40931,9 @@
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
-      "_ilot": "105"
+      "_ilot": "105",
+      "_fusion_auto": true,
+      "_fusion_cible": "15|RUE|FEUILLAT"
     },
     {
       "cle": "15B|RUE|JULIEN",
@@ -44438,7 +44503,9 @@
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
-      "_ilot": "113"
+      "_ilot": "113",
+      "_fusion_auto": true,
+      "_fusion_cible": "12|RUE|JEANNE D ARC"
     },
     {
       "cle": "200|ROUTE|GENAS",
@@ -45054,8 +45121,8 @@
       "sci_proprietaire": "non",
       "sci_nom": "",
       "sci_siren": "",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "NEYRET GESTION IMMOBILIERE",
+      "_syndic_src": "rnc_grp",
       "numero_immatriculation": null,
       "nb_lots_habitation": null,
       "ventes_par_an": {},
@@ -45076,7 +45143,9 @@
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
-      "_ilot": "203"
+      "_ilot": "203",
+      "_fusion_auto": true,
+      "_fusion_cible": "19|RUE|DOCTEUR REBATEL"
     },
     {
       "cle": "22|RUE|CONSTANT",
@@ -47502,8 +47571,8 @@
       "sci_proprietaire": "oui",
       "sci_nom": "SCI RAYVAN",
       "sci_siren": "513188698",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "GALYO",
+      "_syndic_src": "rnc_grp",
       "numero_immatriculation": null,
       "nb_lots_habitation": null,
       "ventes_par_an": {},
@@ -47524,7 +47593,9 @@
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
-      "_ilot": "212"
+      "_ilot": "212",
+      "_fusion_auto": true,
+      "_fusion_cible": "2|RUE|ROUX SOIGNAT"
     },
     {
       "cle": "2B|RUE|ST ISIDORE",
@@ -47687,8 +47758,8 @@
       "sci_proprietaire": "non",
       "sci_nom": "",
       "sci_siren": "",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "REGIE SIMONNEAU",
+      "_syndic_src": "rnc_grp",
       "numero_immatriculation": null,
       "nb_lots_habitation": null,
       "ventes_par_an": {},
@@ -47709,7 +47780,9 @@
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
-      "_ilot": "203"
+      "_ilot": "203",
+      "_fusion_auto": true,
+      "_fusion_cible": "11|IMPASSE|GAZAGNON"
     },
     {
       "cle": "3|IMPASSE|POMMIER",
@@ -52215,8 +52288,8 @@
       "sci_proprietaire": "non",
       "sci_nom": "",
       "sci_siren": "",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "GALYO",
+      "_syndic_src": "rnic_live_grp",
       "numero_immatriculation": null,
       "nb_lots_habitation": null,
       "ventes_par_an": {},
@@ -52237,7 +52310,9 @@
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
-      "_ilot": "119"
+      "_ilot": "119",
+      "_fusion_auto": true,
+      "_fusion_cible": "44|RUE|ST ISIDORE"
     },
     {
       "cle": "44Q|RUE|ST ISIDORE",
@@ -52757,7 +52832,7 @@
       "batiment_groupe_id": "bdnb-bg-5621-U1V9-1UGG",
       "_bdnb_match": "num_voie",
       "_fusion_auto": true,
-      "_fusion_cible": "45|AVENUE|ROCKEFELLER",
+      "_fusion_cible": "43|AVENUE|ROCKEFELLER",
       "ventes_par_an_logement": {},
       "nb_ventes_logement": 0,
       "taux_rotation_logement": 0.0,
@@ -57565,8 +57640,8 @@
       "sci_proprietaire": "non",
       "sci_nom": "",
       "sci_siren": "",
-      "syndic": null,
-      "_syndic_src": null,
+      "syndic": "FONCIERE HAUSSMANN RHONE ALPES",
+      "_syndic_src": "rnc_grp",
       "numero_immatriculation": null,
       "nb_lots_habitation": null,
       "ventes_par_an": {},
@@ -57587,7 +57662,9 @@
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
-      "_ilot": "139"
+      "_ilot": "139",
+      "_fusion_auto": true,
+      "_fusion_cible": "5B|RUE|STE MARIE"
     },
     {
       "cle": "70|AVENUE|LACASSAGNE",
@@ -57657,7 +57734,9 @@
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
-      "_ilot": "164"
+      "_ilot": "164",
+      "_fusion_auto": true,
+      "_fusion_cible": "72|COURS|DOCTEUR LONG"
     },
     {
       "cle": "70|ROUTE|GENAS",
@@ -60970,9 +61049,6 @@
       "batiment_groupe_id": "bdnb-bg-7SNB-KK6E-1DLG",
       "_bdnb_match": "num_voie",
       "_fusion_auto_label": "9 RUE TRARIEUX",
-      "_fusion_auto_sources": [
-        "9|RUE|TRARIEUX"
-      ],
       "ventes_par_an_logement": {
         "2024": 2,
         "2025": 1
@@ -60983,7 +61059,9 @@
       "_taux_logement_src": "copie_sans_dependance",
       "usage_principal_bdnb": "Résidentiel collectif",
       "_usage_bdnb_src": "snapshot",
-      "_ilot": "209"
+      "_ilot": "209",
+      "_fusion_auto": true,
+      "_fusion_cible": "7|RUE|TRARIEUX"
     },
     {
       "cle": "31B|RUE|FEUILLAT",
@@ -65303,7 +65381,10 @@
       "type_chauffage": null,
       "_fusion_auto": null,
       "_fusion_cible": null,
-      "_bdnb_match": "immat_inject_clemalf"
+      "_bdnb_match": "immat_inject_clemalf",
+      "_fusion_auto_sources": [
+        "20|RUE|JEANNE D ARC"
+      ]
     },
     {
       "cle": "201|AVENUE|LACASSAGNE",
@@ -65340,7 +65421,10 @@
       "type_chauffage": null,
       "_fusion_auto": null,
       "_fusion_cible": null,
-      "_bdnb_match": "immat_inject_clemalf"
+      "_bdnb_match": "immat_inject_clemalf",
+      "_fusion_auto_sources": [
+        "203|AVENUE|LACASSAGNE"
+      ]
     },
     {
       "cle": "49|AVENUE|ESQUIROL",
@@ -65404,7 +65488,10 @@
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-HMNW-V1AQ-L683",
       "_bdnb_match": "immat_horsrnc_fix",
-      "_ilot": "125"
+      "_ilot": "125",
+      "_fusion_auto_sources": [
+        "11|RUE|JULIE"
+      ]
     },
     {
       "cle": "23|RUE|JULIEN",
@@ -65436,7 +65523,10 @@
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-UV37-EQE7-LRTY",
       "_bdnb_match": "immat_horsrnc_fix",
-      "_ilot": "134"
+      "_ilot": "134",
+      "_fusion_auto_sources": [
+        "25|RUE|JULIEN"
+      ]
     },
     {
       "cle": "71|COURS|DOCTEUR LONG",
@@ -65468,7 +65558,10 @@
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-AMBS-ZF9G-54VB",
       "_bdnb_match": "immat_horsrnc_fix",
-      "_ilot": "129"
+      "_ilot": "129",
+      "_fusion_auto_sources": [
+        "73|COURS|DOCTEUR LONG"
+      ]
     },
     {
       "cle": "5|RUE|DOCTEUR PAUL DIDAY",
@@ -65564,7 +65657,10 @@
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-GS56-V5M2-B9DY",
       "_bdnb_match": "immat_horsrnc_fix",
-      "_ilot": "168"
+      "_ilot": "168",
+      "_fusion_auto_sources": [
+        "26|COURS|DOCTEUR LONG"
+      ]
     },
     {
       "cle": "13|RUE|GIRIE",
@@ -65596,7 +65692,10 @@
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-162L-4ZRL-5DY6",
       "_bdnb_match": "immat_horsrnc_fix",
-      "_ilot": "104"
+      "_ilot": "104",
+      "_fusion_auto_sources": [
+        "13B|RUE|GIRIE"
+      ]
     },
     {
       "cle": "1|COURS|DOCTEUR LONG",
@@ -65756,7 +65855,11 @@
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-7SNB-KK6E-1DLG",
       "_bdnb_match": "immat_horsrnc_fix",
-      "_ilot": "209"
+      "_ilot": "209",
+      "_fusion_auto_sources": [
+        "9|RUE|TRARIEUX",
+        "9B|RUE|TRARIEUX"
+      ]
     },
     {
       "cle": "34|RUE|DOCTEUR REBATEL",
@@ -65852,7 +65955,10 @@
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-9E4J-8L3P-REUY",
       "_bdnb_match": "immat_horsrnc_fix",
-      "_ilot": "107"
+      "_ilot": "107",
+      "_fusion_auto_sources": [
+        "46|ROUTE|GENAS"
+      ]
     },
     {
       "cle": "29|RUE|CHARLES RICHARD",
@@ -65980,7 +66086,10 @@
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-WD61-MA1W-WWJ2",
       "_bdnb_match": "immat_horsrnc_fix",
-      "_ilot": "212"
+      "_ilot": "212",
+      "_fusion_auto_sources": [
+        "2B|RUE|ROUX SOIGNAT"
+      ]
     },
     {
       "cle": "20T|RUE|JULIEN",
@@ -66044,7 +66153,10 @@
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-RKND-G63N-VNXK",
       "_bdnb_match": "immat_horsrnc_fix",
-      "_ilot": "139"
+      "_ilot": "139",
+      "_fusion_auto_sources": [
+        "7|RUE|STE MARIE"
+      ]
     },
     {
       "cle": "11|RUE|HARMONIE",
@@ -66076,7 +66188,11 @@
       "type_chauffage": "gaz",
       "batiment_groupe_id": "bdnb-bg-CFNZ-KRDX-HE6X",
       "_bdnb_match": "immat_horsrnc_fix",
-      "_ilot": "203"
+      "_ilot": "203",
+      "_fusion_auto_sources": [
+        "15|RUE|HARMONIE",
+        "17|RUE|HARMONIE"
+      ]
     },
     {
       "cle": "11|RUE|CAMILLE",
@@ -66172,7 +66288,10 @@
       "type_chauffage": null,
       "batiment_groupe_id": "bdnb-bg-KQRW-RM22-LGPD",
       "_bdnb_match": "immat_horsrnc_fix",
-      "_ilot": "164"
+      "_ilot": "164",
+      "_fusion_auto_sources": [
+        "70|COURS|DOCTEUR LONG"
+      ]
     },
     {
       "cle": "11|IMPASSE|GAZAGNON",
@@ -66204,7 +66323,10 @@
       "type_chauffage": "electricite",
       "batiment_groupe_id": "bdnb-bg-5JZ8-CXAP-128T",
       "_bdnb_match": "immat_horsrnc_fix",
-      "_ilot": "203"
+      "_ilot": "203",
+      "_fusion_auto_sources": [
+        "3|IMPASSE|GAZAGNON"
+      ]
     },
     {
       "cle": "44|BOULEVARD|PINEL",
