@@ -39,12 +39,16 @@ const slice = (a, b) => HTML.slice(a - 1, b).join("\n"); // lignes 1-based inclu
 // RESYNC 2026-06-02 (toggle Montchat) : ajout secteurZone/secteurResolve
 // zone-aware + toggle header (~+49 lignes avant les blocs) -> renderSecteur
 // deplace en 4866-5446. Plages re-recalees.
+// RESYNC 2026-06-03 (post "Secteurs option B") : le stream Secteur-beta/option B
+// a fortement edite index.html (panneau unifie, KML par zone, de-beta) ->
+// renderSecteur deplace en 5394-5982 ; blocs helpers/esc decales (+~527).
+// Plages re-recalees (le toggle Montchat secteurZone a survecu a l'overhaul).
 const SRC = [
-  slice(2562, 2575),   // ROT_COLOR + TYPE_OPTS + TYPE_LABELS + TYPE_BADGE_COLORS
-  slice(4765, 4767),   // esc
-  slice(4769, 4773),   // secteurNorm
-  slice(4817, 4865),   // sctTauxAnnuel..sctClassAnnuel + SCTW + DPE_COLOR + sctDpe..normalizeAdresseDisplay
-  slice(4867, 5447),   // renderSecteur (parc / strict / hr-actif / sctQ / marche libre)
+  slice(2618, 2631),   // ROT_COLOR + TYPE_OPTS + TYPE_LABELS + TYPE_BADGE_COLORS
+  slice(5292, 5294),   // esc
+  slice(5296, 5300),   // secteurNorm
+  slice(5344, 5392),   // sctTauxAnnuel..sctClassAnnuel + SCTW + DPE_COLOR + sctDpe..normalizeAdresseDisplay
+  slice(5394, 5982),   // renderSecteur (parc / strict / hr-actif / sctQ / marche libre)
 ].join("\n\n");
 
 function mkEl() {
