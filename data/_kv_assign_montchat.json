@@ -1142,6 +1142,378 @@
     },
     "9B|RUE|CLAUDIUS PENET": {
       "type": "mono"
+    },
+    "92|RUE|FERDINAND BUISSON": {
+      "type": "social"
+    },
+    "10|RUE|FELIX ROLLET": {
+      "type": "social"
+    },
+    "33|RUE|FEUILLAT": {
+      "type": "social"
+    },
+    "35|RUE|COIGNET": {
+      "type": "mixte"
+    },
+    "52|BOULEVARD|PINEL": {
+      "type": "social"
+    },
+    "4|RUE|MONTAIGNE": {
+      "type": "mixte"
+    },
+    "18|RUE|FIOL": {
+      "type": "social"
+    },
+    "10|RUE|HARMONIE": {
+      "type": "mixte"
+    },
+    "17B|RUE|CHARLES RICHARD": {
+      "type": "social"
+    },
+    "46|RUE|ST ISIDORE": {
+      "type": "social"
+    },
+    "1B|RUE|DOCTEUR BONHOMME": {
+      "type": "social"
+    },
+    "2|RUE|DOCTEUR BONHOMME": {
+      "type": "social"
+    },
+    "126|COURS|ALBERT THOMAS": {
+      "type": "social"
+    },
+    "115|COURS|ALBERT THOMAS": {
+      "type": "mixte"
+    },
+    "12|RUE|CARRY": {
+      "type": "social"
+    },
+    "5|RUE|CARRY": {
+      "type": "social"
+    },
+    "86|ROUTE|GENAS": {
+      "type": "social"
+    },
+    "1|PASSAGE|FEUILLAT": {
+      "type": "social"
+    },
+    "68|AVENUE|LACASSAGNE": {
+      "type": "social"
+    },
+    "42T|RUE|FEUILLAT": {
+      "type": "social"
+    },
+    "200|ROUTE|GENAS": {
+      "type": "social"
+    },
+    "2B|RUE|VILLEBOIS MAREUIL": {
+      "type": "social"
+    },
+    "33|RUE|JEAN MARC BERNARD": {
+      "type": "social"
+    },
+    "6|IMPASSE|MOREL": {
+      "type": "mixte"
+    },
+    "70|ROUTE|GENAS": {
+      "type": "social"
+    },
+    "20|RUE|BARA": {
+      "type": "social"
+    },
+    "100|COURS|DOCTEUR LONG": {
+      "type": "social"
+    },
+    "37|RUE|JULIEN": {
+      "type": "social"
+    },
+    "17|RUE|FEUILLAT": {
+      "type": "social"
+    },
+    "42|RUE|FEUILLAT": {
+      "type": "social"
+    },
+    "7|PASSAGE|FEUILLAT": {
+      "type": "mixte"
+    },
+    "106|COURS|DOCTEUR LONG": {
+      "type": "social"
+    },
+    "170|ROUTE|GENAS": {
+      "type": "social"
+    },
+    "1B|RUE|OMER LOUIS": {
+      "type": "social"
+    },
+    "7|IMPASSE|VICTOR HUGO": {
+      "type": "social"
+    },
+    "11|RUE|DOC PAUL DIDAY": {
+      "type": "mixte"
+    },
+    "24|RUE|FERDINAND BUISSON": {
+      "type": "social"
+    },
+    "26|RUE|HARMONIE": {
+      "type": "social"
+    },
+    "8|IMPASSE|GAZAGNON": {
+      "type": "social"
+    },
+    "40|RUE|FEUILLAT": {
+      "type": "social"
+    },
+    "132|RUE|DAUPHINE": {
+      "type": "social"
+    },
+    "1|PLACE|LOUISE": {
+      "type": "social"
+    },
+    "17|RUE|DOC PAUL DIDAY": {
+      "type": "mixte"
+    },
+    "42|COURS|RICHARD VITTON": {
+      "type": "mixte"
+    },
+    "57|RUE|FEUILLAT": {
+      "type": "social"
+    },
+    "9|IMPASSE|VICTOR HUGO": {
+      "type": "social"
+    },
+    "3|RUE|BALTHAZAR": {
+      "type": "social"
+    },
+    "44T|RUE|ST ISIDORE": {
+      "type": "mixte"
+    },
+    "82|COURS|DOCTEUR LONG": {
+      "type": "social"
+    },
+    "110|RUE|DAUPHINE": {
+      "type": "social"
+    },
+    "16|RUE|RUCHE": {
+      "type": "social"
+    },
+    "4|RUE|CLAUDIUS PENET": {
+      "type": "social"
+    },
+    "61|RUE|PROFESSEUR ROCHAIX": {
+      "type": "social"
+    },
+    "29B|RUE|GERMAIN DAVID": {
+      "type": "social"
+    },
+    "7|RUE|JEAN CARDONA": {
+      "type": "social"
+    },
+    "87|COURS|RICHARD VITTON": {
+      "type": "social"
+    },
+    "12|IMPASSE|VICTOR HUGO": {
+      "type": "social"
+    },
+    "17|BOULEVARD|PINEL": {
+      "type": "social"
+    },
+    "25B|RUE|JEAN MARC BERNARD": {
+      "type": "social"
+    },
+    "27B|RUE|JEAN MARC BERNARD": {
+      "type": "social"
+    },
+    "43|COURS|DOCTEUR LONG": {
+      "type": "social"
+    },
+    "44T|RUE|PROFESSEUR FLORENCE": {
+      "type": "mixte"
+    },
+    "1|RUE|PROFESSEUR ROCHAIX": {
+      "type": "social"
+    },
+    "12A|IMPASSE|ALEXANDRE AUJAS": {
+      "type": "social"
+    },
+    "15|RUE|DOC PAUL DIDAY": {
+      "type": "mixte"
+    },
+    "16B|RUE|BARA": {
+      "type": "social"
+    },
+    "18|RUE|LAMARTINE": {
+      "type": "social"
+    },
+    "23|RUE|CLAUDIUS PENET": {
+      "type": "social"
+    },
+    "7|RUE|RENE ET MARGUERITE PELLET": {
+      "type": "social"
+    },
+    "2|ROUTE|GENAS": {
+      "type": "social"
+    },
+    "6|RUE|JULIEN": {
+      "type": "social"
+    },
+    "9|RUE|ROUX SOIGNAT": {
+      "type": "social"
+    },
+    "9B|RUE|ST ISIDORE": {
+      "type": "social"
+    },
+    "162|AVENUE|LACASSAGNE": {
+      "type": "social"
+    },
+    "223|AVENUE|LACASSAGNE": {
+      "type": "social"
+    },
+    "25|RUE|DOCTEUR BONHOMME": {
+      "type": "social"
+    },
+    "1|RUE|CAMILLE": {
+      "type": "social"
+    },
+    "12B|RUE|ROUX SOIGNAT": {
+      "type": "social"
+    },
+    "19|RUE|DOCTEUR BONHOMME": {
+      "type": "social"
+    },
+    "25|RUE|CLAUDIUS PENET": {
+      "type": "social"
+    },
+    "37|AVENUE|CHATEAU": {
+      "type": "social"
+    },
+    "4|RUE|CAMILLE": {
+      "type": "social"
+    },
+    "5|IMPASSE|VICTOR HUGO": {
+      "type": "social"
+    },
+    "18|RUE|VIALA": {
+      "type": "social"
+    },
+    "70|RUE|BONNAND": {
+      "type": "social"
+    },
+    "10|RUE|ROUX SOIGNAT": {
+      "type": "social"
+    },
+    "10B|RUE|ROUX SOIGNAT": {
+      "type": "social"
+    },
+    "14B|RUE|ROUX SOIGNAT": {
+      "type": "social"
+    },
+    "16|RUE|ROUX SOIGNAT": {
+      "type": "social"
+    },
+    "16B|RUE|ROUX SOIGNAT": {
+      "type": "social"
+    },
+    "18|RUE|ROUX SOIGNAT": {
+      "type": "social"
+    },
+    "18B|RUE|ROUX SOIGNAT": {
+      "type": "social"
+    },
+    "61|COURS|EUGENIE": {
+      "type": "social"
+    },
+    "78|RUE|FEUILLAT": {
+      "type": "social"
+    },
+    "88|BOULEVARD|PINEL": {
+      "type": "social"
+    },
+    "1|PLACE|CHATEAU": {
+      "type": "social"
+    },
+    "10|RUE|EGLISE": {
+      "type": "social"
+    },
+    "11B|RUE|CHARLES RICHARD": {
+      "type": "mixte"
+    },
+    "137|RUE|DAUPHINE": {
+      "type": "social"
+    },
+    "14|RUE|ANTOINETTE": {
+      "type": "social"
+    },
+    "146|AVENUE|LACASSAGNE": {
+      "type": "social"
+    },
+    "179|AVENUE|LACASSAGNE": {
+      "type": "social"
+    },
+    "20|AVENUE|ESQUIROL": {
+      "type": "mixte"
+    },
+    "29|RUE|DOCTEUR REBATEL": {
+      "type": "social"
+    },
+    "2B|RUE|GELAS": {
+      "type": "social"
+    },
+    "33|RUE|JEANNE D ARC": {
+      "type": "social"
+    },
+    "39|AVENUE|ESQUIROL": {
+      "type": "social"
+    },
+    "39|RUE|COIGNET": {
+      "type": "social"
+    },
+    "4|ROUTE|GENAS": {
+      "type": "social"
+    },
+    "40|RUE|COIGNET": {
+      "type": "social"
+    },
+    "50|AVENUE|ESQUIROL": {
+      "type": "mixte"
+    },
+    "53|RUE|CHARLES RICHARD": {
+      "type": "social"
+    },
+    "7|RUE|JULES VERNE": {
+      "type": "social"
+    },
+    "76|RUE|FEUILLAT": {
+      "type": "social"
+    },
+    "90|ROUTE|GENAS": {
+      "type": "social"
+    },
+    "60|AVENUE|ROCKEFELLER": {
+      "type": "mixte"
+    },
+    "80|COURS|EUGENIE": {
+      "type": "mixte"
+    },
+    "104|COURS|DOCTEUR LONG": {
+      "type": "social"
+    },
+    "17|AVENUE|ACACIAS": {
+      "type": "social"
+    },
+    "35|RUE|FERDINAND BUISSON": {
+      "type": "social"
+    },
+    "49|RUE|FEUILLAT": {
+      "type": "mixte"
+    },
+    "5|AVENUE|ESQUIROL": {
+      "type": "social"
+    },
+    "5|PASSAGE|FEUILLAT": {
+      "type": "mixte"
+    },
+    "52|RUE|PROFESSEUR ROCHAIX": {
+      "type": "social"
     }
   },
   "fusions": {},
