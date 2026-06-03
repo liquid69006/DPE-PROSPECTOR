@@ -391,9 +391,18 @@ s'appliquent ; cette section ne documente que le **propre à Montchat**.
   `EXCLUDE_FAUXBGID` dans `fix_fuser_b2a_montchat.py`.
 - **Résultats (clôture marché-libre).** KV : **505 tags** (34 bureaux /
   261 mono / 86 copro_non_immat / 105 social / 19 mixte). Parc effectif
-  **13 815**, marché-libre **181,6 ventes/an**, taux **1,3 %/an**.
-  (Compa DL : ~70 % du parc, ~31 % des ventes, taux 2,5× plus bas —
-  cohérent.)
+  **13 815**, marché-libre **460,8 ventes/an**, taux **~3,3 %/an**.
+  ⚠️ **Corrigé après backfill DVF 5 ans (2026-06-03)** : l'extraction Montchat
+  ne couvrait que **2024-2025** (2 millésimes sur 5), alors que le dénominateur
+  rotation est figé à `/5`. Les chiffres initiaux (**181,6/an, 1,3 %/an**)
+  sous-estimaient ~×2,5. Fix : `dvf_extend_montchat.py` (backfill 2021-2023,
+  hors-dépôt) + `fix_ventes5ans_montchat.py` (patch chirurgical ventes-only,
+  0 ancre touchée). Compa DL **à base identique** (parc effectif, social→0 /
+  bureaux→0) : marché-libre **~571/an** sur parc effectif **18 407** =
+  **3,1 %/an** → Montchat **3,3 %/an** : **essentiellement identique**.
+  (Le « 22 381 » des notes antérieures = parc DL **brut** sans réduction tags
+  [≈ 22 408 réel] ; comparer 578,4/22 381 mélangeait un numérateur marché-libre
+  et un dénominateur brut.)
 - **Résidus terrain (acceptés non-taggés).** 8 (manche F : 5 minoritaires
   < 20 %, 3 mut ≥ 2) + 46 mono-faible + 25 angle `nb_log ≤ 1` (manche D) +
   34 cross-rue/faux-bgid (B2b, `data/diag_b2a_crossrue_montchat.md`).

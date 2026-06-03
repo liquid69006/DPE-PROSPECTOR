@@ -5,6 +5,51 @@
 
 ---
 
+## 2026-06-03 (soir) — Correctif rotation DVF Montchat (backfill 5 ans + patch ventes-only)
+
+**Bug.** L'extraction DVF Montchat ne couvrait que **2 millésimes sur 5**
+(`dvf_extract_montchat.py` `SOURCES={2024,2025}`), alors que le dénominateur
+rotation est figé à `/5` (`make_light` l.1068, front `SCT_GEN_ANS=5`). Double
+erreur (numérateur 2/5 + diviseur 5) → ventes/an et marché-libre **sous-estimés
+~×2,5**. DL n'était pas touché : il avait un `dvf_extend.py` (backfill 2021-2023)
+jamais répliqué sur Montchat.
+
+**Fix (chirurgical, non-destructif).**
+1. `dvf_extend_montchat.py` (hors-dépôt, clone de `dvf_extend.py` : communes
+   `383/388`, polygone `perimetre_montchat.json`) → `dvf_montchat.json` 2 552 →
+   **6 805** lignes (2021:1573 / 2022:1580 / 2023:1100 / 2024:1243 / 2025:1309).
+2. `consolidate_secteur_montchat.py` → `data/secteur_montchat.json` (mutations 5 ans).
+3. `scripts/fix_ventes5ans_montchat.py` (**versionné**) : recompute **uniquement**
+   les champs ventes (brut via vpar make_light + logement via `fix_taux_logement`)
+   sur le light scellé. **0 clé touchée, 0 champ parc, 0 correctif perdu.**
+
+**Chiffres (×2,54).** marché-libre **181,6 → 460,8 ventes/an**, taux **1,3 % →
+~3,3 %/an**. Parc **13 815 inchangé**. `test_render_secteur.js` exit 0 DL + Montchat.
+
+**Leçon (course-correction).** Une régénération nue `extend→consolidate→make_light`
+a d'abord été tentée : elle a **détruit la couche correctifs** (7 correctifs de
+manche → 133 ancres injectées + rename TRARIEUX perdus, light 1430→1306). Le light
+de prod = **base make_light + couche de correctifs de manche que make_light NE
+REJOUE PAS**. → **Jamais de régén nue sur un secteur qualifié ; patcher
+chirurgicalement** (preuves P1/P3/P5 : clés/ventes/parc conservés). L'orphelinage
+KV réel de la régén nue était d'1 tag (TRARIEUX), mais la perte de structure parc
+restait inacceptable.
+
+### Commits
+
+| Hash | Titre |
+|---|---|
+| *(ce commit)* | `fix(secteur): rotation Montchat — backfill DVF 5 ans + patch ventes-only` |
+
+### Chantiers ouverts (ajout)
+
+- **Porter le backfill aux autres secteurs ?** Vérifier que DL/MP couvrent bien
+  5 ans (DL OK via `dvf_extend.py` ; MP à confirmer).
+- **`dvf_extract_montchat.py` (hors-dépôt)** : étendre `SOURCES` à 2021-2025 pour
+  les futurs re-builds (sinon le bug revient à la prochaine régén).
+
+---
+
 ## 2026-06-03 — Déploiement Secteur Montchat (Phase 5 → doc Phase 7)
 
 Déploiement complet de Secteur Prospector sur **Montchat**, zone intra-DL
@@ -36,7 +81,10 @@ jour (CLAUDE.md §3/§5/§7/§10, PIPELINE.md §6 + §12).
   contourné par `_fetch_bgid_parcelle_montchat.py` (resumable, throttle
   0,25 s + backoff + checkpoint). **Dette** : à corriger pour re-builds DL/MP.
 - **Chiffres finaux** : 505 tags, parc 13 815, marché-libre 181,6/an, taux
-  1,3 %/an.
+  1,3 %/an. ⚠️ **CORRIGÉ le 2026-06-03 (soir)** : 181,6/an et 1,3 %/an étaient
+  **sous-estimés** (DVF Montchat limité à 2024-2025). Vrais chiffres après
+  backfill 5 ans = **460,8/an, ~3,3 %/an** (cf. entrée « Correctif rotation DVF
+  Montchat » ci-dessus).
 
 ### Chantiers ouverts
 
