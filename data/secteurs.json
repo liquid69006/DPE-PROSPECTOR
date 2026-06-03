@@ -168,5 +168,196 @@
         "mut_apt_per_year_min": 2
       }
     }
+  },
+  "montchat": {
+    "short": "mtc",
+    "agence_slug": "dauphine-lacassagne-montchat",
+    "nom_affichage": "Century 21 Dauphine-Lacassagne - Montchat",
+    "geo": {
+      "dep": "69",
+      "code_commune": [
+        "383",
+        "388"
+      ],
+      "rnc_dep_prefix": [
+        "69123383",
+        "69123388"
+      ],
+      "bdnb_dep_prefix": [
+        "69383000",
+        "69388000"
+      ],
+      "codes_postaux": [
+        "69003",
+        "69008"
+      ],
+      "zones": [
+        {
+          "nom": "Montchat",
+          "codes_postaux": [
+            "69003"
+          ],
+          "polygone": [
+            [
+              45.752807471686765,
+              4.8696556919393
+            ],
+            [
+              45.750648569367286,
+              4.873968991938966
+            ],
+            [
+              45.74554776311837,
+              4.8712261737505
+            ],
+            [
+              45.74309361037359,
+              4.878425233301357
+            ],
+            [
+              45.74276386559836,
+              4.878697742930143
+            ],
+            [
+              45.74164596308222,
+              4.884055610780678
+            ],
+            [
+              45.739037436828085,
+              4.892083206597164
+            ],
+            [
+              45.74349477437073,
+              4.89467820901416
+            ],
+            [
+              45.746809758539996,
+              4.89646416496484
+            ],
+            [
+              45.74891686986501,
+              4.896869278651252
+            ],
+            [
+              45.751589171037665,
+              4.8975505195815
+            ],
+            [
+              45.752963814591624,
+              4.8984527035141525
+            ],
+            [
+              45.75343915074612,
+              4.896685159480938
+            ],
+            [
+              45.75400441009205,
+              4.893941783846714
+            ],
+            [
+              45.75409433718764,
+              4.892339947067768
+            ],
+            [
+              45.75431055205931,
+              4.887625722940868
+            ],
+            [
+              45.75424631868333,
+              4.8851585260613035
+            ],
+            [
+              45.75438763201271,
+              4.883096391355906
+            ],
+            [
+              45.75499142129863,
+              4.878401352518125
+            ],
+            [
+              45.75499142129863,
+              4.877296637497693
+            ],
+            [
+              45.754901495648596,
+              4.875437033880047
+            ],
+            [
+              45.75461887123453,
+              4.874092963938381
+            ]
+          ]
+        }
+      ]
+    },
+    "paths": {
+      "light": "data/secteur_montchat_light.json",
+      "kv_local": "data/_kv_assign_montchat.json",
+      "social_overrides": "data/_social_overrides_montchat.json",
+      "nom_ambigu_resolus": "data/_nom_ambigu_resolus_montchat.json",
+      "bgid_resolus": "data/_bgid_resolus_montchat.json",
+      "arbitres": "data/_arbitres_montchat.json",
+      "cles_invalides": "data/_cles_invalides_montchat.json",
+      "enrich_majic": "data/_enrich_majic_montchat_full.json",
+      "cache_bg": "data/_bgid_parcelle_montchat.json",
+      "dvf_path": "C:\\Users\\Station 5\\dvf_montchat.json"
+    },
+    "metier": {
+      "hlm_needles": [
+        "HABITAT",
+        "HLM",
+        "GRANDLYON",
+        "ALLIADE",
+        "BATIGERE",
+        "CDC HABITAT",
+        "FONCIERE D'HABITAT",
+        "IMMOBILIERE RHONE",
+        "ALPES ISERE",
+        "SACVL",
+        "OPAC",
+        "ESH",
+        "FONCIERE HABITAT",
+        "ADOMA",
+        "ERILIA",
+        "IN'LI",
+        "INLI",
+        "DYNACITE",
+        "3F RESIDENCES",
+        "ICF",
+        "FONDATION ARALIS",
+        "OPH ",
+        " OPH",
+        "OFFICE PUBLIC DE L HABITAT",
+        "OFFICE PUBLIC DE L'HABITAT"
+      ],
+      "public_non_hlm": [
+        "COMMUNE DE LYON",
+        "METROPOLE DE LYON",
+        "DEPARTEMENT DU RHONE",
+        "REGION AUVERGNE",
+        "REGION RHONE",
+        "ETAT ",
+        "ETAT,",
+        "HOSPICES CIVILS",
+        "CENTRE HOSPITALIER",
+        "COMMUNAUTE URBAINE",
+        "GRAND LYON",
+        "DIRECTION DE L IMMOBILIER",
+        "SEM ",
+        "FONCIERE VESTA",
+        "FONCIERE PIERRE",
+        "CENTRE REGIONAL OEUVRES",
+        "CROUS",
+        "ASSOCIATION DIOCESAINE",
+        "FONDATION",
+        "ITINOVA",
+        "INSTITUT NATIONAL",
+        "INSTITUT DE FRANCE"
+      ],
+      "seuils": {
+        "social_pct_min": 60,
+        "mut_apt_per_year_min": 2
+      }
+    }
   }
 }
