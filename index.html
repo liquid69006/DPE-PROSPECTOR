@@ -2058,6 +2058,8 @@ function renderCards() {
     const typBat  = (dpe.type_batiment || '').toLowerCase();
     let icone = typBat === 'maison' ? '🏠' : typBat === 'appartement' ? '🏠' : '🏢';
     const statOpts = STATUTS.map(s => `<option value="${s}"${statut === s ? ' selected' : ''}>${s}</option>`).join('');
+    const conseilSel = a.conseiller || 'À attribuer';
+    const consOpts = conseillers.map(c=>`<option value="${c}"${conseilSel===c?' selected':''}>${c||'—'}</option>`).join('');
 
     const adresse = dpe.adresse_ban || '';
     const mapsUrl = adresse ? `https://maps.google.com/?q=${encodeURIComponent(adresse + ' ' + (dpe.code_postal_ban||'') + ' ' + (dpe.nom_commune_ban||''))}` : null;
@@ -2079,7 +2081,12 @@ function renderCards() {
         ${isG ? '<span class="card-passoire">⚠️ Passoire thermique</span>' : ''}
       </div>
       <div class="card-statut">
+        <label style="display:block;font-size:11px;color:var(--text2);margin-bottom:4px;">Statut</label>
         <select onchange="updateAssignment('${id}','statut',this.value)">${statOpts}</select>
+      </div>
+      <div class="card-statut card-conseiller">
+        <label style="display:block;font-size:11px;color:var(--text2);margin-bottom:4px;">Conseiller</label>
+        <select onchange="updateAssignment('${id}','conseiller',this.value); if(mobileConseillerActif)renderCards();">${consOpts}</select>
       </div>
       <div class="card-note">
         <button class="card-note-toggle${noteVal ? ' has-note' : ''}" onclick="toggleCardNote('${id}')">
