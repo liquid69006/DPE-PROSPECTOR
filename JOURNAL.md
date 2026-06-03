@@ -5,6 +5,49 @@
 
 ---
 
+## 2026-06-03 — Déploiement Secteur Montchat (Phase 5 → doc Phase 7)
+
+Déploiement complet de Secteur Prospector sur **Montchat**, zone intra-DL
+(`dauphine-lacassagne-montchat`, toggle header). Qualification manche par
+manche (A, G, B1, B2a, D, F, H), clôture marché-libre. Doc canonique mise à
+jour (CLAUDE.md §3/§5/§7/§10, PIPELINE.md §6 + §12).
+
+### Commits
+
+| Hash | Titre |
+|---|---|
+| `cdb214e` | infra MAJIC Montchat (secteurs.json + cache parcelle + enrich) |
+| `1dbc416` | manche D (mono / copro_non_immat) |
+| `e792551` | manche F (social / mixte) |
+| `06cb2ae` | docs(secteur): Montchat Phase 5 (diags + sources) |
+| `eeb326f` | fix auth worker — match préfixe `secId` zone-suffixé |
+
+### Insights clés
+
+- **`owner_share` = fallback social hors-RNC** (Montchat-only) ; candidat au
+  générique si DL/MP le rencontrent. cf. `PIPELINE.md` §12.
+- **Social prime sur mono** : bailleurs sociaux passaient le filtre mono →
+  garde social-précédence.
+- **Vérifier le KV live, pas le mirror** : manche D revertée sans que le
+  mirror le reflète ; rituel anti-drift a reconstruit 103 → 381 → 505.
+- **Auth worker** : `secId` zone-suffixé non autorisé par égalité exacte →
+  match préfixe (`startsWith(a + "-")`), déployé via `wrangler deploy`.
+- **Bug 429 `enrich_majic_full`** : fetcher interne jeté en 429, cache `[]` ;
+  contourné par `_fetch_bgid_parcelle_montchat.py` (resumable, throttle
+  0,25 s + backoff + checkpoint). **Dette** : à corriger pour re-builds DL/MP.
+- **Chiffres finaux** : 505 tags, parc 13 815, marché-libre 181,6/an, taux
+  1,3 %/an.
+
+### Chantiers ouverts
+
+- **Résidus terrain** : 8 (F) + 46 mono-faible + 25 angle (D) + 34 cross-rue (B2b).
+- **Dette 429 `enrich_majic_full`** (re-builds DL/MP).
+- **DL** : drift KV (584,6 vs 578,4/an, `cible_0vente_*` non migrés) + migration
+  `cible_0vente` → `as.cible` à trancher.
+- **Sauvegarde des extracteurs hors-dépôt** (single-point-of-failure, toutes agences).
+
+---
+
 ## 2026-06-01 — Strict = marché libre + hygiène fusion/immat (DL)
 
 Session post-jalon 4. Le chantier `_fusion_auto` (~625 façades) annoncé en

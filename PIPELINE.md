@@ -218,6 +218,14 @@ vagues.
 (227 FÉLIX FAURE) = **association privée prospectable**, PAS du social
 malgré le mot « social » dans le nom.
 
+### Piège 6 — mono « faible » (1 PM, ratio < 0,9) → résidu terrain
+
+Le garde `ratio ≥ 0,9` du classifieur mono (`enrich`) laisse
+**délibérément hors-mono** les propriétés à 1 propriétaire PM quand la
+confiance MAJIC est insuffisante : pas d'auto-classement, **vérification
+manuelle**. Secteur-agnostique (comportement DL d'origine ; Montchat l'a
+suivi sans le modifier).
+
 ## §7. Plan chantier — Pipeline secteur-agnostique
 
 Objectif : un pipeline de qualification **paramétré par secteur**
@@ -355,3 +363,37 @@ casse). Validé DL d'abord, réutilisable MP/futurs secteurs.
    `make_light` à froid pour confirmer l'alignement.
 4. **Migration `cible_0vente_*` → champ `as.cible` séparé** (changement de
    schéma KV), libérant `as.type` pour le **type bâti pur** (cf. §10).
+
+## §12. Pipeline Montchat (zone intra-DL, spécifique)
+
+Zone Secteur **interne à `dauphine-lacassagne`** (namespace KV
+`dauphine-lacassagne-montchat`, toggle header). Les mécanismes §6-§9
+s'appliquent ; cette section ne documente que le **propre à Montchat**.
+
+- **Sources & périmètre.** INSEE **69383** (Lyon 3e) + **69388** (Lyon 8e) ;
+  quirk **69385** = RAS. Périmètre = union du polygone KML.
+- **Îlotage par KML.** Contrairement à DL (IRIS), Montchat découpe ses
+  îlots depuis `Ilotage_Montchat.kml` (~130 îlots) ; snap 15 m via
+  `_apply_ilot_kml_montchat.py`.
+- **Fallback social hors-RNC = `owner_share`** (NOUVEAU, Montchat-only).
+  La formule DL `social_pct = hlm_habit / rnc_habit` est **N/A en
+  hors-RNC** (`rnc_habit = 0`), et DL n'a pas de secours. Pour Montchat :
+  `social = owner_share` (part de propriétaires PM bailleurs) —
+  `owner_share = 100 %` & `mutations/an < 2` → **social** ; partiel →
+  **mixte**. **Candidat au tronc commun §6** si DL/MP rencontrent le même
+  trou hors-RNC social — **pas encore validé hors-Montchat**.
+- **Garde social-précédence.** Des « gros mono » apparents étaient des
+  bailleurs sociaux (GRANDLYON HABITAT, HOSPICES CIVILS, OPH…) passant le
+  filtre mono. Règle : **≥1 propriétaire bailleur (needle HLM) → sort de
+  mono, bascule social**. Le social **prime** sur le mono.
+- **Faux-bgid.** En plus de la garde de parité §3.1, cas « **même côté,
+  n° très éloignés** » (104B PINEL, ~60 n° d'écart) → dé-fusé. Garde
+  `EXCLUDE_FAUXBGID` dans `fix_fuser_b2a_montchat.py`.
+- **Résultats (clôture marché-libre).** KV : **505 tags** (34 bureaux /
+  261 mono / 86 copro_non_immat / 105 social / 19 mixte). Parc effectif
+  **13 815**, marché-libre **181,6 ventes/an**, taux **1,3 %/an**.
+  (Compa DL : ~70 % du parc, ~31 % des ventes, taux 2,5× plus bas —
+  cohérent.)
+- **Résidus terrain (acceptés non-taggés).** 8 (manche F : 5 minoritaires
+  < 20 %, 3 mut ≥ 2) + 46 mono-faible + 25 angle `nb_log ≤ 1` (manche D) +
+  34 cross-rue/faux-bgid (B2b, `data/diag_b2a_crossrue_montchat.md`).

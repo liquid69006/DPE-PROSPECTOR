@@ -62,6 +62,8 @@ Pas de `package.json`, pas de NPM. Libs tierces embarquées dans `lib/` (docxtem
 
 Configuration : `AGENCES_CONFIG` dans `worker.js` (publique, immuable) + KV pour le mutable (conseillers, mots de passe, qualifications).
 
+**Zones Secteur intra-agence.** `dauphine-lacassagne` expose 2 zones Secteur via toggle header : **DL** (îlotage IRIS) et **Montchat** (Lyon 3e/8e, îlotage KML). Montchat **n'est PAS une 8e agence** : zone interne à DL, namespace KV propre `dauphine-lacassagne-montchat`, fichiers suffixés `_montchat`. cf. `PIPELINE.md` §12.
+
 ---
 
 ## 4. ⚠️ RÈGLES D'OR — à ne JAMAIS violer
@@ -146,6 +148,8 @@ Exemples réels : `feat(msb): route POST /msb-backfill/:agence`, `fix(dl): recla
 - `secteur_{agence}_light.json` — secteur compacté pour le front (~2MB)
 - `_*.json` (préfixe underscore) — caches/dumps internes du pipeline
 
+**Fichiers Secteur par zone.** Une zone = un light `secteur_<zone>_light.json` + side-files suffixés `_<zone>` (ex. `secteur_montchat_light.json`, `_arbitres_montchat.json`). Side-files = **pipeline-only** (pas lus par le front).
+
 ### Langue
 Français dominant (UI, commentaires métier, docstrings, commits). Anglais toléré pour les helpers techniques génériques.
 
@@ -179,6 +183,9 @@ Ces points sont **connus**, **acceptés en l'état**, et ne doivent **pas** êtr
 - Logs/diags/audits intermédiaires conservés dans `data/` (volontaire)
 - **Le `!` de Claude Code route en bash, pas en PowerShell.** Pour les commandes Windows-spécifiques (`Out-File`, `Remove-Item`, secrets Wrangler interactifs comme `load_jwt.ps1`), utiliser la session PowerShell directe — pas le `!` depuis Claude Code.
 - **Fallback JWT_SECRET silencieux** : `worker.js` ligne ~338 utilise `env.JWT_SECRET || "dev-secret-change-me"`. Si le secret n'est pas configuré en prod, le code ne crashe pas — c'est un piège silencieux à connaître mais accepté.
+- **`test_render_secteur.js` couvre DL ET Montchat** : exit 0 sur les **deux zones** avant tout commit front.
+- **Vérifier le KV live, pas le mirror local** : le mirror peut décrocher (POST reverté) ; toujours **re-GET le live** avant de conclure. Le rituel anti-drift (cf. `PIPELINE.md` §8.1) reconstruit même après désync.
+- **Auth worker & `secId` zone-suffixé** : `dauphine-lacassagne-montchat` n'est **pas** autorisé par égalité exacte du JWT patron ; `requireAuth` matche aussi **par préfixe** (`allowed.some(a => agenceId.startsWith(a + "-"))`). Toute zone intra-agence en dépend.
 
 ---
 
@@ -220,7 +227,7 @@ Les secrets se gèrent via :
 | `data/PIPELINE.md` | Architecture `make_light` (hors dépôt) → chaîne des correctifs additifs, contrat non-destructif, règles de calcul `renderSecteur` |
 | `JOURNAL.md` | Journal de session daté (boucles de qualification, commits, insights, chantiers transférés) |
 | `README.md` | Vue produit, présentation de l'app |
-| `data/secteurs.json` | Config pipeline par secteur (chemins, needles, zones géo). **À éditer manuellement** — pas lu par le worker, voulu hors du code de prod |
+| `data/secteurs.json` | Config pipeline par secteur (chemins, needles, zones géo). Contient le slug `montchat`. **À éditer manuellement** — pas lu par le worker, voulu hors du code de prod. ⚠️ Édition **additive par splice texte**, jamais `json.dump` (qui reformaterait DL/MP) ; fichier aligné `main` + CRLF |
 | `.github/workflows/*.yml` | Détail des workflows de déploiement et cron |
 
 ---
