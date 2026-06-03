@@ -1,0 +1,315 @@
+{
+  "assignments": {
+    "108|COURS|ALBERT THOMAS": {
+      "type": "bureaux"
+    },
+    "110|COURS|ALBERT THOMAS": {
+      "type": "bureaux"
+    },
+    "13|RUE|EST": {
+      "type": "bureaux"
+    },
+    "13|RUE|JEAN BART": {
+      "type": "bureaux"
+    },
+    "13|RUE|JULES VERNE": {
+      "type": "bureaux"
+    },
+    "14|RUE|EST": {
+      "type": "bureaux"
+    },
+    "15|RUE|EST": {
+      "type": "bureaux"
+    },
+    "16|RUE|EST": {
+      "type": "bureaux"
+    },
+    "17|RUE|JEANNE D ARC": {
+      "type": "bureaux"
+    },
+    "19|RUE|JEANNE D ARC": {
+      "type": "bureaux"
+    },
+    "20|RUE|PROFESSEUR FLORENCE": {
+      "type": "bureaux"
+    },
+    "21|RUE|PROFESSEUR FLORENCE": {
+      "type": "bureaux"
+    },
+    "21|RUE|RUCHE": {
+      "type": "bureaux"
+    },
+    "24|RUE|JEANNE D ARC": {
+      "type": "bureaux"
+    },
+    "26|RUE|ANTOINETTE": {
+      "type": "bureaux"
+    },
+    "2|IMPASSE|MOREL": {
+      "type": "bureaux"
+    },
+    "2|PLACE|ANTOINETTE": {
+      "type": "bureaux"
+    },
+    "30|RUE|JULIEN": {
+      "type": "bureaux"
+    },
+    "31B|RUE|FEUILLAT": {
+      "type": "bureaux"
+    },
+    "31|RUE|PROFESSEUR ROCHAIX": {
+      "type": "bureaux"
+    },
+    "38|RUE|PIERRE BONNAUD": {
+      "type": "bureaux"
+    },
+    "3|RUE|DOC PAUL DIDAY": {
+      "type": "bureaux"
+    },
+    "44|AVENUE|CHATEAU": {
+      "type": "bureaux"
+    },
+    "46|RUE|CHARLES RICHARD": {
+      "type": "bureaux"
+    },
+    "5|RUE|DOC PAUL DIDAY": {
+      "type": "bureaux"
+    },
+    "60|RUE|PROFESSEUR ROCHAIX": {
+      "type": "bureaux"
+    },
+    "62|RUE|PROFESSEUR ROCHAIX": {
+      "type": "bureaux"
+    },
+    "64|COURS|RICHARD VITTON": {
+      "type": "bureaux"
+    },
+    "66|RUE|PROFESSEUR FLORENCE": {
+      "type": "bureaux"
+    },
+    "84|AVENUE|LACASSAGNE": {
+      "type": "bureaux"
+    },
+    "93|COURS|RICHARD VITTON": {
+      "type": "bureaux"
+    },
+    "98B|COURS|DOCTEUR LONG": {
+      "type": "bureaux"
+    },
+    "98|AVENUE|LACASSAGNE": {
+      "type": "bureaux"
+    },
+    "99|COURS|DOCTEUR LONG": {
+      "type": "bureaux"
+    },
+    "11|IMPASSE|LINDBERG": {
+      "type": "mono"
+    },
+    "11|RUE|ANTOINE LAVIOLETTE": {
+      "type": "mono"
+    },
+    "11|RUE|ELIE PARIS": {
+      "type": "mono"
+    },
+    "125|RUE|FERDINAND BUISSON": {
+      "type": "mono"
+    },
+    "127|COURS|DOCTEUR LONG": {
+      "type": "mono"
+    },
+    "133|RUE|TRARIEUX": {
+      "type": "mono"
+    },
+    "135|RUE|TRARIEUX": {
+      "type": "mono"
+    },
+    "149|AVENUE|LACASSAGNE": {
+      "type": "mono"
+    },
+    "14|AVENUE|ACACIAS": {
+      "type": "mono"
+    },
+    "14|RUE|ANTOINE LAVIOLETTE": {
+      "type": "mono"
+    },
+    "152|COURS|DOCTEUR LONG": {
+      "type": "mono"
+    },
+    "16|RUE|SPORTS": {
+      "type": "mono"
+    },
+    "18|COURS|RICHARD VITTON": {
+      "type": "mono"
+    },
+    "19|RUE|JULES MICHELET": {
+      "type": "mono"
+    },
+    "19|RUE|PASCAL": {
+      "type": "mono"
+    },
+    "1|IMPASSE|SABLON": {
+      "type": "mono"
+    },
+    "206|AVENUE|LACASSAGNE": {
+      "type": "mono"
+    },
+    "214|ROUTE|GENAS": {
+      "type": "mono"
+    },
+    "21|RUE|JEAN BART": {
+      "type": "mono"
+    },
+    "22|AVENUE|ACACIAS": {
+      "type": "mono"
+    },
+    "22|AVENUE|CHATEAU": {
+      "type": "mono"
+    },
+    "22|RUE|JULES MICHELET": {
+      "type": "mono"
+    },
+    "241B|AVENUE|LACASSAGNE": {
+      "type": "mono"
+    },
+    "24|AVENUE|ACACIAS": {
+      "type": "mono"
+    },
+    "27|RUE|FERDINAND BUISSON": {
+      "type": "mono"
+    },
+    "28|RUE|COIGNET": {
+      "type": "mono"
+    },
+    "29|RUE|CYRANO": {
+      "type": "mono"
+    },
+    "2B|RUE|FEUILLAT": {
+      "type": "mono"
+    },
+    "2|PLACE|CHATEAU": {
+      "type": "mono"
+    },
+    "2|RUE|LOUISE": {
+      "type": "mono"
+    },
+    "30|AVENUE|CHATEAU": {
+      "type": "mono"
+    },
+    "31B|RUE|JEANNE D ARC": {
+      "type": "mono"
+    },
+    "31|RUE|JEANNE D ARC": {
+      "type": "mono"
+    },
+    "31|RUE|PEUPLIERS": {
+      "type": "mono"
+    },
+    "33|RUE|ALFRED DE MUSSET": {
+      "type": "mono"
+    },
+    "35|RUE|BONNAND": {
+      "type": "mono"
+    },
+    "36|AVENUE|ACACIAS": {
+      "type": "mono"
+    },
+    "36|RUE|ALFRED DE MUSSET": {
+      "type": "mono"
+    },
+    "38|AVENUE|CHATEAU": {
+      "type": "mono"
+    },
+    "38|RUE|BONNAND": {
+      "type": "mono"
+    },
+    "3|RUE|BALME": {
+      "type": "mono"
+    },
+    "41|RUE|ALFRED DE MUSSET": {
+      "type": "mono"
+    },
+    "45|COURS|EUGENIE": {
+      "type": "mono"
+    },
+    "45|RUE|CAMILLE": {
+      "type": "mono"
+    },
+    "46|COURS|EUGENIE": {
+      "type": "mono"
+    },
+    "47|RUE|CAMILLE": {
+      "type": "mono"
+    },
+    "49|AVENUE|ROCKEFELLER": {
+      "type": "mono"
+    },
+    "4|AVENUE|ACACIAS": {
+      "type": "mono"
+    },
+    "4|IMPASSE|SABLON": {
+      "type": "mono"
+    },
+    "4|PLACE|CHARLES DUFRAINE": {
+      "type": "mono"
+    },
+    "4|RUE|AUBEPINS": {
+      "type": "mono"
+    },
+    "4|RUE|JULES MASSENET": {
+      "type": "mono"
+    },
+    "4|RUE|OMER LOUIS": {
+      "type": "mono"
+    },
+    "53|RUE|TRARIEUX": {
+      "type": "mono"
+    },
+    "59|RUE|LOUIS": {
+      "type": "mono"
+    },
+    "64|BOULEVARD|PINEL": {
+      "type": "mono"
+    },
+    "68|BOULEVARD|PINEL": {
+      "type": "mono"
+    },
+    "68|RUE|FERDINAND BUISSON": {
+      "type": "mono"
+    },
+    "6|RUE|ALFRED DE VIGNY": {
+      "type": "mono"
+    },
+    "7|RUE|CHAMBOVET": {
+      "type": "mono"
+    },
+    "7|RUE|FERDINAND BUISSON": {
+      "type": "mono"
+    },
+    "80|BOULEVARD|PINEL": {
+      "type": "mono"
+    },
+    "85|RUE|TRARIEUX": {
+      "type": "mono"
+    },
+    "88|COURS|DOCTEUR LONG": {
+      "type": "mono"
+    },
+    "8|RUE|CAILLE": {
+      "type": "mono"
+    },
+    "8|RUE|CONSTANT": {
+      "type": "mono"
+    },
+    "8|RUE|VIALA": {
+      "type": "mono"
+    },
+    "9|RUE|FRANCOIS VILLON": {
+      "type": "mono"
+    },
+    "9|RUE|RUCHE": {
+      "type": "mono"
+    }
+  },
+  "fusions": {},
+  "noms": {}
+}
