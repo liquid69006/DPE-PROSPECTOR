@@ -1107,11 +1107,11 @@ td{padding:11px 14px;vertical-align:middle;}
         style="padding:7px 12px;border:1px solid var(--border);border-radius:6px;background:transparent;
                color:var(--text2);font-size:13px;cursor:pointer;">↺ Réinitialiser</button>
       <div style="flex:1 1 auto;"></div>
-      <button onclick="sctMapOpen()"
+      <button onclick="sctUniViewMap()"
         title="Carte des 10 secteurs de base (s'ouvre par-dessus ; fermer revient au panneau)."
         style="padding:7px 14px;border:1px solid var(--border);border-radius:6px;background:var(--surface2);
                color:var(--text);font-size:13px;cursor:pointer;">🗺️ Voir la carte</button>
-      <button onclick="sctMapExportA0()"
+      <button onclick="sctUniExportA0()"
         title="Exporte la carte A0 (PNG 300 DPI) des 10 secteurs de base via GitHub Actions."
         style="padding:7px 14px;border:1px solid var(--border);border-radius:6px;background:var(--surface2);
                color:var(--text);font-size:13px;cursor:pointer;">📥 Exporter A0</button>
@@ -4889,6 +4889,28 @@ function sctUniReset() {
   sctUniRender();
   showToast('↺ Panneau réinitialisé (non enregistré)');
 }
+// Hydrate sctGenState (10 secteurs de base) depuis secteur_repartition si vide,
+// pour que sctMapOpen / sctMapExportA0 (qui lisent sctGenState) marchent meme en
+// session fraiche. Read-only ; ne modifie NI la carte NI secteur_repartition.
+async function sctUniEnsureGenState() {
+  if (sctGenState.repartition && Object.keys(sctGenState.repartition).length) return; // deja peuple
+  try {
+    const [, secId] = secteurResolve();
+    const r = await fetch(`${API_URL}/secteur-repartition/${secId}`, {
+      headers: { 'Authorization': `Bearer ${authToken}` } });
+    if (!r.ok) return;
+    const j = await r.json();
+    if (Array.isArray(j.conseillers) && j.conseillers.length) {
+      sctGenState.conseillers = j.conseillers;
+      sctGenState.N = j.conseillers.length;
+    }
+    if (j.repartition && typeof j.repartition === 'object') sctGenState.repartition = j.repartition;
+    if (typeof j.agence_lat === 'number') { sctGenState.agence_lat = j.agence_lat; sctGenState.agence_lng = j.agence_lng; }
+    if (typeof j.adresse_agence === 'string') sctGenState.adresse = j.adresse_agence;
+  } catch (e) { /* hors-ligne : sctMapOpen affichera son propre garde-fou */ }
+}
+async function sctUniViewMap()  { await sctUniEnsureGenState(); sctMapOpen(); }
+async function sctUniExportA0() { await sctUniEnsureGenState(); sctMapExportA0(); }
 window.sctUniOpen = sctUniOpen;
 window.sctUniClose = sctUniClose;
 window.sctUniRunBalance = sctUniRunBalance;
@@ -4896,6 +4918,8 @@ window.sctUniSetBase = sctUniSetBase;
 window.sctUniSetVac = sctUniSetVac;
 window.sctUniSave = sctUniSave;
 window.sctUniReset = sctUniReset;
+window.sctUniViewMap = sctUniViewMap;
+window.sctUniExportA0 = sctUniExportA0;
 
 let sctMapInstance = null;
 // Table de SECOURS (utilisee UNIQUEMENT si le fetch du manifeste echoue).
