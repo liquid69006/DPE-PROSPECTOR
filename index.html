@@ -1094,14 +1094,18 @@ td{padding:11px 14px;vertical-align:middle;}
         title="Répartit le pool de vacants entre tous les conseillers (équilibre base + vacants). Les bases ne bougent jamais."
         style="padding:7px 14px;border:1px solid #a78bfa;border-radius:6px;background:#1f2937;
                color:#a78bfa;font-size:13px;font-weight:600;cursor:pointer;">➕ Réattribuer les vacants</button>
-      <button onclick="sctGenOpen()"
-        title="Génère / équilibre les secteurs de base (ancien wizard ⚡ Générer secteurs)."
+      <button onclick="sctUniClose(); sctGenOpen();"
+        title="Génère / équilibre les secteurs de base (ferme ce panneau et ouvre le wizard ⚡ Générer secteurs)."
         style="padding:7px 14px;border:1px solid var(--border);border-radius:6px;background:var(--surface2);
                color:var(--text);font-size:13px;font-weight:600;cursor:pointer;">⚡ Générer les secteurs</button>
       <button onclick="sctUniSave()"
         title="Enregistre les réattributions du panneau (KV secteur_uni ; ne touche pas les secteurs de base)."
         style="padding:7px 14px;border:1px solid #16a34a;border-radius:6px;background:#16a34a;
                color:#fff;font-size:13px;font-weight:600;cursor:pointer;">💾 Enregistrer</button>
+      <button onclick="sctUniReset()"
+        title="Vide toutes les attributions et vacants (en mémoire ; cliquer Enregistrer pour persister)."
+        style="padding:7px 12px;border:1px solid var(--border);border-radius:6px;background:transparent;
+               color:var(--text2);font-size:13px;cursor:pointer;">↺ Réinitialiser</button>
       <div style="flex:1 1 auto;"></div>
       <button disabled title="Actif après enregistrement (phase B)"
         style="padding:7px 14px;border:1px solid var(--border);border-radius:6px;background:var(--surface2);
@@ -4872,12 +4876,24 @@ async function sctUniSave() {
     showToast('⚠️ Échec enregistrement : ' + (e.message || e), true);
   }
 }
+// Remise a zero EN MEMOIRE (pas de save auto) : vide bases attribuees + vacants,
+// tous les ilots repartent dans "Vacants a repartir", couleurs neutres.
+function sctUniReset() {
+  if (!confirm('Tout réinitialiser ? Les attributions non enregistrées seront perdues.')) return;
+  sctUniState.attribution = {};
+  sctUniState.vacAssign = {};
+  for (const c of sctUniState.conseillers) c.couleur = '#6b7280';
+  sctUniSyncVac();
+  sctUniRender();
+  showToast('↺ Panneau réinitialisé (non enregistré)');
+}
 window.sctUniOpen = sctUniOpen;
 window.sctUniClose = sctUniClose;
 window.sctUniRunBalance = sctUniRunBalance;
 window.sctUniSetBase = sctUniSetBase;
 window.sctUniSetVac = sctUniSetVac;
 window.sctUniSave = sctUniSave;
+window.sctUniReset = sctUniReset;
 
 let sctMapInstance = null;
 // Table de SECOURS (utilisee UNIQUEMENT si le fetch du manifeste echoue).
