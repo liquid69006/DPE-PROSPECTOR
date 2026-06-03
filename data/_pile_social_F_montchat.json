@@ -1,0 +1,666 @@
+{
+  "desc": "Montchat : batiments a proprietaire bailleur HLM/public (garde social-precedence manche D) -> a classer social/mixte en manche F. nb_log = BDNB.",
+  "count": 132,
+  "cles": [
+    {
+      "cle": "92|RUE|FERDINAND BUISSON",
+      "nb_log_bdnb": 246,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "10|RUE|FELIX ROLLET",
+      "nb_log_bdnb": 150,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "33|RUE|FEUILLAT",
+      "nb_log_bdnb": 134,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "35|RUE|COIGNET",
+      "nb_log_bdnb": 108,
+      "n_owners_pm": 2
+    },
+    {
+      "cle": "52|BOULEVARD|PINEL",
+      "nb_log_bdnb": 87,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "4|RUE|MONTAIGNE",
+      "nb_log_bdnb": 82,
+      "n_owners_pm": 2
+    },
+    {
+      "cle": "18|RUE|FIOL",
+      "nb_log_bdnb": 73,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "10|RUE|HARMONIE",
+      "nb_log_bdnb": 72,
+      "n_owners_pm": 2
+    },
+    {
+      "cle": "17B|RUE|CHARLES RICHARD",
+      "nb_log_bdnb": 71,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "101|AVENUE|LACASSAGNE",
+      "nb_log_bdnb": 58,
+      "n_owners_pm": 13
+    },
+    {
+      "cle": "46|RUE|ST ISIDORE",
+      "nb_log_bdnb": 56,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "103|AVENUE|LACASSAGNE",
+      "nb_log_bdnb": 55,
+      "n_owners_pm": 13
+    },
+    {
+      "cle": "1B|RUE|DOCTEUR BONHOMME",
+      "nb_log_bdnb": 48,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "2|RUE|DOCTEUR BONHOMME",
+      "nb_log_bdnb": 48,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "126|COURS|ALBERT THOMAS",
+      "nb_log_bdnb": 37,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "29B|RUE|VIALA",
+      "nb_log_bdnb": 36,
+      "n_owners_pm": 6
+    },
+    {
+      "cle": "115|COURS|ALBERT THOMAS",
+      "nb_log_bdnb": 35,
+      "n_owners_pm": 4
+    },
+    {
+      "cle": "12|RUE|CARRY",
+      "nb_log_bdnb": 34,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "5|RUE|CARRY",
+      "nb_log_bdnb": 34,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "86|ROUTE|GENAS",
+      "nb_log_bdnb": 31,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "1|PASSAGE|FEUILLAT",
+      "nb_log_bdnb": 30,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "68|AVENUE|LACASSAGNE",
+      "nb_log_bdnb": 30,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "42T|RUE|FEUILLAT",
+      "nb_log_bdnb": 29,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "200|ROUTE|GENAS",
+      "nb_log_bdnb": 26,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "2B|RUE|VILLEBOIS MAREUIL",
+      "nb_log_bdnb": 25,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "33|RUE|JEAN MARC BERNARD",
+      "nb_log_bdnb": 24,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "6|IMPASSE|MOREL",
+      "nb_log_bdnb": 24,
+      "n_owners_pm": 3
+    },
+    {
+      "cle": "70|ROUTE|GENAS",
+      "nb_log_bdnb": 24,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "20|RUE|BARA",
+      "nb_log_bdnb": 22,
+      "n_owners_pm": 2
+    },
+    {
+      "cle": "100|COURS|DOCTEUR LONG",
+      "nb_log_bdnb": 21,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "37|RUE|JULIEN",
+      "nb_log_bdnb": 20,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "17|RUE|FEUILLAT",
+      "nb_log_bdnb": 19,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "11|RUE|TRARIEUX",
+      "nb_log_bdnb": 18,
+      "n_owners_pm": 11
+    },
+    {
+      "cle": "42|RUE|FEUILLAT",
+      "nb_log_bdnb": 18,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "7|PASSAGE|FEUILLAT",
+      "nb_log_bdnb": 17,
+      "n_owners_pm": 2
+    },
+    {
+      "cle": "106|COURS|DOCTEUR LONG",
+      "nb_log_bdnb": 16,
+      "n_owners_pm": 2
+    },
+    {
+      "cle": "170|ROUTE|GENAS",
+      "nb_log_bdnb": 16,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "1B|RUE|OMER LOUIS",
+      "nb_log_bdnb": 16,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "7|IMPASSE|VICTOR HUGO",
+      "nb_log_bdnb": 16,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "11|RUE|DOC PAUL DIDAY",
+      "nb_log_bdnb": 15,
+      "n_owners_pm": 2
+    },
+    {
+      "cle": "17|RUE|TRARIEUX",
+      "nb_log_bdnb": 15,
+      "n_owners_pm": 11
+    },
+    {
+      "cle": "24|RUE|FERDINAND BUISSON",
+      "nb_log_bdnb": 15,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "26|RUE|HARMONIE",
+      "nb_log_bdnb": 15,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "8|IMPASSE|GAZAGNON",
+      "nb_log_bdnb": 15,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "48|ROUTE|GENAS",
+      "nb_log_bdnb": 14,
+      "n_owners_pm": 2
+    },
+    {
+      "cle": "40|RUE|FEUILLAT",
+      "nb_log_bdnb": 14,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "132|RUE|DAUPHINE",
+      "nb_log_bdnb": 14,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "1|PLACE|LOUISE",
+      "nb_log_bdnb": 14,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "17|RUE|DOC PAUL DIDAY",
+      "nb_log_bdnb": 14,
+      "n_owners_pm": 2
+    },
+    {
+      "cle": "42|COURS|RICHARD VITTON",
+      "nb_log_bdnb": 14,
+      "n_owners_pm": 2
+    },
+    {
+      "cle": "57|RUE|FEUILLAT",
+      "nb_log_bdnb": 14,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "9|IMPASSE|VICTOR HUGO",
+      "nb_log_bdnb": 14,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "3|RUE|BALTHAZAR",
+      "nb_log_bdnb": 13,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "44T|RUE|ST ISIDORE",
+      "nb_log_bdnb": 13,
+      "n_owners_pm": 4
+    },
+    {
+      "cle": "82|COURS|DOCTEUR LONG",
+      "nb_log_bdnb": 13,
+      "n_owners_pm": 2
+    },
+    {
+      "cle": "5|COURS|DOCTEUR LONG",
+      "nb_log_bdnb": 12,
+      "n_owners_pm": 8
+    },
+    {
+      "cle": "110|RUE|DAUPHINE",
+      "nb_log_bdnb": 12,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "16|RUE|RUCHE",
+      "nb_log_bdnb": 12,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "4|RUE|CLAUDIUS PENET",
+      "nb_log_bdnb": 12,
+      "n_owners_pm": 2
+    },
+    {
+      "cle": "61|RUE|PROFESSEUR ROCHAIX",
+      "nb_log_bdnb": 12,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "29B|RUE|GERMAIN DAVID",
+      "nb_log_bdnb": 11,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "7|RUE|JEAN CARDONA",
+      "nb_log_bdnb": 11,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "87|COURS|RICHARD VITTON",
+      "nb_log_bdnb": 11,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "12|IMPASSE|VICTOR HUGO",
+      "nb_log_bdnb": 10,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "17|BOULEVARD|PINEL",
+      "nb_log_bdnb": 10,
+      "n_owners_pm": 2
+    },
+    {
+      "cle": "25B|RUE|JEAN MARC BERNARD",
+      "nb_log_bdnb": 10,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "27B|RUE|JEAN MARC BERNARD",
+      "nb_log_bdnb": 10,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "43|COURS|DOCTEUR LONG",
+      "nb_log_bdnb": 9,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "44T|RUE|PROFESSEUR FLORENCE",
+      "nb_log_bdnb": 9,
+      "n_owners_pm": 4
+    },
+    {
+      "cle": "1|RUE|PROFESSEUR ROCHAIX",
+      "nb_log_bdnb": 8,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "12A|IMPASSE|ALEXANDRE AUJAS",
+      "nb_log_bdnb": 8,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "15|RUE|DOC PAUL DIDAY",
+      "nb_log_bdnb": 8,
+      "n_owners_pm": 2
+    },
+    {
+      "cle": "16B|RUE|BARA",
+      "nb_log_bdnb": 8,
+      "n_owners_pm": 2
+    },
+    {
+      "cle": "18|RUE|LAMARTINE",
+      "nb_log_bdnb": 8,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "23|RUE|CLAUDIUS PENET",
+      "nb_log_bdnb": 8,
+      "n_owners_pm": 2
+    },
+    {
+      "cle": "7|RUE|RENE ET MARGUERITE PELLET",
+      "nb_log_bdnb": 8,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "2|ROUTE|GENAS",
+      "nb_log_bdnb": 7,
+      "n_owners_pm": 2
+    },
+    {
+      "cle": "6|RUE|JULIEN",
+      "nb_log_bdnb": 7,
+      "n_owners_pm": 2
+    },
+    {
+      "cle": "9|RUE|ROUX SOIGNAT",
+      "nb_log_bdnb": 7,
+      "n_owners_pm": 2
+    },
+    {
+      "cle": "9B|RUE|ST ISIDORE",
+      "nb_log_bdnb": 7,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "162|AVENUE|LACASSAGNE",
+      "nb_log_bdnb": 5,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "223|AVENUE|LACASSAGNE",
+      "nb_log_bdnb": 5,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "25|RUE|DOCTEUR BONHOMME",
+      "nb_log_bdnb": 4,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "1|RUE|CAMILLE",
+      "nb_log_bdnb": 4,
+      "n_owners_pm": 2
+    },
+    {
+      "cle": "12B|RUE|ROUX SOIGNAT",
+      "nb_log_bdnb": 4,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "19|RUE|DOCTEUR BONHOMME",
+      "nb_log_bdnb": 4,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "25|RUE|CLAUDIUS PENET",
+      "nb_log_bdnb": 4,
+      "n_owners_pm": 2
+    },
+    {
+      "cle": "37|AVENUE|CHATEAU",
+      "nb_log_bdnb": 4,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "4|RUE|CAMILLE",
+      "nb_log_bdnb": 4,
+      "n_owners_pm": 2
+    },
+    {
+      "cle": "5|IMPASSE|VICTOR HUGO",
+      "nb_log_bdnb": 4,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "18|RUE|VIALA",
+      "nb_log_bdnb": 3,
+      "n_owners_pm": 2
+    },
+    {
+      "cle": "70|RUE|BONNAND",
+      "nb_log_bdnb": 3,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "10|RUE|ROUX SOIGNAT",
+      "nb_log_bdnb": 2,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "10B|RUE|ROUX SOIGNAT",
+      "nb_log_bdnb": 2,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "14B|RUE|ROUX SOIGNAT",
+      "nb_log_bdnb": 2,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "16|RUE|ROUX SOIGNAT",
+      "nb_log_bdnb": 2,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "16B|RUE|ROUX SOIGNAT",
+      "nb_log_bdnb": 2,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "18|RUE|ROUX SOIGNAT",
+      "nb_log_bdnb": 2,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "18B|RUE|ROUX SOIGNAT",
+      "nb_log_bdnb": 2,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "61|COURS|EUGENIE",
+      "nb_log_bdnb": 2,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "78|RUE|FEUILLAT",
+      "nb_log_bdnb": 2,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "88|BOULEVARD|PINEL",
+      "nb_log_bdnb": 2,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "1|PLACE|CHATEAU",
+      "nb_log_bdnb": 1,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "10|RUE|EGLISE",
+      "nb_log_bdnb": 1,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "11B|RUE|CHARLES RICHARD",
+      "nb_log_bdnb": 1,
+      "n_owners_pm": 2
+    },
+    {
+      "cle": "137|RUE|DAUPHINE",
+      "nb_log_bdnb": 1,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "14|RUE|ANTOINETTE",
+      "nb_log_bdnb": 1,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "146|AVENUE|LACASSAGNE",
+      "nb_log_bdnb": 1,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "179|AVENUE|LACASSAGNE",
+      "nb_log_bdnb": 1,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "20|AVENUE|ESQUIROL",
+      "nb_log_bdnb": 1,
+      "n_owners_pm": 2
+    },
+    {
+      "cle": "29|RUE|DOCTEUR REBATEL",
+      "nb_log_bdnb": 1,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "2B|RUE|GELAS",
+      "nb_log_bdnb": 1,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "33|RUE|JEANNE D ARC",
+      "nb_log_bdnb": 1,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "39|AVENUE|ESQUIROL",
+      "nb_log_bdnb": 1,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "39|RUE|COIGNET",
+      "nb_log_bdnb": 1,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "4|ROUTE|GENAS",
+      "nb_log_bdnb": 1,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "40|RUE|COIGNET",
+      "nb_log_bdnb": 1,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "50|AVENUE|ESQUIROL",
+      "nb_log_bdnb": 1,
+      "n_owners_pm": 2
+    },
+    {
+      "cle": "53|RUE|CHARLES RICHARD",
+      "nb_log_bdnb": 1,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "7|RUE|JULES VERNE",
+      "nb_log_bdnb": 1,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "76|RUE|FEUILLAT",
+      "nb_log_bdnb": 1,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "90|ROUTE|GENAS",
+      "nb_log_bdnb": 1,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "60|AVENUE|ROCKEFELLER",
+      "nb_log_bdnb": null,
+      "n_owners_pm": 2
+    },
+    {
+      "cle": "80|COURS|EUGENIE",
+      "nb_log_bdnb": null,
+      "n_owners_pm": 2
+    },
+    {
+      "cle": "104|COURS|DOCTEUR LONG",
+      "nb_log_bdnb": null,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "17|AVENUE|ACACIAS",
+      "nb_log_bdnb": null,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "35|RUE|FERDINAND BUISSON",
+      "nb_log_bdnb": null,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "49|RUE|FEUILLAT",
+      "nb_log_bdnb": null,
+      "n_owners_pm": 2
+    },
+    {
+      "cle": "5|AVENUE|ESQUIROL",
+      "nb_log_bdnb": null,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "5|PASSAGE|FEUILLAT",
+      "nb_log_bdnb": null,
+      "n_owners_pm": 2
+    },
+    {
+      "cle": "52|RUE|PROFESSEUR ROCHAIX",
+      "nb_log_bdnb": null,
+      "n_owners_pm": 1
+    },
+    {
+      "cle": "83|AVENUE|LACASSAGNE",
+      "nb_log_bdnb": null,
+      "n_owners_pm": 6
+    }
+  ]
+}

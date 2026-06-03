@@ -308,6 +308,840 @@
     },
     "9|RUE|RUCHE": {
       "type": "mono"
+    },
+    "3|RUE|ST ISIDORE": {
+      "type": "copro_non_immat"
+    },
+    "64|AVENUE|LACASSAGNE": {
+      "type": "mono"
+    },
+    "20|RUE|BALME": {
+      "type": "copro_non_immat"
+    },
+    "8|RUE|DOCTEUR REBATEL": {
+      "type": "copro_non_immat"
+    },
+    "11|RUE|GUY": {
+      "type": "copro_non_immat"
+    },
+    "125|RUE|DAUPHINE": {
+      "type": "copro_non_immat"
+    },
+    "162|ROUTE|GENAS": {
+      "type": "copro_non_immat"
+    },
+    "84|ROUTE|GENAS": {
+      "type": "copro_non_immat"
+    },
+    "12|RUE|EST": {
+      "type": "mono"
+    },
+    "5|RUE|JULIEN": {
+      "type": "copro_non_immat"
+    },
+    "27|RUE|BALME": {
+      "type": "copro_non_immat"
+    },
+    "12|RUE|DOCTEUR BONHOMME": {
+      "type": "mono"
+    },
+    "14|COURS|DOCTEUR LONG": {
+      "type": "copro_non_immat"
+    },
+    "143|RUE|DAUPHINE": {
+      "type": "mono"
+    },
+    "32|RUE|BELLICARD": {
+      "type": "copro_non_immat"
+    },
+    "36|RUE|BONNAND": {
+      "type": "mono"
+    },
+    "6|RUE|DOMREMY": {
+      "type": "copro_non_immat"
+    },
+    "37|BOULEVARD|PINEL": {
+      "type": "mono"
+    },
+    "74|RUE|TRARIEUX": {
+      "type": "mono"
+    },
+    "12|RUE|JULES MASSENET": {
+      "type": "copro_non_immat"
+    },
+    "14|RUE|ALFRED DE MUSSET": {
+      "type": "copro_non_immat"
+    },
+    "9|RUE|ELIE PARIS": {
+      "type": "mono"
+    },
+    "27|RUE|BONNAND": {
+      "type": "copro_non_immat"
+    },
+    "5|IMPASSE|POMMIER": {
+      "type": "mono"
+    },
+    "154|AVENUE|LACASSAGNE": {
+      "type": "copro_non_immat"
+    },
+    "16|IMPASSE|SABLON": {
+      "type": "copro_non_immat"
+    },
+    "93|RUE|BALME": {
+      "type": "mono"
+    },
+    "12|RUE|EGLISE": {
+      "type": "copro_non_immat"
+    },
+    "2|IMPASSE|LUTIN": {
+      "type": "copro_non_immat"
+    },
+    "24|RUE|EST": {
+      "type": "mono"
+    },
+    "6|IMPASSE|LINDBERG": {
+      "type": "copro_non_immat"
+    },
+    "51|RUE|CHARLES RICHARD": {
+      "type": "mono"
+    },
+    "1|AVENUE|CHATEAU": {
+      "type": "copro_non_immat"
+    },
+    "113|COURS|ALBERT THOMAS": {
+      "type": "copro_non_immat"
+    },
+    "14|RUE|DOCTEUR BONHOMME": {
+      "type": "copro_non_immat"
+    },
+    "27|RUE|LAMARTINE": {
+      "type": "mono"
+    },
+    "5|RUE|DOMREMY": {
+      "type": "copro_non_immat"
+    },
+    "5|RUE|LOUIS": {
+      "type": "copro_non_immat"
+    },
+    "52|RUE|JULIEN": {
+      "type": "mono"
+    },
+    "63|RUE|FEUILLAT": {
+      "type": "copro_non_immat"
+    },
+    "74|COURS|RICHARD VITTON": {
+      "type": "mono"
+    },
+    "1|RUE|BELLEVUE": {
+      "type": "mono"
+    },
+    "1|RUE|CDT MARCHAND": {
+      "type": "mono"
+    },
+    "1|RUE|CONSTANT": {
+      "type": "copro_non_immat"
+    },
+    "1|RUE|CONVENTION": {
+      "type": "copro_non_immat"
+    },
+    "1|RUE|FELIX ROLLET": {
+      "type": "copro_non_immat"
+    },
+    "1|RUE|GUY": {
+      "type": "mono"
+    },
+    "1|RUE|JEAN MARC BERNARD": {
+      "type": "copro_non_immat"
+    },
+    "1|RUE|JEANNE D ARC": {
+      "type": "mono"
+    },
+    "10|RUE|BALTHAZAR": {
+      "type": "mono"
+    },
+    "10|RUE|BELLICARD": {
+      "type": "mono"
+    },
+    "10|RUE|CONSTANT": {
+      "type": "mono"
+    },
+    "100|RUE|FERDINAND BUISSON": {
+      "type": "mono"
+    },
+    "103|RUE|TRARIEUX": {
+      "type": "mono"
+    },
+    "103B|RUE|TRARIEUX": {
+      "type": "mono"
+    },
+    "104B|BOULEVARD|PINEL": {
+      "type": "copro_non_immat"
+    },
+    "109|COURS|ALBERT THOMAS": {
+      "type": "mono"
+    },
+    "109B|COURS|RICHARD VITTON": {
+      "type": "mono"
+    },
+    "10B|RUE|ST ISIDORE": {
+      "type": "copro_non_immat"
+    },
+    "11|RUE|ALFRED DE MUSSET": {
+      "type": "mono"
+    },
+    "11|RUE|DOCTEUR BONHOMME": {
+      "type": "mono"
+    },
+    "11|RUE|JEAN CARDONA": {
+      "type": "copro_non_immat"
+    },
+    "11|RUE|PASCAL": {
+      "type": "mono"
+    },
+    "11|RUE|PROFESSEUR FLORENCE": {
+      "type": "copro_non_immat"
+    },
+    "11|RUE|ST CHARLES": {
+      "type": "mono"
+    },
+    "110|COURS|DOCTEUR LONG": {
+      "type": "mono"
+    },
+    "111|COURS|RICHARD VITTON": {
+      "type": "copro_non_immat"
+    },
+    "113|RUE|FERDINAND BUISSON": {
+      "type": "mono"
+    },
+    "114B|AVENUE|LACASSAGNE": {
+      "type": "copro_non_immat"
+    },
+    "12|RUE|ANTOINETTE": {
+      "type": "mono"
+    },
+    "12|RUE|BONNAND": {
+      "type": "copro_non_immat"
+    },
+    "12|RUE|CAMILLE": {
+      "type": "copro_non_immat"
+    },
+    "12|RUE|CYRANO": {
+      "type": "mono"
+    },
+    "12|RUE|LOUIS": {
+      "type": "mono"
+    },
+    "124|RUE|DAUPHINE": {
+      "type": "mono"
+    },
+    "129|AVENUE|LACASSAGNE": {
+      "type": "mono"
+    },
+    "13|AVENUE|ESQUIROL": {
+      "type": "mono"
+    },
+    "13|COURS|RICHARD VITTON": {
+      "type": "mono"
+    },
+    "13|RUE|CHARLES RICHARD": {
+      "type": "copro_non_immat"
+    },
+    "134|ROUTE|GENAS": {
+      "type": "copro_non_immat"
+    },
+    "135|RUE|DAUPHINE": {
+      "type": "mono"
+    },
+    "138|RUE|DAUPHINE": {
+      "type": "mono"
+    },
+    "13B|RUE|FEUILLAT": {
+      "type": "copro_non_immat"
+    },
+    "14|RUE|CHARLES RICHARD": {
+      "type": "copro_non_immat"
+    },
+    "14|RUE|FIOL": {
+      "type": "copro_non_immat"
+    },
+    "14|RUE|PIERRE BONNAUD": {
+      "type": "mono"
+    },
+    "14|RUE|ST ISIDORE": {
+      "type": "mono"
+    },
+    "147B|AVENUE|LACASSAGNE": {
+      "type": "mono"
+    },
+    "14A|IMPASSE|ALEXANDRE AUJAS": {
+      "type": "mono"
+    },
+    "15|RUE|CONSTANT": {
+      "type": "mono"
+    },
+    "15|RUE|JEANNE D ARC": {
+      "type": "mono"
+    },
+    "15|RUE|LOUIS": {
+      "type": "mono"
+    },
+    "15|RUE|OMER LOUIS": {
+      "type": "mono"
+    },
+    "150|ROUTE|GENAS": {
+      "type": "copro_non_immat"
+    },
+    "153|COURS|ALBERT THOMAS": {
+      "type": "mono"
+    },
+    "157|COURS|ALBERT THOMAS": {
+      "type": "mono"
+    },
+    "15B|RUE|JULIEN": {
+      "type": "copro_non_immat"
+    },
+    "17|AVENUE|ESQUIROL": {
+      "type": "mono"
+    },
+    "17|RUE|CAPITAINE": {
+      "type": "mono"
+    },
+    "17|RUE|JEAN BART": {
+      "type": "mono"
+    },
+    "17|RUE|PROFESSEUR ROCHAIX": {
+      "type": "copro_non_immat"
+    },
+    "173|COURS|DOCTEUR LONG": {
+      "type": "mono"
+    },
+    "176|AVENUE|LACASSAGNE": {
+      "type": "mono"
+    },
+    "177|COURS|DOCTEUR LONG": {
+      "type": "copro_non_immat"
+    },
+    "17B|RUE|GIRIE": {
+      "type": "mono"
+    },
+    "18|RUE|PASCAL": {
+      "type": "mono"
+    },
+    "184|AVENUE|LACASSAGNE": {
+      "type": "mono"
+    },
+    "188|AVENUE|LACASSAGNE": {
+      "type": "mono"
+    },
+    "19|RUE|ALFRED DE MUSSET": {
+      "type": "mono"
+    },
+    "192|AVENUE|LACASSAGNE": {
+      "type": "mono"
+    },
+    "195|AVENUE|LACASSAGNE": {
+      "type": "mono"
+    },
+    "19B|RUE|JULIEN": {
+      "type": "mono"
+    },
+    "1B|RUE|ST ISIDORE": {
+      "type": "copro_non_immat"
+    },
+    "2|BOULEVARD|PINEL": {
+      "type": "copro_non_immat"
+    },
+    "2|IMPASSE|JEANNE D ARC": {
+      "type": "mono"
+    },
+    "2|PLACE|RECONNAISSANCE": {
+      "type": "copro_non_immat"
+    },
+    "2|RUE|RUCHE": {
+      "type": "copro_non_immat"
+    },
+    "2|RUE|JEANNE D ARC": {
+      "type": "mono"
+    },
+    "20|ROUTE|GENAS": {
+      "type": "mono"
+    },
+    "20B|COURS|RICHARD VITTON": {
+      "type": "copro_non_immat"
+    },
+    "20B|RUE|DOCTEUR REBATEL": {
+      "type": "mono"
+    },
+    "20B|RUE|JULIEN": {
+      "type": "mono"
+    },
+    "21|AVENUE|ACACIAS": {
+      "type": "mono"
+    },
+    "21|RUE|ANTOINE LAVIOLETTE": {
+      "type": "mono"
+    },
+    "21|RUE|ROUX SOIGNAT": {
+      "type": "copro_non_immat"
+    },
+    "217B|AVENUE|LACASSAGNE": {
+      "type": "mono"
+    },
+    "22|RUE|CONSTANT": {
+      "type": "mono"
+    },
+    "22|RUE|BALME": {
+      "type": "copro_non_immat"
+    },
+    "23|RUE|GERMAIN DAVID": {
+      "type": "mono"
+    },
+    "237|AVENUE|LACASSAGNE": {
+      "type": "mono"
+    },
+    "24|RUE|BELLICARD": {
+      "type": "mono"
+    },
+    "243|AVENUE|LACASSAGNE": {
+      "type": "mono"
+    },
+    "245|AVENUE|LACASSAGNE": {
+      "type": "mono"
+    },
+    "25|AVENUE|CHATEAU": {
+      "type": "mono"
+    },
+    "25|RUE|ANTOINETTE": {
+      "type": "mono"
+    },
+    "25|RUE|JEAN MARC BERNARD": {
+      "type": "mono"
+    },
+    "25B|COURS|DOCTEUR LONG": {
+      "type": "copro_non_immat"
+    },
+    "25B|RUE|FEUILLAT": {
+      "type": "mono"
+    },
+    "26|RUE|AMIRAL COURBET": {
+      "type": "mono"
+    },
+    "27|RUE|ANTOINETTE": {
+      "type": "mono"
+    },
+    "27|RUE|PROFESSEUR ROCHAIX": {
+      "type": "mono"
+    },
+    "28|RUE|FERDINAND BUISSON": {
+      "type": "mono"
+    },
+    "28|RUE|ROUX SOIGNAT": {
+      "type": "copro_non_immat"
+    },
+    "29|RUE|BALME": {
+      "type": "mono"
+    },
+    "29|RUE|JULES MASSENET": {
+      "type": "mono"
+    },
+    "2B|RUE|COIGNET": {
+      "type": "mono"
+    },
+    "2B|RUE|GERMAIN DAVID": {
+      "type": "copro_non_immat"
+    },
+    "3|IMPASSE|BELLOEUF": {
+      "type": "mono"
+    },
+    "3|IMPASSE|POMMIER": {
+      "type": "mono"
+    },
+    "3|PLACE|CHATEAU": {
+      "type": "mono"
+    },
+    "3|PLACE|JULES HOTTIN": {
+      "type": "mono"
+    },
+    "3|RUE|EGLISE": {
+      "type": "copro_non_immat"
+    },
+    "3|RUE|DOMREMY": {
+      "type": "copro_non_immat"
+    },
+    "3|RUE|FRANCOIS VILLON": {
+      "type": "mono"
+    },
+    "3|RUE|GIRIE": {
+      "type": "mono"
+    },
+    "3|RUE|JULES VERNE": {
+      "type": "mono"
+    },
+    "3|RUE|PIERRE BONNAUD": {
+      "type": "mono"
+    },
+    "3|RUE|RENE ET MARGUERITE PELLET": {
+      "type": "mono"
+    },
+    "3|RUE|VIALA": {
+      "type": "mono"
+    },
+    "30|RUE|COIGNET": {
+      "type": "mono"
+    },
+    "31B|RUE|VIALA": {
+      "type": "copro_non_immat"
+    },
+    "31T|RUE|FEUILLAT": {
+      "type": "copro_non_immat"
+    },
+    "32|RUE|COIGNET": {
+      "type": "mono"
+    },
+    "32|RUE|JULES MASSENET": {
+      "type": "copro_non_immat"
+    },
+    "32B|COURS|RICHARD VITTON": {
+      "type": "mono"
+    },
+    "33|RUE|FERDINAND BUISSON": {
+      "type": "mono"
+    },
+    "33|RUE|STE MARIE": {
+      "type": "mono"
+    },
+    "33B|RUE|VIALA": {
+      "type": "copro_non_immat"
+    },
+    "34|COURS|DOCTEUR LONG": {
+      "type": "copro_non_immat"
+    },
+    "34|COURS|RICHARD VITTON": {
+      "type": "mono"
+    },
+    "34|RUE|ANTOINETTE": {
+      "type": "mono"
+    },
+    "34|RUE|CHARLES RICHARD": {
+      "type": "mono"
+    },
+    "34|RUE|COIGNET": {
+      "type": "mono"
+    },
+    "36|RUE|ANTOINETTE": {
+      "type": "mono"
+    },
+    "36|RUE|RUCHE": {
+      "type": "mono"
+    },
+    "36|RUE|PIERRE BONNAUD": {
+      "type": "mono"
+    },
+    "36|RUE|VIALA": {
+      "type": "mono"
+    },
+    "37|AVENUE|ACACIAS": {
+      "type": "mono"
+    },
+    "38B|RUE|LOUIS": {
+      "type": "mono"
+    },
+    "39|RUE|BALME": {
+      "type": "mono"
+    },
+    "4|RUE|SPORTS": {
+      "type": "mono"
+    },
+    "4|RUE|DOC PAUL DIDAY": {
+      "type": "mono"
+    },
+    "4|RUE|DOCTEUR BONHOMME": {
+      "type": "copro_non_immat"
+    },
+    "4|RUE|FERDINAND BUISSON": {
+      "type": "mono"
+    },
+    "4|RUE|MARTIN": {
+      "type": "mono"
+    },
+    "40|ROUTE|GENAS": {
+      "type": "copro_non_immat"
+    },
+    "40|RUE|AMIRAL COURBET": {
+      "type": "mono"
+    },
+    "41|AVENUE|ROCKEFELLER": {
+      "type": "mono"
+    },
+    "41|RUE|BALME": {
+      "type": "mono"
+    },
+    "41|RUE|JEANNE D ARC": {
+      "type": "mono"
+    },
+    "42|RUE|CHARLES RICHARD": {
+      "type": "mono"
+    },
+    "43|AVENUE|ESQUIROL": {
+      "type": "mono"
+    },
+    "43|RUE|BALME": {
+      "type": "mono"
+    },
+    "43|RUE|FERDINAND BUISSON": {
+      "type": "copro_non_immat"
+    },
+    "43|RUE|GUILLOUD": {
+      "type": "copro_non_immat"
+    },
+    "44Q|RUE|ST ISIDORE": {
+      "type": "mono"
+    },
+    "44T|RUE|FEUILLAT": {
+      "type": "mono"
+    },
+    "45B|RUE|TRARIEUX": {
+      "type": "copro_non_immat"
+    },
+    "46A|RUE|PROFESSEUR ROCHAIX": {
+      "type": "mono"
+    },
+    "47|RUE|BALME": {
+      "type": "mono"
+    },
+    "47|RUE|PROFESSEUR FLORENCE": {
+      "type": "copro_non_immat"
+    },
+    "47|RUE|ST ISIDORE": {
+      "type": "mono"
+    },
+    "49|COURS|DOCTEUR LONG": {
+      "type": "mono"
+    },
+    "49|RUE|BALME": {
+      "type": "mono"
+    },
+    "49|RUE|JEANNE D ARC": {
+      "type": "mono"
+    },
+    "49|RUE|ST ISIDORE": {
+      "type": "mono"
+    },
+    "4B|PLACE|CHATEAU": {
+      "type": "mono"
+    },
+    "4T|RUE|FEUILLAT": {
+      "type": "copro_non_immat"
+    },
+    "5|RUE|CHAMBOVET": {
+      "type": "mono"
+    },
+    "5|RUE|CLAUDIUS PENET": {
+      "type": "mono"
+    },
+    "5|RUE|EST": {
+      "type": "mono"
+    },
+    "5|RUE|JEAN MARC BERNARD": {
+      "type": "mono"
+    },
+    "5|RUE|ST CHARLES": {
+      "type": "mono"
+    },
+    "50|RUE|ST ISIDORE": {
+      "type": "mono"
+    },
+    "51|RUE|BONNAND": {
+      "type": "mono"
+    },
+    "51A|RUE|CHARLES RICHARD": {
+      "type": "copro_non_immat"
+    },
+    "52|RUE|ST ISIDORE": {
+      "type": "mono"
+    },
+    "53|COURS|RICHARD VITTON": {
+      "type": "mono"
+    },
+    "54|RUE|PROFESSEUR ROCHAIX": {
+      "type": "copro_non_immat"
+    },
+    "55|COURS|DOCTEUR LONG": {
+      "type": "mono"
+    },
+    "57|RUE|CAMILLE": {
+      "type": "mono"
+    },
+    "57|RUE|BALME": {
+      "type": "mono"
+    },
+    "57|RUE|PROFESSEUR ROCHAIX": {
+      "type": "mono"
+    },
+    "58T|AVENUE|LACASSAGNE": {
+      "type": "mono"
+    },
+    "5B|RUE|SPORTS": {
+      "type": "mono"
+    },
+    "5B|RUE|GIRIE": {
+      "type": "mono"
+    },
+    "6|IMPASSE|VICTOR HUGO": {
+      "type": "mono"
+    },
+    "6|PLACE|CHARLES DUFRAINE": {
+      "type": "mono"
+    },
+    "6|RUE|ALFRED DE MUSSET": {
+      "type": "mono"
+    },
+    "6|RUE|ANTOINE LAVIOLETTE": {
+      "type": "mono"
+    },
+    "6|RUE|PALAIS D ETE": {
+      "type": "mono"
+    },
+    "6|RUE|VINATIER": {
+      "type": "mono"
+    },
+    "6|RUE|PASCAL": {
+      "type": "mono"
+    },
+    "60|RUE|PROFESSEUR FLORENCE": {
+      "type": "mono"
+    },
+    "62|RUE|FERDINAND BUISSON": {
+      "type": "copro_non_immat"
+    },
+    "63|RUE|TRARIEUX": {
+      "type": "mono"
+    },
+    "64|RUE|PROFESSEUR FLORENCE": {
+      "type": "mono"
+    },
+    "66T|RUE|FEUILLAT": {
+      "type": "copro_non_immat"
+    },
+    "67|COURS|DOCTEUR LONG": {
+      "type": "copro_non_immat"
+    },
+    "68|RUE|JEANNE D ARC": {
+      "type": "mono"
+    },
+    "6A|RUE|FEUILLAT": {
+      "type": "copro_non_immat"
+    },
+    "7|COURS|RICHARD VITTON": {
+      "type": "mono"
+    },
+    "7|IMPASSE|GAZAGNON": {
+      "type": "copro_non_immat"
+    },
+    "7|RUE|CLAUDIUS PENET": {
+      "type": "mono"
+    },
+    "7|RUE|DOMREMY": {
+      "type": "copro_non_immat"
+    },
+    "7|RUE|JEANNE D ARC": {
+      "type": "mono"
+    },
+    "7|RUE|LOUISE": {
+      "type": "mono"
+    },
+    "70|AVENUE|LACASSAGNE": {
+      "type": "mono"
+    },
+    "70|RUE|TRARIEUX": {
+      "type": "copro_non_immat"
+    },
+    "74|COURS|EUGENIE": {
+      "type": "mono"
+    },
+    "76|RUE|FERDINAND BUISSON": {
+      "type": "mono"
+    },
+    "7B|RUE|VIALA": {
+      "type": "mono"
+    },
+    "8|AVENUE|ESQUIROL": {
+      "type": "mono"
+    },
+    "8|BOULEVARD|PINEL": {
+      "type": "mono"
+    },
+    "8|RUE|PEUPLIERS": {
+      "type": "mono"
+    },
+    "8|RUE|GERMAIN DAVID": {
+      "type": "mono"
+    },
+    "8|RUE|LOUIS": {
+      "type": "mono"
+    },
+    "8B|RUE|CLAUDE FARRERE": {
+      "type": "mono"
+    },
+    "8B|RUE|ROUX SOIGNAT": {
+      "type": "copro_non_immat"
+    },
+    "9|BOULEVARD|PINEL": {
+      "type": "mono"
+    },
+    "9|IMPASSE|BELLOEUF": {
+      "type": "mono"
+    },
+    "9|RUE|DOMREMY": {
+      "type": "copro_non_immat"
+    },
+    "9|RUE|GENERAL BRULARD": {
+      "type": "mono"
+    },
+    "9|RUE|FIOL": {
+      "type": "mono"
+    },
+    "9|RUE|GUY": {
+      "type": "mono"
+    },
+    "9|RUE|JEAN CARDONA": {
+      "type": "copro_non_immat"
+    },
+    "90|COURS|DOCTEUR LONG": {
+      "type": "mono"
+    },
+    "9001|IMPASSE|LAURENCY": {
+      "type": "mono"
+    },
+    "9001|PLACE|CHATEAU": {
+      "type": "copro_non_immat"
+    },
+    "91B|RUE|BALME": {
+      "type": "mono"
+    },
+    "94|COURS|RICHARD VITTON": {
+      "type": "mono"
+    },
+    "94|RUE|FERDINAND BUISSON": {
+      "type": "mono"
+    },
+    "94B|COURS|RICHARD VITTON": {
+      "type": "copro_non_immat"
+    },
+    "96|COURS|RICHARD VITTON": {
+      "type": "mono"
+    },
+    "96|RUE|FERDINAND BUISSON": {
+      "type": "copro_non_immat"
+    },
+    "98|RUE|FERDINAND BUISSON": {
+      "type": "mono"
+    },
+    "99|RUE|DAUPHINE": {
+      "type": "mono"
+    },
+    "9B|RUE|CLAUDIUS PENET": {
+      "type": "mono"
     }
   },
   "fusions": {},
