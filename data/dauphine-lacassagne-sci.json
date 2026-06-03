@@ -1,6 +1,6 @@
 {
   "millesime": 2025,
-  "derniere_maj": "2026-06-03T23:06:21.193785",
+  "derniere_maj": "2026-06-03T23:15:09.402564",
   "sci": [
     {
       "zone": "Dauphiné-Lacassagne",
@@ -47606,7 +47606,7 @@
       "sci_nom": "SC AB D AUVERGNE",
       "sci_siren": "477842330",
       "nb_biens_total": 7,
-      "code_droit": "P",
+      "code_droit": "N",
       "millesime": 2025,
       "sci_active": "oui",
       "siege_social": "",
@@ -51416,7 +51416,7 @@
       "sci_nom": "SC FAMILIALE MAURER",
       "sci_siren": "U21893667",
       "nb_biens_total": 1,
-      "code_droit": "P",
+      "code_droit": "N",
       "millesime": 2025,
       "sci_active": "oui",
       "siege_social": "",
@@ -54431,7 +54431,7 @@
       "sci_nom": "SCI SARA",
       "sci_siren": "814132171",
       "nb_biens_total": 4,
-      "code_droit": "P",
+      "code_droit": "N",
       "millesime": 2025,
       "sci_active": "oui",
       "siege_social": "",
