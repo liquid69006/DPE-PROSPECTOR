@@ -730,6 +730,7 @@ td{padding:11px 14px;vertical-align:middle;}
         <option value="10">10+ biens</option>
       </select>
       <button class="btn-reset" id="btn-filtre-etranger" data-on="0" onclick="toggleFiltreEtranger()">🌍 SCI à l'étranger</button>
+      <button class="btn-reset" id="btn-filtre-lot" data-on="0" onclick="toggleFiltreLot()">🟣 Lot Robin</button>
       <button class="btn-reset" onclick="resetFiltresSci()">✕ Réinitialiser</button>
       <button class="btn-reset" id="btn-courrier" onclick="ouvrirModalCourrier()" style="border-color:#BEAF87;color:#BEAF87;">📨 Courrier</button>
       <span class="count-badge" id="sci-count-badge"></span>
@@ -1305,7 +1306,7 @@ const GITHUB_RAW = 'https://raw.githubusercontent.com/liquid69006/dpe-prospector
 // JSON cote navigateur (sans cache-buster, les fetch dataset utilisent
 // le cache HTTP du raw.githubusercontent.com). Bump manuel pour
 // l'instant ; pourrait etre injecte par GitHub Actions a terme.
-const CACHE_VERSION = 'v20260602-bureaux-zero';
+const CACHE_VERSION = 'v20260603-lot-robin';
 
 const COULEURS_DPE = {A:'#009F6B',B:'#51B748',C:'#CADD43',D:'#F5E800',E:'#F0A800',F:'#E4581B',G:'#D7221F'};
 const TEXTE_DPE   = {C:'#111',D:'#111'};
@@ -6319,8 +6320,9 @@ function renderRowSci(sci) {
     data-conseiller="${conseil}"
     data-sci-nom="${(sci.sci_nom||'').replace(/"/g,'&quot;')}"
     data-biens="${sci.nb_biens_total||1}"
+    data-lot="${sci.lot === 'robin' ? '1' : '0'}"
     data-search="${adresseNorm} ${sciNomNorm} ${dirigeants}">
-    <td><span class="badge-zone">${zone||'—'}</span></td>
+    <td><span class="badge-zone">${zone||'—'}</span> ${badgeLot(sci)}</td>
     <td class="td-sci-nom">
       <strong>${sci.adresse_bien
         ? '<a href="https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(sci.adresse_bien) + '" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:2px;cursor:pointer;">📍 ' + sci.adresse_bien + '</a>'
@@ -6352,6 +6354,11 @@ function badgeBiens(n) {
   if (nb >= 5)  return `<span style="background:#ea580c;color:#fff;padding:2px 8px;border-radius:10px;font-size:12px;font-weight:700;">${nb}</span>`;
   if (nb >= 2)  return `<span style="background:#d97706;color:#fff;padding:2px 8px;border-radius:10px;font-size:12px;font-weight:700;">${nb}</span>`;
   return `<span style="background:var(--surface2);color:var(--text2);padding:2px 8px;border-radius:10px;font-size:12px;font-weight:600;">1</span>`;
+}
+
+function badgeLot(sci) {
+  if (!sci || sci.lot !== 'robin') return '';
+  return `<span style="background:#7c3aed;color:#fff;padding:2px 7px;border-radius:10px;font-size:10px;font-weight:700;" title="Lot prospection ${sci.type_pm||''}">🟣 Robin</span>`;
 }
 
 function updateSciAssignment(id, key, value) {
@@ -6393,6 +6400,8 @@ function applyFiltresSci() {
       const sg  = sci && sci.siege_social;
       if (!sg || sg.includes('[NON-DIFFUSIBLE]') || parseSiegeSocial(sg).cp !== '') ok = false;
     }
+    const btnLot = document.getElementById('btn-filtre-lot');
+    if (btnLot && btnLot.dataset.on === '1' && row.dataset.lot !== '1') ok = false;
 
     row.style.display = ok ? '' : 'none';
     if (ok) visible++;
@@ -6418,11 +6427,28 @@ function toggleFiltreEtranger() {
   applyFiltresSci();
 }
 
+// Bascule « Lot Robin » : filtre lot prospection PM, par-dessus les filtres existants.
+function setBtnLotVisuel(b, on) {
+  b.dataset.on = on ? '1' : '0';
+  b.style.background  = on ? 'var(--accent)' : '';
+  b.style.color       = on ? '#fff'          : '';
+  b.style.borderColor = on ? 'var(--accent)' : '';
+}
+
+function toggleFiltreLot() {
+  const b = document.getElementById('btn-filtre-lot');
+  if (!b) return;
+  setBtnLotVisuel(b, b.dataset.on !== '1');
+  applyFiltresSci();
+}
+
 function resetFiltresSci() {
   ['sci-search','sci-filter-zone','sci-filter-actif','sci-filter-statut','sci-filter-conseiller','sci-filter-biens']
     .forEach(id => { const el = document.getElementById(id); if(el) el.value = ''; });
   const btnEtr = document.getElementById('btn-filtre-etranger');
   if (btnEtr) setBtnEtrangerVisuel(btnEtr, false);
+  const btnLot = document.getElementById('btn-filtre-lot');
+  if (btnLot) setBtnLotVisuel(btnLot, false);
   applyFiltresSci();
 }
 
