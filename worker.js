@@ -495,7 +495,17 @@ async function handleRequest(request, env) {
       const allowed   = new Set([payload.agence]);
       if (Array.isArray(payload.agences))            payload.agences.forEach(a => allowed.add(a));
       if (composite && Array.isArray(composite.dpe_agences)) composite.dpe_agences.forEach(a => allowed.add(a));
-      if (agenceId && !allowed.has(agenceId)) return [null, err("Accès refusé", 403)];
+      // Autorise : l'agence EXACTE, OU une zone "{agence}-<zone>" d'une agence
+      // deja autorisee (ex. dauphine-lacassagne-montchat). Match par PREFIXE
+      // strict "{agence}-" -- PAS de split sur tiret (dauphine-lacassagne en
+      // contient deja un). Borne par la regex de route [a-z0-9-]+ (aucun
+      // slash/traversal possible). N'ouvre QUE les sous-zones d'agences que le
+      // JWT possede deja -> aucune elevation cross-agence (aucune agence reelle
+      // n'est de la forme {autreAgence}-...).
+      const okAcces = !agenceId
+        || allowed.has(agenceId)
+        || [...allowed].some(a => agenceId.startsWith(a + "-"));
+      if (!okAcces) return [null, err("Accès refusé", 403)];
       return [payload, null];
     }
 
