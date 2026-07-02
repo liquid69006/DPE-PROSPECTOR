@@ -1,6 +1,70 @@
 {
   "dpe": [
     {
+      "numero_dpe": "2614E1718157S",
+      "date_reception_dpe": "2026-06-25",
+      "adresse_ban": "133 Rue des Bains 14510 Houlgate",
+      "code_postal_ban": "14510",
+      "nom_commune_ban": "Houlgate",
+      "etiquette_dpe": "C",
+      "type_batiment": "appartement",
+      "surface_habitable_logement": 33.2,
+      "surface_habitable_immeuble": null,
+      "numero_dpe_remplace": null,
+      "zone": "14510",
+      "etage_str": "—",
+      "digicode_str": "—",
+      "geopoint": "49.29935696121569,-0.08414599220477785"
+    },
+    {
+      "numero_dpe": "2614E1712441W",
+      "date_reception_dpe": "2026-06-25",
+      "adresse_ban": "5 Impasse de l'Espérance 14510 Houlgate",
+      "code_postal_ban": "14510",
+      "nom_commune_ban": "Houlgate",
+      "etiquette_dpe": "F",
+      "type_batiment": "maison",
+      "surface_habitable_logement": 142.5,
+      "surface_habitable_immeuble": null,
+      "numero_dpe_remplace": null,
+      "zone": "14510",
+      "etage_str": "—",
+      "digicode_str": "—",
+      "geopoint": "49.29380296599504,-0.07573603628171083"
+    },
+    {
+      "numero_dpe": "2614E1699125S",
+      "date_reception_dpe": "2026-06-24",
+      "adresse_ban": "1 Chemin la Petite Forêt 14430 Saint-Jouin",
+      "code_postal_ban": "14430",
+      "nom_commune_ban": "Saint-Jouin",
+      "etiquette_dpe": "F",
+      "type_batiment": "maison",
+      "surface_habitable_logement": 89.7,
+      "surface_habitable_immeuble": null,
+      "numero_dpe_remplace": null,
+      "zone": "14430",
+      "etage_str": "—",
+      "digicode_str": "—",
+      "geopoint": "49.222077037724446,-0.025704938582576532"
+    },
+    {
+      "numero_dpe": "2614E1695665Q",
+      "date_reception_dpe": "2026-06-23",
+      "adresse_ban": "24 Avenue Foucher de Careil 14510 Houlgate",
+      "code_postal_ban": "14510",
+      "nom_commune_ban": "Houlgate",
+      "etiquette_dpe": "G",
+      "type_batiment": "maison",
+      "surface_habitable_logement": 112.5,
+      "surface_habitable_immeuble": null,
+      "numero_dpe_remplace": null,
+      "zone": "14510",
+      "etage_str": "—",
+      "digicode_str": "—",
+      "geopoint": "49.29652095967617,-0.08454504825120215"
+    },
+    {
       "numero_dpe": "2614E1678398N",
       "date_reception_dpe": "2026-06-22",
       "adresse_ban": "92 Avenue du Commandant Charcot 14160 Dives-sur-Mer",
@@ -1857,5 +1921,5 @@
       "geopoint": "49.29440699547725,-0.06379300982663366"
     }
   ],
-  "derniere_maj": "2026-07-01T07:12:22.567935"
+  "derniere_maj": "2026-07-02T06:41:42.256110"
 }
