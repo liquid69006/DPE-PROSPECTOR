@@ -1,6 +1,22 @@
 {
   "dpe": [
     {
+      "numero_dpe": "2614E1952520R",
+      "date_reception_dpe": "2026-07-22",
+      "adresse_ban": "477 Avenue des Gabions 14640 Villers-sur-Mer",
+      "code_postal_ban": "14640",
+      "nom_commune_ban": "Villers-sur-Mer",
+      "etiquette_dpe": "D",
+      "type_batiment": "maison",
+      "surface_habitable_logement": 28.7,
+      "surface_habitable_immeuble": null,
+      "numero_dpe_remplace": null,
+      "zone": "14640",
+      "etage_str": "2e",
+      "digicode_str": "—",
+      "geopoint": "49.32398301203303,0.010238000849137513"
+    },
+    {
       "numero_dpe": "2614E1925157G",
       "date_reception_dpe": "2026-07-18",
       "adresse_ban": "91 Avenue Michel d'Ornano 14910 Blonville-sur-Mer",
@@ -2465,5 +2481,5 @@
       "geopoint": "49.2939229728362,0.010963993789012359"
     }
   ],
-  "derniere_maj": "2026-07-29T05:52:12.404832"
+  "derniere_maj": "2026-07-30T05:41:06.800887"
 }

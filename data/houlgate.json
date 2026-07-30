@@ -1,6 +1,54 @@
 {
   "dpe": [
     {
+      "numero_dpe": "2614E1979519C",
+      "date_reception_dpe": "2026-07-24",
+      "adresse_ban": "Esplanade Woolsery 14430 Beuvron-en-Auge",
+      "code_postal_ban": "14430",
+      "nom_commune_ban": "Beuvron-en-Auge",
+      "etiquette_dpe": "D",
+      "type_batiment": "appartement",
+      "surface_habitable_logement": 68.9,
+      "surface_habitable_immeuble": null,
+      "numero_dpe_remplace": null,
+      "zone": "14430",
+      "etage_str": "—",
+      "digicode_str": "—",
+      "geopoint": "49.187704989226155,-0.0470250451439994"
+    },
+    {
+      "numero_dpe": "2614E1968368F",
+      "date_reception_dpe": "2026-07-23",
+      "adresse_ban": "123 Grande Rue 14430 Dozulé",
+      "code_postal_ban": "14430",
+      "nom_commune_ban": "Dozulé",
+      "etiquette_dpe": "E",
+      "type_batiment": "maison",
+      "surface_habitable_logement": 88.1,
+      "surface_habitable_immeuble": null,
+      "numero_dpe_remplace": null,
+      "zone": "14430",
+      "etage_str": "—",
+      "digicode_str": "—",
+      "geopoint": "49.23102200263045,-0.045952021245163836"
+    },
+    {
+      "numero_dpe": "2614E1965344X",
+      "date_reception_dpe": "2026-07-23",
+      "adresse_ban": "71 Chemin de l'Église 14430 Hotot-en-Auge",
+      "code_postal_ban": "14430",
+      "nom_commune_ban": "Hotot-en-Auge",
+      "etiquette_dpe": "D",
+      "type_batiment": "maison",
+      "surface_habitable_logement": 115.4,
+      "surface_habitable_immeuble": null,
+      "numero_dpe_remplace": null,
+      "zone": "14430",
+      "etage_str": "—",
+      "digicode_str": "—",
+      "geopoint": "49.16585301203882,-0.05631905041346047"
+    },
+    {
       "numero_dpe": "2614E1928848F",
       "date_reception_dpe": "2026-07-20",
       "adresse_ban": "4 Rue des Bains 14510 Houlgate",
@@ -2545,5 +2593,5 @@
       "geopoint": "49.29440699547725,-0.06379300982663366"
     }
   ],
-  "derniere_maj": "2026-07-29T05:52:09.761455"
+  "derniere_maj": "2026-07-30T05:41:04.750080"
 }
