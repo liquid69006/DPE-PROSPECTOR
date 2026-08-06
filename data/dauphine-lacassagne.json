@@ -1,6 +1,70 @@
 {
   "dpe": [
     {
+      "numero_dpe": "2669E2024185D",
+      "date_reception_dpe": "2026-07-29",
+      "adresse_ban": "22 Rue Saint Antoine 69003 Lyon",
+      "code_postal_ban": "69003",
+      "nom_commune_ban": "Lyon",
+      "etiquette_dpe": "C",
+      "type_batiment": "appartement",
+      "surface_habitable_logement": 69.9,
+      "surface_habitable_immeuble": 380,
+      "numero_dpe_remplace": null,
+      "zone": "Dauphine-Lacassagne",
+      "etage_str": "2e",
+      "digicode_str": "—",
+      "geopoint": "45.76277296998721,4.864993048484655"
+    },
+    {
+      "numero_dpe": "2669E2022675B",
+      "date_reception_dpe": "2026-07-29",
+      "adresse_ban": "171 Avenue Lacassagne 69003 Lyon",
+      "code_postal_ban": "69003",
+      "nom_commune_ban": "Lyon",
+      "etiquette_dpe": "G",
+      "type_batiment": "appartement",
+      "surface_habitable_logement": 19.3,
+      "surface_habitable_immeuble": null,
+      "numero_dpe_remplace": null,
+      "zone": "Montchat",
+      "etage_str": "—",
+      "digicode_str": "—",
+      "geopoint": "45.747608981080894,4.88219694487498"
+    },
+    {
+      "numero_dpe": "2669E2010893X",
+      "date_reception_dpe": "2026-07-28",
+      "adresse_ban": "63 Rue de la Villette 69003 Lyon",
+      "code_postal_ban": "69003",
+      "nom_commune_ban": "Lyon",
+      "etiquette_dpe": "D",
+      "type_batiment": "appartement",
+      "surface_habitable_logement": 99,
+      "surface_habitable_immeuble": null,
+      "numero_dpe_remplace": null,
+      "zone": "Dauphine-Lacassagne",
+      "etage_str": "7e",
+      "digicode_str": "—",
+      "geopoint": "45.75944099929239,4.862029984840858"
+    },
+    {
+      "numero_dpe": "2669E2009527J",
+      "date_reception_dpe": "2026-07-28",
+      "adresse_ban": "38 Rue Constant 69003 Lyon",
+      "code_postal_ban": "69003",
+      "nom_commune_ban": "Lyon",
+      "etiquette_dpe": "E",
+      "type_batiment": "appartement",
+      "surface_habitable_logement": 21.3,
+      "surface_habitable_immeuble": 2521,
+      "numero_dpe_remplace": null,
+      "zone": "Montchat",
+      "etage_str": "3e",
+      "digicode_str": "—",
+      "geopoint": "45.7460239763201,4.888567943132941"
+    },
+    {
       "numero_dpe": "2669E2001356C",
       "date_reception_dpe": "2026-07-27",
       "adresse_ban": "42 Rue de la Cité 69003 Lyon",
@@ -17521,5 +17585,5 @@
       "geopoint": "45.74975699975597,4.886739957798308"
     }
   ],
-  "derniere_maj": "2026-08-05T05:45:26.585449"
+  "derniere_maj": "2026-08-06T05:47:56.210120"
 }

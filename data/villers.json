@@ -1,6 +1,54 @@
 {
   "dpe": [
     {
+      "numero_dpe": "2614E2050935W",
+      "date_reception_dpe": "2026-07-31",
+      "adresse_ban": "417 Route de Dives 14640 Villers-sur-Mer",
+      "code_postal_ban": "14640",
+      "nom_commune_ban": "Villers-sur-Mer",
+      "etiquette_dpe": "D",
+      "type_batiment": "appartement",
+      "surface_habitable_logement": 22.3,
+      "surface_habitable_immeuble": null,
+      "numero_dpe_remplace": null,
+      "zone": "14640",
+      "etage_str": "4e",
+      "digicode_str": "—",
+      "geopoint": "49.31584397427347,-0.009461031690592758"
+    },
+    {
+      "numero_dpe": "2614E2013693M",
+      "date_reception_dpe": "2026-07-29",
+      "adresse_ban": "Route de Dives 14640 Villers-sur-Mer",
+      "code_postal_ban": "14640",
+      "nom_commune_ban": "Villers-sur-Mer",
+      "etiquette_dpe": "C",
+      "type_batiment": "appartement",
+      "surface_habitable_logement": 64.3,
+      "surface_habitable_immeuble": null,
+      "numero_dpe_remplace": null,
+      "zone": "14640",
+      "etage_str": "1e",
+      "digicode_str": "—",
+      "geopoint": "49.31396597190408,-0.01183303789822509"
+    },
+    {
+      "numero_dpe": "2614E2002440R",
+      "date_reception_dpe": "2026-07-27",
+      "adresse_ban": "Rue des Martrois 14640 Villers-sur-Mer",
+      "code_postal_ban": "14640",
+      "nom_commune_ban": "Villers-sur-Mer",
+      "etiquette_dpe": "C",
+      "type_batiment": "appartement",
+      "surface_habitable_logement": 31,
+      "surface_habitable_immeuble": null,
+      "numero_dpe_remplace": null,
+      "zone": "14640",
+      "etage_str": "3e",
+      "digicode_str": "—",
+      "geopoint": "49.32788200997481,0.009572014680344623"
+    },
+    {
       "numero_dpe": "2614E1952520R",
       "date_reception_dpe": "2026-07-22",
       "adresse_ban": "477 Avenue des Gabions 14640 Villers-sur-Mer",
@@ -2481,5 +2529,5 @@
       "geopoint": "49.2939229728362,0.010963993789012359"
     }
   ],
-  "derniere_maj": "2026-08-05T05:45:42.939175"
+  "derniere_maj": "2026-08-06T05:48:14.257734"
 }

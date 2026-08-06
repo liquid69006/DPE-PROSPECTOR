@@ -1,6 +1,38 @@
 {
   "dpe": [
     {
+      "numero_dpe": "2614E2025359E",
+      "date_reception_dpe": "2026-07-29",
+      "adresse_ban": "Résidence Les Ducs de Normandie 14510 Houlgate",
+      "code_postal_ban": "14510",
+      "nom_commune_ban": "Houlgate",
+      "etiquette_dpe": "E",
+      "type_batiment": "appartement",
+      "surface_habitable_logement": 29.1,
+      "surface_habitable_immeuble": null,
+      "numero_dpe_remplace": null,
+      "zone": "14510",
+      "etage_str": "4e",
+      "digicode_str": "—",
+      "geopoint": "49.298770038152625,-0.06513197151844835"
+    },
+    {
+      "numero_dpe": "2614E2002459K",
+      "date_reception_dpe": "2026-07-28",
+      "adresse_ban": "1205 Chemin de l'Église 14430 Cricqueville-en-Auge",
+      "code_postal_ban": "14430",
+      "nom_commune_ban": "Cricqueville-en-Auge",
+      "etiquette_dpe": "F",
+      "type_batiment": "maison",
+      "surface_habitable_logement": 93.5,
+      "surface_habitable_immeuble": null,
+      "numero_dpe_remplace": null,
+      "zone": "14430",
+      "etage_str": "—",
+      "digicode_str": "—",
+      "geopoint": "49.23515203643482,-0.06208404481722858"
+    },
+    {
       "numero_dpe": "2614E1979519C",
       "date_reception_dpe": "2026-07-24",
       "adresse_ban": "Esplanade Woolsery 14430 Beuvron-en-Auge",
@@ -2593,5 +2625,5 @@
       "geopoint": "49.29440699547725,-0.06379300982663366"
     }
   ],
-  "derniere_maj": "2026-08-05T05:45:41.311764"
+  "derniere_maj": "2026-08-06T05:48:12.899108"
 }
