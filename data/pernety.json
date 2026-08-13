@@ -1,6 +1,22 @@
 {
   "dpe": [
     {
+      "numero_dpe": "2675E2069039N",
+      "date_reception_dpe": "2026-08-04",
+      "adresse_ban": "98 Rue Raymond Losserand 75014 Paris",
+      "code_postal_ban": "75014",
+      "nom_commune_ban": "Paris",
+      "etiquette_dpe": "F",
+      "type_batiment": "immeuble",
+      "surface_habitable_logement": null,
+      "surface_habitable_immeuble": 562,
+      "numero_dpe_remplace": null,
+      "zone": "Pernety",
+      "etage_str": "—",
+      "digicode_str": "—",
+      "geopoint": "48.8328159982449,2.3158799902209792"
+    },
+    {
       "numero_dpe": "2675E2063159J",
       "date_reception_dpe": "2026-08-03",
       "adresse_ban": "14 Rue Léonidas 75014 Paris",
@@ -25217,5 +25233,5 @@
       "geopoint": "48.83250700035742,2.3184209324166263"
     }
   ],
-  "derniere_maj": "2026-08-12T04:46:14.015584"
+  "derniere_maj": "2026-08-13T04:49:50.819610"
 }

@@ -1,6 +1,22 @@
 {
   "dpe": [
     {
+      "numero_dpe": "2675E2077165B",
+      "date_reception_dpe": "2026-08-05",
+      "adresse_ban": "71 Rue du Commerce 75015 Paris",
+      "code_postal_ban": "75015",
+      "nom_commune_ban": "Paris",
+      "etiquette_dpe": "F",
+      "type_batiment": "immeuble",
+      "surface_habitable_logement": null,
+      "surface_habitable_immeuble": 1023,
+      "numero_dpe_remplace": null,
+      "zone": "La Motte Picquet",
+      "etage_str": "—",
+      "digicode_str": "—",
+      "geopoint": "48.845243021044595,2.294463065447109"
+    },
+    {
       "numero_dpe": "2675E2058977N",
       "date_reception_dpe": "2026-08-02",
       "adresse_ban": "17 Rue Frémicourt 75015 Paris",
@@ -8657,5 +8673,5 @@
       "geopoint": "48.8492660127338,2.2946079677011304"
     }
   ],
-  "derniere_maj": "2026-08-12T04:46:08.855676"
+  "derniere_maj": "2026-08-13T04:49:45.295222"
 }
