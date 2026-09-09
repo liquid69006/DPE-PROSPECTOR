@@ -241,6 +241,21 @@ td{padding:11px 14px;vertical-align:middle;}
   font-family:inherit;cursor:pointer;white-space:nowrap;transition:background .2s;
 }
 .btn-add:hover{background:#22c55e;}
+/* Fix débordement liste longue : seule la liste scrolle, header + ajout + actions restent visibles.
+   Scopé #modal-conseillers pour ne pas impacter les 5 autres modales partageant .modal. */
+#modal-conseillers .modal{
+  max-height:85vh;          /* fallback navigateurs < Chrome/Edge 108 */
+  max-height:85dvh;
+  display:flex;flex-direction:column;overflow:hidden;
+}
+#modal-conseillers h2,
+#modal-conseillers .sub{flex:0 0 auto;}
+#modal-conseillers .conseiller-list{
+  flex:1 1 auto;overflow-y:auto;overscroll-behavior:contain;min-height:0;
+}
+#modal-conseillers .add-conseiller-row,
+#modal-conseillers .modal-error,
+#modal-conseillers .modal-actions{flex:0 0 auto;}
 
 /* ── TOAST ── */
 .toast{
