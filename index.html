@@ -748,6 +748,7 @@ td{padding:11px 14px;vertical-align:middle;}
       <button class="btn-reset" id="btn-filtre-lot" data-on="0" onclick="toggleFiltreLot()">🟣 Lot Robin</button>
       <button class="btn-reset" onclick="resetFiltresSci()">✕ Réinitialiser</button>
       <button class="btn-reset" id="btn-courrier" onclick="ouvrirModalCourrier()" style="border-color:#BEAF87;color:#BEAF87;">📨 Courrier</button>
+      <button class="btn-reset" id="btn-export-csv" onclick="ouvrirModalExport()" style="border-color:#BEAF87;color:#BEAF87;">📤 Export CSV</button>
       <span class="count-badge" id="sci-count-badge"></span>
     </div>
   </div>
@@ -1220,6 +1221,57 @@ td{padding:11px 14px;vertical-align:middle;}
       <button class="btn-reset" onclick="fermerModalCourrier()">Annuler</button>
       <button class="btn-primary" id="btn-generer-courrier" onclick="genererCourrier()" disabled>
         📄 Générer le .docx
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     MODAL — EXPORT CSV
+════════════════════════════════════════ -->
+<div class="modal-overlay" id="modal-export">
+  <div class="modal" style="max-width:560px;">
+    <h2>📤 Export CSV</h2>
+
+    <div style="margin:16px 0;">
+      <p style="font-size:13px;color:var(--text2);margin-bottom:12px;">Sélectionnez les SCI à exporter :</p>
+
+      <label style="display:grid;grid-template-columns:20px 1fr;align-items:center;gap:8px;margin-bottom:10px;cursor:pointer;">
+        <input type="checkbox" id="export-exclure-inactives" checked>
+        <span>Exclure les SCI inactives</span>
+      </label>
+      <label style="display:grid;grid-template-columns:20px 1fr;align-items:center;gap:8px;margin-bottom:10px;cursor:pointer;">
+        <input type="checkbox" id="export-exclure-liquidateur" checked>
+        <span>Exclure les SCI avec liquidateur</span>
+      </label>
+      <label style="display:grid;grid-template-columns:20px 1fr;align-items:center;gap:8px;margin-bottom:10px;cursor:pointer;">
+        <input type="checkbox" id="export-exclure-client" checked>
+        <span>Exclure les SCI "Déjà client"</span>
+      </label>
+      <label style="display:grid;grid-template-columns:20px 1fr;align-items:center;gap:8px;margin-bottom:10px;cursor:pointer;">
+        <input type="checkbox" id="export-exclure-npc" checked>
+        <span>Exclure les SCI "Ne plus contacter"</span>
+      </label>
+      <label style="display:grid;grid-template-columns:20px 1fr;align-items:center;gap:8px;margin-bottom:10px;cursor:pointer;">
+        <input type="checkbox" id="export-exclure-sans-siege" checked>
+        <span>Exclure les SCI sans siège social</span>
+      </label>
+      <label style="display:grid;grid-template-columns:20px 1fr;align-items:center;gap:8px;margin-bottom:10px;cursor:pointer;">
+        <input type="checkbox" id="export-exclure-etranger" checked>
+        <span>Exclure les SCI à l'étranger</span>
+      </label>
+      <label style="display:grid;grid-template-columns:20px 1fr;align-items:center;gap:8px;margin-bottom:10px;cursor:pointer;">
+        <input type="checkbox" id="export-seulement-visibles">
+        <span>Uniquement les SCI actuellement affichées (filtrées)</span>
+      </label>
+    </div>
+
+    <div id="export-sci-count" style="font-size:13px;font-weight:600;color:var(--accent);margin-bottom:16px;"></div>
+
+    <div style="display:flex;gap:10px;justify-content:flex-end;">
+      <button class="btn-reset" onclick="fermerModalExport()">Annuler</button>
+      <button class="btn-primary" id="btn-generer-export" onclick="exporterCsvSci()">
+        📥 Générer les CSV
       </button>
     </div>
   </div>
@@ -6530,11 +6582,13 @@ function showToast(msg, warn=false) {
 // ════════════════════════════════════════
 var courrierTemplateBuffer = null; // ArrayBuffer du .docx uploadé
 
-function parseSiegeSocial(siege) {
+function parseSiegeSocial(siege, opts = { truncate: true }) {
+  // truncate:false -> aucune troncature (export CSV). Defaut inchange : 60 / 30.
+  const truncate = !(opts && opts.truncate === false);
   if (!siege) return { adresse: '', cp: '', ville: '' };
   // Trouver tous les codes postaux français (01000-99999) dans la chaîne
   const allCPs = [...siege.matchAll(/\b(?:(?:0[1-9]|[1-8]\d|9[0-5])\d{3}|97[1-6]\d{2})\b/g)];
-  if (!allCPs.length) return { adresse: siege.slice(0, 60), cp: '', ville: '' };
+  if (!allCPs.length) return { adresse: truncate ? siege.slice(0, 60) : siege, cp: '', ville: '' };
   // Prendre le dernier CP trouvé (cas d'adresses multiples collées)
   const lastCP = allCPs[allCPs.length - 1];
   const cp = lastCP[0];
@@ -6544,7 +6598,11 @@ function parseSiegeSocial(siege) {
   // Ville = ce qui suit le CP jusqu'à la prochaine série de chiffres ou fin
   const afterCP = siege.slice(idxCP + cp.length).trim();
   const ville = afterCP.replace(/\s+\d.*$/, '').trim();
-  return { adresse: adresse.slice(0, 60), cp, ville: ville.slice(0, 30) };
+  return {
+    adresse: truncate ? adresse.slice(0, 60) : adresse,
+    cp,
+    ville:   truncate ? ville.slice(0, 30)   : ville,
+  };
 }
 
 function getPremierGerant(gerants) {
@@ -6561,14 +6619,16 @@ function aLiquidateur(gerants) {
   return gerants.some(g => g.qualite && g.qualite.toLowerCase().includes('liquidateur'));
 }
 
-function filtrerSciPourCourrier() {
-  const exclInactives     = document.getElementById('courrier-exclure-inactives').checked;
-  const exclLiquidateur   = document.getElementById('courrier-exclure-liquidateur').checked;
-  const exclEtranger      = document.getElementById('courrier-exclure-etranger').checked;
-  const exclClient        = document.getElementById('courrier-exclure-client').checked;
-  const exclNpc           = document.getElementById('courrier-exclure-npc').checked;
-  const exclSansSiege     = document.getElementById('courrier-exclure-sans-siege').checked;
-  const seulementVisibles = document.getElementById('courrier-seulement-visibles').checked;
+// prefix = 'courrier' (modale Courrier) ou 'export' (modale Export CSV).
+// Les deux modales exposent les 7 memes cases, seuls les ids different.
+function filtrerSciPourCourrier(prefix = 'courrier') {
+  const exclInactives     = document.getElementById(prefix + '-exclure-inactives').checked;
+  const exclLiquidateur   = document.getElementById(prefix + '-exclure-liquidateur').checked;
+  const exclEtranger      = document.getElementById(prefix + '-exclure-etranger').checked;
+  const exclClient        = document.getElementById(prefix + '-exclure-client').checked;
+  const exclNpc           = document.getElementById(prefix + '-exclure-npc').checked;
+  const exclSansSiege     = document.getElementById(prefix + '-exclure-sans-siege').checked;
+  const seulementVisibles = document.getElementById(prefix + '-seulement-visibles').checked;
   let liste = seulementVisibles
     ? [...document.querySelectorAll('#sci-tbody tr')]
         .filter(tr => tr.style.display !== 'none')
@@ -6648,6 +6708,109 @@ function ouvrirModalCourrier() {
 
 function fermerModalCourrier() {
   document.getElementById('modal-courrier').classList.remove('open');
+}
+
+// ════════════════════════════════════════
+//  EXPORT CSV — MSB + FICHIER DE CONTROLE
+// ════════════════════════════════════════
+
+// Echappement RFC4180 : guillemets si separateur, guillemet double ou saut de ligne.
+function csvEscape(val, sep) {
+  const s = (val === null || val === undefined) ? '' : String(val);
+  return (s.includes(sep) || s.includes('"') || /[\r\n]/.test(s))
+    ? '"' + s.replace(/"/g, '""') + '"'
+    : s;
+}
+
+// Gate d'envoyabilite : on n'exporte que les sieges dont rue + CP + ville sont
+// exploitables. Elimine les '' et les '[NON-DIFFUSIBLE]' meme filtres decoches.
+function calculerExportSci() {
+  const liste    = filtrerSciPourCourrier('export');
+  const retenues = [];
+  let   exclus   = 0;
+  liste.forEach(sci => {
+    const sg      = parseSiegeSocial(sci.siege_social, { truncate: false });
+    const adresse = (sg.adresse || '').trim();
+    const cp      = (sg.cp      || '').trim();
+    const ville   = (sg.ville   || '').trim();
+    if (adresse && cp && ville) retenues.push({ sci, adresse, cp, ville });
+    else exclus++;
+  });
+  return { retenues, exclus };
+}
+
+function majCompteExport() {
+  const { retenues, exclus } = calculerExportSci();
+  document.getElementById('export-sci-count').textContent =
+    `→ ${retenues.length} SCI exportable${retenues.length > 1 ? 's' : ''}` +
+    ` (${exclus} exclue${exclus > 1 ? 's' : ''} : adresse inexploitable)`;
+}
+
+// Meme pattern Blob que telechargerCourriers().
+function telechargerCsv(texte, filename, bom) {
+  const blob = new Blob([(bom ? '\uFEFF' : '') + texte], { type: 'text/csv;charset=utf-8;' });
+  const url  = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href     = url;
+  link.download = filename;
+  link.click();
+  URL.revokeObjectURL(url);
+}
+
+function exporterCsvSci() {
+  const CSV_SEP = ';';      // Excel FR
+  const CSV_BOM = true;     // \uFEFF, indispensable pour les accents
+
+  const { retenues, exclus } = calculerExportSci();
+  if (!retenues.length) { showToast('Aucune SCI exportable', true); return; }
+
+  const sess   = getSession();
+  const agence = (sess && sess.agence) || 'export';
+  const d      = new Date();
+  const stamp  = `${d.getFullYear()}${String(d.getMonth() + 1).padStart(2, '0')}${String(d.getDate()).padStart(2, '0')}`;
+
+  const ligne = vals => vals.map(v => csvEscape(v, CSV_SEP)).join(CSV_SEP);
+
+  // FICHIER A - MSB : exactement 5 colonnes.
+  const msb = [ligne(['nom_societe', 'adresse', 'code_postal', 'ville', 'pays'])];
+  // FICHIER B - miroir de controle interne, NON transmis a MSB.
+  const ctl = [ligne(['ligne', 'reference', 'nom_societe', 'siege_social_brut'])];
+
+  retenues.forEach((r, i) => {
+    msb.push(ligne([r.sci.sci_nom || '', r.adresse, r.cp, r.ville, 'FRANCE']));
+    ctl.push(ligne([i + 1, r.sci.sci_siren || '', r.sci.sci_nom || '', r.sci.siege_social || '']));
+  });
+
+  // Invariante : meme nombre de lignes et meme ordre dans les deux fichiers.
+  if (msb.length !== ctl.length) {
+    console.error('Export CSV : desynchro', msb.length, 'vs', ctl.length);
+    showToast('❌ Export annule : desynchronisation entre les deux fichiers', true);
+    return;
+  }
+
+  telechargerCsv(msb.join('\r\n') + '\r\n', `sci-export-msb-${agence}-${stamp}.csv`, CSV_BOM);
+  // Leger delai : certains navigateurs bloquent deux telechargements simultanes.
+  setTimeout(() => {
+    telechargerCsv(ctl.join('\r\n') + '\r\n', `sci-export-controle-${agence}-${stamp}.csv`, CSV_BOM);
+  }, 400);
+
+  fermerModalExport();
+  showToast(`✅ ${retenues.length} SCI exportees` + (exclus ? ` — ${exclus} exclue${exclus > 1 ? 's' : ''}` : ''));
+}
+
+function ouvrirModalExport() {
+  majCompteExport();
+  ['export-exclure-inactives','export-exclure-liquidateur',
+   'export-exclure-etranger','export-exclure-client','export-exclure-npc',
+   'export-exclure-sans-siege','export-seulement-visibles'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.onchange = majCompteExport;
+  });
+  document.getElementById('modal-export').classList.add('open');
+}
+
+function fermerModalExport() {
+  document.getElementById('modal-export').classList.remove('open');
 }
 
 function ouvrirChoixCourrier() {
@@ -7294,7 +7457,7 @@ function escHtml(str) {
 // ════════════════════════════════════════
 window.addEventListener('DOMContentLoaded', async () => {
   // Fermeture modales au clic en dehors
-  ['modal-conseillers','modal-session-info','modal-password','modal-courrier','modal-choix-courrier','modal-msb'].forEach(id => {
+  ['modal-conseillers','modal-session-info','modal-password','modal-courrier','modal-choix-courrier','modal-msb','modal-export'].forEach(id => {
     const mel = document.getElementById(id);
     if (!mel) return;
     mel.addEventListener('click', e => {
@@ -7305,6 +7468,7 @@ window.addEventListener('DOMContentLoaded', async () => {
         if (id==='modal-courrier')   fermerModalCourrier();
         if (id==='modal-choix-courrier') fermerChoixCourrier();
         if (id==='modal-msb')        fermerMSB();
+        if (id==='modal-export')     fermerModalExport();
       }
     });
   });
