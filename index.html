@@ -6768,16 +6768,21 @@ function exporterCsvSci() {
   const agence = (sess && sess.agence) || 'export';
   const d      = new Date();
   const stamp  = `${d.getFullYear()}${String(d.getMonth() + 1).padStart(2, '0')}${String(d.getDate()).padStart(2, '0')}`;
+  // Colonne 'date' MSB : meme instant que le stamp du nom de fichier, calculee
+  // UNE fois hors de la boucle -> valeur identique sur toutes les lignes, meme
+  // si la generation chevauche minuit. Meme idiome que la variable {{DATE}} du docx.
+  const dateFr = d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' }).toLowerCase();
 
   const ligne = vals => vals.map(v => csvEscape(v, CSV_SEP)).join(CSV_SEP);
 
-  // FICHIER A - MSB : exactement 5 colonnes.
-  const msb = [ligne(['nom_societe', 'adresse', 'code_postal', 'ville', 'pays'])];
+  // FICHIER A - MSB : exactement 6 colonnes ('date' ajoutee en dernier pour la
+  // variable {date} du courrier MSB ; les 5 premieres restent inchangees).
+  const msb = [ligne(['nom_societe', 'adresse', 'code_postal', 'ville', 'pays', 'date'])];
   // FICHIER B - miroir de controle interne, NON transmis a MSB.
   const ctl = [ligne(['ligne', 'reference', 'nom_societe', 'siege_social_brut'])];
 
   retenues.forEach((r, i) => {
-    msb.push(ligne([r.sci.sci_nom || '', r.adresse, r.cp, r.ville, 'FRANCE']));
+    msb.push(ligne([r.sci.sci_nom || '', r.adresse, r.cp, r.ville, 'FRANCE', dateFr]));
     ctl.push(ligne([i + 1, r.sci.sci_siren || '', r.sci.sci_nom || '', r.sci.siege_social || '']));
   });
 
