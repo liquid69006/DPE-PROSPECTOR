@@ -150,6 +150,18 @@ Exemples réels : `feat(msb): route POST /msb-backfill/:agence`, `fix(dl): recla
 
 **Fichiers Secteur par zone.** Une zone = un light `secteur_<zone>_light.json` + side-files suffixés `_<zone>` (ex. `secteur_montchat_light.json`, `_arbitres_montchat.json`). Side-files = **pipeline-only** (pas lus par le front).
 
+### Polygones d'emprise SCI — déviation de pattern assumée (zone « Part-Dieu NR »)
+
+Les emprises des zones SCI sont historiquement **codées en dur** dans le générateur (`ZONES` dans `scripts/majic_sci_2025.py`, lignes ~34-76, format `[lon, lat]`). La zone **Part-Dieu NR** (ajoutée le 2026-10-13) **déroge à ce pattern** : son polygone vit dans un fichier séparé, `data/_perimetre_part_dieu.json`.
+
+**Pourquoi** : ce polygone n'est pas dessiné à la main, il est **dérivé par soustraction** — `contour Lyon 3e (WFS IGN contours_iris, code_insee=69383) − Dauphiné-Lacassagne − Montchat`. Un bloc de coordonnées dérivées en dur serait illisible en diff et dériverait silencieusement à chaque régénération. Décision explicite de Yann.
+
+- Dérivation reproductible : `scripts/_build_perimetre_part_dieu.py` (conservé, dry-run par défaut, 4 contrôles : surface, trous, chevauchement, couverture parcellaire)
+- Les deux polygones soustraits sont lus **dans `majic_sci_2025.py`** — seule géométrie qui fait foi pour le pipeline SCI. ⚠️ **Ne JAMAIS utiliser `C:\Users\Station 5\perimetre_montchat.json`** (dérivé du KML, buffer 40 m, écart −0,4 %, ni inclus ni incluant) : trous et recouvrements garantis.
+- Chevauchement préexistant `DL ∩ Montchat` = **1 524 m²**, laissé tel quel (le corriger déplacerait des fiches existantes). Sans effet : `dans_zone()` retourne le **premier** polygone qui contient le point, et `Dauphiné-Lacassagne` est premier dans le dict.
+- Les fiches Part-Dieu NR portent `siege_verifie` / `siege_statut` / `siege_score` / `siege_lon` / `siege_lat` et **aucun champ `lot`** (la valeur de `zone` suffit à isoler le lot — décision Yann, contrairement au précédent `lot="robin"`).
+- **`data/_part_dieu_nr_candidats.json` est COMMITÉ — exception à la règle `_*.json` = cache jetable.** C'est la **trace d'arbitrage de la contrainte réglementaire inter-agences** : les 1 947 candidats avec, pour chacun, le siège brut, son géocodage (score + coordonnées), le statut retenu et donc la **raison** de son exclusion ou de son maintien. Conservé pour pouvoir justifier ou contester a posteriori une exclusion **sans relancer** les ~1 700 appels à recherche-entreprises (≈ 25 min) — et parce que le lot robin a montré ce qu'on perd quand la trace d'un arbitrage disparaît. Les 3 caches `_cache_*_pd.json` et les 2 CSV d'arbitrage, eux, ne sont **pas** commités (regénérables, `*.csv` est gitignoré).
+
 ### Langue
 Français dominant (UI, commentaires métier, docstrings, commits). Anglais toléré pour les helpers techniques génériques.
 
@@ -186,6 +198,9 @@ Ces points sont **connus**, **acceptés en l'état**, et ne doivent **pas** êtr
 - **`test_render_secteur.js` couvre DL ET Montchat** : exit 0 sur les **deux zones** avant tout commit front.
 - **Vérifier le KV live, pas le mirror local** : le mirror peut décrocher (POST reverté) ; toujours **re-GET le live** avant de conclure. Le rituel anti-drift (cf. `PIPELINE.md` §8.1) reconstruit même après désync.
 - **Auth worker & `secId` zone-suffixé** : `dauphine-lacassagne-montchat` n'est **pas** autorisé par égalité exacte du JWT patron ; `requireAuth` matche aussi **par préfixe** (`allowed.some(a => agenceId.startsWith(a + "-"))`). Toute zone intra-agence en dépend.
+- **`data/secteurs.json` ne connaît PAS la zone « Part-Dieu NR »** — divergence **assumée** (décision Yann, 2026-10-13). Ce fichier contient déjà les 2 autres zones SCI en `[lat, lon]` **inversé** (convention Leaflet, cf. son `_meta.format_note`) et n'est **pas lu** par `majic_sci_2025.py` : y déclarer Part-Dieu ferait une 3ᵉ source de vérité et risquerait que le pipeline Secteur croie devoir traiter cette zone — or elle n'a ni light, ni KML d'îlotage, ni RNC/BDNB/DVF. À traiter séparément **si** Secteur est un jour étendu à Part-Dieu.
+- **Dédup front SCI = `sci_siren || sci_nom`, première occurrence gagnante** (`index.html` ~6269-6276, `Array.filter`). Une SCI n'apparaît qu'une fois, sous sa zone la plus ancienne dans l'ordre du fichier. Mesuré au 2026-10-13 : **498 fiches masquées sur 3 978**, dont 236 Part-Dieu NR (122 SIREN déjà en DL/Montchat + 114 doublons internes multi-parcelles). C'est le comportement **voulu** — ne pas le "réparer". Changer la clé en `sci_siren + parcelle` ferait apparaître ~260 fiches de plus sur les zones existantes.
+- **Faille de quoting CSV dans `majic_sci_2025.py` lignes 139-143** (`geocoder_ban_batch`) : le CSV envoyé à la BAN est construit par `buf.write(a.replace('"', '') + "\n")`, qui retire les guillemets mais **pas les virgules**. Une adresse contenant une virgule produit une ligne à trop de champs → la BAN répond `400 Error in CSV file: TooManyFields` et **tout le lot est rejeté**, y compris après le sous-découpage automatique (qui reconstitue toujours un lot contenant la fautive). **Latente mais réelle** : les adresses de *bien* sont reconstruites depuis MAJIC champ par champ et n'ont jamais de virgule ; seules les adresses de *siège* (texte libre de recherche-entreprises) déclenchent le bug. Rencontré le 2026-10-13 sur le chantier Part-Dieu : 7 adresses à virgule (ex. `LE BRITANNIA, ALLEE C 20 BOULEVARD EUGENE DERUELLE`) faisaient échouer 112 géocodages sur 1 429. Correctif appliqué **uniquement** dans `scripts/_etape23_part_dieu_nr.py` (`csv.writer` + `QUOTE_MINIMAL`) — **`majic_sci_2025.py` n'est PAS corrigé**, cf. §8.
 
 ---
 
@@ -199,6 +214,8 @@ Ces points sont **connus**, **acceptés en l'état**, et ne doivent **pas** êtr
 - Documenter le workflow KV prod ↔ local (dumps `_kv_assign_*.json`)
 - **Cleanup migration KV `dernierCourrier:` → `dernierCourrierMap:`** : les ~1634 anciennes clés sont à supprimer manuellement plus tard (cf. commit 242df88)
 - **Migration `cible_0vente_*` → champ `as.cible` séparé** : aujourd'hui rangé dans `as.type`, alors que c'est un signal commercial orthogonal au type bâti (cf. `PIPELINE.md` §10 + roadmap jalon 5 §11.4)
+- **Corriger le quoting CSV de `majic_sci_2025.py:139-143`** (détail du bug en §7) : remplacer le `buf.write(...)` par un `csv.writer(..., quoting=csv.QUOTE_MINIMAL)`, comme dans `scripts/_etape23_part_dieu_nr.py`. Sans impact aujourd'hui (adresses de bien sans virgule), mais toute réutilisation de `geocoder_ban_batch` sur des adresses en texte libre retombera dessus.
+- **`.github/workflows/sci_prospector.yml:47` est cassé** : il lance `python majic_sci_2025.py` **à la racine**, alors que le script est dans `scripts/` depuis le commit `07c3653`. Le cron `0 3 1 * *` échoue donc depuis mai 2026 (dernier commit bot sur les données SCI : `2e35b57`, 13/05/2026). ⚠️ Attention avant de le réparer : **ce script réécrit tout `data/dauphine-lacassagne-sci.json`** et détruirait le lot robin (650 fiches), la zone Part-Dieu NR (1 411 fiches) et leurs enrichissements — dont les scripts d'origine sont perdus. Tout ajout de zone doit passer par un script **additif** séparé (cf. `scripts/_etape5_ecrire_part_dieu_nr.py`).
 
 ---
 
