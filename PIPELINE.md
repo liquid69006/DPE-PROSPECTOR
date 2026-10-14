@@ -406,3 +406,49 @@ s'appliquent ; cette section ne documente que le **propre à Montchat**.
 - **Résidus terrain (acceptés non-taggés).** 8 (manche F : 5 minoritaires
   < 20 %, 3 mut ≥ 2) + 46 mono-faible + 25 angle `nb_log ≤ 1` (manche D) +
   34 cross-rue/faux-bgid (B2b, `data/diag_b2a_crossrue_montchat.md`).
+
+---
+
+## §13. Exclusion d'export réversible (pattern, 2026-10-14)
+
+Pattern pour retirer des fiches de la **sortie commerciale** (export CSV,
+courrier) sans les retirer des **données** ni de l'outil. Première instance :
+les grands ensembles tertiaires du lot Part-Dieu NR (commit `98e7b4a`).
+
+**Deux couches, elles répondent à deux besoins distincts.**
+
+1. **La liste vit dans les données** — `data/{agence}-sci-exclusions.json`,
+   commité, lu par le front depuis `GITHUB_RAW` comme les `-sci.json`. Elle
+   porte sa propre justification dans `_meta` : objet, critères en français
+   avec leurs seuils, ce qui a été **écarté** et pourquoi, ce qui est hors
+   périmètre, et la commande de régénération. Un `_*.json` aurait signifié
+   « cache jetable » : ce fichier est une **décision**, pas un cache.
+2. **L'activation vit dans l'UI** — une case à cocher par modale, cochée par
+   défaut. C'est elle qui rend la règle réversible **sans code ni déploiement**.
+
+**Choisir la clé avant d'écrire la liste.** Le réflexe (exclure par SIREN) est
+faux ici : la dédup front ne garde qu'une fiche par SIREN, et la gagnante peut
+appartenir à une autre zone. Sur 70 couples jugés, 2 auraient sorti un prospect
+Montchat légitime et 10 une fiche d'une parcelle non jugée. **Clé =
+`siren|parcelle`** : on exclut exactement ce qui a été jugé, rien de plus.
+Généralisation : *vérifier sur quelle granularité le front déduplique avant de
+choisir la clé d'une liste d'exclusion*.
+
+**Liste figée plutôt que règle recalculée** — ici parce que recalculer
+supposerait `locaux_majic_parcelle` dans les fiches, donc de régénérer le
+`-sci.json` via `majic_sci_2025.py`, qui détruirait le lot robin et Part-Dieu
+NR (cf. `CLAUDE.md` §8). Le risque d'une liste figée est de **périmer en
+silence** ; il se traite par `_meta.orphelines_attendues` : le nombre de règles
+sans fiche visible est figé à la génération, et l'UI n'alerte qu'**au-delà**.
+Une alerte permanente est une alerte qu'on apprend à ignorer.
+
+**Portée = le point d'étranglement, pas un chemin.** `filtrerSciPourCourrier()`
+sert l'export CSV, l'aperçu/envoi MSB, la génération docx et les 2 compteurs.
+Filtrer l'export sans le courrier laisserait les plis partir par l'autre porte
+(~1,40 € HT le pli). Chercher la fonction que tous les chemins traversent.
+
+**Non-régression à exiger** : avec la case décochée, la liste doit être
+identique **en nombre et en ordre** à l'état d'avant — pas seulement
+équivalente. Se vérifie en extrayant la vraie fonction d'`index.html` avant et
+après patch et en les exécutant dans un `vm` Node sur les vraies données
+(harness jetable, pas conservé in-repo).

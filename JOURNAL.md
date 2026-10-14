@@ -5,6 +5,76 @@
 
 ---
 
+## 2026-10-14 — Filtre d'exclusion tertiaire Part-Dieu NR + resync du test front
+
+**Contexte.** Reprise après redémarrage machine. Diagnostic read-only : HEAD
+intact à `12471cf`, `dauphine-lacassagne-sci.json` byte-identique au commit
+(3 978 fiches), et les 5 CSV de l'analyse tertiaire interrompue tous présents et
+complets (1 411/1 411 fiches balayées). Rien à relancer, rien à nettoyer.
+
+**Décisions Yann.** On exclut les 49 fiches de `_part_dieu_exclusion_tertiaire.csv`
++ les 21 de `_part_dieu_horsAR_300plus.csv` = **70 couples (siren, parcelle)**.
+**AY0088 non retenue** : grande copropriété d'habitation, ses 29 fiches restent
+prospectables. Foncière DI 01 2004 laissée hors périmètre. Règle : les fiches
+restent dans les données **et** dans l'outil, elles ne sortent que de l'export
+CSV et du courrier, et c'est réversible sans toucher au code.
+
+### Commit `db5f050` — resync `test_render_secteur.js` (+75)
+
+Trouvaille indépendante du chantier : **le test front était rouge depuis mai**,
+avant toute modification. Les 2 commits export CSV MSB (`34f8670`, `df54a71`)
+avaient ajouté exactement +75 lignes au-dessus du bloc Secteur sans recaler les
+plages codées en dur du harness → `SyntaxError: await is only valid in async
+functions`, la plage `renderSecteur` démarrant sur `const r = await lightPromise`.
+Décalage uniforme +75 vérifié ancre par ancre. Après : **exit 0 sur les 2 zones**
+(DL 51 OK / parc 22 381 lgts ; Montchat 44 OK / parc 15 848 lgts).
+
+### Commit `98e7b4a` — le filtre
+
+Architecture retenue (pattern détaillé dans `PIPELINE.md` §13) : **liste figée
+dans les données + case à cocher dans l'UI**. La liste
+(`data/dauphine-lacassagne-sci-exclusions.json`, 70 entrées, `_meta` portant les
+4 critères en français et les arbitrages écartés) répond au « lisible dans six
+mois » ; la case « Exclure les grands ensembles tertiaires », cochée par défaut
+dans les 2 modales, répond au « réactiver sans toucher au code ».
+
+Point d'application unique : `filtrerSciPourCourrier()`, qui sert les 4 chemins
+(export CSV, aperçu/envoi MSB, génération docx, compteurs). Filtrer l'export sans
+le courrier aurait laissé les plis partir par l'autre porte.
+
+**Le piège, et la raison de la clé `siren|parcelle`.** Le réflexe — exclure par
+SIREN — était faux. La dédup front ne garde qu'une fiche par SIREN, et sur les 70
+couples jugés la gagnante est ailleurs 12 fois : **2 fois dans Montchat** (AS2M au
+6 imp Victor Hugo, Foncière DI 01 2004 au 65 av Lacassagne → 2 prospects légitimes
+sortis en silence) et 10 fois sur une parcelle Part-Dieu *non jugée* (ex. 5 SCI de
+AD0032 à 519 locaux, visibles sous AD0017 à 79 locaux). La clé fine exclut
+exactement ce qui a été jugé.
+
+**Résultat.** 70 couples → 58 fiches visibles matchées → **54 réellement retirées**
+(les 4 autres étaient déjà écartées par les cases « inactives » / « sans siège »).
+DL 1 290 → 1 290, Montchat 926 → 926, lot robin 544 → 544.
+
+**Défaut de conception corrigé en cours de dry-run.** La 1re version affichait en
+permanence « ⚠ 12 règles sans fiche » — or ces 12 sont une conséquence normale de
+la dédup. Une alerte permanente est une alerte qu'on apprend à ignorer, et elle
+aurait masqué une vraie dérive. Le seuil attendu est maintenant figé à la
+génération dans `_meta.orphelines_attendues` et l'UI n'alerte qu'au-delà.
+
+**Vérifications.** Harness jetable extrayant la **vraie** `filtrerSciPourCourrier`
+d'`index.html` avant/après patch, exécutée dans un `vm` Node sur les vraies
+données : 19 assertions, 0 FAIL. La plus importante — case décochée, la liste est
+identique **en nombre et en ordre** à l'état d'avant, pas seulement équivalente.
+`test_render_secteur` re-recalé de +8 (les 2 cases à cocher) : exit 0 sur DL et
+Montchat.
+
+**Gotcha outil.** `sed -i` sur un fichier CRLF le convertit en LF : restauré depuis
+le commit et re-patché en Python avec `newline=''`. Pour les fichiers du dépôt
+(tous CRLF), patcher en Python, pas en `sed -i`.
+
+**Non poussé** — en attente du feu vert de Yann.
+
+---
+
 ## 2026-06-03 (soir) — Correctif rotation DVF Montchat (backfill 5 ans + patch ventes-only)
 
 **Bug.** L'extraction DVF Montchat ne couvrait que **2 millésimes sur 5**
