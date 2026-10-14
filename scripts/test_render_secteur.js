@@ -43,12 +43,20 @@ const slice = (a, b) => HTML.slice(a - 1, b).join("\n"); // lignes 1-based inclu
 // a fortement edite index.html (panneau unifie, KML par zone, de-beta) ->
 // renderSecteur deplace en 5394-5982 ; blocs helpers/esc decales (+~527).
 // Plages re-recalees (le toggle Montchat secteurZone a survecu a l'overhaul).
+// RESYNC 2026-10-14 : les 2 commits export CSV MSB (34f8670 "export CSV MSB
+// (5 colonnes) + fichier de controle" puis df54a71 "colonne date") ont ajoute
+// exactement +75 lignes AU-DESSUS du bloc Secteur, sans resync -> le test etait
+// rouge depuis (SyntaxError "await is only valid in async functions" : la plage
+// renderSecteur demarrait sur 'const r = await lightPromise' de loadSecteurData).
+// Decalage uniforme +75 sur les 5 plages, verifie ancre par ancre
+// (ROT_COLOR 2618->2693, esc 5292->5367, secteurNorm 5296->5371,
+//  sctTauxAnnuel 5344->5419, renderSecteur 5394->5469).
 const SRC = [
-  slice(2618, 2631),   // ROT_COLOR + TYPE_OPTS + TYPE_LABELS + TYPE_BADGE_COLORS
-  slice(5292, 5294),   // esc
-  slice(5296, 5300),   // secteurNorm
-  slice(5344, 5392),   // sctTauxAnnuel..sctClassAnnuel + SCTW + DPE_COLOR + sctDpe..normalizeAdresseDisplay
-  slice(5394, 5982),   // renderSecteur (parc / strict / hr-actif / sctQ / marche libre)
+  slice(2693, 2706),   // ROT_COLOR + TYPE_OPTS + TYPE_LABELS + TYPE_BADGE_COLORS
+  slice(5367, 5369),   // esc
+  slice(5371, 5375),   // secteurNorm
+  slice(5419, 5467),   // sctTauxAnnuel..sctClassAnnuel + SCTW + DPE_COLOR + sctDpe..normalizeAdresseDisplay
+  slice(5469, 6057),   // renderSecteur (parc / strict / hr-actif / sctQ / marche libre)
 ].join("\n\n");
 
 function mkEl() {
