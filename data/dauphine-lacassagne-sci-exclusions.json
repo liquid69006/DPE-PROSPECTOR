@@ -1,0 +1,899 @@
+{
+  "_meta": {
+    "objet": "Fiches SCI exclues de l'EXPORT CSV et du COURRIER. Elles restent dans les donnees et visibles dans l'outil : seuls l'export et l'envoi de courrier les ignorent.",
+    "reversible": "Decocher la case « Exclure les grands ensembles tertiaires » dans la modale Export CSV ou Courrier. Aucune modification de code ni de deploiement necessaire.",
+    "zone": "Part-Dieu NR",
+    "agence": "dauphine-lacassagne",
+    "decide_par": "Yann",
+    "date_decision": "2026-10-14",
+    "cle": "sci_siren|parcelle",
+    "cle_pourquoi": "PAS le SIREN nu : la dedup du front (sci_siren||sci_nom, 1re occurrence gagnante, cf. CLAUDE.md §7) peut faire gagner une fiche d'une autre zone pour le meme SIREN. Exclure par SIREN nu sortirait 2 prospects Montchat legitimes (AS2M 811928365 au 6 imp Victor Hugo, FONCIERE DI 01 2004 449498922 au 65 av Lacassagne).",
+    "criteres": [
+      {
+        "id": "C1_centre_commercial",
+        "libelle": "Centre commercial",
+        "regle": "libelle de voie MAJIC contenant 'CTRE COMMERCIAL'"
+      },
+      {
+        "id": "C2_numero_pseudo",
+        "libelle": "Pseudo-numero d'ensemble",
+        "regle": "numero de voirie MAJIC >= 9000 (numero fictif d'ensemble immobilier)"
+      },
+      {
+        "id": "C3_AR_300plus",
+        "libelle": "Parcelle AR a plus de 300 locaux",
+        "regle": "parcelle de la section AR portant > 300 locaux MAJIC"
+      },
+      {
+        "id": "C4_horsAR_300plus",
+        "libelle": "Parcelle hors AR a plus de 300 locaux",
+        "regle": "parcelle hors section AR portant > 300 locaux MAJIC"
+      }
+    ],
+    "non_retenu": {
+      "AY0088": "Grande copropriete d'HABITATION (537 locaux MAJIC, 70 personnes morales, 19 batiments, 8 adresses). Les 29 fiches restent prospectables. Decision Yann 2026-10-14 ; arbitrage conserve dans data/_part_dieu_ay0088_a_trancher.csv."
+    },
+    "hors_perimetre": {
+      "449498922": "FONCIERE DI 01 2004 (397 biens, siege quai d'Austerlitz) reste prospectable sous sa fiche Montchat. Un critere « gros detenteur » n'a pas ete pose : hors perimetre, decision Yann."
+    },
+    "orphelines_attendues": 12,
+    "orphelines_pourquoi": "12 des regles ne matchent aucune fiche VISIBLE dans l'outil : la dedup du front (sci_siren||sci_nom) ne garde qu'une fiche par SIREN, et pour ces SCI c'est une fiche d'une autre parcelle (10 cas) ou d'une autre zone (2 cas Montchat) qui gagne. C'est normal et attendu : le front n'alerte que SI ce nombre augmente, signe que la liste a peri.",
+    "sources": [
+      "data/_part_dieu_exclusion_tertiaire.csv",
+      "data/_part_dieu_horsAR_300plus.csv"
+    ],
+    "regenerer": "python scripts/_build_sci_exclusions_part_dieu.py --apply"
+  },
+  "exclusions": [
+    {
+      "siren": "397616228",
+      "parcelle": "AD0032",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "M1",
+      "adresse_bien": "100 CRS LAFAYETTE 69003",
+      "criteres": [
+        "C4_horsAR_300plus"
+      ],
+      "critere_source": "(hors-AR > 300 locaux)",
+      "locaux_majic_parcelle": 519
+    },
+    {
+      "siren": "495202632",
+      "parcelle": "AD0032",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "SAINT JUST",
+      "adresse_bien": "100 CRS LAFAYETTE 69003",
+      "criteres": [
+        "C4_horsAR_300plus"
+      ],
+      "critere_source": "(hors-AR > 300 locaux)",
+      "locaux_majic_parcelle": 519
+    },
+    {
+      "siren": "529961310",
+      "parcelle": "AD0032",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "SCI EDIBATIMMO",
+      "adresse_bien": "100 CRS LAFAYETTE 69003",
+      "criteres": [
+        "C4_horsAR_300plus"
+      ],
+      "critere_source": "(hors-AR > 300 locaux)",
+      "locaux_majic_parcelle": 519
+    },
+    {
+      "siren": "529962284",
+      "parcelle": "AD0032",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "GERLAND 2011",
+      "adresse_bien": "100 CRS LAFAYETTE 69003",
+      "criteres": [
+        "C4_horsAR_300plus"
+      ],
+      "critere_source": "(hors-AR > 300 locaux)",
+      "locaux_majic_parcelle": 519
+    },
+    {
+      "siren": "810041939",
+      "parcelle": "AD0032",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "SCI PAULINE",
+      "adresse_bien": "100 CRS LAFAYETTE 69003",
+      "criteres": [
+        "C4_horsAR_300plus"
+      ],
+      "critere_source": "(hors-AR > 300 locaux)",
+      "locaux_majic_parcelle": 519
+    },
+    {
+      "siren": "810816124",
+      "parcelle": "AD0032",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "SOM LYON LAFAYETTE",
+      "adresse_bien": "100 CRS LAFAYETTE 69003",
+      "criteres": [
+        "C4_horsAR_300plus"
+      ],
+      "critere_source": "(hors-AR > 300 locaux)",
+      "locaux_majic_parcelle": 519
+    },
+    {
+      "siren": "812460806",
+      "parcelle": "AD0032",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "SCI CASM 69",
+      "adresse_bien": "100 CRS LAFAYETTE 69003",
+      "criteres": [
+        "C4_horsAR_300plus"
+      ],
+      "critere_source": "(hors-AR > 300 locaux)",
+      "locaux_majic_parcelle": 519
+    },
+    {
+      "siren": "812747046",
+      "parcelle": "AD0032",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "SCI IMMOCRECHE LYON",
+      "adresse_bien": "100 CRS LAFAYETTE 69003",
+      "criteres": [
+        "C4_horsAR_300plus"
+      ],
+      "critere_source": "(hors-AR > 300 locaux)",
+      "locaux_majic_parcelle": 519
+    },
+    {
+      "siren": "820179711",
+      "parcelle": "AD0032",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "SCI CMVLI",
+      "adresse_bien": "100 CRS LAFAYETTE 69003",
+      "criteres": [
+        "C4_horsAR_300plus"
+      ],
+      "critere_source": "(hors-AR > 300 locaux)",
+      "locaux_majic_parcelle": 519
+    },
+    {
+      "siren": "913423638",
+      "parcelle": "AH0012",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "ALLIANZ FRANCE IMMOBILIER EXPANSION - AFIX",
+      "adresse_bien": "28 RUE DE BONNEL 69003",
+      "criteres": [
+        "C4_horsAR_300plus"
+      ],
+      "critere_source": "(hors-AR > 300 locaux)",
+      "locaux_majic_parcelle": 526
+    },
+    {
+      "siren": "380212647",
+      "parcelle": "AP0068",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "SCI PHILIP II",
+      "adresse_bien": "223 RUE ANDRE PHILIP 69003",
+      "criteres": [
+        "C4_horsAR_300plus"
+      ],
+      "critere_source": "(hors-AR > 300 locaux)",
+      "locaux_majic_parcelle": 324
+    },
+    {
+      "siren": "380212654",
+      "parcelle": "AP0068",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "PHILIP I",
+      "adresse_bien": "223 RUE ANDRE PHILIP 69003",
+      "criteres": [
+        "C4_horsAR_300plus"
+      ],
+      "critere_source": "(hors-AR > 300 locaux)",
+      "locaux_majic_parcelle": 324
+    },
+    {
+      "siren": "400770608",
+      "parcelle": "AP0068",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "THESEE I",
+      "adresse_bien": "223 RUE ANDRE PHILIP 69003",
+      "criteres": [
+        "C4_horsAR_300plus"
+      ],
+      "critere_source": "(hors-AR > 300 locaux)",
+      "locaux_majic_parcelle": 324
+    },
+    {
+      "siren": "400773016",
+      "parcelle": "AP0068",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "THESEE II",
+      "adresse_bien": "223 RUE ANDRE PHILIP 69003",
+      "criteres": [
+        "C4_horsAR_300plus"
+      ],
+      "critere_source": "(hors-AR > 300 locaux)",
+      "locaux_majic_parcelle": 324
+    },
+    {
+      "siren": "412466922",
+      "parcelle": "AP0068",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "MUR",
+      "adresse_bien": "223 RUE ANDRE PHILIP 69003",
+      "criteres": [
+        "C4_horsAR_300plus"
+      ],
+      "critere_source": "(hors-AR > 300 locaux)",
+      "locaux_majic_parcelle": 324
+    },
+    {
+      "siren": "488457623",
+      "parcelle": "AP0068",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "MA B P L",
+      "adresse_bien": "92 RUE DE LA PART-DIEU 69003",
+      "criteres": [
+        "C4_horsAR_300plus"
+      ],
+      "critere_source": "(hors-AR > 300 locaux)",
+      "locaux_majic_parcelle": 324
+    },
+    {
+      "siren": "501260186",
+      "parcelle": "AP0068",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "GFDI 3",
+      "adresse_bien": "92 RUE DE LA PART-DIEU 69003",
+      "criteres": [
+        "C4_horsAR_300plus"
+      ],
+      "critere_source": "(hors-AR > 300 locaux)",
+      "locaux_majic_parcelle": 324
+    },
+    {
+      "siren": "792979569",
+      "parcelle": "AP0068",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "SCI TOURNIER",
+      "adresse_bien": "92 RUE DE LA PART-DIEU 69003",
+      "criteres": [
+        "C4_horsAR_300plus"
+      ],
+      "critere_source": "(hors-AR > 300 locaux)",
+      "locaux_majic_parcelle": 324
+    },
+    {
+      "siren": "814220315",
+      "parcelle": "AP0068",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "IMMO PL 117",
+      "adresse_bien": "92 RUE DE LA PART-DIEU 69003",
+      "criteres": [
+        "C4_horsAR_300plus"
+      ],
+      "critere_source": "(hors-AR > 300 locaux)",
+      "locaux_majic_parcelle": 324
+    },
+    {
+      "siren": "821524527",
+      "parcelle": "AP0068",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "KPMC INVEST",
+      "adresse_bien": "92 RUE DE LA PART-DIEU 69003",
+      "criteres": [
+        "C4_horsAR_300plus"
+      ],
+      "critere_source": "(hors-AR > 300 locaux)",
+      "locaux_majic_parcelle": 324
+    },
+    {
+      "siren": "311369714",
+      "parcelle": "AR0003",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "SCI LA PART DIEU PME",
+      "adresse_bien": "20 BD EUGENE DERUELLE 69003",
+      "criteres": [
+        "C3_AR_300plus"
+      ],
+      "critere_source": "C3_AR_1092_locaux",
+      "locaux_majic_parcelle": 1092
+    },
+    {
+      "siren": "319672838",
+      "parcelle": "AR0003",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "SCI LA VOLONTE",
+      "adresse_bien": "20 BD EUGENE DERUELLE 69003",
+      "criteres": [
+        "C3_AR_300plus"
+      ],
+      "critere_source": "C3_AR_1092_locaux",
+      "locaux_majic_parcelle": 1092
+    },
+    {
+      "siren": "344540752",
+      "parcelle": "AR0003",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "FIMEX",
+      "adresse_bien": "20 BD EUGENE DERUELLE 69003",
+      "criteres": [
+        "C3_AR_300plus"
+      ],
+      "critere_source": "C3_AR_1092_locaux",
+      "locaux_majic_parcelle": 1092
+    },
+    {
+      "siren": "438954083",
+      "parcelle": "AR0003",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "OPERA",
+      "adresse_bien": "20 BD EUGENE DERUELLE 69003",
+      "criteres": [
+        "C3_AR_300plus"
+      ],
+      "critere_source": "C3_AR_1092_locaux",
+      "locaux_majic_parcelle": 1092
+    },
+    {
+      "siren": "453542714",
+      "parcelle": "AR0003",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "I B H BRITANNIA",
+      "adresse_bien": "20 BD EUGENE DERUELLE 69003",
+      "criteres": [
+        "C3_AR_300plus"
+      ],
+      "critere_source": "C3_AR_1092_locaux",
+      "locaux_majic_parcelle": 1092
+    },
+    {
+      "siren": "497813758",
+      "parcelle": "AR0003",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "SCI MT BRITANNIA",
+      "adresse_bien": "20 BD EUGENE DERUELLE 69003",
+      "criteres": [
+        "C3_AR_300plus"
+      ],
+      "critere_source": "C3_AR_1092_locaux",
+      "locaux_majic_parcelle": 1092
+    },
+    {
+      "siren": "498293638",
+      "parcelle": "AR0003",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "E 4",
+      "adresse_bien": "20 BD EUGENE DERUELLE 69003",
+      "criteres": [
+        "C3_AR_300plus"
+      ],
+      "critere_source": "C3_AR_1092_locaux",
+      "locaux_majic_parcelle": 1092
+    },
+    {
+      "siren": "529129991",
+      "parcelle": "AR0003",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "SCI PARITAS",
+      "adresse_bien": "20 BD EUGENE DERUELLE 69003",
+      "criteres": [
+        "C3_AR_300plus"
+      ],
+      "critere_source": "C3_AR_1092_locaux",
+      "locaux_majic_parcelle": 1092
+    },
+    {
+      "siren": "535015945",
+      "parcelle": "AR0003",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "J2LMS",
+      "adresse_bien": "20 BD EUGENE DERUELLE 69003",
+      "criteres": [
+        "C3_AR_300plus"
+      ],
+      "critere_source": "C3_AR_1092_locaux",
+      "locaux_majic_parcelle": 1092
+    },
+    {
+      "siren": "802319566",
+      "parcelle": "AR0003",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "J2LMSB",
+      "adresse_bien": "20 BD EUGENE DERUELLE 69003",
+      "criteres": [
+        "C3_AR_300plus"
+      ],
+      "critere_source": "C3_AR_1092_locaux",
+      "locaux_majic_parcelle": 1092
+    },
+    {
+      "siren": "814574869",
+      "parcelle": "AR0003",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "CAPSTONE REGIONS",
+      "adresse_bien": "20 BD EUGENE DERUELLE 69003",
+      "criteres": [
+        "C3_AR_300plus"
+      ],
+      "critere_source": "C3_AR_1092_locaux",
+      "locaux_majic_parcelle": 1092
+    },
+    {
+      "siren": "815041454",
+      "parcelle": "AR0003",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "STONE LINK",
+      "adresse_bien": "20 BD EUGENE DERUELLE 69003",
+      "criteres": [
+        "C3_AR_300plus"
+      ],
+      "critere_source": "C3_AR_1092_locaux",
+      "locaux_majic_parcelle": 1092
+    },
+    {
+      "siren": "825260466",
+      "parcelle": "AR0003",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "CAPJETI",
+      "adresse_bien": "20 BD EUGENE DERUELLE 69003",
+      "criteres": [
+        "C3_AR_300plus"
+      ],
+      "critere_source": "C3_AR_1092_locaux",
+      "locaux_majic_parcelle": 1092
+    },
+    {
+      "siren": "833773906",
+      "parcelle": "AR0003",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "SCI LYON BRITANNIA",
+      "adresse_bien": "20 BD EUGENE DERUELLE 69003",
+      "criteres": [
+        "C3_AR_300plus"
+      ],
+      "critere_source": "C3_AR_1092_locaux",
+      "locaux_majic_parcelle": 1092
+    },
+    {
+      "siren": "837636109",
+      "parcelle": "AR0003",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "SCI DU PARC",
+      "adresse_bien": "20 BD EUGENE DERUELLE 69003",
+      "criteres": [
+        "C3_AR_300plus"
+      ],
+      "critere_source": "C3_AR_1092_locaux",
+      "locaux_majic_parcelle": 1092
+    },
+    {
+      "siren": "893427732",
+      "parcelle": "AR0003",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "SCI ARKIVAL LYON",
+      "adresse_bien": "20 BD EUGENE DERUELLE 69003",
+      "criteres": [
+        "C3_AR_300plus"
+      ],
+      "critere_source": "C3_AR_1092_locaux",
+      "locaux_majic_parcelle": 1092
+    },
+    {
+      "siren": "901280628",
+      "parcelle": "AR0003",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "SCI TWM LYON",
+      "adresse_bien": "20 BD EUGENE DERUELLE 69003",
+      "criteres": [
+        "C3_AR_300plus"
+      ],
+      "critere_source": "C3_AR_1092_locaux",
+      "locaux_majic_parcelle": 1092
+    },
+    {
+      "siren": "913343448",
+      "parcelle": "AR0003",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "MAVI",
+      "adresse_bien": "20 BD EUGENE DERUELLE 69003",
+      "criteres": [
+        "C3_AR_300plus"
+      ],
+      "critere_source": "C3_AR_1092_locaux",
+      "locaux_majic_parcelle": 1092
+    },
+    {
+      "siren": "981062474",
+      "parcelle": "AR0003",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "LYONREALESTATE",
+      "adresse_bien": "20 BD EUGENE DERUELLE 69003",
+      "criteres": [
+        "C3_AR_300plus"
+      ],
+      "critere_source": "C3_AR_1092_locaux",
+      "locaux_majic_parcelle": 1092
+    },
+    {
+      "siren": "U21891179",
+      "parcelle": "AR0003",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "STE BRITANNIA HAUSSMANN",
+      "adresse_bien": "20 BD EUGENE DERUELLE 69003",
+      "criteres": [
+        "C3_AR_300plus"
+      ],
+      "critere_source": "C3_AR_1092_locaux",
+      "locaux_majic_parcelle": 1092
+    },
+    {
+      "siren": "499007763",
+      "parcelle": "AR0014",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "DES GRANDES VIGNES",
+      "adresse_bien": "39 RUE DESAIX 69003",
+      "criteres": [
+        "C3_AR_300plus"
+      ],
+      "critere_source": "C3_AR_966_locaux",
+      "locaux_majic_parcelle": 966
+    },
+    {
+      "siren": "811381771",
+      "parcelle": "AR0014",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "FORTUNA",
+      "adresse_bien": "39 RUE DESAIX 69003",
+      "criteres": [
+        "C3_AR_300plus"
+      ],
+      "critere_source": "C3_AR_966_locaux",
+      "locaux_majic_parcelle": 966
+    },
+    {
+      "siren": "811928365",
+      "parcelle": "AR0014",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "AS2M",
+      "adresse_bien": "53 RUE DESAIX 69003",
+      "criteres": [
+        "C3_AR_300plus"
+      ],
+      "critere_source": "C3_AR_966_locaux",
+      "locaux_majic_parcelle": 966
+    },
+    {
+      "siren": "820622579",
+      "parcelle": "AR0014",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "SKY AVENUE",
+      "adresse_bien": "39 RUE DESAIX 69003",
+      "criteres": [
+        "C3_AR_300plus"
+      ],
+      "critere_source": "C3_AR_966_locaux",
+      "locaux_majic_parcelle": 966
+    },
+    {
+      "siren": "825378375",
+      "parcelle": "AR0014",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "ARTHELOU",
+      "adresse_bien": "35 RUE DESAIX 69003",
+      "criteres": [
+        "C3_AR_300plus"
+      ],
+      "critere_source": "C3_AR_966_locaux",
+      "locaux_majic_parcelle": 966
+    },
+    {
+      "siren": "848283529",
+      "parcelle": "AR0014",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "SKY 4",
+      "adresse_bien": "53 RUE DESAIX 69003",
+      "criteres": [
+        "C3_AR_300plus"
+      ],
+      "critere_source": "C3_AR_966_locaux",
+      "locaux_majic_parcelle": 966
+    },
+    {
+      "siren": "848466462",
+      "parcelle": "AR0014",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "CVF IMMO",
+      "adresse_bien": "39 RUE DESAIX 69003",
+      "criteres": [
+        "C3_AR_300plus"
+      ],
+      "critere_source": "C3_AR_966_locaux",
+      "locaux_majic_parcelle": 966
+    },
+    {
+      "siren": "887787638",
+      "parcelle": "AR0014",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "PERIER MONTROUGE JARDIN",
+      "adresse_bien": "21 RUE DESAIX 69003",
+      "criteres": [
+        "C3_AR_300plus"
+      ],
+      "critere_source": "C3_AR_966_locaux",
+      "locaux_majic_parcelle": 966
+    },
+    {
+      "siren": "911040822",
+      "parcelle": "AR0014",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "LES BULLES D'ILE DE FRANCE",
+      "adresse_bien": "15 RUE DESAIX 69003",
+      "criteres": [
+        "C3_AR_300plus"
+      ],
+      "critere_source": "C3_AR_966_locaux",
+      "locaux_majic_parcelle": 966
+    },
+    {
+      "siren": "420411324",
+      "parcelle": "AR0020",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "SCI DES CYGNES",
+      "adresse_bien": "1 RUE DU LAC 69003",
+      "criteres": [
+        "C3_AR_300plus"
+      ],
+      "critere_source": "C3_AR_954_locaux",
+      "locaux_majic_parcelle": 954
+    },
+    {
+      "siren": "952662203",
+      "parcelle": "AR0020",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "SCI IMMO TSAI",
+      "adresse_bien": "3 RUE DU LAC 69003",
+      "criteres": [
+        "C3_AR_300plus"
+      ],
+      "critere_source": "C3_AR_954_locaux",
+      "locaux_majic_parcelle": 954
+    },
+    {
+      "siren": "307157073",
+      "parcelle": "AR0106",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "OPEREAL",
+      "adresse_bien": "9006  CTRE COMMERCIAL PART DIEU 69003",
+      "criteres": [
+        "C1_centre_commercial",
+        "C2_numero_pseudo",
+        "C3_AR_300plus"
+      ],
+      "critere_source": "C1_centre_commercial + C2_numero_pseudo_9006 + C3_AR_347_locaux",
+      "locaux_majic_parcelle": 347
+    },
+    {
+      "siren": "311139489",
+      "parcelle": "AR0106",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "LYON-LES-BROTTEAUX",
+      "adresse_bien": "9006  CTRE COMMERCIAL PART DIEU 69003",
+      "criteres": [
+        "C1_centre_commercial",
+        "C2_numero_pseudo",
+        "C3_AR_300plus"
+      ],
+      "critere_source": "C1_centre_commercial + C2_numero_pseudo_9006 + C3_AR_347_locaux",
+      "locaux_majic_parcelle": 347
+    },
+    {
+      "siren": "320075070",
+      "parcelle": "AR0106",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "GRAND MAGASIN SUD DE LA PART DIEU",
+      "adresse_bien": "9006  CTRE COMMERCIAL PART DIEU 69003",
+      "criteres": [
+        "C1_centre_commercial",
+        "C2_numero_pseudo",
+        "C3_AR_300plus"
+      ],
+      "critere_source": "C1_centre_commercial + C2_numero_pseudo_9006 + C3_AR_347_locaux",
+      "locaux_majic_parcelle": 347
+    },
+    {
+      "siren": "392930541",
+      "parcelle": "AR0106",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "LYON KLEBER",
+      "adresse_bien": "9006  CTRE COMMERCIAL PART DIEU 69003",
+      "criteres": [
+        "C1_centre_commercial",
+        "C2_numero_pseudo",
+        "C3_AR_300plus"
+      ],
+      "critere_source": "C1_centre_commercial + C2_numero_pseudo_9006 + C3_AR_347_locaux",
+      "locaux_majic_parcelle": 347
+    },
+    {
+      "siren": "U21812683",
+      "parcelle": "AR0106",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "S C I DU CENTRE COMMERCIAL DE LA PART DIEU",
+      "adresse_bien": "9006  CTRE COMMERCIAL PART DIEU 69003",
+      "criteres": [
+        "C1_centre_commercial",
+        "C2_numero_pseudo",
+        "C3_AR_300plus"
+      ],
+      "critere_source": "C1_centre_commercial + C2_numero_pseudo_9006 + C3_AR_347_locaux",
+      "locaux_majic_parcelle": 347
+    },
+    {
+      "siren": "449498922",
+      "parcelle": "AS0135",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "FONCIERE DI 01 2004",
+      "adresse_bien": "24 RUE DE LA BANNIERE 69003",
+      "criteres": [
+        "C4_horsAR_300plus"
+      ],
+      "critere_source": "(hors-AR > 300 locaux)",
+      "locaux_majic_parcelle": 312
+    },
+    {
+      "siren": "495231128",
+      "parcelle": "AY0128",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "SCI MURAPPART",
+      "adresse_bien": "9001 RUE PHILOMENE MAGNIN 69003",
+      "criteres": [
+        "C2_numero_pseudo"
+      ],
+      "critere_source": "C2_numero_pseudo_9001",
+      "locaux_majic_parcelle": 26
+    },
+    {
+      "siren": "495231409",
+      "parcelle": "AY0128",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "SCI FABAPPART",
+      "adresse_bien": "9001 RUE PHILOMENE MAGNIN 69003",
+      "criteres": [
+        "C2_numero_pseudo"
+      ],
+      "critere_source": "C2_numero_pseudo_9001",
+      "locaux_majic_parcelle": 26
+    },
+    {
+      "siren": "498233451",
+      "parcelle": "AY0128",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "SARA",
+      "adresse_bien": "9001 RUE PHILOMENE MAGNIN 69003",
+      "criteres": [
+        "C2_numero_pseudo"
+      ],
+      "critere_source": "C2_numero_pseudo_9001",
+      "locaux_majic_parcelle": 26
+    },
+    {
+      "siren": "499576734",
+      "parcelle": "AY0128",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "GUICHARD",
+      "adresse_bien": "9001 RUE PHILOMENE MAGNIN 69003",
+      "criteres": [
+        "C2_numero_pseudo"
+      ],
+      "critere_source": "C2_numero_pseudo_9001",
+      "locaux_majic_parcelle": 26
+    },
+    {
+      "siren": "501217160",
+      "parcelle": "AY0128",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "LYON QUATRE MILLE",
+      "adresse_bien": "9001 RUE PHILOMENE MAGNIN 69003",
+      "criteres": [
+        "C2_numero_pseudo"
+      ],
+      "critere_source": "C2_numero_pseudo_9001",
+      "locaux_majic_parcelle": 26
+    },
+    {
+      "siren": "501217749",
+      "parcelle": "AY0128",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "LYON DEUX MILLE",
+      "adresse_bien": "9001 RUE PHILOMENE MAGNIN 69003",
+      "criteres": [
+        "C2_numero_pseudo"
+      ],
+      "critere_source": "C2_numero_pseudo_9001",
+      "locaux_majic_parcelle": 26
+    },
+    {
+      "siren": "843204439",
+      "parcelle": "AY0128",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "CRS IMMO",
+      "adresse_bien": "9001 RUE PHILOMENE MAGNIN 69003",
+      "criteres": [
+        "C2_numero_pseudo"
+      ],
+      "critere_source": "C2_numero_pseudo_9001",
+      "locaux_majic_parcelle": 26
+    },
+    {
+      "siren": "510586241",
+      "parcelle": "AY0135",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "BIEVELEZ",
+      "adresse_bien": "9001 RUE DANIELLE FAYNEL DUCLOS 69003",
+      "criteres": [
+        "C2_numero_pseudo"
+      ],
+      "critere_source": "C2_numero_pseudo_9001",
+      "locaux_majic_parcelle": 7
+    },
+    {
+      "siren": "884740549",
+      "parcelle": "AY0135",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "ANNIE",
+      "adresse_bien": "9001 RUE DANIELLE FAYNEL DUCLOS 69003",
+      "criteres": [
+        "C2_numero_pseudo"
+      ],
+      "critere_source": "C2_numero_pseudo_9001",
+      "locaux_majic_parcelle": 7
+    },
+    {
+      "siren": "339614000",
+      "parcelle": "AY0137",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "DERMADENT",
+      "adresse_bien": "9002 RUE PHILOMENE MAGNIN 69003",
+      "criteres": [
+        "C2_numero_pseudo"
+      ],
+      "critere_source": "C2_numero_pseudo_9002",
+      "locaux_majic_parcelle": 16
+    },
+    {
+      "siren": "411746431",
+      "parcelle": "AY0137",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "SCI VETERINAIRE SAINT PIERRE",
+      "adresse_bien": "9002 RUE PHILOMENE MAGNIN 69003",
+      "criteres": [
+        "C2_numero_pseudo"
+      ],
+      "critere_source": "C2_numero_pseudo_9002",
+      "locaux_majic_parcelle": 16
+    },
+    {
+      "siren": "511998817",
+      "parcelle": "AY0137",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "FRANCE EVASION",
+      "adresse_bien": "9002 RUE PHILOMENE MAGNIN 69003",
+      "criteres": [
+        "C2_numero_pseudo"
+      ],
+      "critere_source": "C2_numero_pseudo_9002",
+      "locaux_majic_parcelle": 16
+    },
+    {
+      "siren": "521863480",
+      "parcelle": "AY0137",
+      "zone": "Part-Dieu NR",
+      "sci_nom": "SCI SOLREG",
+      "adresse_bien": "9002 RUE PHILOMENE MAGNIN 69003",
+      "criteres": [
+        "C2_numero_pseudo"
+      ],
+      "critere_source": "C2_numero_pseudo_9002",
+      "locaux_majic_parcelle": 16
+    }
+  ]
+}

@@ -1199,6 +1199,10 @@ td{padding:11px 14px;vertical-align:middle;}
         <span>Exclure les SCI à l'étranger</span>
       </label>
       <label style="display:grid;grid-template-columns:20px 1fr;align-items:center;gap:8px;margin-bottom:10px;cursor:pointer;">
+        <input type="checkbox" id="courrier-exclure-tertiaire" checked>
+        <span>Exclure les grands ensembles tertiaires</span>
+      </label>
+      <label style="display:grid;grid-template-columns:20px 1fr;align-items:center;gap:8px;margin-bottom:10px;cursor:pointer;">
         <input type="checkbox" id="courrier-seulement-visibles">
         <span>Uniquement les SCI actuellement affichées (filtrées)</span>
       </label>
@@ -1259,6 +1263,10 @@ td{padding:11px 14px;vertical-align:middle;}
       <label style="display:grid;grid-template-columns:20px 1fr;align-items:center;gap:8px;margin-bottom:10px;cursor:pointer;">
         <input type="checkbox" id="export-exclure-etranger" checked>
         <span>Exclure les SCI à l'étranger</span>
+      </label>
+      <label style="display:grid;grid-template-columns:20px 1fr;align-items:center;gap:8px;margin-bottom:10px;cursor:pointer;">
+        <input type="checkbox" id="export-exclure-tertiaire" checked>
+        <span>Exclure les grands ensembles tertiaires</span>
       </label>
       <label style="display:grid;grid-template-columns:20px 1fr;align-items:center;gap:8px;margin-bottom:10px;cursor:pointer;">
         <input type="checkbox" id="export-seulement-visibles">
@@ -6220,9 +6228,51 @@ let sciAssignments = {};
 let sciSortCurrent = {col:'zone', dir:'asc'};
 let derniersCourriers = {};   // { "<siren>": "<ISO date>" } — envois live uniquement
 
+// Exclusions export/courrier — liste figée chargée depuis
+// data/{agence}-sci-exclusions.json. Les fiches concernées RESTENT dans les
+// données et visibles dans le tableau : seuls l'export CSV et le courrier les
+// ignorent, et seulement si la case "Exclure les grands ensembles tertiaires"
+// est cochée (cochée par défaut). Décocher la remet dans les deux.
+//
+// La clé est "<siren>|<parcelle>" et NON le SIREN nu : la dédup ci-dessous
+// (sci_siren||sci_nom, 1re occurrence gagnante) peut faire gagner une fiche
+// d'une AUTRE zone pour le même SIREN. Exclure par SIREN nu sortirait 2
+// prospects Montchat légitimes (AS2M, FONCIERE DI 01 2004).
+let sciExclusions             = new Set();  // Set<"siren|parcelle">
+let sciExclusionsMeta         = null;       // _meta du fichier, ou null
+let sciExclusionsErr          = false;      // fetch en erreur (≠ fichier absent)
+let sciExclusionsOrphelines   = 0;          // règles ne matchant plus aucune fiche
+let sciExclusionsOrphAttendues = 0;        // dont combien sont attendues (dedup)
+let sciExclusTertiaireDernier = 0;          // fiches retirées au dernier filtrage
+
+// Charge le fichier d'exclusions d'une agence source (chemin -sci.json en
+// entrée). Fichier absent = aucune exclusion : cas normal pour les agences qui
+// n'en ont pas (motte-picquet, pernety, houlgate, villers). Cumulatif : appelé
+// une fois par sous-agence pour les composites.
+async function chargerExclusionsSci(sciPath) {
+  const url = `${GITHUB_RAW}/${sciPath.replace('-sci.json', '-sci-exclusions.json')}`
+            + `?t=${Date.now()}`;
+  try {
+    const resp = await fetch(url);
+    if (resp.status === 404) return;              // pas de liste = rien à exclure
+    if (!resp.ok) { sciExclusionsErr = true; return; }
+    const data = await resp.json();
+    if (data._meta && !sciExclusionsMeta) sciExclusionsMeta = data._meta;
+    // Cumulatif : un composite additionne les seuils de ses sous-agences.
+    if (data._meta) sciExclusionsOrphAttendues += (data._meta.orphelines_attendues || 0);
+    (data.exclusions || []).forEach(e => {
+      if (e && e.siren && e.parcelle) sciExclusions.add(e.siren + '|' + e.parcelle);
+    });
+  } catch { sciExclusionsErr = true; }
+}
+
 async function loadSciData() {
   try {
     let rawSci = [];
+    // Chemins -sci.json réellement chargés (1 pour une agence simple, N pour un
+    // composite). Réutilisés tels quels pour les exclusions : les composites sont
+    // donc couverts par construction, cf. CLAUDE.md §4.1.
+    const sciPathsUtilises = [];
 
     if (agenceConfig.sci_agences && agenceConfig.sci_agences.length > 0) {
       const isLopez = agenceId === 'lopez';
@@ -6240,6 +6290,7 @@ async function loadSciData() {
           if (!resp.ok) continue;
           const data = await resp.json();
           rawSci = rawSci.concat(data.sci || []);
+          sciPathsUtilises.push(sciPath);
         }
       }
       if (isBagot) {
@@ -6255,6 +6306,7 @@ async function loadSciData() {
           if (!resp.ok) continue;
           const data = await resp.json();
           rawSci = rawSci.concat(data.sci || []);
+          sciPathsUtilises.push(sciPath);
         }
       }
     } else {
@@ -6264,7 +6316,13 @@ async function loadSciData() {
       if (!resp.ok) throw new Error();
       const data = await resp.json();
       rawSci = data.sci || [];
+      sciPathsUtilises.push(path);
     }
+
+    // Exclusions export/courrier — même itération que les -sci.json ci-dessus.
+    sciExclusions = new Set(); sciExclusionsMeta = null; sciExclusionsErr = false;
+    sciExclusionsOrphAttendues = 0;
+    for (const p of sciPathsUtilises) await chargerExclusionsSci(p);
 
     // Dédupliquer par SIREN (évite les doublons dans le JSON source)
     const seen = new Set();
@@ -6274,6 +6332,12 @@ async function loadSciData() {
       seen.add(key);
       return true;
     });
+
+    // Péremption de la liste figée : une règle qui ne matche plus aucune fiche
+    // (données régénérées, parcelle redécoupée) devient visible dans le compteur
+    // des modales, au lieu de dériver en silence.
+    sciExclusionsOrphelines = [...sciExclusions].filter(k =>
+      !allSci.some(s => (s.sci_siren || '') + '|' + (s.parcelle || '') === k)).length;
 
     // Stats
     document.getElementById('stat-sci-total').textContent   = allSci.length;
@@ -6620,7 +6684,7 @@ function aLiquidateur(gerants) {
 }
 
 // prefix = 'courrier' (modale Courrier) ou 'export' (modale Export CSV).
-// Les deux modales exposent les 7 memes cases, seuls les ids different.
+// Les deux modales exposent les 8 memes cases, seuls les ids different.
 function filtrerSciPourCourrier(prefix = 'courrier') {
   const exclInactives     = document.getElementById(prefix + '-exclure-inactives').checked;
   const exclLiquidateur   = document.getElementById(prefix + '-exclure-liquidateur').checked;
@@ -6628,6 +6692,7 @@ function filtrerSciPourCourrier(prefix = 'courrier') {
   const exclClient        = document.getElementById(prefix + '-exclure-client').checked;
   const exclNpc           = document.getElementById(prefix + '-exclure-npc').checked;
   const exclSansSiege     = document.getElementById(prefix + '-exclure-sans-siege').checked;
+  const exclTertiaire     = document.getElementById(prefix + '-exclure-tertiaire').checked;
   const seulementVisibles = document.getElementById(prefix + '-seulement-visibles').checked;
   let liste = seulementVisibles
     ? [...document.querySelectorAll('#sci-tbody tr')]
@@ -6651,13 +6716,45 @@ function filtrerSciPourCourrier(prefix = 'courrier') {
       return true;
     });
   }
+  // Grands ensembles tertiaires (centres commerciaux, tours de bureaux,
+  // pseudo-numéros d'ensemble) : liste figée, clé siren|parcelle. S'applique
+  // identiquement à l'export CSV et au courrier — les deux finissent en pli MSB.
+  if (exclTertiaire && sciExclusions.size) {
+    const avant = liste.length;
+    liste = liste.filter(s =>
+      !sciExclusions.has((s.sci_siren || '') + '|' + (s.parcelle || '')));
+    sciExclusTertiaireDernier = avant - liste.length;
+  } else {
+    sciExclusTertiaireDernier = 0;
+  }
   return liste;
+}
+
+// Suffixe commun aux 2 compteurs : combien de fiches la règle tertiaire a
+// réellement retirées au dernier filtrage (donc jamais un nombre codé en dur),
+// plus les alertes de péremption et de chargement.
+function suffixeExclusionsSci() {
+  const bits = [];
+  if (sciExclusTertiaireDernier > 0)
+    bits.push(`${sciExclusTertiaireDernier} exclue`
+      + `${sciExclusTertiaireDernier > 1 ? 's' : ''} : grands ensembles tertiaires`);
+  // Alerte de peremption : uniquement AU-DELA des orphelines attendues, qui
+  // sont une consequence normale de la dedup (une SCI visible sous une autre
+  // parcelle). Une alerte permanente finit par etre ignoree.
+  const orphEnTrop = sciExclusionsOrphelines - sciExclusionsOrphAttendues;
+  if (orphEnTrop > 0)
+    bits.push(`⚠ ${orphEnTrop} règle${orphEnTrop > 1 ? "s" : ""} sans fiche`
+      + `${sciExclusionsOrphAttendues ? ` (au-delà des ${sciExclusionsOrphAttendues} attendues)` : ""}`
+      + ` — liste à revoir`);
+  if (sciExclusionsErr) bits.push('⚠ liste d\'exclusion non chargée');
+  return bits.length ? ' — ' + bits.join(' · ') : '';
 }
 
 function majCompteCourrier() {
   const liste = filtrerSciPourCourrier();
   document.getElementById('courrier-sci-count').textContent =
-    `→ ${liste.length} courrier${liste.length > 1 ? 's' : ''} seront générés`;
+    `→ ${liste.length} courrier${liste.length > 1 ? 's' : ''} seront générés`
+    + suffixeExclusionsSci();
 }
 
 function ouvrirModalCourrier() {
@@ -6672,7 +6769,8 @@ function ouvrirModalCourrier() {
 
   ['courrier-exclure-inactives','courrier-exclure-liquidateur',
    'courrier-exclure-etranger','courrier-exclure-client','courrier-exclure-npc',
-   'courrier-exclure-sans-siege','courrier-seulement-visibles'].forEach(id => {
+   'courrier-exclure-sans-siege','courrier-exclure-tertiaire',
+   'courrier-seulement-visibles'].forEach(id => {
     const el = document.getElementById(id);
     if (el) el.onchange = majCompteCourrier;
   });
@@ -6743,7 +6841,8 @@ function majCompteExport() {
   const { retenues, exclus } = calculerExportSci();
   document.getElementById('export-sci-count').textContent =
     `→ ${retenues.length} SCI exportable${retenues.length > 1 ? 's' : ''}` +
-    ` (${exclus} exclue${exclus > 1 ? 's' : ''} : adresse inexploitable)`;
+    ` (${exclus} exclue${exclus > 1 ? 's' : ''} : adresse inexploitable)`
+    + suffixeExclusionsSci();
 }
 
 // Meme pattern Blob que telechargerCourriers().
@@ -6807,7 +6906,8 @@ function ouvrirModalExport() {
   majCompteExport();
   ['export-exclure-inactives','export-exclure-liquidateur',
    'export-exclure-etranger','export-exclure-client','export-exclure-npc',
-   'export-exclure-sans-siege','export-seulement-visibles'].forEach(id => {
+   'export-exclure-sans-siege','export-exclure-tertiaire',
+   'export-seulement-visibles'].forEach(id => {
     const el = document.getElementById(id);
     if (el) el.onchange = majCompteExport;
   });

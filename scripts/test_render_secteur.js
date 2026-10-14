@@ -51,12 +51,15 @@ const slice = (a, b) => HTML.slice(a - 1, b).join("\n"); // lignes 1-based inclu
 // Decalage uniforme +75 sur les 5 plages, verifie ancre par ancre
 // (ROT_COLOR 2618->2693, esc 5292->5367, secteurNorm 5296->5371,
 //  sctTauxAnnuel 5344->5419, renderSecteur 5394->5469).
+// RESYNC 2026-10-14 (filtre tertiaire SCI) : ajout des 2 cases a cocher
+// "Exclure les grands ensembles tertiaires" dans les modales Courrier et
+// Export (+8 lignes au-dessus du bloc Secteur) -> +8 sur les 5 plages.
 const SRC = [
-  slice(2693, 2706),   // ROT_COLOR + TYPE_OPTS + TYPE_LABELS + TYPE_BADGE_COLORS
-  slice(5367, 5369),   // esc
-  slice(5371, 5375),   // secteurNorm
-  slice(5419, 5467),   // sctTauxAnnuel..sctClassAnnuel + SCTW + DPE_COLOR + sctDpe..normalizeAdresseDisplay
-  slice(5469, 6057),   // renderSecteur (parc / strict / hr-actif / sctQ / marche libre)
+  slice(2701, 2714),   // ROT_COLOR + TYPE_OPTS + TYPE_LABELS + TYPE_BADGE_COLORS
+  slice(5375, 5377),   // esc
+  slice(5379, 5383),   // secteurNorm
+  slice(5427, 5475),   // sctTauxAnnuel..sctClassAnnuel + SCTW + DPE_COLOR + sctDpe..normalizeAdresseDisplay
+  slice(5477, 6065),   // renderSecteur (parc / strict / hr-actif / sctQ / marche libre)
 ].join("\n\n");
 
 function mkEl() {
