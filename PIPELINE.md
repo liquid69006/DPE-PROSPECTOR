@@ -413,7 +413,7 @@ s'appliquent ; cette section ne documente que le **propre à Montchat**.
 
 Pattern pour retirer des fiches de la **sortie commerciale** (export CSV,
 courrier) sans les retirer des **données** ni de l'outil. Première instance :
-les grands ensembles tertiaires du lot Part-Dieu NR (commit `98e7b4a`).
+les grands ensembles tertiaires du lot Part-Dieu NR (commit `97988de`).
 
 **Deux couches, elles répondent à deux besoins distincts.**
 

@@ -19,7 +19,7 @@ prospectables. Foncière DI 01 2004 laissée hors périmètre. Règle : les fich
 restent dans les données **et** dans l'outil, elles ne sortent que de l'export
 CSV et du courrier, et c'est réversible sans toucher au code.
 
-### Commit `db5f050` — resync `test_render_secteur.js` (+75)
+### Commit `abeea61` — resync `test_render_secteur.js` (+75)
 
 Trouvaille indépendante du chantier : **le test front était rouge depuis mai**,
 avant toute modification. Les 2 commits export CSV MSB (`34f8670`, `df54a71`)
@@ -29,7 +29,7 @@ functions`, la plage `renderSecteur` démarrant sur `const r = await lightPromis
 Décalage uniforme +75 vérifié ancre par ancre. Après : **exit 0 sur les 2 zones**
 (DL 51 OK / parc 22 381 lgts ; Montchat 44 OK / parc 15 848 lgts).
 
-### Commit `98e7b4a` — le filtre
+### Commit `97988de` — le filtre
 
 Architecture retenue (pattern détaillé dans `PIPELINE.md` §13) : **liste figée
 dans les données + case à cocher dans l'UI**. La liste
