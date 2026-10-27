@@ -54,12 +54,17 @@ const slice = (a, b) => HTML.slice(a - 1, b).join("\n"); // lignes 1-based inclu
 // RESYNC 2026-10-14 (filtre tertiaire SCI) : ajout des 2 cases a cocher
 // "Exclure les grands ensembles tertiaires" dans les modales Courrier et
 // Export (+8 lignes au-dessus du bloc Secteur) -> +8 sur les 5 plages.
+// RESYNC 2026-10-27 (sync multi-sessions attributions DPE/SCI) : bloc SYNC
+// MULTI-SESSIONS + garde-fous updateAssignment/saveNote (+208 lignes au-dessus
+// du bloc Secteur ; edits SCI sous renderSecteur, sans effet) -> +208 sur les
+// 5 plages, verifie ancre par ancre (ROT_COLOR 2701->2909, esc 5375->5583,
+// secteurNorm 5379->5587, sctTauxAnnuel 5427->5635, renderSecteur 5477->5685).
 const SRC = [
-  slice(2701, 2714),   // ROT_COLOR + TYPE_OPTS + TYPE_LABELS + TYPE_BADGE_COLORS
-  slice(5375, 5377),   // esc
-  slice(5379, 5383),   // secteurNorm
-  slice(5427, 5475),   // sctTauxAnnuel..sctClassAnnuel + SCTW + DPE_COLOR + sctDpe..normalizeAdresseDisplay
-  slice(5477, 6065),   // renderSecteur (parc / strict / hr-actif / sctQ / marche libre)
+  slice(2909, 2922),   // ROT_COLOR + TYPE_OPTS + TYPE_LABELS + TYPE_BADGE_COLORS
+  slice(5583, 5585),   // esc
+  slice(5587, 5591),   // secteurNorm
+  slice(5635, 5683),   // sctTauxAnnuel..sctClassAnnuel + SCTW + DPE_COLOR + sctDpe..normalizeAdresseDisplay
+  slice(5685, 6273),   // renderSecteur (parc / strict / hr-actif / sctQ / marche libre)
 ].join("\n\n");
 
 function mkEl() {

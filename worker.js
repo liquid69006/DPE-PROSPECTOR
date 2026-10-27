@@ -8,9 +8,9 @@
  *   POST /forgot-password              → { agence } → envoie email reset
  *   POST /reset-password               → { token, newPassword }
  *   GET  /assignments/:agence          → { assignments }
- *   POST /assignments/:agence          → { assignments }
+ *   POST /assignments/:agence          → { patch } (fusion par champ ; legacy { assignments } fusionné aussi)
  *   GET  /sci-assignments/:agence      → { assignments }
- *   POST /sci-assignments/:agence      → { assignments }
+ *   POST /sci-assignments/:agence      → { patch } (fusion par champ ; legacy { assignments } fusionné aussi)
  *   GET  /conseillers/:agence          → { conseillers }
  *   POST /conseillers/:agence          → { conseillers }
  *   POST /change-password/:agence      → { oldPassword, newPassword }
@@ -536,6 +536,23 @@ async function handleRequest(request, env) {
       return json({ ok: true });
     }
 
+    // ── Fusion des attributions DPE / SCI (multi-sessions) ──
+    // Le dashboard envoie { patch: { id: { champ: valeur } } } (seuls les champs
+    // modifiés). Le body legacy { assignments } est lui aussi FUSIONNÉ : on ne
+    // supprime jamais une clé ni un champ (une session périmée n'efface plus
+    // les saisies faites ailleurs).
+    function assignIncoming(body) {
+      const inc = body && (body.patch !== undefined ? body.patch : body.assignments);
+      return (inc && typeof inc === "object" && !Array.isArray(inc)) ? inc : null;
+    }
+    function mergeAssignInto(current, incoming) {
+      for (const [id, val] of Object.entries(incoming)) {
+        if (!val || typeof val !== "object" || Array.isArray(val)) continue;
+        current[id] = { ...(current[id] || {}), ...val };
+      }
+      return current;
+    }
+
     // ── /assignments/:agence ──────────────────────────
     const assignMatch = path.match(/^\/assignments\/([a-z0-9-]+)$/);
     if (assignMatch) {
@@ -563,34 +580,34 @@ async function handleRequest(request, env) {
 
       if (method === "POST") {
         let body; try { body = await request.json(); } catch { return err("JSON invalide"); }
-        if (typeof body.assignments !== "object") return err("assignments doit être un objet");
+        const incoming = assignIncoming(body);
+        if (!incoming) return err("patch (ou assignments) doit être un objet");
 
         if (isLopez) {
-          // Répartir les assignments dans les bonnes clés KV selon la zone du DPE
-          // Le dashboard envoie tous les assignments fusionnés — on les re-dispatche
-          // en lisant les assignments existants de chaque agence pour savoir à qui appartient chaque DPE
+          // Répartir le patch dans les bonnes clés KV, en FUSION (jamais de
+          // suppression) : clé déjà dans motte → motte ; déjà dans pernety →
+          // pernety ; nouvelle clé → selon val.zone (envoyée par le dashboard).
           const motteCurrent = JSON.parse(await env.DPE_KV.get(`assignments:motte-picquet`) || "{}");
           const pernetyCurrent = JSON.parse(await env.DPE_KV.get(`assignments:pernety`) || "{}");
-          const motteNew = {};
-          const pernetyNew = {};
+          const toMotte = {};
+          const toPernety = {};
 
-          for (const [dpeId, val] of Object.entries(body.assignments)) {
-            // Si la clé existait déjà dans motte → reste dans motte
-            // Si la clé existait déjà dans pernety → reste dans pernety
-            // Si nouvelle clé → on utilise la zone indiquée dans val.zone
-            if (dpeId in motteCurrent || val?.zone === "La Motte Picquet") {
-              motteNew[dpeId] = val;
-            } else {
-              pernetyNew[dpeId] = val;
-            }
+          for (const [dpeId, val] of Object.entries(incoming)) {
+            if (dpeId in motteCurrent) toMotte[dpeId] = val;
+            else if (dpeId in pernetyCurrent) toPernety[dpeId] = val;
+            else if (val?.zone === "La Motte Picquet") toMotte[dpeId] = val;
+            else toPernety[dpeId] = val;
           }
-          await env.DPE_KV.put(`assignments:motte-picquet`, JSON.stringify(motteNew));
-          await env.DPE_KV.put(`assignments:pernety`, JSON.stringify(pernetyNew));
-          return json({ ok: true, count: Object.keys(body.assignments).length });
+          if (Object.keys(toMotte).length)
+            await env.DPE_KV.put(`assignments:motte-picquet`, JSON.stringify(mergeAssignInto(motteCurrent, toMotte)));
+          if (Object.keys(toPernety).length)
+            await env.DPE_KV.put(`assignments:pernety`, JSON.stringify(mergeAssignInto(pernetyCurrent, toPernety)));
+          return json({ ok: true, count: Object.keys(incoming).length });
         }
 
-        await env.DPE_KV.put(`assignments:${agenceId}`, JSON.stringify(body.assignments));
-        return json({ ok: true, count: Object.keys(body.assignments).length });
+        const current = JSON.parse(await env.DPE_KV.get(`assignments:${agenceId}`) || "{}");
+        await env.DPE_KV.put(`assignments:${agenceId}`, JSON.stringify(mergeAssignInto(current, incoming)));
+        return json({ ok: true, count: Object.keys(incoming).length });
       }
       return err("Méthode non supportée", 405);
     }
@@ -608,9 +625,11 @@ async function handleRequest(request, env) {
       }
       if (method === "POST") {
         let body; try { body = await request.json(); } catch { return err("JSON invalide"); }
-        if (typeof body.assignments !== "object") return err("assignments doit être un objet");
-        await env.DPE_KV.put(`sci-assignments:${agenceId}`, JSON.stringify(body.assignments));
-        return json({ ok: true, count: Object.keys(body.assignments).length });
+        const incoming = assignIncoming(body);
+        if (!incoming) return err("patch (ou assignments) doit être un objet");
+        const current = JSON.parse(await env.DPE_KV.get(`sci-assignments:${agenceId}`) || "{}");
+        await env.DPE_KV.put(`sci-assignments:${agenceId}`, JSON.stringify(mergeAssignInto(current, incoming)));
+        return json({ ok: true, count: Object.keys(incoming).length });
       }
       return err("Méthode non supportée", 405);
     }

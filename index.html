@@ -1517,7 +1517,8 @@ async function doReset() {
 function doLogout() {
   sessionStorage.removeItem('dpe_session');
   authToken = agenceId = agenceConfig = null;
-  allDpe = []; assignments = {}; conseillers = ['À attribuer'];
+  allDpe = []; assignments = {}; sciAssignments = {}; conseillers = ['À attribuer'];
+  resetAssignSync();   // dirty en mémoire purgé (les pending persistés restent, par agence)
   document.getElementById('screen-dashboard').style.display = 'none';
   document.getElementById('screen-login').style.display     = 'flex';
   document.getElementById('login-pwd').value = '';
@@ -1582,6 +1583,7 @@ async function initDashboard(token, agence, config, role) {
     ] : []),
   ]);
   renderTable();
+  startAssignSync();   // refresh périodique + rejeu des pending
 }
 
 // ════════════════════════════════════════
@@ -1631,9 +1633,11 @@ async function loadAssignments() {
     assignments = data.assignments || {};
     setSyncStatus(true);
   } catch {
+    // Cache local en LECTURE seule : jamais marqué dirty, donc jamais renvoyé.
     try { assignments = JSON.parse(localStorage.getItem(`dpe_assign_${agenceId}`)||'{}'); } catch {}
     setSyncStatus(false);
   }
+  restorePending('dpe');
 }
 
 function scheduleAutoSave() {
@@ -1641,20 +1645,218 @@ function scheduleAutoSave() {
   saveTimer = setTimeout(saveAssignments, 1200);
 }
 
-async function saveAssignments() {
-  localStorage.setItem(`dpe_assign_${agenceId}`, JSON.stringify(assignments));
-  if (!authToken) return;
+function saveAssignments() { return pushAssignPatch('dpe'); }
+
+// ════════════════════════════════════════
+//  SYNC MULTI-SESSIONS (DPE + SCI)
+// ════════════════════════════════════════
+// Seuls les champs modifiés localement (dirty) partent au serveur, en
+// { patch:{id:{champ:valeur}} } ; le worker fusionne par champ. Un refresh
+// périodique ramène les saisies des autres sessions (mobile ↔ PC) et met le
+// DOM à jour SUR PLACE, sans toucher l'élément qui a le focus. Les champs non
+// encore confirmés sont persistés (pending, horodatés, purgés à 7 j) et
+// rejoués au démarrage — jamais la map complète.
+const ASSIGN_PENDING_TTL = 7 * 24 * 3600 * 1000;
+const ASSIGN_RECENT_MS   = 90 * 1000;  // lecture KV possiblement en retard juste après un envoi
+const ASSIGN_REFRESH_MS  = 60 * 1000;
+const assignSync = {
+  dpe: { route:'assignments',     cache:'dpe_assign_', pending:'dpe_pending_', toast:'✅ Attributions sauvegardées',
+         dirty:{}, recent:{}, saving:false, again:false },
+  sci: { route:'sci-assignments', cache:'sci_assign_', pending:'sci_pending_', toast:'✅ SCI sauvegardées',
+         dirty:{}, recent:{}, saving:false, again:false },
+};
+let assignSyncTimer = null;
+let assignSyncListeners = false;
+
+function assignMap(kind)       { return kind === 'dpe' ? assignments : sciAssignments; }
+function setAssignMap(kind, m) { if (kind === 'dpe') assignments = m; else sciAssignments = m; }
+
+// dirty[id][champ] = horodatage de la modification locale
+function markAssignDirty(kind, id, key) {
+  const st = assignSync[kind];
+  (st.dirty[id] = st.dirty[id] || {})[key] = Date.now();
+  persistPending(kind);
+}
+
+function persistPending(kind) {
+  const st = assignSync[kind], map = assignMap(kind), entries = {};
+  for (const [id, champs] of Object.entries(st.dirty))
+    for (const [k, ts] of Object.entries(champs))
+      (entries[id] = entries[id] || {})[k] = { v: (map[id] || {})[k], ts };
   try {
-    const resp = await fetch(`${API_URL}/assignments/${agenceId}`, {
+    if (Object.keys(entries).length)
+      localStorage.setItem(st.pending + agenceId, JSON.stringify({ agence: agenceId, entries }));
+    else localStorage.removeItem(st.pending + agenceId);
+  } catch {}
+}
+
+// Au démarrage : réapplique les pending de CETTE agence (< 7 j) par-dessus la
+// map serveur et les remet en dirty -> rejoués en patch par startAssignSync().
+function restorePending(kind) {
+  const st = assignSync[kind];
+  let saved = null;
+  try { saved = JSON.parse(localStorage.getItem(st.pending + agenceId) || 'null'); } catch {}
+  if (!saved || saved.agence !== agenceId || !saved.entries) return;
+  const map = assignMap(kind), limite = Date.now() - ASSIGN_PENDING_TTL;
+  for (const [id, champs] of Object.entries(saved.entries))
+    for (const [k, e] of Object.entries(champs || {})) {
+      if (!e || !(e.ts > limite)) continue;
+      (map[id] = map[id] || {})[k] = e.v;
+      (st.dirty[id] = st.dirty[id] || {})[k] = e.ts;
+    }
+  persistPending(kind);   // réécrit sans les entrées purgées
+}
+
+function buildAssignPatch(kind) {
+  const st = assignSync[kind], map = assignMap(kind), patch = {};
+  for (const [id, champs] of Object.entries(st.dirty))
+    for (const k of Object.keys(champs)) (patch[id] = patch[id] || {})[k] = (map[id] || {})[k];
+  // Lopez : le worker range une NOUVELLE clé selon val.zone (valeur exacte
+  // "La Motte Picquet", identique dans data/motte-picquet.json).
+  if (kind === 'dpe' && agenceId === 'lopez')
+    for (const id of Object.keys(patch)) {
+      const z = allDpe.find(d => d.numero_dpe === id)?.zone;
+      if (z) patch[id].zone = z;
+    }
+  return patch;
+}
+
+async function pushAssignPatch(kind) {
+  const st = assignSync[kind];
+  try { localStorage.setItem(st.cache + agenceId, JSON.stringify(assignMap(kind))); } catch {}
+  if (!authToken || !Object.keys(st.dirty).length) return;
+  if (st.saving) { st.again = true; return; }   // un seul POST à la fois
+  st.saving = true;
+  const patch = buildAssignPatch(kind);
+  try {
+    const resp = await fetch(`${API_URL}/${st.route}/${agenceId}`, {
       method:'POST',
       headers:{'Authorization':`Bearer ${authToken}`,'Content-Type':'application/json'},
-      body: JSON.stringify({assignments}),
+      body: JSON.stringify({ patch }),
     });
-    if (resp.ok) { setSyncStatus(true); showToast('✅ Attributions sauvegardées'); }
-    else throw new Error();
+    if (!resp.ok) throw new Error();
+    // Ne retirer du dirty que ce qui n'a pas rebougé pendant l'envoi.
+    const map = assignMap(kind), now = Date.now();
+    for (const [id, champs] of Object.entries(patch))
+      for (const [k, v] of Object.entries(champs)) {
+        (st.recent[id] = st.recent[id] || {})[k] = { v, at: now };
+        if (st.dirty[id] && k in st.dirty[id] && (map[id] || {})[k] === v) delete st.dirty[id][k];
+        if (st.dirty[id] && !Object.keys(st.dirty[id]).length) delete st.dirty[id];
+      }
+    persistPending(kind);
+    setSyncStatus(true); showToast(st.toast);
   } catch {
     setSyncStatus(false); showToast('⚠️ Sauvegarde locale uniquement', true);
+  } finally {
+    st.saving = false;
+    if (st.again) { st.again = false; pushAssignPatch(kind); }
   }
+}
+
+async function refreshAssign(kind) {
+  if (!authToken || document.hidden) return;
+  const st = assignSync[kind], ag = agenceId;
+  let server;
+  try {
+    const resp = await fetch(`${API_URL}/${st.route}/${ag}`, {
+      headers:{'Authorization':`Bearer ${authToken}`},
+    });
+    if (!resp.ok) throw new Error();
+    server = (await resp.json()).assignments || {};
+  } catch { setSyncStatus(false); return; }
+  if (ag !== agenceId) return;   // déconnexion / changement d'agence pendant le GET
+  // Par-dessus le serveur : champs dirty (non envoyés) + envois récents
+  // (le KV peut encore servir l'ancienne valeur quelques dizaines de secondes).
+  const old = assignMap(kind), now = Date.now();
+  for (const [id, champs] of Object.entries(st.dirty))
+    for (const k of Object.keys(champs)) (server[id] = server[id] || {})[k] = (old[id] || {})[k];
+  for (const [id, champs] of Object.entries(st.recent)) {
+    for (const [k, e] of Object.entries(champs)) {
+      if (now - e.at > ASSIGN_RECENT_MS) { delete champs[k]; continue; }
+      if (!(st.dirty[id] && k in st.dirty[id])) (server[id] = server[id] || {})[k] = e.v;
+    }
+    if (!Object.keys(champs).length) delete st.recent[id];
+  }
+  const changed = [...new Set([...Object.keys(old), ...Object.keys(server)])]
+    .filter(id => JSON.stringify(old[id] || {}) !== JSON.stringify(server[id] || {}));
+  setAssignMap(kind, server);
+  setSyncStatus(true);
+  if (changed.length) {
+    if (kind === 'dpe') patchDpeDom(changed); else patchSciDom(changed);
+  }
+  if (Object.keys(st.dirty).length) pushAssignPatch(kind);   // retente les échecs
+}
+
+function refreshAllAssign() {
+  if (!authToken || document.hidden) return;
+  refreshAssign('dpe');
+  if (AGENCES_SCI.includes(agenceId)) {
+    if (currentMode === 'sci') refreshAssign('sci');
+    else if (Object.keys(assignSync.sci.dirty).length) pushAssignPatch('sci');
+  }
+}
+
+function startAssignSync() {
+  if (!assignSyncListeners) {
+    assignSyncListeners = true;
+    document.addEventListener('visibilitychange', () => { if (!document.hidden) refreshAllAssign(); });
+    window.addEventListener('focus', refreshAllAssign);
+  }
+  clearInterval(assignSyncTimer);
+  assignSyncTimer = setInterval(refreshAllAssign, ASSIGN_REFRESH_MS);   // no-op si document.hidden
+  pushAssignPatch('dpe');                                              // rejeu des pending restaurés
+  if (AGENCES_SCI.includes(agenceId)) pushAssignPatch('sci');
+}
+
+function resetAssignSync() {
+  clearInterval(assignSyncTimer); assignSyncTimer = null;
+  clearTimeout(saveTimer); clearTimeout(sciSaveTimer);
+  for (const st of Object.values(assignSync)) { st.dirty = {}; st.recent = {}; st.again = false; }
+}
+
+// Écrit une valeur venue du serveur, sauf dans l'élément en cours d'édition.
+function setAssignCtl(el, v) {
+  if (!el || el === document.activeElement) return;
+  el.value = v;
+  if (el.tagName === 'TEXTAREA') el.defaultValue = v;
+}
+
+function patchDpeDom(ids) {
+  for (const id of ids) {
+    const a = assignments[id] || {};
+    const statut = a.statut || 'À prospecter', conseil = a.conseiller || 'À attribuer';
+    const note = (a.note || '').replace(/`/g, "'");
+    const ta = document.getElementById('note-row-' + id);
+    const tr = ta?.closest('tr');
+    if (!tr) continue;
+    tr.dataset.statut = statut; tr.dataset.conseiller = conseil;
+    setAssignCtl(tr.querySelector('.statut-select'), statut);
+    setAssignCtl(tr.querySelector('.conseiller-select'), conseil);
+    setAssignCtl(ta, note);
+    ta.classList.toggle('has-note', !!note);
+  }
+  applyFiltres();
+  rerenderCardsKeepState();
+}
+
+// Cartes mobiles : re-rendu (filtre/tri conseiller-dépendants) en gardant les
+// notes ouvertes ; différé tant que le focus est dans une carte.
+let cardsRerenderPending = false;
+function rerenderCardsKeepState() {
+  const mc = document.getElementById('mobile-cards');
+  if (!mc || !mc.childElementCount) return;
+  if (mc.contains(document.activeElement)) {
+    if (!cardsRerenderPending) {
+      cardsRerenderPending = true;
+      mc.addEventListener('focusout', () => setTimeout(() => {
+        cardsRerenderPending = false; rerenderCardsKeepState();
+      }, 0), { once: true });
+    }
+    return;
+  }
+  const open = [...mc.querySelectorAll('.card-note-area.open')].map(el => el.id);
+  renderCards();
+  open.forEach(i => document.getElementById(i)?.classList.add('open'));
 }
 
 // ════════════════════════════════════════
@@ -2169,7 +2371,7 @@ function renderCards() {
           📝 ${noteVal ? 'Note enregistrée' : 'Ajouter une note'}
         </button>
         <div class="card-note-area" id="note-area-${id}">
-          <textarea placeholder="Votre note..." onblur="saveNote('${id}', this.value)">${noteVal}</textarea>
+          <textarea placeholder="Votre note..." onblur="saveNote('${id}', this.value, this)">${noteVal}</textarea>
         </div>
       </div>
     </div>`;
@@ -2183,7 +2385,11 @@ function toggleCardNote(id) {
   if (area.classList.contains('open')) area.querySelector('textarea').focus();
 }
 
-function saveNote(id, value) {
+function saveNote(id, value, el) {
+  // Blur sans édition : ne rien écrire (sinon un texte affiché périmé
+  // écraserait la note saisie entre-temps sur une autre session).
+  if (el && value === el.defaultValue) return;
+  if (el) el.defaultValue = value;
   const trimmed = value.trim();
   const hasNote = !!trimmed;
   updateAssignment(id, 'note', trimmed);
@@ -2260,13 +2466,15 @@ function renderRow(dpe) {
     })()}</td>
     <td><a class="btn-voir" href="https://observatoire-dpe-audit.ademe.fr/afficher-dpe/${id}" target="_blank" rel="noopener">Voir →</a></td>
     <td><textarea id="note-row-${id}" class="note-input${noteVal?' has-note':''}" rows="1"
-      placeholder="Note..." onblur="saveNote('${id}', this.value)">${noteVal}</textarea></td>
+      placeholder="Note..." onblur="saveNote('${id}', this.value, this)">${noteVal}</textarea></td>
   </tr>`;
 }
 
 function updateAssignment(id, key, value) {
+  if ((assignments[id] || {})[key] === value) return;   // aucune modif -> rien à envoyer
   if (!assignments[id]) assignments[id]={};
   assignments[id][key] = value;
+  markAssignDirty('dpe', id, key);
   const tr = document.querySelector(`tr[data-adresse] select[onchange*="${id}"]`)?.closest('tr');
   if (tr) tr.dataset[key==='statut'?'statut':'conseiller'] = value;
   scheduleAutoSave();
@@ -6379,8 +6587,10 @@ async function loadSciAssignments() {
     const data = await resp.json();
     sciAssignments = data.assignments || {};
   } catch {
+    // Cache local en LECTURE seule (jamais renvoyé, cf. SYNC MULTI-SESSIONS).
     try { sciAssignments = JSON.parse(localStorage.getItem(`sci_assign_${agenceId}`)||'{}'); } catch {}
   }
+  restorePending('sci');
 }
 
 let sciSaveTimer = null;
@@ -6389,20 +6599,20 @@ function scheduleAutoSaveSci() {
   sciSaveTimer = setTimeout(saveSciAssignments, 1200);
 }
 
-async function saveSciAssignments() {
-  localStorage.setItem(`sci_assign_${agenceId}`, JSON.stringify(sciAssignments));
-  if (!authToken) return;
-  try {
-    const resp = await fetch(`${API_URL}/sci-assignments/${agenceId}`, {
-      method:'POST',
-      headers:{'Authorization':`Bearer ${authToken}`,'Content-Type':'application/json'},
-      body: JSON.stringify({assignments: sciAssignments}),
+function saveSciAssignments() { return pushAssignPatch('sci'); }
+
+// Refresh multi-sessions : mise à jour sur place des lignes SCI modifiées.
+function patchSciDom(ids) {
+  for (const id of ids) {
+    const a = sciAssignments[id] || {};
+    const statut = a.statut || 'À prospecter', conseil = a.conseiller || 'À attribuer';
+    document.querySelectorAll(`#sci-tbody tr[data-sci-id="${CSS.escape(id)}"]`).forEach(tr => {
+      tr.dataset.statut = statut; tr.dataset.conseiller = conseil;
+      setAssignCtl(tr.querySelector('.statut-select'), statut);
+      setAssignCtl(tr.querySelector('.conseiller-select'), conseil);
     });
-    if (resp.ok) { setSyncStatus(true); showToast('✅ SCI sauvegardées'); }
-    else throw new Error();
-  } catch {
-    setSyncStatus(false); showToast('⚠️ Sauvegarde locale uniquement', true);
   }
+  applyFiltresSci();
 }
 
 // ════════════════════════════════════════
@@ -6493,8 +6703,10 @@ function badgeLot(sci) {
 }
 
 function updateSciAssignment(id, key, value) {
+  if ((sciAssignments[id] || {})[key] === value) return;   // aucune modif -> rien à envoyer
   if (!sciAssignments[id]) sciAssignments[id] = {};
   sciAssignments[id][key] = value;
+  markAssignDirty('sci', id, key);
   const rows = document.querySelectorAll('#sci-tbody tr');
   rows.forEach(tr => {
     const sel = tr.querySelector(`select[onchange*="${id}"]`);

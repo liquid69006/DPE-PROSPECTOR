@@ -5,6 +5,62 @@
 
 ---
 
+## 2026-10-27 — Sync multi-sessions des attributions DPE/SCI (fin du last-write-wins)
+
+**Bug** : les saisies conseiller (statut / conseiller / note) faites sur mobile
+n'apparaissaient pas sur une session PC déjà ouverte, et pouvaient être
+**écrasées** par elle. `loadAssignments()` n'était appelé qu'au démarrage, et
+`saveAssignments()` POSTait la map complète que le worker écrivait telle quelle
+(`KV.put` du body) → la session la plus périmée gagnait. Branche lopez pire
+encore : re-dispatch qui **supprimait** des 2 sous-agences toute clé absente du
+body. Même schéma pour `/sci-assignments`.
+
+**Bug annexe corrigé** : lopez rangeait une *nouvelle* clé selon `val.zone`, que
+le front n'envoyait jamais → toute nouvelle attribution lopez partait dans
+pernety, même pour un DPE La Motte Picquet. Le patch lopez porte désormais
+`zone` (valeur exacte `"La Motte Picquet"`, vérifiée dans `data/motte-picquet.json`).
+
+### Correctif
+
+- **Worker** (`/assignments`, `/sci-assignments`) : body `{patch:{id:{champ:valeur}}}`,
+  `GET KV → fusion par champ → PUT`. Le legacy `{assignments}` est aussi fusionné.
+  **Jamais de suppression** de clé ni de champ. Lopez : clé existante → reste dans
+  son agence ; nouvelle → `val.zone`.
+- **Front** (bloc `SYNC MULTI-SESSIONS` d'`index.html`) : `dirty` par champ ;
+  envoi du seul patch, dirty vidé uniquement sur `resp.ok` (et seulement si la
+  valeur n'a pas rebougé pendant l'envoi) ; un POST à la fois.
+  `refreshAssign()` (visibilitychange, focus, 60 s, pause si `document.hidden`) :
+  GET + réapplication des dirty + des envois < 90 s (lecture KV en retard), puis
+  **mise à jour sur place** du DOM, sans jamais toucher l'élément focus ; cartes
+  mobiles re-rendues en gardant les notes ouvertes, différé tant que le focus est
+  dans une carte. SCI idem (refresh seulement en mode SCI).
+- **Pending** : champs non confirmés persistés dans `dpe_pending_{agence}` /
+  `sci_pending_{agence}`, horodatés par entrée, purgés à 7 j, rejoués **en patch**
+  au démarrage si l'agence correspond. Le cache `dpe_assign_` / `sci_assign_` reste
+  en lecture seule et n'est **jamais** renvoyé.
+- **Garde-fous** : `updateAssignment` / `updateSciAssignment` ignorent une valeur
+  inchangée ; `saveNote` ignore un blur sans édition (`defaultValue`), sinon une
+  note affichée périmée écraserait la note distante.
+- **Test front** : `test_render_secteur.js` recalé de **+208** (bandeau
+  `RESYNC 2026-10-27`), DL + Montchat au vert.
+
+### Ordre de déploiement (impératif)
+
+`wrangler deploy` **d'abord** (l'ancien worker rejette `{patch}` en 400), vérif,
+**puis** `git push` (Pages). Après coup, **recharger toutes les sessions ouvertes**
+(mobile compris) : un onglet resté sur l'ancien code envoie encore la map
+complète, fusionnée mais avec ses valeurs périmées sur les mêmes champs.
+
+### Limites connues (acceptées)
+
+- KV non transactionnel + cohérence éventuelle (~60 s entre PoP) : deux écritures
+  sur le **même champ du même DPE** quasi simultanées restent en last-write-wins.
+  Plus aucune perte d'un champ par une écriture sur un *autre* champ.
+- Un pending rejoué (≤ 7 j) peut écraser une valeur plus récente du même champ
+  posée entre-temps ailleurs (c'est la saisie de l'utilisateur, non envoyée).
+
+---
+
 ## 2026-10-14 — Filtre d'exclusion tertiaire Part-Dieu NR + resync du test front
 
 **Contexte.** Reprise après redémarrage machine. Diagnostic read-only : HEAD
