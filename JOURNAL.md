@@ -5,6 +5,38 @@
 
 ---
 
+## 2026-10-27 (suite) — Auto-update du front PWA + refresh attributions 30 s
+
+**Constat** : des PWA mobiles restaient sur un ancien code. Le cache HTTP n'y est
+pour rien (`/`, `index.html`, `sw.js` déjà en `no-cache`, `sw.js` ne cache rien) :
+iOS/Android gardent l'app **suspendue en mémoire / bfcache**, le JS n'est jamais
+rechargé.
+
+**Mécanisme** :
+- `deploy-pages.yml` (étape « 🏷 Version ») génère `version.json = {"v":"<sha court>"}`
+  et remplace `const APP_VERSION = '__APP_VERSION__'` dans `index.html` ; le build
+  **échoue** si le placeholder est introuvable. `_headers` : `/version.json` en
+  `no-store`.
+- `checkAppVersion()` (dernier `<script>` d'`index.html`) : démarrage,
+  `visibilitychange`, `pageshow` (bfcache), toutes les 5 min (pause si caché).
+  Version différente → `persistPending('dpe'|'sci')` puis `location.reload()`, sauf
+  si un input/textarea/select a le focus : bandeau « Nouvelle version — toucher
+  pour recharger » + nouvel essai au prochain `focusout`.
+- Anti-boucle : au plus **1 reload par version** (`sessionStorage.app_reload_for`),
+  ensuite bandeau seul (cas `version.json` en avance sur `index.html` pendant la
+  propagation).
+- Réponse non-JSON ignorée : Pages renvoie `index.html` (200, text/html) pour un
+  fichier absent. En local, `APP_VERSION` reste le placeholder → désactivé.
+- `ASSIGN_REFRESH_MS` : 60 s → **30 s**.
+
+Code ajouté **sous** le bloc Secteur : `test_render_secteur.js` non recalé
+(5 ancres inchangées, DL + Montchat au vert).
+
+**Transition** : les PWA déjà bloquées doivent être fermées/relancées **une
+dernière fois** pour charger ce code ; ensuite plus jamais.
+
+---
+
 ## 2026-10-27 — Sync multi-sessions des attributions DPE/SCI (fin du last-write-wins)
 
 **Bug** : les saisies conseiller (statut / conseiller / note) faites sur mobile

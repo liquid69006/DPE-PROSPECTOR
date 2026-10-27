@@ -13,6 +13,15 @@ jobs:
       - name: 📥 Checkout
         uses: actions/checkout@v4
 
+      # Auto-update PWA : version.json + APP_VERSION dans index.html = SHA court.
+      # Echec du build si le placeholder est introuvable (front sans version).
+      - name: 🏷 Version
+        run: |
+          V="${GITHUB_SHA::7}"
+          printf '{"v":"%s"}' "$V" > version.json
+          sed -i "s/const APP_VERSION = '__APP_VERSION__';/const APP_VERSION = '$V';/" index.html
+          test "$(grep -c "const APP_VERSION = '$V';" index.html)" = 1
+
       - name: 🚀 Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:

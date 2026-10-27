@@ -11,3 +11,6 @@
   Cache-Control: no-cache
 /sw.js
   Cache-Control: no-cache
+# Version du front (auto-update PWA) : jamais mise en cache.
+/version.json
+  Cache-Control: no-store

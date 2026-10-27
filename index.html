@@ -1658,7 +1658,7 @@ function saveAssignments() { return pushAssignPatch('dpe'); }
 // rejoués au démarrage — jamais la map complète.
 const ASSIGN_PENDING_TTL = 7 * 24 * 3600 * 1000;
 const ASSIGN_RECENT_MS   = 90 * 1000;  // lecture KV possiblement en retard juste après un envoi
-const ASSIGN_REFRESH_MS  = 60 * 1000;
+const ASSIGN_REFRESH_MS  = 30 * 1000;
 const assignSync = {
   dpe: { route:'assignments',     cache:'dpe_assign_', pending:'dpe_pending_', toast:'✅ Attributions sauvegardées',
          dirty:{}, recent:{}, saving:false, again:false },
@@ -7844,6 +7844,66 @@ window.addEventListener('DOMContentLoaded', async () => {
   // Attendre que le DOM soit rendu pour mesurer
   setTimeout(setHeaderHeight, 100);
   window.addEventListener('resize', setHeaderHeight);
+
+  // ── Mise à jour automatique du front ──
+  // Une PWA mobile reste suspendue en mémoire / bfcache et ne recharge jamais
+  // son JS : on compare la version servie (version.json, généré au build par
+  // deploy-pages.yml) à celle du code en cours, et on recharge si elle change.
+  // Les saisies non envoyées sont persistées avant (pending, rejoués en patch).
+  // En local sans build, APP_VERSION reste le placeholder -> désactivé.
+  const APP_VERSION = '__APP_VERSION__';
+  const APP_VERSION_CHECK_MS = 5 * 60 * 1000;
+  let appUpdateWaitBlur = false;
+
+  function appChampActif() {
+    const el = document.activeElement;
+    return !!el && ['INPUT', 'TEXTAREA', 'SELECT'].includes(el.tagName);
+  }
+
+  function appRecharger(v) {
+    try { if (agenceId) { persistPending('dpe'); persistPending('sci'); } } catch {}
+    try { sessionStorage.setItem('app_reload_for', v); } catch {}
+    location.reload();
+  }
+
+  function appBandeauMaj(v) {
+    if (document.getElementById('app-update-banner')) return;
+    const b = document.createElement('div');
+    b.id = 'app-update-banner';
+    b.textContent = '🔄 Nouvelle version — toucher pour recharger';
+    b.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:100000;padding:12px 16px;' +
+      'padding-top:calc(12px + env(safe-area-inset-top));background:#1d4ed8;color:#fff;' +
+      'font:600 14px/1.3 system-ui,sans-serif;text-align:center;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.25);';
+    b.onclick = () => appRecharger(v);   // le tap fait d'abord perdre le focus -> saveNote
+    document.body.appendChild(b);
+  }
+
+  async function checkAppVersion() {
+    if (/^__/.test(APP_VERSION)) return;
+    let v;
+    try {
+      const r = await fetch('/version.json?t=' + Date.now(), { cache: 'no-store' });
+      if (!r.ok) return;
+      v = (await r.json()).v;   // Pages renvoie index.html si absent -> JSON invalide -> ignoré
+    } catch { return; }
+    if (typeof v !== 'string' || !v || v === APP_VERSION) return;
+    let dejaRecharge = false;
+    try { dejaRecharge = sessionStorage.getItem('app_reload_for') === v; } catch {}
+    if (dejaRecharge) { appBandeauMaj(v); return; }   // anti-boucle : 1 reload max par version
+    if (!appChampActif()) { appRecharger(v); return; }
+    appBandeauMaj(v);
+    if (!appUpdateWaitBlur) {
+      appUpdateWaitBlur = true;
+      document.addEventListener('focusout', () => setTimeout(() => {
+        appUpdateWaitBlur = false; checkAppVersion();
+      }, 0), { once: true });
+    }
+  }
+
+  checkAppVersion();
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) checkAppVersion(); });
+  window.addEventListener('pageshow', e => { if (e.persisted) checkAppVersion(); });
+  setInterval(() => { if (!document.hidden) checkAppVersion(); }, APP_VERSION_CHECK_MS);
 </script>
 </body>
 </html>
